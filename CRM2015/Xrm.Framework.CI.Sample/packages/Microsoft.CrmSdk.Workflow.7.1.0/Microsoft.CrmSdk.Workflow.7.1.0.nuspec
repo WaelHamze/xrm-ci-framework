@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>Microsoft.CrmSdk.Workflow</id>
+    <version>7.1.0</version>
+    <title>Microsoft Dynamics CRM 2015 SDK workflow assembly</title>
+    <authors>crmsdk</authors>
+    <owners>crmsdk</owners>
+    <licenseUrl>http://download.microsoft.com/download/E/1/8/E18C0FAD-FEC8-44CD-9A16-98EDC4DAC7A2/LicenseTerms.docx</licenseUrl>
+    <projectUrl>http://msdn.microsoft.com/en-us/dynamics/crm/dn467921.aspx</projectUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>This package contains the official Microsoft.Xrm.Sdk.Workflow.dll assembly and has been authored by the Microsoft Dynamics CRM SDK team.</description>
+    <summary>Assembly required to create and manage workflows in Microsoft Dynamics CRM 2015.</summary>
+    <releaseNotes>This package contains assemblies from the Microsoft Dynamics CRM Online 2015 Update 1 release. These assemblies require application development using the Microsoft .NET Framework 4.5.2 or later
+
+7.1.0: Final CRM Online 2015 Update 1 SDK assemblies
+7.1.0-preview: Preview CRM Online 2015 Update 1 SDK assemblies
+7.0.1: CRM 2015 UR1 SDK assemblies
+7.0.0.1: Final (RTM) CRM 2015 SDK assemblies
+7.0.0:  Preview CRM 2015 SDK assemblies</releaseNotes>
+    <copyright>© 2015 Microsoft Corporation</copyright>
+    <language>en-US</language>
+    <tags>Dynamics CRM 2015 SDK XRM</tags>
+    <dependencies>
+      <group targetFramework=".NETFramework4.5">
+        <dependency id="Microsoft.CrmSdk.CoreAssemblies" version="7.1.0" />
+      </group>
+    </dependencies>
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="System.Activities.Presentation" targetFramework=".NETFramework4.5.2" />
+      <frameworkAssembly assemblyName="System.Workflow.Activities" targetFramework=".NETFramework4.5.2" />
+      <frameworkAssembly assemblyName="PresentationFramework" targetFramework=".NETFramework4.5.2" />
+      <frameworkAssembly assemblyName="System.Workflow.ComponentModel" targetFramework=".NETFramework4.5.2" />
+      <frameworkAssembly assemblyName="System.Workflow.Runtime" targetFramework=".NETFramework4.5.2" />
+      <frameworkAssembly assemblyName="System.Activities" targetFramework=".NETFramework4.5.2" />
+    </frameworkAssemblies>
+  </metadata>
+</package>

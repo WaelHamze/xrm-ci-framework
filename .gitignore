@@ -1,0 +1,26 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+*.suo
+/CRM2015/Xrm.Framework.CI/Xrm.Framework.CI.PowerShell/obj/Debug
+/CRM2015/Xrm.Framework.CI/Xrm.Framework.CI.PowerShell/Scripts/AntiXSSLibrary.dll
+/CRM2015/Xrm.Framework.CI/Xrm.Framework.CI.PowerShell/bin/Debug
+/CRM2015/Xrm.Framework.CI/Xrm.Framework.CI.PowerShell/Scripts/Microsoft.Xrm.Sdk.xml
+/CRM2015/Xrm.Framework.CI/Xrm.Framework.CI.PowerShell/Scripts/Microsoft.Xrm.Sdk.dll
+/CRM2015/Xrm.Framework.CI/Xrm.Framework.CI.PowerShell/Scripts/Microsoft.Xrm.Sdk.Deployment.xml
+/CRM2015/Xrm.Framework.CI/Xrm.Framework.CI.PowerShell/Scripts/Microsoft.Xrm.Sdk.Deployment.dll
+/CRM2015/Xrm.Framework.CI/Xrm.Framework.CI.PowerShell/Scripts/Microsoft.Xrm.Portal.Files.dll
+/CRM2015/Xrm.Framework.CI/Xrm.Framework.CI.PowerShell/Scripts/Microsoft.Xrm.Portal.dll
+/CRM2015/Xrm.Framework.CI/Xrm.Framework.CI.PowerShell/Scripts/Microsoft.Xrm.Client.dll
+/CRM2015/Xrm.Framework.CI/Xrm.Framework.CI.PowerShell/Scripts/Microsoft.Xrm.Client.CodeGeneration.dll
+/CRM2015/Xrm.Framework.CI/Xrm.Framework.CI.PowerShell/Scripts/Microsoft.IdentityModel.dll
+/CRM2015/Xrm.Framework.CI/Xrm.Framework.CI.PowerShell/Scripts/Microsoft.Crm.Sdk.Proxy.xml
+/CRM2015/Xrm.Framework.CI/Xrm.Framework.CI.PowerShell/Scripts/Microsoft.Crm.Sdk.Proxy.dll
+/CRM2015/Xrm.Framework.CI/Xrm.Framework.CI.PowerShell/Scripts/Xrm.Framework.CI.PowerShell.pdb
+/CRM2015/Xrm.Framework.CI/Xrm.Framework.CI.PowerShell/Scripts/Xrm.Framework.CI.PowerShell.dll
+/CRM2015/Xrm.Framework.CI/Xrm.Framework.CI.PowerShell/Scripts/System.Management.Automation.dll
+/CRM2015/Xrm.Framework.CI.Sample/.vs/config
+/CRM2015/Xrm.Framework.CI.Sample/Xrm.Framework.CI.Sample.Plugins/obj/Debug
+/CRM2015/Xrm.Framework.CI.Sample/Xrm.Framework.CI.Sample.WFActivities/bin/Debug
+/CRM2015/Xrm.Framework.CI.Sample/Xrm.Framework.CI.Sample.WFActivities/obj/Debug

@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>Microsoft.CrmSdk.CoreAssemblies</id>
+    <version>7.1.0</version>
+    <title>Microsoft Dynamics CRM 2015 SDK core assemblies</title>
+    <authors>crmsdk</authors>
+    <owners>crmsdk</owners>
+    <licenseUrl>http://download.microsoft.com/download/E/1/8/E18C0FAD-FEC8-44CD-9A16-98EDC4DAC7A2/LicenseTerms.docx</licenseUrl>
+    <projectUrl>http://msdn.microsoft.com/en-us/dynamics/crm/dn467921.aspx</projectUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>This package contains the official Microsoft.Xrm.Sdk.dll and Microsoft.Crm.Sdk.Proxy.dll assemblies plus tools and has been authored by the Microsoft Dynamics CRM SDK team.
+
+Command line tools can be found in the project's bin\coretools folder.</description>
+    <summary>Core assemblies required to develop managed code applications that can access the Microsoft Dynamics CRM web services.</summary>
+    <releaseNotes>This package contains SDK assemblies from the Microsoft Dynamics CRM Online 2015 Update 1 release. These assemblies require application development using the Microsoft .NET Framework 4.5.2 or later. 
+
+7.1.0:  Final CRM Online 2015 Update 1 SDK assemblies
+7.1.0-preview:  Preview CRM Online 2015 Update 1 SDK assemblies
+7.0.0.1:  Final (RTM) CRM 2015 SDK assemblies
+7.0.0:  Preview CRM 2015 SDK assemblies
+
+The tools can now be found in their own package named Microsoft.CrmSdk.CoreTools.</releaseNotes>
+    <copyright>© 2015 Microsoft Corporation</copyright>
+    <language>en-US</language>
+    <tags>Dynamics CRM 2015 SDK XRM</tags>
+    <dependencies>
+      <group targetFramework=".NETFramework3.5">
+        <dependency id="Microsoft.IdentityModel" version="6.1.7600.16394" />
+      </group>
+    </dependencies>
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="System.Runtime.Serialization" targetFramework=".NETFramework4.5.2" />
+      <frameworkAssembly assemblyName="System.IdentityModel" targetFramework=".NETFramework4.5.2" />
+      <frameworkAssembly assemblyName="System.ServiceModel" targetFramework=".NETFramework4.5.2" />
+      <frameworkAssembly assemblyName="System.Xml" targetFramework=".NETFramework4.5.2" />
+      <frameworkAssembly assemblyName="System.ServiceModel.Web" targetFramework=".NETFramework4.5.2" />
+      <frameworkAssembly assemblyName="System.Web" targetFramework=".NETFramework4.5.2" />
+      <frameworkAssembly assemblyName="System.Core" targetFramework=".NETFramework4.5.2" />
+      <frameworkAssembly assemblyName="System.DirectoryServices" targetFramework=".NETFramework4.5.2" />
+      <frameworkAssembly assemblyName="System.DirectoryServices.AccountManagement" targetFramework=".NETFramework4.5.2" />
+      <frameworkAssembly assemblyName="System.Xml.Linq" targetFramework=".NETFramework4.5.2" />
+      <frameworkAssembly assemblyName="System.Security" targetFramework=".NETFramework4.5.2" />
+    </frameworkAssemblies>
+  </metadata>
+</package>

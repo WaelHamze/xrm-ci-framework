@@ -1,0 +1,1 @@
+Run .\Packages.ps1 to generate the xRM CI Framework package in this folder

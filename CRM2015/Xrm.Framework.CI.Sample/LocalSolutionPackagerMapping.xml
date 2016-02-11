@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping>
+
+  <FileToFile map="Xrm.Framework.CI.Sample.Plugins.dll" to="..\Xrm.Framework.CI.Sample.Plugins\bin\Debug\Xrm.Framework.CI.Sample.Plugins.dll" />
+  <FileToFile map="Xrm.Framework.CI.Sample.WFActivity.dll" to="..\Xrm.Framework.CI.Sample.WFActivity\bin\Debug\Xrm.Framework.CI.Sample.WFActivity.dll" />
+
+</Mapping>

@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xrm.Framework.CI.Sample.Plugins", "Xrm.Framework.CI.Sample.Plugins\Xrm.Framework.CI.Sample.Plugins.csproj", "{072B082E-7054-4628-AB20-E67E75F958EF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xrm.Framework.CI.Sample.WFActivities", "Xrm.Framework.CI.Sample.WFActivities\Xrm.Framework.CI.Sample.WFActivities.csproj", "{15EA51F0-A1F9-4A6A-9D84-26FEDCA5610B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{072B082E-7054-4628-AB20-E67E75F958EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{072B082E-7054-4628-AB20-E67E75F958EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{072B082E-7054-4628-AB20-E67E75F958EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{072B082E-7054-4628-AB20-E67E75F958EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15EA51F0-A1F9-4A6A-9D84-26FEDCA5610B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15EA51F0-A1F9-4A6A-9D84-26FEDCA5610B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15EA51F0-A1F9-4A6A-9D84-26FEDCA5610B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15EA51F0-A1F9-4A6A-9D84-26FEDCA5610B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
