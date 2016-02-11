@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lib", "Lib", "{8F4CD5DA-429C-478E-BB2A-675CF6785C7E}"
 EndProject
@@ -18,11 +18,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{5BB9B263
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Packages", "Packages", "{B4777BC5-D150-4B1E-98BD-3E18D6FB35EE}"
-	ProjectSection(SolutionItems) = preProject
-		Package.ps1 = Package.ps1
-		Packages\readme.txt = Packages\readme.txt
-		Packages\xRMCIFramework_6.1.0.0.zip = Packages\xRMCIFramework_6.1.0.0.zip
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -133,10 +133,18 @@
     <None Include="Scripts\ImportSolutionBuildScript.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Scripts\UpdateSolutionVersionInCRMBuildScript.ps1" />
-    <None Include="Scripts\UpdateSolutionVersionInCRM.ps1" />
-    <None Include="Scripts\PublishCustomizations.ps1" />
-    <None Include="Scripts\ExportSolution.ps1" />
+    <None Include="Scripts\UpdateSolutionVersionInCRMBuildScript.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Scripts\UpdateSolutionVersionInCRM.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Scripts\PublishCustomizations.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Scripts\ExportSolution.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Scripts\ExportSolutionBuildScript.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
