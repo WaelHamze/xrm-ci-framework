@@ -1,0 +1,46 @@
+{
+  "manifestVersion": 1,
+  "id": "xrm-ci-framework-build-tasks",
+  "name": "xRM CI Framework Build Tool",
+  "version": "8.0.0",
+  "publisher": "WaelHamze",
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "description": "Tools for building Microsoft Dynamics CRM Solutions",
+  "categories": [
+    "Build and release"
+  ],
+  "icons": {
+    "default": "icon_128x128.png"
+  },
+  "files": [
+    {
+      "path": "tasks"
+    }
+  ],
+  "contributions": [
+    {
+      "id": "MSCRMPing",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "MSCRMPing"
+      }
+    },
+    {
+      "id": "MSCRMPackSolution",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "MSCRMPackSolution"
+      }
+    }
+  ]
+}
