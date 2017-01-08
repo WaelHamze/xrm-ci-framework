@@ -2,67 +2,82 @@
 # Filename: ImportSolution.ps1
 #
 param(
-[string]$solutionFile, #The full solution file name
-[string]$solutionPath, #The full path to the location of the solution
-[string]$CrmConnectionString, #The target CRM organization connection string
-[int]$override = 0, #If set to 1 will override the solution even if a solution with same version exists
-[int]$publishWorkflows = 0, #Will publish workflows during import
-[int]$overwriteUnmanagedCustomizations = 0, #Will overwrite unmanaged customizations
-[int]$skipProductUpdateDependencies = 0, #Will skip product update dependencies
-[string]$logsDirectory #Optional - will place the import log in here
+[string]$solutionFile, #The absolute path to the solution file zip to be imported
+[string]$crmConnectionString, #The target CRM organization connection string
+[bool]$override, #If set to 1 will override the solution even if a solution with same version exists
+[bool]$publishWorkflows, #Will publish workflows during import
+[bool]$overwriteUnmanagedCustomizations, #Will overwrite unmanaged customizations
+[bool]$skipProductUpdateDependencies, #Will skip product update dependencies
+[bool]$convertToManaged, #Direct the system to convert any matching unmanaged customizations into your managed solution. Optional.
+[bool]$holdingSolution,
+[string]$logsDirectory, #Optional - will place the import log in here
+[string]$logFilename #Optional - will use this as import log file name
 )
 
 $ErrorActionPreference = "Stop"
 
+Write-Verbose 'Entering ImportSolution.ps1'
+
+#Script Location
 $scriptPath = split-path -parent $MyInvocation.MyCommand.Definition
+Write-Verbose "Script Path: $scriptPath"
 
-$xrmCIToolkit = $scriptPath + "\Xrm.Framework.CI.PowerShell.dll"
-Write-Output "Importing CIToolkit: $xrmCIToolkit" 
+#Load XrmCIFramework
+$xrmCIToolkit = $scriptPath + "\Xrm.Framework.CI.PowerShell.Cmdlets.dll"
+Write-Verbose "Importing CIToolkit: $xrmCIToolkit" 
 Import-Module $xrmCIToolkit
+Write-Verbose "Imported CIToolkit"
 
-Write-Output "solutionFile: $solutionFile"
-Write-Output "solutionPath: $solutionPath"
-Write-Output "CrmConnectionString: $CrmConnectionString"
-Write-Output "Override: $override"
-Write-Output "Publish Workflows: $publishWorkflows"
-Write-Output "overwrite Unmanaged Customizations: $overwriteUnmanagedCustomizations"
-Write-Output "Skip Product Update Dependencies: $skipProductUpdateDependencies"
-Write-Output "Logs Directory: $logsDirectory"
+Write-Verbose "solutionFile = $solutionFile"
+Write-Verbose "crmConnectionString = $crmConnectionString"
+Write-Verbose "override = $override"
+Write-Verbose "publishWorkflows = $publishWorkflows"
+Write-Verbose "overwriteUnmanagedCustomizations = $overwriteUnmanagedCustomizations"
+Write-Verbose "skipProductUpdateDependencies = $skipProductUpdateDependencies"
+Write-Verbose "convertToManaged = $convertToManaged"
+Write-Verbose "holdingSolution = $holdingSolution"
+Write-Verbose "logsDirectory = $logsDirectory"
+Write-Verbose "logFilename = $logFilename"
 
-Write-Output "Getting solution info from zip"
+Write-Verbose "Getting solution info from zip"
 
-$solutionInfo = Get-XrmSolutionInfoFromZip -SolutionFilePath ($solutionPath + "\" + $solutionFile)
+$solutionInfo = Get-XrmSolutionInfoFromZip -SolutionFilePath $solutionFile
 
-Write-Output "Solution Name: " $solutionInfo.UniqueName
-Write-Output "Solution Version: " $solutionInfo.Version
+Write-Host "Solution Name: " $solutionInfo.UniqueName
+Write-Host "Solution Version: " $solutionInfo.Version
 
 $solution = Get-XrmSolution -ConnectionString $CrmConnectionString -UniqueSolutionName $solutionInfo.UniqueName
 
 if ($solution -eq $null)
 {
-    Write-Output "Solution not currently installed"
+    Write-Host "Solution not currently installed"
 }
 else
 {
-    Write-Output "Solution Installed Current version: " $solution.Version
+    Write-Host "Solution Installed Current version: " $solution.Version
 }
  
 if ($override -or ($solution -eq $null) -or ($solution.Version -ne $solutionInfo.Version))
-{
-    $solutionImportPath = $solutionPath + "\" + $solutionFile
-    
-    Write-Output "Importing Solution: $solutionImportPath"
+{    
+    Write-Verbose "Importing Solution: $solutionFile"
 
     $importJobId = [guid]::NewGuid()
   
-    $asyncOperationId = Import-XrmSolution -ConnectionString $CrmConnectionString -SolutionFilePath $solutionImportPath -publishWorkflows $publishWorkflows -overwriteUnmanagedCustomizations $overwriteUnmanagedCustomizations -SkipProductUpdateDependencies $skipProductUpdateDependencies -ImportAsync $true -WaitForCompletion $true -ImportJobId $importJobId -Verbose
+    $asyncOperationId = Import-XrmSolution -ConnectionString $CrmConnectionString -SolutionFilePath $solutionFile -publishWorkflows $publishWorkflows -overwriteUnmanagedCustomizations $overwriteUnmanagedCustomizations -SkipProductUpdateDependencies $skipProductUpdateDependencies -ConvertToManaged $convertToManaged -HoldingSolution $holdingSolution -ImportAsync $true -WaitForCompletion $true -ImportJobId $importJobId -Verbose
  
-    Write-Output "Solution Import Completed. Import Job Id: $importJobId"
+    Write-Host "Solution Import Completed. Import Job Id: $importJobId"
 
     if ($logsDirectory)
     {
-        $importLogFile = $logsDirectory + "\" + $solutionFile.Replace(".zip", "_" + [System.DateTime]::Now.ToString("yyyy_MM_dd__HH_mm") + ".xml")
-    }
+        if ($logFilename)
+		{
+			$importLogFile = $logsDirectory + "\" + $logFilename
+		}
+		else
+		{
+			$importLogFile = $logsDirectory + "\" + $solutionInfo.UniqueName + '_' + ($solutionInfo.Version).replace('.','_') + '_' + [System.DateTime]::Now.ToString("yyyy_MM_dd__HH_mm") + ".xml"
+		}
+	}
 
     $importJob = Get-XrmSolutionImportLog -ImportJobId $importJobId -ConnectionString $CrmConnectionString -OutputFile $importLogFile
 
@@ -71,10 +86,10 @@ if ($override -or ($solution -eq $null) -or ($solution.Version -ne $solutionInfo
     $importErrorText = (Select-Xml -Content $importJob.Data -XPath "//solutionManifest/result/@errortext").Node.Value
 
 
-    Write-Output "Import Progress: $importProgress"
-    Write-Output "Import Result: $importResult"
-    Write-Output "Import Error Text: $importErrorText"
-    Write-Output $importJob.Data
+    Write-Verbose "Import Progress: $importProgress"
+    Write-Verbose "Import Result: $importResult"
+    Write-Verbose "Import Error Text: $importErrorText"
+    Write-Verbose $importJob.Data
 
     if (($importResult -ne "success") -or ($importProgress -ne 100))
     {
@@ -89,10 +104,12 @@ if ($override -or ($solution -eq $null) -or ($solution.Version -ne $solutionInfo
     }
     else
     {
-        Write-Output "Solution Imported Successfully"
+        Write-Host "Solution Imported Successfully"
     }
 }
 else
 {
-    Write-Output "Skipped Import of Solution..."
+    Write-Host "Skipped Import of Solution..."
 }
+
+Write-Verbose 'Leaving ImportSolution.ps1'

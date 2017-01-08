@@ -54,6 +54,12 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
         public bool SkipProductUpdateDependencies { get; set; }
 
         /// <summary>
+        /// <para type="description">As per ImportSolutionRequest (see https://msdn.microsoft.com/en-us/library/microsoft.crm.sdk.messages.importsolutionrequest_properties.aspx )</para>
+        /// </summary>
+        [Parameter(Mandatory = false)]
+        public bool HoldingSolution { get; set; }
+
+        /// <summary>
         /// <para type="description">Specify whether to import the solution asynchronously using ExecuteAsyncRequest</para>
         /// </summary>
         [Parameter(Mandatory = false)]
@@ -117,7 +123,8 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
                 OverwriteUnmanagedCustomizations = OverwriteUnmanagedCustomizations,
                 SkipProductUpdateDependencies = SkipProductUpdateDependencies,
                 ImportJobId = ImportJobId,
-                RequestId = ImportJobId
+                RequestId = ImportJobId,
+                HoldingSolution = HoldingSolution
             };
 
             if (ImportAsync)

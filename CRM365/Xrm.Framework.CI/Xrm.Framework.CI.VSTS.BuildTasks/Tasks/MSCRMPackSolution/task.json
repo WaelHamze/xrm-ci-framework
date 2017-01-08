@@ -1,7 +1,7 @@
 {
   "id": "ebec2a90-ce1f-11e6-ae21-c1fb031659ee",
   "name": "MSCRMPackSolution",
-  "friendlyName": "MSCRM Solution Pack",
+  "friendlyName": "MSCRM Pack Solution",
   "description": "Packages a CRM Solution using SolutionPackager.exe",
   "author": "Wael Hamze",
   "helpMarkDown": "Solution files must be checked-in to source control",
@@ -13,8 +13,8 @@
   "demands": [ ],
   "version": {
     "Major": "0",
-    "Minor": "13",
-    "Patch": "0"
+    "Minor": "14",
+    "Patch": "1"
   },
   "minimumAgentVersion": "1.95.0",
   "instanceNameFormat": "MSCRM Pack Solution",

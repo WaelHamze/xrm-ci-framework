@@ -37,6 +37,12 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
         public bool Managed { get; set; }
 
         /// <summary>
+        /// <para type="description">As per ExportSolutionRequest (see https://msdn.microsoft.com/en-us/library/microsoft.crm.sdk.messages.exportsolutionrequest_properties.aspx )</para>
+        /// </summary>
+        [Parameter(Mandatory = false)]
+        public string TargetVersion { get; set; }
+
+        /// <summary>
         /// <para type="description">The absolute path to the location of the exported solution</para>
         /// </summary>
         [Parameter(Mandatory = true)]
@@ -71,6 +77,12 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
         /// </summary>
         [Parameter(Mandatory = false)]
         public bool ExportEmailTrackingSettings { get; set; }
+
+        /// <summary>
+        /// <para type="description">As per ExportSolutionRequest (see https://msdn.microsoft.com/en-us/library/microsoft.crm.sdk.messages.exportsolutionrequest_properties.aspx )</para>
+        /// </summary>
+        [Parameter(Mandatory = false)]
+        public bool ExportExternalApplications { get; set; }
 
         /// <summary>
         /// <para type="description">As per ExportSolutionRequest (see https://msdn.microsoft.com/en-us/library/microsoft.crm.sdk.messages.exportsolutionrequest_properties.aspx )</para>
@@ -167,7 +179,9 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
                 ExportMarketingSettings = ExportMarketingSettings,
                 ExportOutlookSynchronizationSettings = ExportOutlookSynchronizationSettings,
                 ExportRelationshipRoles = ExportRelationshipRoles,
-                ExportSales = ExportSales
+                ExportSales = ExportSales,
+                TargetVersion = TargetVersion,
+                ExportExternalApplications = ExportExternalApplications
             };
 
             var exportSolutionResponse = OrganizationService.Execute(exportSolutionRequest) as ExportSolutionResponse;
