@@ -26,3 +26,10 @@
 /CRM2015/Xrm.Framework.CI.Sample/Xrm.Framework.CI.Sample.WFActivities/obj/Debug
 /CRM2015/Xrm.Framework.CI/Xrm.Framework.CI.PowerShell/bin/Release
 /CRM2015/Xrm.Framework.CI/Xrm.Framework.CI.PowerShell/obj/Release
+/CRM365/Xrm.Framework.CI/Xrm.Framework.CI.PowerShell.Cmdlets/bin
+/CRM365/Xrm.Framework.CI/Xrm.Framework.CI.PowerShell.Cmdlets/obj
+/CRM365/Xrm.Framework.CI/Xrm.Framework.CI.PowerShell.Cmdlets/Xrm.Framework.CI.PowerShell.Cmdlets.csproj.user
+/CRM365/Xrm.Framework.CI/packages
+/CRM365/Xrm.Framework.CI/bin
+/CRM365/Xrm.Framework.CI/Xrm.Framework.CI.PowerShell.Scripts/Xrm.Framework.CI.PowerShell.Scripts.pssproj.user
+/CRM365/Xrm.Framework.CI/.vs/config/applicationhost.config

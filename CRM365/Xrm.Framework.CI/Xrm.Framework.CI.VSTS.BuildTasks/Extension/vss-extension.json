@@ -1,7 +1,7 @@
 {
   "manifestVersion": 1,
   "id": "xrm-ci-framework-build-tasks",
-  "name": "xRM CI Framework Build Tool",
+  "name": "xRM CI Framework Build & Release Tools",
   "version": "8.0.0",
   "publisher": "WaelHamze",
   "targets": [
@@ -9,7 +9,7 @@
       "id": "Microsoft.VisualStudio.Services"
     }
   ],
-  "description": "Tools for building Microsoft Dynamics CRM Solutions",
+  "description": "Tasks for automating the Build & Deployment of Dynamics CRM Solutions",
   "categories": [
     "Build and release"
   ],

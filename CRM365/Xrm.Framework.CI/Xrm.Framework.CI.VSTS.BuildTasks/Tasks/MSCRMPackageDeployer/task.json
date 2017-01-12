@@ -1,0 +1,134 @@
+{
+  "id": "F41BA110-0B12-45BC-94C9-67655CB59323",
+  "name": "MSCRMPackageDeployer",
+  "friendlyName": "MSCRM Package Deployer",
+  "description": "Deploys a CRM Package using the CRM Package Deployer PowerShell Cmdlets",
+  "author": "Wael Hamze",
+  "helpMarkDown": "For more information on CRM Package Deployer: https://technet.microsoft.com/en-us/library/dn647420.aspx",
+  "category": "Deploy",
+  "visibility": [
+    "Build",
+    "Release"
+  ],
+  "demands": [ ],
+  "version": {
+    "Major": "8",
+    "Minor": "0",
+    "Patch": "0"
+  },
+  "minimumAgentVersion": "1.95.0",
+  "instanceNameFormat": "MSCRM Package Deployer: $(packageName)",
+  "groups": [
+    {
+      "name": "crmConnection",
+      "displayName": "Crm Connection",
+      "isExpanded": true
+    }
+  ],
+  "inputs": [
+    {
+      "name": "packageName",
+      "type": "string",
+      "label": "Package Name",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "The name of the assembly that contains the package definition"
+    },
+    {
+      "name": "packageDirectory",
+      "type": "filePath",
+      "label": "Package Directory",
+      "defaultValue": "",
+      "required": false,
+      "helpMarkDown": "The absolute path to the CRM Package folder on the release agent machine"
+    },
+    {
+      "name": "deploymentType",
+      "type": "pickList",
+      "label": "Deployment Type",
+      "defaultValue": "Online",
+      "required": true,
+      "helpMarkDown": "The CRM deployment type",
+      "options": {
+        "Online": "Online",
+        "Onpremises": "On-premises"
+      },
+      "groupName": "crmConnection"
+    },
+    {
+      "name": "username",
+      "type": "string",
+      "label": "Username",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "The Dynamics CRM username",
+      "groupName": "crmConnection"
+    },
+    {
+      "name": "password",
+      "type": "string",
+      "label": "Password",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "The password used to connect to Dynamics CRM",
+      "groupName": "crmConnection"
+    },
+    {
+      "name": "serverUrl",
+      "type": "string",
+      "label": "Server Url",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "The CRM server url to your on-premises instance. e.g. http://<your_CRM_Server>",
+      "visibleRule": "deploymentType = Onpremises",
+      "groupName": "crmConnection"
+    },
+    {
+      "name": "organizationName",
+      "type": "string",
+      "label": "Organization Name",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "The CRM organization name",
+      "groupName": "crmConnection"
+    },
+    {
+      "name": "deploymentRegion",
+      "type": "pickList",
+      "label": "Deployment Region",
+      "defaultValue": "EMEA",
+      "required": true,
+      "helpMarkDown": "The CRM online deployment region",
+      "options": {
+        "NorthAmerica": "NorthAmerica",
+        "EMEA": "EMEA",
+        "APAC": "APAC",
+        "SouthAmerica": "SouthAmerica",
+        "Oceania": "Oceania",
+        "JPN": "JPN",
+        "NorthAmerica2": "NorthAmerica2"
+      },
+      "visibleRule": "deploymentType = Online",
+      "groupName": "crmConnection"
+    },
+    {
+      "name": "onlineType",
+      "type": "pickList",
+      "label": "Online Type",
+      "defaultValue": "Office365",
+      "required": true,
+      "helpMarkDown": "The type of CRM online authentication",
+      "options": {
+        "Office365": "Office365",
+        "LiveID": "LiveID"
+      },
+      "visibleRule": "deploymentType = Online",
+      "groupName": "crmConnection"
+    }
+  ],
+  "execution": {
+    "PowerShell3": {
+      "target": "MSCRMPackageDeployer.ps1"
+    }
+  }
+}

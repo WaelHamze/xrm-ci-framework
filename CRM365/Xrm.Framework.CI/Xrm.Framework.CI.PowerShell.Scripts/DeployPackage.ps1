@@ -3,14 +3,13 @@
 #
 
 param(
-[string]$AuthenticationType,
+[string]$DeploymentType,
 [string]$Username,
 [string]$Password,
 [string]$ServerUrl,
 [string]$OrganizationName,
 [string]$DeploymentRegion,
 [string]$OnlineType,
-[string]$HomRealmURL,
 [string]$PackageName,
 [string]$PackageDirectory
 )
@@ -20,14 +19,13 @@ $ErrorActionPreference = "Stop"
 Write-Verbose 'Entering DeployPackage.ps1'
 
 #Parameters
-Write-Verbose "AuthenticationType = $AuthenticationType"
+Write-Verbose "DeploymentType = $DeploymentType"
 Write-Verbose "Username = $Username"
-Write-Verbose "Password = $Password"
+Write-Verbose "Password = ******"
 Write-Verbose "ServerUrl = $ServerUrl"
 Write-Verbose "OrganizationName = $OrganizationName"
 Write-Verbose "DeploymentRegion = $DeploymentRegion"
 Write-Verbose "OnlineType = $OnlineType"
-Write-Verbose "HomRealmURL = $HomRealmURL"
 Write-Verbose "PackageName = $PackageName"
 Write-Verbose "PackageDirectory = $PackageDirectory"
 
@@ -47,13 +45,10 @@ $Cred = New-Object System.Management.Automation.PSCredential ($Username, $SecPas
 
 #Create Connection
 
-switch($AuthenticationType)
+switch($DeploymentType)
 {
-    "AD" { $CRMConn = Get-CrmConnection -ServerUrl $ServerUrl -OrganizationName $OrganizationName -Credential $Cred }
-    "Claims" { $CRMConn = Get-CrmConnection -ServerUrl $ServerUrl -OrganizationName $OrganizationName -Credential $Cred –HomRealmURL $HomRealmURL}
-    "IFD" { $CRMConn = Get-CrmConnection -ServerUrl $ServerUrl -OrganizationName $OrganizationName -Credential $Cred }
-    "Live" { $CRMConn = Get-CrmConnection -Credential $Cred -DeploymentRegion $DeploymentRegion –OnlineType $OnlineType –OrganizationName $OrganizationName }
-    "Office365" { $CRMConn = Get-CrmConnection -Credential $Cred -DeploymentRegion $DeploymentRegion –OnlineType $OnlineType –OrganizationName $OrganizationName }
+    "Onpremises" { $CRMConn = Get-CrmConnection -ServerUrl $ServerUrl -OrganizationName $OrganizationName -Credential $Cred }
+	"Online" { $CRMConn = Get-CrmConnection -Credential $Cred -DeploymentRegion $DeploymentRegion –OnlineType $OnlineType –OrganizationName $OrganizationName }
 }
 
 #Deploy Package

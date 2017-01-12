@@ -12,12 +12,19 @@
   ],
   "demands": [ ],
   "version": {
-    "Major": "0",
-    "Minor": "1",
-    "Patch": "7"
+    "Major": "8",
+    "Minor": "0",
+    "Patch": "0"
   },
   "minimumAgentVersion": "1.95.0",
   "instanceNameFormat": "MSCRM Export Solution $(solutionName)",
+  "groups": [
+    {
+      "name": "exportOptions",
+      "displayName": "Additional Export Options",
+      "isExpanded": false
+    }
+  ],
   "inputs": [
     {
       "name": "crmConnectionString",
@@ -89,7 +96,8 @@
       "label": "Export Auto Numbering Settings",
       "defaultValue": "false",
       "required": false,
-      "helpMarkDown": "Check task help for more information"
+      "helpMarkDown": "Check task help for more information",
+      "groupName": "exportOptions"
     },
     {
       "name": "exportCalendarSettings",
@@ -97,7 +105,8 @@
       "label": "Export Calendar Settings",
       "defaultValue": "false",
       "required": false,
-      "helpMarkDown": "Check task help for more information"
+      "helpMarkDown": "Check task help for more information",
+      "groupName": "exportOptions"
     },
     {
       "name": "exportCustomizationSettings",
@@ -105,7 +114,8 @@
       "label": "Export Customization Settings",
       "defaultValue": "false",
       "required": false,
-      "helpMarkDown": "Check task help for more information"
+      "helpMarkDown": "Check task help for more information",
+      "groupName": "exportOptions"
     },
     {
       "name": "exportEmailTrackingSettings",
@@ -113,7 +123,8 @@
       "label": "Export Email Tracking Settings",
       "defaultValue": "false",
       "required": false,
-      "helpMarkDown": "Check task help for more information"
+      "helpMarkDown": "Check task help for more information",
+      "groupName": "exportOptions"
     },
     {
       "name": "exportExternalApplications",
@@ -121,7 +132,8 @@
       "label": "Export External Applications",
       "defaultValue": "false",
       "required": false,
-      "helpMarkDown": "Check task help for more information"
+      "helpMarkDown": "Check task help for more information",
+      "groupName": "exportOptions"
     },
     {
       "name": "exportGeneralSettings",
@@ -129,7 +141,8 @@
       "label": "Export General Settings",
       "defaultValue": "false",
       "required": false,
-      "helpMarkDown": "Check task help for more information"
+      "helpMarkDown": "Check task help for more information",
+      "groupName": "exportOptions"
     },
     {
       "name": "exportIsvConfig",
@@ -137,7 +150,8 @@
       "label": "Export Isv Config",
       "defaultValue": "false",
       "required": false,
-      "helpMarkDown": "Check task help for more information"
+      "helpMarkDown": "Check task help for more information",
+      "groupName": "exportOptions"
     },
     {
       "name": "exportMarketingSettings",
@@ -145,7 +159,8 @@
       "label": "Export Marketing Settings",
       "defaultValue": "false",
       "required": false,
-      "helpMarkDown": "Check task help for more information"
+      "helpMarkDown": "Check task help for more information",
+      "groupName": "exportOptions"
     },
     {
       "name": "exportOutlookSynchronizationSettings",
@@ -153,7 +168,8 @@
       "label": "Export Outlook Synchronization Settings",
       "defaultValue": "false",
       "required": false,
-      "helpMarkDown": "Check task help for more information"
+      "helpMarkDown": "Check task help for more information",
+      "groupName": "exportOptions"
     },
     {
       "name": "exportRelationshipRoles",
@@ -161,7 +177,8 @@
       "label": "Export Relationship Roles",
       "defaultValue": "false",
       "required": false,
-      "helpMarkDown": "Check task help for more information"
+      "helpMarkDown": "Check task help for more information",
+      "groupName": "exportOptions"
     },
     {
       "name": "exportSales",
@@ -169,7 +186,8 @@
       "label": "Export Sales",
       "defaultValue": "false",
       "required": false,
-      "helpMarkDown": "Check task help for more information"
+      "helpMarkDown": "Check task help for more information",
+      "groupName": "exportOptions"
     }
   ],
   "execution": {
