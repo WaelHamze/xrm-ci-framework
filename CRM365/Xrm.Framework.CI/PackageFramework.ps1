@@ -4,22 +4,20 @@
 
 $version = "8.0.0"
 
-Write-Host "Packaging xRM CI Framework VS Extension $version"
+Write-Host "Packaging xRM CI Framework $version"
 
 $ErrorActionPreference = "Stop"
 
 #Script Location
-
 $scriptPath = split-path -parent $MyInvocation.MyCommand.Definition
 Write-Host "Script Path: $scriptPath"
 
 $CIFrameworkPackagesDir = $scriptPath + "\bin"
-
 $CIFrameworkTempDir = $scriptPath + "\temp"
-
 $CIFrameworkRootDir = $CIFrameworkTempDir + "\xRMCIFramework"
-
 $xRMCIFrameworkPackageName = $CIFrameworkPackagesDir + "\vss-extension.json"
+$xRMCIFrameworkPackageFile = "xRMCIFramework_" + $version + ".zip"
+$xRMCIFrameworkPackagePath = $CIFrameworkPackagesDir + "\" + $xRMCIFrameworkPackageFile
 
 if (Test-Path $CIFrameworkTempDir)
 {
@@ -82,5 +80,9 @@ Copy-Item ($scriptPath + "\Xrm.Framework.CI.VSTS.BuildTasks\Extension\*.*") $CIF
 Copy-Item ($scriptPath + "\Xrm.Framework.CI.VSTS.BuildTasks\Extension\Content") $CIFrameworkPackagesDir -Force -Recurse
 
 tfx extension create --manifest-globs $xRMCIFrameworkPackageName --output-path $CIFrameworkPackagesDir --root $CIFrameworkPackagesDir
+
+[Reflection.Assembly]::LoadWithPartialName( "System.IO.Compression.FileSystem" )
+$compressionLevel = [System.IO.Compression.CompressionLevel]::Optimal
+[System.IO.Compression.ZipFile]::CreateFromDirectory( $CIFrameworkRootDir, $xRMCIFrameworkPackagePath, $compressionLevel, $false )
 
 Remove-Item $CIFrameworkTempDir -Force -Recurse

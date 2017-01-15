@@ -9,8 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xrm.Framework.CI.PowerShell
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{CA3B7E83-C429-4DA0-913D-C857111DC0B0}"
 	ProjectSection(SolutionItems) = preProject
-		BuildPSLibrary.ps1 = BuildPSLibrary.ps1
-		BuildVSExtension.ps1 = BuildVSExtension.ps1
+		PackageFramework.ps1 = PackageFramework.ps1
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Xrm.Framework.CI.VSTS.BuildTasks", "Xrm.Framework.CI.VSTS.BuildTasks", "{3763BBA8-F491-4D34-A047-D4ED12EDF387}"
