@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<EntityRelationships>
+  <EntityRelationship Name="lk_wh_config_createdby" />
+  <EntityRelationship Name="lk_wh_config_modifiedby" />
+  <EntityRelationship Name="organization_wh_config" />
+</EntityRelationships>

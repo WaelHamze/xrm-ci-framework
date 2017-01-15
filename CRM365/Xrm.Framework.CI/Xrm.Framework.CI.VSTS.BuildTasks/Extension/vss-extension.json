@@ -1,7 +1,7 @@
 {
   "manifestVersion": 1,
   "id": "xrm-ci-framework-build-tasks",
-  "name": "xRM CI Framework Build & Release Tools",
+  "name": "Dynamics CRM 365",
   "version": "8.0.0",
   "publisher": "WaelHamze",
   "targets": [
@@ -9,16 +9,51 @@
       "id": "Microsoft.VisualStudio.Services"
     }
   ],
-  "description": "Tasks for automating the Build & Deployment of Dynamics CRM Solutions",
+  "description": "Tasks for automating Build & Deployment of Dynamics CRM Solutions",
   "categories": [
     "Build and release"
   ],
+  "tags": [
+    "Dynamics CRM",
+    "CRM",
+    "xRM CI Framework",
+    "CRM 365",
+    "Solution Packager",
+    "Package Deployer"
+    ],
   "icons": {
     "default": "icon_128x128.png"
   },
+  "content": {
+    "details": {
+      "path": "Content/overview.md"
+    },
+    "license": {
+      "path": "Content/license.txt"
+    }
+  },
+  "repository": {
+      "type": "git",
+      "uri": "https://github.com/WaelHamze/xrm-ci-framework"
+  },
   "files": [
     {
-      "path": "tasks"
+      "path": "MSCRMPing"
+    },
+    {
+      "path": "MSCRMPackSolution"
+    },
+    {
+      "path": "MSCRMExportSolution"
+    },
+    {
+      "path": "MSCRMPublishCustomizations"
+    },
+    {
+      "path": "MSCRMImportSolution"
+    },
+    {
+      "path": "MSCRMPackageDeployer"
     }
   ],
   "contributions": [
@@ -40,6 +75,46 @@
       ],
       "properties": {
         "name": "MSCRMPackSolution"
+      }
+    },
+    {
+      "id": "MSCRMExportSolution",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "MSCRMExportSolution"
+      }
+    },
+    {
+      "id": "MSCRMPublishCustomizations",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "MSCRMPublishCustomizations"
+      }
+    },
+    {
+      "id": "MSCRMImportSolution",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "MSCRMImportSolution"
+      }
+    },
+    {
+      "id": "MSCRMPackageDeployer",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "MSCRMPackageDeployer"
       }
     }
   ]

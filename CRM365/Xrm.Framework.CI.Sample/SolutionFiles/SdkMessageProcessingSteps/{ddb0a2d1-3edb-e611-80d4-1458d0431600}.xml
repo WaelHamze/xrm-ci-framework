@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SdkMessageProcessingStep Name="Xrm.Framework.CI.Sample.Plugins.SamplePlugin: Delete of account" SdkMessageProcessingStepId="{ddb0a2d1-3edb-e611-80d4-1458d0431600}">
+  <PluginTypeName>Xrm.Framework.CI.Sample.Plugins.SamplePlugin, Xrm.Framework.CI.Sample.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7dec99648ad9071e</PluginTypeName>
+  <PrimaryEntity>account</PrimaryEntity>
+  <AsyncAutoDelete>0</AsyncAutoDelete>
+  <Description>Xrm.Framework.CI.Sample.Plugins.SamplePlugin: Delete of account</Description>
+  <FilteringAttributes></FilteringAttributes>
+  <InvocationSource>0</InvocationSource>
+  <Mode>0</Mode>
+  <Rank>1</Rank>
+  <SdkMessageId>{a1bdbb1b-ea3e-db11-86a7-000a3a5473e8}</SdkMessageId>
+  <EventHandlerTypeCode>4602</EventHandlerTypeCode>
+  <Stage>10</Stage>
+  <IsCustomizable>1</IsCustomizable>
+  <IsHidden>0</IsHidden>
+  <SupportedDeployment>0</SupportedDeployment>
+  <IntroducedVersion>1.0</IntroducedVersion>
+  <SdkMessageProcessingStepImages />
+</SdkMessageProcessingStep>

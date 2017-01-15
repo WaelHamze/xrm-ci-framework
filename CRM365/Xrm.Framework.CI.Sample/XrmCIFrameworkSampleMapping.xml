@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping>
+
+  <FileToFile map="XrmFrameworkCISamplePlugins.dll" to="..\Xrm.Framework.CI.Sample.Plugins\bin\Release\Xrm.Framework.CI.Sample.Plugins.dll" />
+  <FileToFile map="XrmFrameworkCISampleWFActivities.dll" to="..\Xrm.Framework.CI.Sample.WFActivities\bin\Release\Xrm.Framework.CI.Sample.WFActivities.dll" />
+
+  <FileToPath map="WebResources\*.*" to="..\Xrm.Framework.CI.Sample.WebResources\**" />
+  <FileToPath map="WebResources\**\*.*" to="..\Xrm.Framework.CI.Sample.WebResources\**" />
+  
+</Mapping>

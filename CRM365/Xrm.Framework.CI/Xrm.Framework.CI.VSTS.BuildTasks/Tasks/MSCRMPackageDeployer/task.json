@@ -38,7 +38,7 @@
       "name": "packageDirectory",
       "type": "filePath",
       "label": "Package Directory",
-      "defaultValue": "",
+      "defaultValue": "$(System.DefaultWorkingDirectory)/<BuildName>/<ArtifactName>/<PackageFolder>",
       "required": false,
       "helpMarkDown": "The absolute path to the CRM Package folder on the release agent machine"
     },

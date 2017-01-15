@@ -33,3 +33,13 @@
 /CRM365/Xrm.Framework.CI/bin
 /CRM365/Xrm.Framework.CI/Xrm.Framework.CI.PowerShell.Scripts/Xrm.Framework.CI.PowerShell.Scripts.pssproj.user
 /CRM365/Xrm.Framework.CI/.vs/config/applicationhost.config
+/CRM365/Xrm.Framework.CI.Sample/.vs/config
+/CRM365/Xrm.Framework.CI.Sample/packages
+/CRM365/Xrm.Framework.CI.Sample/Xrm.Framework.CI.Sample.CRMPackage/bin
+/CRM365/Xrm.Framework.CI.Sample/Xrm.Framework.CI.Sample.CRMPackage/obj
+*.user
+/CRM365/Xrm.Framework.CI.Sample/Xrm.Framework.CI.Sample.Plugins/bin
+/CRM365/Xrm.Framework.CI.Sample/Xrm.Framework.CI.Sample.WFActivities/bin
+/CRM365/Xrm.Framework.CI.Sample/Xrm.Framework.CI.Sample.WFActivities/obj/Debug
+/CRM365/Xrm.Framework.CI.Sample/Xrm.Framework.CI.Sample.WFActivities/obj/Release
+/CRM365/Xrm.Framework.CI.Sample/Xrm.Framework.CI.Sample.Plugins/obj

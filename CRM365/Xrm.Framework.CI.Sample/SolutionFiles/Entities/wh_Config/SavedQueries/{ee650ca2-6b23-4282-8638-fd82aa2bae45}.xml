@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedquery>
+  <IsCustomizable>1</IsCustomizable>
+  <CanBeDeleted>0</CanBeDeleted>
+  <isquickfindquery>0</isquickfindquery>
+  <isprivate>0</isprivate>
+  <isdefault>1</isdefault>
+  <returnedtypecode>10188</returnedtypecode>
+  <savedqueryid>{ee650ca2-6b23-4282-8638-fd82aa2bae45}</savedqueryid>
+  <layoutxml>
+    <grid name="" object="10188" jump="wh_key" select="1" icon="1" preview="1">
+      <row name="wh_config" id="wh_configid">
+        <cell name="wh_key" width="300" />
+        <cell name="createdon" width="125" />
+      </row>
+    </grid>
+  </layoutxml>
+  <querytype>2</querytype>
+  <fetchxml>
+    <fetch version="1.0" mapping="logical">
+      <entity name="wh_config">
+        <attribute name="wh_configid" />
+        <attribute name="wh_key" />
+        <attribute name="createdon" />
+        <order attribute="wh_key" descending="false" />
+        <filter type="and">
+          <condition attribute="statecode" operator="eq" value="0" />
+        </filter>
+      </entity>
+    </fetch>
+  </fetchxml>
+  <IntroducedVersion>1.0.0.0</IntroducedVersion>
+  <LocalizedNames>
+    <LocalizedName description="Config Associated View" languagecode="1033" />
+  </LocalizedNames>
+</savedquery>

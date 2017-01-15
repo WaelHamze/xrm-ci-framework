@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<EntityMaps>
+  <EntityMap>
+    <EntitySource>account</EntitySource>
+    <EntityTarget>opportunityproduct</EntityTarget>
+    <AttributeMaps />
+  </EntityMap>
+  <EntityMap>
+    <EntitySource>account</EntitySource>
+    <EntityTarget>product</EntityTarget>
+    <AttributeMaps />
+  </EntityMap>
+  <EntityMap>
+    <EntitySource>account</EntitySource>
+    <EntityTarget>quotedetail</EntityTarget>
+    <AttributeMaps />
+  </EntityMap>
+</EntityMaps>

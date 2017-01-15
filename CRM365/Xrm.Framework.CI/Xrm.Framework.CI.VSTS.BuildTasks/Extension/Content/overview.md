@@ -1,0 +1,1 @@
+xRM CI Framework provides you with the tools automate the build and deployment of your CRM Solution.

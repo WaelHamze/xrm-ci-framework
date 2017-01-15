@@ -19,8 +19,6 @@ $CIFrameworkTempDir = $scriptPath + "\temp"
 
 $CIFrameworkRootDir = $CIFrameworkTempDir + "\xRMCIFramework"
 
-$CIFrameworkTasksDir = $CIFrameworkPackagesDir + "\tasks"
-
 $xRMCIFrameworkPackageName = $CIFrameworkPackagesDir + "\vss-extension.json"
 
 if (Test-Path $CIFrameworkTempDir)
@@ -39,8 +37,6 @@ New-Item $CIFrameworkRootDir -ItemType directory
 
 New-Item $CIFrameworkPackagesDir -ItemType directory
 
-New-Item $CIFrameworkTasksDir -ItemType directory
-
 Copy-Item ($scriptPath + "\Xrm.Framework.CI.PowerShell.Cmdlets\bin\Release\microsoft.xrm.sdk.dll") $CIFrameworkRootDir -Force -Recurse
 Copy-Item ($scriptPath + "\Xrm.Framework.CI.PowerShell.Cmdlets\bin\Release\microsoft.crm.sdk.proxy.dll") $CIFrameworkRootDir -Force -Recurse
 Copy-Item ($scriptPath + "\Xrm.Framework.CI.PowerShell.Cmdlets\bin\Release\Xrm.Framework.CI.PowerShell.Cmdlets.dll") $CIFrameworkRootDir -Force -Recurse
@@ -49,47 +45,42 @@ Copy-Item ($scriptPath + "\Xrm.Framework.CI.PowerShell.Cmdlets\bin\Release\Micro
 Copy-Item ($scriptPath + "\Xrm.Framework.CI.PowerShell.Cmdlets\bin\Release\Microsoft.Management.Infrastructure.dll") $CIFrameworkRootDir -Force -Recurse
 Copy-Item ($scriptPath + "\Xrm.Framework.CI.PowerShell.Cmdlets\bin\Release\Microsoft.Xrm.Sdk.Deployment.dll") $CIFrameworkRootDir -Force -Recurse
 Copy-Item ($scriptPath + "\Xrm.Framework.CI.PowerShell.Cmdlets\bin\Release\Microsoft.IdentityModel.Clients.ActiveDirectory.dll") $CIFrameworkRootDir -Force -Recurse
+Copy-Item ($scriptPath + "\packages\Microsoft.CrmSdk.CoreTools.8.2.0.2\content\bin\coretools\SolutionPackager.exe") $CIFrameworkRootDir -Force -Recurse
+Copy-Item ($scriptPath + "\Xrm.Framework.CI.PowerShell.Scripts\*.ps1") ($CIFrameworkRootDir) -Force -Recurse
 
-Copy-Item ($scriptPath + "\Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMPing") $CIFrameworkTasksDir -Force -Recurse
-Copy-Item ($scriptPath + "\Xrm.Framework.CI.VSTS.BuildTasks\Lib\icon.png") ($CIFrameworkTasksDir + "\MSCRMPing") -Force -Recurse
-Copy-Item ($scriptPath + "\Xrm.Framework.CI.VSTS.BuildTasks\Lib\ps_modules") ($CIFrameworkTasksDir + "\MSCRMPing") -Force -Recurse
-Copy-Item ($scriptPath + "\Xrm.Framework.CI.PowerShell.Scripts\Ping.ps1") ($CIFrameworkTasksDir + "\MSCRMPing") -Force -Recurse
-Copy-Item ($CIFrameworkRootDir + "\*.*") ($CIFrameworkTasksDir + "\MSCRMPing") -Force -Recurse
+Copy-Item ($scriptPath + "\Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMPing") $CIFrameworkPackagesDir -Force -Recurse
+Copy-Item ($scriptPath + "\Xrm.Framework.CI.VSTS.BuildTasks\Lib\icon.png") ($CIFrameworkPackagesDir + "\MSCRMPing") -Force -Recurse
+Copy-Item ($scriptPath + "\Xrm.Framework.CI.VSTS.BuildTasks\Lib\ps_modules") ($CIFrameworkPackagesDir + "\MSCRMPing") -Force -Recurse
+Copy-Item ($CIFrameworkRootDir) ($CIFrameworkPackagesDir + "\MSCRMPing\ps_modules") -Force -Recurse
 
-Copy-Item ($scriptPath + "\Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMPublishCustomizations") $CIFrameworkTasksDir -Force -Recurse
-Copy-Item ($scriptPath + "\Xrm.Framework.CI.VSTS.BuildTasks\Lib\icon.png") ($CIFrameworkTasksDir + "\MSCRMPublishCustomizations") -Force -Recurse
-Copy-Item ($scriptPath + "\Xrm.Framework.CI.VSTS.BuildTasks\Lib\ps_modules") ($CIFrameworkTasksDir + "\MSCRMPublishCustomizations") -Force -Recurse
-Copy-Item ($scriptPath + "\Xrm.Framework.CI.PowerShell.Scripts\PublishCustomizations.ps1") ($CIFrameworkTasksDir + "\MSCRMPublishCustomizations") -Force -Recurse
-Copy-Item ($CIFrameworkRootDir + "\*.*") ($CIFrameworkTasksDir + "\MSCRMPublishCustomizations") -Force -Recurse
+Copy-Item ($scriptPath + "\Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMPublishCustomizations") $CIFrameworkPackagesDir -Force -Recurse
+Copy-Item ($scriptPath + "\Xrm.Framework.CI.VSTS.BuildTasks\Lib\icon.png") ($CIFrameworkPackagesDir + "\MSCRMPublishCustomizations") -Force -Recurse
+Copy-Item ($scriptPath + "\Xrm.Framework.CI.VSTS.BuildTasks\Lib\ps_modules") ($CIFrameworkPackagesDir + "\MSCRMPublishCustomizations") -Force -Recurse
+Copy-Item ($CIFrameworkRootDir) ($CIFrameworkPackagesDir + "\MSCRMPublishCustomizations\ps_modules") -Force -Recurse
 
-Copy-Item ($scriptPath + "\Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMPackSolution") $CIFrameworkTasksDir -Force -Recurse
-Copy-Item ($scriptPath + "\Xrm.Framework.CI.VSTS.BuildTasks\Lib\icon.png") ($CIFrameworkTasksDir + "\MSCRMPackSolution") -Force -Recurse
-Copy-Item ($scriptPath + "\Xrm.Framework.CI.VSTS.BuildTasks\Lib\ps_modules") ($CIFrameworkTasksDir + "\MSCRMPackSolution") -Force -Recurse
-Copy-Item ($scriptPath + "\Xrm.Framework.CI.PowerShell.Scripts\PackSolution.ps1") ($CIFrameworkTasksDir + "\MSCRMPackSolution") -Force -Recurse
-Copy-Item ($CIFrameworkRootDir + "\*.*") ($CIFrameworkTasksDir + "\MSCRMPackSolution") -Force -Recurse
-Copy-Item ($scriptPath + "\packages\Microsoft.CrmSdk.CoreTools.8.2.0.2\content\bin\coretools\SolutionPackager.exe") ($CIFrameworkTasksDir + "\MSCRMPackSolution") -Force -Recurse
+Copy-Item ($scriptPath + "\Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMPackSolution") $CIFrameworkPackagesDir -Force -Recurse
+Copy-Item ($scriptPath + "\Xrm.Framework.CI.VSTS.BuildTasks\Lib\icon.png") ($CIFrameworkPackagesDir + "\MSCRMPackSolution") -Force -Recurse
+Copy-Item ($scriptPath + "\Xrm.Framework.CI.VSTS.BuildTasks\Lib\ps_modules") ($CIFrameworkPackagesDir + "\MSCRMPackSolution") -Force -Recurse
+Copy-Item ($CIFrameworkRootDir) ($CIFrameworkPackagesDir + "\MSCRMPackSolution\ps_modules") -Force -Recurse
 
-Copy-Item ($scriptPath + "\Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMExportSolution") $CIFrameworkTasksDir -Force -Recurse
-Copy-Item ($scriptPath + "\Xrm.Framework.CI.VSTS.BuildTasks\Lib\icon.png") ($CIFrameworkTasksDir + "\MSCRMExportSolution") -Force -Recurse
-Copy-Item ($scriptPath + "\Xrm.Framework.CI.VSTS.BuildTasks\Lib\ps_modules") ($CIFrameworkTasksDir + "\MSCRMExportSolution") -Force -Recurse
-Copy-Item ($scriptPath + "\Xrm.Framework.CI.PowerShell.Scripts\ExportSolution.ps1") ($CIFrameworkTasksDir + "\MSCRMExportSolution") -Force -Recurse
-Copy-Item ($CIFrameworkRootDir + "\*.*") ($CIFrameworkTasksDir + "\MSCRMExportSolution") -Force -Recurse
+Copy-Item ($scriptPath + "\Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMExportSolution") $CIFrameworkPackagesDir -Force -Recurse
+Copy-Item ($scriptPath + "\Xrm.Framework.CI.VSTS.BuildTasks\Lib\icon.png") ($CIFrameworkPackagesDir + "\MSCRMExportSolution") -Force -Recurse
+Copy-Item ($scriptPath + "\Xrm.Framework.CI.VSTS.BuildTasks\Lib\ps_modules") ($CIFrameworkPackagesDir + "\MSCRMExportSolution") -Force -Recurse
+Copy-Item ($CIFrameworkRootDir) ($CIFrameworkPackagesDir + "\MSCRMExportSolution\ps_modules") -Force -Recurse
 
-Copy-Item ($scriptPath + "\Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMImportSolution") $CIFrameworkTasksDir -Force -Recurse
-Copy-Item ($scriptPath + "\Xrm.Framework.CI.VSTS.BuildTasks\Lib\icon.png") ($CIFrameworkTasksDir + "\MSCRMImportSolution") -Force -Recurse
-Copy-Item ($scriptPath + "\Xrm.Framework.CI.VSTS.BuildTasks\Lib\ps_modules") ($CIFrameworkTasksDir + "\MSCRMImportSolution") -Force -Recurse
-Copy-Item ($scriptPath + "\Xrm.Framework.CI.PowerShell.Scripts\ImportSolution.ps1") ($CIFrameworkTasksDir + "\MSCRMImportSolution") -Force -Recurse
-Copy-Item ($CIFrameworkRootDir + "\*.*") ($CIFrameworkTasksDir + "\MSCRMImportSolution") -Force -Recurse
+Copy-Item ($scriptPath + "\Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMImportSolution") $CIFrameworkPackagesDir -Force -Recurse
+Copy-Item ($scriptPath + "\Xrm.Framework.CI.VSTS.BuildTasks\Lib\icon.png") ($CIFrameworkPackagesDir + "\MSCRMImportSolution") -Force -Recurse
+Copy-Item ($scriptPath + "\Xrm.Framework.CI.VSTS.BuildTasks\Lib\ps_modules") ($CIFrameworkPackagesDir + "\MSCRMImportSolution") -Force -Recurse
+Copy-Item ($CIFrameworkRootDir) ($CIFrameworkPackagesDir + "\MSCRMImportSolution\ps_modules") -Force -Recurse
 
-Copy-Item ($scriptPath + "\Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMPackageDeployer") $CIFrameworkTasksDir -Force -Recurse
-Copy-Item ($scriptPath + "\Xrm.Framework.CI.VSTS.BuildTasks\Lib\icon.png") ($CIFrameworkTasksDir + "\MSCRMPackageDeployer") -Force -Recurse
-Copy-Item ($scriptPath + "\Xrm.Framework.CI.VSTS.BuildTasks\Lib\ps_modules") ($CIFrameworkTasksDir + "\MSCRMPackageDeployer") -Force -Recurse
-Copy-Item ($scriptPath + "\Xrm.Framework.CI.PowerShell.Scripts\DeployPackage.ps1") ($CIFrameworkTasksDir + "\MSCRMPackageDeployer") -Force -Recurse
-Copy-Item ($CIFrameworkRootDir + "\*.*") ($CIFrameworkTasksDir + "\MSCRMPackageDeployer") -Force -Recurse
+Copy-Item ($scriptPath + "\Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMPackageDeployer") $CIFrameworkPackagesDir -Force -Recurse
+Copy-Item ($scriptPath + "\Xrm.Framework.CI.VSTS.BuildTasks\Lib\icon.png") ($CIFrameworkPackagesDir + "\MSCRMPackageDeployer") -Force -Recurse
+Copy-Item ($scriptPath + "\Xrm.Framework.CI.VSTS.BuildTasks\Lib\ps_modules") ($CIFrameworkPackagesDir + "\MSCRMPackageDeployer") -Force -Recurse
+Copy-Item ($CIFrameworkRootDir) ($CIFrameworkPackagesDir + "\MSCRMPackageDeployer\ps_modules") -Force -Recurse
 
-Copy-Item ($scriptPath + "\Xrm.Framework.CI.VSTS.BuildTasks\Extension\icon_128x128.png") $CIFrameworkPackagesDir -Force -Recurse
-Copy-Item ($scriptPath + "\Xrm.Framework.CI.VSTS.BuildTasks\Extension\vss-extension.json") $CIFrameworkPackagesDir -Force -Recurse
+Copy-Item ($scriptPath + "\Xrm.Framework.CI.VSTS.BuildTasks\Extension\*.*") $CIFrameworkPackagesDir -Force -Recurse
+Copy-Item ($scriptPath + "\Xrm.Framework.CI.VSTS.BuildTasks\Extension\Content") $CIFrameworkPackagesDir -Force -Recurse
 
-tfx extension create --manifest-globs $xRMCIFrameworkPackageName --output-path $CIFrameworkPackagesDir
+tfx extension create --manifest-globs $xRMCIFrameworkPackageName --output-path $CIFrameworkPackagesDir --root $CIFrameworkPackagesDir
 
 Remove-Item $CIFrameworkTempDir -Force -Recurse

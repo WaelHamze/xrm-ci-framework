@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PluginAssembly FullName="Xrm.Framework.CI.Sample.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7dec99648ad9071e" CustomizationLevel="1">
+  <IsolationMode>2</IsolationMode>
+  <SourceType>0</SourceType>
+  <IntroducedVersion>1.0</IntroducedVersion>
+  <FileName>/PluginAssemblies/XrmFrameworkCISamplePlugins-D16718E7-28B9-4BD5-9461-E162CE09CA05/XrmFrameworkCISamplePlugins.dll</FileName>
+  <PluginTypes>
+    <PluginType AssemblyQualifiedName="Xrm.Framework.CI.Sample.Plugins.SamplePlugin, Xrm.Framework.CI.Sample.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7dec99648ad9071e" Name="Xrm.Framework.CI.Sample.Plugins.SamplePlugin">
+      <FriendlyName>2bbb2ad4-7a7c-45c8-ab71-1305600b1850</FriendlyName>
+    </PluginType>
+  </PluginTypes>
+</PluginAssembly>

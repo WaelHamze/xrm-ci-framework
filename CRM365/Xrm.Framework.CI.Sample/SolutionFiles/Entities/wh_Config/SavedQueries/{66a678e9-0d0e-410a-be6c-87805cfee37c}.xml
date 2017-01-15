@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedquery>
+  <IsCustomizable>1</IsCustomizable>
+  <CanBeDeleted>0</CanBeDeleted>
+  <isquickfindquery>0</isquickfindquery>
+  <isprivate>0</isprivate>
+  <isdefault>1</isdefault>
+  <returnedtypecode>10188</returnedtypecode>
+  <savedqueryid>{66a678e9-0d0e-410a-be6c-87805cfee37c}</savedqueryid>
+  <layoutxml>
+    <grid name="resultset" object="10188" jump="wh_key" select="1" icon="1" preview="1">
+      <row name="result" id="wh_configid">
+        <cell name="wh_key" width="150" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+        <cell name="wh_value" width="300" imageproviderfunctionname="" imageproviderwebresource="$webresource:" />
+        <cell name="createdon" width="125" />
+        <cell name="modifiedon" width="100" />
+      </row>
+    </grid>
+  </layoutxml>
+  <querytype>0</querytype>
+  <fetchxml>
+    <fetch version="1.0" mapping="logical">
+      <entity name="wh_config">
+        <attribute name="wh_key" />
+        <attribute name="createdon" />
+        <order attribute="wh_key" descending="false" />
+        <filter type="and">
+          <condition attribute="statecode" operator="eq" value="0" />
+        </filter>
+        <attribute name="wh_value" />
+        <attribute name="modifiedon" />
+        <attribute name="wh_configid" />
+      </entity>
+    </fetch>
+  </fetchxml>
+  <IntroducedVersion>1.0.0.0</IntroducedVersion>
+  <LocalizedNames>
+    <LocalizedName description="Active Configs" languagecode="1033" />
+  </LocalizedNames>
+</savedquery>

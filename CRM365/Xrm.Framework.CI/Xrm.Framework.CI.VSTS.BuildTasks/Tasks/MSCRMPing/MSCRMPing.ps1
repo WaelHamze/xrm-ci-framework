@@ -16,6 +16,6 @@ Write-Verbose "crmConnectionString = $crmConnectionString"
 $scriptPath = split-path -parent $MyInvocation.MyCommand.Definition
 Write-Verbose "Script Path: $scriptPath"
 
-& "$scriptPath\Ping.ps1" -CrmConnectionString $crmConnectionString
+& "$scriptPath\ps_modules\xRMCIFrameworkCI\Ping.ps1" -CrmConnectionString $crmConnectionString
 
 Write-Verbose 'Leaving MSCRMPing.ps1'

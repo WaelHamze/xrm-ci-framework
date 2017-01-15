@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Entity>
+  <Name LocalizedName="Account" OriginalName="Account">Account</Name>
+  <ObjectTypeCode>1</ObjectTypeCode>
+  <FormXml />
+  <RibbonDiffXml />
+</Entity>

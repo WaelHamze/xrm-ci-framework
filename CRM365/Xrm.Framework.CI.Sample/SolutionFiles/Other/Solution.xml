@@ -1,0 +1,220 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ImportExportXml version="8.2.0000.0773" SolutionPackageVersion="8.2" languagecode="1033" generatedBy="CrmLive" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <SolutionManifest>
+    <UniqueName>XrmCIFrameworkSample</UniqueName>
+    <LocalizedNames>
+      <LocalizedName description="Xrm CI Framework Sample" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="Solution to demonstrate some of the build and release capabilities of the Xrm CI Framework" languagecode="1033" />
+    </Descriptions>
+    <Version>1.0.0.0</Version>
+    <Managed>2</Managed>
+    <Publisher>
+      <UniqueName>waelhamze</UniqueName>
+      <LocalizedNames>
+        <LocalizedName description="WaelHamze" languagecode="1033" />
+      </LocalizedNames>
+      <Descriptions />
+      <EMailAddress xsi:nil="true"></EMailAddress>
+      <SupportingWebsiteUrl xsi:nil="true"></SupportingWebsiteUrl>
+      <CustomizationPrefix>wh</CustomizationPrefix>
+      <CustomizationOptionValuePrefix>88195</CustomizationOptionValuePrefix>
+      <Addresses>
+        <Address>
+          <AddressNumber>1</AddressNumber>
+          <AddressTypeCode>1</AddressTypeCode>
+          <City xsi:nil="true"></City>
+          <County xsi:nil="true"></County>
+          <Country xsi:nil="true"></Country>
+          <Fax xsi:nil="true"></Fax>
+          <FreightTermsCode xsi:nil="true"></FreightTermsCode>
+          <ImportSequenceNumber xsi:nil="true"></ImportSequenceNumber>
+          <Latitude xsi:nil="true"></Latitude>
+          <Line1 xsi:nil="true"></Line1>
+          <Line2 xsi:nil="true"></Line2>
+          <Line3 xsi:nil="true"></Line3>
+          <Longitude xsi:nil="true"></Longitude>
+          <Name xsi:nil="true"></Name>
+          <PostalCode xsi:nil="true"></PostalCode>
+          <PostOfficeBox xsi:nil="true"></PostOfficeBox>
+          <PrimaryContactName xsi:nil="true"></PrimaryContactName>
+          <ShippingMethodCode>1</ShippingMethodCode>
+          <StateOrProvince xsi:nil="true"></StateOrProvince>
+          <Telephone1 xsi:nil="true"></Telephone1>
+          <Telephone2 xsi:nil="true"></Telephone2>
+          <Telephone3 xsi:nil="true"></Telephone3>
+          <TimeZoneRuleVersionNumber xsi:nil="true"></TimeZoneRuleVersionNumber>
+          <UPSZone xsi:nil="true"></UPSZone>
+          <UTCOffset xsi:nil="true"></UTCOffset>
+          <UTCConversionTimeZoneCode xsi:nil="true"></UTCConversionTimeZoneCode>
+        </Address>
+        <Address>
+          <AddressNumber>2</AddressNumber>
+          <AddressTypeCode>1</AddressTypeCode>
+          <City xsi:nil="true"></City>
+          <County xsi:nil="true"></County>
+          <Country xsi:nil="true"></Country>
+          <Fax xsi:nil="true"></Fax>
+          <FreightTermsCode xsi:nil="true"></FreightTermsCode>
+          <ImportSequenceNumber xsi:nil="true"></ImportSequenceNumber>
+          <Latitude xsi:nil="true"></Latitude>
+          <Line1 xsi:nil="true"></Line1>
+          <Line2 xsi:nil="true"></Line2>
+          <Line3 xsi:nil="true"></Line3>
+          <Longitude xsi:nil="true"></Longitude>
+          <Name xsi:nil="true"></Name>
+          <PostalCode xsi:nil="true"></PostalCode>
+          <PostOfficeBox xsi:nil="true"></PostOfficeBox>
+          <PrimaryContactName xsi:nil="true"></PrimaryContactName>
+          <ShippingMethodCode>1</ShippingMethodCode>
+          <StateOrProvince xsi:nil="true"></StateOrProvince>
+          <Telephone1 xsi:nil="true"></Telephone1>
+          <Telephone2 xsi:nil="true"></Telephone2>
+          <Telephone3 xsi:nil="true"></Telephone3>
+          <TimeZoneRuleVersionNumber xsi:nil="true"></TimeZoneRuleVersionNumber>
+          <UPSZone xsi:nil="true"></UPSZone>
+          <UTCOffset xsi:nil="true"></UTCOffset>
+          <UTCConversionTimeZoneCode xsi:nil="true"></UTCConversionTimeZoneCode>
+        </Address>
+      </Addresses>
+    </Publisher>
+    <RootComponents>
+      <RootComponent type="1" schemaName="account" behavior="1" />
+      <RootComponent type="1" schemaName="wh_config" behavior="0" />
+      <RootComponent type="60" id="{56a0ca44-d8fc-4828-946a-86c641464a66}" behavior="0" />
+      <RootComponent type="60" id="{a7446247-a969-409e-b820-709c61ed50be}" behavior="0" />
+      <RootComponent type="61" schemaName="wh_JavaScript/SampleAccount.js" behavior="0" />
+      <RootComponent type="61" schemaName="wh_WebPages/SampleAccount.html" behavior="0" />
+      <RootComponent type="91" schemaName="Xrm.Framework.CI.Sample.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7dec99648ad9071e" behavior="0" />
+      <RootComponent type="91" schemaName="Xrm.Framework.CI.Sample.WFActivities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7dec99648ad9071e" behavior="0" />
+      <RootComponent type="92" id="{ddb0a2d1-3edb-e611-80d4-1458d0431600}" behavior="0" />
+    </RootComponents>
+    <MissingDependencies>
+      <MissingDependency>
+        <Required key="0" type="1" schemaName="msdyn_accountpricelist" displayName="Account Project Price List" solution="ProjectService (1.1.0.62)" />
+        <Dependent key="1" type="60" displayName="New Form" parentDisplayName="Account" id="{56a0ca44-d8fc-4828-946a-86c641464a66}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required key="2" type="2" schemaName="msdyn_travelchargetype" displayName="Travel Charge Type" parentSchemaName="account" parentDisplayName="Account" solution="FieldService (6.1.0.1462)" />
+        <Dependent key="1" type="60" displayName="New Form" parentDisplayName="Account" id="{56a0ca44-d8fc-4828-946a-86c641464a66}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required key="3" type="2" schemaName="msdyn_workorderinstructions" displayName="Work Order Instructions" parentSchemaName="account" parentDisplayName="Account" solution="FieldService (6.1.0.1462)" />
+        <Dependent key="1" type="60" displayName="New Form" parentDisplayName="Account" id="{56a0ca44-d8fc-4828-946a-86c641464a66}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required key="4" type="2" schemaName="msdyn_taxexempt" displayName="Tax Exempt" parentSchemaName="account" parentDisplayName="Account" solution="FieldService (6.1.0.1462)" />
+        <Dependent key="1" type="60" displayName="New Form" parentDisplayName="Account" id="{56a0ca44-d8fc-4828-946a-86c641464a66}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required key="5" type="2" schemaName="msdyn_billingaccount" displayName="Billing Account" parentSchemaName="account" parentDisplayName="Account" solution="FieldService (6.1.0.1462)" />
+        <Dependent key="1" type="60" displayName="New Form" parentDisplayName="Account" id="{56a0ca44-d8fc-4828-946a-86c641464a66}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required key="6" type="2" schemaName="int_facebook" displayName="Facebook" parentSchemaName="account" parentDisplayName="Account" solution="FreeTrialBaseSolution2 (2.1.0.0)" />
+        <Dependent key="1" type="60" displayName="New Form" parentDisplayName="Account" id="{56a0ca44-d8fc-4828-946a-86c641464a66}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required key="7" type="2" schemaName="msdyn_salestaxcode" displayName="Sales Tax Code" parentSchemaName="account" parentDisplayName="Account" solution="FieldService (6.1.0.1462)" />
+        <Dependent key="1" type="60" displayName="New Form" parentDisplayName="Account" id="{56a0ca44-d8fc-4828-946a-86c641464a66}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required key="8" type="2" schemaName="msdyn_taxexemptnumber" displayName="Tax Exempt Number" parentSchemaName="account" parentDisplayName="Account" solution="FieldService (6.1.0.1462)" />
+        <Dependent key="1" type="60" displayName="New Form" parentDisplayName="Account" id="{56a0ca44-d8fc-4828-946a-86c641464a66}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required key="9" type="2" schemaName="int_twitter" displayName="Twitter" parentSchemaName="account" parentDisplayName="Account" solution="FreeTrialBaseSolution2 (2.1.0.0)" />
+        <Dependent key="1" type="60" displayName="New Form" parentDisplayName="Account" id="{56a0ca44-d8fc-4828-946a-86c641464a66}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required key="10" type="2" schemaName="msdyn_serviceterritory" displayName="Service Territory" parentSchemaName="account" parentDisplayName="Account" solution="FieldService (6.1.0.1462)" />
+        <Dependent key="1" type="60" displayName="New Form" parentDisplayName="Account" id="{56a0ca44-d8fc-4828-946a-86c641464a66}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required key="11" type="2" schemaName="msdyn_travelcharge" displayName="Travel Charge" parentSchemaName="account" parentDisplayName="Account" solution="FieldService (6.1.0.1462)" />
+        <Dependent key="1" type="60" displayName="New Form" parentDisplayName="Account" id="{56a0ca44-d8fc-4828-946a-86c641464a66}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required key="12" type="10" schemaName="msdyn_territory_account_ServiceTerritory" displayName="msdyn_territory_account_ServiceTerritory" parentSchemaName="account" parentDisplayName="Account" solution="FieldService (6.1.0.1462)" />
+        <Dependent key="1" type="60" displayName="New Form" parentDisplayName="Account" id="{56a0ca44-d8fc-4828-946a-86c641464a66}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required key="13" type="10" schemaName="msdyn_account_msdyn_agreement_BillingAccount" displayName="msdyn_account_msdyn_agreement_BillingAccount" parentSchemaName="msdyn_agreement" parentDisplayName="Agreement" solution="FieldService (6.1.0.1462)" />
+        <Dependent key="1" type="60" displayName="New Form" parentDisplayName="Account" id="{56a0ca44-d8fc-4828-946a-86c641464a66}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required key="14" type="10" schemaName="msdyn_account_msdyn_rma_BillingAccount" displayName="msdyn_account_msdyn_rma_BillingAccount" parentSchemaName="msdyn_rma" parentDisplayName="RMA" solution="FieldService (6.1.0.1462)" />
+        <Dependent key="1" type="60" displayName="New Form" parentDisplayName="Account" id="{56a0ca44-d8fc-4828-946a-86c641464a66}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required key="15" type="10" schemaName="msdyn_account_msdyn_payment_Account" displayName="msdyn_account_msdyn_payment_Account" parentSchemaName="msdyn_payment" parentDisplayName="Payment" solution="FieldService (6.1.0.1462)" />
+        <Dependent key="1" type="60" displayName="New Form" parentDisplayName="Account" id="{56a0ca44-d8fc-4828-946a-86c641464a66}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required key="16" type="10" schemaName="msdyn_account_msdyn_agreement_ServiceAccount" displayName="msdyn_account_msdyn_agreement_ServiceAccount" parentSchemaName="msdyn_agreement" parentDisplayName="Agreement" solution="FieldService (6.1.0.1462)" />
+        <Dependent key="1" type="60" displayName="New Form" parentDisplayName="Account" id="{56a0ca44-d8fc-4828-946a-86c641464a66}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required key="17" type="10" schemaName="msdyn_account_msdyn_workorder_BillingAccount" displayName="msdyn_account_msdyn_workorder_BillingAccount" parentSchemaName="msdyn_workorder" parentDisplayName="Work Order" solution="FieldService (6.1.0.1462)" />
+        <Dependent key="1" type="60" displayName="New Form" parentDisplayName="Account" id="{56a0ca44-d8fc-4828-946a-86c641464a66}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required key="18" type="10" schemaName="msdyn_account_msdyn_workorder_ServiceAccount" displayName="msdyn_account_msdyn_workorder_ServiceAccount" parentSchemaName="msdyn_workorder" parentDisplayName="Work Order" solution="FieldService (6.1.0.1462)" />
+        <Dependent key="1" type="60" displayName="New Form" parentDisplayName="Account" id="{56a0ca44-d8fc-4828-946a-86c641464a66}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required key="19" type="10" schemaName="msdyn_msdyn_taxcode_account_SalesTaxCode" displayName="msdyn_msdyn_taxcode_account_SalesTaxCode" parentSchemaName="account" parentDisplayName="Account" solution="FieldService (6.1.0.1462)" />
+        <Dependent key="1" type="60" displayName="New Form" parentDisplayName="Account" id="{56a0ca44-d8fc-4828-946a-86c641464a66}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required key="20" type="10" schemaName="msdyn_account_msdyn_purchaseorder_Vendor" displayName="msdyn_account_msdyn_purchaseorder_Vendor" parentSchemaName="msdyn_purchaseorder" parentDisplayName="Purchase Order" solution="FieldService (6.1.0.1462)" />
+        <Dependent key="1" type="60" displayName="New Form" parentDisplayName="Account" id="{56a0ca44-d8fc-4828-946a-86c641464a66}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required key="21" type="10" schemaName="msdyn_account_msdyn_rtv_Vendor" displayName="msdyn_account_msdyn_rtv_Vendor" parentSchemaName="msdyn_rtv" parentDisplayName="RTV" solution="FieldService (6.1.0.1462)" />
+        <Dependent key="1" type="60" displayName="New Form" parentDisplayName="Account" id="{56a0ca44-d8fc-4828-946a-86c641464a66}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required key="22" type="10" schemaName="msdyn_account_msdyn_accountpricelist_Account" displayName="msdyn_account_msdyn_accountpricelist_Account" parentSchemaName="msdyn_accountpricelist" parentDisplayName="Account Project Price List" solution="ProjectService (1.1.0.62)" />
+        <Dependent key="1" type="60" displayName="New Form" parentDisplayName="Account" id="{56a0ca44-d8fc-4828-946a-86c641464a66}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required key="23" type="10" schemaName="msdyn_account_msdyn_rma_ServiceAccount" displayName="msdyn_account_msdyn_rma_ServiceAccount" parentSchemaName="msdyn_rma" parentDisplayName="RMA" solution="FieldService (6.1.0.1462)" />
+        <Dependent key="1" type="60" displayName="New Form" parentDisplayName="Account" id="{56a0ca44-d8fc-4828-946a-86c641464a66}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required key="24" type="10" schemaName="msdyn_account_account_BillingAccount" displayName="msdyn_account_account_BillingAccount" parentSchemaName="account" parentDisplayName="Account" solution="FieldService (6.1.0.1462)" />
+        <Dependent key="1" type="60" displayName="New Form" parentDisplayName="Account" id="{56a0ca44-d8fc-4828-946a-86c641464a66}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required key="25" type="10" schemaName="msdyn_account_msdyn_customerasset_Account" displayName="msdyn_account_msdyn_customerasset_Account" parentSchemaName="msdyn_customerasset" parentDisplayName="Customer Asset" solution="FieldService (6.1.0.1462)" />
+        <Dependent key="1" type="60" displayName="New Form" parentDisplayName="Account" id="{56a0ca44-d8fc-4828-946a-86c641464a66}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required key="26" type="10" schemaName="msdyn_account_msdyn_project_Customer" displayName="msdyn_account_msdyn_project_Customer" parentSchemaName="msdyn_project" parentDisplayName="Project" solution="ProjectService (1.1.0.62)" />
+        <Dependent key="1" type="60" displayName="New Form" parentDisplayName="Account" id="{56a0ca44-d8fc-4828-946a-86c641464a66}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required key="27" type="26" schemaName="Active Project Price Lists" displayName="Active Project Price Lists" parentSchemaName="msdyn_accountpricelist" parentDisplayName="Account Project Price List" solution="ProjectService (1.1.0.62)" id="{9e8bd99a-72e8-49fe-8c6f-ec1ac8407f5a}" />
+        <Dependent key="1" type="60" displayName="New Form" parentDisplayName="Account" id="{56a0ca44-d8fc-4828-946a-86c641464a66}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required key="28" type="61" schemaName="msdyn_/Account/Account.Library.js" displayName="msdyn_/Account/Account.Library.js" solution="FieldService (6.1.0.1462)" />
+        <Dependent key="1" type="60" displayName="New Form" parentDisplayName="Account" id="{56a0ca44-d8fc-4828-946a-86c641464a66}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required key="29" type="61" schemaName="msdyn_/Utils/FieldServiceTrial.js" displayName="msdyn_/Utils/FieldServiceTrial.js" solution="FieldService (6.1.0.1462)" />
+        <Dependent key="1" type="60" displayName="New Form" parentDisplayName="Account" id="{56a0ca44-d8fc-4828-946a-86c641464a66}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required key="30" type="61" schemaName="msdyn_/Utils/head1.0.3.js" displayName="msdyn_/Utils/head1.0.3.js" solution="FieldService (6.1.0.1462)" />
+        <Dependent key="1" type="60" displayName="New Form" parentDisplayName="Account" id="{56a0ca44-d8fc-4828-946a-86c641464a66}" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required key="31" type="61" schemaName="msdyn_/Libraries/require/require.js" displayName="msdyn_/Libraries/require/require.js" solution="ProjectService (1.1.0.62)" />
+        <Dependent key="1" type="60" displayName="New Form" parentDisplayName="Account" id="{56a0ca44-d8fc-4828-946a-86c641464a66}" />
+      </MissingDependency>
+    </MissingDependencies>
+  </SolutionManifest>
+</ImportExportXml>

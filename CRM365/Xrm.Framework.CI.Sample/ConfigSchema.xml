@@ -1,0 +1,8 @@
+<entities xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <entity name="wh_config" displayname="Config" etc="10188" primaryidfield="wh_configid" primarynamefield="wh_key" disableplugins="false">
+    <fields>
+      <field updateCompare="true" displayname="Key" name="wh_key" type="string" customfield="true" />
+      <field displayname="Value" name="wh_value" type="string" customfield="true" />
+    </fields>
+  </entity>
+</entities>

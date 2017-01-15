@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<systemform>
+  <formid>{70d79aab-2118-42f7-ad76-9984f44af0a7}</formid>
+  <IntroducedVersion>1.0.0.0</IntroducedVersion>
+  <FormPresentation>1</FormPresentation>
+  <FormActivationState>1</FormActivationState>
+  <form>
+    <tabs>
+      <tab verticallayout="true" id="{cc7c3fe6-581e-4359-8a56-a312fbb39215}" IsUserDefined="1">
+        <labels>
+          <label description="General Info" languagecode="1033" />
+        </labels>
+        <columns>
+          <column width="24%">
+            <sections>
+              <section showlabel="false" showbar="false" IsUserDefined="0" id="{486843aa-e379-4ef0-97dc-7a868fef5d85}">
+                <labels>
+                  <label description="General" languagecode="1033" />
+                </labels>
+                <rows>
+                  <row>
+                    <cell id="{63ed1d95-d2e7-4cee-a609-e47cb0a04bda}">
+                      <labels>
+                        <label description="Key" languagecode="1033" />
+                      </labels>
+                      <control id="wh_key" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="wh_key" />
+                    </cell>
+                  </row>
+                </rows>
+              </section>
+            </sections>
+          </column>
+          <column width="38%">
+            <sections>
+              <section showlabel="true" showbar="false" id="{35aa7ffe-bb4b-4f7f-a178-0999cfeb84e8}" IsUserDefined="0" height="auto">
+                <labels>
+                  <label description="TIMELINE" languagecode="1033" />
+                </labels>
+                <rows>
+                  <row>
+                    <cell showlabel="false" colspan="1" rowspan="18" auto="false" id="{3ac4384f-7620-4514-8453-bf374fa7e20f}">
+                      <labels>
+                        <label description="Conversation Tabs" languagecode="1033" />
+                      </labels>
+                      <control id="interactionwallcontrol" classid="{1F179106-FA28-4495-961E-F6BD93C21974}" />
+                    </cell>
+                  </row>
+                  <row />
+                  <row />
+                  <row />
+                  <row />
+                  <row />
+                  <row />
+                  <row />
+                  <row />
+                  <row />
+                  <row />
+                  <row />
+                  <row />
+                  <row />
+                  <row />
+                  <row />
+                  <row />
+                  <row height="auto" />
+                </rows>
+              </section>
+            </sections>
+          </column>
+          <column width="38%">
+            <sections>
+              <section showlabel="true" columns="1" showbar="false" id="{1b7982e4-28af-449c-af9f-c5ea86e0c298}" name="ref_pan_{1b7982e4-28af-449c-af9f-c5ea86e0c298}" IsUserDefined="0">
+                <labels>
+                  <label description="RELATED" languagecode="1033" />
+                </labels>
+                <rows>
+                  <row />
+                </rows>
+              </section>
+            </sections>
+          </column>
+        </columns>
+      </tab>
+    </tabs>
+    <header id="{6ebcb725-5a5f-4f1c-9658-54e79a668301}" celllabelposition="Left" columns="1111">
+      <rows>
+        <row />
+      </rows>
+    </header>
+  </form>
+  <IsCustomizable>1</IsCustomizable>
+  <CanBeDeleted>1</CanBeDeleted>
+  <LocalizedNames>
+    <LocalizedName description="Information" languagecode="1033" />
+  </LocalizedNames>
+  <Descriptions>
+    <Description description="A form for this entity." languagecode="1033" />
+  </Descriptions>
+</systemform>

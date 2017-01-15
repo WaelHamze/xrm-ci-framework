@@ -13,6 +13,63 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		BuildVSExtension.ps1 = BuildVSExtension.ps1
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Xrm.Framework.CI.VSTS.BuildTasks", "Xrm.Framework.CI.VSTS.BuildTasks", "{3763BBA8-F491-4D34-A047-D4ED12EDF387}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tasks", "Tasks", "{BBFA729B-4215-487C-BD89-FD77A7B54C72}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MSCRMExportSolution", "MSCRMExportSolution", "{C2B3F4B8-4BE8-45E7-9384-55F5F7F56CB8}"
+	ProjectSection(SolutionItems) = preProject
+		Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMExportSolution\MSCRMExportSolution.ps1 = Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMExportSolution\MSCRMExportSolution.ps1
+		Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMExportSolution\task.json = Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMExportSolution\task.json
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MSCRMImportSolution", "MSCRMImportSolution", "{67A59419-BDB6-49E9-A5EB-ECEC0F4C84BB}"
+	ProjectSection(SolutionItems) = preProject
+		Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMImportSolution\MSCRMImportSolution.ps1 = Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMImportSolution\MSCRMImportSolution.ps1
+		Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMImportSolution\task.json = Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMImportSolution\task.json
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MSCRMPackageDeployer", "MSCRMPackageDeployer", "{8E5BE35E-E21E-436E-BE6B-35E6D81C0ABE}"
+	ProjectSection(SolutionItems) = preProject
+		Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMPackageDeployer\MSCRMPackageDeployer.ps1 = Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMPackageDeployer\MSCRMPackageDeployer.ps1
+		Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMPackageDeployer\task.json = Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMPackageDeployer\task.json
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MSCRMPackSolution", "MSCRMPackSolution", "{AE562918-60B7-4F4A-A3DE-A7E1C8CEA3DA}"
+	ProjectSection(SolutionItems) = preProject
+		Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMPackSolution\MSCRMPackSolution.ps1 = Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMPackSolution\MSCRMPackSolution.ps1
+		Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMPackSolution\task.json = Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMPackSolution\task.json
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MSCRMPing", "MSCRMPing", "{9429DD21-BA4E-4A94-9A42-27238E8D582B}"
+	ProjectSection(SolutionItems) = preProject
+		Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMPing\MSCRMPing.ps1 = Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMPing\MSCRMPing.ps1
+		Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMPing\task.json = Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMPing\task.json
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MSCRMPublishCustomizations", "MSCRMPublishCustomizations", "{6D0039BB-43D7-4424-B962-B1F56F65E5C2}"
+	ProjectSection(SolutionItems) = preProject
+		Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMPublishCustomizations\MSCRMPublishCustomizations.ps1 = Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMPublishCustomizations\MSCRMPublishCustomizations.ps1
+		Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMPublishCustomizations\task.json = Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMPublishCustomizations\task.json
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Extension", "Extension", "{0F51EB44-F666-43BE-BD77-E0E00C2C0347}"
+	ProjectSection(SolutionItems) = preProject
+		Xrm.Framework.CI.VSTS.BuildTasks\Extension\icon_128x128.png = Xrm.Framework.CI.VSTS.BuildTasks\Extension\icon_128x128.png
+		Xrm.Framework.CI.VSTS.BuildTasks\Extension\vss-extension.json = Xrm.Framework.CI.VSTS.BuildTasks\Extension\vss-extension.json
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Content", "Content", "{764B4E8D-11DD-49AC-BC3A-6D775E9B1F7D}"
+	ProjectSection(SolutionItems) = preProject
+		Xrm.Framework.CI.VSTS.BuildTasks\Extension\Content\license.txt = Xrm.Framework.CI.VSTS.BuildTasks\Extension\Content\license.txt
+		Xrm.Framework.CI.VSTS.BuildTasks\Extension\Content\overview.md = Xrm.Framework.CI.VSTS.BuildTasks\Extension\Content\overview.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lib", "Lib", "{349BF424-9F2C-4B78-A688-25320D17BB3C}"
+	ProjectSection(SolutionItems) = preProject
+		Xrm.Framework.CI.VSTS.BuildTasks\Lib\icon.png = Xrm.Framework.CI.VSTS.BuildTasks\Lib\icon.png
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +87,17 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BBFA729B-4215-487C-BD89-FD77A7B54C72} = {3763BBA8-F491-4D34-A047-D4ED12EDF387}
+		{C2B3F4B8-4BE8-45E7-9384-55F5F7F56CB8} = {BBFA729B-4215-487C-BD89-FD77A7B54C72}
+		{67A59419-BDB6-49E9-A5EB-ECEC0F4C84BB} = {BBFA729B-4215-487C-BD89-FD77A7B54C72}
+		{8E5BE35E-E21E-436E-BE6B-35E6D81C0ABE} = {BBFA729B-4215-487C-BD89-FD77A7B54C72}
+		{AE562918-60B7-4F4A-A3DE-A7E1C8CEA3DA} = {BBFA729B-4215-487C-BD89-FD77A7B54C72}
+		{9429DD21-BA4E-4A94-9A42-27238E8D582B} = {BBFA729B-4215-487C-BD89-FD77A7B54C72}
+		{6D0039BB-43D7-4424-B962-B1F56F65E5C2} = {BBFA729B-4215-487C-BD89-FD77A7B54C72}
+		{0F51EB44-F666-43BE-BD77-E0E00C2C0347} = {3763BBA8-F491-4D34-A047-D4ED12EDF387}
+		{764B4E8D-11DD-49AC-BC3A-6D775E9B1F7D} = {0F51EB44-F666-43BE-BD77-E0E00C2C0347}
+		{349BF424-9F2C-4B78-A688-25320D17BB3C} = {3763BBA8-F491-4D34-A047-D4ED12EDF387}
 	EndGlobalSection
 EndGlobal

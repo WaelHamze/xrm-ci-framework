@@ -31,7 +31,7 @@
       "name": "solutionFile",
       "type": "filePath",
       "label": "Solution File",
-      "defaultValue": "",
+      "defaultValue": "$(System.DefaultWorkingDirectory)/<BuildName>/<ArtifactName>/<SolutionFile>.zip",
       "required": false,
       "helpMarkDown": "The absolute path to the CRM solution zip file on the release agent machine"
     },

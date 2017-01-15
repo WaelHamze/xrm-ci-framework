@@ -1,0 +1,94 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xrm.Framework.CI.Sample.Plugins", "Xrm.Framework.CI.Sample.Plugins\Xrm.Framework.CI.Sample.Plugins.csproj", "{0A149A0E-91AF-4624-9163-2BC9F6822F1C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xrm.Framework.CI.Sample.WFActivities", "Xrm.Framework.CI.Sample.WFActivities\Xrm.Framework.CI.Sample.WFActivities.csproj", "{340ADE0F-8213-457E-9FF5-BFB63C25B02C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xrm.Framework.CI.Sample.CRMPackage", "Xrm.Framework.CI.Sample.CRMPackage\Xrm.Framework.CI.Sample.CRMPackage.csproj", "{170C0103-3F94-4896-9062-6314167F596A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Xrm.Framework.CI.Sample.WebResources", "Xrm.Framework.CI.Sample.WebResources", "{660C21DB-34BB-4F66-8D52-7F4C37AEA9CE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "JavaScript", "JavaScript", "{323E620D-8D2E-4D78-B9A1-5E16EAA38051}"
+	ProjectSection(SolutionItems) = preProject
+		Xrm.Framework.CI.Sample.WebResources\JavaScript\SampleAccount.js = Xrm.Framework.CI.Sample.WebResources\JavaScript\SampleAccount.js
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebPages", "WebPages", "{332792E2-AEB5-401D-AD39-BDF1A9EDFBEC}"
+	ProjectSection(SolutionItems) = preProject
+		Xrm.Framework.CI.Sample.WebResources\WebPages\SampleAccount.html = Xrm.Framework.CI.Sample.WebResources\WebPages\SampleAccount.html
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3C288B05-62C4-4139-80A8-C87BC2FCCCB9}"
+	ProjectSection(SolutionItems) = preProject
+		ExtractXrmCIFrameworkSample.ps1 = ExtractXrmCIFrameworkSample.ps1
+		XrmCIFrameworkSampleMapping.xml = XrmCIFrameworkSampleMapping.xml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lib", "Lib", "{E14EF522-74E4-4C34-8FC2-788E9E026882}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Keys", "Keys", "{28D91CC1-4C24-4AE3-A992-70BCA7F1C28E}"
+	ProjectSection(SolutionItems) = preProject
+		Lib\Keys\Xrm.Framework.CI.snk = Lib\Keys\Xrm.Framework.CI.snk
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solutions", "Solutions", "{F3572C69-0DF0-4154-A4A5-9ACF09AEE89B}"
+	ProjectSection(SolutionItems) = preProject
+		Lib\Solutions\ThirdParty_1_0_0_0.zip = Lib\Solutions\ThirdParty_1_0_0_0.zip
+		Lib\Solutions\ThirdParty_1_0_0_0_managed.zip = Lib\Solutions\ThirdParty_1_0_0_0_managed.zip
+		Lib\Solutions\XrmCIFrameworkSample_1_0_0_0.zip = Lib\Solutions\XrmCIFrameworkSample_1_0_0_0.zip
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "xRMCIFramework", "xRMCIFramework", "{4E960EAB-6CF0-46EE-AF54-57C1573AB68F}"
+	ProjectSection(SolutionItems) = preProject
+		Lib\xRMCIFramework\DeployPackage.ps1 = Lib\xRMCIFramework\DeployPackage.ps1
+		Lib\xRMCIFramework\ExportSolution.ps1 = Lib\xRMCIFramework\ExportSolution.ps1
+		Lib\xRMCIFramework\ExtractCustomizations.ps1 = Lib\xRMCIFramework\ExtractCustomizations.ps1
+		Lib\xRMCIFramework\ImportSolution.ps1 = Lib\xRMCIFramework\ImportSolution.ps1
+		Lib\xRMCIFramework\microsoft.crm.sdk.proxy.dll = Lib\xRMCIFramework\microsoft.crm.sdk.proxy.dll
+		Lib\xRMCIFramework\Microsoft.IdentityModel.Clients.ActiveDirectory.dll = Lib\xRMCIFramework\Microsoft.IdentityModel.Clients.ActiveDirectory.dll
+		Lib\xRMCIFramework\Microsoft.IdentityModel.dll = Lib\xRMCIFramework\Microsoft.IdentityModel.dll
+		Lib\xRMCIFramework\Microsoft.Management.Infrastructure.dll = Lib\xRMCIFramework\Microsoft.Management.Infrastructure.dll
+		Lib\xRMCIFramework\Microsoft.Xrm.Sdk.Deployment.dll = Lib\xRMCIFramework\Microsoft.Xrm.Sdk.Deployment.dll
+		Lib\xRMCIFramework\microsoft.xrm.sdk.dll = Lib\xRMCIFramework\microsoft.xrm.sdk.dll
+		Lib\xRMCIFramework\Microsoft.Xrm.Tooling.Connector.dll = Lib\xRMCIFramework\Microsoft.Xrm.Tooling.Connector.dll
+		Lib\xRMCIFramework\PackSolution.ps1 = Lib\xRMCIFramework\PackSolution.ps1
+		Lib\xRMCIFramework\Ping.ps1 = Lib\xRMCIFramework\Ping.ps1
+		Lib\xRMCIFramework\PublishCustomizations.ps1 = Lib\xRMCIFramework\PublishCustomizations.ps1
+		Lib\xRMCIFramework\SolutionPackager.exe = Lib\xRMCIFramework\SolutionPackager.exe
+		Lib\xRMCIFramework\UpdateSolutionVersionInCRM.ps1 = Lib\xRMCIFramework\UpdateSolutionVersionInCRM.ps1
+		Lib\xRMCIFramework\Xrm.Framework.CI.PowerShell.Cmdlets.dll = Lib\xRMCIFramework\Xrm.Framework.CI.PowerShell.Cmdlets.dll
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0A149A0E-91AF-4624-9163-2BC9F6822F1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A149A0E-91AF-4624-9163-2BC9F6822F1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A149A0E-91AF-4624-9163-2BC9F6822F1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A149A0E-91AF-4624-9163-2BC9F6822F1C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{340ADE0F-8213-457E-9FF5-BFB63C25B02C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{340ADE0F-8213-457E-9FF5-BFB63C25B02C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{340ADE0F-8213-457E-9FF5-BFB63C25B02C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{340ADE0F-8213-457E-9FF5-BFB63C25B02C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{170C0103-3F94-4896-9062-6314167F596A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{170C0103-3F94-4896-9062-6314167F596A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{170C0103-3F94-4896-9062-6314167F596A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{170C0103-3F94-4896-9062-6314167F596A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{323E620D-8D2E-4D78-B9A1-5E16EAA38051} = {660C21DB-34BB-4F66-8D52-7F4C37AEA9CE}
+		{332792E2-AEB5-401D-AD39-BDF1A9EDFBEC} = {660C21DB-34BB-4F66-8D52-7F4C37AEA9CE}
+		{28D91CC1-4C24-4AE3-A992-70BCA7F1C28E} = {E14EF522-74E4-4C34-8FC2-788E9E026882}
+		{F3572C69-0DF0-4154-A4A5-9ACF09AEE89B} = {E14EF522-74E4-4C34-8FC2-788E9E026882}
+		{4E960EAB-6CF0-46EE-AF54-57C1573AB68F} = {E14EF522-74E4-4C34-8FC2-788E9E026882}
+	EndGlobalSection
+EndGlobal
