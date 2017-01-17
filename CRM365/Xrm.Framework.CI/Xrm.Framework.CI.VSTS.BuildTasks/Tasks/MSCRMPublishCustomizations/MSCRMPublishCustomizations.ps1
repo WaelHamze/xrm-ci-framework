@@ -16,6 +16,6 @@ Write-Verbose "crmConnectionString = $crmConnectionString"
 $scriptPath = split-path -parent $MyInvocation.MyCommand.Definition
 Write-Verbose "Script Path: $scriptPath"
 
-& "$scriptPath\ps_modules\xRMCIFrameworkCI\PublishCustomizations.ps1" -CrmConnectionString $crmConnectionString
+& "$scriptPath\ps_modules\xRMCIFramework\PublishCustomizations.ps1" -CrmConnectionString $crmConnectionString
 
 Write-Verbose 'Leaving MSCRMPublishCustomizations.ps1'

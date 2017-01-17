@@ -45,6 +45,6 @@ if ($updateVersion)
 	$versionNumber = $buildNumber.Substring($buildNumber.IndexOf("_") + 1)
 }
 
-& "$scriptPath\ps_modules\xRMCIFrameworkCI\PackSolution.ps1" -UnpackedFilesFolder $unpackedFilesFolder -MappingFile $mappingFile -PackageType $packageType -UpdateVersion $updateVersion -RequiredVersion $versionNumber -IncludeVersionInSolutionFile $includeVersionInSolutionFile -OutputPath $outputPath -TreatPackWarningsAsErrors $treatPackWarningsAsErrors
+& "$scriptPath\ps_modules\xRMCIFramework\PackSolution.ps1" -UnpackedFilesFolder $unpackedFilesFolder -MappingFile $mappingFile -PackageType $packageType -UpdateVersion $updateVersion -RequiredVersion $versionNumber -IncludeVersionInSolutionFile $includeVersionInSolutionFile -OutputPath $outputPath -TreatPackWarningsAsErrors $treatPackWarningsAsErrors
 
 Write-Verbose 'Leaving MSCRMPackSolution.ps1'

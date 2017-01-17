@@ -2,7 +2,7 @@
   "manifestVersion": 1,
   "id": "xrm-ci-framework-build-tasks",
   "name": "Dynamics CRM 365",
-  "version": "8.0.0",
+  "version": "8.0.10",
   "publisher": "WaelHamze",
   "targets": [
     {
@@ -20,23 +20,38 @@
     "CRM 365",
     "Solution Packager",
     "Package Deployer"
-    ],
+  ],
   "icons": {
     "default": "icon_128x128.png"
   },
+  "screenshots": [
+    {
+      "path": "Screenshots/OnlineBuildDefinition.png"
+    },
+    {
+      "path": "Screenshots/OnlineBuildArtifacts.png"
+    },
+    {
+      "path": "Screenshots/ThirdPartyReleaseDefinition.png"
+    }
+  ],
   "content": {
     "details": {
-      "path": "Content/overview.md"
+      "path": "overview.md"
     },
     "license": {
-      "path": "Content/license.txt"
+      "path": "license.txt"
     }
   },
   "repository": {
-      "type": "git",
-      "uri": "https://github.com/WaelHamze/xrm-ci-framework"
+    "type": "git",
+    "uri": "https://github.com/WaelHamze/xrm-ci-framework"
   },
   "files": [
+    {
+      "path": "Images",
+      "addressable": true
+    },
     {
       "path": "MSCRMPing"
     },

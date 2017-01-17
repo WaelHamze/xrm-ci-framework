@@ -55,19 +55,24 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Extension", "Extension", "{0F51EB44-F666-43BE-BD77-E0E00C2C0347}"
 	ProjectSection(SolutionItems) = preProject
 		Xrm.Framework.CI.VSTS.BuildTasks\Extension\icon_128x128.png = Xrm.Framework.CI.VSTS.BuildTasks\Extension\icon_128x128.png
+		Xrm.Framework.CI.VSTS.BuildTasks\Extension\license.txt = Xrm.Framework.CI.VSTS.BuildTasks\Extension\license.txt
+		Xrm.Framework.CI.VSTS.BuildTasks\Extension\overview.md = Xrm.Framework.CI.VSTS.BuildTasks\Extension\overview.md
 		Xrm.Framework.CI.VSTS.BuildTasks\Extension\vss-extension.json = Xrm.Framework.CI.VSTS.BuildTasks\Extension\vss-extension.json
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Content", "Content", "{764B4E8D-11DD-49AC-BC3A-6D775E9B1F7D}"
-	ProjectSection(SolutionItems) = preProject
-		Xrm.Framework.CI.VSTS.BuildTasks\Extension\Content\license.txt = Xrm.Framework.CI.VSTS.BuildTasks\Extension\Content\license.txt
-		Xrm.Framework.CI.VSTS.BuildTasks\Extension\Content\overview.md = Xrm.Framework.CI.VSTS.BuildTasks\Extension\Content\overview.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lib", "Lib", "{349BF424-9F2C-4B78-A688-25320D17BB3C}"
 	ProjectSection(SolutionItems) = preProject
 		Xrm.Framework.CI.VSTS.BuildTasks\Lib\icon.png = Xrm.Framework.CI.VSTS.BuildTasks\Lib\icon.png
 	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Screenshots", "Screenshots", "{CE2E80E0-3570-4E48-8810-FDD6276D6BD1}"
+	ProjectSection(SolutionItems) = preProject
+		Xrm.Framework.CI.VSTS.BuildTasks\Extension\Screenshots\TaskCatalog_Build.png = Xrm.Framework.CI.VSTS.BuildTasks\Extension\Screenshots\TaskCatalog_Build.png
+		Xrm.Framework.CI.VSTS.BuildTasks\Extension\Screenshots\TaskCatalog_Deploy.png = Xrm.Framework.CI.VSTS.BuildTasks\Extension\Screenshots\TaskCatalog_Deploy.png
+		Xrm.Framework.CI.VSTS.BuildTasks\Extension\Screenshots\TaskCatalog_Utility.png = Xrm.Framework.CI.VSTS.BuildTasks\Extension\Screenshots\TaskCatalog_Utility.png
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Images", "Images", "{83E4A838-01DB-4D10-BA5C-B1D93DB546DC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -96,7 +101,8 @@ Global
 		{9429DD21-BA4E-4A94-9A42-27238E8D582B} = {BBFA729B-4215-487C-BD89-FD77A7B54C72}
 		{6D0039BB-43D7-4424-B962-B1F56F65E5C2} = {BBFA729B-4215-487C-BD89-FD77A7B54C72}
 		{0F51EB44-F666-43BE-BD77-E0E00C2C0347} = {3763BBA8-F491-4D34-A047-D4ED12EDF387}
-		{764B4E8D-11DD-49AC-BC3A-6D775E9B1F7D} = {0F51EB44-F666-43BE-BD77-E0E00C2C0347}
 		{349BF424-9F2C-4B78-A688-25320D17BB3C} = {3763BBA8-F491-4D34-A047-D4ED12EDF387}
+		{CE2E80E0-3570-4E48-8810-FDD6276D6BD1} = {0F51EB44-F666-43BE-BD77-E0E00C2C0347}
+		{83E4A838-01DB-4D10-BA5C-B1D93DB546DC} = {0F51EB44-F666-43BE-BD77-E0E00C2C0347}
 	EndGlobalSection
 EndGlobal

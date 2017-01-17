@@ -5,7 +5,7 @@
   "description": "A sample task that checks connectivity to a Dynamics CRM environment",
   "author": "Wael Hamze",
   "helpMarkDown": "Performs a WhoAmIRequest against the target CRM environment",
-  "category": "Build",
+  "category": "Utility",
   "visibility": [
     "Build",
     "Release"
@@ -14,7 +14,7 @@
   "version": {
     "Major": "8",
     "Minor": "0",
-    "Patch": "0"
+    "Patch": "2"
   },
   "minimumAgentVersion": "1.95.0",
   "instanceNameFormat": "MSCRM CRM Ping",

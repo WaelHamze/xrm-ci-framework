@@ -4,7 +4,7 @@
   "friendlyName": "MSCRM Import Solution",
   "description": "Import a Dynamics CRM Solution package",
   "author": "Wael Hamze",
-  "helpMarkDown": "Solution files must be checked-in to source control",
+  "helpMarkDown": "This task invokes ImportSolutionRequest in Async mode",
   "category": "Deploy",
   "visibility": [
     "Build",
@@ -14,7 +14,7 @@
   "version": {
     "Major": "8",
     "Minor": "0",
-    "Patch": "0"
+    "Patch": "3"
   },
   "minimumAgentVersion": "1.95.0",
   "instanceNameFormat": "MSCRM Import Solution",

@@ -36,6 +36,6 @@ Write-Verbose "artifactsFolder = $artifactsFolder"
 $scriptPath = split-path -parent $MyInvocation.MyCommand.Definition
 Write-Verbose "Script Path: $scriptPath"
 
-& "$scriptPath\ps_modules\xRMCIFrameworkCI\DeployPackage.ps1" -DeploymentType $deploymentType -Username $username -Password $password -ServerUrl $serverUrl -OrganizationName $organizationName -DeploymentRegion $deploymentRegion -OnlineType $onlineType -PackageName $packageName -PackageDirectory $packageDirectory
+& "$scriptPath\ps_modules\xRMCIFramework\DeployPackage.ps1" -DeploymentType $deploymentType -Username $username -Password $password -ServerUrl $serverUrl -OrganizationName $organizationName -DeploymentRegion $deploymentRegion -OnlineType $onlineType -PackageName $packageName -PackageDirectory $packageDirectory
 
 Write-Verbose 'Leaving MSCRMPackageDeployer.ps1'

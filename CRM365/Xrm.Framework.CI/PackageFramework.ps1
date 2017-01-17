@@ -1,5 +1,5 @@
 #
-# BuildVSExtension.ps1
+# PackageFramework.ps1
 #
 
 $version = "8.0.0"
@@ -77,7 +77,8 @@ Copy-Item ($scriptPath + "\Xrm.Framework.CI.VSTS.BuildTasks\Lib\ps_modules") ($C
 Copy-Item ($CIFrameworkRootDir) ($CIFrameworkPackagesDir + "\MSCRMPackageDeployer\ps_modules") -Force -Recurse
 
 Copy-Item ($scriptPath + "\Xrm.Framework.CI.VSTS.BuildTasks\Extension\*.*") $CIFrameworkPackagesDir -Force -Recurse
-Copy-Item ($scriptPath + "\Xrm.Framework.CI.VSTS.BuildTasks\Extension\Content") $CIFrameworkPackagesDir -Force -Recurse
+Copy-Item ($scriptPath + "\Xrm.Framework.CI.VSTS.BuildTasks\Extension\Screenshots") $CIFrameworkPackagesDir -Force -Recurse
+Copy-Item ($scriptPath + "\Xrm.Framework.CI.VSTS.BuildTasks\Extension\Images") $CIFrameworkPackagesDir -Force -Recurse
 
 tfx extension create --manifest-globs $xRMCIFrameworkPackageName --output-path $CIFrameworkPackagesDir --root $CIFrameworkPackagesDir
 
