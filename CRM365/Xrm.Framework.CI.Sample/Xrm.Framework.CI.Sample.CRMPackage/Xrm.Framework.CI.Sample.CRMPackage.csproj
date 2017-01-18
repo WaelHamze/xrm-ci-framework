@@ -226,8 +226,12 @@
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="PkgFolder\ConfigData.zip" />
-    <None Include="PkgFolder\ThirdParty_1_0_0_0_managed.zip" />
+    <None Include="PkgFolder\ConfigData.zip">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="PkgFolder\ThirdParty_1_0_0_0_managed.zip">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
