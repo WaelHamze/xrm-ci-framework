@@ -1,20 +1,20 @@
 {
   "manifestVersion": 1,
   "id": "xrm-ci-framework-build-tasks",
-  "name": "Dynamics CRM 365",
-  "version": "8.0.10",
+  "name": "Dynamics CRM Build Tools",
+  "version": "8.0.12",
   "publisher": "WaelHamze",
   "targets": [
     {
       "id": "Microsoft.VisualStudio.Services"
     }
   ],
-  "description": "Tasks for automating Build & Deployment of Dynamics CRM Solutions",
+  "description": "Tasks for automating Build & Deployment of Dynamics CRM 365 Solutions",
   "categories": [
     "Build and release"
   ],
   "galleryFlags": [
-    "Preview"
+    "Preview", "Public"
   ],
   "tags": [
     "Dynamics CRM",
