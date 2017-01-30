@@ -11,6 +11,7 @@ param(
 [string]$ExportSolutionOutputPath,
 [bool]$UpdateVersion,
 [string]$RequiredVersion,
+[int]$Timeout,
 [bool]$ExportIncludeVersionInSolutionName,
 [bool]$ExportAutoNumberingSettings,
 [bool]$ExportCalendarSettings,
@@ -38,6 +39,7 @@ Write-Verbose "TargetVersion = $TargetVerion"
 Write-Verbose "ExportSolutionOutputPath = $ExportSolutionOutputPath"
 Write-Verbose "UpdateVersion = $UpdateVersion"
 Write-Verbose "RequiredVersion = $RequiredVersion"
+Write-Verbose "Timeout = $Timeout"
 Write-Verbose "ExportIncludeVersionInSolutionName = $ExportIncludeVersionInSolutionName"
 Write-Verbose "ExportAutoNumberingSettings = $ExportAutoNumberingSettings"
 Write-Verbose "ExportCalendarSettings = $ExportCalendarSettings"
@@ -78,7 +80,7 @@ if ($ExportUnmanaged)
 {
     Write-Host "Exporting Unmanaged Solution"
         
-    $exportUnmanagedFile = Export-XrmSolution -ConnectionString $CrmConnectionString -UniqueSolutionName $SolutionName -OutputFolder $ExportSolutionOutputPath -Managed $false -TargetVersion $TargetVersion -IncludeVersionInName $ExportIncludeVersionInSolutionName -ExportAutoNumberingSettings $ExportAutoNumberingSettings -ExportCalendarSettings $ExportCalendarSettings -ExportCustomizationSettings $ExportCustomizationSettings -ExportEmailTrackingSettings $ExportEmailTrackingSettings -ExportExternalApplications $ExportExternalApplications -ExportGeneralSettings $ExportGeneralSettings -ExportMarketingSettings $ExportMarketingSettings -ExportOutlookSynchronizationSettings $ExportOutlookSynchronizationSettings -ExportIsvConfig $ExportIsvConfig -ExportRelationshipRoles $ExportRelationshipRoles -ExportSales $ExportSales
+    $exportUnmanagedFile = Export-XrmSolution -ConnectionString $CrmConnectionString -UniqueSolutionName $SolutionName -OutputFolder $ExportSolutionOutputPath -Managed $false -TargetVersion $TargetVersion -IncludeVersionInName $ExportIncludeVersionInSolutionName -ExportAutoNumberingSettings $ExportAutoNumberingSettings -ExportCalendarSettings $ExportCalendarSettings -ExportCustomizationSettings $ExportCustomizationSettings -ExportEmailTrackingSettings $ExportEmailTrackingSettings -ExportExternalApplications $ExportExternalApplications -ExportGeneralSettings $ExportGeneralSettings -ExportMarketingSettings $ExportMarketingSettings -ExportOutlookSynchronizationSettings $ExportOutlookSynchronizationSettings -ExportIsvConfig $ExportIsvConfig -ExportRelationshipRoles $ExportRelationshipRoles -ExportSales $ExportSales -Timeout $Timeout
         
     Write-Host "UnManaged Solution Exported $ExportSolutionOutputPath\$exportUnmanagedFile"
 }
@@ -87,7 +89,7 @@ if ($ExportManaged)
 {
     Write-Host "Exporting Managed Solution"
         
-    $exportmanagedFile = Export-XrmSolution -ConnectionString $CrmConnectionString -UniqueSolutionName $SolutionName -OutputFolder $ExportSolutionOutputPath -Managed $true -TargetVersion $TargetVersion -IncludeVersionInName $ExportIncludeVersionInSolutionName -ExportAutoNumberingSettings $ExportAutoNumberingSettings -ExportCalendarSettings $ExportCalendarSettings -ExportCustomizationSettings $ExportCustomizationSettings -ExportEmailTrackingSettings $ExportEmailTrackingSettings -ExportExternalApplications $ExportExternalApplications -ExportGeneralSettings $ExportGeneralSettings -ExportMarketingSettings $ExportMarketingSettings -ExportOutlookSynchronizationSettings $ExportOutlookSynchronizationSettings -ExportIsvConfig $ExportIsvConfig -ExportRelationshipRoles $ExportRelationshipRoles -ExportSales $ExportSales
+    $exportmanagedFile = Export-XrmSolution -ConnectionString $CrmConnectionString -UniqueSolutionName $SolutionName -OutputFolder $ExportSolutionOutputPath -Managed $true -TargetVersion $TargetVersion -IncludeVersionInName $ExportIncludeVersionInSolutionName -ExportAutoNumberingSettings $ExportAutoNumberingSettings -ExportCalendarSettings $ExportCalendarSettings -ExportCustomizationSettings $ExportCustomizationSettings -ExportEmailTrackingSettings $ExportEmailTrackingSettings -ExportExternalApplications $ExportExternalApplications -ExportGeneralSettings $ExportGeneralSettings -ExportMarketingSettings $ExportMarketingSettings -ExportOutlookSynchronizationSettings $ExportOutlookSynchronizationSettings -ExportIsvConfig $ExportIsvConfig -ExportRelationshipRoles $ExportRelationshipRoles -ExportSales $ExportSales -Timeout $Timeout
     
     Write-Host "Managed Solution Exported $ExportSolutionOutputPath\$exportmanagedFile"
 }

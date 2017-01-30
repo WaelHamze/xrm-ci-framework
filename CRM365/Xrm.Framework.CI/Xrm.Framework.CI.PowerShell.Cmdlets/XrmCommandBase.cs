@@ -9,6 +9,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
     {
         protected IOrganizationService OrganizationService;
         protected CrmServiceClient ServiceClient;
+        private int DefaultTime = 120;
 
         /// <summary>
         /// <para type="description">The connectionstring to the crm organization (see https://msdn.microsoft.com/en-us/library/mt608573.aspx ).</para>
@@ -16,11 +17,26 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
         [Parameter(Mandatory = true)]
         public string ConnectionString { get; set; }
 
+        /// <summary>
+        /// <para type="description">Timeout in seconds</para>
+        /// </summary>
+        [Parameter(Mandatory = false)]
+        public int Timeout { get; set; }
+
         protected override void BeginProcessing()
         {
             base.BeginProcessing();
 
             ServiceClient = new CrmServiceClient(ConnectionString);
+
+            if (Timeout == 0)
+            {
+                ServiceClient.OrganizationServiceProxy.Timeout = new System.TimeSpan(0, 0, DefaultTime);
+            }
+            else
+            {
+                ServiceClient.OrganizationServiceProxy.Timeout = new System.TimeSpan(0, 0, Timeout);
+            }
             OrganizationService = ServiceClient;
         }
 
