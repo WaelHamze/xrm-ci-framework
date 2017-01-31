@@ -91,8 +91,6 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
 
         public ImportXrmSolutionCommand()
         {
-            AsyncWaitTimeout = 15 * 60;
-            SleepInterval = 15;
         }
 
         #endregion
@@ -109,6 +107,18 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
             if (ImportJobId == Guid.Empty)
             {
                 ImportJobId = Guid.NewGuid();
+            }
+
+            if (AsyncWaitTimeout == 0)
+            {
+                AsyncWaitTimeout = 15 * 60;
+                base.WriteVerbose(string.Format("Setting Default AsyncWaitTimeout: {0}", AsyncWaitTimeout));
+            }
+
+            if (SleepInterval == 0)
+            {
+                SleepInterval = 15;
+                base.WriteVerbose(string.Format("Setting Default SleepInterval: {0}", SleepInterval));
             }
 
             base.WriteVerbose(string.Format("ImportJobId {0}", ImportJobId));
@@ -166,6 +176,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
                 }
 
                 Thread.Sleep(SleepInterval * 1000);
+                base.WriteVerbose(string.Format("Sleeping for {0} seconds", SleepInterval));
 
                 AsyncOperation asyncOperation;
 
@@ -179,6 +190,8 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
                     base.WriteWarning(ex.Message);
                     continue;
                 }
+
+                base.WriteVerbose(string.Format("StatusCode: {0}", asyncOperation.StatusCode.Value));
 
                 switch (asyncOperation.StatusCode.Value)
                 {

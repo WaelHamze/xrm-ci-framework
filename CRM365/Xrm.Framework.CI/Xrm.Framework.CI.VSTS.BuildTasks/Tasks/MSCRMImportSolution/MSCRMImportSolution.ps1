@@ -15,6 +15,7 @@ $skipProductUpdateDependencies = Get-VstsInput -Name skipProductUpdateDependenci
 $convertToManaged = Get-VstsInput -Name convertToManaged -AsBool
 $holdingSolution = Get-VstsInput -Name holdingSolution -AsBool
 $override = Get-VstsInput -Name override -AsBool
+$asyncWaitTimeout = Get-VstsInput -Name asyncWaitTimeout -Require -AsInt
 
 #TFS Release Parameters
 $artifactsFolder = $env:AGENT_RELEASEDIRECTORY 
@@ -28,6 +29,7 @@ Write-Verbose "skipProductUpdateDependencies = $skipProductUpdateDependencies"
 Write-Verbose "convertToManaged = $convertToManaged"
 Write-Verbose "holdingSolution = $holdingSolution"
 Write-Verbose "override = $override"
+Write-Verbose "asyncWaitTimeout = $asyncWaitTimeout"
 Write-Verbose "artifactsFolder = $artifactsFolder"
 
 #Script Location
@@ -38,7 +40,7 @@ $solutionFilename = $solutionFile.Substring($solutionFile.LastIndexOf("\") + 1)
 
 $logFilename = $solutionFilename.replace(".zip", "_importlog_" + [System.DateTime]::Now.ToString("yyyy_MM_dd__HH_mm") + ".xml")
 
-& "$scriptPath\ps_modules\xRMCIFramework\ImportSolution.ps1" -solutionFile $solutionFile -crmConnectionString $CrmConnectionString -override $override -publishWorkflows $publishWorkflows -overwriteUnmanagedCustomizations $overwriteUnmanagedCustomizations -skipProductUpdateDependencies $skipProductUpdateDependencies -ConvertToManaged $convertToManaged -HoldingSolution $holdingSolution -logsDirectory "$artifactsFolder" -logFileName $logFilename
+& "$scriptPath\ps_modules\xRMCIFramework\ImportSolution.ps1" -solutionFile $solutionFile -crmConnectionString $CrmConnectionString -override $override -publishWorkflows $publishWorkflows -overwriteUnmanagedCustomizations $overwriteUnmanagedCustomizations -skipProductUpdateDependencies $skipProductUpdateDependencies -ConvertToManaged $convertToManaged -HoldingSolution $holdingSolution -logsDirectory "$artifactsFolder" -logFileName $logFilename -AsyncWaitTimeout $AsyncWaitTimeout
 
 if (Test-Path $artifactsFolder\$logFilename)
 {

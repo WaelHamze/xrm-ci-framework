@@ -13,8 +13,8 @@
   "demands": [ ],
   "version": {
     "Major": "8",
-    "Minor": "0",
-    "Patch": "3"
+    "Minor": "1",
+    "Patch": "1"
   },
   "minimumAgentVersion": "1.95.0",
   "instanceNameFormat": "MSCRM Import Solution",
@@ -82,6 +82,14 @@
       "defaultValue": "false",
       "required": false,
       "helpMarkDown": "If set to true will override the solution even if a solution with same version exists"
+    },
+    {
+      "name": "asyncWaitTimeout",
+      "type": "string",
+      "label": "Async Wait Timeout",
+      "defaultValue": "900",
+      "required": false,
+      "helpMarkDown": "The number of seconds to wait for async solution import to complete before timing out"
     }
   ],
   "execution": {
