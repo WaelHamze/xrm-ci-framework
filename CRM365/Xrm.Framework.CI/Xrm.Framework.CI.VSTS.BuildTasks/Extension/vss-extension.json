@@ -2,7 +2,7 @@
   "manifestVersion": 1,
   "id": "xrm-ci-framework-build-tasks",
   "name": "Dynamics CRM Build Tools",
-  "version": "8.0.14",
+  "version": "8.0.15",
   "publisher": "WaelHamze",
   "targets": [
     {
@@ -72,6 +72,9 @@
     },
     {
       "path": "MSCRMPackageDeployer"
+    },
+    {
+      "path": "MSCRMSetVersion"
     }
   ],
   "contributions": [
@@ -133,6 +136,16 @@
       ],
       "properties": {
         "name": "MSCRMPackageDeployer"
+      }
+    },
+    {
+      "id": "MSCRMSetVersion",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "MSCRMSetVersion"
       }
     }
   ]
