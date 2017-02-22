@@ -47,8 +47,8 @@ $Cred = New-Object System.Management.Automation.PSCredential ($Username, $SecPas
 
 switch($DeploymentType)
 {
-    "Onpremises" { $CRMConn = Get-CrmConnection -ServerUrl $ServerUrl -OrganizationName $OrganizationName -Credential $Cred }
-	"Online" { $CRMConn = Get-CrmConnection -Credential $Cred -DeploymentRegion $DeploymentRegion –OnlineType $OnlineType –OrganizationName $OrganizationName }
+    "Onpremises" { $CRMConn = Get-CrmConnection -ServerUrl $ServerUrl -OrganizationName $OrganizationName -Credential $Cred  -Verbose}
+	"Online" { $CRMConn = Get-CrmConnection -Credential $Cred -DeploymentRegion $DeploymentRegion –OnlineType $OnlineType –OrganizationName $OrganizationName -Verbose}
 }
 
 #Deploy Package

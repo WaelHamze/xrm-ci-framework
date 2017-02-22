@@ -93,16 +93,38 @@ if ($override -or ($solution -eq $null) -or ($solution.Version -ne $solutionInfo
     Write-Verbose "Import Error Text: $importErrorText"
     Write-Verbose $importJob.Data
 
-    if (($importResult -ne "success") -or ($importProgress -ne 100))
+    	if ($importResult -ne "success")
     {
         throw "Import Failed"
     }
 
-    $solution = Get-XrmSolution -ConnectionString $CrmConnectionString -UniqueSolutionName $solutionInfo.UniqueName
+	#parse the importexportxml and look for result notes with result="failure"
+	$importFailed = $false
+	$importjobXml = [xml]$importJob.Data
+	$failureNodes = $importjobXml.SelectNodes("//*[@result='failure']")
 
-    if ($solution.Version -ne $solutionInfo.Version)
+	foreach ($failureNode in $failureNodes){
+		$componentName = $failureNode.ParentNode.Attributes['name'].Value
+		$errorText = $failureNode.Attributes['errortext'].Value
+		Write-Host "Component Import Failure: '$componentName' failed with error: '$errorText'"
+		$importFailed = $true
+	}
+		
+	if ($importFailed -eq $true)
+	{	
+		throw "The Solution Import failed because one or more components with a result of 'failure' were found. For detals, check the Diagnostics for this build or the solution import log file in the logs subfolder of the Drop folder."
+	}
+	else
+	{
+		Write-Host "The import result of all components is 'success'."
+	}
+	#end parse the importexportxml and look for result notes with result="failure"
+    
+	$solution = Get-XrmSolution -ConnectionString $CrmConnectionString -UniqueSolutionName $solutionInfo.UniqueName
+
+    if ($solution.Version -ne $solutionInfo.Version) 
     {
-        throw "Import Failed"
+        throw "Import Failed. Check the solution import log file in the logs subfolder of the Drop folder."
     }
     else
     {
