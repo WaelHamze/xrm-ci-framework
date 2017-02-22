@@ -12,12 +12,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Keys", "Keys", "{C344F592-8
 		Lib\Keys\Xrm.Framework.CI.snk = Lib\Keys\Xrm.Framework.CI.snk
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{5BB9B263-BD22-4252-B72F-F8F2BAC05E58}"
-	ProjectSection(SolutionItems) = preProject
-		Build\PostBuild.ps1 = Build\PostBuild.ps1
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Packages", "Packages", "{B4777BC5-D150-4B1E-98BD-3E18D6FB35EE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{49817DB7-25BE-4D02-88FE-D4842EEC6C86}"
+	ProjectSection(SolutionItems) = preProject
+		Package.ps1 = Package.ps1
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
