@@ -74,6 +74,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Screenshots", "Screenshots"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Images", "Images", "{83E4A838-01DB-4D10-BA5C-B1D93DB546DC}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MSCRMSetVersion", "MSCRMSetVersion", "{4FD15793-4498-462F-A5AA-B75E4F6D87F4}"
+	ProjectSection(SolutionItems) = preProject
+		Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMSetVersion\MSCRMSetVersion.ps1 = Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMSetVersion\MSCRMSetVersion.ps1
+		Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMSetVersion\task.json = Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMSetVersion\task.json
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -104,5 +110,6 @@ Global
 		{349BF424-9F2C-4B78-A688-25320D17BB3C} = {3763BBA8-F491-4D34-A047-D4ED12EDF387}
 		{CE2E80E0-3570-4E48-8810-FDD6276D6BD1} = {0F51EB44-F666-43BE-BD77-E0E00C2C0347}
 		{83E4A838-01DB-4D10-BA5C-B1D93DB546DC} = {0F51EB44-F666-43BE-BD77-E0E00C2C0347}
+		{4FD15793-4498-462F-A5AA-B75E4F6D87F4} = {BBFA729B-4215-487C-BD89-FD77A7B54C72}
 	EndGlobalSection
 EndGlobal

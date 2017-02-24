@@ -29,11 +29,11 @@ if (Test-Path $CIFrameworkPackagesDir)
 	Remove-Item $CIFrameworkPackagesDir -Force -Recurse
 }
 
-New-Item $CIFrameworkTempDir -ItemType directory
+New-Item $CIFrameworkTempDir -ItemType directory | Out-Null
 
-New-Item $CIFrameworkRootDir -ItemType directory
+New-Item $CIFrameworkRootDir -ItemType directory | Out-Null
 
-New-Item $CIFrameworkPackagesDir -ItemType directory
+New-Item $CIFrameworkPackagesDir -ItemType directory | Out-Null
 
 Copy-Item ($scriptPath + "\Xrm.Framework.CI.PowerShell.Cmdlets\bin\Release\microsoft.xrm.sdk.dll") $CIFrameworkRootDir -Force -Recurse
 Copy-Item ($scriptPath + "\Xrm.Framework.CI.PowerShell.Cmdlets\bin\Release\microsoft.crm.sdk.proxy.dll") $CIFrameworkRootDir -Force -Recurse
@@ -76,13 +76,18 @@ Copy-Item ($scriptPath + "\Xrm.Framework.CI.VSTS.BuildTasks\Lib\icon.png") ($CIF
 Copy-Item ($scriptPath + "\Xrm.Framework.CI.VSTS.BuildTasks\Lib\ps_modules") ($CIFrameworkPackagesDir + "\MSCRMPackageDeployer") -Force -Recurse
 Copy-Item ($CIFrameworkRootDir) ($CIFrameworkPackagesDir + "\MSCRMPackageDeployer\ps_modules") -Force -Recurse
 
+Copy-Item ($scriptPath + "\Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMSetVersion") $CIFrameworkPackagesDir -Force -Recurse
+Copy-Item ($scriptPath + "\Xrm.Framework.CI.VSTS.BuildTasks\Lib\icon.png") ($CIFrameworkPackagesDir + "\MSCRMSetVersion") -Force -Recurse
+Copy-Item ($scriptPath + "\Xrm.Framework.CI.VSTS.BuildTasks\Lib\ps_modules") ($CIFrameworkPackagesDir + "\MSCRMSetVersion") -Force -Recurse
+Copy-Item ($CIFrameworkRootDir) ($CIFrameworkPackagesDir + "\MSCRMSetVersion\ps_modules") -Force -Recurse
+
 Copy-Item ($scriptPath + "\Xrm.Framework.CI.VSTS.BuildTasks\Extension\*.*") $CIFrameworkPackagesDir -Force -Recurse
 Copy-Item ($scriptPath + "\Xrm.Framework.CI.VSTS.BuildTasks\Extension\Screenshots") $CIFrameworkPackagesDir -Force -Recurse
 Copy-Item ($scriptPath + "\Xrm.Framework.CI.VSTS.BuildTasks\Extension\Images") $CIFrameworkPackagesDir -Force -Recurse
 
 tfx extension create --manifest-globs $xRMCIFrameworkPackageName --output-path $CIFrameworkPackagesDir --root $CIFrameworkPackagesDir
 
-[Reflection.Assembly]::LoadWithPartialName( "System.IO.Compression.FileSystem" )
+[void][Reflection.Assembly]::LoadWithPartialName( "System.IO.Compression.FileSystem" )
 $compressionLevel = [System.IO.Compression.CompressionLevel]::Optimal
 [System.IO.Compression.ZipFile]::CreateFromDirectory( $CIFrameworkRootDir, $xRMCIFrameworkPackagePath, $compressionLevel, $false )
 

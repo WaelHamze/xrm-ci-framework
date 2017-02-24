@@ -72,6 +72,9 @@
     },
     {
       "path": "MSCRMPackageDeployer"
+    },
+    {
+      "path": "MSCRMSetVersion"
     }
   ],
   "contributions": [
@@ -133,6 +136,16 @@
       ],
       "properties": {
         "name": "MSCRMPackageDeployer"
+      }
+    },
+    {
+      "id": "MSCRMSetVersion",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "MSCRMSetVersion"
       }
     }
   ]
