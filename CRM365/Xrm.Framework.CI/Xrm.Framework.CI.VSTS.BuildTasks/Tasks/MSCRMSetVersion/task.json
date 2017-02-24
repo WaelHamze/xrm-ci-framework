@@ -41,7 +41,7 @@
       "label": "Version Number",
       "defaultValue": "",
       "required": true,
-      "helpMarkDown": "Sets the solution version. This can be a fixed value or you can use variables e.g. '$(BuildDefinitionName)_5.0.0$(Rev:.r)'"
+      "helpMarkDown": "Sets the solution version. This can be a fixed value or you can use variables e.g. '1.0.0.0' or '5.0.0$(Rev:.r)'"
     }
   ],
   "execution": {
