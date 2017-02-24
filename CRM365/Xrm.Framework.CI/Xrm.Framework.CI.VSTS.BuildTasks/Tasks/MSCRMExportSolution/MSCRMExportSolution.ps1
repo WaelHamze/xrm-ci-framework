@@ -15,6 +15,7 @@ $includeVersionInSolutionFile = Get-VstsInput -Name includeVersionInSolutionFile
 $targetVersion = Get-VstsInput -Name targetVersion
 $updateVersion = Get-VstsInput -Name updateVersion -AsBool
 $includeVersionInSolutionFile = Get-VstsInput -Name includeVersionInSolutionFile -AsBool
+$onlyExportIfNewer = Get-VstsInput -Name onlyExportIfNewer -AsBool
 $outputPath = Get-VstsInput -Name outputPath -Require
 $crmConnectionTimeout = Get-VstsInput -Name crmConnectionTimeout -Require -AsInt
 $exportAutoNumberingSettings = Get-VstsInput -Name exportAutoNumberingSettings -AsBool
@@ -43,12 +44,13 @@ Write-Verbose "includeVersionInSolutionFile = $includeVersionInSolutionFile"
 Write-Verbose "targetVersion = $targetVersion"
 Write-Verbose "updateVersion = $updateVersion"
 Write-Verbose "includeVersionInSolutionFile = $includeVersionInSolutionFile"
+Write-Verbose "onlyExportIfNewer = $onlyExportIfNewer"
 Write-Verbose "outputPath = $outputPath"
 Write-Verbose "crmConnectionTimeout = $crmConnectionTimeout"
 Write-Verbose "exportAutoNumberingSettings = $exportAutoNumberingSettings"
 Write-Verbose "exportCalendarSettings = $exportCalendarSettings"
 Write-Verbose "exportCustomizationSettings = $exportCustomizationSettings"
-Write-Verbose "ExportEmailTrackingSettings = $ExportEmailTrackingSettings"
+Write-Verbose "exportEmailTrackingSettings = $ExportEmailTrackingSettings"
 Write-Verbose "exportExternalApplications = $exportExternalApplications"
 Write-Verbose "exportGeneralSettings = $exportGeneralSettings"
 Write-Verbose "exportIsvConfig = $exportIsvConfig"
@@ -70,6 +72,27 @@ if ($updateVersion)
 	$versionNumber = $buildNumber.Substring($buildNumber.IndexOf("_") + 1)
 }
 
-& "$scriptPath\ps_modules\xRMCIFramework\ExportSolution.ps1"  -CrmConnectionString $crmConnectionString -SolutionName $solutionName -ExportManaged $exportManaged -ExportUnmanaged $exportUnmanaged -ExportSolutionOutputPath $outputPath -TargetVersion $targetVersion -UpdateVersion $updateVersion -RequiredVersion $versionNumber -ExportIncludeVersionInSolutionName $includeVersionInSolutionFile -ExportAutoNumberingSettings $exportAutoNumberingSettings -ExportCalendarSettings $exportCalendarSettings -ExportCustomizationSettings $exportCustomizationSettings -ExportEmailTrackingSettings $exportEmailTrackingSettings -ExportExternalApplications $exportExternalApplications -ExportGeneralSettings $exportGeneralSettings -ExportMarketingSettings $exportMarketingSettings -ExportOutlookSynchronizationSettings $exportOutlookSynchronizationSettings -ExportIsvConfig $exportIsvConfig -ExportRelationshipRoles $exportRelationshipRoles -ExportSales $exportSales -Timeout $crmConnectionTimeout
+& "$scriptPath\ps_modules\xRMCIFramework\ExportSolution.ps1" -CrmConnectionString $crmConnectionString `
+	-SolutionName $solutionName `
+	-ExportManaged $exportManaged `
+	-ExportUnmanaged $exportUnmanaged `
+	-ExportSolutionOutputPath $outputPath `
+	-TargetVersion $targetVersion `
+	-UpdateVersion $updateVersion `
+	-RequiredVersion $versionNumber `
+	-ExportIncludeVersionInSolutionName $includeVersionInSolutionFile `
+	-OnlyExportIfNewer:$onlyExportIfNewer `
+	-ExportAutoNumberingSettings $exportAutoNumberingSettings `
+	-ExportCalendarSettings $exportCalendarSettings `
+	-ExportCustomizationSettings $exportCustomizationSettings `
+	-ExportEmailTrackingSettings $exportEmailTrackingSettings `
+	-ExportExternalApplications $exportExternalApplications `
+	-ExportGeneralSettings $exportGeneralSettings `
+	-ExportMarketingSettings $exportMarketingSettings `
+	-ExportOutlookSynchronizationSettings $exportOutlookSynchronizationSettings `
+	-ExportIsvConfig $exportIsvConfig `
+	-ExportRelationshipRoles $exportRelationshipRoles `
+	-ExportSales $exportSales `
+	-Timeout $crmConnectionTimeout
 
 Write-Verbose 'Leaving MSCRMExportSolution.ps1'
