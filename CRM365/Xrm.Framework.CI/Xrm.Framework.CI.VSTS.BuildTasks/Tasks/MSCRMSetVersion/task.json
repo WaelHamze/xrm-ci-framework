@@ -13,8 +13,8 @@
   "demands": [ ],
   "version": {
     "Major": "8",
-    "Minor": "1",
-    "Patch": "2"
+    "Minor": "2",
+    "Patch": "0"
   },
   "minimumAgentVersion": "1.95.0",
   "instanceNameFormat": "MSCRM Set Version: $(solutionName)",
@@ -25,7 +25,7 @@
       "label": "CRM Connection String",
       "defaultValue": "",
       "required": true,
-      "helpMarkDown": "For more information on format: https://msdn.microsoft.com/en-gb/library/mt608573.aspx"
+      "helpMarkDown": "[Connection String Format](https://msdn.microsoft.com/en-US/library/mt608573.aspx)"
     },
     {
       "name": "solutionName",
@@ -41,7 +41,7 @@
       "label": "Version Number",
       "defaultValue": "",
       "required": true,
-      "helpMarkDown": "Check task help for more information"
+      "helpMarkDown": "Sets the solution version. This can be a fixed value or you can use variables e.g. '$(BuildDefinitionName)_5.0.0$(Rev:.r)'"
     }
   ],
   "execution": {
