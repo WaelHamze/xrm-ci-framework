@@ -67,7 +67,7 @@ Write-Verbose "Imported CIToolkit"
 if ($UpdateVersion)
 {
 	Write-Host "Updating Solution Version to $RequiredVersion"
-	Set-XrmSolutionVersion -ConnectionString $CrmConnectionString -SolutionName $SolutionName -Version $RequiredVersion
+	Set-XrmSolutionVersion -ConnectionString "$CrmConnectionString" -SolutionName $SolutionName -Version $RequiredVersion
 	Write-Host "Solution Version Updated"
 }
 
@@ -80,7 +80,7 @@ if ($ExportUnmanaged)
 {
     Write-Host "Exporting Unmanaged Solution"
         
-    $exportUnmanagedFile = Export-XrmSolution -ConnectionString $CrmConnectionString -UniqueSolutionName $SolutionName -OutputFolder $ExportSolutionOutputPath -Managed $false -TargetVersion $TargetVersion -IncludeVersionInName $ExportIncludeVersionInSolutionName -ExportAutoNumberingSettings $ExportAutoNumberingSettings -ExportCalendarSettings $ExportCalendarSettings -ExportCustomizationSettings $ExportCustomizationSettings -ExportEmailTrackingSettings $ExportEmailTrackingSettings -ExportExternalApplications $ExportExternalApplications -ExportGeneralSettings $ExportGeneralSettings -ExportMarketingSettings $ExportMarketingSettings -ExportOutlookSynchronizationSettings $ExportOutlookSynchronizationSettings -ExportIsvConfig $ExportIsvConfig -ExportRelationshipRoles $ExportRelationshipRoles -ExportSales $ExportSales -Timeout $Timeout
+    $exportUnmanagedFile = Export-XrmSolution -ConnectionString "$CrmConnectionString" -UniqueSolutionName $SolutionName -OutputFolder "$ExportSolutionOutputPath" -Managed $false -TargetVersion $TargetVersion -IncludeVersionInName $ExportIncludeVersionInSolutionName -ExportAutoNumberingSettings $ExportAutoNumberingSettings -ExportCalendarSettings $ExportCalendarSettings -ExportCustomizationSettings $ExportCustomizationSettings -ExportEmailTrackingSettings $ExportEmailTrackingSettings -ExportExternalApplications $ExportExternalApplications -ExportGeneralSettings $ExportGeneralSettings -ExportMarketingSettings $ExportMarketingSettings -ExportOutlookSynchronizationSettings $ExportOutlookSynchronizationSettings -ExportIsvConfig $ExportIsvConfig -ExportRelationshipRoles $ExportRelationshipRoles -ExportSales $ExportSales -Timeout $Timeout
         
     Write-Host "UnManaged Solution Exported $ExportSolutionOutputPath\$exportUnmanagedFile"
 }
@@ -89,7 +89,7 @@ if ($ExportManaged)
 {
     Write-Host "Exporting Managed Solution"
         
-    $exportmanagedFile = Export-XrmSolution -ConnectionString $CrmConnectionString -UniqueSolutionName $SolutionName -OutputFolder $ExportSolutionOutputPath -Managed $true -TargetVersion $TargetVersion -IncludeVersionInName $ExportIncludeVersionInSolutionName -ExportAutoNumberingSettings $ExportAutoNumberingSettings -ExportCalendarSettings $ExportCalendarSettings -ExportCustomizationSettings $ExportCustomizationSettings -ExportEmailTrackingSettings $ExportEmailTrackingSettings -ExportExternalApplications $ExportExternalApplications -ExportGeneralSettings $ExportGeneralSettings -ExportMarketingSettings $ExportMarketingSettings -ExportOutlookSynchronizationSettings $ExportOutlookSynchronizationSettings -ExportIsvConfig $ExportIsvConfig -ExportRelationshipRoles $ExportRelationshipRoles -ExportSales $ExportSales -Timeout $Timeout
+    $exportmanagedFile = Export-XrmSolution -ConnectionString "$CrmConnectionString" -UniqueSolutionName $SolutionName -OutputFolder "$ExportSolutionOutputPath" -Managed $true -TargetVersion $TargetVersion -IncludeVersionInName $ExportIncludeVersionInSolutionName -ExportAutoNumberingSettings $ExportAutoNumberingSettings -ExportCalendarSettings $ExportCalendarSettings -ExportCustomizationSettings $ExportCustomizationSettings -ExportEmailTrackingSettings $ExportEmailTrackingSettings -ExportExternalApplications $ExportExternalApplications -ExportGeneralSettings $ExportGeneralSettings -ExportMarketingSettings $ExportMarketingSettings -ExportOutlookSynchronizationSettings $ExportOutlookSynchronizationSettings -ExportIsvConfig $ExportIsvConfig -ExportRelationshipRoles $ExportRelationshipRoles -ExportSales $ExportSales -Timeout $Timeout
     
     Write-Host "Managed Solution Exported $ExportSolutionOutputPath\$exportmanagedFile"
 }

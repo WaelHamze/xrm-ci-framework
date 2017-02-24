@@ -40,9 +40,9 @@ $solutionFilename = $solutionFile.Substring($solutionFile.LastIndexOf("\") + 1)
 
 $logFilename = $solutionFilename.replace(".zip", "_importlog_" + [System.DateTime]::Now.ToString("yyyy_MM_dd__HH_mm") + ".xml")
 
-& "$scriptPath\ps_modules\xRMCIFramework\ImportSolution.ps1" -solutionFile $solutionFile -crmConnectionString $CrmConnectionString -override $override -publishWorkflows $publishWorkflows -overwriteUnmanagedCustomizations $overwriteUnmanagedCustomizations -skipProductUpdateDependencies $skipProductUpdateDependencies -ConvertToManaged $convertToManaged -HoldingSolution $holdingSolution -logsDirectory "$artifactsFolder" -logFileName $logFilename -AsyncWaitTimeout $AsyncWaitTimeout
+& "$scriptPath\ps_modules\xRMCIFramework\ImportSolution.ps1" -solutionFile "$solutionFile" -crmConnectionString "$CrmConnectionString" -override $override -publishWorkflows $publishWorkflows -overwriteUnmanagedCustomizations $overwriteUnmanagedCustomizations -skipProductUpdateDependencies $skipProductUpdateDependencies -ConvertToManaged $convertToManaged -HoldingSolution $holdingSolution -logsDirectory "$artifactsFolder" -logFileName "$logFilename" -AsyncWaitTimeout $AsyncWaitTimeout
 
-if (Test-Path $artifactsFolder\$logFilename)
+if (Test-Path "$artifactsFolder\$logFilename")
 {
 	Write-Host "##vso[task.uploadfile]$artifactsFolder\$logFilename"
 }

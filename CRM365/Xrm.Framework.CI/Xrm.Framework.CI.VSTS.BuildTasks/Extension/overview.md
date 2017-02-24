@@ -1,4 +1,4 @@
-# xRM CI Frameowork
+# xRM CI Framework
 **The xRM Continuous Integration (CI) Framework is a set of tools that makes it easy and quick to automate builds and deployment of your CRM components.**
 
 This will allow you to setup a fully automated DevOps pipeline so you can deliver CRM more frequently in a consistent and reliable way.

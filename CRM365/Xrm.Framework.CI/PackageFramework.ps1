@@ -75,11 +75,14 @@ Copy-Item ($scriptPath + "\Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMPackageDe
 Copy-Item ($scriptPath + "\Xrm.Framework.CI.VSTS.BuildTasks\Lib\icon.png") ($CIFrameworkPackagesDir + "\MSCRMPackageDeployer") -Force -Recurse
 Copy-Item ($scriptPath + "\Xrm.Framework.CI.VSTS.BuildTasks\Lib\ps_modules") ($CIFrameworkPackagesDir + "\MSCRMPackageDeployer") -Force -Recurse
 Copy-Item ($CIFrameworkRootDir) ($CIFrameworkPackagesDir + "\MSCRMPackageDeployer\ps_modules") -Force -Recurse
+Copy-Item ($scriptPath + "\Lib\CrmSDKPowerShell\*.*") ($CIFrameworkPackagesDir + "\MSCRMPackageDeployer\ps_modules\xRMCIFramework") -Force -Recurse
 
 Copy-Item ($scriptPath + "\Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMSetVersion") $CIFrameworkPackagesDir -Force -Recurse
 Copy-Item ($scriptPath + "\Xrm.Framework.CI.VSTS.BuildTasks\Lib\icon.png") ($CIFrameworkPackagesDir + "\MSCRMSetVersion") -Force -Recurse
 Copy-Item ($scriptPath + "\Xrm.Framework.CI.VSTS.BuildTasks\Lib\ps_modules") ($CIFrameworkPackagesDir + "\MSCRMSetVersion") -Force -Recurse
 Copy-Item ($CIFrameworkRootDir) ($CIFrameworkPackagesDir + "\MSCRMSetVersion\ps_modules") -Force -Recurse
+
+Copy-Item ($scriptPath + "\Lib\CrmSDKPowerShell\*.*") ($CIFrameworkRootDir) -Force -Recurse
 
 Copy-Item ($scriptPath + "\Xrm.Framework.CI.VSTS.BuildTasks\Extension\*.*") $CIFrameworkPackagesDir -Force -Recurse
 Copy-Item ($scriptPath + "\Xrm.Framework.CI.VSTS.BuildTasks\Extension\Screenshots") $CIFrameworkPackagesDir -Force -Recurse

@@ -43,12 +43,12 @@ Write-Verbose "logFilename = $logFilename"
 
 Write-Verbose "Getting solution info from zip"
 
-$solutionInfo = Get-XrmSolutionInfoFromZip -SolutionFilePath $solutionFile
+$solutionInfo = Get-XrmSolutionInfoFromZip -SolutionFilePath "$solutionFile"
 
 Write-Host "Solution Name: " $solutionInfo.UniqueName
 Write-Host "Solution Version: " $solutionInfo.Version
 
-$solution = Get-XrmSolution -ConnectionString $CrmConnectionString -UniqueSolutionName $solutionInfo.UniqueName
+$solution = Get-XrmSolution -ConnectionString "$CrmConnectionString" -UniqueSolutionName $solutionInfo.UniqueName
 
 if ($solution -eq $null)
 {
@@ -65,7 +65,7 @@ if ($override -or ($solution -eq $null) -or ($solution.Version -ne $solutionInfo
 
     $importJobId = [guid]::NewGuid()
   
-    $asyncOperationId = Import-XrmSolution -ConnectionString $CrmConnectionString -SolutionFilePath $solutionFile -publishWorkflows $publishWorkflows -overwriteUnmanagedCustomizations $overwriteUnmanagedCustomizations -SkipProductUpdateDependencies $skipProductUpdateDependencies -ConvertToManaged $convertToManaged -HoldingSolution $holdingSolution -ImportAsync $true -WaitForCompletion $true -ImportJobId $importJobId -AsyncWaitTimeout $AsyncWaitTimeout -Verbose
+    $asyncOperationId = Import-XrmSolution -ConnectionString "$CrmConnectionString" -SolutionFilePath "$solutionFile" -publishWorkflows $publishWorkflows -overwriteUnmanagedCustomizations $overwriteUnmanagedCustomizations -SkipProductUpdateDependencies $skipProductUpdateDependencies -ConvertToManaged $convertToManaged -HoldingSolution $holdingSolution -ImportAsync $true -WaitForCompletion $true -ImportJobId $importJobId -AsyncWaitTimeout $AsyncWaitTimeout -Verbose
  
     Write-Host "Solution Import Completed. Import Job Id: $importJobId"
 
@@ -81,7 +81,7 @@ if ($override -or ($solution -eq $null) -or ($solution.Version -ne $solutionInfo
 		}
 	}
 
-    $importJob = Get-XrmSolutionImportLog -ImportJobId $importJobId -ConnectionString $CrmConnectionString -OutputFile $importLogFile
+    $importJob = Get-XrmSolutionImportLog -ImportJobId $importJobId -ConnectionString $CrmConnectionString -OutputFile "$importLogFile"
 
     $importProgress = $importJob.Progress
     $importResult = (Select-Xml -Content $importJob.Data -XPath "//solutionManifest/result/@result").Node.Value
@@ -120,7 +120,7 @@ if ($override -or ($solution -eq $null) -or ($solution.Version -ne $solutionInfo
 	}
 	#end parse the importexportxml and look for result notes with result="failure"
     
-	$solution = Get-XrmSolution -ConnectionString $CrmConnectionString -UniqueSolutionName $solutionInfo.UniqueName
+	$solution = Get-XrmSolution -ConnectionString "$CrmConnectionString" -UniqueSolutionName $solutionInfo.UniqueName
 
     if ($solution.Version -ne $solutionInfo.Version) 
     {

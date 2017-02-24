@@ -35,9 +35,16 @@ Write-Verbose "Script Path: $scriptPath"
 
 #Load XRM Tooling
 
-Add-PSSnapin Microsoft.Xrm.Tooling.Connector
+$crmToolingConnector = $scriptPath + "\Microsoft.Xrm.Tooling.CrmConnector.Powershell.dll"
+$crmToolingDeployment = $scriptPath + "\Microsoft.Xrm.Tooling.PackageDeployment.Powershell.dll"
 
-Add-PSSnapin Microsoft.Xrm.Tooling.PackageDeployment
+Write-Verbose "Importing: $crmToolingConnector" 
+Import-Module $crmToolingConnector
+Write-Verbose "Imported: $crmToolingConnector"
+
+Write-Verbose "Importing: $crmToolingDeployment" 
+Import-Module $crmToolingDeployment
+Write-Verbose "Imported: $crmToolingDeployment"
 
 #Create Credentials
 $SecPassword = ConvertTo-SecureString $Password -AsPlainText -Force
