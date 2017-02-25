@@ -3,6 +3,8 @@
 
 This will allow you to setup a fully automated DevOps pipeline so you can deliver CRM more frequently in a consistent and reliable way.
 
+The latest version of all tasks work on the VSTS Hosted Agent.
+
 ## Task Catalog
 
 Below is a list of tasks that is included with the xRM CI Framework
@@ -35,4 +37,8 @@ Below is a sample release definition that imports the solution generated from th
 
 ## More Information
 
-For more documentation and source code, check out Github using the links on this page
+For more documentation and source code, check out Github using the links on this page.
+
+## Version History
+
+For information on changes between versions, check the commits on GitHub

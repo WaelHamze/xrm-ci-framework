@@ -81,7 +81,7 @@ if ($override -or ($solution -eq $null) -or ($solution.Version -ne $solutionInfo
 		}
 	}
 
-    $importJob = Get-XrmSolutionImportLog -ImportJobId $importJobId -ConnectionString $CrmConnectionString -OutputFile "$importLogFile"
+    $importJob = Get-XrmSolutionImportLog -ImportJobId $importJobId -ConnectionString "$CrmConnectionString" -OutputFile "$importLogFile"
 
     $importProgress = $importJob.Progress
     $importResult = (Select-Xml -Content $importJob.Data -XPath "//solutionManifest/result/@result").Node.Value

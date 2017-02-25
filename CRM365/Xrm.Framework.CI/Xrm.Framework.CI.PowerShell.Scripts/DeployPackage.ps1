@@ -3,13 +3,7 @@
 #
 
 param(
-[string]$DeploymentType,
-[string]$Username,
-[string]$Password,
-[string]$ServerUrl,
-[string]$OrganizationName,
-[string]$DeploymentRegion,
-[string]$OnlineType,
+[string]$CrmConnectionString,
 [string]$PackageName,
 [string]$PackageDirectory
 )
@@ -19,13 +13,7 @@ $ErrorActionPreference = "Stop"
 Write-Verbose 'Entering DeployPackage.ps1'
 
 #Parameters
-Write-Verbose "DeploymentType = $DeploymentType"
-Write-Verbose "Username = $Username"
-Write-Verbose "Password = ******"
-Write-Verbose "ServerUrl = $ServerUrl"
-Write-Verbose "OrganizationName = $OrganizationName"
-Write-Verbose "DeploymentRegion = $DeploymentRegion"
-Write-Verbose "OnlineType = $OnlineType"
+Write-Verbose "CrmConnectionString = $CrmConnectionString"
 Write-Verbose "PackageName = $PackageName"
 Write-Verbose "PackageDirectory = $PackageDirectory"
 
@@ -46,17 +34,9 @@ Write-Verbose "Importing: $crmToolingDeployment"
 Import-Module $crmToolingDeployment
 Write-Verbose "Imported: $crmToolingDeployment"
 
-#Create Credentials
-$SecPassword = ConvertTo-SecureString $Password -AsPlainText -Force
-$Cred = New-Object System.Management.Automation.PSCredential ($Username, $SecPassword)
-
 #Create Connection
 
-switch($DeploymentType)
-{
-    "Onpremises" { $CRMConn = Get-CrmConnection -ServerUrl $ServerUrl -OrganizationName $OrganizationName -Credential $Cred  -Verbose}
-	"Online" { $CRMConn = Get-CrmConnection -Credential $Cred -DeploymentRegion $DeploymentRegion –OnlineType $OnlineType –OrganizationName $OrganizationName -Verbose}
-}
+$CRMConn = Get-CrmConnection -ConnectionString $CrmConnectionString -Verbose
 
 #Deploy Package
 

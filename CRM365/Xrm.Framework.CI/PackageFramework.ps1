@@ -2,7 +2,7 @@
 # PackageFramework.ps1
 #
 
-$version = "8.0.0"
+$version = "8.0.17"
 
 Write-Host "Packaging xRM CI Framework $version"
 

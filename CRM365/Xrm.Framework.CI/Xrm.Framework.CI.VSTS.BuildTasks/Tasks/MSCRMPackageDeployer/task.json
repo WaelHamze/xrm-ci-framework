@@ -13,19 +13,20 @@
   "demands": [ ],
   "version": {
     "Major": "8",
-    "Minor": "0",
-    "Patch": "4"
+    "Minor": "1",
+    "Patch": "1"
   },
   "minimumAgentVersion": "1.95.0",
   "instanceNameFormat": "MSCRM Package Deployer: $(packageName)",
-  "groups": [
-    {
-      "name": "crmConnection",
-      "displayName": "Crm Connection",
-      "isExpanded": true
-    }
-  ],
   "inputs": [
+    {
+      "name": "crmConnectionString",
+      "type": "string",
+      "label": "CRM Connection String",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "For more information on format: https://msdn.microsoft.com/en-gb/library/mt608573.aspx"
+    },
     {
       "name": "packageName",
       "type": "string",
@@ -41,89 +42,6 @@
       "defaultValue": "$(System.DefaultWorkingDirectory)/<BuildName>/<ArtifactName>/<PackageFolder>",
       "required": false,
       "helpMarkDown": "The absolute path to the CRM Package folder on the release agent machine"
-    },
-    {
-      "name": "deploymentType",
-      "type": "pickList",
-      "label": "Deployment Type",
-      "defaultValue": "Online",
-      "required": true,
-      "helpMarkDown": "The CRM deployment type",
-      "options": {
-        "Online": "Online",
-        "Onpremises": "On-premises"
-      },
-      "groupName": "crmConnection"
-    },
-    {
-      "name": "username",
-      "type": "string",
-      "label": "Username",
-      "defaultValue": "",
-      "required": true,
-      "helpMarkDown": "The Dynamics CRM username",
-      "groupName": "crmConnection"
-    },
-    {
-      "name": "password",
-      "type": "string",
-      "label": "Password",
-      "defaultValue": "",
-      "required": true,
-      "helpMarkDown": "The password used to connect to Dynamics CRM",
-      "groupName": "crmConnection"
-    },
-    {
-      "name": "serverUrl",
-      "type": "string",
-      "label": "Server Url",
-      "defaultValue": "",
-      "required": true,
-      "helpMarkDown": "The CRM server url to your on-premises instance. e.g. http://<your_CRM_Server>",
-      "visibleRule": "deploymentType = Onpremises",
-      "groupName": "crmConnection"
-    },
-    {
-      "name": "organizationName",
-      "type": "string",
-      "label": "Organization Name",
-      "defaultValue": "",
-      "required": true,
-      "helpMarkDown": "The CRM organization name",
-      "groupName": "crmConnection"
-    },
-    {
-      "name": "deploymentRegion",
-      "type": "pickList",
-      "label": "Deployment Region",
-      "defaultValue": "EMEA",
-      "required": true,
-      "helpMarkDown": "The CRM online deployment region",
-      "options": {
-        "NorthAmerica": "NorthAmerica",
-        "EMEA": "EMEA",
-        "APAC": "APAC",
-        "SouthAmerica": "SouthAmerica",
-        "Oceania": "Oceania",
-        "JPN": "JPN",
-        "NorthAmerica2": "NorthAmerica2"
-      },
-      "visibleRule": "deploymentType = Online",
-      "groupName": "crmConnection"
-    },
-    {
-      "name": "onlineType",
-      "type": "pickList",
-      "label": "Online Type",
-      "defaultValue": "Office365",
-      "required": true,
-      "helpMarkDown": "The type of CRM online authentication",
-      "options": {
-        "Office365": "Office365",
-        "LiveID": "LiveID"
-      },
-      "visibleRule": "deploymentType = Online",
-      "groupName": "crmConnection"
     }
   ],
   "execution": {
