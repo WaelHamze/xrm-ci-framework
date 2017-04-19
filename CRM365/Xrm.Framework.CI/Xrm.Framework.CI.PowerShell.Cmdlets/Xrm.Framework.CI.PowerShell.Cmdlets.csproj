@@ -97,6 +97,7 @@
     <None Include="bin\coretools\CrmSvcUtil.exe.config" />
     <None Include="bin\coretools\LicenseTerms.docx" />
     <None Include="packages.config" />
+    <None Include="Xrm.Framework.CI.PowerShell.Cmdlets.nuspec" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="bin\coretools\CrmSvcUtil.exe" />
@@ -110,6 +111,7 @@
     <Content Include="bin\coretools\Microsoft.Xrm.Tooling.CrmConnectControl.dll" />
     <Content Include="bin\coretools\Other Redistributable.txt" />
     <Content Include="bin\coretools\SolutionPackager.exe" />
+    <Content Include="readme.txt" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\Debug\" />
@@ -117,8 +119,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
+    <PostBuildEvent>NuGet.exe pack -sym $(ProjectDir)$(ProjectFileName) -Prop Configuration=$(ConfigurationName)</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
