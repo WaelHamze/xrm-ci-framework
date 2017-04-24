@@ -1,0 +1,1 @@
+﻿-Command "try { & '.\__ScriptFile__' __Parameters__} Catch [System.Exception] {Write-Output $_;$inner = $_.Exception.InnerException;while ($inner){Write-Output $inner;$inner = $inner.InnerException}$exitCode = 1} if ($exitCode -gt 0) { '`nERROR: Operation Failed' } exit $exitCode"

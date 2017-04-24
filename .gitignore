@@ -43,3 +43,8 @@
 /CRM365/Xrm.Framework.CI.Sample/Xrm.Framework.CI.Sample.WFActivities/obj/Debug
 /CRM365/Xrm.Framework.CI.Sample/Xrm.Framework.CI.Sample.WFActivities/obj/Release
 /CRM365/Xrm.Framework.CI.Sample/Xrm.Framework.CI.Sample.Plugins/obj
+/CRM2013/Xrm.Framework.CI/Xrm.Framework.CI.PowerShell/bin/Debug
+/CRM2013/Xrm.Framework.CI/Xrm.Framework.CI.PowerShell/obj/Debug
+/CRM2013/Xrm.Framework.CI/Xrm.Framework.CI.TeamFoundation.Activities/obj/Debug
+/CRM2013/Xrm.Framework.CI/Xrm.Framework.CI.TeamFoundation.Templates/bin/Debug
+/CRM2013/Xrm.Framework.CI/Xrm.Framework.CI.TeamFoundation.Templates/obj/Debug

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Assemblies>
+  <Assembly FileName="Microsoft.Xrm.Sdk.dll">
+    <Extensions>
+      <Extension FullName="Microsoft.Xrm.Sdk.Entity" />
+    </Extensions>
+  </Assembly>
+  <Assembly FileName="Microsoft.Xrm.Sdk.Deployment.dll">
+    <Extensions>
+      <Extension FullName="Microsoft.Xrm.Sdk.Deployment.Organization" />
+    </Extensions>
+  </Assembly>
+  <Assembly FileName="Microsoft.Crm.Sdk.Proxy.dll">
+    <Extensions>
+      <Extension FullName="Microsoft.Crm.Sdk.Messages.WhoAmIRequest" />
+    </Extensions>
+  </Assembly>
+  <Assembly FileName="Microsoft.Xrm.Client.dll">
+    <Extensions>
+      <Extension FullName="Microsoft.Xrm.Client.CrmConnection" />
+    </Extensions>
+  </Assembly>
+</Assemblies>
