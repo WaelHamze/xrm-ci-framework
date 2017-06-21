@@ -2,7 +2,7 @@
 # PackageFramework.ps1
 #
 
-$version = "8.0.17"
+$version = "8.0.18"
 
 Write-Host "Packaging xRM CI Framework $version"
 
@@ -43,7 +43,7 @@ Copy-Item ($scriptPath + "\Xrm.Framework.CI.PowerShell.Cmdlets\bin\Release\Micro
 Copy-Item ($scriptPath + "\Xrm.Framework.CI.PowerShell.Cmdlets\bin\Release\Microsoft.Management.Infrastructure.dll") $CIFrameworkRootDir -Force -Recurse
 Copy-Item ($scriptPath + "\Xrm.Framework.CI.PowerShell.Cmdlets\bin\Release\Microsoft.Xrm.Sdk.Deployment.dll") $CIFrameworkRootDir -Force -Recurse
 Copy-Item ($scriptPath + "\Xrm.Framework.CI.PowerShell.Cmdlets\bin\Release\Microsoft.IdentityModel.Clients.ActiveDirectory.dll") $CIFrameworkRootDir -Force -Recurse
-Copy-Item ($scriptPath + "\packages\Microsoft.CrmSdk.CoreTools.8.2.0.2\content\bin\coretools\SolutionPackager.exe") $CIFrameworkRootDir -Force -Recurse
+Copy-Item ($scriptPath + "\packages\Microsoft.CrmSdk.CoreTools.8.2.0.5\content\bin\coretools\SolutionPackager.exe") $CIFrameworkRootDir -Force -Recurse
 Copy-Item ($scriptPath + "\Xrm.Framework.CI.PowerShell.Scripts\*.ps1") ($CIFrameworkRootDir) -Force -Recurse
 
 Copy-Item ($scriptPath + "\Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMPing") $CIFrameworkPackagesDir -Force -Recurse
