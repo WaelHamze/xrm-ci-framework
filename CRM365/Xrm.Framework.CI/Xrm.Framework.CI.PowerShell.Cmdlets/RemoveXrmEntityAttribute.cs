@@ -12,7 +12,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
     ///   <code>C:\PS>Remove-XrmEntityAttribute -EntityName "new_demoentity" -AttributeName "new_removeme"</code>
     ///   <para>Removes the new_removeme attribute from the new_demoentity entity</para>
     /// </example>
-    /// <para type="link" uri="http://msdn.microsoft.com/en-us/library/microsoft.xrm.sdk.messages.deleterequest.aspx">DeleteRequest.</para>
+    /// <para type="link" uri="http://msdn.microsoft.com/en-us/library/microsoft.xrm.sdk.messages.deleteattributerequest.aspx">DeleteAttributeRequest.</para>
     [Cmdlet(VerbsCommon.Remove, "XrmEntityAttribute")]
     public class RemoveXrmEntityAttributeCommand: XrmCommandBase
     {
