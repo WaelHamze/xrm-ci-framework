@@ -1,33 +1,28 @@
 ﻿using System;
 using System.Management.Automation;
+using Microsoft.Xrm.Sdk;
 
 namespace Xrm.Framework.CI.PowerShell.Cmdlets
 {
     /// <summary>
-    /// <para type="synopsis">Deletes an existing entity record.</para>
-    /// <para type="description">The Remove-XrmEntity cmdlet deletes an record of an entity by its id.</para>
+    /// <para type="synopsis">Deletes an existing entity.</para>
+    /// <para type="description">The Remove-XrmEntity cmdlet deletes an entity from an organization. Note, this does not automatically resolve any dependencies.</para>
     /// </summary>
     /// <example>
-    ///   <code>C:\PS>Delete-XrmEntity -EntityName "account" -Id "27c9fb86-1118-4f35-a3dc-6f0b1b344a9b"</code>
-    ///   <para>Deletes a record of the account entity by its id.</para>
+    ///   <code>C:\PS>Remove-XrmEntity -EntityName "new_demoentity"</code>
+    ///   <para>Deletes the new_demoentity from the connected organization.</para>
     /// </example>
-    /// <para type="link" uri="http://msdn.microsoft.com/en-us/library/microsoft.xrm.sdk.messages.deleterequest.aspx">DeleteRequest.</para>
+    /// <para type="link" uri="http://msdn.microsoft.com/en-us/library/microsoft.xrm.sdk.messages.deleteentityrequest.aspx">DeleteEntityRequest.</para>
     [Cmdlet(VerbsCommon.Remove, "XrmEntity")]
     public class RemoveXrmEntityCommand : XrmCommandBase
     {
         #region Parameters
 
         /// <summary>
-        /// <para type="description">The logical name of the entity that is specified in the Id parameter.</para>
+        /// <para type="description">The logical name of the entity to delete.</para>
         /// </summary>
         [Parameter(Mandatory = true)]
         public string EntityName { get; set; }
-
-        /// <summary>
-        /// <para type="description">The ID of the record that you want to delete.</para>
-        /// </summary>
-        [Parameter(Mandatory = true)]
-        public Guid Id { get; set; }
 
         #endregion
 
@@ -37,11 +32,11 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
         {
             base.ProcessRecord();
 
-            base.WriteVerbose(string.Format("Deleting Entity: {0} {1}", EntityName, Id));
+            base.WriteVerbose(string.Format("Deleting Entity: {0}", EntityName));
+            Microsoft.Xrm.Sdk.Messages.DeleteEntityRequest deleterequest = new Microsoft.Xrm.Sdk.Messages.DeleteEntityRequest { LogicalName = EntityName };
+            OrganizationService.Execute(deleterequest);
 
-            OrganizationService.Delete(EntityName, Id);
-
-            base.WriteVerbose(string.Format("Entity Deleted: {0} {1}", EntityName, Id));
+            base.WriteVerbose(string.Format("Entity Deleted: {0}", EntityName));
         }
 
         #endregion
