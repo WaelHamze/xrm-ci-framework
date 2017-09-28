@@ -2,7 +2,7 @@
   "manifestVersion": 1,
   "id": "xrm-ci-framework-build-tasks",
   "name": "Dynamics CRM Build Tools",
-  "version": "8.0.19",
+  "version": "8.1.0",
   "publisher": "WaelHamze",
   "targets": [
     {

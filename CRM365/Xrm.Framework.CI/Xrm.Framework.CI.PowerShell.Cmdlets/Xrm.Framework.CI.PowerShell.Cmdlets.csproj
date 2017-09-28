@@ -119,7 +119,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>NuGet.exe pack -sym $(ProjectDir)$(ProjectFileName) -Prop Configuration=$(ConfigurationName)</PostBuildEvent>
+    <PostBuildEvent>$(SolutionDir)\packages\NuGet.CommandLine.4.1.0\tools\NuGet.exe pack -sym $(ProjectDir)$(ProjectFileName) -Prop Configuration=$(ConfigurationName)</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

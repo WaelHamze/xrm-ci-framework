@@ -9,6 +9,10 @@ param(
 [string]$InstanceId,
 [string]$BackupLabel,
 [string]$BackupNotes,
+[bool]$IsAzureBackup = $false,
+[string]$ContainerName,
+[string]$StorageAccountKey,
+[string]$StorageAccountName,
 [bool]$WaitForCompletion = $false,
 [int]$SleepDuration = 3,
 [string]$PSModulePath
@@ -23,26 +27,32 @@ Write-Verbose "ApiUrl = $ApiUrl"
 Write-Verbose "Username = $Username"
 Write-Verbose "InstanceId = $InstanceId"
 Write-Verbose "BackupLabel = $BackupLabel"
+Write-Verbose "BackupNotes = $BackupNotes"
+Write-Verbose "IsAzureBackup = $IsAzureBackup"
+Write-Verbose "ContainerName = $ContainerName"
+Write-Verbose "StorageAccountKey = $StorageAccountKey"
+Write-Verbose "StorageAccountName = $StorageAccountName"
 Write-Verbose "WaitForCompletion = $WaitForCompletion"
 Write-Verbose "SleepDuration = $SleepDuration"
+Write-Verbose "PSModulePath = $PSModulePath"
 
 #Script Location
 $scriptPath = split-path -parent $MyInvocation.MyCommand.Definition
 Write-Verbose "Script Path: $scriptPath"
 
 #Load Online Management Module
-$xrmOnlineModule = $scriptPath + "Microsoft.Xrm.OnlineManagementAPI.dll"
+$xrmOnlineModule = $scriptPath + "\Microsoft.Xrm.OnlineManagementAPI.dll"
 
 if ($PSModulePath)
 {
-	$xrmOnlineModule = $PSModulePath + "Microsoft.Xrm.OnlineManagementAPI.dll"
+	$xrmOnlineModule = $PSModulePath + "\Microsoft.Xrm.OnlineManagementAPI.dll"
 }
 
 Write-Verbose "Importing Online Management Module: $xrmOnlineModule" 
 Import-Module $xrmOnlineModule
 Write-Verbose "Imported Online Management Module"
 
-$backupInfo = New-CrmBackupInfo -InstanceId $InstanceId -Label "$BackupLabel" -IsAzureBackup $false -Notes "$BackupNotes"
+$backupInfo = New-CrmBackupInfo -InstanceId $InstanceId -Label "$BackupLabel" -Notes "$BackupNotes" -IsAzureBackup $IsAzureBackup -AzureContainerName $ContainerName -AzureStorageAccountKey $StorageAccountKey -AzureStorageAccountName $StorageAccountName
 
 #Create Credentials
 $SecPassword = ConvertTo-SecureString $Password -AsPlainText -Force
@@ -56,26 +66,15 @@ $OperationStatus = $backupOutput.Status
 Write-Output "OperationId = $OperationId"
 Write-Verbose "Status = $OperationStatus"
 
-if ($WaitForCompletion)
+if ($backupOutput.Errors.Count -gt 0)
 {
-	$completed = $false
-	Write-Verbose "Waiting for completion...$OperationId"
-
-	while ($completed -eq $false)
-	{	
-		Start-Sleep -Seconds $SleepDuration
-    
-		$OpStatus = Get-CrmOperationStatus -ApiUrl $ApiUrl -Credential $Cred -Id $OperationId
-
-		$OperationStatus = $OpStatus.Status
-    
-		Write-Verbose "Status = $OperationStatus"
-    
-		if ($OperationStatus -eq "Succeeded")
-		{
-			$completed = $true
-		}
-	}
+	throw "Errors encountered : $backupOutput.Errors"
 }
 
-# NotStarted, Running, Ready, Succeeded
+if ($WaitForCompletion)
+{
+	& "$scriptPath\WaitForCRMOperation.ps1" -OperationId $OperationId -PSModulePath $PSModulePath
+}
+
+Write-Verbose 'Leaving BackupCRMOnlineInstance.ps1'
+
