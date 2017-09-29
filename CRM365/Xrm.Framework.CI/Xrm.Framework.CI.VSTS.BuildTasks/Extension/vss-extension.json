@@ -1,15 +1,15 @@
 {
   "manifestVersion": 1,
   "id": "xrm-ci-framework-build-tasks",
-  "name": "Dynamics CRM Build Tools",
-  "version": "8.1.0",
+  "name": "Dynamics 365 Build Tools",
+  "version": "8.1.3",
   "publisher": "WaelHamze",
   "targets": [
     {
       "id": "Microsoft.VisualStudio.Services"
     }
   ],
-  "description": "Tasks for automating Build & Deployment of Dynamics CRM 365 Solutions",
+  "description": "Tasks for automating Build & Deployment of Dynamics 365 Solutions",
   "categories": [
     "Build and release"
   ],
@@ -75,6 +75,10 @@
     },
     {
       "path": "MSCRMSetVersion"
+    }
+    ,
+    {
+      "path": "MSCRMBackupOnlineInstance"
     }
   ],
   "contributions": [
@@ -146,6 +150,16 @@
       ],
       "properties": {
         "name": "MSCRMSetVersion"
+      }
+    },
+    {
+      "id": "MSCRMBackupOnlineInstance",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "MSCRMBackupOnlineInstance"
       }
     }
   ]

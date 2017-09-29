@@ -5,6 +5,11 @@ This will allow you to setup a fully automated DevOps pipeline so you can delive
 
 The latest version of all tasks work on the VSTS Hosted Agent.
 
+## Supported Versions
+
+**Dynamics 365 (8.x.x)** (Some tasks may work with previous version of CRM)
+**VSTS/TFS** For support and installation [instructions](https://docs.microsoft.com/en-us/vsts/marketplace/get-tfs-extensions)
+
 ## Task Catalog
 
 Below is a list of tasks that is included with the xRM CI Framework
@@ -41,4 +46,11 @@ For more documentation and source code, check out Github using the links on this
 
 ## Version History
 
-For information on changes between versions, check the commits on GitHub
+**8.0.x**
+Initial Release
+
+**8.1.x**
+Added task to backup CRM online instances
+
+
+For more information on changes between versions, check the commits on GitHub
