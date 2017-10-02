@@ -58,17 +58,18 @@ $backupInfo = New-CrmBackupInfo -InstanceId $InstanceId -Label "$BackupLabel" -N
 $SecPassword = ConvertTo-SecureString $Password -AsPlainText -Force
 $Cred = New-Object System.Management.Automation.PSCredential ($Username, $SecPassword)
  
-$backupOutput = Backup-CrmInstance -ApiUrl $ApiUrl -BackupInfo $backupInfo -Credential $Cred
+$operation = Backup-CrmInstance -ApiUrl $ApiUrl -BackupInfo $backupInfo -Credential $Cred
 
-$OperationId = $backupOutput.OperationId
-$OperationStatus = $backupOutput.Status
+$OperationId = $operation.OperationId
+$OperationStatus = $operation.Status
 
 Write-Output "OperationId = $OperationId"
 Write-Verbose "Status = $OperationStatus"
 
-if ($backupOutput.Errors.Count -gt 0)
+if ($operation.Errors.Count -gt 0)
 {
-	throw "Errors encountered : $backupOutput.Errors"
+    $errorMessage = $operation.Errors[0].Description
+    throw "Errors encountered : $errorMessage"
 }
 
 if ($WaitForCompletion)
