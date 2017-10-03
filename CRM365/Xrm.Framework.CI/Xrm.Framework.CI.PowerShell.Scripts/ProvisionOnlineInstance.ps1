@@ -84,7 +84,7 @@ if ($operation.Errors.Count -gt 0)
     throw "Errors encountered : $errorMessage"
 }
 
-if ($WaitForCompletion -and ($OperationStatus -ieq "Succeeded"))
+if ($WaitForCompletion -and ($OperationStatus -ne "Succeeded"))
 {
 	& "$scriptPath\WaitForCRMOperation.ps1" -OperationId $OperationId -PSModulePath $PSModulePath
 }
