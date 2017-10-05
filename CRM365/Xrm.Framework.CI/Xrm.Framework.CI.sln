@@ -86,6 +86,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MSCRMBackupOnlineInstance",
 		Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMBackupOnlineInstance\task.json = Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMBackupOnlineInstance\task.json
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MSCRMProvisionOnlineInstance", "MSCRMProvisionOnlineInstance", "{8EF5BEBD-D133-487C-A7B3-1A4A6622D56F}"
+	ProjectSection(SolutionItems) = preProject
+		Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMProvisionOnlineInstance\MSCRMProvisionOnlineInstance.ps1 = Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMProvisionOnlineInstance\MSCRMProvisionOnlineInstance.ps1
+		Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMProvisionOnlineInstance\task.json = Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMProvisionOnlineInstance\task.json
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -118,5 +124,6 @@ Global
 		{83E4A838-01DB-4D10-BA5C-B1D93DB546DC} = {0F51EB44-F666-43BE-BD77-E0E00C2C0347}
 		{4FD15793-4498-462F-A5AA-B75E4F6D87F4} = {BBFA729B-4215-487C-BD89-FD77A7B54C72}
 		{71BA7451-0E6A-4555-840D-7C98F596787E} = {BBFA729B-4215-487C-BD89-FD77A7B54C72}
+		{8EF5BEBD-D133-487C-A7B3-1A4A6622D56F} = {BBFA729B-4215-487C-BD89-FD77A7B54C72}
 	EndGlobalSection
 EndGlobal

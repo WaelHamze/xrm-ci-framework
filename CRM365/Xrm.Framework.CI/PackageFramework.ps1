@@ -88,6 +88,12 @@ Copy-Item ($scriptPath + "\Xrm.Framework.CI.VSTS.BuildTasks\Lib\ps_modules") ($C
 Copy-Item ($CIFrameworkRootDir) ($CIFrameworkPackagesDir + "\MSCRMBackupOnlineInstance\ps_modules") -Force -Recurse
 Copy-Item ($scriptPath + "\Lib\Microsoft.Xrm.OnlineManagementAPI") ($CIFrameworkPackagesDir + "\MSCRMBackupOnlineInstance\ps_modules\") -Force -Recurse
 
+Copy-Item ($scriptPath + "\Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMProvisionOnlineInstance") $CIFrameworkPackagesDir -Force -Recurse
+Copy-Item ($scriptPath + "\Xrm.Framework.CI.VSTS.BuildTasks\Lib\icon.png") ($CIFrameworkPackagesDir + "\MSCRMProvisionOnlineInstance") -Force -Recurse
+Copy-Item ($scriptPath + "\Xrm.Framework.CI.VSTS.BuildTasks\Lib\ps_modules") ($CIFrameworkPackagesDir + "\MSCRMProvisionOnlineInstance") -Force -Recurse
+Copy-Item ($CIFrameworkRootDir) ($CIFrameworkPackagesDir + "\MSCRMProvisionOnlineInstance\ps_modules") -Force -Recurse
+Copy-Item ($scriptPath + "\Lib\Microsoft.Xrm.OnlineManagementAPI") ($CIFrameworkPackagesDir + "\MSCRMProvisionOnlineInstance\ps_modules\") -Force -Recurse
+
 Copy-Item ($scriptPath + "\Lib\CrmSDKPowerShell\*.*") ($CIFrameworkRootDir) -Force -Recurse
 
 Copy-Item ($scriptPath + "\Xrm.Framework.CI.VSTS.BuildTasks\Extension\*.*") $CIFrameworkPackagesDir -Force -Recurse

@@ -62,13 +62,19 @@ Write-Verbose "Importing Online Management Module: $xrmOnlineModule"
 Import-Module $xrmOnlineModule
 Write-Verbose "Imported Online Management Module"
 
-$instanceCurrency = New-CrmInstanceInfo -CurrencyCode $CurrencyCode -CurrencyName "$CurrencyName" -CurrencyPrecision $CurrencyPrecision -CurrencySymbol $CurrencySymbol
-
 #Create Credentials
 $SecPassword = ConvertTo-SecureString $Password -AsPlainText -Force
 $Cred = New-Object System.Management.Automation.PSCredential ($Username, $SecPassword)
  
-$instanceInfo = New-CrmInstanceInfo -BaseLanguage $LanguageId -DomainName $DomainName -FriendlyName $FriendlyName -InitialUserEmail $InitialUserEmail -InstanceType $InstanceType -ServiceVersionId $ReleaseId -Purpose $Purpose -TemplateList $TemplateNames
+if ($CurrencyCode -ne '')
+{
+	$instanceInfo = New-CrmInstanceInfo -BaseLanguage $LanguageId -DomainName $DomainName -FriendlyName $FriendlyName -InitialUserEmail $InitialUserEmail -InstanceType $InstanceType -ServiceVersionId $ReleaseId -CurrencyName $CurrencyName -CurrencyCode $CurrencyCode -CurrencyPrecision $CurrencyPrecision -CurrencySymbol $CurrencySymbol -Purpose $Purpose -TemplateList $TemplateNames
+}
+
+if ($CurrencyCode -eq '')
+{
+	$instanceInfo = New-CrmInstanceInfo -BaseLanguage $LanguageId -DomainName $DomainName -FriendlyName $FriendlyName -InitialUserEmail $InitialUserEmail -InstanceType $InstanceType -ServiceVersionId $ReleaseId -Purpose $Purpose -TemplateList $TemplateNames
+}
 
 $operation = New-CrmInstance -ApiUrl $ApiUrl -NewInstanceInfo $instanceInfo -Credential $Cred
 
@@ -90,4 +96,3 @@ if ($WaitForCompletion -and ($OperationStatus -ne "Succeeded"))
 }
 
 Write-Verbose 'Leaving ProvisionOnlineInstance.ps1'
-
