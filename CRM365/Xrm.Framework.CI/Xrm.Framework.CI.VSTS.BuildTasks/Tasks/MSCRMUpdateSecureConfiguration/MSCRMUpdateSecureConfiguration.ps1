@@ -12,11 +12,12 @@ $secureConfiguration = Get-VstsInput -Name secureConfiguration -Require
 
 #Print Verbose
 Write-Verbose "crmConnectionString = $crmConnectionString"
+Write-Verbose "secureConfiguration = $secureConfiguration"
 
 #Script Location
 $scriptPath = split-path -parent $MyInvocation.MyCommand.Definition
 Write-Verbose "Script Path: $scriptPath"
 
-& "$scriptPath\ps_modules\xRMCIFramework\UpdateSecureConfiguration.ps1" -CrmConnectionString $crmConnectionString -SecureConfiguration
+& "$scriptPath\ps_modules\xRMCIFramework\UpdateSecureConfiguration.ps1" -CrmConnectionString $crmConnectionString -SecureConfiguration $secureConfiguration
 
 Write-Verbose 'Leaving MSCRMUpdateSecureConfiguration.ps1'

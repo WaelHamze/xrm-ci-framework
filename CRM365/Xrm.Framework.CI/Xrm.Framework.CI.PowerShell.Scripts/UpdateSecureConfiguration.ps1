@@ -42,12 +42,13 @@ For ($i=0; $i -lt $array.Count; $i++)
         $processingStepSecureConfiguration.Id = $result.Guid
         $step.Attributes["sdkmessageprocessingstepsecureconfigid"] = $processingStepSecureConfiguration.ToEntityReference()
         Set-XrmEntity -ConnectionString $CrmConnectionString -EntityObject $step
+	}
 	else
     {
 		$secureConfigurationReference = $step.Attributes["sdkmessageprocessingstepsecureconfigid"]
-        $secureConfiguration = Get-XrmEntity -ConnectionString $CrmConnectionString -EntityName $secureConfigurationReference.LogicalName -Id $secureConfigurationReference.Id
-        $secureConfiguration.Attributes["secureconfig"] = $secureConfig
-        Set-XrmEntity -ConnectionString $CrmConnectionString -EntityObject $secureConfiguration
+        $processingStepSecureConfiguration = Get-XrmEntity -ConnectionString $CrmConnectionString -EntityName $secureConfigurationReference.LogicalName -Id $secureConfigurationReference.Id
+        $processingStepSecureConfiguration.Attributes["secureconfig"] = $secureConfig
+        Set-XrmEntity -ConnectionString $CrmConnectionString -EntityObject $processingStepSecureConfiguration
     }
 }
 

@@ -4,7 +4,7 @@
   "friendlyName": "MSCRM Update Secure Configuration",
   "description": "A task that updates Dynamics 365 plugin secure configuration",
   "author": "Wael Hamze",
-  "helpMarkDown": "Reads a json array of guid/vaule to update plugin secure configuration",
+  "helpMarkDown": "Reads a json array of guid/value to update plugin secure configuration",
   "category": "Utility",
   "visibility": [
     "Build",
@@ -29,9 +29,9 @@
     },
     {
       "name": "secureConfiguration",
-      "type": "string",
-      "label": "A json array of guid/vaule pairs.",
-      "defaultValue": "",
+      "type": "multiLine",
+      "label": "A json array of guid/value pairs.",
+      "defaultValue": "[['step-guid','some-value'],['step-guid','some-value']]",
       "required": true,
       "helpMarkDown": "FORMAT: [['step-guid','some-value'],['step-guid','some-value']]"
     }
