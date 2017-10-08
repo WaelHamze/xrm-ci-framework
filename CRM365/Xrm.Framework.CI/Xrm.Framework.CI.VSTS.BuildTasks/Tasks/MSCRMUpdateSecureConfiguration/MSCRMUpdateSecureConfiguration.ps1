@@ -8,7 +8,7 @@ Write-Verbose 'Entering MSCRMUpdateSecureConfiguration.ps1'
 
 #Get Parameters
 $crmConnectionString = Get-VstsInput -Name crmConnectionString -Require
-$secureConfiguration = Get-VstsInput -Name $secureConfiguration -Require
+$secureConfiguration = Get-VstsInput -Name secureConfiguration -Require
 
 #Print Verbose
 Write-Verbose "crmConnectionString = $crmConnectionString"
