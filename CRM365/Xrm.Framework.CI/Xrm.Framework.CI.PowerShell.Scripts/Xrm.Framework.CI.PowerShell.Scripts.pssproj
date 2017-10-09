@@ -36,6 +36,7 @@
     <Compile Include="ProvisionOnlineInstance.ps1" />
     <Compile Include="PublishCustomizations.ps1" />
     <Compile Include="BackupOnlineInstance.ps1" />
+    <Compile Include="UpdateSecureConfiguration.ps1" />
     <Compile Include="UpdateSolutionVersionInCRM.ps1" />
     <Compile Include="WaitForCRMOperation.ps1" />
   </ItemGroup>

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F5034706-568F-408A-B7B3-4D38C6DB8A32}") = "Xrm.Framework.CI.PowerShell.Scripts", "Xrm.Framework.CI.PowerShell.Scripts\Xrm.Framework.CI.PowerShell.Scripts.pssproj", "{26E7A989-C329-4B54-A80D-200FC23306B9}"
 EndProject
@@ -92,6 +92,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MSCRMProvisionOnlineInstanc
 		Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMProvisionOnlineInstance\task.json = Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMProvisionOnlineInstance\task.json
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MSCRMUpdateSecureConfiguration", "MSCRMUpdateSecureConfiguration", "{E4D21AAE-551F-49CB-BD77-39CB547FD33C}"
+	ProjectSection(SolutionItems) = preProject
+		Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMUpdateSecureConfiguration\MSCRMUpdateSecureConfiguration.ps1 = Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMUpdateSecureConfiguration\MSCRMUpdateSecureConfiguration.ps1
+		Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMUpdateSecureConfiguration\task.json = Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMUpdateSecureConfiguration\task.json
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -125,5 +131,9 @@ Global
 		{4FD15793-4498-462F-A5AA-B75E4F6D87F4} = {BBFA729B-4215-487C-BD89-FD77A7B54C72}
 		{71BA7451-0E6A-4555-840D-7C98F596787E} = {BBFA729B-4215-487C-BD89-FD77A7B54C72}
 		{8EF5BEBD-D133-487C-A7B3-1A4A6622D56F} = {BBFA729B-4215-487C-BD89-FD77A7B54C72}
+		{E4D21AAE-551F-49CB-BD77-39CB547FD33C} = {BBFA729B-4215-487C-BD89-FD77A7B54C72}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FE299D64-E85F-4405-9C90-89B7B94C69AC}
 	EndGlobalSection
 EndGlobal
