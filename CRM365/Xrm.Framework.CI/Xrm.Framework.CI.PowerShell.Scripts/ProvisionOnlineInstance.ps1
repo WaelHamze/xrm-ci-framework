@@ -1,7 +1,7 @@
 #
 # ProvisionOnlineInstance.ps1
 #
-
+[CmdletBinding()]
 param(
 [string]$ApiUrl,
 [string]$Username,
@@ -18,6 +18,8 @@ param(
 [string]$CurrencyName,
 [int]$CurrencyPrecision,
 [string]$CurrencySymbol,
+[string]$SecurityGroupId,
+[string]$SecurityGroupName,
 [bool]$WaitForCompletion = $false,
 [int]$SleepDuration = 3,
 [string]$PSModulePath
@@ -42,6 +44,8 @@ Write-Verbose "CurrencyCode = $CurrencyCode"
 Write-Verbose "CurrencyName = $CurrencyName"
 Write-Verbose "CurrencyPrecision = $CurrencyPrecision"
 Write-Verbose "CurrencySymbol = $CurrencySymbol"
+Write-Verbose "SecurityGroupId = $SecurityGroupId"
+Write-Verbose "SecurityGroupName = $SecurityGroupName"
 Write-Verbose "WaitForCompletion = $WaitForCompletion"
 Write-Verbose "SleepDuration = $SleepDuration"
 Write-Verbose "PSModulePath = $PSModulePath"
@@ -66,15 +70,58 @@ Write-Verbose "Imported Online Management Module"
 $SecPassword = ConvertTo-SecureString $Password -AsPlainText -Force
 $Cred = New-Object System.Management.Automation.PSCredential ($Username, $SecPassword)
  
-if ($CurrencyCode -ne '')
-{
-	$instanceInfo = New-CrmInstanceInfo -BaseLanguage $LanguageId -DomainName $DomainName -FriendlyName $FriendlyName -InitialUserEmail $InitialUserEmail -InstanceType $InstanceType -ServiceVersionId $ReleaseId -CurrencyName $CurrencyName -CurrencyCode $CurrencyCode -CurrencyPrecision $CurrencyPrecision -CurrencySymbol $CurrencySymbol -Purpose $Purpose -TemplateList $TemplateNames
+$InstanceInfoParams = @{
+	BaseLanguage = $LanguageId
+	DomainName = $DomainName
+	FriendlyName = $FriendlyName
+	InitialUserEmail = $InitialUserEmail
+	InstanceType = $InstanceType
+	ServiceVersionId = $ReleaseId
+	Purpose = $Purpose
+	TemplateList = $TemplateNames
 }
 
-if ($CurrencyCode -eq '')
+if ($CurrencyCode -ne '')
 {
-	$instanceInfo = New-CrmInstanceInfo -BaseLanguage $LanguageId -DomainName $DomainName -FriendlyName $FriendlyName -InitialUserEmail $InitialUserEmail -InstanceType $InstanceType -ServiceVersionId $ReleaseId -Purpose $Purpose -TemplateList $TemplateNames
+	$InstanceInfoParams.CurrencyCode = $CurrencyCode
 }
+if ($CurrencyName -ne '')
+{
+	$InstanceInfoParams.CurrencyName = $CurrencyName
+}
+if ($CurrencyPrecision -ne 0)
+{
+	$InstanceInfoParams.CurrencyPrecision = $CurrencyPrecision
+}
+if ($CurrencySymbol -ne '')
+{
+	$InstanceInfoParams.CurrencySymbol = $CurrencySymbol
+}
+
+if ($SecurityGroupName -ne '')
+{
+	Write-Verbose "Importing Module AzureAD" 
+	Import-Module AzureAD
+	Write-Verbose "Imported Module AzureAD" 
+	
+	$group = Get-AzureADGroup -Filter "DisplayName eq '$SecurityGroupName'"
+
+	if ($group -ne $null)
+	{
+		$SecurityGroupId = $group.ObjectId
+	}
+	if ($group -eq $null)
+	{
+		throw "$SecurityGroupName not found"
+	}
+}
+
+if ($SecurityGroupId -ne '')
+{
+	$InstanceInfoParams.SecurityGroupId = $SecurityGroupId
+}
+
+$instanceInfo = New-CrmInstanceInfo @InstanceInfoParams
 
 $operation = New-CrmInstance -ApiUrl $ApiUrl -NewInstanceInfo $instanceInfo -Credential $Cred
 

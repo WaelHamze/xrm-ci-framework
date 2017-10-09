@@ -25,6 +25,8 @@ $currencyCode = Get-VstsInput -Name currencyCode
 $currencyName = Get-VstsInput -Name currencyName
 $currencyPrecision = Get-VstsInput -Name currencyPrecision -AsInt
 $currencySymbol = Get-VstsInput -Name currencySymbol
+$securityGroupId = Get-VstsInput -Name securityGroupId
+$securityGroupName = Get-VstsInput -Name securityGroupName
 $waitForCompletion = Get-VstsInput -Name waitForCompletion -AsBool
 $sleepDuration = Get-VstsInput -Name sleepDuration -AsInt
 
@@ -45,6 +47,8 @@ Write-Verbose "currencyCode = $currencyCode"
 Write-Verbose "currencyName = $currencyName"
 Write-Verbose "currencyPrecision = $currencyPrecision"
 Write-Verbose "currencySymbol = $currencySymbol"
+Write-Verbose "securityGroupId = $securityGroupId"
+Write-Verbose "securityGroupName = $securityGroupName"
 Write-Verbose "waitForCompletion = $waitForCompletion"
 Write-Verbose "sleepDuration = $sleepDuration"
 
