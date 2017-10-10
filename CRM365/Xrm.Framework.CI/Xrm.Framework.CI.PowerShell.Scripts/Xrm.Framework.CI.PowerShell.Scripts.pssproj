@@ -27,6 +27,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="DeleteOnlineInstance.ps1" />
     <Compile Include="DeployPackage.ps1" />
     <Compile Include="ExportSolution.ps1" />
     <Compile Include="ExtractCustomizations.ps1" />
