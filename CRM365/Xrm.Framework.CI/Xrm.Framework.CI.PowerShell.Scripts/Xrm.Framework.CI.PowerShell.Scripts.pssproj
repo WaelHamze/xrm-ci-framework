@@ -32,11 +32,13 @@
     <Compile Include="ExportSolution.ps1" />
     <Compile Include="ExtractCustomizations.ps1" />
     <Compile Include="ImportSolution.ps1" />
+    <Compile Include="OnlineInstanceFunctions.ps1" />
     <Compile Include="PackSolution.ps1" />
     <Compile Include="Ping.ps1" />
     <Compile Include="ProvisionOnlineInstance.ps1" />
     <Compile Include="PublishCustomizations.ps1" />
     <Compile Include="BackupOnlineInstance.ps1" />
+    <Compile Include="RestoreOnlineInstance.ps1" />
     <Compile Include="UpdateSecureConfiguration.ps1" />
     <Compile Include="UpdateSolutionVersionInCRM.ps1" />
     <Compile Include="WaitForCRMOperation.ps1" />
