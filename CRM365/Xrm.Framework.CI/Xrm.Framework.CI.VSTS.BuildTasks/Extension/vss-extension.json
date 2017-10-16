@@ -2,14 +2,14 @@
   "manifestVersion": 1,
   "id": "xrm-ci-framework-build-tasks",
   "name": "Dynamics 365 Build Tools",
-  "version": "8.1.4",
+  "version": "8.2.1",
   "publisher": "WaelHamze",
   "targets": [
     {
       "id": "Microsoft.VisualStudio.Services"
     }
   ],
-  "description": "Tasks for automating Build & Deployment of Dynamics 365 Solutions",
+  "description": "Tasks for automating Build & Deployment of Dynamics 365 CE Solutions",
   "categories": [
     "Build and release"
   ],
@@ -22,7 +22,11 @@
     "xRM CI Framework",
     "CRM 365",
     "Solution Packager",
-    "Package Deployer"
+    "Package Deployer",
+    "Dynamics 365",
+    "Customer Engagement",
+    "Online Management API",
+    "PowerShell"
   ],
   "icons": {
     "default": "icon_128x128.png"
@@ -78,7 +82,27 @@
     }
     ,
     {
+      "path": "MSCRMUpdateSecureConfiguration"
+    }
+    ,
+    {
       "path": "MSCRMBackupOnlineInstance"
+    }
+    ,
+    {
+      "path": "MSCRMGetOnlineInstanceByName"
+    }
+    ,
+    {
+      "path": "MSCRMProvisionOnlineInstance"
+    }
+    ,
+    {
+      "path": "MSCRMRestoreOnlineInstance"
+    }
+    ,
+    {
+      "path": "MSCRMDeleteOnlineInstance"
     }
   ],
   "contributions": [
@@ -150,6 +174,16 @@
       ],
       "properties": {
         "name": "MSCRMSetVersion"
+      }
+    },
+    {
+      "id": "MSCRMUpdateSecureConfiguration",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "MSCRMUpdateSecureConfiguration"
       }
     },
     {
