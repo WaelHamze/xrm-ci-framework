@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27004.2002
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F5034706-568F-408A-B7B3-4D38C6DB8A32}") = "Xrm.Framework.CI.PowerShell.Scripts", "Xrm.Framework.CI.PowerShell.Scripts\Xrm.Framework.CI.PowerShell.Scripts.pssproj", "{26E7A989-C329-4B54-A80D-200FC23306B9}"
 EndProject
@@ -92,16 +92,22 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MSCRMProvisionOnlineInstanc
 		Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMProvisionOnlineInstance\task.json = Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMProvisionOnlineInstance\task.json
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MSCRMGetOnlineInstanceByName", "MSCRMGetOnlineInstanceByName", "{C3ECA349-EE30-4BD6-9858-2607E988E29C}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MSCRMDeleteOnlineInstance", "MSCRMDeleteOnlineInstance", "{18CE11F7-EF38-40F6-B68B-60A321697FC9}"
+	ProjectSection(SolutionItems) = preProject
+		Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMDeleteOnlineInstance\MSCRMDeleteOnlineInstance.ps1 = Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMDeleteOnlineInstance\MSCRMDeleteOnlineInstance.ps1
+		Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMDeleteOnlineInstance\task.json = Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMDeleteOnlineInstance\task.json
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MSCRMRestoreOnlineInstance", "MSCRMRestoreOnlineInstance", "{6B4C12FE-71EE-4607-902B-2DCBBAB421C0}"
+	ProjectSection(SolutionItems) = preProject
+		Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMRestoreOnlineInstance\MSCRMRestoreOnlineInstance.ps1 = Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMRestoreOnlineInstance\MSCRMRestoreOnlineInstance.ps1
+		Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMRestoreOnlineInstance\task.json = Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMRestoreOnlineInstance\task.json
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MSCRMGetOnlineInstanceByName", "MSCRMGetOnlineInstanceByName", "{48E83348-0B04-4DF6-A45A-8080572C1DD0}"
 	ProjectSection(SolutionItems) = preProject
 		Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMGetOnlineInstanceByName\MSCRMGetOnlineInstanceByName.ps1 = Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMGetOnlineInstanceByName\MSCRMGetOnlineInstanceByName.ps1
 		Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMGetOnlineInstanceByName\task.json = Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMGetOnlineInstanceByName\task.json
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MSCRMUpdateSecureConfiguration", "MSCRMUpdateSecureConfiguration", "{0006F568-5D62-42DF-881C-722308018495}"
-	ProjectSection(SolutionItems) = preProject
-		Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMUpdateSecureConfiguration\MSCRMUpdateSecureConfiguration.ps1 = Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMUpdateSecureConfiguration\MSCRMUpdateSecureConfiguration.ps1
-		Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMUpdateSecureConfiguration\task.json = Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMUpdateSecureConfiguration\task.json
 	EndProjectSection
 EndProject
 Global
@@ -137,10 +143,8 @@ Global
 		{4FD15793-4498-462F-A5AA-B75E4F6D87F4} = {BBFA729B-4215-487C-BD89-FD77A7B54C72}
 		{71BA7451-0E6A-4555-840D-7C98F596787E} = {BBFA729B-4215-487C-BD89-FD77A7B54C72}
 		{8EF5BEBD-D133-487C-A7B3-1A4A6622D56F} = {BBFA729B-4215-487C-BD89-FD77A7B54C72}
-		{C3ECA349-EE30-4BD6-9858-2607E988E29C} = {BBFA729B-4215-487C-BD89-FD77A7B54C72}
-		{0006F568-5D62-42DF-881C-722308018495} = {BBFA729B-4215-487C-BD89-FD77A7B54C72}
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {4EF32728-8837-4B4E-B199-86ED03BC7A10}
+		{18CE11F7-EF38-40F6-B68B-60A321697FC9} = {BBFA729B-4215-487C-BD89-FD77A7B54C72}
+		{6B4C12FE-71EE-4607-902B-2DCBBAB421C0} = {BBFA729B-4215-487C-BD89-FD77A7B54C72}
+		{48E83348-0B04-4DF6-A45A-8080572C1DD0} = {BBFA729B-4215-487C-BD89-FD77A7B54C72}
 	EndGlobalSection
 EndGlobal

@@ -6,7 +6,6 @@ param(
 [string]$ApiUrl,
 [string]$Username,
 [string]$Password,
-[string]$InstanceId,
 [string]$InstanceName,
 [bool]$WaitForCompletion = $false,
 [int]$SleepDuration = 3,
@@ -20,7 +19,6 @@ Write-Verbose 'Entering DeleteOnlineInstance.ps1'
 #Parameters
 Write-Verbose "ApiUrl = $ApiUrl"
 Write-Verbose "Username = $Username"
-Write-Verbose "InstanceId = $InstanceId"
 Write-Verbose "InstanceName = $InstanceName"
 Write-Verbose "WaitForCompletion = $WaitForCompletion"
 Write-Verbose "SleepDuration = $SleepDuration"
@@ -46,30 +44,18 @@ Write-Verbose "Imported Online Management Module"
 $SecPassword = ConvertTo-SecureString $Password -AsPlainText -Force
 $Cred = New-Object System.Management.Automation.PSCredential ($Username, $SecPassword)
 
-if ($InstanceName -ne '')
+."$scriptPath\OnlineInstanceFunctions.ps1"
+
+$instance = Get-XrmInstanceByName -ApiUrl $ApiUrl -Cred $Cred -InstanceName $InstanceName
+
+if ($instance -eq $null)
 {
-	$instances = Get-CrmInstances -ApiUrl $ApiUrl -Credential $Cred
-
-	Foreach($instance in $instances)
-	{
-		if ($instance.DomainName -ieq $InstanceName)
-		{
-			$foundId = $instance.Id
-		}
-	}
-
-	if ($foundId -eq $null)
-	{
-		throw "$InstanceName not found"
-	}
+    throw "$InstanceName not found"
 }
 
-if ($foundId -ne $null)
-{
-	$InstanceId = $foundId
-}
+Write-Host "Deleting instance $InstanceName " + $instance.Id
 
-$operation = Remove-CrmInstance -ApiUrl $ApiUrl -Id $instanceId -Credential $Cred
+$operation = Remove-CrmInstance -ApiUrl $ApiUrl -Id $instance.Id -Credential $Cred
 
 $OperationId = $operation.OperationId
 $OperationStatus = $operation.Status

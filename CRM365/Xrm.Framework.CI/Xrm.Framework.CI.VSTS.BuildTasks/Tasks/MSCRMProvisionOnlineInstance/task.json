@@ -14,10 +14,10 @@
   "version": {
     "Major": "8",
     "Minor": "0",
-    "Patch": "18"
+    "Patch": "25"
   },
   "minimumAgentVersion": "1.95.0",
-  "instanceNameFormat": "MSCRM Provision Online Instance",
+  "instanceNameFormat": "Provision $(domainName)",
   "groups": [
     {
       "name": "currencyInfo",

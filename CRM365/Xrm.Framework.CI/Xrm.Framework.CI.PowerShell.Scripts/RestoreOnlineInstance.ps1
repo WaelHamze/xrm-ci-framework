@@ -85,7 +85,6 @@ $status
 
 if ($status.Status -ne "Succeeded")
 {
-    $status
 	throw "Operation status: $status.Status"
 }
 

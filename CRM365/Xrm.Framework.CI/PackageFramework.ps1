@@ -85,14 +85,16 @@ Copy-Item ($CIFrameworkRootDir) ($CIFrameworkPackagesDir + "\MSCRMSetVersion\ps_
 Copy-Item ($scriptPath + "\Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMBackupOnlineInstance") $CIFrameworkPackagesDir -Force -Recurse
 Copy-Item ($scriptPath + "\Xrm.Framework.CI.VSTS.BuildTasks\Lib\icon.png") ($CIFrameworkPackagesDir + "\MSCRMBackupOnlineInstance") -Force -Recurse
 Copy-Item ($scriptPath + "\Xrm.Framework.CI.VSTS.BuildTasks\Lib\ps_modules") ($CIFrameworkPackagesDir + "\MSCRMBackupOnlineInstance") -Force -Recurse
-Copy-Item ($CIFrameworkRootDir) ($CIFrameworkPackagesDir + "\MSCRMBackupOnlineInstance\ps_modules") -Force -Recurse
 Copy-Item ($scriptPath + "\Lib\Microsoft.Xrm.OnlineManagementAPI") ($CIFrameworkPackagesDir + "\MSCRMBackupOnlineInstance\ps_modules\") -Force -Recurse
+Copy-Item ($CIFrameworkRootDir + "\BackupOnlineInstance.ps1") ($CIFrameworkPackagesDir + "\MSCRMBackupOnlineInstance") -Force -Recurse
+Copy-Item ($CIFrameworkRootDir + "\OnlineInstanceFunctions.ps1") ($CIFrameworkPackagesDir + "\MSCRMBackupOnlineInstance") -Force -Recurse
 
 Copy-Item ($scriptPath + "\Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMProvisionOnlineInstance") $CIFrameworkPackagesDir -Force -Recurse
 Copy-Item ($scriptPath + "\Xrm.Framework.CI.VSTS.BuildTasks\Lib\icon.png") ($CIFrameworkPackagesDir + "\MSCRMProvisionOnlineInstance") -Force -Recurse
 Copy-Item ($scriptPath + "\Xrm.Framework.CI.VSTS.BuildTasks\Lib\ps_modules") ($CIFrameworkPackagesDir + "\MSCRMProvisionOnlineInstance") -Force -Recurse
-Copy-Item ($CIFrameworkRootDir) ($CIFrameworkPackagesDir + "\MSCRMProvisionOnlineInstance\ps_modules") -Force -Recurse
 Copy-Item ($scriptPath + "\Lib\Microsoft.Xrm.OnlineManagementAPI") ($CIFrameworkPackagesDir + "\MSCRMProvisionOnlineInstance\ps_modules\") -Force -Recurse
+Copy-Item ($CIFrameworkRootDir + "\ProvisionOnlineInstance.ps1") ($CIFrameworkPackagesDir + "\MSCRMProvisionOnlineInstance") -Force -Recurse
+Copy-Item ($CIFrameworkRootDir + "\OnlineInstanceFunctions.ps1") ($CIFrameworkPackagesDir + "\MSCRMProvisionOnlineInstance") -Force -Recurse
 
 Copy-Item ($scriptPath + "\Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMUpdateSecureConfiguration") $CIFrameworkPackagesDir -Force -Recurse
 Copy-Item ($scriptPath + "\Xrm.Framework.CI.VSTS.BuildTasks\Lib\icon.png") ($CIFrameworkPackagesDir + "\MSCRMUpdateSecureConfiguration") -Force -Recurse
@@ -102,8 +104,22 @@ Copy-Item ($CIFrameworkRootDir) ($CIFrameworkPackagesDir + "\MSCRMUpdateSecureCo
 Copy-Item ($scriptPath + "\Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMGetOnlineInstanceByName") $CIFrameworkPackagesDir -Force -Recurse
 Copy-Item ($scriptPath + "\Xrm.Framework.CI.VSTS.BuildTasks\Lib\icon.png") ($CIFrameworkPackagesDir + "\MSCRMGetOnlineInstanceByName") -Force -Recurse
 Copy-Item ($scriptPath + "\Xrm.Framework.CI.VSTS.BuildTasks\Lib\ps_modules") ($CIFrameworkPackagesDir + "\MSCRMGetOnlineInstanceByName") -Force -Recurse
-Copy-Item ($CIFrameworkRootDir) ($CIFrameworkPackagesDir + "\MSCRMGetOnlineInstanceByName\ps_modules") -Force -Recurse
 Copy-Item ($scriptPath + "\Lib\Microsoft.Xrm.OnlineManagementAPI") ($CIFrameworkPackagesDir + "\MSCRMGetOnlineInstanceByName\ps_modules\") -Force -Recurse
+Copy-Item ($CIFrameworkRootDir + "\OnlineInstanceFunctions.ps1") ($CIFrameworkPackagesDir + "\MSCRMGetOnlineInstanceByName") -Force -Recurse
+
+Copy-Item ($scriptPath + "\Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMDeleteOnlineInstance") $CIFrameworkPackagesDir -Force -Recurse
+Copy-Item ($scriptPath + "\Xrm.Framework.CI.VSTS.BuildTasks\Lib\icon.png") ($CIFrameworkPackagesDir + "\MSCRMDeleteOnlineInstance") -Force -Recurse
+Copy-Item ($scriptPath + "\Xrm.Framework.CI.VSTS.BuildTasks\Lib\ps_modules") ($CIFrameworkPackagesDir + "\MSCRMDeleteOnlineInstance") -Force -Recurse
+Copy-Item ($scriptPath + "\Lib\Microsoft.Xrm.OnlineManagementAPI") ($CIFrameworkPackagesDir + "\MSCRMDeleteOnlineInstance\ps_modules\") -Force -Recurse
+Copy-Item ($CIFrameworkRootDir + "\DeleteOnlineInstance.ps1") ($CIFrameworkPackagesDir + "\MSCRMDeleteOnlineInstance") -Force -Recurse
+Copy-Item ($CIFrameworkRootDir + "\OnlineInstanceFunctions.ps1") ($CIFrameworkPackagesDir + "\MSCRMDeleteOnlineInstance") -Force -Recurse
+
+Copy-Item ($scriptPath + "\Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMRestoreOnlineInstance") $CIFrameworkPackagesDir -Force -Recurse
+Copy-Item ($scriptPath + "\Xrm.Framework.CI.VSTS.BuildTasks\Lib\icon.png") ($CIFrameworkPackagesDir + "\MSCRMRestoreOnlineInstance") -Force -Recurse
+Copy-Item ($scriptPath + "\Xrm.Framework.CI.VSTS.BuildTasks\Lib\ps_modules") ($CIFrameworkPackagesDir + "\MSCRMRestoreOnlineInstance") -Force -Recurse
+Copy-Item ($scriptPath + "\Lib\Microsoft.Xrm.OnlineManagementAPI") ($CIFrameworkPackagesDir + "\MSCRMRestoreOnlineInstance\ps_modules\") -Force -Recurse
+Copy-Item ($CIFrameworkRootDir + "\RestoreOnlineInstance.ps1") ($CIFrameworkPackagesDir + "\MSCRMRestoreOnlineInstance") -Force -Recurse
+Copy-Item ($CIFrameworkRootDir + "\OnlineInstanceFunctions.ps1") ($CIFrameworkPackagesDir + "\MSCRMRestoreOnlineInstance") -Force -Recurse
 
 Copy-Item ($scriptPath + "\Lib\CrmSDKPowerShell\*.*") ($CIFrameworkRootDir) -Force -Recurse
 

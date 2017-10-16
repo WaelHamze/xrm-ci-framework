@@ -14,10 +14,10 @@
   "version": {
     "Major": "8",
     "Minor": "0",
-    "Patch": "4"
+    "Patch": "10"
   },
   "minimumAgentVersion": "1.95.0",
-  "instanceNameFormat": "MSCRM Backup Online Instance",
+  "instanceNameFormat": "Backup $(InstanceName)",
   "groups": [
     {
       "name": "azureStorageInfo",
@@ -51,12 +51,12 @@
       "helpMarkDown": "The Dynamics 365 password"
     },
     {
-      "name": "instanceId",
+      "name": "instanceName",
       "type": "string",
-      "label": "InstanceId",
+      "label": "Instance Name",
       "defaultValue": "",
       "required": true,
-      "helpMarkDown": "As per documentation: https://docs.microsoft.com/en-us/rest/api/admin.services.crm.dynamics.com/backupinstance"
+      "helpMarkDown": "Name used in the Dynamics 365 domain: https://[instancename].crm[n].dynamics.com"
     },
     {
       "name": "backupLabel",
