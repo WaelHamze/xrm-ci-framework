@@ -69,6 +69,8 @@ Write-Verbose "Imported Online Management Module"
 #Create Credentials
 $SecPassword = ConvertTo-SecureString $Password -AsPlainText -Force
 $Cred = New-Object System.Management.Automation.PSCredential ($Username, $SecPassword)
+
+."$scriptPath\OnlineInstanceFunctions.ps1"
  
 $InstanceInfoParams = @{
 	BaseLanguage = $LanguageId
@@ -139,7 +141,37 @@ if ($operation.Errors.Count -gt 0)
 
 if ($WaitForCompletion -and ($OperationStatus -ne "Succeeded"))
 {
-	& "$scriptPath\WaitForCRMOperation.ps1" -OperationId $OperationId -PSModulePath $PSModulePath
+	$status = Wait-XrmOperation -ApiUrl $ApiUrl -Cred $Cred -operationId $operation.OperationId
+
+	$status
+
+	if ($status.Status -ne "Succeeded")
+	{
+		throw "Operation status: $status.Status"
+	}
+}
+
+if ($WaitForCompletion)
+{
+	#Sometimes instance is created but the API still returns NOT FOUND (no other instances available).
+	#Added this delay to give chance for operation to progress.
+	Start-Sleep -Seconds 30
+	
+	$provisioning = $true
+	while ($provisioning)
+	{
+		Start-Sleep -Seconds $SleepDuration
+
+		$instance = Get-XrmInstanceByName -ApiUrl $ApiUrl -Cred $Cred -InstanceName $DomainName
+		$State = $instance.State
+
+		Write-Verbose "Instance State: $State"
+
+		if (($instance -ne $null) -and ($State -eq "Ready"))
+		{
+			$provisioning = $false
+		}
+	}
 }
 
 Write-Verbose 'Leaving ProvisionOnlineInstance.ps1'

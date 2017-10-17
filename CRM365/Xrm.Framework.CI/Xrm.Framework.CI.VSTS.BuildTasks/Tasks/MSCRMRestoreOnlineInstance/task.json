@@ -1,0 +1,92 @@
+{
+  "id": "A6EB6B39-F378-4328-B533-D88F36BE7A2A",
+  "name": "MSCRMRestoreOnlineInstance",
+  "friendlyName": "MSCRM Restore Instance",
+  "description": "Restores an online instance from a previous backup",
+  "author": "Wael Hamze",
+  "helpMarkDown": "This task uses the Microsoft.Xrm.OnlineManagementAPI: https://www.powershellgallery.com/packages/Microsoft.Xrm.OnlineManagementAPI",
+  "category": "Deploy",
+  "visibility": [
+    "Build",
+    "Release"
+  ],
+  "demands": [],
+  "version": {
+    "Major": "8",
+    "Minor": "0",
+    "Patch": "2"
+  },
+  "minimumAgentVersion": "1.95.0",
+  "instanceNameFormat": "Restore $(TargetInstanceName)",
+  "inputs": [
+    {
+      "name": "apiUrl",
+      "type": "string",
+      "label": "ApiUrl",
+      "defaultValue": "https://admin.services.crm[n].dynamics.com",
+      "required": true,
+      "helpMarkDown": "Use the Service Url as per documentation: https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/online-management-api/get-started-online-management-api"
+    },
+    {
+      "name": "username",
+      "type": "string",
+      "label": "Username",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "The Dynamics 365 username"
+    },
+    {
+      "name": "Password",
+      "type": "string",
+      "label": "Password",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "The Dynamics 365 password"
+    },
+    {
+      "name": "sourceInstanceName",
+      "type": "string",
+      "label": "Source Instance Name",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "Name used in the Dynamics 365 domain: https://[instancename].crm[n].dynamics.com"
+    },
+      {
+      "name": "backupLabel",
+      "type": "string",
+      "label": "Backup Label",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "The label of the backup from the source instance to be used for restore into target instance"
+    },
+    {
+      "name": "targetInstanceName",
+      "type": "string",
+      "label": "Target Instance Name",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "Name used in the Dynamics 365 domain: https://[instancename].crm[n].dynamics.com"
+    },
+    {
+      "name": "waitForCompletion",
+      "type": "boolean",
+      "label": "Wait For Completion",
+      "defaultValue": "true",
+      "required": true,
+      "helpMarkDown": "Setting this to true will cause the task to wait until the backup completes"
+    },
+    {
+      "name": "sleepDuration",
+      "type": "string",
+      "label": "Sleep Duration (seconds)",
+      "defaultValue": "5",
+      "required": false,
+      "helpMarkDown": "The frequency to query the status of the backup job while waiting for completion"
+    }
+  ],
+  "execution": {
+    "PowerShell3": {
+      "target": "MSCRMRestoreOnlineInstance.ps1"
+    }
+  }
+}

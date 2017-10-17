@@ -1,0 +1,68 @@
+{
+  "id": "aa1a23f4-49e6-4a09-96f7-ee57a3f84d21",
+  "name": "MSCRMGetOnlineInstanceByName",
+  "friendlyName": "MSCRM Get Online Instance By Name",
+  "description": "Gets an Online instance ID based on the name of the instance.",
+  "author": "Wael Hamze",
+  "helpMarkDown": "This task uses the Microsoft.Xrm.OnlineManagementAPI: https://www.powershellgallery.com/packages/Microsoft.Xrm.OnlineManagementAPI",
+  "category": "Deploy",
+  "visibility": [
+    "Build",
+    "Release"
+  ],
+  "demands": [],
+  "version": {
+    "Major": "8",
+    "Minor": "0",
+    "Patch": "4"
+  },
+  "minimumAgentVersion": "1.95.0",
+  "instanceNameFormat": "MSCRM Get Online Instance By Name",
+  "inputs": [
+    {
+      "name": "apiUrl",
+      "type": "string",
+      "label": "ApiUrl",
+      "defaultValue": "https://admin.services.crm[n].dynamics.com",
+      "required": true,
+      "helpMarkDown": "Use the Service Url as per documentation: https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/online-management-api/get-started-online-management-api"
+    },
+    {
+      "name": "username",
+      "type": "string",
+      "label": "Username",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "The Dynamics 365 username"
+    },
+    {
+      "name": "Password",
+      "type": "string",
+      "label": "Password",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "The Dynamics 365 password"
+    },
+    {
+      "name": "instanceName",
+      "type": "string",
+      "label": "InstanceName",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "Name used in the Dynamics 365 domain: https://[instancename].crm[n].dynamics.com"
+    },
+    {
+      "name": "vstsInstanceIdOutputVariableName",
+      "type": "string",
+      "label": "VstsInstanceIdOutputVariableName",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "Name of the VSTS variable you want populated with the instance id that is returned.  Do not use $(variableName).  Instead just use variableName."
+    }
+  ],
+  "execution": {
+    "PowerShell3": {
+      "target": "MSCRMGetOnlineInstanceByName.ps1"
+    }
+  }
+}

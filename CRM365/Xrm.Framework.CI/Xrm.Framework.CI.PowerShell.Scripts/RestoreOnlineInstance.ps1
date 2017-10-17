@@ -40,17 +40,15 @@ if ($PSModulePath)
 	$xrmOnlineModule = $PSModulePath + "\Microsoft.Xrm.OnlineManagementAPI.dll"
 }
 
-Write-Verbose "Importing Online Management Module: $xrmOnlineModule" 
+Write-Verbose "Importing Online Management Module: $xrmOnlineModule"
 Import-Module $xrmOnlineModule
 Write-Verbose "Imported Online Management Module"
-
-$backupInfo = New-CrmBackupInfo -InstanceId $InstanceId -Label "$BackupLabel" -Notes "$BackupNotes" -IsAzureBackup $IsAzureBackup -AzureContainerName $ContainerName -AzureStorageAccountKey $StorageAccountKey -AzureStorageAccountName $StorageAccountName
 
 #Create Credentials
 $SecPassword = ConvertTo-SecureString $Password -AsPlainText -Force
 $Cred = New-Object System.Management.Automation.PSCredential ($Username, $SecPassword)
- 
-."C:\Dev\Src\github-xrm-ci-framework-trunk\xrm-ci-framework\CRM365\Xrm.Framework.CI\Xrm.Framework.CI.PowerShell.Scripts\OnlineInstanceFunctions.ps1"
+
+."$scriptPath\OnlineInstanceFunctions.ps1"
 
 $sourceInstance = Get-XrmInstanceByName -ApiUrl $ApiUrl -Cred $Cred -InstanceName $SourceInstanceName
 
@@ -87,10 +85,7 @@ $status
 
 if ($status.Status -ne "Succeeded")
 {
-    $status
 	throw "Operation status: $status.Status"
 }
 
 Write-Verbose 'Leaving RestoreOnlineInstance.ps1'
-
-

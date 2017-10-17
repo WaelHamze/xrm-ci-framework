@@ -6,7 +6,7 @@ param(
 [string]$ApiUrl,
 [string]$Username,
 [string]$Password,
-[string]$InstanceId,
+[string]$InstanceName,
 [string]$BackupLabel,
 [string]$BackupNotes,
 [bool]$IsAzureBackup = $false,
@@ -25,7 +25,7 @@ Write-Verbose 'Entering BackupCRMOnlineInstance.ps1'
 #Parameters
 Write-Verbose "ApiUrl = $ApiUrl"
 Write-Verbose "Username = $Username"
-Write-Verbose "InstanceId = $InstanceId"
+Write-Verbose "InstanceName = $InstanceName"
 Write-Verbose "BackupLabel = $BackupLabel"
 Write-Verbose "BackupNotes = $BackupNotes"
 Write-Verbose "IsAzureBackup = $IsAzureBackup"
@@ -52,11 +52,22 @@ Write-Verbose "Importing Online Management Module: $xrmOnlineModule"
 Import-Module $xrmOnlineModule
 Write-Verbose "Imported Online Management Module"
 
-$backupInfo = New-CrmBackupInfo -InstanceId $InstanceId -Label "$BackupLabel" -Notes "$BackupNotes" -IsAzureBackup $IsAzureBackup -AzureContainerName $ContainerName -AzureStorageAccountKey $StorageAccountKey -AzureStorageAccountName $StorageAccountName
-
 #Create Credentials
 $SecPassword = ConvertTo-SecureString $Password -AsPlainText -Force
 $Cred = New-Object System.Management.Automation.PSCredential ($Username, $SecPassword)
+
+."$scriptPath\OnlineInstanceFunctions.ps1"
+
+$instance = Get-XrmInstanceByName -ApiUrl $ApiUrl -Cred $Cred -InstanceName $InstanceName
+
+if ($instance -eq $null)
+{
+    throw "$InstanceName not found"
+}
+
+Write-Host "Backing up instance $InstanceName " + $instance.Id
+
+$backupInfo = New-CrmBackupInfo -InstanceId $instance.Id -Label "$BackupLabel" -Notes "$BackupNotes" -IsAzureBackup $IsAzureBackup -AzureContainerName $ContainerName -AzureStorageAccountKey $StorageAccountKey -AzureStorageAccountName $StorageAccountName
  
 $operation = Backup-CrmInstance -ApiUrl $ApiUrl -BackupInfo $backupInfo -Credential $Cred
 
@@ -74,8 +85,14 @@ if ($operation.Errors.Count -gt 0)
 
 if ($WaitForCompletion)
 {
-	& "$scriptPath\WaitForCRMOperation.ps1" -OperationId $OperationId -PSModulePath $PSModulePath
+	$status = Wait-XrmOperation -ApiUrl $ApiUrl -Cred $Cred -operationId $operation.OperationId
+
+	$status
+
+	if ($status.Status -ne "Succeeded")
+	{
+		throw "Operation status: $status.Status"
+	}
 }
 
 Write-Verbose 'Leaving BackupCRMOnlineInstance.ps1'
-

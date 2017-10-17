@@ -2,7 +2,7 @@
   "id": "d8587a60-cd25-11e6-a324-f3fd298c325e",
   "name": "MSCRMPing",
   "friendlyName": "MSCRM Ping",
-  "description": "A sample task that checks connectivity to a Dynamics CRM environment",
+  "description": "A sample task that checks connectivity to a Dynamics 365 environment",
   "author": "Wael Hamze",
   "helpMarkDown": "Performs a WhoAmIRequest against the target CRM environment",
   "category": "Utility",
