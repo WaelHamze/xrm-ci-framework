@@ -26,6 +26,6 @@ Write-Verbose "Script Path: $scriptPath"
 
 $PSModulePath = "$scriptPath\ps_modules\Microsoft.Xrm.OnlineManagementAPI"
 
-& "$scriptPath\DeleteOnlineInstance.ps1" -ApiUrl $apiUrl -Username $username -Password $password  -InstacenName $InstanceName -PSModulePath $PSModulePath -WaitForCompletion $WaitForCompletion -SleepDuration $sleepDuration
+& "$scriptPath\DeleteOnlineInstance.ps1" -ApiUrl $apiUrl -Username $username -Password $password  -InstanceName $InstanceName -PSModulePath $PSModulePath -WaitForCompletion $WaitForCompletion -SleepDuration $sleepDuration
 
 Write-Verbose 'Leaving MSCRMDeleteOnlineInstance.ps1'
