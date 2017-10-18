@@ -71,7 +71,14 @@ if ($operation.Errors.Count -gt 0)
 
 if ($WaitForCompletion)
 {
-	& "$scriptPath\WaitForCRMOperation.ps1" -OperationId $OperationId -PSModulePath $PSModulePath
+	$status = Wait-XrmOperation -ApiUrl $ApiUrl -Cred $Cred -operationId $operation.OperationId
+
+	$status
+
+	if ($status.Status -ne "Succeeded")
+	{
+		throw "Operation status: $status.Status"
+	}
 }
 
 Write-Verbose 'Leaving DeleteOnlineInstance.ps1'
