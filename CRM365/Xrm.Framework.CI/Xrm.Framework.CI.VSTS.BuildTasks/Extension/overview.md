@@ -28,6 +28,7 @@ Below is a list of tasks that is included with the xRM CI Framework
 | **MSCRM Provision Online Instance** | Creates a new Dynamics 365 Customer Engagement Online Instance |
 | **MSCRM Restore Online Instance** | Restores an online instance from a previous backup |
 | **MSCRM Delete Online Instance** | Deletes an Online Instance |
+| **MSCRM Set Online Instance Admin Mode** | Enable/Disable administration mode on Online Instances |
 
 ## Build Automation
 
@@ -69,5 +70,8 @@ Added task to backup CRM online instances
 MSCRM Backup Online Instance now uses instance name instead of instance id
 Added Tasks for Provision, Restore, Delete and Get Online Instances
 Added Task for updating Secure Configuration of Plug-ins
+
+**8.3.x**
+Added Task Set Online Instance Admin Mode
 
 For more information on changes between versions, check the commits on GitHub

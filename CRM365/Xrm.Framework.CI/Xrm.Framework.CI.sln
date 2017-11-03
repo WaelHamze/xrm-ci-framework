@@ -116,6 +116,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MSCRMUpdateSecureConfigurat
 		Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMUpdateSecureConfiguration\task.json = Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMUpdateSecureConfiguration\task.json
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MSCRMSetOnlineInstanceAdminMode", "MSCRMSetOnlineInstanceAdminMode", "{9DD9CB39-AD1A-425C-8BC7-A51273AB11D8}"
+	ProjectSection(SolutionItems) = preProject
+		Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMSetOnlineInstanceAdminMode\MSCRMSetOnlineInstanceAdminMode.ps1 = Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMSetOnlineInstanceAdminMode\MSCRMSetOnlineInstanceAdminMode.ps1
+		Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMSetOnlineInstanceAdminMode\task.json = Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMSetOnlineInstanceAdminMode\task.json
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -153,5 +159,6 @@ Global
 		{6B4C12FE-71EE-4607-902B-2DCBBAB421C0} = {BBFA729B-4215-487C-BD89-FD77A7B54C72}
 		{48E83348-0B04-4DF6-A45A-8080572C1DD0} = {BBFA729B-4215-487C-BD89-FD77A7B54C72}
 		{D53745C7-9D26-417B-A305-1C5A6824A643} = {BBFA729B-4215-487C-BD89-FD77A7B54C72}
+		{9DD9CB39-AD1A-425C-8BC7-A51273AB11D8} = {BBFA729B-4215-487C-BD89-FD77A7B54C72}
 	EndGlobalSection
 EndGlobal

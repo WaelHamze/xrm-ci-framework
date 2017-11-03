@@ -2,7 +2,7 @@
   "manifestVersion": 1,
   "id": "xrm-ci-framework-build-tasks",
   "name": "Dynamics 365 Build Tools",
-  "version": "8.2.3",
+  "version": "8.3.0",
   "publisher": "WaelHamze",
   "targets": [
     {
@@ -103,6 +103,10 @@
     ,
     {
       "path": "MSCRMDeleteOnlineInstance"
+    }
+    ,
+    {
+      "path": "MSCRMSetOnlineInstanceAdminMode"
     }
   ],
   "contributions": [
@@ -224,6 +228,16 @@
       ],
       "properties": {
         "name": "MSCRMDeleteOnlineInstance"
+      }
+    },
+    {
+      "id": "MSCRMSetOnlineInstanceAdminMode",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "MSCRMSetOnlineInstanceAdminMode"
       }
     }
   ]
