@@ -121,6 +121,13 @@ Copy-Item ($scriptPath + "\Lib\Microsoft.Xrm.OnlineManagementAPI") ($CIFramework
 Copy-Item ($CIFrameworkRootDir + "\RestoreOnlineInstance.ps1") ($CIFrameworkPackagesDir + "\MSCRMRestoreOnlineInstance") -Force -Recurse
 Copy-Item ($CIFrameworkRootDir + "\OnlineInstanceFunctions.ps1") ($CIFrameworkPackagesDir + "\MSCRMRestoreOnlineInstance") -Force -Recurse
 
+Copy-Item ($scriptPath + "\Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMSetOnlineInstanceAdminMode") $CIFrameworkPackagesDir -Force -Recurse
+Copy-Item ($scriptPath + "\Xrm.Framework.CI.VSTS.BuildTasks\Lib\icon.png") ($CIFrameworkPackagesDir + "\MSCRMSetOnlineInstanceAdminMode") -Force -Recurse
+Copy-Item ($scriptPath + "\Xrm.Framework.CI.VSTS.BuildTasks\Lib\ps_modules") ($CIFrameworkPackagesDir + "\MSCRMSetOnlineInstanceAdminMode") -Force -Recurse
+Copy-Item ($scriptPath + "\Lib\Microsoft.Xrm.OnlineManagementAPI") ($CIFrameworkPackagesDir + "\MSCRMSetOnlineInstanceAdminMode\ps_modules\") -Force -Recurse
+Copy-Item ($CIFrameworkRootDir + "\SetOnlineInstanceAdminMode.ps1") ($CIFrameworkPackagesDir + "\MSCRMSetOnlineInstanceAdminMode") -Force -Recurse
+Copy-Item ($CIFrameworkRootDir + "\OnlineInstanceFunctions.ps1") ($CIFrameworkPackagesDir + "\MSCRMSetOnlineInstanceAdminMode") -Force -Recurse
+
 Copy-Item ($scriptPath + "\Lib\CrmSDKPowerShell\*.*") ($CIFrameworkRootDir) -Force -Recurse
 
 Copy-Item ($scriptPath + "\Xrm.Framework.CI.VSTS.BuildTasks\Extension\*.*") $CIFrameworkPackagesDir -Force -Recurse
