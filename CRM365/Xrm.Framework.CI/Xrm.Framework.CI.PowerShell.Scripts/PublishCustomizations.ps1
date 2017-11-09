@@ -3,7 +3,8 @@
 #
 
 param(
-[string]$CrmConnectionString
+[string]$CrmConnectionString,
+[int]$Timeout = 120
 )
 
 $ErrorActionPreference = "Stop"
@@ -28,7 +29,7 @@ Write-Verbose "Imported CIToolkit"
 
 Write-Host "Publishing Customizations"
 
-Publish-XrmCustomizations -ConnectionString $CrmConnectionString
+Publish-XrmCustomizations -ConnectionString $CrmConnectionString -Timeout $Timeout
 
 Write-Host "Publishing Customizations Completed"
 
