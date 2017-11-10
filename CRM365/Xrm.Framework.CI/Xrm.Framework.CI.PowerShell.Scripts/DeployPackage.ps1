@@ -5,7 +5,8 @@
 param(
 [string]$CrmConnectionString,
 [string]$PackageName,
-[string]$PackageDirectory
+[string]$PackageDirectory,
+[string]$LogsDirectory = ''
 )
 
 $ErrorActionPreference = "Stop"
@@ -16,6 +17,7 @@ Write-Verbose 'Entering DeployPackage.ps1'
 Write-Verbose "CrmConnectionString = $CrmConnectionString"
 Write-Verbose "PackageName = $PackageName"
 Write-Verbose "PackageDirectory = $PackageDirectory"
+Write-Verbose "LogsDirectory = $LogsDirectory"
 
 #Script Location
 $scriptPath = split-path -parent $MyInvocation.MyCommand.Definition
@@ -34,12 +36,18 @@ Write-Verbose "Importing: $crmToolingDeployment"
 Import-Module $crmToolingDeployment
 Write-Verbose "Imported: $crmToolingDeployment"
 
+#Check Logs Directory
+if ($LogsDirectory -eq '')
+{
+    $LogsDirectory = $PackageDirectory
+}
+
 #Create Connection
 
 $CRMConn = Get-CrmConnection -ConnectionString $CrmConnectionString -Verbose
 
 #Deploy Package
 
-Import-CrmPackage –CrmConnection $CRMConn –PackageDirectory $PackageDirectory –PackageName $PackageName -Verbose
+Import-CrmPackage –CrmConnection $CRMConn –PackageDirectory $PackageDirectory –PackageName $PackageName -LogWriteDirectory $LogsDirectory -Verbose
 
 Write-Verbose 'Leaving DeployPackage.ps1'
