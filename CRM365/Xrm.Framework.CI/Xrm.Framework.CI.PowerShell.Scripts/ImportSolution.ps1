@@ -11,6 +11,7 @@ param(
 [bool]$convertToManaged, #Direct the system to convert any matching unmanaged customizations into your managed solution. Optional.
 [bool]$holdingSolution,
 [int]$AsyncWaitTimeout, #Optional - Async wait timeout in seconds
+[int]$Timeout, #Optional - CRM connection timeout
 [string]$logsDirectory, #Optional - will place the import log in here
 [string]$logFilename #Optional - will use this as import log file name
 )
@@ -38,6 +39,7 @@ Write-Verbose "skipProductUpdateDependencies = $skipProductUpdateDependencies"
 Write-Verbose "convertToManaged = $convertToManaged"
 Write-Verbose "holdingSolution = $holdingSolution"
 Write-Verbose "AsyncWaitTimeout = $AsyncWaitTimeout"
+Write-Verbose "Timeout = $Timeout"
 Write-Verbose "logsDirectory = $logsDirectory"
 Write-Verbose "logFilename = $logFilename"
 
@@ -65,7 +67,7 @@ if ($override -or ($solution -eq $null) -or ($solution.Version -ne $solutionInfo
 
     $importJobId = [guid]::NewGuid()
   
-    $asyncOperationId = Import-XrmSolution -ConnectionString "$CrmConnectionString" -SolutionFilePath "$solutionFile" -publishWorkflows $publishWorkflows -overwriteUnmanagedCustomizations $overwriteUnmanagedCustomizations -SkipProductUpdateDependencies $skipProductUpdateDependencies -ConvertToManaged $convertToManaged -HoldingSolution $holdingSolution -ImportAsync $true -WaitForCompletion $true -ImportJobId $importJobId -AsyncWaitTimeout $AsyncWaitTimeout -Verbose
+    $asyncOperationId = Import-XrmSolution -ConnectionString "$CrmConnectionString" -SolutionFilePath "$solutionFile" -publishWorkflows $publishWorkflows -overwriteUnmanagedCustomizations $overwriteUnmanagedCustomizations -SkipProductUpdateDependencies $skipProductUpdateDependencies -ConvertToManaged $convertToManaged -HoldingSolution $holdingSolution -ImportAsync $true -WaitForCompletion $true -ImportJobId $importJobId -AsyncWaitTimeout $AsyncWaitTimeout  -Timeout $Timeout -Verbose
  
     Write-Host "Solution Import Completed. Import Job Id: $importJobId"
 
@@ -86,7 +88,6 @@ if ($override -or ($solution -eq $null) -or ($solution.Version -ne $solutionInfo
     $importProgress = $importJob.Progress
     $importResult = (Select-Xml -Content $importJob.Data -XPath "//solutionManifest/result/@result").Node.Value
     $importErrorText = (Select-Xml -Content $importJob.Data -XPath "//solutionManifest/result/@errortext").Node.Value
-
 
     Write-Verbose "Import Progress: $importProgress"
     Write-Verbose "Import Result: $importResult"

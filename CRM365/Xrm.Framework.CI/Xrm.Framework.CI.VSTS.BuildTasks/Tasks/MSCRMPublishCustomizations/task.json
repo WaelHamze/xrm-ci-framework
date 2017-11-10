@@ -14,7 +14,7 @@
   "version": {
     "Major": "8",
     "Minor": "0",
-    "Patch": "3"
+    "Patch": "5"
   },
   "minimumAgentVersion": "1.95.0",
   "instanceNameFormat": "MSCRM Publish Customizations",
@@ -28,12 +28,12 @@
       "helpMarkDown": "For more information on format: https://msdn.microsoft.com/en-gb/library/mt608573.aspx"
     },
     {
-      "name": "connectionTime",
+      "name": "crmConnectionTimeout",
       "type": "string",
-      "label": "Connection Time",
+      "label": "Crm Connection Timeout",
       "defaultValue": "120",
       "required": false,
-      "helpMarkDown": "CRM Connection Timeout"
+      "helpMarkDown": "CRM Connection Timeout in seconds"
     }
   ],
   "execution": {
