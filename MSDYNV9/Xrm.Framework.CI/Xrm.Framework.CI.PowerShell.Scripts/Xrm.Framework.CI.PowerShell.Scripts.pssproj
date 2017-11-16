@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{26e7a989-c329-4b54-a80d-200fc23306b9}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>MyApplication</RootNamespace>
+    <AssemblyName>MyApplication</AssemblyName>
+    <Name>Xrm.Framework.CI.PowerShell.Scripts</Name>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="SetOnlineInstanceAdminMode.ps1" />
+    <Compile Include="DeleteOnlineInstance.ps1" />
+    <Compile Include="DeployPackage.ps1" />
+    <Compile Include="ExportSolution.ps1" />
+    <Compile Include="ExtractCustomizations.ps1" />
+    <Compile Include="ImportSolution.ps1" />
+    <Compile Include="OnlineInstanceFunctions.ps1" />
+    <Compile Include="PackSolution.ps1" />
+    <Compile Include="Ping.ps1" />
+    <Compile Include="ProvisionOnlineInstance.ps1" />
+    <Compile Include="PublishCustomizations.ps1" />
+    <Compile Include="BackupOnlineInstance.ps1" />
+    <Compile Include="RestoreOnlineInstance.ps1" />
+    <Compile Include="UpdateSecureConfiguration.ps1" />
+    <Compile Include="UpdateSolutionVersionInCRM.ps1" />
+    <Compile Include="WaitForCRMOperation.ps1" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Target Name="Build" />
+</Project>

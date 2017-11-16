@@ -49,3 +49,8 @@
 /CRM2013/Xrm.Framework.CI/Xrm.Framework.CI.TeamFoundation.Templates/bin/Debug
 /CRM2013/Xrm.Framework.CI/Xrm.Framework.CI.TeamFoundation.Templates/obj/Debug
 /CRM365/Xrm.Framework.CI/.vs/Xrm.Framework.CI/v15/sqlite3
+/MSDYNV9/Xrm.Framework.CI/bin
+/MSDYNV9/Xrm.Framework.CI/packages
+/MSDYNV9/Xrm.Framework.CI/Xrm.Framework.CI.PowerShell.Cmdlets/bin
+/MSDYNV9/Xrm.Framework.CI/Xrm.Framework.CI.PowerShell.Cmdlets/obj
+/MSDYNV9/Xrm.Framework.CI/.vs/Xrm.Framework.CI/v15/sqlite3
