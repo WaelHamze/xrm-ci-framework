@@ -17,5 +17,6 @@
   </metadata>
   <files>
     <file src="readme.txt" target="" />
+    <file src="..\Xrm.Framework.CI.PowerShell.Scripts\*.ps1" target="tools" />
   </files>
 </package>
