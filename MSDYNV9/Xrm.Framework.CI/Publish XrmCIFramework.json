@@ -1,0 +1,223 @@
+{
+  "source": 2,
+  "id": 1,
+  "revision": 4,
+  "name": "Publish XrmCIFramework",
+  "description": null,
+  "createdBy": {
+    "id": "9023f4b8-9c17-4014-88c8-69ee606921e0",
+    "displayName": "Wael Hamze",
+    "uniqueName": "WaelHamze",
+    "url": "https://app.vssps.visualstudio.com/Af2c21436-be89-4d49-b2bf-ae666c032e29/_apis/Identities/9023f4b8-9c17-4014-88c8-69ee606921e0",
+    "imageUrl": "https://waelhamze.visualstudio.com/_api/_common/identityImage?id=9023f4b8-9c17-4014-88c8-69ee606921e0&t=00000000-0000-0000-d010-6486dcacd408"
+  },
+  "createdOn": "2017-11-20T21:03:21.410Z",
+  "modifiedBy": {
+    "id": "9023f4b8-9c17-4014-88c8-69ee606921e0",
+    "displayName": "Wael Hamze",
+    "uniqueName": "WaelHamze",
+    "url": "https://app.vssps.visualstudio.com/Af2c21436-be89-4d49-b2bf-ae666c032e29/_apis/Identities/9023f4b8-9c17-4014-88c8-69ee606921e0",
+    "imageUrl": "https://waelhamze.visualstudio.com/_api/_common/identityImage?id=9023f4b8-9c17-4014-88c8-69ee606921e0&t=00000000-0000-0000-d010-6486dcacd408"
+  },
+  "modifiedOn": "2017-11-20T21:36:39.650Z",
+  "isDeleted": false,
+  "path": "\\",
+  "variables": { "system.debug": { "value": "true" } },
+  "variableGroups": [],
+  "environments": [
+    {
+      "id": 1,
+      "name": "NuGet.Org",
+      "rank": 1,
+      "owner": {
+        "id": "9023f4b8-9c17-4014-88c8-69ee606921e0",
+        "displayName": "Wael Hamze",
+        "uniqueName": "WaelHamze",
+        "url": "https://app.vssps.visualstudio.com/Af2c21436-be89-4d49-b2bf-ae666c032e29/_apis/Identities/9023f4b8-9c17-4014-88c8-69ee606921e0",
+        "imageUrl": "https://waelhamze.visualstudio.com/_api/_common/identityImage?id=9023f4b8-9c17-4014-88c8-69ee606921e0&t=00000000-0000-0000-d010-6486dcacd408"
+      },
+      "variables": {},
+      "variableGroups": [],
+      "preDeployApprovals": {
+        "approvals": [
+          {
+            "rank": 1,
+            "isAutomated": true,
+            "isNotificationOn": false,
+            "id": 1
+          }
+        ]
+      },
+      "deployStep": {
+        "tasks": [],
+        "id": 2
+      },
+      "postDeployApprovals": {
+        "approvals": [
+          {
+            "rank": 1,
+            "isAutomated": true,
+            "isNotificationOn": false,
+            "id": 3
+          }
+        ]
+      },
+      "deployPhases": [
+        {
+          "deploymentInput": {
+            "parallelExecution": { "parallelExecutionType": "none" },
+            "skipArtifactsDownload": false,
+            "artifactsDownloadInput": { "downloadInputs": [] },
+            "queueId": 6,
+            "demands": [],
+            "enableAccessToken": false,
+            "timeoutInMinutes": 0,
+            "jobCancelTimeoutInMinutes": 1,
+            "condition": "succeeded()",
+            "overrideInputs": {}
+          },
+          "rank": 1,
+          "phaseType": 1,
+          "name": "Agent phase",
+          "workflowTasks": [
+            {
+              "taskId": "333b11bd-d341-40d9-afcf-b32d5ce6f23b",
+              "version": "2.*",
+              "name": "NuGet push",
+              "refName": "NuGetCommand1",
+              "enabled": true,
+              "alwaysRun": false,
+              "continueOnError": false,
+              "timeoutInMinutes": 0,
+              "definitionType": "task",
+              "overrideInputs": {},
+              "condition": "succeeded()",
+              "inputs": {
+                "command": "push",
+                "solution": "**/*.sln",
+                "selectOrConfig": "select",
+                "feedRestore": "",
+                "includeNuGetOrg": "true",
+                "nugetConfigPath": "",
+                "externalEndpoints": "",
+                "noCache": "false",
+                "packagesDirectory": "",
+                "verbosityRestore": "Detailed",
+                "searchPatternPush": "$(System.DefaultWorkingDirectory)/XrmCIFramework/XrmCIFrameworkCmdlets/XrmCIFramework.*.nupkg",
+                "nuGetFeedType": "external",
+                "feedPublish": "",
+                "allowPackageConflicts": "false",
+                "externalEndpoint": "e5d409c8-e9e8-4e99-8ba0-96673d664b95",
+                "verbosityPush": "Detailed",
+                "searchPatternPack": "**/*.csproj",
+                "configurationToPack": "$(BuildConfiguration)",
+                "outputDir": "$(Build.ArtifactStagingDirectory)",
+                "versioningScheme": "off",
+                "includeReferencedProjects": "false",
+                "versionEnvVar": "",
+                "requestedMajorVersion": "1",
+                "requestedMinorVersion": "0",
+                "requestedPatchVersion": "0",
+                "packTimezone": "utc",
+                "includeSymbols": "false",
+                "buildProperties": "",
+                "verbosityPack": "Detailed",
+                "arguments": ""
+              }
+            }
+          ]
+        }
+      ],
+      "environmentOptions": {
+        "emailNotificationType": "OnlyOnFailure",
+        "emailRecipients": "release.environment.owner;release.creator",
+        "skipArtifactsDownload": false,
+        "timeoutInMinutes": 0,
+        "enableAccessToken": false,
+        "publishDeploymentStatus": true
+      },
+      "demands": [],
+      "conditions": [
+        {
+          "name": "ReleaseStarted",
+          "conditionType": 1,
+          "value": ""
+        }
+      ],
+      "executionPolicy": {
+        "concurrencyCount": 0,
+        "queueDepthCount": 0
+      },
+      "schedules": [],
+      "retentionPolicy": {
+        "daysToKeep": 30,
+        "releasesToKeep": 3,
+        "retainBuild": true
+      },
+      "processParameters": {},
+      "properties": {},
+      "preDeploymentGates": {
+        "id": 0,
+        "gatesOptions": null,
+        "gates": []
+      },
+      "postDeploymentGates": {
+        "id": 0,
+        "gatesOptions": null,
+        "gates": []
+      }
+    }
+  ],
+  "artifacts": [
+    {
+      "sourceId": "5353f2a6-fec0-4139-9e87-cc63b4434c1a:1",
+      "type": "Build",
+      "alias": "XrmCIFramework",
+      "definitionReference": {
+        "artifactSourceDefinitionUrl": {
+          "id": "https://waelhamze.visualstudio.com/_permalink/_build/index?collectionId=c095144a-c678-48b8-a8ad-55cc19d05d3c&projectId=5353f2a6-fec0-4139-9e87-cc63b4434c1a&definitionId=1",
+          "name": ""
+        },
+        "defaultVersionBranch": {
+          "id": "",
+          "name": ""
+        },
+        "defaultVersionSpecific": {
+          "id": "",
+          "name": ""
+        },
+        "defaultVersionTags": {
+          "id": "",
+          "name": ""
+        },
+        "defaultVersionType": {
+          "id": "latestType",
+          "name": "Latest"
+        },
+        "definition": {
+          "id": "1",
+          "name": "XrmCIFramework"
+        },
+        "project": {
+          "id": "5353f2a6-fec0-4139-9e87-cc63b4434c1a",
+          "name": "MSDynamicsDevOps"
+        }
+      },
+      "isPrimary": true
+    }
+  ],
+  "triggers": [],
+  "releaseNameFormat": "Release-$(rev:r)",
+  "url": "https://waelhamze.vsrm.visualstudio.com/5353f2a6-fec0-4139-9e87-cc63b4434c1a/_apis/Release/definitions/1",
+  "_links": {
+    "self": { "href": "https://waelhamze.vsrm.visualstudio.com/5353f2a6-fec0-4139-9e87-cc63b4434c1a/_apis/Release/definitions/1" },
+    "web": { "href": "https://waelhamze.visualstudio.com/5353f2a6-fec0-4139-9e87-cc63b4434c1a/_release?definitionId=1" }
+  },
+  "tags": [],
+  "properties": {
+    "DefinitionCreationSource": {
+      "$type": "System.String",
+      "$value": "ReleaseNew"
+    }
+  }
+}
