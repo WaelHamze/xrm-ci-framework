@@ -51,6 +51,11 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
                 }
                 else
                 {
+                    base.WriteWarning(ServiceClient.LastCrmError);
+                    if (ServiceClient.LastCrmException != null)
+                    {
+                        base.WriteWarning(ServiceClient.LastCrmException.Message);
+                    }
                     if (i != ConnectRetryCount)
                         Thread.Sleep(ConnectPolingInterval);
                 }
