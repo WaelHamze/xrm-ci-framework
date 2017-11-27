@@ -57,3 +57,8 @@
 /MSDYNV9/Xrm.Framework.CI/XrmCIFramework.9.0.0.nupkg.zip
 /MSDYNV9/Xrm.Framework.CI/XrmCIFramework.9.0.0.symbols.nupkg
 /MSDYNV9/Xrm.Framework.CI/.vs/config
+/BuildTools/.vs
+/BuildTools/bin
+/BuildTools/packages
+/BuildTools/Xrm.CI.Framework.BuildTools/bin
+/BuildTools/Xrm.CI.Framework.BuildTools/obj/Debug

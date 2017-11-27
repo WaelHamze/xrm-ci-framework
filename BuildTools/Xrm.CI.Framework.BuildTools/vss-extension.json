@@ -1,0 +1,242 @@
+{
+  "manifestVersion": 1,
+  "id": "xrm-ci-framework-build-tasks",
+  "name": "Dynamics 365 Build Tools",
+  "version": "9.0.0",
+  "publisher": "WaelHamze",
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "description": "Tasks for automating Build & Deployment of Dynamics 365 CE Solutions",
+  "categories": [
+    "Build and release"
+  ],
+  "public":  false,
+  "tags": [
+    "Dynamics CRM",
+    "CRM",
+    "xRM CI Framework",
+    "CRM 365",
+    "Solution Packager",
+    "Package Deployer",
+    "Dynamics 365",
+    "Customer Engagement",
+    "Online Management API",
+    "PowerShell"
+  ],
+  "icons": {
+    "default": "icon_128x128.png"
+  },
+  "screenshots": [
+    {
+      "path": "Screenshots/OnlineBuildDefinition.png"
+    },
+    {
+      "path": "Screenshots/OnlineBuildArtifacts.png"
+    },
+    {
+      "path": "Screenshots/ThirdPartyReleaseDefinition.png"
+    }
+  ],
+  "content": {
+    "details": {
+      "path": "overview.md"
+    },
+    "license": {
+      "path": "license.txt"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "uri": "https://github.com/WaelHamze/xrm-ci-framework"
+  },
+  "files": [
+    {
+      "path": "Images",
+      "addressable": true
+    },
+    {
+      "path": "Tasks/MSCRMPing"
+    },
+    {
+      "path": "Tasks/MSCRMPackSolution"
+    },
+    {
+      "path": "Tasks/MSCRMExportSolution"
+    },
+    {
+      "path": "Tasks/MSCRMPublishCustomizations"
+    },
+    {
+      "path": "Tasks/MSCRMImportSolution"
+    },
+    {
+      "path": "Tasks/MSCRMPackageDeployer"
+    },
+    {
+      "path": "Tasks/MSCRMSetVersion"
+    }
+    ,
+    {
+      "path": "Tasks/MSCRMUpdateSecureConfiguration"
+    }
+    ,
+    {
+      "path": "Tasks/MSCRMBackupOnlineInstance"
+    }
+    ,
+    {
+      "path": "Tasks/MSCRMGetOnlineInstanceByName"
+    }
+    ,
+    {
+      "path": "Tasks/MSCRMProvisionOnlineInstance"
+    }
+    ,
+    {
+      "path": "Tasks/MSCRMRestoreOnlineInstance"
+    }
+    ,
+    {
+      "path": "Tasks/MSCRMDeleteOnlineInstance"
+    }
+    ,
+    {
+      "path": "Tasks/MSCRMSetOnlineInstanceAdminMode"
+    }
+  ],
+  "contributions": [
+    {
+      "id": "MSCRMPing",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "Tasks/MSCRMPing"
+      }
+    },
+    {
+      "id": "MSCRMPackSolution",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "Tasks/MSCRMPackSolution"
+      }
+    },
+    {
+      "id": "MSCRMExportSolution",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "Tasks/MSCRMExportSolution"
+      }
+    },
+    {
+      "id": "MSCRMPublishCustomizations",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "Tasks/MSCRMPublishCustomizations"
+      }
+    },
+    {
+      "id": "MSCRMImportSolution",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "Tasks/MSCRMImportSolution"
+      }
+    },
+    {
+      "id": "MSCRMPackageDeployer",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "Tasks/MSCRMPackageDeployer"
+      }
+    },
+    {
+      "id": "MSCRMSetVersion",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "Tasks/MSCRMSetVersion"
+      }
+    },
+    {
+      "id": "MSCRMUpdateSecureConfiguration",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "Tasks/MSCRMUpdateSecureConfiguration"
+      }
+    },
+    {
+      "id": "MSCRMBackupOnlineInstance",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "Tasks/MSCRMBackupOnlineInstance"
+      }
+    },
+    {
+      "id": "MSCRMProvisionOnlineInstance",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "Tasks/MSCRMProvisionOnlineInstance"
+      }
+    },
+    {
+      "id": "MSCRMRestoreOnlineInstance",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "Tasks/MSCRMRestoreOnlineInstance"
+      }
+    },
+    {
+      "id": "MSCRMDeleteOnlineInstance",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "Tasks/MSCRMDeleteOnlineInstance"
+      }
+    },
+    {
+      "id": "MSCRMSetOnlineInstanceAdminMode",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "Tasks/MSCRMSetOnlineInstanceAdminMode"
+      }
+    }
+  ]
+}

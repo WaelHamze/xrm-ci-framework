@@ -1,0 +1,41 @@
+{
+  "id": "d8587a60-cd25-11e6-a324-f3fd298c325e",
+  "name": "MSCRMPing",
+  "friendlyName": "MSCRM Ping",
+  "description": "A sample task that checks connectivity to a Dynamics 365 environment",
+  "author": "Wael Hamze",
+  "helpMarkDown": "Performs a WhoAmIRequest against the target CRM environment",
+  "category": "Utility",
+  "visibility": [
+    "Build",
+    "Release"
+  ],
+  "demands": [],
+  "version": {
+    "Major": "9",
+    "Minor": "0",
+    "Patch": "4"
+  },
+  "minimumAgentVersion": "1.95.0",
+  "instanceNameFormat": "MSCRM CRM Ping",
+  "inputs": [
+    {
+      "name": "crmConnectionString",
+      "type": "string",
+      "label": "CRM Connection String",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "For more information on format: https://msdn.microsoft.com/en-gb/library/mt608573.aspx"
+    }
+  ],
+  "execution": {
+    "PowerShell3": {
+      "target": "MSCRMPing.ps1",
+      "argumentFormat": "",
+      "workingDirectory": "$(currentDirectory)",
+      "platforms": [
+        "windows"
+      ]
+    }
+  }
+}
