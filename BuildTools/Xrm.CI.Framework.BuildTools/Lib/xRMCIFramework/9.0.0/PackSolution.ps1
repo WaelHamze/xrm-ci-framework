@@ -9,7 +9,8 @@ param(
 [string]$RequiredVersion,
 [bool]$IncludeVersionInSolutionFile,
 [string]$OutputPath,
-[bool]$TreatPackWarningsAsErrors
+[bool]$TreatPackWarningsAsErrors,
+[string]$CoreToolsPath
 )
 
 $ErrorActionPreference = "Stop"
@@ -25,6 +26,7 @@ Write-Verbose "RequiredVersion = $RequiredVersion"
 Write-Verbose "IncludeVersionInSolutionFile = $IncludeVersionInSolutionFile"
 Write-Verbose "OutputPath = $OutputPath"
 Write-Verbose "TreatPackWarningsAsErrors = $TreatPackWarningsAsErrors"
+Write-Verbose "CoreToolsPath = $CoreToolsPath"
 
 #Script Location
 $scriptPath = split-path -parent $MyInvocation.MyCommand.Definition
@@ -70,6 +72,11 @@ $packUnmanagedFile = $packStringBuilder + ".zip"
 $targetFile = $OutputPath + "\" + $packUnmanagedFile
 
 $SolutionPackagerFile = $scriptPath + "\SolutionPackager.exe"
+
+if ($CoreToolsPath)
+{
+	$SolutionPackagerFile = $CoreToolsPath + "\SolutionPackager.exe"
+}
 
 if ($MappingFile)
 {

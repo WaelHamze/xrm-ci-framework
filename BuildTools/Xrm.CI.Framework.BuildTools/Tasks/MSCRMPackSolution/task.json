@@ -14,7 +14,7 @@
   "version": {
     "Major": "9",
     "Minor": "0",
-    "Patch": "0"
+    "Patch": "3"
   },
   "minimumAgentVersion": "1.95.0",
   "instanceNameFormat": "MSCRM Pack Solution",
@@ -23,7 +23,7 @@
       "name": "crmSdkVersion",
       "type": "pickList",
       "label": "Crm Sdk Version",
-      "defaultValue": "9.0",
+      "defaultValue": "9.0.0",
       "required": true,
       "options": {
         "8.2.0": "8.2",
