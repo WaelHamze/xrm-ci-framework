@@ -62,3 +62,14 @@
 /BuildTools/packages
 /BuildTools/Xrm.CI.Framework.BuildTools/bin
 /BuildTools/Xrm.CI.Framework.BuildTools/obj/Debug
+/Sample/Xrm.CI.Framework.Sample/packages
+/Sample/Xrm.CI.Framework.Sample/Xrm.CI.Framework.Sample.WFActivities/obj/Release
+/Sample/Xrm.CI.Framework.Sample/Xrm.CI.Framework.Sample.WFActivities/bin/Release
+/Sample/Xrm.CI.Framework.Sample/Xrm.CI.Framework.Sample.WebResources/obj/Release
+/Sample/Xrm.CI.Framework.Sample/Xrm.CI.Framework.Sample.Plugins/bin/Release
+/Sample/Xrm.CI.Framework.Sample/Xrm.CI.Framework.Sample.Plugins/obj/Release
+/Sample/Xrm.CI.Framework.Sample/Xrm.CI.Framework.Sample.WebResources/bin/Xrm.CI.Framework.Sample.WebResources.dll
+/Sample/Xrm.CI.Framework.Sample/Xrm.CI.Framework.Sample.CRMPackage/bin/Release
+/Sample/Xrm.CI.Framework.Sample/Xrm.CI.Framework.Sample.CRMPackage/obj/Release
+/Sample/Xrm.CI.Framework.Sample/Xrm.CI.Framework.Sample.CRMPackage/obj/Debug
+/Sample/Xrm.CI.Framework.Sample/Xrm.CI.Framework.Sample.WebResources/bin
