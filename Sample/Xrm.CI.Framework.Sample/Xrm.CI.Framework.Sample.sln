@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xrm.CI.Framework.Sample.WFA
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xrm.CI.Framework.Sample.WebResources", "Xrm.CI.Framework.Sample.WebResources\Xrm.CI.Framework.Sample.WebResources.csproj", "{71F9605A-A0C2-4FE1-A431-6009429CD61F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xrm.CI.Framework.Sample.CRMPackage", "Xrm.CI.Framework.Sample.CRMPackage\Xrm.CI.Framework.Sample.CRMPackage.csproj", "{170C0103-3F94-4896-9062-6314167F596A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{71F9605A-A0C2-4FE1-A431-6009429CD61F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{71F9605A-A0C2-4FE1-A431-6009429CD61F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{71F9605A-A0C2-4FE1-A431-6009429CD61F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{170C0103-3F94-4896-9062-6314167F596A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{170C0103-3F94-4896-9062-6314167F596A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{170C0103-3F94-4896-9062-6314167F596A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{170C0103-3F94-4896-9062-6314167F596A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,840 @@
+﻿<!DOCTYPE HTML>
+<!-- saved from url=(0063)https://msdn.microsoft.com/en-us/library/dn688182(v=crm.7).aspx -->
+<!DOCTYPE html PUBLIC "" ""><HTML lang="en" dir="ltr" xmlns="http://www.w3.org/1999/xhtml"><HEAD><META 
+content="IE=11.0000" http-equiv="X-UA-Compatible">
+<LINK href="https://msdn.microsoft.com/en-us/library/dn688182.aspx" rel="canonical"> 
+        
+<META http-equiv="Content-Type" content="text/html; charset=utf-8"><TITLE>Create 
+packages for the CRM Package Deployer</TITLE> 
+<META name="DCS.dcsuri" content="/en-us/library/dn688182(d=default,l=en-us,v=crm.7).aspx"> 
+<META name="NormalizedUrl" content="https://msdn.microsoft.com/en-us/library/dn688182(d=default,l=en-us,v=crm.7).aspx"> 
+<META name="ms.normalizedurl" content="https://msdn.microsoft.com/en-us/library/dn688182(d=default,l=en-us,v=crm.7).aspx"> 
+<META name="VotingContextUrl" content="https://msdn.microsoft.com/en-us/library/dn688182(d=default,l=en-us,v=crm.7).aspx"> 
+<META name="MN" content="61C41DCE-9:37:16 AM"> 
+<META name="Search.ShortId" content="dn688182"> 
+<META name="ms.shortidmsdn" content="dn688182"> 
+<META name="Ms.Locale" content="en-us"> 
+<META name="ms.prodver" content="CRM.7"> 
+<META name="ms.contentlang" content="EN"> 
+<META name="ms.lang" content="EN"> 
+<META name="ms.loc" content="US"> 
+<META name="ms.sitever" content="2015.02.26.3"> 
+<META name="ms.assetid" content="8def31d9-ee2a-4527-a29a-f16b53fc9229"> 
+<META name="ms.auth" content="0">             <LINK href="support/Combined.css" 
+rel="stylesheet" type="text/css">
+<META name="GENERATOR" content="MSHTML 11.00.9600.17631"></HEAD>     
+<BODY class="library IE IE11">
+<DIV id="page"><LINK rel="stylesheet" type="text/css">         <INPUT id="isHeaderBleeding" type="hidden" value="true"> 
+    
+<DIV class="ltr msdn" id="ux-header" dir="ltr"><HEADER><SPAN 
+id="moveDrawer"></SPAN>             <SPAN id="singleCol"></SPAN>             
+<SPAN id="doubleCol"></SPAN>             
+<DIV class="row">
+<DIV class="top">
+<DIV class="left"><A class="msdnLogoImg" 
+href="https://msdn.microsoft.com/en-us"><IMG src="support/microsoftLogoForHeader.png"> 
+                            </A></DIV>
+<DIV class="right">
+
+<DIV class="auxNav">
+
+
+<DIV id="Fragment_SocialLinks" xmlns="http://www.w3.org/1999/xhtml" 
+data-fragmentname="SocialLinks">
+</DIV></DIV></DIV></DIV>
+<DIV class="bottom">
+<DIV class="left">
+<DIV id="Fragment_SiteLogo" xmlns="http://www.w3.org/1999/xhtml" 
+data-fragmentname="SiteLogo">
+<DIV class="LinkWithImage topImage"><A id="SiteLogo_2152_1" href="https://msdn.microsoft.com/"><IMG 
+id="msdnLogo-black" src="support/dn610975.msdnLogo-black.jpg" 
+xmlns="">       <SPAN></SPAN>     </A>   </DIV></DIV>
+</DIV>
+    </DIV></DIV></HEADER>   
+  </DIV>
+<DIV id="body">
+<DIV class="content" id="content">
+<DIV xmlns="http://www.w3.org/1999/xhtml">
+<DIV class="topic" xmlns="http://www.w3.org/1999/xhtml" xmlns:cs="http://msdn.microsoft.com/en-us/" 
+xmlns:msxsl="urn:schemas-microsoft-com:xslt" xmlns:mtps="http://msdn2.microsoft.com/mtps">
+<H1 class="title">Create packages for the CRM Package Deployer</H1> 
+    <A href="http://go.microsoft.com/fwlink/p/?LinkID=394696">Online Version</A>
+<DIV id="mainSection">
+<DIV id="mainBody">
+<P>					Microsoft Dynamics CRM Package Deployer is a new tool that enables 
+administrators to deploy packages on Microsoft Dynamics CRM Online and Microsoft 
+Dynamics CRM (on-premises) instances. A “package” can consist of any or all of 
+the following:</P>
+<UL>
+  <LI class="unordered">						One or more CRM solution files.<BR><BR></LI>
+  <LI class="unordered">						Flat files or exported data files from the 
+  Configuration Migration tool. For more information about the tool, see <A 
+  href="https://technet.microsoft.com/en-us/library/dn647421(v=crm.7).aspx">Manage 
+  your configuration data</A>.<BR><BR></LI>
+  <LI class="unordered">						Custom code that can run while the package is 
+  being deployed to the CRM server, or after it’s been deployed.<BR><BR></LI>
+  <LI class="unordered">						HTML content specific to the package that can 
+  display at the beginning and end of the deployment process. This can be useful 
+  to provide a description of the solutions and files that are deployed in the 
+  package.<BR><BR></LI></UL>
+<P>					Microsoft Dynamics CRM provides you with a Visual Studio template for 
+creating these packages that can be used with the Package Deployer tool to 
+deploy them to a CRM server.</P>
+<DIV>
+<H2 class="LW_CollapsibleArea_TitleDiv">
+<DIV><A title="Collapse" class="LW_CollapsibleArea_TitleAhref" role="button" 
+href="javascript:void(0)"><SPAN class="cl_CollapsibleArea_expanding LW_CollapsibleArea_Img"></SPAN><SPAN 
+class="LW_CollapsibleArea_Title">In This Topic</SPAN></A>
+<DIV class="LW_CollapsibleArea_HrDiv">
+<HR class="LW_CollapsibleArea_Hr">
+</DIV></DIV></H2>
+<DIV class="sectionblock">
+<P><A href="https://msdn.microsoft.com/en-us/library/dn688182(v=crm.7).aspx#Prereq">Prerequisites</A> 
+        </P>
+<P><A href="https://msdn.microsoft.com/en-us/library/dn688182(v=crm.7).aspx#HowTo">Create 
+a package</A>         </P>
+<P><A href="https://msdn.microsoft.com/en-us/library/dn688182(v=crm.7).aspx#UsethePackage">Deploy 
+a package</A>         </P>
+<P><A href="https://msdn.microsoft.com/en-us/library/dn688182(v=crm.7).aspx#BestPractices">Best 
+practices for creating and deploying packages</A>         </P></DIV></DIV><A id="Prereq"></A> 
+      
+<H2 class="heading">Prerequisites</H2>
+<DIV class="section" id="sectionSection1">
+<UL>
+  <LI class="unordered">							Ensure that you have all the solutions and files 
+  ready that you want to include in the package.<BR><BR></LI>
+  <LI class="unordered">															Microsoft .NET Framework 4.5.2
+  							 <BR><BR></LI>
+  <LI class="unordered">															Microsoft Visual Studio 2012 or Visual 
+  Studio 2013<BR><BR></LI>
+  <LI class="unordered"><A href="http://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c">NuGet 
+  Package Manager for Visual Studio 2012</A> or <A href="http://visualstudiogallery.msdn.microsoft.com/4ec1526c-4a8c-4a84-b702-b21a8f5293ca">NuGet 
+  Package Manager for Visual Studio 2013</A><BR><BR></LI>
+  <LI class="unordered">															Microsoft Dynamics&nbsp;CRM&nbsp;SDK 
+  templates for Visual Studio that contains the package template. You can get it 
+  in one of the following ways: <BR><BR>
+  <UL>
+    <LI class="unordered"><A href="http://go.microsoft.com/fwlink/?LinkId=400925">Download 
+    the CRM SDK templates</A> and double-click the 
+    <CODE>CRMSDKTemplates.vsix</CODE> file to install the template in Visual 
+    Studio.<BR><BR></LI>
+    <LI class="unordered"><A href="http://go.microsoft.com/fwlink/p/?LinkID=511355">Download 
+    and extract the CRM SDK package</A>. The templates file, 
+    CRMSDKTemplates.vsix, is located in the SDK\Templates folder. Double-click 
+    the <CODE>CRMSDKTemplates.vsix</CODE> file to install the template in Visual 
+    Studio.<BR><BR></LI></UL></LI></UL></DIV><A id="HowTo"></A>       
+<H2 class="heading">Create a package</H2>
+<DIV class="section" id="sectionSection2">
+<P>Perform the following five steps to create a package:</P>
+<P><A href="https://msdn.microsoft.com/en-us/library/dn688182(v=crm.7).aspx#Step1">Step 
+1: Create a project using the template</A>         </P>
+<P><A href="https://msdn.microsoft.com/en-us/library/dn688182(v=crm.7).aspx#Step2">Step 
+2: Add your files to the project</A>         </P>
+<P><A href="https://msdn.microsoft.com/en-us/library/dn688182(v=crm.7).aspx#Step3">Step 
+3: Update the HTML files</A>         </P>
+<P><A href="https://msdn.microsoft.com/en-us/library/dn688182(v=crm.7).aspx#Step4">Step 
+4: Specify the configuration values for the package</A>         </P>
+<P><A href="https://msdn.microsoft.com/en-us/library/dn688182(v=crm.7).aspx#Step5">Step 
+5: Define custom code for your package</A>         </P>
+<P></P><A id="Step1"></A>         
+<H4 class="subHeading">Step 1: Create a project using the template</H4>
+<DIV class="subSection">
+<OL class="ordered">
+  <LI>
+  <P>Start Microsoft Visual Studio, and create a new project.</P></LI>
+  <LI>
+  <P>In the <STRONG>New Project</STRONG> dialog box:</P>
+  <OL class="ordered">
+    <LI>											From the list of installed templates, expand <STRONG>Visual 
+    C#</STRONG>, and select <STRONG>CRM SDK Templates</STRONG>.<BR><BR></LI>
+    <LI>											Ensure that <STRONG>.NET Framework 4.5.2</STRONG> is 
+    selected.<BR><BR></LI>
+    <LI>											Select <STRONG>CRM Package</STRONG>.<BR><BR></LI>
+    <LI>											Specify the name and location of the project, and click 
+    <STRONG>OK</STRONG>.<BR><BR></LI></OL><IMG title="New project for creating a custom package" 
+  id="c603d998-c01f-432c-8728-bd31ff267ff9" alt="New project for creating a custom package" 
+  src="support/IC755647.png" 
+  xmlns="">             </LI></OL></DIV><A id="Step2"></A>         
+<H4 class="subHeading">Step 2: Add your files to the project</H4>
+<DIV class="subSection">
+<OL class="ordered">
+  <LI>
+  <P>In the <STRONG>Solutions Explorer</STRONG> pane, add your solutions and 
+  files under the <STRONG>PkgFolder</STRONG> folder.</P></LI>
+  <LI>
+  <P>For each file that you add under the <STRONG>PkgFolder</STRONG> folder, in 
+  the <STRONG>Properties</STRONG> pane, set the <STRONG>Copy to Output 
+  Directory</STRONG> value to <STRONG>Copy Always</STRONG>. This ensures that 
+  your file is available in the generated package.</P></LI></OL></DIV><A id="Step3"></A> 
+        
+<H4 class="subHeading">Step 3: Update the HTML files: English and other 
+languages</H4>
+<DIV class="subSection">
+<OL class="ordered">
+  <LI>
+  <P>In the Solution Explorer pane, expand <STRONG>PkgFolder</STRONG> &gt; 
+  <STRONG>Content</STRONG> &gt; <STRONG>en-us</STRONG>. You’ll find two folders 
+  called EndHTML and WelcomeHTML. These folders contain the HTML and associated 
+  files that enable you to display information at the end and beginning of the 
+  package deployment process. Edit the files in the HTML folder of these folders 
+  to add information for your package.</P></LI>
+  <LI>
+  <P>You can also add the HTML files in your package in other languages so that 
+  the content in the HTML appears in the language based on the locale settings 
+  of the user’s computer. To do so:</P>
+  <OL class="ordered">
+    <LI>											Create a copy of the <STRONG>en-us</STRONG> folder under 
+    <STRONG>PkgFolder</STRONG> &gt; <STRONG>Content</STRONG>.<BR><BR></LI>
+    <LI>											Rename the copied folder to the appropriate language. For 
+    example, for the Spanish language, rename it to 
+    <STRONG>es-ES</STRONG>.<BR><BR></LI>
+    <LI>											Modify the content of the HTML files to add Spanish 
+    content.<BR><BR></LI></OL></LI></OL></DIV><A id="Step4"></A>         
+<H4 class="subHeading">Step 4: Specify the configuration values for the 
+package</H4>
+<DIV class="subSection">
+<OL class="ordered">
+  <LI>
+  <P>Define the package configuration by adding information about your package 
+  in the <STRONG>ImportConfig.xml</STRONG> file available in the 
+  <STRONG>PkgFolder</STRONG>. Double-click the file to open it for editing. The 
+  following table lists information about each parameter and node in the config 
+  file.</P>
+  <H3 class="subHeading">&nbsp;</H3>
+  <TABLE>
+    <TBODY>
+    <TR>
+      <TH>													Parameter/Node												 </TH>
+      <TH>													Description												 </TH></TR>
+    <TR>
+      <TD>
+        <P>installsampledata</P></TD>
+      <TD>
+        <P><STRONG>true</STRONG> or <STRONG>false</STRONG>. If 
+        <STRONG>true</STRONG>, installs sample data to CRM instance. This is the 
+        same sample data that you can install from <STRONG>Settings</STRONG> 
+        &gt; <STRONG>Data Management</STRONG> area.</P></TD></TR>
+    <TR>
+      <TD>
+        <P>waitforsampledatatoinstall</P></TD>
+      <TD>
+        <P><STRONG>true</STRONG> or <STRONG>false</STRONG>. If 
+        <STRONG>true</STRONG>, and if <STRONG>installsampledata</STRONG> is also 
+        set to <STRONG>true</STRONG>, waits for sample data to install before 
+        deploying the package.</P></TD></TR>
+    <TR>
+      <TD>
+        <P>agentdesktopzipfile</P></TD>
+      <TD>
+        <P>File name of the zip file to unpack. If you specify a .zip file name 
+        here, it adds a screen during the package deployment process that 
+        prompts you to select a location where you want to unpack the contents 
+        of the file. </P>
+        <P>This is commonly used for creating packages for Unified Service Desk 
+        for Microsoft Dynamics CRM. For information about Unified Service Desk, 
+        see the <A href="http://go.microsoft.com/fwlink/?LinkID=394402">Unified 
+        Service Desk Administration Guide</A>.</P></TD></TR>
+    <TR>
+      <TD>
+        <P>agentdesktopexename</P></TD>
+      <TD>
+        <P>Name of the .exe or .msi file in the zip file or a URL to be invoked 
+        at the end of the deployment process.</P>
+        <P>This is commonly used for creating packages for Unified Service 
+        Desk.</P></TD></TR>
+    <TR>
+      <TD>
+        <P>crmmigdataimportfile</P></TD>
+      <TD>
+        <P>File name of the data file (.zip) exported using the Configuration 
+        Migration tool.</P>
+        <DIV class="alert">
+        <TABLE>
+          <TBODY>
+          <TR>
+            <TH align="left"><IMG title="Important" class="cl_IC160177" id="Important" 
+              alt="Important" src="support/clear.gif" 
+              xmlns="">Important </TH></TR>
+          <TR>
+            <TD>													If your data file contains user information, the 
+              user information won’t be imported. To import user information 
+              from the source CRM instance to the target instance, you must use 
+              the Configuration Migration tool. For more information, see <A 
+              href="https://technet.microsoft.com/en-us/library/dn647421(v=crm.7).aspx">Manage 
+              your configuration data</A> in theDeploying and administering 
+              Microsoft Dynamics CRM documentation.
+              <P></P></TD></TR></TBODY></TABLE>
+        <P></P></DIV></TD></TR>
+    <TR>
+      <TD>
+        <P><STRONG>&lt;solutions&gt;</STRONG> node</P></TD>
+      <TD>
+        <P>Contains an array of <STRONG>&lt;configsolutionfile&gt;</STRONG> 
+        nodes that describe the solutions to import. The order of the solutions 
+        under this node indicates the order in which the solutions will be 
+        imported on the target server.</P></TD></TR>
+    <TR>
+      <TD>
+        <P><STRONG>&lt;configsolutionfile&gt;</STRONG> node</P></TD>
+      <TD>
+        <P>Use this node under the <STRONG>&lt;solutions&gt;</STRONG> node to 
+        specify the individual solution file name to be imported. You use the 
+        <STRONG>solutionpackagefilename</STRONG> attribute under this node to 
+        specify the .zip file name of your solution. You can add multiple 
+        solution file names in a package by adding as many 
+        <STRONG>&lt;configsolutionfile&gt;</STRONG> nodes. For example, if you 
+        want three solution files to be imported, add them like this:</P>
+        <DIV class="codeSnippetContainer" id="code-snippet-1" xmlns="">
+        <DIV class="codeSnippetContainerTabs"></DIV>
+        <DIV class="codeSnippetContainerCodeContainer">
+        <DIV class="codeSnippetToolBar">
+        <DIV class="codeSnippetToolBarText"><A name="CodeSnippetCopyLink" title="Copy to clipboard." 
+        style="display: none;" href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_0b06654b-de0d-44d6-8f0d-b86de650f760');">Copy</A> 
+                    </DIV></DIV>
+        <DIV class="codeSnippetContainerCode" id="CodeSnippetContainerCode_0b06654b-de0d-44d6-8f0d-b86de650f760" 
+        dir="ltr">
+        <DIV style="color: black;">
+<PRE>&lt;solutions&gt;
+    &lt;configsolutionfile solutionpackagefilename="SampleSolutionOne_1_0_managed.zip" /&gt;
+    &lt;configsolutionfile solutionpackagefilename="SampleSolutionTwo_2_0_managed.zip" /&gt;
+    &lt;configsolutionfile solutionpackagefilename="SampleSolutionThree_3_0_managed.zip" /&gt;
+&lt;/solutions&gt;
+</PRE></DIV></DIV></DIV></DIV></TD></TR>
+    <TR>
+      <TD>
+        <P>&lt;<STRONG>filestoimportnode&gt;</STRONG> node</P></TD>
+      <TD>
+        <P>Contains an array of <STRONG>&lt;configimportfile&gt;</STRONG> and 
+        <STRONG>&lt;zipimportdetails&gt;</STRONG> nodes that are used to 
+        describe individual files and zip files respectively to be 
+      imported.</P></TD></TR>
+    <TR>
+      <TD>
+        <P><STRONG>&lt;configimportfile&gt;</STRONG> node</P></TD>
+      <TD>
+        <P>Use this node under the <STRONG>&lt;configimportfile&gt;</STRONG> 
+        node to describe a file to be imported to CRM. You can add multiple 
+        files in a package by adding as many 
+        <STRONG>&lt;configimportfile&gt;</STRONG> nodes.</P>
+        <DIV class="codeSnippetContainer" id="code-snippet-2" xmlns="">
+        <DIV class="codeSnippetContainerTabs"></DIV>
+        <DIV class="codeSnippetContainerCodeContainer">
+        <DIV class="codeSnippetToolBar">
+        <DIV class="codeSnippetToolBarText"><A name="CodeSnippetCopyLink" title="Copy to clipboard." 
+        style="display: none;" href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_df939284-a8f1-4b3e-a006-475a77388afd');">Copy</A> 
+                    </DIV></DIV>
+        <DIV class="codeSnippetContainerCode" id="CodeSnippetContainerCode_df939284-a8f1-4b3e-a006-475a77388afd" 
+        dir="ltr">
+        <DIV style="color: black;">
+<PRE>&lt;filestoimport&gt;
+  &lt;configimportfile
+    filename="File.csv"
+    filetype="CSV"
+    associatedmap="FileMap"
+    importtoentity="FileEntity"
+    datadelimiter="" fielddelimiter="comma"
+    enableduplicatedetection="true"
+    isfirstrowheader="true"  isrecordownerateam="false"
+    owneruser=""
+    waitforimporttocomplete="true"/&gt;
+  &lt;configimportfile
+    filename="File.zip"
+    filetype="ZIP"
+    associatedmap="FileMapName"
+    importtoentity="FileEntity"
+    datadelimiter=""
+    fielddelimiter="comma"
+    enableduplicatedetection="true"
+    isfirstrowheader="true"
+    isrecordownerateam="false"
+    owneruser=""
+    waitforimporttocomplete="true"/&gt;
+  ...
+  ...
+&lt;/filestoimport&gt;
+</PRE></DIV></DIV></DIV></DIV>
+        <P>This has the following attributes:</P>
+        <H3 class="subHeading">&nbsp;</H3>
+        <DIV>
+        <TABLE>
+          <TBODY>
+          <TR>
+            <TH>																Attribute															 </TH>
+            <TH>																Description															 </TH></TR>
+          <TR>
+            <TD>
+              <P><STRONG>filename</STRONG>                             </P></TD>
+            <TD>
+              <P>Name of the file that contains the import data. If the file is 
+              a .zip file, a <STRONG>&lt;zipimportdetails&gt;</STRONG> node must 
+              be present with a <STRONG>&lt;zipimportdetail&gt;</STRONG> node 
+              for each file in the .zip file.</P></TD></TR>
+          <TR>
+            <TD>
+              <P><STRONG>filetype</STRONG>                             </P></TD>
+            <TD>
+              <P>This can be csv, xml, or zip.</P></TD></TR>
+          <TR>
+            <TD>
+              <P><STRONG>associatedmap</STRONG>                             
+            </P></TD>
+            <TD>
+              <P>Name of the CRM import data map to use with this file. If 
+              blank, attempts to use the system determined import data map name 
+              for this file.</P></TD></TR>
+          <TR>
+            <TD>
+              <P><STRONG>importtoentity</STRONG>                             
+            </P></TD>
+            <TD>
+              <P>Can be the name of the exe in the zip file, a URL, or an .msi 
+              file to provide a link to invoke at the end of the 
+          process.</P></TD></TR>
+          <TR>
+            <TD>
+              <P><STRONG>datadelimiter</STRONG>                             
+            </P></TD>
+            <TD>
+              <P>Name of the data delimiter used in the import file. Valid 
+              values are singlequote or doublequotes.</P></TD></TR>
+          <TR>
+            <TD>
+              <P><STRONG>fielddelimiter</STRONG>                             
+            </P></TD>
+            <TD>
+              <P>Name of the field delimiter used in the import file. Valid 
+              values are comma or colon, or singlequote.</P></TD></TR>
+          <TR>
+            <TD>
+              <P><STRONG>enableduplicatedetection</STRONG>                       
+                    </P></TD>
+            <TD>
+              <P>Indicates whether to enable duplicate detections rules on data 
+              import. Valid values are <STRONG>true</STRONG> or 
+              <STRONG>false</STRONG>.</P></TD></TR>
+          <TR>
+            <TD>
+              <P><STRONG>isfirstrowheader</STRONG>                             
+              </P></TD>
+            <TD>
+              <P>Used to denote that the first row of the import file contains 
+              the field names. Valid values are <STRONG>true</STRONG> or 
+              <STRONG>false</STRONG>.</P></TD></TR>
+          <TR>
+            <TD>
+              <P><STRONG>isrecordownerateam</STRONG>                             
+              </P></TD>
+            <TD>
+              <P>Indicates whether the owner of the record on import should be a 
+              team. Valid values are <STRONG>true</STRONG> or 
+              <STRONG>false</STRONG>.</P></TD></TR>
+          <TR>
+            <TD>
+              <P><STRONG>owneruser</STRONG>                             </P></TD>
+            <TD>
+              <P>Indicates the user ID that should own the records. The default 
+              value is the currently logged in user.</P></TD></TR>
+          <TR>
+            <TD>
+              <P><STRONG>waitforimporttocomplete</STRONG>                        
+                   </P></TD>
+            <TD>
+              <P>If <STRONG>true</STRONG>, the system waits for the import to 
+              complete before proceeding. If <STRONG>false</STRONG>, it queues 
+              the jobs and moves on.</P></TD></TR></TBODY></TABLE></DIV></TD></TR>
+    <TR>
+      <TD>
+        <P><STRONG>&lt;zipimportdetails&gt;</STRONG> node</P></TD>
+      <TD>
+        <P>This node contains an array of 
+        <STRONG>&lt;zipimportdetail&gt;</STRONG> nodes that describe the files 
+        included in a zip file that is used to import to CRM.</P></TD></TR>
+    <TR>
+      <TD>
+        <P><STRONG>&lt;zipimportdetail&gt;</STRONG> node</P></TD>
+      <TD>
+        <P>Use this node under the <STRONG>&lt;zipimportdetails&gt;</STRONG> 
+        node to provide information about an individual file in a .zip file that 
+        is specified in the <STRONG>&lt;configimportfile&gt;</STRONG> node. </P>
+        <DIV class="codeSnippetContainer" id="code-snippet-3" xmlns="">
+        <DIV class="codeSnippetContainerTabs"></DIV>
+        <DIV class="codeSnippetContainerCodeContainer">
+        <DIV class="codeSnippetToolBar">
+        <DIV class="codeSnippetToolBarText"><A name="CodeSnippetCopyLink" title="Copy to clipboard." 
+        style="display: none;" href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_e50a2b69-9d0f-4429-b7db-9219c6c3a484');">Copy</A> 
+                    </DIV></DIV>
+        <DIV class="codeSnippetContainerCode" id="CodeSnippetContainerCode_e50a2b69-9d0f-4429-b7db-9219c6c3a484" 
+        dir="ltr">
+        <DIV style="color: black;">
+<PRE>&lt;filestoimport&gt;
+...
+...
+    &lt;zipimportdetails&gt;
+      &lt;zipimportdetail filename="subfile1.csv" filetype="csv" importtoentity="account" /&gt;
+      &lt;zipimportdetail filename="subfile2.txt" filetype="csv" importtoentity="contact" /&gt;
+    &lt;/zipimportdetails&gt;
+&lt;/filestoimport&gt;
+</PRE></DIV></DIV></DIV></DIV>
+        <P>This has the following attributes:</P>
+        <H3 class="subHeading">&nbsp;</H3>
+        <DIV>
+        <TABLE>
+          <TBODY>
+          <TR>
+            <TH>																Attribute															 </TH>
+            <TH>																Description															 </TH></TR>
+          <TR>
+            <TD>
+              <P><STRONG>filename</STRONG>                             </P></TD>
+            <TD>
+              <P>Name of the file that contains the import data.</P></TD></TR>
+          <TR>
+            <TD>
+              <P><STRONG>filetype</STRONG>                             </P></TD>
+            <TD>
+              <P>This can be csv or xml.</P></TD></TR>
+          <TR>
+            <TD>
+              <P><STRONG>importtoentity</STRONG>                             
+            </P></TD>
+            <TD>
+              <P>Can be the name of the exe in the zip file, a url, or an .msi 
+              file to provide a link to invoke at the end of the 
+          process.</P></TD></TR></TBODY></TABLE></DIV></TD></TR>
+    <TR>
+      <TD>
+        <P><STRONG>&lt;filesmapstoimport&gt;</STRONG> node</P></TD>
+      <TD>
+        <P>This node contains an array of 
+        <STRONG>&lt;configmapimportfile&gt;</STRONG> nodes to import. The order 
+        of the map files in this node indicates the order in which they are 
+        imported. For information about data maps, see <A href="https://msdn.microsoft.com/en-us/library/gg309694.aspx">Create 
+        data maps for import</A>.</P></TD></TR>
+    <TR>
+      <TD>
+        <P><STRONG>&lt;configimportmapfile&gt;</STRONG> node</P></TD>
+      <TD>
+        <P>Use this node under the <STRONG>&lt;filesmapstoimport&gt;</STRONG> 
+        node to provide information about an individual map file to import in 
+        CRM.</P>
+        <DIV class="codeSnippetContainer" id="code-snippet-4" xmlns="">
+        <DIV class="codeSnippetContainerTabs"></DIV>
+        <DIV class="codeSnippetContainerCodeContainer">
+        <DIV class="codeSnippetToolBar">
+        <DIV class="codeSnippetToolBarText"><A name="CodeSnippetCopyLink" title="Copy to clipboard." 
+        style="display: none;" href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_e67568ef-8c22-472a-93c0-1b2bceb111ca');">Copy</A> 
+                    </DIV></DIV>
+        <DIV class="codeSnippetContainerCode" id="CodeSnippetContainerCode_e67568ef-8c22-472a-93c0-1b2bceb111ca" 
+        dir="ltr">
+        <DIV style="color: black;">
+<PRE>&lt;filesmapstoimport&gt;
+    &lt;configimportmapfile filename="FileMap.xml" /&gt;
+&lt;/filesmapstoimport&gt;
+</PRE></DIV></DIV></DIV></DIV></TD></TR></TBODY></TABLE></LI>
+  <LI>
+  <P>Click <STRONG>Save All</STRONG>.</P></LI></OL></DIV><A id="Step5"></A>        
+ 
+<H4 class="subHeading">Step 5: Define custom code for your package</H4>
+<DIV class="subSection">
+<OL class="ordered">
+  <LI>
+  <P>In the Solution Explorer pane, double-click the 
+  <STRONG>PackageTemplate.cs</STRONG> file at the root to edit it.</P></LI>
+  <LI>
+  <P>In the PackageTemplate.cs file, you can:</P>
+  <OL class="ordered">
+    <LI>											Enter custom code to execute when the package is initialized 
+    in the override method definition of 
+    <STRONG>InitializeCustomExtension()</STRONG>.<BR><BR></LI>
+    <LI>											Enter custom code to execute before the import starts in the 
+    <STRONG>BeforeImportStage()</STRONG> function.<BR><BR></LI>
+    <LI>											Use the <STRONG>RunSolutionUpgradeMigrationStep()</STRONG> 
+    function to perform data transformation or upgrade between two versions of a 
+    solution while a solution update is occurring.<BR><BR>
+    <DIV class="codeSnippetContainer" id="code-snippet-5" xmlns="">
+    <DIV class="codeSnippetContainerTabs"></DIV>
+    <DIV class="codeSnippetContainerCodeContainer">
+    <DIV class="codeSnippetToolBar">
+    <DIV class="codeSnippetToolBarText"><A name="CodeSnippetCopyLink" title="Copy to clipboard." 
+    style="display: none;" href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_512acdcb-0d1b-4e3f-ace5-1bee922404c0');">Copy</A> 
+                </DIV></DIV>
+    <DIV class="codeSnippetContainerCode" id="CodeSnippetContainerCode_512acdcb-0d1b-4e3f-ace5-1bee922404c0" 
+    dir="ltr">
+    <DIV style="color: black;">
+<PRE>public override void RunSolutionUpgradeMigrationStep(string solutionName, string oldVersion, string newVersion, Guid oldSolutionId, Guid newSolutionId)
+{
+    base.RunSolutionUpgradeMigrationStep(solutionName, oldVersion, newVersion, oldSolutionId, newSolutionId);
+}
+</PRE></DIV></DIV></DIV></DIV>
+    											This function expects the following parameters:<BR><BR>
+    <H3 class="subHeading">&nbsp;</H3>
+    <TABLE>
+      <TBODY>
+      <TR>
+        <TH>															Parameter														 </TH>
+        <TH>															Description														 </TH></TR>
+      <TR>
+        <TD>
+          <P><STRONG>solutionName</STRONG></P></TD>
+        <TD>
+          <P>Name of the solution</P></TD></TR>
+      <TR>
+        <TD>
+          <P><STRONG>oldVersion</STRONG></P></TD>
+        <TD>
+          <P>Version number of the old solution</P></TD></TR>
+      <TR>
+        <TD>
+          <P><STRONG>newVersion</STRONG></P></TD>
+        <TD>
+          <P>Version number of the new solution</P></TD></TR>
+      <TR>
+        <TD>
+          <P><STRONG>oldSolutionId</STRONG></P></TD>
+        <TD>
+          <P>GUID of the old solution.</P></TD></TR>
+      <TR>
+        <TD>
+          <P><STRONG>newSolutionId</STRONG></P></TD>
+        <TD>
+          <P>GUID of the new solution.</P></TD></TR></TBODY></TABLE></LI>
+    <LI>											Enter custom code to execute after the import completes in 
+    the <STRONG>AfterPrimaryImport()</STRONG> function.<BR><BR></LI>
+    <LI>											Change the default name of the package folder from PkgFolder 
+    to something else. To do so, rename the PkgFolder in the <STRONG>Solution 
+    Explorer</STRONG> pane, and then edit the return value under the 
+    <STRONG>GetImportPackageDataFolderName</STRONG> property.<BR><BR>
+    <DIV class="codeSnippetContainer" id="code-snippet-6" xmlns="">
+    <DIV class="codeSnippetContainerTabs"></DIV>
+    <DIV class="codeSnippetContainerCodeContainer">
+    <DIV class="codeSnippetToolBar">
+    <DIV class="codeSnippetToolBarText"><A name="CodeSnippetCopyLink" title="Copy to clipboard." 
+    style="display: none;" href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_0546ea68-1919-4de7-b553-7ed3a71713d6');">Copy</A> 
+                </DIV></DIV>
+    <DIV class="codeSnippetContainerCode" id="CodeSnippetContainerCode_0546ea68-1919-4de7-b553-7ed3a71713d6" 
+    dir="ltr">
+    <DIV style="color: black;">
+<PRE>
+public override string GetImportPackageDataFolderName
+{
+    get
+    {
+        // WARNING this value directly correlates to the folder name in the Solution Explorer where the ImportConfig.xml and sub content is located. 
+        // Changing this name requires that you also change the correlating name in the Solution Explorer 
+        return "PkgFolder";
+    }
+}
+</PRE></DIV></DIV></DIV></DIV></LI>
+    <LI>											Change the package name by editing the return value under the 
+    <STRONG>GetNameOfImport</STRONG> property.<BR><BR>
+    <DIV class="codeSnippetContainer" id="code-snippet-7" xmlns="">
+    <DIV class="codeSnippetContainerTabs"></DIV>
+    <DIV class="codeSnippetContainerCodeContainer">
+    <DIV class="codeSnippetToolBar">
+    <DIV class="codeSnippetToolBarText"><A name="CodeSnippetCopyLink" title="Copy to clipboard." 
+    style="display: none;" href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_ad1fbcef-5b59-41a2-bc53-6e1e8c20e31b');">Copy</A> 
+                </DIV></DIV>
+    <DIV class="codeSnippetContainerCode" id="CodeSnippetContainerCode_ad1fbcef-5b59-41a2-bc53-6e1e8c20e31b" 
+    dir="ltr">
+    <DIV style="color: black;">
+<PRE>public override string GetNameOfImport(bool plural)
+{
+     return "Package Short Name";
+}
+</PRE></DIV></DIV></DIV></DIV>
+    											This is the name of your package that will appear on the package 
+    selection page in the CRM Package Deployer wizard.<BR><BR></LI>
+    <LI>											Change the package description by editing the return value 
+    under the <STRONG>GetImportPackageDescriptionText</STRONG> property.<BR><BR>
+    <DIV class="codeSnippetContainer" id="code-snippet-8" xmlns="">
+    <DIV class="codeSnippetContainerTabs"></DIV>
+    <DIV class="codeSnippetContainerCodeContainer">
+    <DIV class="codeSnippetToolBar">
+    <DIV class="codeSnippetToolBarText"><A name="CodeSnippetCopyLink" title="Copy to clipboard." 
+    style="display: none;" href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_1abb257a-3288-4f93-b836-37555d5d8b66');">Copy</A> 
+                </DIV></DIV>
+    <DIV class="codeSnippetContainerCode" id="CodeSnippetContainerCode_1abb257a-3288-4f93-b836-37555d5d8b66" 
+    dir="ltr">
+    <DIV style="color: black;">
+<PRE>public override string GetImportPackageDescriptionText
+{
+       get { return "Package Description"; }
+}
+</PRE></DIV></DIV></DIV></DIV>
+    											This is the package description that will appear alongside the 
+    package name on the on the package selection page in the Package Deployer 
+    wizard.<BR><BR></LI>
+    <LI>											Change the package long name by editing the return value 
+    under the <STRONG>GetLongNameOfImport</STRONG> property.<BR><BR>
+    <DIV class="codeSnippetContainer" id="code-snippet-9" xmlns="">
+    <DIV class="codeSnippetContainerTabs"></DIV>
+    <DIV class="codeSnippetContainerCodeContainer">
+    <DIV class="codeSnippetToolBar">
+    <DIV class="codeSnippetToolBarText"><A name="CodeSnippetCopyLink" title="Copy to clipboard." 
+    style="display: none;" href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_d4c4e383-bded-4423-8625-bcf6e3f11402');">Copy</A> 
+                </DIV></DIV>
+    <DIV class="codeSnippetContainerCode" id="CodeSnippetContainerCode_d4c4e383-bded-4423-8625-bcf6e3f11402" 
+    dir="ltr">
+    <DIV style="color: black;">
+<PRE>public override string GetLongNameOfImport
+{
+     get { return "Package Long Name"; }
+}
+</PRE></DIV></DIV></DIV></DIV>
+    											The package long name appears on the next page after you have 
+    selected the package to install.<BR><BR></LI></OL></LI>
+  <LI>
+  <P>Additionally, the following function and variables are available to the 
+  package:</P>
+  <H3 class="subHeading">&nbsp;</H3>
+  <TABLE>
+    <TBODY>
+    <TR>
+      <TH>													Name												 </TH>
+      <TH>													Type												 </TH>
+      <TH>													Description												 </TH></TR>
+    <TR>
+      <TD>
+        <P><A href="https://msdn.microsoft.com/en-us/library/microsoft.xrm.tooling.packagedeployment.crmpackageextentionbase.importextension.createprogressitem.aspx">CreateProgressItem</A> 
+                            </P></TD>
+      <TD>
+        <P>Function</P></TD>
+      <TD>
+        <P>Used to create a new progress item in the user interface 
+    (UI).</P></TD></TR>
+    <TR>
+      <TD>
+        <P><A href="https://msdn.microsoft.com/en-us/library/microsoft.xrm.tooling.packagedeployment.crmpackageextentionbase.importextension.raiseupdateevent.aspx">RaiseUpdateEvent</A> 
+                            </P></TD>
+      <TD>
+        <P>Function</P></TD>
+      <TD>
+        <P>Used to update the progress created by the call to <A href="https://msdn.microsoft.com/en-us/library/microsoft.xrm.tooling.packagedeployment.crmpackageextentionbase.importextension.createprogressitem.aspx">CreateProgressItem</A>. 
+        </P>
+        <P><A href="https://msdn.microsoft.com/en-us/library/microsoft.xrm.tooling.packagedeployment.crmpackageextentionbase.progresspanelitemstatus.aspx">ProgressPanelItemStatus</A> 
+        is an enum: </P>
+        <P></P>
+        <DIV class="codeSnippetContainer" id="code-snippet-10" xmlns="">
+        <DIV class="codeSnippetContainerTabs"></DIV>
+        <DIV class="codeSnippetContainerCodeContainer">
+        <DIV class="codeSnippetToolBar">
+        <DIV class="codeSnippetToolBarText"><A name="CodeSnippetCopyLink" title="Copy to clipboard." 
+        style="display: none;" href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode('CodeSnippetContainerCode_312ecf07-aa52-4161-8b9e-392d68871300');">Copy</A> 
+                    </DIV></DIV>
+        <DIV class="codeSnippetContainerCode" id="CodeSnippetContainerCode_312ecf07-aa52-4161-8b9e-392d68871300" 
+        dir="ltr">
+        <DIV style="color: black;">
+<PRE>public enum ProgressPanelItemStatus
+{
+    Working = 0,
+    Complete = 1,
+    Failed = 2,
+    Warning = 3,
+    Unknown = 4
+}
+</PRE></DIV></DIV></DIV></DIV></TD></TR>
+    <TR>
+      <TD>
+        <P><A href="https://msdn.microsoft.com/en-us/library/microsoft.xrm.tooling.packagedeployment.crmpackageextentionbase.importextension.raisefailevent.aspx">RaiseFailEvent</A> 
+                            </P></TD>
+      <TD>
+        <P>Function</P></TD>
+      <TD>
+        <P>Used to fail the current status import with an exception 
+      message.</P></TD></TR>
+    <TR>
+      <TD>
+        <P><A href="https://msdn.microsoft.com/en-us/library/microsoft.xrm.tooling.packagedeployment.crmpackageextentionbase.importextension.isroleassoicatedwithteam.aspx">IsRoleAssoicatedWithTeam</A> 
+                            </P></TD>
+      <TD>
+        <P>Function</P></TD>
+      <TD>
+        <P>Used to determine if a role is associated with a specified 
+      team.</P></TD></TR>
+    <TR>
+      <TD>
+        <P><A href="https://msdn.microsoft.com/en-us/library/microsoft.xrm.tooling.packagedeployment.crmpackageextentionbase.importextension.isworkflowactive.aspx">IsWorkflowActive</A> 
+                            </P></TD>
+      <TD>
+        <P>Function</P></TD>
+      <TD>
+        <P>Used to determine if a specified workflow is active.</P></TD></TR>
+    <TR>
+      <TD>
+        <P><A href="https://msdn.microsoft.com/en-us/library/microsoft.xrm.tooling.packagedeployment.crmpackageextentionbase.importextension.packagelog.aspx">PackageLog</A> 
+                            </P></TD>
+      <TD>
+        <P>Class Pointer</P></TD>
+      <TD>
+        <P>This is a pointer to the initialized logging interface for the 
+        package. This interface is used by a package to log messages and 
+        exceptions to the package log file.</P></TD></TR>
+    <TR>
+      <TD>
+        <P><A href="https://msdn.microsoft.com/en-us/library/microsoft.xrm.tooling.packagedeployment.crmpackageextentionbase.importextension.rootcontroldispatcher.aspx">RootControlDispatcher</A> 
+                            </P></TD>
+      <TD>
+        <P>Variable</P></TD>
+      <TD>
+        <P>This is a dispatcher interface used to allow your control to render 
+        its own UI during package deployment. Use this interface to wrap any UI 
+        elements or commands. It is important to check this variable for null 
+        values before using it as it may or may not be set to a value.</P></TD></TR>
+    <TR>
+      <TD>
+        <P><A href="https://msdn.microsoft.com/en-us/library/microsoft.xrm.tooling.packagedeployment.crmpackageextentionbase.importextension.crmsvc.aspx">CrmSvc</A> 
+                            </P></TD>
+      <TD>
+        <P>Variable</P></TD>
+      <TD>
+        <P>This is a pointer to Microsoft.Xrm.Tooling.Connector that allows for 
+        a package to address CRM from within the package. Use this class to 
+        execute actions in the overridden methods.</P></TD></TR></TBODY></TABLE>
+  <P>You can use any of these functions or variables using the 
+  <STRONG>this</STRONG> keyword:</P><IMG title="Keyword used to include functions or variables" 
+  id="c1de5b89-5b72-4ebf-aba7-9520873b7f1e" alt="Keyword used to include functions or variables" 
+  src="support/IC723497.png" 
+  xmlns="">             </LI>
+  <LI>
+  <P>Save your project, and then build it (<STRONG>Build</STRONG> &gt; 
+  <STRONG>Build Solution</STRONG>) to create the package. The entire contents in 
+  the <EM>&lt;Project&gt;</EM>\Bin\Debug folder is your package. Note that an 
+  assembly file (.dll) is created with the same name as your Visual Studio 
+  project name; this file contains the custom code that that you created in this 
+  section.</P></LI></OL></DIV></DIV><A id="UsethePackage"></A>       
+<H2 class="heading">Deploy a package</H2>
+<DIV class="section" id="sectionSection3">
+<P>After you create a package, you can deploy it on the CRM instance by using 
+either the Package Deployer tool or Windows PowerShell. For detailed 
+information, see <A href="https://technet.microsoft.com/en-us/library/dn647420(v=crm.7).aspx">Deploy 
+packages using CRM Package Deployer or Windows PowerShell</A>.</P></DIV><A id="BestPractices"></A> 
+      
+<H2 class="heading">Best practices for creating and deploying packages</H2>
+<DIV class="section" id="sectionSection4">
+<P>While creating packages, developers must ensure that the package assemblies 
+are signed.</P>
+<P>While deploying the packages, CRM administrators must:</P>
+<UL>
+  <LI class="unordered">							Insist on a signed package assembly so that you 
+  can track an assembly back to its source.<BR><BR></LI>
+  <LI class="unordered">							Test the package on a pre-production instance 
+  (preferably a mirror image of the production instance) before running it on a 
+  production instance.<BR><BR></LI>
+  <LI class="unordered">							Back up the production instance before deploying 
+  the package.<BR><BR></LI></UL></DIV>
+<H2 class="heading"><SPAN id="seeAlsoNoToggle">See Also</SPAN>       </H2>
+<DIV class="section" id="seeAlsoSection">
+<H4 class="subHeading">Concepts</H4><A href="https://msdn.microsoft.com/en-us/library/gg309589.aspx">What's 
+new for developers</A>         <BR><BR></DIV></DIV>
+<P></P>	Microsoft Dynamics CRM 2015 and Microsoft Dynamics CRM Online	 <BR><A 
+href="mailto:mscrmdf@microsoft.com?subject=Create packages for the CRM Package Deployer (/1:SDK Content/2:V7.0/3:V7.0.0/4:8def31d9-ee2a-4527-a29a-f16b53fc9229/5:none/6:en-us/7:Both/8:CRM)">
+				Send comments about this topic to Microsoft.	 </A><BR><A href="https://msdn.microsoft.com/en-us/library/gg490658.aspx">© 
+2014 Microsoft Corporation. All rights reserved.   </A></DIV></DIV></DIV>
+<DIV class="libraryMemberFilter">
+<DIV class="filterContainer"><SPAN>Show:</SPAN>         <LABEL><INPUT class="libraryFilterInherited" 
+type="checkbox" checked="checked" value="Inherit">Inherited         </LABEL>     
+    <LABEL><INPUT class="libraryFilterProtected" type="checkbox" checked="checked" 
+value="Protected">Protected         </LABEL>     </DIV></DIV><INPUT id="libraryMemberFilterEmptyWarning" type="hidden" value="There are no members available with your current filter settings."> 
+ </DIV></DIV>
+
+ </BODY></HTML>
