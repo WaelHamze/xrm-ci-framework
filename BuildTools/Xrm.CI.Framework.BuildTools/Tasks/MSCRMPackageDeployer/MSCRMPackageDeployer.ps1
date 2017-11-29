@@ -10,6 +10,7 @@ Write-Verbose 'Entering MSCRMPackageDeployer.ps1'
 $crmConnectionString = Get-VstsInput -Name crmConnectionString -Require
 $packageName = Get-VstsInput -Name packageName -Require
 $packageDirectory = Get-VstsInput -Name packageDirectory -Require
+$crmSdkVersion = Get-VstsInput -Name crmSdkVersion -Require
 
 #TFS Release Parameters
 $artifactsFolder = $env:AGENT_RELEASEDIRECTORY
@@ -19,6 +20,7 @@ Write-Verbose "crmConnectionString = $crmConnectionString"
 Write-Verbose "packageName = $packageName"
 Write-Verbose "packageDirectory = $packageDirectory"
 Write-Verbose "artifactsFolder = $artifactsFolder"
+Write-Verbose "crmSdkVersion = $crmSdkVersion"
 
 #Script Location
 $scriptPath = split-path -parent $MyInvocation.MyCommand.Definition
@@ -26,9 +28,11 @@ Write-Verbose "Script Path: $scriptPath"
 
 $LogFile = "$packageDirectory" +"\Microsoft.Xrm.Tooling.PackageDeployment-" + (Get-Date -Format yyyy-MM-dd) + ".log"
 
+$PackageDeploymentPath = "$scriptPath\Lib\PackageDeployment\$crmSdkVersion"
+
 try
 {
-	& "$scriptPath\ps_modules\xRMCIFramework\DeployPackage.ps1" -CrmConnectionString $crmConnectionString -PackageName $packageName -PackageDirectory $packageDirectory -LogsDirectory $packageDirectory
+	& "$scriptPath\Lib\xRMCIFramework\$crmSdkVersion\DeployPackage.ps1" -CrmConnectionString $crmConnectionString -PackageName $packageName -PackageDirectory $packageDirectory -LogsDirectory $packageDirectory -PackageDeploymentPath $PackageDeploymentPath
 }
 finally
 {
