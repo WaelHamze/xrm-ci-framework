@@ -37,7 +37,7 @@ Write-Verbose "sleepDuration = $sleepDuration"
 $scriptPath = split-path -parent $MyInvocation.MyCommand.Definition
 Write-Verbose "Script Path: $scriptPath"
 
-$PSModulePath = "$scriptPath\ps_modules\Microsoft.Xrm.OnlineManagementAPI"
+$PSModulePath = "$scriptPath\Lib\OnlineManagementAPI\1.0.0"
 
 & "$scriptPath\BackupOnlineInstance.ps1" -ApiUrl $apiUrl -Username $username -Password $password -InstanceName $instanceName -BackupLabel $backupLabel -BackupNotes $backupNotes -WaitForCompletion $waitForCompletion -SleepDuration $sleepDuration -PSModulePath $PSModulePath  -IsAzureBackup $isAzureBackup -ContainerName $containerName -StorageAccountKey $storageAccountKey -StorageAccountName $storageAccountName
 

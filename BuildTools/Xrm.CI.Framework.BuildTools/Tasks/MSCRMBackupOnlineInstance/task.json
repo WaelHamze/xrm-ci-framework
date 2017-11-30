@@ -14,10 +14,10 @@
   "version": {
     "Major": "9",
     "Minor": "0",
-    "Patch": "0"
+    "Patch": "3"
   },
   "minimumAgentVersion": "1.95.0",
-  "instanceNameFormat": "Backup $(InstanceName)",
+  "instanceNameFormat": "Backup $(instanceName)",
   "groups": [
     {
       "name": "azureStorageInfo",

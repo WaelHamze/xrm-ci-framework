@@ -14,10 +14,10 @@
   "version": {
     "Major": "9",
     "Minor": "0",
-    "Patch": "0"
+    "Patch": "2"
   },
   "minimumAgentVersion": "1.95.0",
-  "instanceNameFormat": "Delete $(InstanceName)",
+  "instanceNameFormat": "Delete $(instanceName)",
   "inputs": [
     {
       "name": "apiUrl",
