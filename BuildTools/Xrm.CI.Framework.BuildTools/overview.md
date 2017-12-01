@@ -8,8 +8,11 @@ The latest version of all tasks work on the VSTS Hosted Agent.
 ## Supported Versions
 
 **Dynamics 365 (8.x.x)**
+
 **Dynamics 365 (9.x.x)**
+
 (Some tasks may work with previous version of CRM)
+
 **VSTS/TFS** For support and installation [instructions](https://docs.microsoft.com/en-us/vsts/marketplace/get-tfs-extensions)
 
 ## Task Catalog

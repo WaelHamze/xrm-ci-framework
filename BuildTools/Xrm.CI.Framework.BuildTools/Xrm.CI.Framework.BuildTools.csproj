@@ -130,8 +130,9 @@
     <Content Include="Screenshots\OnlineBuildDefinition.png" />
     <Content Include="Screenshots\ThirdPartyReleaseDefinition.png" />
     <Content Include="overview.md" />
-    <Content Include="Package.ps1" />
+    <Content Include="Make.ps1" />
     <Content Include="DeployTask.ps1" />
+    <Content Include="Package.ps1" />
     <None Include="packages.config" />
     <Content Include="Tasks\MSCRMBackupOnlineInstance\MSCRMBackupOnlineInstance.ps1" />
     <Content Include="Tasks\MSCRMBackupOnlineInstance\task.json" />
@@ -162,6 +163,8 @@
     <Content Include="Tasks\MSCRMUpdateSecureConfiguration\MSCRMUpdateSecureConfiguration.ps1" />
     <Content Include="Tasks\MSCRMUpdateSecureConfiguration\task.json" />
     <Content Include="vss-extension.json" />
+    <Content Include="vss-extension-dev.json" />
+    <Content Include="vss-extension-preview.json" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />

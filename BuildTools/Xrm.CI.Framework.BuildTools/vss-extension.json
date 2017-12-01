@@ -2,7 +2,7 @@
   "manifestVersion": 1,
   "id": "xrm-ci-framework-build-tasks",
   "name": "Dynamics 365 Build Tools",
-  "version": "9.0.0",
+  "version": "9.0.7",
   "publisher": "WaelHamze",
   "targets": [
     {
@@ -13,7 +13,10 @@
   "categories": [
     "Build and release"
   ],
-  "public":  false,
+  "public": true,
+  "galleryFlags": [
+    "Preview"
+  ],
   "tags": [
     "Dynamics CRM",
     "CRM",
@@ -77,32 +80,25 @@
     },
     {
       "path": "Tasks/MSCRMSetVersion"
-    }
-    ,
+    },
     {
       "path": "Tasks/MSCRMUpdateSecureConfiguration"
-    }
-    ,
+    },
     {
       "path": "Tasks/MSCRMBackupOnlineInstance"
-    }
-    ,
+    },
     {
       "path": "Tasks/MSCRMGetOnlineInstanceByName"
-    }
-    ,
+    },
     {
       "path": "Tasks/MSCRMProvisionOnlineInstance"
-    }
-    ,
+    },
     {
       "path": "Tasks/MSCRMRestoreOnlineInstance"
-    }
-    ,
+    },
     {
       "path": "Tasks/MSCRMDeleteOnlineInstance"
-    }
-    ,
+    },
     {
       "path": "Tasks/MSCRMSetOnlineInstanceAdminMode"
     }

@@ -37,7 +37,7 @@ $newVersion = ([int]$taskMetadata.version.Patch + 1)
 
 Write-Host ("Version: " + $taskMetadata.version.Major + "." + $taskMetadata.version.Minor + "." + $newVersion) -ForegroundColor Yellow
 
-.\Package.ps1
+.\Make.ps1
 
 tfx build tasks upload --task-path .\bin\Tasks\$selectedTask
 
