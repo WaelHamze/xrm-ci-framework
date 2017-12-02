@@ -113,6 +113,7 @@
     <None Include="bin\coretools\LicenseTerms.docx" />
     <None Include="packages.config" />
     <None Include="Xrm.Framework.CI.PowerShell.Cmdlets.nuspec" />
+    <None Include="Xrm.Framework.CI.PowerShell.Cmdlets.psd1" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="bin\coretools\CrmSvcUtil.exe" />
@@ -127,6 +128,7 @@
     <Content Include="bin\coretools\Microsoft.Xrm.Tooling.Ui.Styles.dll" />
     <Content Include="bin\coretools\Other Redistributable.txt" />
     <Content Include="bin\coretools\SolutionPackager.exe" />
+    <Content Include="icon_128x128.png" />
     <Content Include="readme.txt" />
   </ItemGroup>
   <ItemGroup>
