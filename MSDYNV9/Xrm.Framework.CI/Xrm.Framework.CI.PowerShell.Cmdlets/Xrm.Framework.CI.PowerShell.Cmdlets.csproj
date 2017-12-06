@@ -102,6 +102,7 @@
     <Compile Include="RemoveXrmEntityCommand.cs" />
     <Compile Include="RemoveXrmRecordCommand.cs" />
     <Compile Include="SelectXrmWhoAmICommand.cs" />
+    <Compile Include="SetPluginAssembly.cs" />
     <Compile Include="SetXrmEntityCommand.cs" />
     <Compile Include="SetXrmSolutionVersionCommand.cs" />
     <Compile Include="SetXrmSolutionVersionInFolderCommand.cs" />
@@ -109,32 +110,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="bin\coretools\CrmSvcUtil.exe.config" />
-    <None Include="bin\coretools\LicenseTerms.docx" />
     <None Include="packages.config" />
     <None Include="Xrm.Framework.CI.PowerShell.Cmdlets.nuspec" />
     <None Include="Xrm.Framework.CI.PowerShell.Cmdlets.psd1" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="bin\coretools\CrmSvcUtil.exe" />
-    <Content Include="bin\coretools\CrmSvcUtil.xml" />
-    <Content Include="bin\coretools\Microsoft.Crm.Sdk.Proxy.dll" />
-    <Content Include="bin\coretools\Microsoft.IdentityModel.Clients.ActiveDirectory.dll" />
-    <Content Include="bin\coretools\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll" />
-    <Content Include="bin\coretools\Microsoft.Xrm.Sdk.Deployment.dll" />
-    <Content Include="bin\coretools\Microsoft.Xrm.Sdk.dll" />
-    <Content Include="bin\coretools\Microsoft.Xrm.Tooling.Connector.dll" />
-    <Content Include="bin\coretools\Microsoft.Xrm.Tooling.CrmConnectControl.dll" />
-    <Content Include="bin\coretools\Microsoft.Xrm.Tooling.Ui.Styles.dll" />
-    <Content Include="bin\coretools\Other Redistributable.txt" />
-    <Content Include="bin\coretools\SolutionPackager.exe" />
     <Content Include="icon_128x128.png" />
     <Content Include="readme.txt" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="bin\Debug\" />
-    <Folder Include="bin\Release\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>

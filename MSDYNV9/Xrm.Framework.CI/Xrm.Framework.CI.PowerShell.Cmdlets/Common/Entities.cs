@@ -5,7 +5,7 @@
 //     Changes to this file may cause incorrect behavior and will be lost if
 //     the code is regenerated.
 // </auto-generated>
-// Created via this command line: "C:\Users\Wael\AppData\Roaming\MscrmTools\XrmToolBox\Plugins\CrmSvcUtil Ref\crmsvcutil.exe" /url:"https://crmdevops3.api.crm4.dynamics.com/XRMServices/2011/Organization.svc" /namespace:"Xrm.Framework.CI.PowerShell.Cmdlets.Common" /out:"C:\Dev\Src\github-xrm-ci-framework-trunk\xrm-ci-framework\CRM365\Xrm.Framework.CI\Xrm.Framework.CI.PowerShell.Cmdlets\Common\Entities.cs" /servicecontextname:"CIContext" /codecustomization:"DLaB.CrmSvcUtilExtensions.Entity.CustomizeCodeDomService,DLaB.CrmSvcUtilExtensions" /codegenerationservice:"DLaB.CrmSvcUtilExtensions.Entity.CustomCodeGenerationService,DLaB.CrmSvcUtilExtensions" /codewriterfilter:"DLaB.CrmSvcUtilExtensions.Entity.CodeWriterFilterService,DLaB.CrmSvcUtilExtensions" /namingservice:"DLaB.CrmSvcUtilExtensions.NamingService,DLaB.CrmSvcUtilExtensions" /metadataproviderservice:"DLaB.CrmSvcUtilExtensions.Entity.MetadataProviderService,DLaB.CrmSvcUtilExtensions" /username:"wael@crmdevops3.onmicrosoft.com" /password:"********" 
+// Created via this command line: "C:\Users\Wael\AppData\Roaming\MscrmTools\XrmToolBox\Plugins\CrmSvcUtil Ref\crmsvcutil.exe" /url:"https://ultradynamicsdev.api.crm11.dynamics.com/XRMServices/2011/Organization.svc" /namespace:"Xrm.Framework.CI.PowerShell.Cmdlets.Common" /out:"C:\Dev\Src\xrm-ci-framework\MSDYNV9\Xrm.Framework.CI\Xrm.Framework.CI.PowerShell.Cmdlets\Common\Entities.cs" /servicecontextname:"CIContext" /codecustomization:"DLaB.CrmSvcUtilExtensions.Entity.CustomizeCodeDomService,DLaB.CrmSvcUtilExtensions" /codegenerationservice:"DLaB.CrmSvcUtilExtensions.Entity.CustomCodeGenerationService,DLaB.CrmSvcUtilExtensions" /codewriterfilter:"DLaB.CrmSvcUtilExtensions.Entity.CodeWriterFilterService,DLaB.CrmSvcUtilExtensions" /namingservice:"DLaB.CrmSvcUtilExtensions.NamingService,DLaB.CrmSvcUtilExtensions" /metadataproviderservice:"DLaB.CrmSvcUtilExtensions.Entity.MetadataProviderService,DLaB.CrmSvcUtilExtensions" /username:"admin@ultradynamics.co.uk" /password:"**********" 
 //------------------------------------------------------------------------------
 
 [assembly: Microsoft.Xrm.Sdk.Client.ProxyTypesAssemblyAttribute()]
@@ -15,7 +15,2167 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 	
 	
 	[System.Runtime.Serialization.DataContractAttribute()]
-	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "8.2.0.749")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "8.2.1.8676")]
+	public enum ACIViewMapperState
+	{
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		Active = 0,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		Inactive = 1,
+	}
+	
+	/// <summary>
+	/// Customized messages for an entity that has been renamed.
+	/// </summary>
+	[System.Runtime.Serialization.DataContractAttribute()]
+	[Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute("aciviewmapper")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "8.2.1.8676")]
+	public partial class ACIViewMapper : Microsoft.Xrm.Sdk.Entity, System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
+	{
+		
+		public static class Fields
+		{
+			public const string ACIViewMapperId = "aciviewmapperid";
+			public const string Id = "aciviewmapperid";
+			public const string CreatedBy = "createdby";
+			public const string CreatedOn = "createdon";
+			public const string CreatedOnBehalfBy = "createdonbehalfby";
+			public const string ModifiedBy = "modifiedby";
+			public const string ModifiedOn = "modifiedon";
+			public const string ModifiedOnBehalfBy = "modifiedonbehalfby";
+			public const string OrganizationId = "organizationid";
+			public const string StateCode = "statecode";
+			public const string StatusCode = "statuscode";
+			public const string UTCConversionTimeZoneCode = "utcconversiontimezonecode";
+			public const string VersionNumber = "versionnumber";
+			public const string ViewName = "viewname";
+			public const string WebApplicationEndPoint = "webapplicationendpoint";
+			public const string lk_ACIViewMapper_createdby = "lk_ACIViewMapper_createdby";
+			public const string lk_ACIViewMapper_createdonbehalfby = "lk_ACIViewMapper_createdonbehalfby";
+			public const string lk_ACIViewMapper_modifiedby = "lk_ACIViewMapper_modifiedby";
+			public const string lk_ACIViewMapper_modifiedonbehalfby = "lk_ACIViewMapper_modifiedonbehalfby";
+		}
+		
+		/// <summary>
+		/// Default Constructor.
+		/// </summary>
+		[System.Diagnostics.DebuggerNonUserCode()]
+		public ACIViewMapper() : 
+				base(EntityLogicalName)
+		{
+		}
+		
+		public const string EntityLogicalName = "aciviewmapper";
+		
+		public const string PrimaryIdAttribute = "aciviewmapperid";
+		
+		public const int EntityTypeCode = 8040;
+		
+		public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+		
+		public event System.ComponentModel.PropertyChangingEventHandler PropertyChanging;
+		
+		[System.Diagnostics.DebuggerNonUserCode()]
+		private void OnPropertyChanged(string propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		[System.Diagnostics.DebuggerNonUserCode()]
+		private void OnPropertyChanging(string propertyName)
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, new System.ComponentModel.PropertyChangingEventArgs(propertyName));
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier for entity instances
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("aciviewmapperid")]
+		public System.Nullable<System.Guid> ACIViewMapperId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("aciviewmapperid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ACIViewMapperId");
+				this.SetAttributeValue("aciviewmapperid", value);
+				if (value.HasValue)
+				{
+					base.Id = value.Value;
+				}
+				else
+				{
+					base.Id = System.Guid.Empty;
+				}
+				this.OnPropertyChanged("ACIViewMapperId");
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("aciviewmapperid")]
+		public override System.Guid Id
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return base.Id;
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.ACIViewMapperId = value;
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the user who created the display string.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
+		public Microsoft.Xrm.Sdk.EntityReference CreatedBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("createdby");
+			}
+		}
+		
+		/// <summary>
+		/// Date and time when the display string was created.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdon")]
+		public System.Nullable<System.DateTime> CreatedOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("createdon");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the delegate user who created the displaystring.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
+		public Microsoft.Xrm.Sdk.EntityReference CreatedOnBehalfBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("createdonbehalfby");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("CreatedOnBehalfBy");
+				this.SetAttributeValue("createdonbehalfby", value);
+				this.OnPropertyChanged("CreatedOnBehalfBy");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the user who last modified the display string.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
+		public Microsoft.Xrm.Sdk.EntityReference ModifiedBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("modifiedby");
+			}
+		}
+		
+		/// <summary>
+		/// Date and time when the display string was last modified.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedon")]
+		public System.Nullable<System.DateTime> ModifiedOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("modifiedon");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the delegate user who last modified the displaystring.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
+		public Microsoft.Xrm.Sdk.EntityReference ModifiedOnBehalfBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("modifiedonbehalfby");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ModifiedOnBehalfBy");
+				this.SetAttributeValue("modifiedonbehalfby", value);
+				this.OnPropertyChanged("ModifiedOnBehalfBy");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the organization associated with the display string.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
+		public Microsoft.Xrm.Sdk.EntityReference OrganizationId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("organizationid");
+			}
+		}
+		
+		/// <summary>
+		/// Status of the ACIViewMapper
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
+		public System.Nullable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.ACIViewMapperState> StateCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				Microsoft.Xrm.Sdk.OptionSetValue optionSet = this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statecode");
+				if ((optionSet != null))
+				{
+					return ((Xrm.Framework.CI.PowerShell.Cmdlets.Common.ACIViewMapperState)(System.Enum.ToObject(typeof(Xrm.Framework.CI.PowerShell.Cmdlets.Common.ACIViewMapperState), optionSet.Value)));
+				}
+				else
+				{
+					return null;
+				}
+			}
+		}
+		
+		/// <summary>
+		/// Reason for the status of the Unit Group.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statuscode")]
+		public Microsoft.Xrm.Sdk.OptionSetValue StatusCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statuscode");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("StatusCode");
+				this.SetAttributeValue("statuscode", value);
+				this.OnPropertyChanged("StatusCode");
+			}
+		}
+		
+		/// <summary>
+		/// Time zone code that was in use when the record was created.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("utcconversiontimezonecode")]
+		public System.Nullable<int> UTCConversionTimeZoneCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("utcconversiontimezonecode");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("UTCConversionTimeZoneCode");
+				this.SetAttributeValue("utcconversiontimezonecode", value);
+				this.OnPropertyChanged("UTCConversionTimeZoneCode");
+			}
+		}
+		
+		/// <summary>
+		/// 
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("versionnumber")]
+		public System.Nullable<long> VersionNumber
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<long>>("versionnumber");
+			}
+		}
+		
+		/// <summary>
+		/// 
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("viewname")]
+		public string ViewName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("viewname");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ViewName");
+				this.SetAttributeValue("viewname", value);
+				this.OnPropertyChanged("ViewName");
+			}
+		}
+		
+		/// <summary>
+		/// End point of web application
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("webapplicationendpoint")]
+		public string WebApplicationEndPoint
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("webapplicationendpoint");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("WebApplicationEndPoint");
+				this.SetAttributeValue("webapplicationendpoint", value);
+				this.OnPropertyChanged("WebApplicationEndPoint");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lk_ACIViewMapper_createdby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_ACIViewMapper_createdby")]
+		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser lk_ACIViewMapper_createdby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_ACIViewMapper_createdby", null);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lk_ACIViewMapper_createdonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_ACIViewMapper_createdonbehalfby")]
+		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser lk_ACIViewMapper_createdonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_ACIViewMapper_createdonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_ACIViewMapper_createdonbehalfby");
+				this.SetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_ACIViewMapper_createdonbehalfby", null, value);
+				this.OnPropertyChanged("lk_ACIViewMapper_createdonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lk_ACIViewMapper_modifiedby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_ACIViewMapper_modifiedby")]
+		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser lk_ACIViewMapper_modifiedby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_ACIViewMapper_modifiedby", null);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lk_ACIViewMapper_modifiedonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_ACIViewMapper_modifiedonbehalfby")]
+		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser lk_ACIViewMapper_modifiedonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_ACIViewMapper_modifiedonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_ACIViewMapper_modifiedonbehalfby");
+				this.SetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_ACIViewMapper_modifiedonbehalfby", null, value);
+				this.OnPropertyChanged("lk_ACIViewMapper_modifiedonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// Constructor for populating via LINQ queries given a LINQ anonymous type
+		/// <param name="anonymousType">LINQ anonymous type.</param>
+		/// </summary>
+		[System.Diagnostics.DebuggerNonUserCode()]
+		public ACIViewMapper(object anonymousType) : 
+				this()
+		{
+            foreach (var p in anonymousType.GetType().GetProperties())
+            {
+                var value = p.GetValue(anonymousType, null);
+                var name = p.Name.ToLower();
+            
+                if (name.EndsWith("enum") && value.GetType().BaseType == typeof(System.Enum))
+                {
+                    value = new Microsoft.Xrm.Sdk.OptionSetValue((int) value);
+                    name = name.Remove(name.Length - "enum".Length);
+                }
+            
+                switch (name)
+                {
+                    case "id":
+                        base.Id = (System.Guid)value;
+                        Attributes["aciviewmapperid"] = base.Id;
+                        break;
+                    case "aciviewmapperid":
+                        var id = (System.Nullable<System.Guid>) value;
+                        if(id == null){ continue; }
+                        base.Id = id.Value;
+                        Attributes[name] = base.Id;
+                        break;
+                    case "formattedvalues":
+                        // Add Support for FormattedValues
+                        FormattedValues.AddRange((Microsoft.Xrm.Sdk.FormattedValueCollection)value);
+                        break;
+                    default:
+                        Attributes[name] = value;
+                        break;
+                }
+            }
+		}
+	}
+	
+	[System.Runtime.Serialization.DataContractAttribute()]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "8.2.1.8676")]
+	public enum AppConfigState
+	{
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		Active = 0,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		Inactive = 1,
+	}
+	
+	/// <summary>
+	/// Contains a mapping between an app configuration instance and an app, which defines the properties that can be customized for the app. Optionally, also contains navigation setting for an app. For internal use only.
+	/// </summary>
+	[System.Runtime.Serialization.DataContractAttribute()]
+	[Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute("appconfig")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "8.2.1.8676")]
+	public partial class AppConfig : Microsoft.Xrm.Sdk.Entity, System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
+	{
+		
+		public static class Fields
+		{
+			public const string AppConfigId = "appconfigid";
+			public const string Id = "appconfigid";
+			public const string AppConfigIdUnique = "appconfigidunique";
+			public const string AppConfigImportXml = "appconfigimportxml";
+			public const string AppModuleId = "appmoduleid";
+			public const string ComponentState = "componentstate";
+			public const string CreatedBy = "createdby";
+			public const string CreatedOn = "createdon";
+			public const string CreatedOnBehalfBy = "createdonbehalfby";
+			public const string ImportSequenceNumber = "importsequencenumber";
+			public const string IntroducedVersion = "introducedversion";
+			public const string IsManaged = "ismanaged";
+			public const string ModifiedBy = "modifiedby";
+			public const string ModifiedOn = "modifiedon";
+			public const string ModifiedOnBehalfBy = "modifiedonbehalfby";
+			public const string OrganizationId = "organizationid";
+			public const string OverriddenCreatedOn = "overriddencreatedon";
+			public const string OverwriteTime = "overwritetime";
+			public const string SolutionId = "solutionid";
+			public const string StateCode = "statecode";
+			public const string StatusCode = "statuscode";
+			public const string VersionNumber = "versionnumber";
+			public const string lk_appconfig_createdby = "lk_appconfig_createdby";
+			public const string lk_appconfig_createdonbehalfby = "lk_appconfig_createdonbehalfby";
+			public const string lk_appconfig_modifiedby = "lk_appconfig_modifiedby";
+			public const string lk_appconfig_modifiedonbehalfby = "lk_appconfig_modifiedonbehalfby";
+		}
+		
+		/// <summary>
+		/// Default Constructor.
+		/// </summary>
+		[System.Diagnostics.DebuggerNonUserCode()]
+		public AppConfig() : 
+				base(EntityLogicalName)
+		{
+		}
+		
+		public const string EntityLogicalName = "appconfig";
+		
+		public const string PrimaryIdAttribute = "appconfigid";
+		
+		public const int EntityTypeCode = 9012;
+		
+		public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+		
+		public event System.ComponentModel.PropertyChangingEventHandler PropertyChanging;
+		
+		[System.Diagnostics.DebuggerNonUserCode()]
+		private void OnPropertyChanged(string propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		[System.Diagnostics.DebuggerNonUserCode()]
+		private void OnPropertyChanging(string propertyName)
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, new System.ComponentModel.PropertyChangingEventArgs(propertyName));
+			}
+		}
+		
+		/// <summary>
+		/// System-populated app configuration ID.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("appconfigid")]
+		public System.Nullable<System.Guid> AppConfigId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("appconfigid");
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("appconfigid")]
+		public override System.Guid Id
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return base.Id;
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				base.Id = value;
+			}
+		}
+		
+		/// <summary>
+		/// System-populated app configuration unique ID.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("appconfigidunique")]
+		public System.Nullable<System.Guid> AppConfigIdUnique
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("appconfigidunique");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("AppConfigIdUnique");
+				this.SetAttributeValue("appconfigidunique", value);
+				this.OnPropertyChanged("AppConfigIdUnique");
+			}
+		}
+		
+		/// <summary>
+		/// The App Config diff computed for managed solutions containing the AppConfig entity. For internal use only.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("appconfigimportxml")]
+		public string AppConfigImportXml
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("appconfigimportxml");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("AppConfigImportXml");
+				this.SetAttributeValue("appconfigimportxml", value);
+				this.OnPropertyChanged("AppConfigImportXml");
+			}
+		}
+		
+		/// <summary>
+		/// Choose the app module to associate with the app configuration.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("appmoduleid")]
+		public Microsoft.Xrm.Sdk.EntityReference AppModuleId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("appmoduleid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("AppModuleId");
+				this.SetAttributeValue("appmoduleid", value);
+				this.OnPropertyChanged("AppModuleId");
+			}
+		}
+		
+		/// <summary>
+		/// For internal use only
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("componentstate")]
+		public Microsoft.Xrm.Sdk.OptionSetValue ComponentState
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("componentstate");
+			}
+		}
+		
+		/// <summary>
+		/// Shows who created the record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
+		public Microsoft.Xrm.Sdk.EntityReference CreatedBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("createdby");
+			}
+		}
+		
+		/// <summary>
+		/// Shows the date and time when the record was created. The date and time are displayed in the time zone selected in Microsoft Dynamics CRM options.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdon")]
+		public System.Nullable<System.DateTime> CreatedOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("createdon");
+			}
+		}
+		
+		/// <summary>
+		/// Shows who created the record on behalfÂ of another user.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
+		public Microsoft.Xrm.Sdk.EntityReference CreatedOnBehalfBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("createdonbehalfby");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("CreatedOnBehalfBy");
+				this.SetAttributeValue("createdonbehalfby", value);
+				this.OnPropertyChanged("CreatedOnBehalfBy");
+			}
+		}
+		
+		/// <summary>
+		/// For internal use only.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("importsequencenumber")]
+		public System.Nullable<int> ImportSequenceNumber
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("importsequencenumber");
+			}
+		}
+		
+		/// <summary>
+		/// Version in which the similarity rule is introduced.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("introducedversion")]
+		public string IntroducedVersion
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("introducedversion");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("IntroducedVersion");
+				this.SetAttributeValue("introducedversion", value);
+				this.OnPropertyChanged("IntroducedVersion");
+			}
+		}
+		
+		/// <summary>
+		/// Is Managed
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("ismanaged")]
+		public System.Nullable<bool> IsManaged
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("ismanaged");
+			}
+		}
+		
+		/// <summary>
+		/// Shows who last updated the record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
+		public Microsoft.Xrm.Sdk.EntityReference ModifiedBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("modifiedby");
+			}
+		}
+		
+		/// <summary>
+		/// Shows the date and time when the record was last updated. The date and time are displayed in the time zone selected in Microsoft Dynamics CRM options.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedon")]
+		public System.Nullable<System.DateTime> ModifiedOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("modifiedon");
+			}
+		}
+		
+		/// <summary>
+		/// Shows who last updated the record on behalf of another user.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
+		public Microsoft.Xrm.Sdk.EntityReference ModifiedOnBehalfBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("modifiedonbehalfby");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ModifiedOnBehalfBy");
+				this.SetAttributeValue("modifiedonbehalfby", value);
+				this.OnPropertyChanged("ModifiedOnBehalfBy");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier for the organization.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
+		public Microsoft.Xrm.Sdk.EntityReference OrganizationId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("organizationid");
+			}
+		}
+		
+		/// <summary>
+		/// Shows the date and time when the record was migrated. The date and time are displayed in the time zone selected in Microsoft Dynamics CRM options.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("overriddencreatedon")]
+		public System.Nullable<System.DateTime> OverriddenCreatedOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("overriddencreatedon");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("OverriddenCreatedOn");
+				this.SetAttributeValue("overriddencreatedon", value);
+				this.OnPropertyChanged("OverriddenCreatedOn");
+			}
+		}
+		
+		/// <summary>
+		/// Internal use only
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("overwritetime")]
+		public System.Nullable<System.DateTime> OverwriteTime
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("overwritetime");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the associated solution.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("solutionid")]
+		public System.Nullable<System.Guid> SolutionId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("solutionid");
+			}
+		}
+		
+		/// <summary>
+		/// Shows whether the app configuration is Active or Inactive. Inactive records are read-only and can't be edited unless they are reactivated.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
+		public System.Nullable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.AppConfigState> StateCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				Microsoft.Xrm.Sdk.OptionSetValue optionSet = this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statecode");
+				if ((optionSet != null))
+				{
+					return ((Xrm.Framework.CI.PowerShell.Cmdlets.Common.AppConfigState)(System.Enum.ToObject(typeof(Xrm.Framework.CI.PowerShell.Cmdlets.Common.AppConfigState), optionSet.Value)));
+				}
+				else
+				{
+					return null;
+				}
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("StateCode");
+				if ((value == null))
+				{
+					this.SetAttributeValue("statecode", null);
+				}
+				else
+				{
+					this.SetAttributeValue("statecode", new Microsoft.Xrm.Sdk.OptionSetValue(((int)(value))));
+				}
+				this.OnPropertyChanged("StateCode");
+			}
+		}
+		
+		/// <summary>
+		/// Select the status.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statuscode")]
+		public Microsoft.Xrm.Sdk.OptionSetValue StatusCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statuscode");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("StatusCode");
+				this.SetAttributeValue("statuscode", value);
+				this.OnPropertyChanged("StatusCode");
+			}
+		}
+		
+		/// <summary>
+		/// 
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("versionnumber")]
+		public System.Nullable<long> VersionNumber
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<long>>("versionnumber");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N appconfig_appconfiginstance
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("appconfig_appconfiginstance")]
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.AppConfigInstance> appconfig_appconfiginstance
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.AppConfigInstance>("appconfig_appconfiginstance", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("appconfig_appconfiginstance");
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.AppConfigInstance>("appconfig_appconfiginstance", null, value);
+				this.OnPropertyChanged("appconfig_appconfiginstance");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N navigationsetting_appconfig
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("navigationsetting_appconfig")]
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.NavigationSetting> navigationsetting_appconfig
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.NavigationSetting>("navigationsetting_appconfig", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("navigationsetting_appconfig");
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.NavigationSetting>("navigationsetting_appconfig", null, value);
+				this.OnPropertyChanged("navigationsetting_appconfig");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lk_appconfig_createdby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_appconfig_createdby")]
+		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser lk_appconfig_createdby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_appconfig_createdby", null);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lk_appconfig_createdonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_appconfig_createdonbehalfby")]
+		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser lk_appconfig_createdonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_appconfig_createdonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_appconfig_createdonbehalfby");
+				this.SetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_appconfig_createdonbehalfby", null, value);
+				this.OnPropertyChanged("lk_appconfig_createdonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lk_appconfig_modifiedby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_appconfig_modifiedby")]
+		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser lk_appconfig_modifiedby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_appconfig_modifiedby", null);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lk_appconfig_modifiedonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_appconfig_modifiedonbehalfby")]
+		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser lk_appconfig_modifiedonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_appconfig_modifiedonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_appconfig_modifiedonbehalfby");
+				this.SetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_appconfig_modifiedonbehalfby", null, value);
+				this.OnPropertyChanged("lk_appconfig_modifiedonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// Constructor for populating via LINQ queries given a LINQ anonymous type
+		/// <param name="anonymousType">LINQ anonymous type.</param>
+		/// </summary>
+		[System.Diagnostics.DebuggerNonUserCode()]
+		public AppConfig(object anonymousType) : 
+				this()
+		{
+            foreach (var p in anonymousType.GetType().GetProperties())
+            {
+                var value = p.GetValue(anonymousType, null);
+                var name = p.Name.ToLower();
+            
+                if (name.EndsWith("enum") && value.GetType().BaseType == typeof(System.Enum))
+                {
+                    value = new Microsoft.Xrm.Sdk.OptionSetValue((int) value);
+                    name = name.Remove(name.Length - "enum".Length);
+                }
+            
+                switch (name)
+                {
+                    case "id":
+                        base.Id = (System.Guid)value;
+                        Attributes["appconfigid"] = base.Id;
+                        break;
+                    case "appconfigid":
+                        var id = (System.Nullable<System.Guid>) value;
+                        if(id == null){ continue; }
+                        base.Id = id.Value;
+                        Attributes[name] = base.Id;
+                        break;
+                    case "formattedvalues":
+                        // Add Support for FormattedValues
+                        FormattedValues.AddRange((Microsoft.Xrm.Sdk.FormattedValueCollection)value);
+                        break;
+                    default:
+                        Attributes[name] = value;
+                        break;
+                }
+            }
+		}
+	}
+	
+	/// <summary>
+	/// Contains a property or a list of properties from the app configuration master list that can be customized for any app in Dynamics 365. For internal use only.
+	/// </summary>
+	[System.Runtime.Serialization.DataContractAttribute()]
+	[Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute("appconfiginstance")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "8.2.1.8676")]
+	public partial class AppConfigInstance : Microsoft.Xrm.Sdk.Entity, System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
+	{
+		
+		public static class Fields
+		{
+			public const string AppConfigId = "appconfigid";
+			public const string AppConfigIdUnique = "appconfigidunique";
+			public const string AppConfigInstanceId = "appconfiginstanceid";
+			public const string Id = "appconfiginstanceid";
+			public const string AppConfigInstanceIdUnique = "appconfiginstanceidunique";
+			public const string AppConfigMasterId = "appconfigmasterid";
+			public const string ComponentState = "componentstate";
+			public const string ComponentType = "componenttype";
+			public const string CreatedBy = "createdby";
+			public const string CreatedOn = "createdon";
+			public const string CreatedOnBehalfBy = "createdonbehalfby";
+			public const string ImportSequenceNumber = "importsequencenumber";
+			public const string IntroducedVersion = "introducedversion";
+			public const string IsManaged = "ismanaged";
+			public const string ModifiedBy = "modifiedby";
+			public const string ModifiedOn = "modifiedon";
+			public const string ModifiedOnBehalfBy = "modifiedonbehalfby";
+			public const string ObjectId = "objectid";
+			public const string OrganizationId = "organizationid";
+			public const string OverriddenCreatedOn = "overriddencreatedon";
+			public const string OverwriteTime = "overwritetime";
+			public const string SolutionId = "solutionid";
+			public const string Value = "value";
+			public const string VersionNumber = "versionnumber";
+			public const string appconfig_appconfiginstance = "appconfig_appconfiginstance";
+			public const string appconfigmaster_appconfiginstance = "appconfigmaster_appconfiginstance";
+			public const string lk_appconfiginstance_createdby = "lk_appconfiginstance_createdby";
+			public const string lk_appconfiginstance_createdonbehalfby = "lk_appconfiginstance_createdonbehalfby";
+			public const string lk_appconfiginstance_modifiedby = "lk_appconfiginstance_modifiedby";
+			public const string lk_appconfiginstance_modifiedonbehalfby = "lk_appconfiginstance_modifiedonbehalfby";
+		}
+		
+		/// <summary>
+		/// Default Constructor.
+		/// </summary>
+		[System.Diagnostics.DebuggerNonUserCode()]
+		public AppConfigInstance() : 
+				base(EntityLogicalName)
+		{
+		}
+		
+		public const string EntityLogicalName = "appconfiginstance";
+		
+		public const string PrimaryIdAttribute = "appconfiginstanceid";
+		
+		public const int EntityTypeCode = 9013;
+		
+		public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+		
+		public event System.ComponentModel.PropertyChangingEventHandler PropertyChanging;
+		
+		[System.Diagnostics.DebuggerNonUserCode()]
+		private void OnPropertyChanged(string propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		[System.Diagnostics.DebuggerNonUserCode()]
+		private void OnPropertyChanging(string propertyName)
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, new System.ComponentModel.PropertyChangingEventArgs(propertyName));
+			}
+		}
+		
+		/// <summary>
+		/// System-calculated App Configuration unique identifier.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("appconfigid")]
+		public Microsoft.Xrm.Sdk.EntityReference AppConfigId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("appconfigid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("AppConfigId");
+				this.SetAttributeValue("appconfigid", value);
+				this.OnPropertyChanged("AppConfigId");
+			}
+		}
+		
+		/// <summary>
+		/// Enter the App Configuration unique identifier of AppConfig entity for which this customization belongs.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("appconfigidunique")]
+		public System.Nullable<System.Guid> AppConfigIdUnique
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("appconfigidunique");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("AppConfigIdUnique");
+				this.SetAttributeValue("appconfigidunique", value);
+				this.OnPropertyChanged("AppConfigIdUnique");
+			}
+		}
+		
+		/// <summary>
+		/// System-Populated App Configuration instance identifier.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("appconfiginstanceid")]
+		public System.Nullable<System.Guid> AppConfigInstanceId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("appconfiginstanceid");
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("appconfiginstanceid")]
+		public override System.Guid Id
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return base.Id;
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				base.Id = value;
+			}
+		}
+		
+		/// <summary>
+		/// System-populated App Configuration Instance unique identifier.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("appconfiginstanceidunique")]
+		public System.Nullable<System.Guid> AppConfigInstanceIdUnique
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("appconfiginstanceidunique");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("AppConfigInstanceIdUnique");
+				this.SetAttributeValue("appconfiginstanceidunique", value);
+				this.OnPropertyChanged("AppConfigInstanceIdUnique");
+			}
+		}
+		
+		/// <summary>
+		/// System-calculated App Configuration Master identifier.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("appconfigmasterid")]
+		public Microsoft.Xrm.Sdk.EntityReference AppConfigMasterId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("appconfigmasterid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("AppConfigMasterId");
+				this.SetAttributeValue("appconfigmasterid", value);
+				this.OnPropertyChanged("AppConfigMasterId");
+			}
+		}
+		
+		/// <summary>
+		/// System-Populated Published or UnPublished state of App Configuration Instance.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("componentstate")]
+		public Microsoft.Xrm.Sdk.OptionSetValue ComponentState
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("componentstate");
+			}
+		}
+		
+		/// <summary>
+		/// ComponentType
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("componenttype")]
+		public string ComponentType
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("componenttype");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ComponentType");
+				this.SetAttributeValue("componenttype", value);
+				this.OnPropertyChanged("ComponentType");
+			}
+		}
+		
+		/// <summary>
+		/// Shows who created the record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
+		public Microsoft.Xrm.Sdk.EntityReference CreatedBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("createdby");
+			}
+		}
+		
+		/// <summary>
+		/// Shows the date and time when the record was created. The date and time are displayed in the time zone selected in Microsoft Dynamics CRM options.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdon")]
+		public System.Nullable<System.DateTime> CreatedOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("createdon");
+			}
+		}
+		
+		/// <summary>
+		/// Shows who created the record on behalfÂ of another user.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
+		public Microsoft.Xrm.Sdk.EntityReference CreatedOnBehalfBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("createdonbehalfby");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("CreatedOnBehalfBy");
+				this.SetAttributeValue("createdonbehalfby", value);
+				this.OnPropertyChanged("CreatedOnBehalfBy");
+			}
+		}
+		
+		/// <summary>
+		/// For internal use only.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("importsequencenumber")]
+		public System.Nullable<int> ImportSequenceNumber
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("importsequencenumber");
+			}
+		}
+		
+		/// <summary>
+		/// Shows the version in which the App Configuration Instance is introduced.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("introducedversion")]
+		public string IntroducedVersion
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("introducedversion");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("IntroducedVersion");
+				this.SetAttributeValue("introducedversion", value);
+				this.OnPropertyChanged("IntroducedVersion");
+			}
+		}
+		
+		/// <summary>
+		/// Is Managed
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("ismanaged")]
+		public System.Nullable<bool> IsManaged
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("ismanaged");
+			}
+		}
+		
+		/// <summary>
+		/// Shows who last updated the record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
+		public Microsoft.Xrm.Sdk.EntityReference ModifiedBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("modifiedby");
+			}
+		}
+		
+		/// <summary>
+		/// Shows the date and time when the record was last updated. The date and time are displayed in the time zone selected in Microsoft Dynamics CRM options.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedon")]
+		public System.Nullable<System.DateTime> ModifiedOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("modifiedon");
+			}
+		}
+		
+		/// <summary>
+		/// Shows who last updated the record on behalf of another user.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
+		public Microsoft.Xrm.Sdk.EntityReference ModifiedOnBehalfBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("modifiedonbehalfby");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ModifiedOnBehalfBy");
+				this.SetAttributeValue("modifiedonbehalfby", value);
+				this.OnPropertyChanged("ModifiedOnBehalfBy");
+			}
+		}
+		
+		/// <summary>
+		/// ObjectId
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
+		public System.Nullable<System.Guid> ObjectId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("objectid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ObjectId");
+				this.SetAttributeValue("objectid", value);
+				this.OnPropertyChanged("ObjectId");
+			}
+		}
+		
+		/// <summary>
+		/// System-calculated field for Organization identifier.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
+		public Microsoft.Xrm.Sdk.EntityReference OrganizationId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("organizationid");
+			}
+		}
+		
+		/// <summary>
+		/// Shows the date and time when the record was migrated. The date and time are displayed in the time zone selected in Microsoft Dynamics CRM options.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("overriddencreatedon")]
+		public System.Nullable<System.DateTime> OverriddenCreatedOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("overriddencreatedon");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("OverriddenCreatedOn");
+				this.SetAttributeValue("overriddencreatedon", value);
+				this.OnPropertyChanged("OverriddenCreatedOn");
+			}
+		}
+		
+		/// <summary>
+		/// Shows the last overwrite time for the App Configuration Instance.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("overwritetime")]
+		public System.Nullable<System.DateTime> OverwriteTime
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("overwritetime");
+			}
+		}
+		
+		/// <summary>
+		/// Set the solution idenfitier for associated solution.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("solutionid")]
+		public System.Nullable<System.Guid> SolutionId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("solutionid");
+			}
+		}
+		
+		/// <summary>
+		/// Enter a value for the customization property that is valid as per the validator XML specified in the app configuration master record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("value")]
+		public string Value
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("value");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Value");
+				this.SetAttributeValue("value", value);
+				this.OnPropertyChanged("Value");
+			}
+		}
+		
+		/// <summary>
+		/// 
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("versionnumber")]
+		public System.Nullable<long> VersionNumber
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<long>>("versionnumber");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 appconfig_appconfiginstance
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("appconfigid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("appconfig_appconfiginstance")]
+		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.AppConfig appconfig_appconfiginstance
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.AppConfig>("appconfig_appconfiginstance", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("appconfig_appconfiginstance");
+				this.SetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.AppConfig>("appconfig_appconfiginstance", null, value);
+				this.OnPropertyChanged("appconfig_appconfiginstance");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 appconfigmaster_appconfiginstance
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("appconfigmasterid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("appconfigmaster_appconfiginstance")]
+		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.AppConfigMaster appconfigmaster_appconfiginstance
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.AppConfigMaster>("appconfigmaster_appconfiginstance", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("appconfigmaster_appconfiginstance");
+				this.SetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.AppConfigMaster>("appconfigmaster_appconfiginstance", null, value);
+				this.OnPropertyChanged("appconfigmaster_appconfiginstance");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lk_appconfiginstance_createdby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_appconfiginstance_createdby")]
+		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser lk_appconfiginstance_createdby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_appconfiginstance_createdby", null);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lk_appconfiginstance_createdonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_appconfiginstance_createdonbehalfby")]
+		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser lk_appconfiginstance_createdonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_appconfiginstance_createdonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_appconfiginstance_createdonbehalfby");
+				this.SetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_appconfiginstance_createdonbehalfby", null, value);
+				this.OnPropertyChanged("lk_appconfiginstance_createdonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lk_appconfiginstance_modifiedby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_appconfiginstance_modifiedby")]
+		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser lk_appconfiginstance_modifiedby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_appconfiginstance_modifiedby", null);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lk_appconfiginstance_modifiedonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_appconfiginstance_modifiedonbehalfby")]
+		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser lk_appconfiginstance_modifiedonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_appconfiginstance_modifiedonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_appconfiginstance_modifiedonbehalfby");
+				this.SetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_appconfiginstance_modifiedonbehalfby", null, value);
+				this.OnPropertyChanged("lk_appconfiginstance_modifiedonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// Constructor for populating via LINQ queries given a LINQ anonymous type
+		/// <param name="anonymousType">LINQ anonymous type.</param>
+		/// </summary>
+		[System.Diagnostics.DebuggerNonUserCode()]
+		public AppConfigInstance(object anonymousType) : 
+				this()
+		{
+            foreach (var p in anonymousType.GetType().GetProperties())
+            {
+                var value = p.GetValue(anonymousType, null);
+                var name = p.Name.ToLower();
+            
+                if (name.EndsWith("enum") && value.GetType().BaseType == typeof(System.Enum))
+                {
+                    value = new Microsoft.Xrm.Sdk.OptionSetValue((int) value);
+                    name = name.Remove(name.Length - "enum".Length);
+                }
+            
+                switch (name)
+                {
+                    case "id":
+                        base.Id = (System.Guid)value;
+                        Attributes["appconfiginstanceid"] = base.Id;
+                        break;
+                    case "appconfiginstanceid":
+                        var id = (System.Nullable<System.Guid>) value;
+                        if(id == null){ continue; }
+                        base.Id = id.Value;
+                        Attributes[name] = base.Id;
+                        break;
+                    case "formattedvalues":
+                        // Add Support for FormattedValues
+                        FormattedValues.AddRange((Microsoft.Xrm.Sdk.FormattedValueCollection)value);
+                        break;
+                    default:
+                        Attributes[name] = value;
+                        break;
+                }
+            }
+		}
+	}
+	
+	/// <summary>
+	/// Contains the master list of all properties that can be customized for apps in Dynamics 365. For internal use only.
+	/// </summary>
+	[System.Runtime.Serialization.DataContractAttribute()]
+	[Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute("appconfigmaster")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "8.2.1.8676")]
+	public partial class AppConfigMaster : Microsoft.Xrm.Sdk.Entity, System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
+	{
+		
+		public static class Fields
+		{
+			public const string AppConfigMasterId = "appconfigmasterid";
+			public const string Id = "appconfigmasterid";
+			public const string ConfigType = "configtype";
+			public const string CreatedBy = "createdby";
+			public const string CreatedOn = "createdon";
+			public const string CreatedOnBehalfBy = "createdonbehalfby";
+			public const string DefaultValue = "defaultvalue";
+			public const string ImportSequenceNumber = "importsequencenumber";
+			public const string IsNavigationSetting = "isnavigationsetting";
+			public const string ModifiedBy = "modifiedby";
+			public const string ModifiedOn = "modifiedon";
+			public const string ModifiedOnBehalfBy = "modifiedonbehalfby";
+			public const string Name = "name";
+			public const string OrganizationId = "organizationid";
+			public const string OverriddenCreatedOn = "overriddencreatedon";
+			public const string ParentAppConfigMasterId = "parentappconfigmasterid";
+			public const string Validator = "validator";
+			public const string VersionNumber = "versionnumber";
+			public const string lk_appconfigmaster_createdby = "lk_appconfigmaster_createdby";
+			public const string lk_appconfigmaster_createdonbehalfby = "lk_appconfigmaster_createdonbehalfby";
+			public const string lk_appconfigmaster_modifiedby = "lk_appconfigmaster_modifiedby";
+			public const string lk_appconfigmaster_modifiedonbehalfby = "lk_appconfigmaster_modifiedonbehalfby";
+		}
+		
+		/// <summary>
+		/// Default Constructor.
+		/// </summary>
+		[System.Diagnostics.DebuggerNonUserCode()]
+		public AppConfigMaster() : 
+				base(EntityLogicalName)
+		{
+		}
+		
+		public const string EntityLogicalName = "appconfigmaster";
+		
+		public const string PrimaryIdAttribute = "appconfigmasterid";
+		
+		public const string PrimaryNameAttribute = "name";
+		
+		public const int EntityTypeCode = 9011;
+		
+		public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+		
+		public event System.ComponentModel.PropertyChangingEventHandler PropertyChanging;
+		
+		[System.Diagnostics.DebuggerNonUserCode()]
+		private void OnPropertyChanged(string propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		[System.Diagnostics.DebuggerNonUserCode()]
+		private void OnPropertyChanging(string propertyName)
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, new System.ComponentModel.PropertyChangingEventArgs(propertyName));
+			}
+		}
+		
+		/// <summary>
+		/// System-Populated App Configuration instance identifier.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("appconfigmasterid")]
+		public System.Nullable<System.Guid> AppConfigMasterId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("appconfigmasterid");
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("appconfigmasterid")]
+		public override System.Guid Id
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return base.Id;
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				base.Id = value;
+			}
+		}
+		
+		/// <summary>
+		/// Enter the App Configuration and Setting property data type.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("configtype")]
+		public string ConfigType
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("configtype");
+			}
+		}
+		
+		/// <summary>
+		/// Shows who created the record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
+		public Microsoft.Xrm.Sdk.EntityReference CreatedBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("createdby");
+			}
+		}
+		
+		/// <summary>
+		/// Shows the date and time when the record was created. The date and time are displayed in the time zone selected in Microsoft Dynamics CRM options.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdon")]
+		public System.Nullable<System.DateTime> CreatedOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("createdon");
+			}
+		}
+		
+		/// <summary>
+		/// Shows who created the record on behalfÂ of another user.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
+		public Microsoft.Xrm.Sdk.EntityReference CreatedOnBehalfBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("createdonbehalfby");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("CreatedOnBehalfBy");
+				this.SetAttributeValue("createdonbehalfby", value);
+				this.OnPropertyChanged("CreatedOnBehalfBy");
+			}
+		}
+		
+		/// <summary>
+		/// Enter the default value of the App Configuration and Setting property.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("defaultvalue")]
+		public string DefaultValue
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("defaultvalue");
+			}
+		}
+		
+		/// <summary>
+		/// For internal use only.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("importsequencenumber")]
+		public System.Nullable<int> ImportSequenceNumber
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("importsequencenumber");
+			}
+		}
+		
+		/// <summary>
+		/// Enter whether this App Configuration and Setting is Navigation Setting.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isnavigationsetting")]
+		public System.Nullable<int> IsNavigationSetting
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("isnavigationsetting");
+			}
+		}
+		
+		/// <summary>
+		/// Shows who last updated the record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
+		public Microsoft.Xrm.Sdk.EntityReference ModifiedBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("modifiedby");
+			}
+		}
+		
+		/// <summary>
+		/// Shows the date and time when the record was last updated. The date and time are displayed in the time zone selected in Microsoft Dynamics CRM options.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedon")]
+		public System.Nullable<System.DateTime> ModifiedOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("modifiedon");
+			}
+		}
+		
+		/// <summary>
+		/// Shows who last updated the record on behalf of another user.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
+		public Microsoft.Xrm.Sdk.EntityReference ModifiedOnBehalfBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("modifiedonbehalfby");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ModifiedOnBehalfBy");
+				this.SetAttributeValue("modifiedonbehalfby", value);
+				this.OnPropertyChanged("ModifiedOnBehalfBy");
+			}
+		}
+		
+		/// <summary>
+		/// Enter the name of the App Configuration and Setting property with which this customization will be identified.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("name")]
+		public string Name
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("name");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Name");
+				this.SetAttributeValue("name", value);
+				this.OnPropertyChanged("Name");
+			}
+		}
+		
+		/// <summary>
+		/// System-calculated field for Organization identifier.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
+		public Microsoft.Xrm.Sdk.EntityReference OrganizationId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("organizationid");
+			}
+		}
+		
+		/// <summary>
+		/// Shows the date and time when the record was migrated. The date and time are displayed in the time zone selected in Microsoft Dynamics CRM options.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("overriddencreatedon")]
+		public System.Nullable<System.DateTime> OverriddenCreatedOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("overriddencreatedon");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("OverriddenCreatedOn");
+				this.SetAttributeValue("overriddencreatedon", value);
+				this.OnPropertyChanged("OverriddenCreatedOn");
+			}
+		}
+		
+		/// <summary>
+		/// ParentAppConfigMasterId
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("parentappconfigmasterid")]
+		public string ParentAppConfigMasterId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("parentappconfigmasterid");
+			}
+		}
+		
+		/// <summary>
+		/// Validator
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("validator")]
+		public string Validator
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("validator");
+			}
+		}
+		
+		/// <summary>
+		/// 
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("versionnumber")]
+		public System.Nullable<long> VersionNumber
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<long>>("versionnumber");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N appconfigmaster_appconfiginstance
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("appconfigmaster_appconfiginstance")]
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.AppConfigInstance> appconfigmaster_appconfiginstance
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.AppConfigInstance>("appconfigmaster_appconfiginstance", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("appconfigmaster_appconfiginstance");
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.AppConfigInstance>("appconfigmaster_appconfiginstance", null, value);
+				this.OnPropertyChanged("appconfigmaster_appconfiginstance");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lk_appconfigmaster_createdby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_appconfigmaster_createdby")]
+		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser lk_appconfigmaster_createdby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_appconfigmaster_createdby", null);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lk_appconfigmaster_createdonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_appconfigmaster_createdonbehalfby")]
+		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser lk_appconfigmaster_createdonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_appconfigmaster_createdonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_appconfigmaster_createdonbehalfby");
+				this.SetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_appconfigmaster_createdonbehalfby", null, value);
+				this.OnPropertyChanged("lk_appconfigmaster_createdonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lk_appconfigmaster_modifiedby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_appconfigmaster_modifiedby")]
+		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser lk_appconfigmaster_modifiedby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_appconfigmaster_modifiedby", null);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lk_appconfigmaster_modifiedonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_appconfigmaster_modifiedonbehalfby")]
+		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser lk_appconfigmaster_modifiedonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_appconfigmaster_modifiedonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_appconfigmaster_modifiedonbehalfby");
+				this.SetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_appconfigmaster_modifiedonbehalfby", null, value);
+				this.OnPropertyChanged("lk_appconfigmaster_modifiedonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// Constructor for populating via LINQ queries given a LINQ anonymous type
+		/// <param name="anonymousType">LINQ anonymous type.</param>
+		/// </summary>
+		[System.Diagnostics.DebuggerNonUserCode()]
+		public AppConfigMaster(object anonymousType) : 
+				this()
+		{
+            foreach (var p in anonymousType.GetType().GetProperties())
+            {
+                var value = p.GetValue(anonymousType, null);
+                var name = p.Name.ToLower();
+            
+                if (name.EndsWith("enum") && value.GetType().BaseType == typeof(System.Enum))
+                {
+                    value = new Microsoft.Xrm.Sdk.OptionSetValue((int) value);
+                    name = name.Remove(name.Length - "enum".Length);
+                }
+            
+                switch (name)
+                {
+                    case "id":
+                        base.Id = (System.Guid)value;
+                        Attributes["appconfigmasterid"] = base.Id;
+                        break;
+                    case "appconfigmasterid":
+                        var id = (System.Nullable<System.Guid>) value;
+                        if(id == null){ continue; }
+                        base.Id = id.Value;
+                        Attributes[name] = base.Id;
+                        break;
+                    case "formattedvalues":
+                        // Add Support for FormattedValues
+                        FormattedValues.AddRange((Microsoft.Xrm.Sdk.FormattedValueCollection)value);
+                        break;
+                    default:
+                        Attributes[name] = value;
+                        break;
+                }
+            }
+		}
+	}
+	
+	[System.Runtime.Serialization.DataContractAttribute()]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "8.2.1.8676")]
 	public enum AsyncOperationState
 	{
 		
@@ -37,11 +2197,11 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 	/// </summary>
 	[System.Runtime.Serialization.DataContractAttribute()]
 	[Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute("asyncoperation")]
-	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "8.2.0.749")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "8.2.1.8676")]
 	public partial class AsyncOperation : Microsoft.Xrm.Sdk.Entity, System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
 	{
 		
-		public struct Fields
+		public static class Fields
 		{
 			public const string AsyncOperationId = "asyncoperationid";
 			public const string Id = "asyncoperationid";
@@ -94,10 +2254,11 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 			public const string lk_asyncoperation_createdonbehalfby = "lk_asyncoperation_createdonbehalfby";
 			public const string lk_asyncoperation_modifiedby = "lk_asyncoperation_modifiedby";
 			public const string lk_asyncoperation_modifiedonbehalfby = "lk_asyncoperation_modifiedonbehalfby";
+			public const string SdkMessageProcessingStep_AsyncOperations = "SdkMessageProcessingStep_AsyncOperations";
 			public const string system_user_asyncoperation = "system_user_asyncoperation";
 			public const string SystemUser_AsyncOperations = "SystemUser_AsyncOperations";
+			public const string ud_config_AsyncOperations = "ud_config_AsyncOperations";
 		}
-
 		
 		/// <summary>
 		/// Default Constructor.
@@ -109,6 +2270,10 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		}
 		
 		public const string EntityLogicalName = "asyncoperation";
+		
+		public const string PrimaryIdAttribute = "asyncoperationid";
+		
+		public const string PrimaryNameAttribute = "name";
 		
 		public const int EntityTypeCode = 4700;
 		
@@ -1066,6 +3231,27 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		}
 		
 		/// <summary>
+		/// N:1 SdkMessageProcessingStep_AsyncOperations
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningextensionid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("SdkMessageProcessingStep_AsyncOperations")]
+		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SdkMessageProcessingStep SdkMessageProcessingStep_AsyncOperations
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SdkMessageProcessingStep>("SdkMessageProcessingStep_AsyncOperations", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("SdkMessageProcessingStep_AsyncOperations");
+				this.SetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SdkMessageProcessingStep>("SdkMessageProcessingStep_AsyncOperations", null, value);
+				this.OnPropertyChanged("SdkMessageProcessingStep_AsyncOperations");
+			}
+		}
+		
+		/// <summary>
 		/// N:1 system_user_asyncoperation
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owninguser")]
@@ -1097,6 +3283,27 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 				this.OnPropertyChanging("SystemUser_AsyncOperations");
 				this.SetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("SystemUser_AsyncOperations", null, value);
 				this.OnPropertyChanged("SystemUser_AsyncOperations");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 ud_config_AsyncOperations
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("ud_config_AsyncOperations")]
+		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.ud_config ud_config_AsyncOperations
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.ud_config>("ud_config_AsyncOperations", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ud_config_AsyncOperations");
+				this.SetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.ud_config>("ud_config_AsyncOperations", null, value);
+				this.OnPropertyChanged("ud_config_AsyncOperations");
 			}
 		}
 		
@@ -1148,11 +3355,11 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 	/// </summary>
 	[System.Runtime.Serialization.DataContractAttribute()]
 	[Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute("bulkdeletefailure")]
-	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "8.2.0.749")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "8.2.1.8676")]
 	public partial class BulkDeleteFailure : Microsoft.Xrm.Sdk.Entity, System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
 	{
 		
-		public struct Fields
+		public static class Fields
 		{
 			public const string AsyncOperationId = "asyncoperationid";
 			public const string BulkDeleteFailureId = "bulkdeletefailureid";
@@ -1169,8 +3376,8 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 			public const string BulkOperationLog_BulkDeleteFailures = "BulkOperationLog_BulkDeleteFailures";
 			public const string ImportLog_BulkDeleteFailures = "ImportLog_BulkDeleteFailures";
 			public const string SystemUser_BulkDeleteFailures = "SystemUser_BulkDeleteFailures";
+			public const string ud_config_BulkDeleteFailures = "ud_config_BulkDeleteFailures";
 		}
-
 		
 		/// <summary>
 		/// Default Constructor.
@@ -1182,6 +3389,8 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		}
 		
 		public const string EntityLogicalName = "bulkdeletefailure";
+		
+		public const string PrimaryIdAttribute = "bulkdeletefailureid";
 		
 		public const int EntityTypeCode = 4425;
 		
@@ -1410,6 +3619,20 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		}
 		
 		/// <summary>
+		/// N:1 ud_config_BulkDeleteFailures
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("ud_config_BulkDeleteFailures")]
+		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.ud_config ud_config_BulkDeleteFailures
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.ud_config>("ud_config_BulkDeleteFailures", null);
+			}
+		}
+		
+		/// <summary>
 		/// Constructor for populating via LINQ queries given a LINQ anonymous type
 		/// <param name="anonymousType">LINQ anonymous type.</param>
 		/// </summary>
@@ -1453,7 +3676,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 	}
 	
 	[System.Runtime.Serialization.DataContractAttribute()]
-	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "8.2.0.749")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "8.2.1.8676")]
 	public enum BulkDeleteOperationState
 	{
 		
@@ -1475,11 +3698,11 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 	/// </summary>
 	[System.Runtime.Serialization.DataContractAttribute()]
 	[Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute("bulkdeleteoperation")]
-	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "8.2.0.749")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "8.2.1.8676")]
 	public partial class BulkDeleteOperation : Microsoft.Xrm.Sdk.Entity, System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
 	{
 		
-		public struct Fields
+		public static class Fields
 		{
 			public const string AsyncOperationId = "asyncoperationid";
 			public const string BulkDeleteOperationId = "bulkdeleteoperationid";
@@ -1510,7 +3733,6 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 			public const string lk_bulkdeleteoperationbase_createdby = "lk_bulkdeleteoperationbase_createdby";
 			public const string lk_bulkdeleteoperationbase_modifiedby = "lk_bulkdeleteoperationbase_modifiedby";
 		}
-
 		
 		/// <summary>
 		/// Default Constructor.
@@ -1522,6 +3744,10 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		}
 		
 		public const string EntityLogicalName = "bulkdeleteoperation";
+		
+		public const string PrimaryIdAttribute = "bulkdeleteoperationid";
+		
+		public const string PrimaryNameAttribute = "name";
 		
 		public const int EntityTypeCode = 4424;
 		
@@ -2036,11 +4262,11 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 	/// </summary>
 	[System.Runtime.Serialization.DataContractAttribute()]
 	[Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute("bulkoperationlog")]
-	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "8.2.0.749")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "8.2.1.8676")]
 	public partial class BulkOperationLog : Microsoft.Xrm.Sdk.Entity, System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
 	{
 		
-		public struct Fields
+		public static class Fields
 		{
 			public const string AdditionalInfo = "additionalinfo";
 			public const string BulkOperationId = "bulkoperationid";
@@ -2048,12 +4274,19 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 			public const string Id = "bulkoperationlogid";
 			public const string CreatedObjectId = "createdobjectid";
 			public const string ErrorNumber = "errornumber";
+			public const string ImportSequenceNumber = "importsequencenumber";
+			public const string Name = "name";
+			public const string OverriddenCreatedOn = "overriddencreatedon";
 			public const string OwnerId = "ownerid";
 			public const string OwningBusinessUnit = "owningbusinessunit";
+			public const string OwningTeam = "owningteam";
 			public const string OwningUser = "owninguser";
 			public const string RegardingObjectId = "regardingobjectid";
+			public const string TimeZoneRuleVersionNumber = "timezoneruleversionnumber";
+			public const string UTCConversionTimeZoneCode = "utcconversiontimezonecode";
+			public const string VersionNumber = "versionnumber";
+			public const string user_bulkoperationlog = "user_bulkoperationlog";
 		}
-
 		
 		/// <summary>
 		/// Default Constructor.
@@ -2065,6 +4298,10 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		}
 		
 		public const string EntityLogicalName = "bulkoperationlog";
+		
+		public const string PrimaryIdAttribute = "bulkoperationlogid";
+		
+		public const string PrimaryNameAttribute = "name";
 		
 		public const int EntityTypeCode = 4405;
 		
@@ -2207,7 +4444,67 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		}
 		
 		/// <summary>
-		/// Unique identifier of the user or team who owns the bulk operation log.
+		/// Sequence number of the import that created this record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("importsequencenumber")]
+		public System.Nullable<int> ImportSequenceNumber
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("importsequencenumber");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ImportSequenceNumber");
+				this.SetAttributeValue("importsequencenumber", value);
+				this.OnPropertyChanged("ImportSequenceNumber");
+			}
+		}
+		
+		/// <summary>
+		/// name
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("name")]
+		public string Name
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("name");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Name");
+				this.SetAttributeValue("name", value);
+				this.OnPropertyChanged("Name");
+			}
+		}
+		
+		/// <summary>
+		/// Date and time that the record was migrated.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("overriddencreatedon")]
+		public System.Nullable<System.DateTime> OverriddenCreatedOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("overriddencreatedon");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("OverriddenCreatedOn");
+				this.SetAttributeValue("overriddencreatedon", value);
+				this.OnPropertyChanged("OverriddenCreatedOn");
+			}
+		}
+		
+		/// <summary>
+		/// Owner Id
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("ownerid")]
 		public Microsoft.Xrm.Sdk.EntityReference OwnerId
@@ -2220,28 +4517,41 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		}
 		
 		/// <summary>
-		/// Unique identifier of the business unit that owns the bulk operation log.
+		/// Unique identifier for the business unit that owns the record
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningbusinessunit")]
-		public System.Nullable<System.Guid> OwningBusinessUnit
+		public Microsoft.Xrm.Sdk.EntityReference OwningBusinessUnit
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetAttributeValue<System.Nullable<System.Guid>>("owningbusinessunit");
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("owningbusinessunit");
 			}
 		}
 		
 		/// <summary>
-		/// Unique identifier of the user who owns the bulk operation log.
+		/// Unique identifier for the team that owns the record.
 		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owninguser")]
-		public System.Nullable<System.Guid> OwningUser
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningteam")]
+		public Microsoft.Xrm.Sdk.EntityReference OwningTeam
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetAttributeValue<System.Nullable<System.Guid>>("owninguser");
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("owningteam");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier for the user that owns the record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owninguser")]
+		public Microsoft.Xrm.Sdk.EntityReference OwningUser
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("owninguser");
 			}
 		}
 		
@@ -2262,6 +4572,59 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 				this.OnPropertyChanging("RegardingObjectId");
 				this.SetAttributeValue("regardingobjectid", value);
 				this.OnPropertyChanged("RegardingObjectId");
+			}
+		}
+		
+		/// <summary>
+		/// For internal use only.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("timezoneruleversionnumber")]
+		public System.Nullable<int> TimeZoneRuleVersionNumber
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("timezoneruleversionnumber");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("TimeZoneRuleVersionNumber");
+				this.SetAttributeValue("timezoneruleversionnumber", value);
+				this.OnPropertyChanged("TimeZoneRuleVersionNumber");
+			}
+		}
+		
+		/// <summary>
+		/// Time zone code that was in use when the record was created.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("utcconversiontimezonecode")]
+		public System.Nullable<int> UTCConversionTimeZoneCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("utcconversiontimezonecode");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("UTCConversionTimeZoneCode");
+				this.SetAttributeValue("utcconversiontimezonecode", value);
+				this.OnPropertyChanged("UTCConversionTimeZoneCode");
+			}
+		}
+		
+		/// <summary>
+		/// Version Number
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("versionnumber")]
+		public System.Nullable<long> VersionNumber
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<long>>("versionnumber");
 			}
 		}
 		
@@ -2302,6 +4665,20 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 				this.OnPropertyChanging("BulkOperationLog_BulkDeleteFailures");
 				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.BulkDeleteFailure>("BulkOperationLog_BulkDeleteFailures", null, value);
 				this.OnPropertyChanged("BulkOperationLog_BulkDeleteFailures");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 user_bulkoperationlog
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owninguser")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("user_bulkoperationlog")]
+		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser user_bulkoperationlog
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("user_bulkoperationlog", null);
 			}
 		}
 		
@@ -2349,15 +4726,1307 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 	}
 	
 	/// <summary>
+	/// Developers can register plug-ins on a data provider to enable data access for virtual entities in the system.
+	/// </summary>
+	[System.Runtime.Serialization.DataContractAttribute()]
+	[Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute("entitydataprovider")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "8.2.1.8676")]
+	public partial class EntityDataProvider : Microsoft.Xrm.Sdk.Entity, System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
+	{
+		
+		public static class Fields
+		{
+			public const string ComponentState = "componentstate";
+			public const string CreatePlugin = "createplugin";
+			public const string DataSourceLogicalName = "datasourcelogicalname";
+			public const string DeletePlugin = "deleteplugin";
+			public const string Description = "description";
+			public const string EntityDataProviderId = "entitydataproviderid";
+			public const string Id = "entitydataproviderid";
+			public const string EntityDataProviderIdUnique = "entitydataprovideridunique";
+			public const string IntroducedVersion = "introducedversion";
+			public const string IsCustomizable = "iscustomizable";
+			public const string IsManaged = "ismanaged";
+			public const string Name = "name";
+			public const string OrganizationId = "organizationid";
+			public const string OverwriteTime = "overwritetime";
+			public const string RetrieveMultiplePlugin = "retrievemultipleplugin";
+			public const string RetrievePlugin = "retrieveplugin";
+			public const string SolutionId = "solutionid";
+			public const string UpdatePlugin = "updateplugin";
+		}
+		
+		/// <summary>
+		/// Default Constructor.
+		/// </summary>
+		[System.Diagnostics.DebuggerNonUserCode()]
+		public EntityDataProvider() : 
+				base(EntityLogicalName)
+		{
+		}
+		
+		public const string EntityLogicalName = "entitydataprovider";
+		
+		public const string PrimaryIdAttribute = "entitydataproviderid";
+		
+		public const string PrimaryNameAttribute = "name";
+		
+		public const int EntityTypeCode = 78;
+		
+		public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+		
+		public event System.ComponentModel.PropertyChangingEventHandler PropertyChanging;
+		
+		[System.Diagnostics.DebuggerNonUserCode()]
+		private void OnPropertyChanged(string propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		[System.Diagnostics.DebuggerNonUserCode()]
+		private void OnPropertyChanging(string propertyName)
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, new System.ComponentModel.PropertyChangingEventArgs(propertyName));
+			}
+		}
+		
+		/// <summary>
+		/// For internal use only.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("componentstate")]
+		public Microsoft.Xrm.Sdk.OptionSetValue ComponentState
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("componentstate");
+			}
+		}
+		
+		/// <summary>
+		/// Create Plugin
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createplugin")]
+		public System.Nullable<System.Guid> CreatePlugin
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("createplugin");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("CreatePlugin");
+				this.SetAttributeValue("createplugin", value);
+				this.OnPropertyChanged("CreatePlugin");
+			}
+		}
+		
+		/// <summary>
+		/// When creating a Data Provider, the end user must select the name of the Data Source entity that will be created for the provider.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("datasourcelogicalname")]
+		public string DataSourceLogicalName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("datasourcelogicalname");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("DataSourceLogicalName");
+				this.SetAttributeValue("datasourcelogicalname", value);
+				this.OnPropertyChanged("DataSourceLogicalName");
+			}
+		}
+		
+		/// <summary>
+		/// Delete Plugin
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("deleteplugin")]
+		public System.Nullable<System.Guid> DeletePlugin
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("deleteplugin");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("DeletePlugin");
+				this.SetAttributeValue("deleteplugin", value);
+				this.OnPropertyChanged("DeletePlugin");
+			}
+		}
+		
+		/// <summary>
+		/// What is this Data Provider used for and data store technologies does it target?
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("description")]
+		public string Description
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("description");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Description");
+				this.SetAttributeValue("description", value);
+				this.OnPropertyChanged("Description");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the data provider.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("entitydataproviderid")]
+		public System.Nullable<System.Guid> EntityDataProviderId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("entitydataproviderid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("EntityDataProviderId");
+				this.SetAttributeValue("entitydataproviderid", value);
+				if (value.HasValue)
+				{
+					base.Id = value.Value;
+				}
+				else
+				{
+					base.Id = System.Guid.Empty;
+				}
+				this.OnPropertyChanged("EntityDataProviderId");
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("entitydataproviderid")]
+		public override System.Guid Id
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return base.Id;
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.EntityDataProviderId = value;
+			}
+		}
+		
+		/// <summary>
+		/// For internal use only.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("entitydataprovideridunique")]
+		public System.Nullable<System.Guid> EntityDataProviderIdUnique
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("entitydataprovideridunique");
+			}
+		}
+		
+		/// <summary>
+		/// Version in which the form is introduced.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("introducedversion")]
+		public string IntroducedVersion
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("introducedversion");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("IntroducedVersion");
+				this.SetAttributeValue("introducedversion", value);
+				this.OnPropertyChanged("IntroducedVersion");
+			}
+		}
+		
+		/// <summary>
+		/// Information that specifies whether this component can be customized.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("iscustomizable")]
+		public Microsoft.Xrm.Sdk.BooleanManagedProperty IsCustomizable
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.BooleanManagedProperty>("iscustomizable");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("IsCustomizable");
+				this.SetAttributeValue("iscustomizable", value);
+				this.OnPropertyChanged("IsCustomizable");
+			}
+		}
+		
+		/// <summary>
+		/// Indicates whether the solution component is part of a managed solution.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("ismanaged")]
+		public System.Nullable<bool> IsManaged
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("ismanaged");
+			}
+		}
+		
+		/// <summary>
+		/// The name of this Data Provider. This is the name that appears in the dropdown when creating a new entity.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("name")]
+		public string Name
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("name");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Name");
+				this.SetAttributeValue("name", value);
+				this.OnPropertyChanged("Name");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier for the organization.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
+		public System.Nullable<System.Guid> OrganizationId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("organizationid");
+			}
+		}
+		
+		/// <summary>
+		/// For internal use only.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("overwritetime")]
+		public System.Nullable<System.DateTime> OverwriteTime
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("overwritetime");
+			}
+		}
+		
+		/// <summary>
+		/// MultipleRetrieve Plugin
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("retrievemultipleplugin")]
+		public System.Nullable<System.Guid> RetrieveMultiplePlugin
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("retrievemultipleplugin");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("RetrieveMultiplePlugin");
+				this.SetAttributeValue("retrievemultipleplugin", value);
+				this.OnPropertyChanged("RetrieveMultiplePlugin");
+			}
+		}
+		
+		/// <summary>
+		/// Retrieve Plugin
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("retrieveplugin")]
+		public System.Nullable<System.Guid> RetrievePlugin
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("retrieveplugin");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("RetrievePlugin");
+				this.SetAttributeValue("retrieveplugin", value);
+				this.OnPropertyChanged("RetrievePlugin");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the associated solution.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("solutionid")]
+		public System.Nullable<System.Guid> SolutionId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("solutionid");
+			}
+		}
+		
+		/// <summary>
+		/// Update Plugin
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("updateplugin")]
+		public System.Nullable<System.Guid> UpdatePlugin
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("updateplugin");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("UpdatePlugin");
+				this.SetAttributeValue("updateplugin", value);
+				this.OnPropertyChanged("UpdatePlugin");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N entitydataprovider_datasource
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("entitydataprovider_datasource")]
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.EntityDataSource> entitydataprovider_datasource
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.EntityDataSource>("entitydataprovider_datasource", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("entitydataprovider_datasource");
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.EntityDataSource>("entitydataprovider_datasource", null, value);
+				this.OnPropertyChanged("entitydataprovider_datasource");
+			}
+		}
+		
+		/// <summary>
+		/// Constructor for populating via LINQ queries given a LINQ anonymous type
+		/// <param name="anonymousType">LINQ anonymous type.</param>
+		/// </summary>
+		[System.Diagnostics.DebuggerNonUserCode()]
+		public EntityDataProvider(object anonymousType) : 
+				this()
+		{
+            foreach (var p in anonymousType.GetType().GetProperties())
+            {
+                var value = p.GetValue(anonymousType, null);
+                var name = p.Name.ToLower();
+            
+                if (name.EndsWith("enum") && value.GetType().BaseType == typeof(System.Enum))
+                {
+                    value = new Microsoft.Xrm.Sdk.OptionSetValue((int) value);
+                    name = name.Remove(name.Length - "enum".Length);
+                }
+            
+                switch (name)
+                {
+                    case "id":
+                        base.Id = (System.Guid)value;
+                        Attributes["entitydataproviderid"] = base.Id;
+                        break;
+                    case "entitydataproviderid":
+                        var id = (System.Nullable<System.Guid>) value;
+                        if(id == null){ continue; }
+                        base.Id = id.Value;
+                        Attributes[name] = base.Id;
+                        break;
+                    case "formattedvalues":
+                        // Add Support for FormattedValues
+                        FormattedValues.AddRange((Microsoft.Xrm.Sdk.FormattedValueCollection)value);
+                        break;
+                    default:
+                        Attributes[name] = value;
+                        break;
+                }
+            }
+		}
+	}
+	
+	/// <summary>
+	/// Internal entity that stores data source information for all installed providers.
+	/// </summary>
+	[System.Runtime.Serialization.DataContractAttribute()]
+	[Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute("entitydatasource")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "8.2.1.8676")]
+	public partial class EntityDataSource : Microsoft.Xrm.Sdk.Entity, System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
+	{
+		
+		public static class Fields
+		{
+			public const string ComponentState = "componentstate";
+			public const string ConnectionDefinition = "connectiondefinition";
+			public const string ConnectionDefinitionSecrets = "connectiondefinitionsecrets";
+			public const string Description = "description";
+			public const string EntityDataProviderId = "entitydataproviderid";
+			public const string EntityDataSourceId = "entitydatasourceid";
+			public const string Id = "entitydatasourceid";
+			public const string EntityDataSourceIdUnique = "entitydatasourceidunique";
+			public const string EntityName = "entityname";
+			public const string IntroducedVersion = "introducedversion";
+			public const string IsCustomizable = "iscustomizable";
+			public const string IsManaged = "ismanaged";
+			public const string Name = "name";
+			public const string OrganizationId = "organizationid";
+			public const string OverwriteTime = "overwritetime";
+			public const string SolutionId = "solutionid";
+			public const string entitydataprovider_datasource = "entitydataprovider_datasource";
+		}
+		
+		/// <summary>
+		/// Default Constructor.
+		/// </summary>
+		[System.Diagnostics.DebuggerNonUserCode()]
+		public EntityDataSource() : 
+				base(EntityLogicalName)
+		{
+		}
+		
+		public const string EntityLogicalName = "entitydatasource";
+		
+		public const string PrimaryIdAttribute = "entitydatasourceid";
+		
+		public const string PrimaryNameAttribute = "name";
+		
+		public const int EntityTypeCode = 85;
+		
+		public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+		
+		public event System.ComponentModel.PropertyChangingEventHandler PropertyChanging;
+		
+		[System.Diagnostics.DebuggerNonUserCode()]
+		private void OnPropertyChanged(string propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		[System.Diagnostics.DebuggerNonUserCode()]
+		private void OnPropertyChanging(string propertyName)
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, new System.ComponentModel.PropertyChangingEventArgs(propertyName));
+			}
+		}
+		
+		/// <summary>
+		/// For internal use only.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("componentstate")]
+		public Microsoft.Xrm.Sdk.OptionSetValue ComponentState
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("componentstate");
+			}
+		}
+		
+		/// <summary>
+		/// JSON data representing values from a data source entity as individual fields.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("connectiondefinition")]
+		public string ConnectionDefinition
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("connectiondefinition");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ConnectionDefinition");
+				this.SetAttributeValue("connectiondefinition", value);
+				this.OnPropertyChanged("ConnectionDefinition");
+			}
+		}
+		
+		/// <summary>
+		/// JSON data representing secrets in a data source entity as individual fields.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("connectiondefinitionsecrets")]
+		public string ConnectionDefinitionSecrets
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("connectiondefinitionsecrets");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ConnectionDefinitionSecrets");
+				this.SetAttributeValue("connectiondefinitionsecrets", value);
+				this.OnPropertyChanged("ConnectionDefinitionSecrets");
+			}
+		}
+		
+		/// <summary>
+		/// Enter additional information to describe the environment this data source targets and the purpose of this system.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("description")]
+		public string Description
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("description");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Description");
+				this.SetAttributeValue("description", value);
+				this.OnPropertyChanged("Description");
+			}
+		}
+		
+		/// <summary>
+		/// Choose the entity dataprovider for the entity datasource.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("entitydataproviderid")]
+		public Microsoft.Xrm.Sdk.EntityReference EntityDataProviderId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("entitydataproviderid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("EntityDataProviderId");
+				this.SetAttributeValue("entitydataproviderid", value);
+				this.OnPropertyChanged("EntityDataProviderId");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the Data Source Id
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("entitydatasourceid")]
+		public System.Nullable<System.Guid> EntityDataSourceId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("entitydatasourceid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("EntityDataSourceId");
+				this.SetAttributeValue("entitydatasourceid", value);
+				if (value.HasValue)
+				{
+					base.Id = value.Value;
+				}
+				else
+				{
+					base.Id = System.Guid.Empty;
+				}
+				this.OnPropertyChanged("EntityDataSourceId");
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("entitydatasourceid")]
+		public override System.Guid Id
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return base.Id;
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.EntityDataSourceId = value;
+			}
+		}
+		
+		/// <summary>
+		/// For internal use only.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("entitydatasourceidunique")]
+		public System.Nullable<System.Guid> EntityDataSourceIdUnique
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("entitydatasourceidunique");
+			}
+		}
+		
+		/// <summary>
+		/// Entity Logical Name
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("entityname")]
+		public string EntityName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("entityname");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("EntityName");
+				this.SetAttributeValue("entityname", value);
+				this.OnPropertyChanged("EntityName");
+			}
+		}
+		
+		/// <summary>
+		/// Version in which the form is introduced.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("introducedversion")]
+		public string IntroducedVersion
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("introducedversion");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("IntroducedVersion");
+				this.SetAttributeValue("introducedversion", value);
+				this.OnPropertyChanged("IntroducedVersion");
+			}
+		}
+		
+		/// <summary>
+		/// Information that specifies whether this component can be customized.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("iscustomizable")]
+		public Microsoft.Xrm.Sdk.BooleanManagedProperty IsCustomizable
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.BooleanManagedProperty>("iscustomizable");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("IsCustomizable");
+				this.SetAttributeValue("iscustomizable", value);
+				this.OnPropertyChanged("IsCustomizable");
+			}
+		}
+		
+		/// <summary>
+		/// Indicates whether the solution component is part of a managed solution.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("ismanaged")]
+		public System.Nullable<bool> IsManaged
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("ismanaged");
+			}
+		}
+		
+		/// <summary>
+		/// Name of this data source. This name appears in the data source drop-down when creating a new entity.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("name")]
+		public string Name
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("name");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Name");
+				this.SetAttributeValue("name", value);
+				this.OnPropertyChanged("Name");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier for the organization.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
+		public System.Nullable<System.Guid> OrganizationId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("organizationid");
+			}
+		}
+		
+		/// <summary>
+		/// For internal use only.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("overwritetime")]
+		public System.Nullable<System.DateTime> OverwriteTime
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("overwritetime");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the associated solution.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("solutionid")]
+		public System.Nullable<System.Guid> SolutionId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("solutionid");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 entitydataprovider_datasource
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("entitydataproviderid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("entitydataprovider_datasource")]
+		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.EntityDataProvider entitydataprovider_datasource
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.EntityDataProvider>("entitydataprovider_datasource", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("entitydataprovider_datasource");
+				this.SetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.EntityDataProvider>("entitydataprovider_datasource", null, value);
+				this.OnPropertyChanged("entitydataprovider_datasource");
+			}
+		}
+		
+		/// <summary>
+		/// Constructor for populating via LINQ queries given a LINQ anonymous type
+		/// <param name="anonymousType">LINQ anonymous type.</param>
+		/// </summary>
+		[System.Diagnostics.DebuggerNonUserCode()]
+		public EntityDataSource(object anonymousType) : 
+				this()
+		{
+            foreach (var p in anonymousType.GetType().GetProperties())
+            {
+                var value = p.GetValue(anonymousType, null);
+                var name = p.Name.ToLower();
+            
+                if (name.EndsWith("enum") && value.GetType().BaseType == typeof(System.Enum))
+                {
+                    value = new Microsoft.Xrm.Sdk.OptionSetValue((int) value);
+                    name = name.Remove(name.Length - "enum".Length);
+                }
+            
+                switch (name)
+                {
+                    case "id":
+                        base.Id = (System.Guid)value;
+                        Attributes["entitydatasourceid"] = base.Id;
+                        break;
+                    case "entitydatasourceid":
+                        var id = (System.Nullable<System.Guid>) value;
+                        if(id == null){ continue; }
+                        base.Id = id.Value;
+                        Attributes[name] = base.Id;
+                        break;
+                    case "formattedvalues":
+                        // Add Support for FormattedValues
+                        FormattedValues.AddRange((Microsoft.Xrm.Sdk.FormattedValueCollection)value);
+                        break;
+                    default:
+                        Attributes[name] = value;
+                        break;
+                }
+            }
+		}
+	}
+	
+	/// <summary>
+	/// For internal use only. An event that will be expanded into jobs whose executions can proceed in the background.
+	/// </summary>
+	[System.Runtime.Serialization.DataContractAttribute()]
+	[Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute("expanderevent")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "8.2.1.8676")]
+	public partial class ExpanderEvent : Microsoft.Xrm.Sdk.Entity, System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
+	{
+		
+		public static class Fields
+		{
+			public const string ContextUri = "contexturi";
+			public const string CorrelationId = "correlationid";
+			public const string CreatedBy = "createdby";
+			public const string CreatedOn = "createdon";
+			public const string CreatedOnBehalfBy = "createdonbehalfby";
+			public const string ExpanderEventId = "expandereventid";
+			public const string Id = "expandereventid";
+			public const string ModifiedBy = "modifiedby";
+			public const string ModifiedOn = "modifiedon";
+			public const string ModifiedOnBehalfBy = "modifiedonbehalfby";
+			public const string Name = "name";
+			public const string OrganizationId = "organizationid";
+			public const string Registrations = "registrations";
+			public const string VersionNumber = "versionnumber";
+			public const string createdby_expanderevent = "createdby_expanderevent";
+			public const string lk_expanderevent_createdonbehalfby = "lk_expanderevent_createdonbehalfby";
+			public const string lk_expanderevent_modifiedonbehalfby = "lk_expanderevent_modifiedonbehalfby";
+			public const string modifiedby_expanderevent = "modifiedby_expanderevent";
+		}
+		
+		/// <summary>
+		/// Default Constructor.
+		/// </summary>
+		[System.Diagnostics.DebuggerNonUserCode()]
+		public ExpanderEvent() : 
+				base(EntityLogicalName)
+		{
+		}
+		
+		public const string EntityLogicalName = "expanderevent";
+		
+		public const string PrimaryIdAttribute = "expandereventid";
+		
+		public const string PrimaryNameAttribute = "name";
+		
+		public const int EntityTypeCode = 4711;
+		
+		public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+		
+		public event System.ComponentModel.PropertyChangingEventHandler PropertyChanging;
+		
+		[System.Diagnostics.DebuggerNonUserCode()]
+		private void OnPropertyChanged(string propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		[System.Diagnostics.DebuggerNonUserCode()]
+		private void OnPropertyChanging(string propertyName)
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, new System.ComponentModel.PropertyChangingEventArgs(propertyName));
+			}
+		}
+		
+		/// <summary>
+		/// The URI where the context is stored.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("contexturi")]
+		public string ContextUri
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("contexturi");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ContextUri");
+				this.SetAttributeValue("contexturi", value);
+				this.OnPropertyChanged("ContextUri");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier used to correlate between expander events and SDK message invocations.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("correlationid")]
+		public System.Nullable<System.Guid> CorrelationId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("correlationid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("CorrelationId");
+				this.SetAttributeValue("correlationid", value);
+				this.OnPropertyChanged("CorrelationId");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the user who created the event.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
+		public Microsoft.Xrm.Sdk.EntityReference CreatedBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("createdby");
+			}
+		}
+		
+		/// <summary>
+		/// Date and time when the event was created.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdon")]
+		public System.Nullable<System.DateTime> CreatedOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("createdon");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the delegate user who created the event.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
+		public Microsoft.Xrm.Sdk.EntityReference CreatedOnBehalfBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("createdonbehalfby");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("CreatedOnBehalfBy");
+				this.SetAttributeValue("createdonbehalfby", value);
+				this.OnPropertyChanged("CreatedOnBehalfBy");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the expander event.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("expandereventid")]
+		public System.Nullable<System.Guid> ExpanderEventId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("expandereventid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ExpanderEventId");
+				this.SetAttributeValue("expandereventid", value);
+				if (value.HasValue)
+				{
+					base.Id = value.Value;
+				}
+				else
+				{
+					base.Id = System.Guid.Empty;
+				}
+				this.OnPropertyChanged("ExpanderEventId");
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("expandereventid")]
+		public override System.Guid Id
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return base.Id;
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.ExpanderEventId = value;
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the user who last modified the event.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
+		public Microsoft.Xrm.Sdk.EntityReference ModifiedBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("modifiedby");
+			}
+		}
+		
+		/// <summary>
+		/// Date and time when the event was last modified.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedon")]
+		public System.Nullable<System.DateTime> ModifiedOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("modifiedon");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the delegate user who last modified the event.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
+		public Microsoft.Xrm.Sdk.EntityReference ModifiedOnBehalfBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("modifiedonbehalfby");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ModifiedOnBehalfBy");
+				this.SetAttributeValue("modifiedonbehalfby", value);
+				this.OnPropertyChanged("ModifiedOnBehalfBy");
+			}
+		}
+		
+		/// <summary>
+		/// Name of the event.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("name")]
+		public string Name
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("name");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Name");
+				this.SetAttributeValue("name", value);
+				this.OnPropertyChanged("Name");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the organization with which the event is associated.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
+		public Microsoft.Xrm.Sdk.EntityReference OrganizationId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("organizationid");
+			}
+		}
+		
+		/// <summary>
+		/// The workloads that have registered to send an event.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("registrations")]
+		public string Registrations
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("registrations");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Registrations");
+				this.SetAttributeValue("registrations", value);
+				this.OnPropertyChanged("Registrations");
+			}
+		}
+		
+		/// <summary>
+		/// Version number of the event.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("versionnumber")]
+		public System.Nullable<long> VersionNumber
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<long>>("versionnumber");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 createdby_expanderevent
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("createdby_expanderevent")]
+		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser createdby_expanderevent
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("createdby_expanderevent", null);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lk_expanderevent_createdonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_expanderevent_createdonbehalfby")]
+		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser lk_expanderevent_createdonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_expanderevent_createdonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_expanderevent_createdonbehalfby");
+				this.SetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_expanderevent_createdonbehalfby", null, value);
+				this.OnPropertyChanged("lk_expanderevent_createdonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lk_expanderevent_modifiedonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_expanderevent_modifiedonbehalfby")]
+		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser lk_expanderevent_modifiedonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_expanderevent_modifiedonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_expanderevent_modifiedonbehalfby");
+				this.SetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_expanderevent_modifiedonbehalfby", null, value);
+				this.OnPropertyChanged("lk_expanderevent_modifiedonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 modifiedby_expanderevent
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("modifiedby_expanderevent")]
+		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser modifiedby_expanderevent
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("modifiedby_expanderevent", null);
+			}
+		}
+		
+		/// <summary>
+		/// Constructor for populating via LINQ queries given a LINQ anonymous type
+		/// <param name="anonymousType">LINQ anonymous type.</param>
+		/// </summary>
+		[System.Diagnostics.DebuggerNonUserCode()]
+		public ExpanderEvent(object anonymousType) : 
+				this()
+		{
+            foreach (var p in anonymousType.GetType().GetProperties())
+            {
+                var value = p.GetValue(anonymousType, null);
+                var name = p.Name.ToLower();
+            
+                if (name.EndsWith("enum") && value.GetType().BaseType == typeof(System.Enum))
+                {
+                    value = new Microsoft.Xrm.Sdk.OptionSetValue((int) value);
+                    name = name.Remove(name.Length - "enum".Length);
+                }
+            
+                switch (name)
+                {
+                    case "id":
+                        base.Id = (System.Guid)value;
+                        Attributes["expandereventid"] = base.Id;
+                        break;
+                    case "expandereventid":
+                        var id = (System.Nullable<System.Guid>) value;
+                        if(id == null){ continue; }
+                        base.Id = id.Value;
+                        Attributes[name] = base.Id;
+                        break;
+                    case "formattedvalues":
+                        // Add Support for FormattedValues
+                        FormattedValues.AddRange((Microsoft.Xrm.Sdk.FormattedValueCollection)value);
+                        break;
+                    default:
+                        Attributes[name] = value;
+                        break;
+                }
+            }
+		}
+	}
+	
+	/// <summary>
 	/// For internal use only.
 	/// </summary>
 	[System.Runtime.Serialization.DataContractAttribute()]
 	[Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute("importjob")]
-	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "8.2.0.749")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "8.2.1.8676")]
 	public partial class ImportJob : Microsoft.Xrm.Sdk.Entity, System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
 	{
 		
-		public struct Fields
+		public static class Fields
 		{
 			public const string CompletedOn = "completedon";
 			public const string CreatedBy = "createdby";
@@ -2381,7 +6050,6 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 			public const string lk_importjobbase_modifiedby = "lk_importjobbase_modifiedby";
 			public const string lk_importjobbase_modifiedonbehalfby = "lk_importjobbase_modifiedonbehalfby";
 		}
-
 		
 		/// <summary>
 		/// Default Constructor.
@@ -2393,6 +6061,8 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		}
 		
 		public const string EntityLogicalName = "importjob";
+		
+		public const string PrimaryIdAttribute = "importjobid";
 		
 		public const int EntityTypeCode = 9107;
 		
@@ -2826,7 +6496,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 	}
 	
 	[System.Runtime.Serialization.DataContractAttribute()]
-	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "8.2.0.749")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "8.2.1.8676")]
 	public enum ImportLogState
 	{
 		
@@ -2839,14 +6509,15 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 	/// </summary>
 	[System.Runtime.Serialization.DataContractAttribute()]
 	[Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute("importlog")]
-	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "8.2.0.749")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "8.2.1.8676")]
 	public partial class ImportLog : Microsoft.Xrm.Sdk.Entity, System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
 	{
 		
-		public struct Fields
+		public static class Fields
 		{
 			public const string AdditionalInfo = "additionalinfo";
 			public const string ColumnValue = "columnvalue";
+			public const string ComponentState = "componentstate";
 			public const string CreatedBy = "createdby";
 			public const string CreatedOn = "createdon";
 			public const string CreatedOnBehalfBy = "createdonbehalfby";
@@ -2857,16 +6528,21 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 			public const string ImportFileId = "importfileid";
 			public const string ImportLogId = "importlogid";
 			public const string Id = "importlogid";
+			public const string ImportLogIdUnique = "importlogidunique";
+			public const string IntroducedVersion = "introducedversion";
+			public const string IsManaged = "ismanaged";
 			public const string LineNumber = "linenumber";
 			public const string LogPhaseCode = "logphasecode";
 			public const string ModifiedBy = "modifiedby";
 			public const string ModifiedOn = "modifiedon";
 			public const string ModifiedOnBehalfBy = "modifiedonbehalfby";
+			public const string OverwriteTime = "overwritetime";
 			public const string OwnerId = "ownerid";
 			public const string OwningBusinessUnit = "owningbusinessunit";
 			public const string OwningTeam = "owningteam";
 			public const string OwningUser = "owninguser";
 			public const string SequenceNumber = "sequencenumber";
+			public const string SolutionId = "solutionid";
 			public const string StateCode = "statecode";
 			public const string StatusCode = "statuscode";
 			public const string lk_importlog_createdonbehalfby = "lk_importlog_createdonbehalfby";
@@ -2875,7 +6551,6 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 			public const string lk_importlogbase_modifiedby = "lk_importlogbase_modifiedby";
 			public const string SystemUser_ImportLogs = "SystemUser_ImportLogs";
 		}
-
 		
 		/// <summary>
 		/// Default Constructor.
@@ -2887,6 +6562,8 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		}
 		
 		public const string EntityLogicalName = "importlog";
+		
+		public const string PrimaryIdAttribute = "importlogid";
 		
 		public const int EntityTypeCode = 4423;
 		
@@ -2949,6 +6626,19 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 				this.OnPropertyChanging("ColumnValue");
 				this.SetAttributeValue("columnvalue", value);
 				this.OnPropertyChanged("ColumnValue");
+			}
+		}
+		
+		/// <summary>
+		/// For internal use only.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("componentstate")]
+		public Microsoft.Xrm.Sdk.OptionSetValue ComponentState
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("componentstate");
 			}
 		}
 		
@@ -3142,6 +6832,52 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		}
 		
 		/// <summary>
+		/// Unique identifier of the Impport Log.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("importlogidunique")]
+		public System.Nullable<System.Guid> ImportLogIdUnique
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("importlogidunique");
+			}
+		}
+		
+		/// <summary>
+		/// Version in which the component is introduced.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("introducedversion")]
+		public string IntroducedVersion
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("introducedversion");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("IntroducedVersion");
+				this.SetAttributeValue("introducedversion", value);
+				this.OnPropertyChanged("IntroducedVersion");
+			}
+		}
+		
+		/// <summary>
+		/// Information that specifies whether this component is managed.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("ismanaged")]
+		public System.Nullable<bool> IsManaged
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("ismanaged");
+			}
+		}
+		
+		/// <summary>
 		/// Original line number of the data used in this log.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("linenumber")]
@@ -3228,6 +6964,19 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		}
 		
 		/// <summary>
+		/// For internal use only.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("overwritetime")]
+		public System.Nullable<System.DateTime> OverwriteTime
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("overwritetime");
+			}
+		}
+		
+		/// <summary>
 		/// Unique identifier of the user or team who owns the import log.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("ownerid")]
@@ -3296,6 +7045,19 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 			get
 			{
 				return this.GetAttributeValue<System.Nullable<int>>("sequencenumber");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the associated solution.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("solutionid")]
+		public System.Nullable<System.Guid> SolutionId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("solutionid");
 			}
 		}
 		
@@ -3508,15 +7270,6068 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 	}
 	
 	/// <summary>
+	/// Data sources used by the OData v4 data provider to access data from an external web service.
+	/// </summary>
+	[System.Runtime.Serialization.DataContractAttribute()]
+	[Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute("msdyn_odatav4ds")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "8.2.1.8676")]
+	public partial class msdyn_odatav4ds : Microsoft.Xrm.Sdk.Entity, System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
+	{
+		
+		public static class Fields
+		{
+			public const string msdyn_description = "msdyn_description";
+			public const string msdyn_isparameter10header = "msdyn_isparameter10header";
+			public const string msdyn_isparameter1header = "msdyn_isparameter1header";
+			public const string msdyn_isparameter2header = "msdyn_isparameter2header";
+			public const string msdyn_isparameter3header = "msdyn_isparameter3header";
+			public const string msdyn_isparameter4header = "msdyn_isparameter4header";
+			public const string msdyn_isparameter5header = "msdyn_isparameter5header";
+			public const string msdyn_isparameter6header = "msdyn_isparameter6header";
+			public const string msdyn_isparameter7header = "msdyn_isparameter7header";
+			public const string msdyn_isparameter8header = "msdyn_isparameter8header";
+			public const string msdyn_isparameter9header = "msdyn_isparameter9header";
+			public const string msdyn_name = "msdyn_name";
+			public const string msdyn_odatav4dsId = "msdyn_odatav4dsid";
+			public const string Id = "msdyn_odatav4dsid";
+			public const string msdyn_paginationmode = "msdyn_paginationmode";
+			public const string msdyn_paginationtype = "msdyn_paginationtype";
+			public const string msdyn_parameter10name = "msdyn_parameter10name";
+			public const string msdyn_parameter10value = "msdyn_parameter10value";
+			public const string msdyn_parameter1name = "msdyn_parameter1name";
+			public const string msdyn_parameter1value = "msdyn_parameter1value";
+			public const string msdyn_parameter2name = "msdyn_parameter2name";
+			public const string msdyn_parameter2value = "msdyn_parameter2value";
+			public const string msdyn_parameter3name = "msdyn_parameter3name";
+			public const string msdyn_parameter3value = "msdyn_parameter3value";
+			public const string msdyn_parameter4name = "msdyn_parameter4name";
+			public const string msdyn_parameter4value = "msdyn_parameter4value";
+			public const string msdyn_parameter5name = "msdyn_parameter5name";
+			public const string msdyn_parameter5value = "msdyn_parameter5value";
+			public const string msdyn_parameter6name = "msdyn_parameter6name";
+			public const string msdyn_parameter6value = "msdyn_parameter6value";
+			public const string msdyn_parameter7name = "msdyn_parameter7name";
+			public const string msdyn_parameter7value = "msdyn_parameter7value";
+			public const string msdyn_parameter8name = "msdyn_parameter8name";
+			public const string msdyn_parameter8value = "msdyn_parameter8value";
+			public const string msdyn_parameter9name = "msdyn_parameter9name";
+			public const string msdyn_parameter9value = "msdyn_parameter9value";
+			public const string msdyn_returninlinecount = "msdyn_returninlinecount";
+			public const string msdyn_timeout = "msdyn_timeout";
+			public const string msdyn_uri = "msdyn_uri";
+		}
+		
+		/// <summary>
+		/// Default Constructor.
+		/// </summary>
+		[System.Diagnostics.DebuggerNonUserCode()]
+		public msdyn_odatav4ds() : 
+				base(EntityLogicalName)
+		{
+		}
+		
+		public const string EntityLogicalName = "msdyn_odatav4ds";
+		
+		public const string PrimaryIdAttribute = "msdyn_odatav4dsid";
+		
+		public const string PrimaryNameAttribute = "msdyn_name";
+		
+		public const int EntityTypeCode = 10000;
+		
+		public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+		
+		public event System.ComponentModel.PropertyChangingEventHandler PropertyChanging;
+		
+		[System.Diagnostics.DebuggerNonUserCode()]
+		private void OnPropertyChanged(string propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		[System.Diagnostics.DebuggerNonUserCode()]
+		private void OnPropertyChanging(string propertyName)
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, new System.ComponentModel.PropertyChangingEventArgs(propertyName));
+			}
+		}
+		
+		/// <summary>
+		/// Type additional information to describe this OData v4 data source. What environment does this data source target and what is the purpose of this system ?
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_description")]
+		public string msdyn_description
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("msdyn_description");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("msdyn_description");
+				this.SetAttributeValue("msdyn_description", value);
+				this.OnPropertyChanged("msdyn_description");
+			}
+		}
+		
+		/// <summary>
+		/// Parameter10 Type
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_isparameter10header")]
+		public System.Nullable<bool> msdyn_isparameter10header
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("msdyn_isparameter10header");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("msdyn_isparameter10header");
+				this.SetAttributeValue("msdyn_isparameter10header", value);
+				this.OnPropertyChanged("msdyn_isparameter10header");
+			}
+		}
+		
+		/// <summary>
+		/// Parameter1 Type
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_isparameter1header")]
+		public System.Nullable<bool> msdyn_isparameter1header
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("msdyn_isparameter1header");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("msdyn_isparameter1header");
+				this.SetAttributeValue("msdyn_isparameter1header", value);
+				this.OnPropertyChanged("msdyn_isparameter1header");
+			}
+		}
+		
+		/// <summary>
+		/// Parameter2 Type
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_isparameter2header")]
+		public System.Nullable<bool> msdyn_isparameter2header
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("msdyn_isparameter2header");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("msdyn_isparameter2header");
+				this.SetAttributeValue("msdyn_isparameter2header", value);
+				this.OnPropertyChanged("msdyn_isparameter2header");
+			}
+		}
+		
+		/// <summary>
+		/// Parameter3 Type
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_isparameter3header")]
+		public System.Nullable<bool> msdyn_isparameter3header
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("msdyn_isparameter3header");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("msdyn_isparameter3header");
+				this.SetAttributeValue("msdyn_isparameter3header", value);
+				this.OnPropertyChanged("msdyn_isparameter3header");
+			}
+		}
+		
+		/// <summary>
+		/// Parameter4 Type
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_isparameter4header")]
+		public System.Nullable<bool> msdyn_isparameter4header
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("msdyn_isparameter4header");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("msdyn_isparameter4header");
+				this.SetAttributeValue("msdyn_isparameter4header", value);
+				this.OnPropertyChanged("msdyn_isparameter4header");
+			}
+		}
+		
+		/// <summary>
+		/// Parameter5 Type
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_isparameter5header")]
+		public System.Nullable<bool> msdyn_isparameter5header
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("msdyn_isparameter5header");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("msdyn_isparameter5header");
+				this.SetAttributeValue("msdyn_isparameter5header", value);
+				this.OnPropertyChanged("msdyn_isparameter5header");
+			}
+		}
+		
+		/// <summary>
+		/// Parameter6 Type
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_isparameter6header")]
+		public System.Nullable<bool> msdyn_isparameter6header
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("msdyn_isparameter6header");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("msdyn_isparameter6header");
+				this.SetAttributeValue("msdyn_isparameter6header", value);
+				this.OnPropertyChanged("msdyn_isparameter6header");
+			}
+		}
+		
+		/// <summary>
+		/// Parameter7 Type
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_isparameter7header")]
+		public System.Nullable<bool> msdyn_isparameter7header
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("msdyn_isparameter7header");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("msdyn_isparameter7header");
+				this.SetAttributeValue("msdyn_isparameter7header", value);
+				this.OnPropertyChanged("msdyn_isparameter7header");
+			}
+		}
+		
+		/// <summary>
+		/// Parameter8 Type
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_isparameter8header")]
+		public System.Nullable<bool> msdyn_isparameter8header
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("msdyn_isparameter8header");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("msdyn_isparameter8header");
+				this.SetAttributeValue("msdyn_isparameter8header", value);
+				this.OnPropertyChanged("msdyn_isparameter8header");
+			}
+		}
+		
+		/// <summary>
+		/// Parameter9 Type
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_isparameter9header")]
+		public System.Nullable<bool> msdyn_isparameter9header
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("msdyn_isparameter9header");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("msdyn_isparameter9header");
+				this.SetAttributeValue("msdyn_isparameter9header", value);
+				this.OnPropertyChanged("msdyn_isparameter9header");
+			}
+		}
+		
+		/// <summary>
+		/// Name of the OData v4 data source. This name appears in the data source drop-down list when creating a new entity.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_name")]
+		public string msdyn_name
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("msdyn_name");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("msdyn_name");
+				this.SetAttributeValue("msdyn_name", value);
+				this.OnPropertyChanged("msdyn_name");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier for entity instances
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_odatav4dsid")]
+		public System.Nullable<System.Guid> msdyn_odatav4dsId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("msdyn_odatav4dsid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("msdyn_odatav4dsId");
+				this.SetAttributeValue("msdyn_odatav4dsid", value);
+				if (value.HasValue)
+				{
+					base.Id = value.Value;
+				}
+				else
+				{
+					base.Id = System.Guid.Empty;
+				}
+				this.OnPropertyChanged("msdyn_odatav4dsId");
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_odatav4dsid")]
+		public override System.Guid Id
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return base.Id;
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.msdyn_odatav4dsId = value;
+			}
+		}
+		
+		/// <summary>
+		/// 
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_paginationmode")]
+		public System.Nullable<bool> msdyn_paginationmode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("msdyn_paginationmode");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("msdyn_paginationmode");
+				this.SetAttributeValue("msdyn_paginationmode", value);
+				this.OnPropertyChanged("msdyn_paginationmode");
+			}
+		}
+		
+		/// <summary>
+		/// 
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_paginationtype")]
+		public Microsoft.Xrm.Sdk.OptionSetValue msdyn_paginationtype
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("msdyn_paginationtype");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("msdyn_paginationtype");
+				this.SetAttributeValue("msdyn_paginationtype", value);
+				this.OnPropertyChanged("msdyn_paginationtype");
+			}
+		}
+		
+		/// <summary>
+		/// 
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_parameter10name")]
+		public string msdyn_parameter10name
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("msdyn_parameter10name");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("msdyn_parameter10name");
+				this.SetAttributeValue("msdyn_parameter10name", value);
+				this.OnPropertyChanged("msdyn_parameter10name");
+			}
+		}
+		
+		/// <summary>
+		/// 
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_parameter10value")]
+		public string msdyn_parameter10value
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("msdyn_parameter10value");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("msdyn_parameter10value");
+				this.SetAttributeValue("msdyn_parameter10value", value);
+				this.OnPropertyChanged("msdyn_parameter10value");
+			}
+		}
+		
+		/// <summary>
+		/// 
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_parameter1name")]
+		public string msdyn_parameter1name
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("msdyn_parameter1name");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("msdyn_parameter1name");
+				this.SetAttributeValue("msdyn_parameter1name", value);
+				this.OnPropertyChanged("msdyn_parameter1name");
+			}
+		}
+		
+		/// <summary>
+		/// 
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_parameter1value")]
+		public string msdyn_parameter1value
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("msdyn_parameter1value");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("msdyn_parameter1value");
+				this.SetAttributeValue("msdyn_parameter1value", value);
+				this.OnPropertyChanged("msdyn_parameter1value");
+			}
+		}
+		
+		/// <summary>
+		/// 
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_parameter2name")]
+		public string msdyn_parameter2name
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("msdyn_parameter2name");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("msdyn_parameter2name");
+				this.SetAttributeValue("msdyn_parameter2name", value);
+				this.OnPropertyChanged("msdyn_parameter2name");
+			}
+		}
+		
+		/// <summary>
+		/// 
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_parameter2value")]
+		public string msdyn_parameter2value
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("msdyn_parameter2value");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("msdyn_parameter2value");
+				this.SetAttributeValue("msdyn_parameter2value", value);
+				this.OnPropertyChanged("msdyn_parameter2value");
+			}
+		}
+		
+		/// <summary>
+		/// 
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_parameter3name")]
+		public string msdyn_parameter3name
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("msdyn_parameter3name");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("msdyn_parameter3name");
+				this.SetAttributeValue("msdyn_parameter3name", value);
+				this.OnPropertyChanged("msdyn_parameter3name");
+			}
+		}
+		
+		/// <summary>
+		/// 
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_parameter3value")]
+		public string msdyn_parameter3value
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("msdyn_parameter3value");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("msdyn_parameter3value");
+				this.SetAttributeValue("msdyn_parameter3value", value);
+				this.OnPropertyChanged("msdyn_parameter3value");
+			}
+		}
+		
+		/// <summary>
+		/// 
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_parameter4name")]
+		public string msdyn_parameter4name
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("msdyn_parameter4name");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("msdyn_parameter4name");
+				this.SetAttributeValue("msdyn_parameter4name", value);
+				this.OnPropertyChanged("msdyn_parameter4name");
+			}
+		}
+		
+		/// <summary>
+		/// 
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_parameter4value")]
+		public string msdyn_parameter4value
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("msdyn_parameter4value");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("msdyn_parameter4value");
+				this.SetAttributeValue("msdyn_parameter4value", value);
+				this.OnPropertyChanged("msdyn_parameter4value");
+			}
+		}
+		
+		/// <summary>
+		/// 
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_parameter5name")]
+		public string msdyn_parameter5name
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("msdyn_parameter5name");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("msdyn_parameter5name");
+				this.SetAttributeValue("msdyn_parameter5name", value);
+				this.OnPropertyChanged("msdyn_parameter5name");
+			}
+		}
+		
+		/// <summary>
+		/// 
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_parameter5value")]
+		public string msdyn_parameter5value
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("msdyn_parameter5value");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("msdyn_parameter5value");
+				this.SetAttributeValue("msdyn_parameter5value", value);
+				this.OnPropertyChanged("msdyn_parameter5value");
+			}
+		}
+		
+		/// <summary>
+		/// 
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_parameter6name")]
+		public string msdyn_parameter6name
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("msdyn_parameter6name");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("msdyn_parameter6name");
+				this.SetAttributeValue("msdyn_parameter6name", value);
+				this.OnPropertyChanged("msdyn_parameter6name");
+			}
+		}
+		
+		/// <summary>
+		/// 
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_parameter6value")]
+		public string msdyn_parameter6value
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("msdyn_parameter6value");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("msdyn_parameter6value");
+				this.SetAttributeValue("msdyn_parameter6value", value);
+				this.OnPropertyChanged("msdyn_parameter6value");
+			}
+		}
+		
+		/// <summary>
+		/// 
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_parameter7name")]
+		public string msdyn_parameter7name
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("msdyn_parameter7name");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("msdyn_parameter7name");
+				this.SetAttributeValue("msdyn_parameter7name", value);
+				this.OnPropertyChanged("msdyn_parameter7name");
+			}
+		}
+		
+		/// <summary>
+		/// 
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_parameter7value")]
+		public string msdyn_parameter7value
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("msdyn_parameter7value");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("msdyn_parameter7value");
+				this.SetAttributeValue("msdyn_parameter7value", value);
+				this.OnPropertyChanged("msdyn_parameter7value");
+			}
+		}
+		
+		/// <summary>
+		/// 
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_parameter8name")]
+		public string msdyn_parameter8name
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("msdyn_parameter8name");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("msdyn_parameter8name");
+				this.SetAttributeValue("msdyn_parameter8name", value);
+				this.OnPropertyChanged("msdyn_parameter8name");
+			}
+		}
+		
+		/// <summary>
+		/// 
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_parameter8value")]
+		public string msdyn_parameter8value
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("msdyn_parameter8value");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("msdyn_parameter8value");
+				this.SetAttributeValue("msdyn_parameter8value", value);
+				this.OnPropertyChanged("msdyn_parameter8value");
+			}
+		}
+		
+		/// <summary>
+		/// 
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_parameter9name")]
+		public string msdyn_parameter9name
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("msdyn_parameter9name");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("msdyn_parameter9name");
+				this.SetAttributeValue("msdyn_parameter9name", value);
+				this.OnPropertyChanged("msdyn_parameter9name");
+			}
+		}
+		
+		/// <summary>
+		/// 
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_parameter9value")]
+		public string msdyn_parameter9value
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("msdyn_parameter9value");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("msdyn_parameter9value");
+				this.SetAttributeValue("msdyn_parameter9value", value);
+				this.OnPropertyChanged("msdyn_parameter9value");
+			}
+		}
+		
+		/// <summary>
+		/// 
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_returninlinecount")]
+		public System.Nullable<bool> msdyn_returninlinecount
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("msdyn_returninlinecount");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("msdyn_returninlinecount");
+				this.SetAttributeValue("msdyn_returninlinecount", value);
+				this.OnPropertyChanged("msdyn_returninlinecount");
+			}
+		}
+		
+		/// <summary>
+		/// Amount of time to wait, in seconds, before timing out an OData v4 request.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_timeout")]
+		public System.Nullable<int> msdyn_timeout
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("msdyn_timeout");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("msdyn_timeout");
+				this.SetAttributeValue("msdyn_timeout", value);
+				this.OnPropertyChanged("msdyn_timeout");
+			}
+		}
+		
+		/// <summary>
+		/// URL of the OData v4 web service endpoint this data source will target.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_uri")]
+		public string msdyn_uri
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("msdyn_uri");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("msdyn_uri");
+				this.SetAttributeValue("msdyn_uri", value);
+				this.OnPropertyChanged("msdyn_uri");
+			}
+		}
+		
+		/// <summary>
+		/// Constructor for populating via LINQ queries given a LINQ anonymous type
+		/// <param name="anonymousType">LINQ anonymous type.</param>
+		/// </summary>
+		[System.Diagnostics.DebuggerNonUserCode()]
+		public msdyn_odatav4ds(object anonymousType) : 
+				this()
+		{
+            foreach (var p in anonymousType.GetType().GetProperties())
+            {
+                var value = p.GetValue(anonymousType, null);
+                var name = p.Name.ToLower();
+            
+                if (name.EndsWith("enum") && value.GetType().BaseType == typeof(System.Enum))
+                {
+                    value = new Microsoft.Xrm.Sdk.OptionSetValue((int) value);
+                    name = name.Remove(name.Length - "enum".Length);
+                }
+            
+                switch (name)
+                {
+                    case "id":
+                        base.Id = (System.Guid)value;
+                        Attributes["msdyn_odatav4dsid"] = base.Id;
+                        break;
+                    case "msdyn_odatav4dsid":
+                        var id = (System.Nullable<System.Guid>) value;
+                        if(id == null){ continue; }
+                        base.Id = id.Value;
+                        Attributes[name] = base.Id;
+                        break;
+                    case "formattedvalues":
+                        // Add Support for FormattedValues
+                        FormattedValues.AddRange((Microsoft.Xrm.Sdk.FormattedValueCollection)value);
+                        break;
+                    default:
+                        Attributes[name] = value;
+                        break;
+                }
+            }
+		}
+	}
+	
+	/// <summary>
+	/// Navigation Setting: A setting page or group of pages available for configuration within an app. A record representing a group of pages is regarded as the parent navigation setting of one or more other records. For internal use only.
+	/// </summary>
+	[System.Runtime.Serialization.DataContractAttribute()]
+	[Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute("navigationsetting")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "8.2.1.8676")]
+	public partial class NavigationSetting : Microsoft.Xrm.Sdk.Entity, System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
+	{
+		
+		public static class Fields
+		{
+			public const string AdvancedSettingOrder = "advancedsettingorder";
+			public const string AppConfigId = "appconfigid";
+			public const string AppConfigIdUnique = "appconfigidunique";
+			public const string ComponentState = "componentstate";
+			public const string CreatedBy = "createdby";
+			public const string CreatedOn = "createdon";
+			public const string CreatedOnBehalfBy = "createdonbehalfby";
+			public const string Description = "description";
+			public const string GroupName = "groupname";
+			public const string IconResourceId = "iconresourceid";
+			public const string ImportSequenceNumber = "importsequencenumber";
+			public const string IntroducedVersion = "introducedversion";
+			public const string IsManaged = "ismanaged";
+			public const string ModifiedBy = "modifiedby";
+			public const string ModifiedOn = "modifiedon";
+			public const string ModifiedOnBehalfBy = "modifiedonbehalfby";
+			public const string Name = "name";
+			public const string NavigationSettingId = "navigationsettingid";
+			public const string Id = "navigationsettingid";
+			public const string NavigationSettingIdUnique = "navigationsettingidunique";
+			public const string ObjectTypeCode = "objecttypecode";
+			public const string OrganizationId = "organizationid";
+			public const string OverriddenCreatedOn = "overriddencreatedon";
+			public const string OverwriteTime = "overwritetime";
+			public const string PageUrl = "pageurl";
+			public const string ParentNavigationSettingId = "parentnavigationsettingid";
+			public const string Privileges = "privileges";
+			public const string ProgressState = "progressstate";
+			public const string QuickSettingOrder = "quicksettingorder";
+			public const string ResourceId = "resourceid";
+			public const string SettingType = "settingtype";
+			public const string SolutionId = "solutionid";
+			public const string lk_navigationsetting_createdby = "lk_navigationsetting_createdby";
+			public const string lk_navigationsetting_createdonbehalfby = "lk_navigationsetting_createdonbehalfby";
+			public const string lk_navigationsetting_modifiedby = "lk_navigationsetting_modifiedby";
+			public const string lk_navigationsetting_modifiedonbehalfby = "lk_navigationsetting_modifiedonbehalfby";
+			public const string navigationsetting_appconfig = "navigationsetting_appconfig";
+		}
+		
+		/// <summary>
+		/// Default Constructor.
+		/// </summary>
+		[System.Diagnostics.DebuggerNonUserCode()]
+		public NavigationSetting() : 
+				base(EntityLogicalName)
+		{
+		}
+		
+		public const string EntityLogicalName = "navigationsetting";
+		
+		public const string PrimaryIdAttribute = "navigationsettingid";
+		
+		public const string PrimaryNameAttribute = "name";
+		
+		public const int EntityTypeCode = 9900;
+		
+		public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+		
+		public event System.ComponentModel.PropertyChangingEventHandler PropertyChanging;
+		
+		[System.Diagnostics.DebuggerNonUserCode()]
+		private void OnPropertyChanged(string propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		[System.Diagnostics.DebuggerNonUserCode()]
+		private void OnPropertyChanging(string propertyName)
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, new System.ComponentModel.PropertyChangingEventArgs(propertyName));
+			}
+		}
+		
+		/// <summary>
+		/// Enter the position of this NavigationSetting as it should appear within its group in the Advanced Setup menu.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("advancedsettingorder")]
+		public System.Nullable<int> AdvancedSettingOrder
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("advancedsettingorder");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("AdvancedSettingOrder");
+				this.SetAttributeValue("advancedsettingorder", value);
+				this.OnPropertyChanged("AdvancedSettingOrder");
+			}
+		}
+		
+		/// <summary>
+		/// Enter the App Config record that this Navigation Setting is associated with.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("appconfigid")]
+		public Microsoft.Xrm.Sdk.EntityReference AppConfigId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("appconfigid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("AppConfigId");
+				this.SetAttributeValue("appconfigid", value);
+				this.OnPropertyChanged("AppConfigId");
+			}
+		}
+		
+		/// <summary>
+		/// For system use only.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("appconfigidunique")]
+		public System.Nullable<System.Guid> AppConfigIdUnique
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("appconfigidunique");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("AppConfigIdUnique");
+				this.SetAttributeValue("appconfigidunique", value);
+				this.OnPropertyChanged("AppConfigIdUnique");
+			}
+		}
+		
+		/// <summary>
+		/// For internal use only.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("componentstate")]
+		public Microsoft.Xrm.Sdk.OptionSetValue ComponentState
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("componentstate");
+			}
+		}
+		
+		/// <summary>
+		/// Shows who created the record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
+		public Microsoft.Xrm.Sdk.EntityReference CreatedBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("createdby");
+			}
+		}
+		
+		/// <summary>
+		/// Shows the date and time when the record was created. The date and time are displayed in the time zone selected in Microsoft Dynamics CRM options.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdon")]
+		public System.Nullable<System.DateTime> CreatedOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("createdon");
+			}
+		}
+		
+		/// <summary>
+		/// Shows who created the record on behalf of another user.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
+		public Microsoft.Xrm.Sdk.EntityReference CreatedOnBehalfBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("createdonbehalfby");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("CreatedOnBehalfBy");
+				this.SetAttributeValue("createdonbehalfby", value);
+				this.OnPropertyChanged("CreatedOnBehalfBy");
+			}
+		}
+		
+		/// <summary>
+		/// Type a description that describes that Navigation Setting in detail.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("description")]
+		public string Description
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("description");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Description");
+				this.SetAttributeValue("description", value);
+				this.OnPropertyChanged("Description");
+			}
+		}
+		
+		/// <summary>
+		/// Type the name of the group represented by this Navigation Setting record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("groupname")]
+		public string GroupName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("groupname");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("GroupName");
+				this.SetAttributeValue("groupname", value);
+				this.OnPropertyChanged("GroupName");
+			}
+		}
+		
+		/// <summary>
+		/// The web resource identifier of the icon to be used for a navigation setting area or sub area.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("iconresourceid")]
+		public System.Nullable<System.Guid> IconResourceId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("iconresourceid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("IconResourceId");
+				this.SetAttributeValue("iconresourceid", value);
+				this.OnPropertyChanged("IconResourceId");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the data import or data migration that created this record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("importsequencenumber")]
+		public System.Nullable<int> ImportSequenceNumber
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("importsequencenumber");
+			}
+		}
+		
+		/// <summary>
+		/// Version in which the similarity rule is introduced.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("introducedversion")]
+		public string IntroducedVersion
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("introducedversion");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("IntroducedVersion");
+				this.SetAttributeValue("introducedversion", value);
+				this.OnPropertyChanged("IntroducedVersion");
+			}
+		}
+		
+		/// <summary>
+		/// For internal use only.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("ismanaged")]
+		public System.Nullable<bool> IsManaged
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("ismanaged");
+			}
+		}
+		
+		/// <summary>
+		/// Shows who last updated the record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
+		public Microsoft.Xrm.Sdk.EntityReference ModifiedBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("modifiedby");
+			}
+		}
+		
+		/// <summary>
+		/// Shows the date and time when the record was last updated. The date and time are displayed in the time zone selected in Microsoft Dynamics CRM options.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedon")]
+		public System.Nullable<System.DateTime> ModifiedOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("modifiedon");
+			}
+		}
+		
+		/// <summary>
+		/// Shows who last updated the record on behalf of another user.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
+		public Microsoft.Xrm.Sdk.EntityReference ModifiedOnBehalfBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("modifiedonbehalfby");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ModifiedOnBehalfBy");
+				this.SetAttributeValue("modifiedonbehalfby", value);
+				this.OnPropertyChanged("ModifiedOnBehalfBy");
+			}
+		}
+		
+		/// <summary>
+		/// Type a title or name that describes the Navigation Setting so it can be identified in Dynamics CRM views.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("name")]
+		public string Name
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("name");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Name");
+				this.SetAttributeValue("name", value);
+				this.OnPropertyChanged("Name");
+			}
+		}
+		
+		/// <summary>
+		/// Identifies a single setting page or group of pages configured for use in a single app.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("navigationsettingid")]
+		public System.Nullable<System.Guid> NavigationSettingId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("navigationsettingid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("NavigationSettingId");
+				this.SetAttributeValue("navigationsettingid", value);
+				if (value.HasValue)
+				{
+					base.Id = value.Value;
+				}
+				else
+				{
+					base.Id = System.Guid.Empty;
+				}
+				this.OnPropertyChanged("NavigationSettingId");
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("navigationsettingid")]
+		public override System.Guid Id
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return base.Id;
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.NavigationSettingId = value;
+			}
+		}
+		
+		/// <summary>
+		/// For system use only.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("navigationsettingidunique")]
+		public System.Nullable<System.Guid> NavigationSettingIdUnique
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("navigationsettingidunique");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("NavigationSettingIdUnique");
+				this.SetAttributeValue("navigationsettingidunique", value);
+				this.OnPropertyChanged("NavigationSettingIdUnique");
+			}
+		}
+		
+		/// <summary>
+		/// Enter the Object Type Code of the entity associated whose page this Navigation Setting record represents.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objecttypecode")]
+		public System.Nullable<int> ObjectTypeCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("objecttypecode");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ObjectTypeCode");
+				this.SetAttributeValue("objecttypecode", value);
+				this.OnPropertyChanged("ObjectTypeCode");
+			}
+		}
+		
+		/// <summary>
+		/// System-populated field that identifies the organization that owns this Navigation Setting record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
+		public Microsoft.Xrm.Sdk.EntityReference OrganizationId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("organizationid");
+			}
+		}
+		
+		/// <summary>
+		/// Date and time that the record was migrated.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("overriddencreatedon")]
+		public System.Nullable<System.DateTime> OverriddenCreatedOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("overriddencreatedon");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("OverriddenCreatedOn");
+				this.SetAttributeValue("overriddencreatedon", value);
+				this.OnPropertyChanged("OverriddenCreatedOn");
+			}
+		}
+		
+		/// <summary>
+		/// For internal use only.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("overwritetime")]
+		public System.Nullable<System.DateTime> OverwriteTime
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("overwritetime");
+			}
+		}
+		
+		/// <summary>
+		/// Type the URL which locates the page associated with this Navigation Setting record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("pageurl")]
+		public string PageUrl
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("pageurl");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("PageUrl");
+				this.SetAttributeValue("pageurl", value);
+				this.OnPropertyChanged("PageUrl");
+			}
+		}
+		
+		/// <summary>
+		/// The Navigation Setting record that represents the group that this record belongs to.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("parentnavigationsettingid")]
+		public System.Nullable<System.Guid> ParentNavigationSettingId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("parentnavigationsettingid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ParentNavigationSettingId");
+				this.SetAttributeValue("parentnavigationsettingid", value);
+				this.OnPropertyChanged("ParentNavigationSettingId");
+			}
+		}
+		
+		/// <summary>
+		/// Enter the Privilege Mask for the entity associated with this navigation setting page that will be the minimum requirement for the page to be made available to a user.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("privileges")]
+		public System.Nullable<int> Privileges
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("privileges");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Privileges");
+				this.SetAttributeValue("privileges", value);
+				this.OnPropertyChanged("Privileges");
+			}
+		}
+		
+		/// <summary>
+		/// Select the setup completion level for this Navigation Setting page.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("progressstate")]
+		public System.Nullable<bool> ProgressState
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("progressstate");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ProgressState");
+				this.SetAttributeValue("progressstate", value);
+				this.OnPropertyChanged("ProgressState");
+			}
+		}
+		
+		/// <summary>
+		/// Enter the position of this NavigationSetting as it should appear in the Quick Setup menu.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("quicksettingorder")]
+		public System.Nullable<int> QuickSettingOrder
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("quicksettingorder");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("QuickSettingOrder");
+				this.SetAttributeValue("quicksettingorder", value);
+				this.OnPropertyChanged("QuickSettingOrder");
+			}
+		}
+		
+		/// <summary>
+		/// The Web Resource that will be associated with this Navigation Setting record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("resourceid")]
+		public System.Nullable<System.Guid> ResourceId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("resourceid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ResourceId");
+				this.SetAttributeValue("resourceid", value);
+				this.OnPropertyChanged("ResourceId");
+			}
+		}
+		
+		/// <summary>
+		/// Select the type of group this Navigation Setting record represents. This determines which of the three in-app customization menus will contain this group.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("settingtype")]
+		public Microsoft.Xrm.Sdk.OptionSetValue SettingType
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("settingtype");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("SettingType");
+				this.SetAttributeValue("settingtype", value);
+				this.OnPropertyChanged("SettingType");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the associated solution.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("solutionid")]
+		public System.Nullable<System.Guid> SolutionId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("solutionid");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lk_navigationsetting_createdby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_navigationsetting_createdby")]
+		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser lk_navigationsetting_createdby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_navigationsetting_createdby", null);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lk_navigationsetting_createdonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_navigationsetting_createdonbehalfby")]
+		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser lk_navigationsetting_createdonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_navigationsetting_createdonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_navigationsetting_createdonbehalfby");
+				this.SetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_navigationsetting_createdonbehalfby", null, value);
+				this.OnPropertyChanged("lk_navigationsetting_createdonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lk_navigationsetting_modifiedby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_navigationsetting_modifiedby")]
+		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser lk_navigationsetting_modifiedby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_navigationsetting_modifiedby", null);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lk_navigationsetting_modifiedonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_navigationsetting_modifiedonbehalfby")]
+		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser lk_navigationsetting_modifiedonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_navigationsetting_modifiedonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_navigationsetting_modifiedonbehalfby");
+				this.SetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_navigationsetting_modifiedonbehalfby", null, value);
+				this.OnPropertyChanged("lk_navigationsetting_modifiedonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 navigationsetting_appconfig
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("appconfigid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("navigationsetting_appconfig")]
+		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.AppConfig navigationsetting_appconfig
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.AppConfig>("navigationsetting_appconfig", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("navigationsetting_appconfig");
+				this.SetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.AppConfig>("navigationsetting_appconfig", null, value);
+				this.OnPropertyChanged("navigationsetting_appconfig");
+			}
+		}
+		
+		/// <summary>
+		/// Constructor for populating via LINQ queries given a LINQ anonymous type
+		/// <param name="anonymousType">LINQ anonymous type.</param>
+		/// </summary>
+		[System.Diagnostics.DebuggerNonUserCode()]
+		public NavigationSetting(object anonymousType) : 
+				this()
+		{
+            foreach (var p in anonymousType.GetType().GetProperties())
+            {
+                var value = p.GetValue(anonymousType, null);
+                var name = p.Name.ToLower();
+            
+                if (name.EndsWith("enum") && value.GetType().BaseType == typeof(System.Enum))
+                {
+                    value = new Microsoft.Xrm.Sdk.OptionSetValue((int) value);
+                    name = name.Remove(name.Length - "enum".Length);
+                }
+            
+                switch (name)
+                {
+                    case "id":
+                        base.Id = (System.Guid)value;
+                        Attributes["navigationsettingid"] = base.Id;
+                        break;
+                    case "navigationsettingid":
+                        var id = (System.Nullable<System.Guid>) value;
+                        if(id == null){ continue; }
+                        base.Id = id.Value;
+                        Attributes[name] = base.Id;
+                        break;
+                    case "formattedvalues":
+                        // Add Support for FormattedValues
+                        FormattedValues.AddRange((Microsoft.Xrm.Sdk.FormattedValueCollection)value);
+                        break;
+                    default:
+                        Attributes[name] = value;
+                        break;
+                }
+            }
+		}
+	}
+	
+	/// <summary>
+	/// For internal use only.
+	/// </summary>
+	[System.Runtime.Serialization.DataContractAttribute()]
+	[Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute("offlinecommanddefinition")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "8.2.1.8676")]
+	public partial class OfflineCommandDefinition : Microsoft.Xrm.Sdk.Entity, System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
+	{
+		
+		public static class Fields
+		{
+			public const string CommandDefinition = "commanddefinition";
+			public const string CommandDefinitionId = "commanddefinitionid";
+			public const string Id = "commanddefinitionid";
+			public const string CommandName = "commandname";
+			public const string CreatedBy = "createdby";
+			public const string CreatedOn = "createdon";
+			public const string CreatedOnBehalfBy = "createdonbehalfby";
+			public const string ImportSequenceNumber = "importsequencenumber";
+			public const string ModifiedBy = "modifiedby";
+			public const string ModifiedOn = "modifiedon";
+			public const string ModifiedOnBehalfBy = "modifiedonbehalfby";
+			public const string OrganizationId = "organizationid";
+			public const string OverriddenCreatedOn = "overriddencreatedon";
+			public const string PrimaryEntityLogicalName = "primaryentitylogicalname";
+			public const string SolutionName = "solutionname";
+			public const string VersionNumber = "versionnumber";
+			public const string lk_offlinecommanddefinition_createdby = "lk_offlinecommanddefinition_createdby";
+			public const string lk_offlinecommanddefinition_createdonbehalfby = "lk_offlinecommanddefinition_createdonbehalfby";
+			public const string lk_offlinecommanddefinition_modifiedby = "lk_offlinecommanddefinition_modifiedby";
+			public const string lk_offlinecommanddefinition_modifiedonbehalfby = "lk_offlinecommanddefinition_modifiedonbehalfby";
+		}
+		
+		/// <summary>
+		/// Default Constructor.
+		/// </summary>
+		[System.Diagnostics.DebuggerNonUserCode()]
+		public OfflineCommandDefinition() : 
+				base(EntityLogicalName)
+		{
+		}
+		
+		public const string EntityLogicalName = "offlinecommanddefinition";
+		
+		public const string PrimaryIdAttribute = "commanddefinitionid";
+		
+		public const string PrimaryNameAttribute = "commandname";
+		
+		public const int EntityTypeCode = 9870;
+		
+		public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+		
+		public event System.ComponentModel.PropertyChangingEventHandler PropertyChanging;
+		
+		[System.Diagnostics.DebuggerNonUserCode()]
+		private void OnPropertyChanged(string propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		[System.Diagnostics.DebuggerNonUserCode()]
+		private void OnPropertyChanging(string propertyName)
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, new System.ComponentModel.PropertyChangingEventArgs(propertyName));
+			}
+		}
+		
+		/// <summary>
+		/// Command Definition of Non Crud Command
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("commanddefinition")]
+		public string CommandDefinition
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("commanddefinition");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("CommandDefinition");
+				this.SetAttributeValue("commanddefinition", value);
+				this.OnPropertyChanged("CommandDefinition");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the Command Definition for the Microsoft Dynamics 365.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("commanddefinitionid")]
+		public System.Nullable<System.Guid> CommandDefinitionId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("commanddefinitionid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("CommandDefinitionId");
+				this.SetAttributeValue("commanddefinitionid", value);
+				if (value.HasValue)
+				{
+					base.Id = value.Value;
+				}
+				else
+				{
+					base.Id = System.Guid.Empty;
+				}
+				this.OnPropertyChanged("CommandDefinitionId");
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("commanddefinitionid")]
+		public override System.Guid Id
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return base.Id;
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.CommandDefinitionId = value;
+			}
+		}
+		
+		/// <summary>
+		/// Command Name of Non Crud Command.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("commandname")]
+		public string CommandName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("commandname");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("CommandName");
+				this.SetAttributeValue("commandname", value);
+				this.OnPropertyChanged("CommandName");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the user who created the record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
+		public Microsoft.Xrm.Sdk.EntityReference CreatedBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("createdby");
+			}
+		}
+		
+		/// <summary>
+		/// Date and time when the record was created.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdon")]
+		public System.Nullable<System.DateTime> CreatedOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("createdon");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the delegate user who created the record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
+		public Microsoft.Xrm.Sdk.EntityReference CreatedOnBehalfBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("createdonbehalfby");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("CreatedOnBehalfBy");
+				this.SetAttributeValue("createdonbehalfby", value);
+				this.OnPropertyChanged("CreatedOnBehalfBy");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the data import or data migration that created this record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("importsequencenumber")]
+		public System.Nullable<int> ImportSequenceNumber
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("importsequencenumber");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ImportSequenceNumber");
+				this.SetAttributeValue("importsequencenumber", value);
+				this.OnPropertyChanged("ImportSequenceNumber");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the user who modified the record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
+		public Microsoft.Xrm.Sdk.EntityReference ModifiedBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("modifiedby");
+			}
+		}
+		
+		/// <summary>
+		/// Date and time when the record was modified.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedon")]
+		public System.Nullable<System.DateTime> ModifiedOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("modifiedon");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the delegate user who modified the record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
+		public Microsoft.Xrm.Sdk.EntityReference ModifiedOnBehalfBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("modifiedonbehalfby");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ModifiedOnBehalfBy");
+				this.SetAttributeValue("modifiedonbehalfby", value);
+				this.OnPropertyChanged("ModifiedOnBehalfBy");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the organization associated with the non crud command.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
+		public Microsoft.Xrm.Sdk.EntityReference OrganizationId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("organizationid");
+			}
+		}
+		
+		/// <summary>
+		/// Date and time that the record was migrated.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("overriddencreatedon")]
+		public System.Nullable<System.DateTime> OverriddenCreatedOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("overriddencreatedon");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("OverriddenCreatedOn");
+				this.SetAttributeValue("overriddencreatedon", value);
+				this.OnPropertyChanged("OverriddenCreatedOn");
+			}
+		}
+		
+		/// <summary>
+		/// Primary Entity Logical Name of entity for which command is used
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("primaryentitylogicalname")]
+		public string PrimaryEntityLogicalName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("primaryentitylogicalname");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("PrimaryEntityLogicalName");
+				this.SetAttributeValue("primaryentitylogicalname", value);
+				this.OnPropertyChanged("PrimaryEntityLogicalName");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the solution.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("solutionname")]
+		public string SolutionName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("solutionname");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("SolutionName");
+				this.SetAttributeValue("solutionname", value);
+				this.OnPropertyChanged("SolutionName");
+			}
+		}
+		
+		/// <summary>
+		/// Internal use Only
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("versionnumber")]
+		public System.Nullable<long> VersionNumber
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<long>>("versionnumber");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lk_offlinecommanddefinition_createdby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_offlinecommanddefinition_createdby")]
+		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser lk_offlinecommanddefinition_createdby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_offlinecommanddefinition_createdby", null);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lk_offlinecommanddefinition_createdonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_offlinecommanddefinition_createdonbehalfby")]
+		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser lk_offlinecommanddefinition_createdonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_offlinecommanddefinition_createdonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_offlinecommanddefinition_createdonbehalfby");
+				this.SetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_offlinecommanddefinition_createdonbehalfby", null, value);
+				this.OnPropertyChanged("lk_offlinecommanddefinition_createdonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lk_offlinecommanddefinition_modifiedby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_offlinecommanddefinition_modifiedby")]
+		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser lk_offlinecommanddefinition_modifiedby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_offlinecommanddefinition_modifiedby", null);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lk_offlinecommanddefinition_modifiedonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_offlinecommanddefinition_modifiedonbehalfby")]
+		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser lk_offlinecommanddefinition_modifiedonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_offlinecommanddefinition_modifiedonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_offlinecommanddefinition_modifiedonbehalfby");
+				this.SetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_offlinecommanddefinition_modifiedonbehalfby", null, value);
+				this.OnPropertyChanged("lk_offlinecommanddefinition_modifiedonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// Constructor for populating via LINQ queries given a LINQ anonymous type
+		/// <param name="anonymousType">LINQ anonymous type.</param>
+		/// </summary>
+		[System.Diagnostics.DebuggerNonUserCode()]
+		public OfflineCommandDefinition(object anonymousType) : 
+				this()
+		{
+            foreach (var p in anonymousType.GetType().GetProperties())
+            {
+                var value = p.GetValue(anonymousType, null);
+                var name = p.Name.ToLower();
+            
+                if (name.EndsWith("enum") && value.GetType().BaseType == typeof(System.Enum))
+                {
+                    value = new Microsoft.Xrm.Sdk.OptionSetValue((int) value);
+                    name = name.Remove(name.Length - "enum".Length);
+                }
+            
+                switch (name)
+                {
+                    case "id":
+                        base.Id = (System.Guid)value;
+                        Attributes["commanddefinitionid"] = base.Id;
+                        break;
+                    case "commanddefinitionid":
+                        var id = (System.Nullable<System.Guid>) value;
+                        if(id == null){ continue; }
+                        base.Id = id.Value;
+                        Attributes[name] = base.Id;
+                        break;
+                    case "formattedvalues":
+                        // Add Support for FormattedValues
+                        FormattedValues.AddRange((Microsoft.Xrm.Sdk.FormattedValueCollection)value);
+                        break;
+                    default:
+                        Attributes[name] = value;
+                        break;
+                }
+            }
+		}
+	}
+	
+	/// <summary>
+	/// Stores data regarding organization insights notification
+	/// </summary>
+	[System.Runtime.Serialization.DataContractAttribute()]
+	[Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute("orginsightsnotification")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "8.2.1.8676")]
+	public partial class OrgInsightsNotification : Microsoft.Xrm.Sdk.Entity, System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
+	{
+		
+		public static class Fields
+		{
+			public const string InternalName = "internalname";
+			public const string JsonData = "jsondata";
+			public const string Name = "name";
+			public const string OrgInsightsNotificationId = "orginsightsnotificationid";
+			public const string Id = "orginsightsnotificationid";
+		}
+		
+		/// <summary>
+		/// Default Constructor.
+		/// </summary>
+		[System.Diagnostics.DebuggerNonUserCode()]
+		public OrgInsightsNotification() : 
+				base(EntityLogicalName)
+		{
+		}
+		
+		public const string EntityLogicalName = "orginsightsnotification";
+		
+		public const string PrimaryIdAttribute = "orginsightsnotificationid";
+		
+		public const int EntityTypeCode = 9690;
+		
+		public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+		
+		public event System.ComponentModel.PropertyChangingEventHandler PropertyChanging;
+		
+		[System.Diagnostics.DebuggerNonUserCode()]
+		private void OnPropertyChanged(string propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		[System.Diagnostics.DebuggerNonUserCode()]
+		private void OnPropertyChanging(string propertyName)
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, new System.ComponentModel.PropertyChangingEventArgs(propertyName));
+			}
+		}
+		
+		/// <summary>
+		/// Name of the notification which is used for retrieving the data
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("internalname")]
+		public string InternalName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("internalname");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("InternalName");
+				this.SetAttributeValue("internalname", value);
+				this.OnPropertyChanged("InternalName");
+			}
+		}
+		
+		/// <summary>
+		/// Notification Data in Json format
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("jsondata")]
+		public string JsonData
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("jsondata");
+			}
+		}
+		
+		/// <summary>
+		/// Legend Name used while displaying the notification
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("name")]
+		public string Name
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("name");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Name");
+				this.SetAttributeValue("name", value);
+				this.OnPropertyChanged("Name");
+			}
+		}
+		
+		/// <summary>
+		/// 
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("orginsightsnotificationid")]
+		public System.Nullable<System.Guid> OrgInsightsNotificationId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("orginsightsnotificationid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("OrgInsightsNotificationId");
+				this.SetAttributeValue("orginsightsnotificationid", value);
+				if (value.HasValue)
+				{
+					base.Id = value.Value;
+				}
+				else
+				{
+					base.Id = System.Guid.Empty;
+				}
+				this.OnPropertyChanged("OrgInsightsNotificationId");
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("orginsightsnotificationid")]
+		public override System.Guid Id
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return base.Id;
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OrgInsightsNotificationId = value;
+			}
+		}
+		
+		/// <summary>
+		/// Constructor for populating via LINQ queries given a LINQ anonymous type
+		/// <param name="anonymousType">LINQ anonymous type.</param>
+		/// </summary>
+		[System.Diagnostics.DebuggerNonUserCode()]
+		public OrgInsightsNotification(object anonymousType) : 
+				this()
+		{
+            foreach (var p in anonymousType.GetType().GetProperties())
+            {
+                var value = p.GetValue(anonymousType, null);
+                var name = p.Name.ToLower();
+            
+                if (name.EndsWith("enum") && value.GetType().BaseType == typeof(System.Enum))
+                {
+                    value = new Microsoft.Xrm.Sdk.OptionSetValue((int) value);
+                    name = name.Remove(name.Length - "enum".Length);
+                }
+            
+                switch (name)
+                {
+                    case "id":
+                        base.Id = (System.Guid)value;
+                        Attributes["orginsightsnotificationid"] = base.Id;
+                        break;
+                    case "orginsightsnotificationid":
+                        var id = (System.Nullable<System.Guid>) value;
+                        if(id == null){ continue; }
+                        base.Id = id.Value;
+                        Attributes[name] = base.Id;
+                        break;
+                    case "formattedvalues":
+                        // Add Support for FormattedValues
+                        FormattedValues.AddRange((Microsoft.Xrm.Sdk.FormattedValueCollection)value);
+                        break;
+                    default:
+                        Attributes[name] = value;
+                        break;
+                }
+            }
+		}
+	}
+	
+	/// <summary>
+	/// Assembly that contains one or more plug-in types.
+	/// </summary>
+	[System.Runtime.Serialization.DataContractAttribute()]
+	[Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute("pluginassembly")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "8.2.1.8676")]
+	public partial class PluginAssembly : Microsoft.Xrm.Sdk.Entity, System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
+	{
+		
+		public static class Fields
+		{
+			public const string AuthType = "authtype";
+			public const string ComponentState = "componentstate";
+			public const string Content = "content";
+			public const string CreatedBy = "createdby";
+			public const string CreatedOn = "createdon";
+			public const string CreatedOnBehalfBy = "createdonbehalfby";
+			public const string Culture = "culture";
+			public const string CustomizationLevel = "customizationlevel";
+			public const string Description = "description";
+			public const string IntroducedVersion = "introducedversion";
+			public const string IsCustomizable = "iscustomizable";
+			public const string IsHidden = "ishidden";
+			public const string IsManaged = "ismanaged";
+			public const string IsolationMode = "isolationmode";
+			public const string IsPasswordSet = "ispasswordset";
+			public const string Major = "major";
+			public const string Minor = "minor";
+			public const string ModifiedBy = "modifiedby";
+			public const string ModifiedOn = "modifiedon";
+			public const string ModifiedOnBehalfBy = "modifiedonbehalfby";
+			public const string Name = "name";
+			public const string OrganizationId = "organizationid";
+			public const string OverwriteTime = "overwritetime";
+			public const string Password = "password";
+			public const string Path = "path";
+			public const string PluginAssemblyId = "pluginassemblyid";
+			public const string Id = "pluginassemblyid";
+			public const string PluginAssemblyIdUnique = "pluginassemblyidunique";
+			public const string PublicKeyToken = "publickeytoken";
+			public const string SolutionId = "solutionid";
+			public const string SourceHash = "sourcehash";
+			public const string SourceType = "sourcetype";
+			public const string Url = "url";
+			public const string UserName = "username";
+			public const string Version = "version";
+			public const string VersionNumber = "versionnumber";
+			public const string createdby_pluginassembly = "createdby_pluginassembly";
+			public const string lk_pluginassembly_createdonbehalfby = "lk_pluginassembly_createdonbehalfby";
+			public const string lk_pluginassembly_modifiedonbehalfby = "lk_pluginassembly_modifiedonbehalfby";
+			public const string modifiedby_pluginassembly = "modifiedby_pluginassembly";
+		}
+		
+		/// <summary>
+		/// Default Constructor.
+		/// </summary>
+		[System.Diagnostics.DebuggerNonUserCode()]
+		public PluginAssembly() : 
+				base(EntityLogicalName)
+		{
+		}
+		
+		public const string EntityLogicalName = "pluginassembly";
+		
+		public const string PrimaryIdAttribute = "pluginassemblyid";
+		
+		public const string PrimaryNameAttribute = "name";
+		
+		public const int EntityTypeCode = 4605;
+		
+		public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+		
+		public event System.ComponentModel.PropertyChangingEventHandler PropertyChanging;
+		
+		[System.Diagnostics.DebuggerNonUserCode()]
+		private void OnPropertyChanged(string propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		[System.Diagnostics.DebuggerNonUserCode()]
+		private void OnPropertyChanging(string propertyName)
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, new System.ComponentModel.PropertyChangingEventArgs(propertyName));
+			}
+		}
+		
+		/// <summary>
+		/// Specifies mode of authentication with web sources like WebApp
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("authtype")]
+		public Microsoft.Xrm.Sdk.OptionSetValue AuthType
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("authtype");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("AuthType");
+				this.SetAttributeValue("authtype", value);
+				this.OnPropertyChanged("AuthType");
+			}
+		}
+		
+		/// <summary>
+		/// For internal use only.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("componentstate")]
+		public Microsoft.Xrm.Sdk.OptionSetValue ComponentState
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("componentstate");
+			}
+		}
+		
+		/// <summary>
+		/// Bytes of the assembly, in Base64 format.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("content")]
+		public string Content
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("content");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Content");
+				this.SetAttributeValue("content", value);
+				this.OnPropertyChanged("Content");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the user who created the plug-in assembly.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
+		public Microsoft.Xrm.Sdk.EntityReference CreatedBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("createdby");
+			}
+		}
+		
+		/// <summary>
+		/// Date and time when the plug-in assembly was created.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdon")]
+		public System.Nullable<System.DateTime> CreatedOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("createdon");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the delegate user who created the pluginassembly.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
+		public Microsoft.Xrm.Sdk.EntityReference CreatedOnBehalfBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("createdonbehalfby");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("CreatedOnBehalfBy");
+				this.SetAttributeValue("createdonbehalfby", value);
+				this.OnPropertyChanged("CreatedOnBehalfBy");
+			}
+		}
+		
+		/// <summary>
+		/// Culture code for the plug-in assembly.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("culture")]
+		public string Culture
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("culture");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Culture");
+				this.SetAttributeValue("culture", value);
+				this.OnPropertyChanged("Culture");
+			}
+		}
+		
+		/// <summary>
+		/// Customization Level.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("customizationlevel")]
+		public System.Nullable<int> CustomizationLevel
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("customizationlevel");
+			}
+		}
+		
+		/// <summary>
+		/// Description of the plug-in assembly.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("description")]
+		public string Description
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("description");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Description");
+				this.SetAttributeValue("description", value);
+				this.OnPropertyChanged("Description");
+			}
+		}
+		
+		/// <summary>
+		/// Version in which the form is introduced.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("introducedversion")]
+		public string IntroducedVersion
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("introducedversion");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("IntroducedVersion");
+				this.SetAttributeValue("introducedversion", value);
+				this.OnPropertyChanged("IntroducedVersion");
+			}
+		}
+		
+		/// <summary>
+		/// Information that specifies whether this component can be customized.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("iscustomizable")]
+		public Microsoft.Xrm.Sdk.BooleanManagedProperty IsCustomizable
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.BooleanManagedProperty>("iscustomizable");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("IsCustomizable");
+				this.SetAttributeValue("iscustomizable", value);
+				this.OnPropertyChanged("IsCustomizable");
+			}
+		}
+		
+		/// <summary>
+		/// Information that specifies whether this component should be hidden.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("ishidden")]
+		public Microsoft.Xrm.Sdk.BooleanManagedProperty IsHidden
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.BooleanManagedProperty>("ishidden");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("IsHidden");
+				this.SetAttributeValue("ishidden", value);
+				this.OnPropertyChanged("IsHidden");
+			}
+		}
+		
+		/// <summary>
+		/// Information that specifies whether this component is managed.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("ismanaged")]
+		public System.Nullable<bool> IsManaged
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("ismanaged");
+			}
+		}
+		
+		/// <summary>
+		/// Information about how the plugin assembly is to be isolated at execution time; None / Sandboxed.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isolationmode")]
+		public Microsoft.Xrm.Sdk.OptionSetValue IsolationMode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("isolationmode");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("IsolationMode");
+				this.SetAttributeValue("isolationmode", value);
+				this.OnPropertyChanged("IsolationMode");
+			}
+		}
+		
+		/// <summary>
+		/// 
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("ispasswordset")]
+		public System.Nullable<bool> IsPasswordSet
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("ispasswordset");
+			}
+		}
+		
+		/// <summary>
+		/// Major of the assembly version.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("major")]
+		public System.Nullable<int> Major
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("major");
+			}
+		}
+		
+		/// <summary>
+		/// Minor of the assembly version.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("minor")]
+		public System.Nullable<int> Minor
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("minor");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the user who last modified the plug-in assembly.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
+		public Microsoft.Xrm.Sdk.EntityReference ModifiedBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("modifiedby");
+			}
+		}
+		
+		/// <summary>
+		/// Date and time when the plug-in assembly was last modified.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedon")]
+		public System.Nullable<System.DateTime> ModifiedOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("modifiedon");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the delegate user who last modified the pluginassembly.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
+		public Microsoft.Xrm.Sdk.EntityReference ModifiedOnBehalfBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("modifiedonbehalfby");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ModifiedOnBehalfBy");
+				this.SetAttributeValue("modifiedonbehalfby", value);
+				this.OnPropertyChanged("ModifiedOnBehalfBy");
+			}
+		}
+		
+		/// <summary>
+		/// Name of the plug-in assembly.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("name")]
+		public string Name
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("name");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Name");
+				this.SetAttributeValue("name", value);
+				this.OnPropertyChanged("Name");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the organization with which the plug-in assembly is associated.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
+		public Microsoft.Xrm.Sdk.EntityReference OrganizationId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("organizationid");
+			}
+		}
+		
+		/// <summary>
+		/// For internal use only.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("overwritetime")]
+		public System.Nullable<System.DateTime> OverwriteTime
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("overwritetime");
+			}
+		}
+		
+		/// <summary>
+		/// User Password
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("password")]
+		public string Password
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("password");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Password");
+				this.SetAttributeValue("password", value);
+				this.OnPropertyChanged("Password");
+			}
+		}
+		
+		/// <summary>
+		/// File name of the plug-in assembly. Used when the source type is set to 1.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("path")]
+		public string Path
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("path");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Path");
+				this.SetAttributeValue("path", value);
+				this.OnPropertyChanged("Path");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the plug-in assembly.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("pluginassemblyid")]
+		public System.Nullable<System.Guid> PluginAssemblyId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("pluginassemblyid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("PluginAssemblyId");
+				this.SetAttributeValue("pluginassemblyid", value);
+				if (value.HasValue)
+				{
+					base.Id = value.Value;
+				}
+				else
+				{
+					base.Id = System.Guid.Empty;
+				}
+				this.OnPropertyChanged("PluginAssemblyId");
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("pluginassemblyid")]
+		public override System.Guid Id
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return base.Id;
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.PluginAssemblyId = value;
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the plug-in assembly.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("pluginassemblyidunique")]
+		public System.Nullable<System.Guid> PluginAssemblyIdUnique
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("pluginassemblyidunique");
+			}
+		}
+		
+		/// <summary>
+		/// Public key token of the assembly. This value can be obtained from the assembly by using reflection.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("publickeytoken")]
+		public string PublicKeyToken
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("publickeytoken");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("PublicKeyToken");
+				this.SetAttributeValue("publickeytoken", value);
+				this.OnPropertyChanged("PublicKeyToken");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the associated solution.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("solutionid")]
+		public System.Nullable<System.Guid> SolutionId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("solutionid");
+			}
+		}
+		
+		/// <summary>
+		/// Hash of the source of the assembly.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("sourcehash")]
+		public string SourceHash
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("sourcehash");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("SourceHash");
+				this.SetAttributeValue("sourcehash", value);
+				this.OnPropertyChanged("SourceHash");
+			}
+		}
+		
+		/// <summary>
+		/// Location of the assembly, for example 0=database, 1=on-disk.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("sourcetype")]
+		public Microsoft.Xrm.Sdk.OptionSetValue SourceType
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("sourcetype");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("SourceType");
+				this.SetAttributeValue("sourcetype", value);
+				this.OnPropertyChanged("SourceType");
+			}
+		}
+		
+		/// <summary>
+		/// Web Url
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("url")]
+		public string Url
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("url");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Url");
+				this.SetAttributeValue("url", value);
+				this.OnPropertyChanged("Url");
+			}
+		}
+		
+		/// <summary>
+		/// User Name
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("username")]
+		public string UserName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("username");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("UserName");
+				this.SetAttributeValue("username", value);
+				this.OnPropertyChanged("UserName");
+			}
+		}
+		
+		/// <summary>
+		/// Version number of the assembly. The value can be obtained from the assembly through reflection.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("version")]
+		public string Version
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("version");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Version");
+				this.SetAttributeValue("version", value);
+				this.OnPropertyChanged("Version");
+			}
+		}
+		
+		/// <summary>
+		/// 
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("versionnumber")]
+		public System.Nullable<long> VersionNumber
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<long>>("versionnumber");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N pluginassembly_plugintype
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("pluginassembly_plugintype")]
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.PluginType> pluginassembly_plugintype
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.PluginType>("pluginassembly_plugintype", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("pluginassembly_plugintype");
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.PluginType>("pluginassembly_plugintype", null, value);
+				this.OnPropertyChanged("pluginassembly_plugintype");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 createdby_pluginassembly
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("createdby_pluginassembly")]
+		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser createdby_pluginassembly
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("createdby_pluginassembly", null);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lk_pluginassembly_createdonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_pluginassembly_createdonbehalfby")]
+		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser lk_pluginassembly_createdonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_pluginassembly_createdonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_pluginassembly_createdonbehalfby");
+				this.SetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_pluginassembly_createdonbehalfby", null, value);
+				this.OnPropertyChanged("lk_pluginassembly_createdonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lk_pluginassembly_modifiedonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_pluginassembly_modifiedonbehalfby")]
+		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser lk_pluginassembly_modifiedonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_pluginassembly_modifiedonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_pluginassembly_modifiedonbehalfby");
+				this.SetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_pluginassembly_modifiedonbehalfby", null, value);
+				this.OnPropertyChanged("lk_pluginassembly_modifiedonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 modifiedby_pluginassembly
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("modifiedby_pluginassembly")]
+		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser modifiedby_pluginassembly
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("modifiedby_pluginassembly", null);
+			}
+		}
+		
+		/// <summary>
+		/// Constructor for populating via LINQ queries given a LINQ anonymous type
+		/// <param name="anonymousType">LINQ anonymous type.</param>
+		/// </summary>
+		[System.Diagnostics.DebuggerNonUserCode()]
+		public PluginAssembly(object anonymousType) : 
+				this()
+		{
+            foreach (var p in anonymousType.GetType().GetProperties())
+            {
+                var value = p.GetValue(anonymousType, null);
+                var name = p.Name.ToLower();
+            
+                if (name.EndsWith("enum") && value.GetType().BaseType == typeof(System.Enum))
+                {
+                    value = new Microsoft.Xrm.Sdk.OptionSetValue((int) value);
+                    name = name.Remove(name.Length - "enum".Length);
+                }
+            
+                switch (name)
+                {
+                    case "id":
+                        base.Id = (System.Guid)value;
+                        Attributes["pluginassemblyid"] = base.Id;
+                        break;
+                    case "pluginassemblyid":
+                        var id = (System.Nullable<System.Guid>) value;
+                        if(id == null){ continue; }
+                        base.Id = id.Value;
+                        Attributes[name] = base.Id;
+                        break;
+                    case "formattedvalues":
+                        // Add Support for FormattedValues
+                        FormattedValues.AddRange((Microsoft.Xrm.Sdk.FormattedValueCollection)value);
+                        break;
+                    default:
+                        Attributes[name] = value;
+                        break;
+                }
+            }
+		}
+	}
+	
+	/// <summary>
+	/// Type that inherits from the IPlugin interface and is contained within a plug-in assembly.
+	/// </summary>
+	[System.Runtime.Serialization.DataContractAttribute()]
+	[Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute("plugintype")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "8.2.1.8676")]
+	public partial class PluginType : Microsoft.Xrm.Sdk.Entity, System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
+	{
+		
+		public static class Fields
+		{
+			public const string AssemblyName = "assemblyname";
+			public const string ComponentState = "componentstate";
+			public const string CreatedBy = "createdby";
+			public const string CreatedOn = "createdon";
+			public const string CreatedOnBehalfBy = "createdonbehalfby";
+			public const string Culture = "culture";
+			public const string CustomizationLevel = "customizationlevel";
+			public const string CustomWorkflowActivityInfo = "customworkflowactivityinfo";
+			public const string Description = "description";
+			public const string FriendlyName = "friendlyname";
+			public const string IsManaged = "ismanaged";
+			public const string IsWorkflowActivity = "isworkflowactivity";
+			public const string Major = "major";
+			public const string Minor = "minor";
+			public const string ModifiedBy = "modifiedby";
+			public const string ModifiedOn = "modifiedon";
+			public const string ModifiedOnBehalfBy = "modifiedonbehalfby";
+			public const string Name = "name";
+			public const string OrganizationId = "organizationid";
+			public const string OverwriteTime = "overwritetime";
+			public const string PluginAssemblyId = "pluginassemblyid";
+			public const string PluginTypeId = "plugintypeid";
+			public const string Id = "plugintypeid";
+			public const string PluginTypeIdUnique = "plugintypeidunique";
+			public const string PublicKeyToken = "publickeytoken";
+			public const string SolutionId = "solutionid";
+			public const string TypeName = "typename";
+			public const string Version = "version";
+			public const string VersionNumber = "versionnumber";
+			public const string WorkflowActivityGroupName = "workflowactivitygroupname";
+			public const string createdby_plugintype = "createdby_plugintype";
+			public const string lk_plugintype_createdonbehalfby = "lk_plugintype_createdonbehalfby";
+			public const string lk_plugintype_modifiedonbehalfby = "lk_plugintype_modifiedonbehalfby";
+			public const string modifiedby_plugintype = "modifiedby_plugintype";
+			public const string pluginassembly_plugintype = "pluginassembly_plugintype";
+		}
+		
+		/// <summary>
+		/// Default Constructor.
+		/// </summary>
+		[System.Diagnostics.DebuggerNonUserCode()]
+		public PluginType() : 
+				base(EntityLogicalName)
+		{
+		}
+		
+		public const string EntityLogicalName = "plugintype";
+		
+		public const string PrimaryIdAttribute = "plugintypeid";
+		
+		public const string PrimaryNameAttribute = "name";
+		
+		public const int EntityTypeCode = 4602;
+		
+		public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+		
+		public event System.ComponentModel.PropertyChangingEventHandler PropertyChanging;
+		
+		[System.Diagnostics.DebuggerNonUserCode()]
+		private void OnPropertyChanged(string propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		[System.Diagnostics.DebuggerNonUserCode()]
+		private void OnPropertyChanging(string propertyName)
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, new System.ComponentModel.PropertyChangingEventArgs(propertyName));
+			}
+		}
+		
+		/// <summary>
+		/// Full path name of the plug-in assembly.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("assemblyname")]
+		public string AssemblyName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("assemblyname");
+			}
+		}
+		
+		/// <summary>
+		/// For internal use only.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("componentstate")]
+		public Microsoft.Xrm.Sdk.OptionSetValue ComponentState
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("componentstate");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the user who created the plug-in type.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
+		public Microsoft.Xrm.Sdk.EntityReference CreatedBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("createdby");
+			}
+		}
+		
+		/// <summary>
+		/// Date and time when the plug-in type was created.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdon")]
+		public System.Nullable<System.DateTime> CreatedOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("createdon");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the delegate user who created the plugintype.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
+		public Microsoft.Xrm.Sdk.EntityReference CreatedOnBehalfBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("createdonbehalfby");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("CreatedOnBehalfBy");
+				this.SetAttributeValue("createdonbehalfby", value);
+				this.OnPropertyChanged("CreatedOnBehalfBy");
+			}
+		}
+		
+		/// <summary>
+		/// Culture code for the plug-in assembly.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("culture")]
+		public string Culture
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("culture");
+			}
+		}
+		
+		/// <summary>
+		/// Customization level of the plug-in type.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("customizationlevel")]
+		public System.Nullable<int> CustomizationLevel
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("customizationlevel");
+			}
+		}
+		
+		/// <summary>
+		/// Serialized Custom Activity Type information, including required arguments. For more information, see SandboxCustomActivityInfo.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("customworkflowactivityinfo")]
+		public string CustomWorkflowActivityInfo
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("customworkflowactivityinfo");
+			}
+		}
+		
+		/// <summary>
+		/// Description of the plug-in type.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("description")]
+		public string Description
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("description");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Description");
+				this.SetAttributeValue("description", value);
+				this.OnPropertyChanged("Description");
+			}
+		}
+		
+		/// <summary>
+		/// User friendly name for the plug-in.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("friendlyname")]
+		public string FriendlyName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("friendlyname");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("FriendlyName");
+				this.SetAttributeValue("friendlyname", value);
+				this.OnPropertyChanged("FriendlyName");
+			}
+		}
+		
+		/// <summary>
+		/// 
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("ismanaged")]
+		public System.Nullable<bool> IsManaged
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("ismanaged");
+			}
+		}
+		
+		/// <summary>
+		/// Indicates if the plug-in is a custom activity for workflows.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isworkflowactivity")]
+		public System.Nullable<bool> IsWorkflowActivity
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isworkflowactivity");
+			}
+		}
+		
+		/// <summary>
+		/// Major of the version number of the assembly for the plug-in type.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("major")]
+		public System.Nullable<int> Major
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("major");
+			}
+		}
+		
+		/// <summary>
+		/// Minor of the version number of the assembly for the plug-in type.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("minor")]
+		public System.Nullable<int> Minor
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("minor");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the user who last modified the plug-in type.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
+		public Microsoft.Xrm.Sdk.EntityReference ModifiedBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("modifiedby");
+			}
+		}
+		
+		/// <summary>
+		/// Date and time when the plug-in type was last modified.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedon")]
+		public System.Nullable<System.DateTime> ModifiedOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("modifiedon");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the delegate user who last modified the plugintype.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
+		public Microsoft.Xrm.Sdk.EntityReference ModifiedOnBehalfBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("modifiedonbehalfby");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ModifiedOnBehalfBy");
+				this.SetAttributeValue("modifiedonbehalfby", value);
+				this.OnPropertyChanged("ModifiedOnBehalfBy");
+			}
+		}
+		
+		/// <summary>
+		/// Name of the plug-in type.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("name")]
+		public string Name
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("name");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Name");
+				this.SetAttributeValue("name", value);
+				this.OnPropertyChanged("Name");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the organization with which the plug-in type is associated.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
+		public Microsoft.Xrm.Sdk.EntityReference OrganizationId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("organizationid");
+			}
+		}
+		
+		/// <summary>
+		/// For internal use only.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("overwritetime")]
+		public System.Nullable<System.DateTime> OverwriteTime
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("overwritetime");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the plug-in assembly that contains this plug-in type.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("pluginassemblyid")]
+		public Microsoft.Xrm.Sdk.EntityReference PluginAssemblyId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("pluginassemblyid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("PluginAssemblyId");
+				this.SetAttributeValue("pluginassemblyid", value);
+				this.OnPropertyChanged("PluginAssemblyId");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the plug-in type.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("plugintypeid")]
+		public System.Nullable<System.Guid> PluginTypeId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("plugintypeid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("PluginTypeId");
+				this.SetAttributeValue("plugintypeid", value);
+				if (value.HasValue)
+				{
+					base.Id = value.Value;
+				}
+				else
+				{
+					base.Id = System.Guid.Empty;
+				}
+				this.OnPropertyChanged("PluginTypeId");
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("plugintypeid")]
+		public override System.Guid Id
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return base.Id;
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.PluginTypeId = value;
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the plug-in type.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("plugintypeidunique")]
+		public System.Nullable<System.Guid> PluginTypeIdUnique
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("plugintypeidunique");
+			}
+		}
+		
+		/// <summary>
+		/// Public key token of the assembly for the plug-in type.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("publickeytoken")]
+		public string PublicKeyToken
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("publickeytoken");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the associated solution.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("solutionid")]
+		public System.Nullable<System.Guid> SolutionId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("solutionid");
+			}
+		}
+		
+		/// <summary>
+		/// Fully qualified type name of the plug-in type.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("typename")]
+		public string TypeName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("typename");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("TypeName");
+				this.SetAttributeValue("typename", value);
+				this.OnPropertyChanged("TypeName");
+			}
+		}
+		
+		/// <summary>
+		/// Version number of the assembly for the plug-in type.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("version")]
+		public string Version
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("version");
+			}
+		}
+		
+		/// <summary>
+		/// 
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("versionnumber")]
+		public System.Nullable<long> VersionNumber
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<long>>("versionnumber");
+			}
+		}
+		
+		/// <summary>
+		/// Group name of workflow custom activity.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("workflowactivitygroupname")]
+		public string WorkflowActivityGroupName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("workflowactivitygroupname");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("WorkflowActivityGroupName");
+				this.SetAttributeValue("workflowactivitygroupname", value);
+				this.OnPropertyChanged("WorkflowActivityGroupName");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N plugintype_sdkmessageprocessingstep
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("plugintype_sdkmessageprocessingstep")]
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SdkMessageProcessingStep> plugintype_sdkmessageprocessingstep
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SdkMessageProcessingStep>("plugintype_sdkmessageprocessingstep", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("plugintype_sdkmessageprocessingstep");
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SdkMessageProcessingStep>("plugintype_sdkmessageprocessingstep", null, value);
+				this.OnPropertyChanged("plugintype_sdkmessageprocessingstep");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N plugintypeid_sdkmessageprocessingstep
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("plugintypeid_sdkmessageprocessingstep")]
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SdkMessageProcessingStep> plugintypeid_sdkmessageprocessingstep
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SdkMessageProcessingStep>("plugintypeid_sdkmessageprocessingstep", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("plugintypeid_sdkmessageprocessingstep");
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SdkMessageProcessingStep>("plugintypeid_sdkmessageprocessingstep", null, value);
+				this.OnPropertyChanged("plugintypeid_sdkmessageprocessingstep");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 createdby_plugintype
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("createdby_plugintype")]
+		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser createdby_plugintype
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("createdby_plugintype", null);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lk_plugintype_createdonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_plugintype_createdonbehalfby")]
+		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser lk_plugintype_createdonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_plugintype_createdonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_plugintype_createdonbehalfby");
+				this.SetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_plugintype_createdonbehalfby", null, value);
+				this.OnPropertyChanged("lk_plugintype_createdonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lk_plugintype_modifiedonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_plugintype_modifiedonbehalfby")]
+		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser lk_plugintype_modifiedonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_plugintype_modifiedonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_plugintype_modifiedonbehalfby");
+				this.SetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_plugintype_modifiedonbehalfby", null, value);
+				this.OnPropertyChanged("lk_plugintype_modifiedonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 modifiedby_plugintype
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("modifiedby_plugintype")]
+		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser modifiedby_plugintype
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("modifiedby_plugintype", null);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 pluginassembly_plugintype
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("pluginassemblyid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("pluginassembly_plugintype")]
+		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.PluginAssembly pluginassembly_plugintype
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.PluginAssembly>("pluginassembly_plugintype", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("pluginassembly_plugintype");
+				this.SetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.PluginAssembly>("pluginassembly_plugintype", null, value);
+				this.OnPropertyChanged("pluginassembly_plugintype");
+			}
+		}
+		
+		/// <summary>
+		/// Constructor for populating via LINQ queries given a LINQ anonymous type
+		/// <param name="anonymousType">LINQ anonymous type.</param>
+		/// </summary>
+		[System.Diagnostics.DebuggerNonUserCode()]
+		public PluginType(object anonymousType) : 
+				this()
+		{
+            foreach (var p in anonymousType.GetType().GetProperties())
+            {
+                var value = p.GetValue(anonymousType, null);
+                var name = p.Name.ToLower();
+            
+                if (name.EndsWith("enum") && value.GetType().BaseType == typeof(System.Enum))
+                {
+                    value = new Microsoft.Xrm.Sdk.OptionSetValue((int) value);
+                    name = name.Remove(name.Length - "enum".Length);
+                }
+            
+                switch (name)
+                {
+                    case "id":
+                        base.Id = (System.Guid)value;
+                        Attributes["plugintypeid"] = base.Id;
+                        break;
+                    case "plugintypeid":
+                        var id = (System.Nullable<System.Guid>) value;
+                        if(id == null){ continue; }
+                        base.Id = id.Value;
+                        Attributes[name] = base.Id;
+                        break;
+                    case "formattedvalues":
+                        // Add Support for FormattedValues
+                        FormattedValues.AddRange((Microsoft.Xrm.Sdk.FormattedValueCollection)value);
+                        break;
+                    default:
+                        Attributes[name] = value;
+                        break;
+                }
+            }
+		}
+	}
+	
+	[System.Runtime.Serialization.DataContractAttribute()]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "8.2.1.8676")]
+	public enum SdkMessageProcessingStepState
+	{
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		Enabled = 0,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		Disabled = 1,
+	}
+	
+	/// <summary>
+	/// Stage in the execution pipeline that a plug-in is to execute.
+	/// </summary>
+	[System.Runtime.Serialization.DataContractAttribute()]
+	[Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute("sdkmessageprocessingstep")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "8.2.1.8676")]
+	public partial class SdkMessageProcessingStep : Microsoft.Xrm.Sdk.Entity, System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
+	{
+		
+		public static class Fields
+		{
+			public const string AsyncAutoDelete = "asyncautodelete";
+			public const string CanUseReadOnlyConnection = "canusereadonlyconnection";
+			public const string ComponentState = "componentstate";
+			public const string Configuration = "configuration";
+			public const string CreatedBy = "createdby";
+			public const string CreatedOn = "createdon";
+			public const string CreatedOnBehalfBy = "createdonbehalfby";
+			public const string CustomizationLevel = "customizationlevel";
+			public const string Description = "description";
+			public const string EventExpander = "eventexpander";
+			public const string EventHandler = "eventhandler";
+			public const string FilteringAttributes = "filteringattributes";
+			public const string ImpersonatingUserId = "impersonatinguserid";
+			public const string IntroducedVersion = "introducedversion";
+			public const string InvocationSource = "invocationsource";
+			public const string IsCustomizable = "iscustomizable";
+			public const string IsHidden = "ishidden";
+			public const string IsManaged = "ismanaged";
+			public const string Mode = "mode";
+			public const string ModifiedBy = "modifiedby";
+			public const string ModifiedOn = "modifiedon";
+			public const string ModifiedOnBehalfBy = "modifiedonbehalfby";
+			public const string Name = "name";
+			public const string OrganizationId = "organizationid";
+			public const string OverwriteTime = "overwritetime";
+			public const string PluginTypeId = "plugintypeid";
+			public const string Rank = "rank";
+			public const string SdkMessageFilterId = "sdkmessagefilterid";
+			public const string SdkMessageId = "sdkmessageid";
+			public const string SdkMessageProcessingStepId = "sdkmessageprocessingstepid";
+			public const string Id = "sdkmessageprocessingstepid";
+			public const string SdkMessageProcessingStepIdUnique = "sdkmessageprocessingstepidunique";
+			public const string SdkMessageProcessingStepSecureConfigId = "sdkmessageprocessingstepsecureconfigid";
+			public const string SolutionId = "solutionid";
+			public const string Stage = "stage";
+			public const string StateCode = "statecode";
+			public const string StatusCode = "statuscode";
+			public const string SupportedDeployment = "supporteddeployment";
+			public const string VersionNumber = "versionnumber";
+			public const string createdby_sdkmessageprocessingstep = "createdby_sdkmessageprocessingstep";
+			public const string impersonatinguserid_sdkmessageprocessingstep = "impersonatinguserid_sdkmessageprocessingstep";
+			public const string lk_sdkmessageprocessingstep_createdonbehalfby = "lk_sdkmessageprocessingstep_createdonbehalfby";
+			public const string lk_sdkmessageprocessingstep_modifiedonbehalfby = "lk_sdkmessageprocessingstep_modifiedonbehalfby";
+			public const string modifiedby_sdkmessageprocessingstep = "modifiedby_sdkmessageprocessingstep";
+			public const string plugintype_sdkmessageprocessingstep = "plugintype_sdkmessageprocessingstep";
+			public const string plugintypeid_sdkmessageprocessingstep = "plugintypeid_sdkmessageprocessingstep";
+			public const string sdkmessageprocessingstepsecureconfigid_sdkmessageprocessingstep = "sdkmessageprocessingstepsecureconfigid_sdkmessageprocessingstep";
+		}
+		
+		/// <summary>
+		/// Default Constructor.
+		/// </summary>
+		[System.Diagnostics.DebuggerNonUserCode()]
+		public SdkMessageProcessingStep() : 
+				base(EntityLogicalName)
+		{
+		}
+		
+		public const string EntityLogicalName = "sdkmessageprocessingstep";
+		
+		public const string PrimaryIdAttribute = "sdkmessageprocessingstepid";
+		
+		public const string PrimaryNameAttribute = "name";
+		
+		public const int EntityTypeCode = 4608;
+		
+		public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+		
+		public event System.ComponentModel.PropertyChangingEventHandler PropertyChanging;
+		
+		[System.Diagnostics.DebuggerNonUserCode()]
+		private void OnPropertyChanged(string propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		[System.Diagnostics.DebuggerNonUserCode()]
+		private void OnPropertyChanging(string propertyName)
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, new System.ComponentModel.PropertyChangingEventArgs(propertyName));
+			}
+		}
+		
+		/// <summary>
+		/// Indicates whether the asynchronous system job is automatically deleted on completion.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("asyncautodelete")]
+		public System.Nullable<bool> AsyncAutoDelete
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("asyncautodelete");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("AsyncAutoDelete");
+				this.SetAttributeValue("asyncautodelete", value);
+				this.OnPropertyChanged("AsyncAutoDelete");
+			}
+		}
+		
+		/// <summary>
+		/// Identifies whether a SDK Message Processing Step type will be ReadOnly or Read Write. false - ReadWrite, true - ReadOnly 
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("canusereadonlyconnection")]
+		public System.Nullable<bool> CanUseReadOnlyConnection
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("canusereadonlyconnection");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("CanUseReadOnlyConnection");
+				this.SetAttributeValue("canusereadonlyconnection", value);
+				this.OnPropertyChanged("CanUseReadOnlyConnection");
+			}
+		}
+		
+		/// <summary>
+		/// For internal use only.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("componentstate")]
+		public Microsoft.Xrm.Sdk.OptionSetValue ComponentState
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("componentstate");
+			}
+		}
+		
+		/// <summary>
+		/// Step-specific configuration for the plug-in type. Passed to the plug-in constructor at run time.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("configuration")]
+		public string Configuration
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("configuration");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Configuration");
+				this.SetAttributeValue("configuration", value);
+				this.OnPropertyChanged("Configuration");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the user who created the SDK message processing step.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
+		public Microsoft.Xrm.Sdk.EntityReference CreatedBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("createdby");
+			}
+		}
+		
+		/// <summary>
+		/// Date and time when the SDK message processing step was created.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdon")]
+		public System.Nullable<System.DateTime> CreatedOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("createdon");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the delegate user who created the sdkmessageprocessingstep.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
+		public Microsoft.Xrm.Sdk.EntityReference CreatedOnBehalfBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("createdonbehalfby");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("CreatedOnBehalfBy");
+				this.SetAttributeValue("createdonbehalfby", value);
+				this.OnPropertyChanged("CreatedOnBehalfBy");
+			}
+		}
+		
+		/// <summary>
+		/// Customization level of the SDK message processing step.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("customizationlevel")]
+		public System.Nullable<int> CustomizationLevel
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("customizationlevel");
+			}
+		}
+		
+		/// <summary>
+		/// Description of the SDK message processing step.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("description")]
+		public string Description
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("description");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Description");
+				this.SetAttributeValue("description", value);
+				this.OnPropertyChanged("Description");
+			}
+		}
+		
+		/// <summary>
+		/// Configuration for sending pipeline events to the Event Expander service.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("eventexpander")]
+		public string EventExpander
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("eventexpander");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("EventExpander");
+				this.SetAttributeValue("eventexpander", value);
+				this.OnPropertyChanged("EventExpander");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the associated event handler.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("eventhandler")]
+		public Microsoft.Xrm.Sdk.EntityReference EventHandler
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("eventhandler");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("EventHandler");
+				this.SetAttributeValue("eventhandler", value);
+				this.OnPropertyChanged("EventHandler");
+			}
+		}
+		
+		/// <summary>
+		/// Comma-separated list of attributes. If at least one of these attributes is modified, the plug-in should execute.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("filteringattributes")]
+		public string FilteringAttributes
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("filteringattributes");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("FilteringAttributes");
+				this.SetAttributeValue("filteringattributes", value);
+				this.OnPropertyChanged("FilteringAttributes");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the user to impersonate context when step is executed.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("impersonatinguserid")]
+		public Microsoft.Xrm.Sdk.EntityReference ImpersonatingUserId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("impersonatinguserid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ImpersonatingUserId");
+				this.SetAttributeValue("impersonatinguserid", value);
+				this.OnPropertyChanged("ImpersonatingUserId");
+			}
+		}
+		
+		/// <summary>
+		/// Version in which the form is introduced.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("introducedversion")]
+		public string IntroducedVersion
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("introducedversion");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("IntroducedVersion");
+				this.SetAttributeValue("introducedversion", value);
+				this.OnPropertyChanged("IntroducedVersion");
+			}
+		}
+		
+		/// <summary>
+		/// Identifies if a plug-in should be executed from a parent pipeline, a child pipeline, or both.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("invocationsource")]
+		[System.ObsoleteAttribute()]
+		public Microsoft.Xrm.Sdk.OptionSetValue InvocationSource
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("invocationsource");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("InvocationSource");
+				this.SetAttributeValue("invocationsource", value);
+				this.OnPropertyChanged("InvocationSource");
+			}
+		}
+		
+		/// <summary>
+		/// Information that specifies whether this component can be customized.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("iscustomizable")]
+		public Microsoft.Xrm.Sdk.BooleanManagedProperty IsCustomizable
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.BooleanManagedProperty>("iscustomizable");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("IsCustomizable");
+				this.SetAttributeValue("iscustomizable", value);
+				this.OnPropertyChanged("IsCustomizable");
+			}
+		}
+		
+		/// <summary>
+		/// Information that specifies whether this component should be hidden.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("ishidden")]
+		public Microsoft.Xrm.Sdk.BooleanManagedProperty IsHidden
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.BooleanManagedProperty>("ishidden");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("IsHidden");
+				this.SetAttributeValue("ishidden", value);
+				this.OnPropertyChanged("IsHidden");
+			}
+		}
+		
+		/// <summary>
+		/// Information that specifies whether this component is managed.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("ismanaged")]
+		public System.Nullable<bool> IsManaged
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("ismanaged");
+			}
+		}
+		
+		/// <summary>
+		/// Run-time mode of execution, for example, synchronous or asynchronous.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("mode")]
+		public Microsoft.Xrm.Sdk.OptionSetValue Mode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("mode");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Mode");
+				this.SetAttributeValue("mode", value);
+				this.OnPropertyChanged("Mode");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the user who last modified the SDK message processing step.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
+		public Microsoft.Xrm.Sdk.EntityReference ModifiedBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("modifiedby");
+			}
+		}
+		
+		/// <summary>
+		/// Date and time when the SDK message processing step was last modified.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedon")]
+		public System.Nullable<System.DateTime> ModifiedOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("modifiedon");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the delegate user who last modified the sdkmessageprocessingstep.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
+		public Microsoft.Xrm.Sdk.EntityReference ModifiedOnBehalfBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("modifiedonbehalfby");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ModifiedOnBehalfBy");
+				this.SetAttributeValue("modifiedonbehalfby", value);
+				this.OnPropertyChanged("ModifiedOnBehalfBy");
+			}
+		}
+		
+		/// <summary>
+		/// Name of SdkMessage processing step.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("name")]
+		public string Name
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("name");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Name");
+				this.SetAttributeValue("name", value);
+				this.OnPropertyChanged("Name");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the organization with which the SDK message processing step is associated.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
+		public Microsoft.Xrm.Sdk.EntityReference OrganizationId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("organizationid");
+			}
+		}
+		
+		/// <summary>
+		/// For internal use only.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("overwritetime")]
+		public System.Nullable<System.DateTime> OverwriteTime
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("overwritetime");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the plug-in type associated with the step.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("plugintypeid")]
+		[System.ObsoleteAttribute()]
+		public Microsoft.Xrm.Sdk.EntityReference PluginTypeId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("plugintypeid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("PluginTypeId");
+				this.SetAttributeValue("plugintypeid", value);
+				this.OnPropertyChanged("PluginTypeId");
+			}
+		}
+		
+		/// <summary>
+		/// Processing order within the stage.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("rank")]
+		public System.Nullable<int> Rank
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("rank");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Rank");
+				this.SetAttributeValue("rank", value);
+				this.OnPropertyChanged("Rank");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the SDK message filter.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("sdkmessagefilterid")]
+		public Microsoft.Xrm.Sdk.EntityReference SdkMessageFilterId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("sdkmessagefilterid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("SdkMessageFilterId");
+				this.SetAttributeValue("sdkmessagefilterid", value);
+				this.OnPropertyChanged("SdkMessageFilterId");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the SDK message.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("sdkmessageid")]
+		public Microsoft.Xrm.Sdk.EntityReference SdkMessageId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("sdkmessageid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("SdkMessageId");
+				this.SetAttributeValue("sdkmessageid", value);
+				this.OnPropertyChanged("SdkMessageId");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the SDK message processing step entity.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("sdkmessageprocessingstepid")]
+		public System.Nullable<System.Guid> SdkMessageProcessingStepId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("sdkmessageprocessingstepid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("SdkMessageProcessingStepId");
+				this.SetAttributeValue("sdkmessageprocessingstepid", value);
+				if (value.HasValue)
+				{
+					base.Id = value.Value;
+				}
+				else
+				{
+					base.Id = System.Guid.Empty;
+				}
+				this.OnPropertyChanged("SdkMessageProcessingStepId");
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("sdkmessageprocessingstepid")]
+		public override System.Guid Id
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return base.Id;
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SdkMessageProcessingStepId = value;
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the SDK message processing step.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("sdkmessageprocessingstepidunique")]
+		public System.Nullable<System.Guid> SdkMessageProcessingStepIdUnique
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("sdkmessageprocessingstepidunique");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the Sdk message processing step secure configuration.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("sdkmessageprocessingstepsecureconfigid")]
+		public Microsoft.Xrm.Sdk.EntityReference SdkMessageProcessingStepSecureConfigId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("sdkmessageprocessingstepsecureconfigid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("SdkMessageProcessingStepSecureConfigId");
+				this.SetAttributeValue("sdkmessageprocessingstepsecureconfigid", value);
+				this.OnPropertyChanged("SdkMessageProcessingStepSecureConfigId");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the associated solution.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("solutionid")]
+		public System.Nullable<System.Guid> SolutionId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("solutionid");
+			}
+		}
+		
+		/// <summary>
+		/// Stage in the execution pipeline that the SDK message processing step is in.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("stage")]
+		public Microsoft.Xrm.Sdk.OptionSetValue Stage
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("stage");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Stage");
+				this.SetAttributeValue("stage", value);
+				this.OnPropertyChanged("Stage");
+			}
+		}
+		
+		/// <summary>
+		/// Status of the SDK message processing step.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
+		public System.Nullable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SdkMessageProcessingStepState> StateCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				Microsoft.Xrm.Sdk.OptionSetValue optionSet = this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statecode");
+				if ((optionSet != null))
+				{
+					return ((Xrm.Framework.CI.PowerShell.Cmdlets.Common.SdkMessageProcessingStepState)(System.Enum.ToObject(typeof(Xrm.Framework.CI.PowerShell.Cmdlets.Common.SdkMessageProcessingStepState), optionSet.Value)));
+				}
+				else
+				{
+					return null;
+				}
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("StateCode");
+				if ((value == null))
+				{
+					this.SetAttributeValue("statecode", null);
+				}
+				else
+				{
+					this.SetAttributeValue("statecode", new Microsoft.Xrm.Sdk.OptionSetValue(((int)(value))));
+				}
+				this.OnPropertyChanged("StateCode");
+			}
+		}
+		
+		/// <summary>
+		/// Reason for the status of the SDK message processing step.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statuscode")]
+		public Microsoft.Xrm.Sdk.OptionSetValue StatusCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statuscode");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("StatusCode");
+				this.SetAttributeValue("statuscode", value);
+				this.OnPropertyChanged("StatusCode");
+			}
+		}
+		
+		/// <summary>
+		/// Deployment that the SDK message processing step should be executed on; server, client, or both.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("supporteddeployment")]
+		public Microsoft.Xrm.Sdk.OptionSetValue SupportedDeployment
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("supporteddeployment");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("SupportedDeployment");
+				this.SetAttributeValue("supporteddeployment", value);
+				this.OnPropertyChanged("SupportedDeployment");
+			}
+		}
+		
+		/// <summary>
+		/// Number that identifies a specific revision of the SDK message processing step. 
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("versionnumber")]
+		public System.Nullable<long> VersionNumber
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<long>>("versionnumber");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N SdkMessageProcessingStep_AsyncOperations
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("SdkMessageProcessingStep_AsyncOperations")]
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.AsyncOperation> SdkMessageProcessingStep_AsyncOperations
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.AsyncOperation>("SdkMessageProcessingStep_AsyncOperations", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("SdkMessageProcessingStep_AsyncOperations");
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.AsyncOperation>("SdkMessageProcessingStep_AsyncOperations", null, value);
+				this.OnPropertyChanged("SdkMessageProcessingStep_AsyncOperations");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N sdkmessageprocessingstepid_sdkmessageprocessingstepimage
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("sdkmessageprocessingstepid_sdkmessageprocessingstepimage")]
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SdkMessageProcessingStepImage> sdkmessageprocessingstepid_sdkmessageprocessingstepimage
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SdkMessageProcessingStepImage>("sdkmessageprocessingstepid_sdkmessageprocessingstepimage", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("sdkmessageprocessingstepid_sdkmessageprocessingstepimage");
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SdkMessageProcessingStepImage>("sdkmessageprocessingstepid_sdkmessageprocessingstepimage", null, value);
+				this.OnPropertyChanged("sdkmessageprocessingstepid_sdkmessageprocessingstepimage");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 createdby_sdkmessageprocessingstep
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("createdby_sdkmessageprocessingstep")]
+		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser createdby_sdkmessageprocessingstep
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("createdby_sdkmessageprocessingstep", null);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 impersonatinguserid_sdkmessageprocessingstep
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("impersonatinguserid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("impersonatinguserid_sdkmessageprocessingstep")]
+		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser impersonatinguserid_sdkmessageprocessingstep
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("impersonatinguserid_sdkmessageprocessingstep", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("impersonatinguserid_sdkmessageprocessingstep");
+				this.SetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("impersonatinguserid_sdkmessageprocessingstep", null, value);
+				this.OnPropertyChanged("impersonatinguserid_sdkmessageprocessingstep");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lk_sdkmessageprocessingstep_createdonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_sdkmessageprocessingstep_createdonbehalfby")]
+		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser lk_sdkmessageprocessingstep_createdonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_sdkmessageprocessingstep_createdonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_sdkmessageprocessingstep_createdonbehalfby");
+				this.SetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_sdkmessageprocessingstep_createdonbehalfby", null, value);
+				this.OnPropertyChanged("lk_sdkmessageprocessingstep_createdonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lk_sdkmessageprocessingstep_modifiedonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_sdkmessageprocessingstep_modifiedonbehalfby")]
+		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser lk_sdkmessageprocessingstep_modifiedonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_sdkmessageprocessingstep_modifiedonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_sdkmessageprocessingstep_modifiedonbehalfby");
+				this.SetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_sdkmessageprocessingstep_modifiedonbehalfby", null, value);
+				this.OnPropertyChanged("lk_sdkmessageprocessingstep_modifiedonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 modifiedby_sdkmessageprocessingstep
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("modifiedby_sdkmessageprocessingstep")]
+		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser modifiedby_sdkmessageprocessingstep
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("modifiedby_sdkmessageprocessingstep", null);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 plugintype_sdkmessageprocessingstep
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("eventhandler")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("plugintype_sdkmessageprocessingstep")]
+		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.PluginType plugintype_sdkmessageprocessingstep
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.PluginType>("plugintype_sdkmessageprocessingstep", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("plugintype_sdkmessageprocessingstep");
+				this.SetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.PluginType>("plugintype_sdkmessageprocessingstep", null, value);
+				this.OnPropertyChanged("plugintype_sdkmessageprocessingstep");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 plugintypeid_sdkmessageprocessingstep
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("plugintypeid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("plugintypeid_sdkmessageprocessingstep")]
+		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.PluginType plugintypeid_sdkmessageprocessingstep
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.PluginType>("plugintypeid_sdkmessageprocessingstep", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("plugintypeid_sdkmessageprocessingstep");
+				this.SetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.PluginType>("plugintypeid_sdkmessageprocessingstep", null, value);
+				this.OnPropertyChanged("plugintypeid_sdkmessageprocessingstep");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 sdkmessageprocessingstepsecureconfigid_sdkmessageprocessingstep
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("sdkmessageprocessingstepsecureconfigid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("sdkmessageprocessingstepsecureconfigid_sdkmessageprocessingstep")]
+		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SdkMessageProcessingStepSecureConfig sdkmessageprocessingstepsecureconfigid_sdkmessageprocessingstep
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SdkMessageProcessingStepSecureConfig>("sdkmessageprocessingstepsecureconfigid_sdkmessageprocessingstep", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("sdkmessageprocessingstepsecureconfigid_sdkmessageprocessingstep");
+				this.SetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SdkMessageProcessingStepSecureConfig>("sdkmessageprocessingstepsecureconfigid_sdkmessageprocessingstep", null, value);
+				this.OnPropertyChanged("sdkmessageprocessingstepsecureconfigid_sdkmessageprocessingstep");
+			}
+		}
+		
+		/// <summary>
+		/// Constructor for populating via LINQ queries given a LINQ anonymous type
+		/// <param name="anonymousType">LINQ anonymous type.</param>
+		/// </summary>
+		[System.Diagnostics.DebuggerNonUserCode()]
+		public SdkMessageProcessingStep(object anonymousType) : 
+				this()
+		{
+            foreach (var p in anonymousType.GetType().GetProperties())
+            {
+                var value = p.GetValue(anonymousType, null);
+                var name = p.Name.ToLower();
+            
+                if (name.EndsWith("enum") && value.GetType().BaseType == typeof(System.Enum))
+                {
+                    value = new Microsoft.Xrm.Sdk.OptionSetValue((int) value);
+                    name = name.Remove(name.Length - "enum".Length);
+                }
+            
+                switch (name)
+                {
+                    case "id":
+                        base.Id = (System.Guid)value;
+                        Attributes["sdkmessageprocessingstepid"] = base.Id;
+                        break;
+                    case "sdkmessageprocessingstepid":
+                        var id = (System.Nullable<System.Guid>) value;
+                        if(id == null){ continue; }
+                        base.Id = id.Value;
+                        Attributes[name] = base.Id;
+                        break;
+                    case "formattedvalues":
+                        // Add Support for FormattedValues
+                        FormattedValues.AddRange((Microsoft.Xrm.Sdk.FormattedValueCollection)value);
+                        break;
+                    default:
+                        Attributes[name] = value;
+                        break;
+                }
+            }
+		}
+	}
+	
+	/// <summary>
+	/// Copy of an entity's attributes before or after the core system operation.
+	/// </summary>
+	[System.Runtime.Serialization.DataContractAttribute()]
+	[Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute("sdkmessageprocessingstepimage")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "8.2.1.8676")]
+	public partial class SdkMessageProcessingStepImage : Microsoft.Xrm.Sdk.Entity, System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
+	{
+		
+		public static class Fields
+		{
+			public const string Attributes1 = "attributes";
+			public const string ComponentState = "componentstate";
+			public const string CreatedBy = "createdby";
+			public const string CreatedOn = "createdon";
+			public const string CreatedOnBehalfBy = "createdonbehalfby";
+			public const string CustomizationLevel = "customizationlevel";
+			public const string Description = "description";
+			public const string EntityAlias = "entityalias";
+			public const string ImageType = "imagetype";
+			public const string IntroducedVersion = "introducedversion";
+			public const string IsCustomizable = "iscustomizable";
+			public const string IsManaged = "ismanaged";
+			public const string MessagePropertyName = "messagepropertyname";
+			public const string ModifiedBy = "modifiedby";
+			public const string ModifiedOn = "modifiedon";
+			public const string ModifiedOnBehalfBy = "modifiedonbehalfby";
+			public const string Name = "name";
+			public const string OrganizationId = "organizationid";
+			public const string OverwriteTime = "overwritetime";
+			public const string RelatedAttributeName = "relatedattributename";
+			public const string SdkMessageProcessingStepId = "sdkmessageprocessingstepid";
+			public const string SdkMessageProcessingStepImageId = "sdkmessageprocessingstepimageid";
+			public const string Id = "sdkmessageprocessingstepimageid";
+			public const string SdkMessageProcessingStepImageIdUnique = "sdkmessageprocessingstepimageidunique";
+			public const string SolutionId = "solutionid";
+			public const string VersionNumber = "versionnumber";
+			public const string createdby_sdkmessageprocessingstepimage = "createdby_sdkmessageprocessingstepimage";
+			public const string lk_sdkmessageprocessingstepimage_createdonbehalfby = "lk_sdkmessageprocessingstepimage_createdonbehalfby";
+			public const string lk_sdkmessageprocessingstepimage_modifiedonbehalfby = "lk_sdkmessageprocessingstepimage_modifiedonbehalfby";
+			public const string modifiedby_sdkmessageprocessingstepimage = "modifiedby_sdkmessageprocessingstepimage";
+			public const string sdkmessageprocessingstepid_sdkmessageprocessingstepimage = "sdkmessageprocessingstepid_sdkmessageprocessingstepimage";
+		}
+		
+		/// <summary>
+		/// Default Constructor.
+		/// </summary>
+		[System.Diagnostics.DebuggerNonUserCode()]
+		public SdkMessageProcessingStepImage() : 
+				base(EntityLogicalName)
+		{
+		}
+		
+		public const string EntityLogicalName = "sdkmessageprocessingstepimage";
+		
+		public const string PrimaryIdAttribute = "sdkmessageprocessingstepimageid";
+		
+		public const string PrimaryNameAttribute = "name";
+		
+		public const int EntityTypeCode = 4615;
+		
+		public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+		
+		public event System.ComponentModel.PropertyChangingEventHandler PropertyChanging;
+		
+		[System.Diagnostics.DebuggerNonUserCode()]
+		private void OnPropertyChanged(string propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		[System.Diagnostics.DebuggerNonUserCode()]
+		private void OnPropertyChanging(string propertyName)
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, new System.ComponentModel.PropertyChangingEventArgs(propertyName));
+			}
+		}
+		
+		/// <summary>
+		/// Comma-separated list of attributes that are to be passed into the SDK message processing step image.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("attributes")]
+		public string Attributes1
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("attributes");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Attributes1");
+				this.SetAttributeValue("attributes", value);
+				this.OnPropertyChanged("Attributes1");
+			}
+		}
+		
+		/// <summary>
+		/// For internal use only.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("componentstate")]
+		public Microsoft.Xrm.Sdk.OptionSetValue ComponentState
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("componentstate");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the user who created the SDK message processing step image.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
+		public Microsoft.Xrm.Sdk.EntityReference CreatedBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("createdby");
+			}
+		}
+		
+		/// <summary>
+		/// Date and time when the SDK message processing step image was created.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdon")]
+		public System.Nullable<System.DateTime> CreatedOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("createdon");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the delegate user who created the sdkmessageprocessingstepimage.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
+		public Microsoft.Xrm.Sdk.EntityReference CreatedOnBehalfBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("createdonbehalfby");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("CreatedOnBehalfBy");
+				this.SetAttributeValue("createdonbehalfby", value);
+				this.OnPropertyChanged("CreatedOnBehalfBy");
+			}
+		}
+		
+		/// <summary>
+		/// Customization level of the SDK message processing step image.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("customizationlevel")]
+		public System.Nullable<int> CustomizationLevel
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("customizationlevel");
+			}
+		}
+		
+		/// <summary>
+		/// Description of the SDK message processing step image.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("description")]
+		public string Description
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("description");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Description");
+				this.SetAttributeValue("description", value);
+				this.OnPropertyChanged("Description");
+			}
+		}
+		
+		/// <summary>
+		/// Key name used to access the pre-image or post-image property bags in a step.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("entityalias")]
+		public string EntityAlias
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("entityalias");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("EntityAlias");
+				this.SetAttributeValue("entityalias", value);
+				this.OnPropertyChanged("EntityAlias");
+			}
+		}
+		
+		/// <summary>
+		/// Type of image requested.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("imagetype")]
+		public Microsoft.Xrm.Sdk.OptionSetValue ImageType
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("imagetype");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ImageType");
+				this.SetAttributeValue("imagetype", value);
+				this.OnPropertyChanged("ImageType");
+			}
+		}
+		
+		/// <summary>
+		/// Version in which the form is introduced.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("introducedversion")]
+		public string IntroducedVersion
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("introducedversion");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("IntroducedVersion");
+				this.SetAttributeValue("introducedversion", value);
+				this.OnPropertyChanged("IntroducedVersion");
+			}
+		}
+		
+		/// <summary>
+		/// Information that specifies whether this component can be customized.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("iscustomizable")]
+		public Microsoft.Xrm.Sdk.BooleanManagedProperty IsCustomizable
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.BooleanManagedProperty>("iscustomizable");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("IsCustomizable");
+				this.SetAttributeValue("iscustomizable", value);
+				this.OnPropertyChanged("IsCustomizable");
+			}
+		}
+		
+		/// <summary>
+		/// 
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("ismanaged")]
+		public System.Nullable<bool> IsManaged
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("ismanaged");
+			}
+		}
+		
+		/// <summary>
+		/// Name of the property on the Request message.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("messagepropertyname")]
+		public string MessagePropertyName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("messagepropertyname");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("MessagePropertyName");
+				this.SetAttributeValue("messagepropertyname", value);
+				this.OnPropertyChanged("MessagePropertyName");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the user who last modified the SDK message processing step.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
+		public Microsoft.Xrm.Sdk.EntityReference ModifiedBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("modifiedby");
+			}
+		}
+		
+		/// <summary>
+		/// Date and time when the SDK message processing step was last modified.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedon")]
+		public System.Nullable<System.DateTime> ModifiedOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("modifiedon");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the delegate user who last modified the sdkmessageprocessingstepimage.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
+		public Microsoft.Xrm.Sdk.EntityReference ModifiedOnBehalfBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("modifiedonbehalfby");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ModifiedOnBehalfBy");
+				this.SetAttributeValue("modifiedonbehalfby", value);
+				this.OnPropertyChanged("ModifiedOnBehalfBy");
+			}
+		}
+		
+		/// <summary>
+		/// Name of SdkMessage processing step image.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("name")]
+		public string Name
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("name");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Name");
+				this.SetAttributeValue("name", value);
+				this.OnPropertyChanged("Name");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the organization with which the SDK message processing step is associated.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
+		public Microsoft.Xrm.Sdk.EntityReference OrganizationId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("organizationid");
+			}
+		}
+		
+		/// <summary>
+		/// For internal use only.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("overwritetime")]
+		public System.Nullable<System.DateTime> OverwriteTime
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("overwritetime");
+			}
+		}
+		
+		/// <summary>
+		/// Name of the related entity.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("relatedattributename")]
+		public string RelatedAttributeName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("relatedattributename");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("RelatedAttributeName");
+				this.SetAttributeValue("relatedattributename", value);
+				this.OnPropertyChanged("RelatedAttributeName");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the SDK message processing step.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("sdkmessageprocessingstepid")]
+		public Microsoft.Xrm.Sdk.EntityReference SdkMessageProcessingStepId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("sdkmessageprocessingstepid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("SdkMessageProcessingStepId");
+				this.SetAttributeValue("sdkmessageprocessingstepid", value);
+				this.OnPropertyChanged("SdkMessageProcessingStepId");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the SDK message processing step image entity.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("sdkmessageprocessingstepimageid")]
+		public System.Nullable<System.Guid> SdkMessageProcessingStepImageId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("sdkmessageprocessingstepimageid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("SdkMessageProcessingStepImageId");
+				this.SetAttributeValue("sdkmessageprocessingstepimageid", value);
+				if (value.HasValue)
+				{
+					base.Id = value.Value;
+				}
+				else
+				{
+					base.Id = System.Guid.Empty;
+				}
+				this.OnPropertyChanged("SdkMessageProcessingStepImageId");
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("sdkmessageprocessingstepimageid")]
+		public override System.Guid Id
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return base.Id;
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SdkMessageProcessingStepImageId = value;
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the SDK message processing step image.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("sdkmessageprocessingstepimageidunique")]
+		public System.Nullable<System.Guid> SdkMessageProcessingStepImageIdUnique
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("sdkmessageprocessingstepimageidunique");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the associated solution.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("solutionid")]
+		public System.Nullable<System.Guid> SolutionId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("solutionid");
+			}
+		}
+		
+		/// <summary>
+		/// Number that identifies a specific revision of the step image. 
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("versionnumber")]
+		public System.Nullable<long> VersionNumber
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<long>>("versionnumber");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 createdby_sdkmessageprocessingstepimage
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("createdby_sdkmessageprocessingstepimage")]
+		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser createdby_sdkmessageprocessingstepimage
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("createdby_sdkmessageprocessingstepimage", null);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lk_sdkmessageprocessingstepimage_createdonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_sdkmessageprocessingstepimage_createdonbehalfby")]
+		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser lk_sdkmessageprocessingstepimage_createdonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_sdkmessageprocessingstepimage_createdonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_sdkmessageprocessingstepimage_createdonbehalfby");
+				this.SetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_sdkmessageprocessingstepimage_createdonbehalfby", null, value);
+				this.OnPropertyChanged("lk_sdkmessageprocessingstepimage_createdonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lk_sdkmessageprocessingstepimage_modifiedonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_sdkmessageprocessingstepimage_modifiedonbehalfby")]
+		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser lk_sdkmessageprocessingstepimage_modifiedonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_sdkmessageprocessingstepimage_modifiedonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_sdkmessageprocessingstepimage_modifiedonbehalfby");
+				this.SetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_sdkmessageprocessingstepimage_modifiedonbehalfby", null, value);
+				this.OnPropertyChanged("lk_sdkmessageprocessingstepimage_modifiedonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 modifiedby_sdkmessageprocessingstepimage
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("modifiedby_sdkmessageprocessingstepimage")]
+		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser modifiedby_sdkmessageprocessingstepimage
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("modifiedby_sdkmessageprocessingstepimage", null);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 sdkmessageprocessingstepid_sdkmessageprocessingstepimage
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("sdkmessageprocessingstepid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("sdkmessageprocessingstepid_sdkmessageprocessingstepimage")]
+		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SdkMessageProcessingStep sdkmessageprocessingstepid_sdkmessageprocessingstepimage
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SdkMessageProcessingStep>("sdkmessageprocessingstepid_sdkmessageprocessingstepimage", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("sdkmessageprocessingstepid_sdkmessageprocessingstepimage");
+				this.SetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SdkMessageProcessingStep>("sdkmessageprocessingstepid_sdkmessageprocessingstepimage", null, value);
+				this.OnPropertyChanged("sdkmessageprocessingstepid_sdkmessageprocessingstepimage");
+			}
+		}
+		
+		/// <summary>
+		/// Constructor for populating via LINQ queries given a LINQ anonymous type
+		/// <param name="anonymousType">LINQ anonymous type.</param>
+		/// </summary>
+		[System.Diagnostics.DebuggerNonUserCode()]
+		public SdkMessageProcessingStepImage(object anonymousType) : 
+				this()
+		{
+            foreach (var p in anonymousType.GetType().GetProperties())
+            {
+                var value = p.GetValue(anonymousType, null);
+                var name = p.Name.ToLower();
+            
+                if (name.EndsWith("enum") && value.GetType().BaseType == typeof(System.Enum))
+                {
+                    value = new Microsoft.Xrm.Sdk.OptionSetValue((int) value);
+                    name = name.Remove(name.Length - "enum".Length);
+                }
+            
+                switch (name)
+                {
+                    case "id":
+                        base.Id = (System.Guid)value;
+                        Attributes["sdkmessageprocessingstepimageid"] = base.Id;
+                        break;
+                    case "sdkmessageprocessingstepimageid":
+                        var id = (System.Nullable<System.Guid>) value;
+                        if(id == null){ continue; }
+                        base.Id = id.Value;
+                        Attributes[name] = base.Id;
+                        break;
+                    case "formattedvalues":
+                        // Add Support for FormattedValues
+                        FormattedValues.AddRange((Microsoft.Xrm.Sdk.FormattedValueCollection)value);
+                        break;
+                    default:
+                        Attributes[name] = value;
+                        break;
+                }
+            }
+		}
+	}
+	
+	/// <summary>
+	/// Non-public custom configuration that is passed to a plug-in's constructor.
+	/// </summary>
+	[System.Runtime.Serialization.DataContractAttribute()]
+	[Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute("sdkmessageprocessingstepsecureconfig")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "8.2.1.8676")]
+	public partial class SdkMessageProcessingStepSecureConfig : Microsoft.Xrm.Sdk.Entity, System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
+	{
+		
+		public static class Fields
+		{
+			public const string CreatedBy = "createdby";
+			public const string CreatedOn = "createdon";
+			public const string CreatedOnBehalfBy = "createdonbehalfby";
+			public const string CustomizationLevel = "customizationlevel";
+			public const string ModifiedBy = "modifiedby";
+			public const string ModifiedOn = "modifiedon";
+			public const string ModifiedOnBehalfBy = "modifiedonbehalfby";
+			public const string OrganizationId = "organizationid";
+			public const string SdkMessageProcessingStepSecureConfigId = "sdkmessageprocessingstepsecureconfigid";
+			public const string Id = "sdkmessageprocessingstepsecureconfigid";
+			public const string SdkMessageProcessingStepSecureConfigIdUnique = "sdkmessageprocessingstepsecureconfigidunique";
+			public const string SecureConfig = "secureconfig";
+			public const string createdby_sdkmessageprocessingstepsecureconfig = "createdby_sdkmessageprocessingstepsecureconfig";
+			public const string lk_sdkmessageprocessingstepsecureconfig_createdonbehalfby = "lk_sdkmessageprocessingstepsecureconfig_createdonbehalfby";
+			public const string lk_sdkmessageprocessingstepsecureconfig_modifiedonbehalfby = "lk_sdkmessageprocessingstepsecureconfig_modifiedonbehalfby";
+			public const string modifiedby_sdkmessageprocessingstepsecureconfig = "modifiedby_sdkmessageprocessingstepsecureconfig";
+		}
+		
+		/// <summary>
+		/// Default Constructor.
+		/// </summary>
+		[System.Diagnostics.DebuggerNonUserCode()]
+		public SdkMessageProcessingStepSecureConfig() : 
+				base(EntityLogicalName)
+		{
+		}
+		
+		public const string EntityLogicalName = "sdkmessageprocessingstepsecureconfig";
+		
+		public const string PrimaryIdAttribute = "sdkmessageprocessingstepsecureconfigid";
+		
+		public const int EntityTypeCode = 4616;
+		
+		public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+		
+		public event System.ComponentModel.PropertyChangingEventHandler PropertyChanging;
+		
+		[System.Diagnostics.DebuggerNonUserCode()]
+		private void OnPropertyChanged(string propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		[System.Diagnostics.DebuggerNonUserCode()]
+		private void OnPropertyChanging(string propertyName)
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, new System.ComponentModel.PropertyChangingEventArgs(propertyName));
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the user who created the SDK message processing step.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
+		public Microsoft.Xrm.Sdk.EntityReference CreatedBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("createdby");
+			}
+		}
+		
+		/// <summary>
+		/// Date and time when the SDK message processing step was created.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdon")]
+		public System.Nullable<System.DateTime> CreatedOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("createdon");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the delegate user who created the sdkmessageprocessingstepsecureconfig.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
+		public Microsoft.Xrm.Sdk.EntityReference CreatedOnBehalfBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("createdonbehalfby");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("CreatedOnBehalfBy");
+				this.SetAttributeValue("createdonbehalfby", value);
+				this.OnPropertyChanged("CreatedOnBehalfBy");
+			}
+		}
+		
+		/// <summary>
+		/// Customization level of the SDK message processing step secure configuration.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("customizationlevel")]
+		public System.Nullable<int> CustomizationLevel
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("customizationlevel");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the user who last modified the SDK message processing step.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
+		public Microsoft.Xrm.Sdk.EntityReference ModifiedBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("modifiedby");
+			}
+		}
+		
+		/// <summary>
+		/// Date and time when the SDK message processing step was last modified.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedon")]
+		public System.Nullable<System.DateTime> ModifiedOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("modifiedon");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the delegate user who last modified the sdkmessageprocessingstepsecureconfig.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
+		public Microsoft.Xrm.Sdk.EntityReference ModifiedOnBehalfBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("modifiedonbehalfby");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ModifiedOnBehalfBy");
+				this.SetAttributeValue("modifiedonbehalfby", value);
+				this.OnPropertyChanged("ModifiedOnBehalfBy");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the organization with which the SDK message processing step is associated.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
+		public Microsoft.Xrm.Sdk.EntityReference OrganizationId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("organizationid");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the SDK message processing step secure configuration.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("sdkmessageprocessingstepsecureconfigid")]
+		public System.Nullable<System.Guid> SdkMessageProcessingStepSecureConfigId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("sdkmessageprocessingstepsecureconfigid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("SdkMessageProcessingStepSecureConfigId");
+				this.SetAttributeValue("sdkmessageprocessingstepsecureconfigid", value);
+				if (value.HasValue)
+				{
+					base.Id = value.Value;
+				}
+				else
+				{
+					base.Id = System.Guid.Empty;
+				}
+				this.OnPropertyChanged("SdkMessageProcessingStepSecureConfigId");
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("sdkmessageprocessingstepsecureconfigid")]
+		public override System.Guid Id
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return base.Id;
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SdkMessageProcessingStepSecureConfigId = value;
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the SDK message processing step.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("sdkmessageprocessingstepsecureconfigidunique")]
+		public System.Nullable<System.Guid> SdkMessageProcessingStepSecureConfigIdUnique
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("sdkmessageprocessingstepsecureconfigidunique");
+			}
+		}
+		
+		/// <summary>
+		/// Secure step-specific configuration for the plug-in type that is passed to the plug-in's constructor at run time.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("secureconfig")]
+		public string SecureConfig
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("secureconfig");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("SecureConfig");
+				this.SetAttributeValue("secureconfig", value);
+				this.OnPropertyChanged("SecureConfig");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N sdkmessageprocessingstepsecureconfigid_sdkmessageprocessingstep
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("sdkmessageprocessingstepsecureconfigid_sdkmessageprocessingstep")]
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SdkMessageProcessingStep> sdkmessageprocessingstepsecureconfigid_sdkmessageprocessingstep
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SdkMessageProcessingStep>("sdkmessageprocessingstepsecureconfigid_sdkmessageprocessingstep", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("sdkmessageprocessingstepsecureconfigid_sdkmessageprocessingstep");
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SdkMessageProcessingStep>("sdkmessageprocessingstepsecureconfigid_sdkmessageprocessingstep", null, value);
+				this.OnPropertyChanged("sdkmessageprocessingstepsecureconfigid_sdkmessageprocessingstep");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 createdby_sdkmessageprocessingstepsecureconfig
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("createdby_sdkmessageprocessingstepsecureconfig")]
+		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser createdby_sdkmessageprocessingstepsecureconfig
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("createdby_sdkmessageprocessingstepsecureconfig", null);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lk_sdkmessageprocessingstepsecureconfig_createdonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_sdkmessageprocessingstepsecureconfig_createdonbehalfby")]
+		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser lk_sdkmessageprocessingstepsecureconfig_createdonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_sdkmessageprocessingstepsecureconfig_createdonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_sdkmessageprocessingstepsecureconfig_createdonbehalfby");
+				this.SetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_sdkmessageprocessingstepsecureconfig_createdonbehalfby", null, value);
+				this.OnPropertyChanged("lk_sdkmessageprocessingstepsecureconfig_createdonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lk_sdkmessageprocessingstepsecureconfig_modifiedonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_sdkmessageprocessingstepsecureconfig_modifiedonbehalfby")]
+		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser lk_sdkmessageprocessingstepsecureconfig_modifiedonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_sdkmessageprocessingstepsecureconfig_modifiedonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_sdkmessageprocessingstepsecureconfig_modifiedonbehalfby");
+				this.SetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_sdkmessageprocessingstepsecureconfig_modifiedonbehalfby", null, value);
+				this.OnPropertyChanged("lk_sdkmessageprocessingstepsecureconfig_modifiedonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 modifiedby_sdkmessageprocessingstepsecureconfig
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("modifiedby_sdkmessageprocessingstepsecureconfig")]
+		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser modifiedby_sdkmessageprocessingstepsecureconfig
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("modifiedby_sdkmessageprocessingstepsecureconfig", null);
+			}
+		}
+		
+		/// <summary>
+		/// Constructor for populating via LINQ queries given a LINQ anonymous type
+		/// <param name="anonymousType">LINQ anonymous type.</param>
+		/// </summary>
+		[System.Diagnostics.DebuggerNonUserCode()]
+		public SdkMessageProcessingStepSecureConfig(object anonymousType) : 
+				this()
+		{
+            foreach (var p in anonymousType.GetType().GetProperties())
+            {
+                var value = p.GetValue(anonymousType, null);
+                var name = p.Name.ToLower();
+            
+                if (name.EndsWith("enum") && value.GetType().BaseType == typeof(System.Enum))
+                {
+                    value = new Microsoft.Xrm.Sdk.OptionSetValue((int) value);
+                    name = name.Remove(name.Length - "enum".Length);
+                }
+            
+                switch (name)
+                {
+                    case "id":
+                        base.Id = (System.Guid)value;
+                        Attributes["sdkmessageprocessingstepsecureconfigid"] = base.Id;
+                        break;
+                    case "sdkmessageprocessingstepsecureconfigid":
+                        var id = (System.Nullable<System.Guid>) value;
+                        if(id == null){ continue; }
+                        base.Id = id.Value;
+                        Attributes[name] = base.Id;
+                        break;
+                    case "formattedvalues":
+                        // Add Support for FormattedValues
+                        FormattedValues.AddRange((Microsoft.Xrm.Sdk.FormattedValueCollection)value);
+                        break;
+                    default:
+                        Attributes[name] = value;
+                        break;
+                }
+            }
+		}
+	}
+	
+	/// <summary>
 	/// A solution which contains CRM customizations.
 	/// </summary>
 	[System.Runtime.Serialization.DataContractAttribute()]
 	[Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute("solution")]
-	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "8.2.0.749")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "8.2.1.8676")]
 	public partial class Solution : Microsoft.Xrm.Sdk.Entity, System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
 	{
 		
-		public struct Fields
+		public static class Fields
 		{
 			public const string ConfigurationPageId = "configurationpageid";
 			public const string CreatedBy = "createdby";
@@ -3542,15 +13357,16 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 			public const string SolutionPackageVersion = "solutionpackageversion";
 			public const string SolutionType = "solutiontype";
 			public const string UniqueName = "uniquename";
+			public const string UpdatedOn = "updatedon";
 			public const string Version = "version";
 			public const string VersionNumber = "versionnumber";
 			public const string lk_solution_createdby = "lk_solution_createdby";
 			public const string lk_solution_modifiedby = "lk_solution_modifiedby";
 			public const string lk_solutionbase_createdonbehalfby = "lk_solutionbase_createdonbehalfby";
 			public const string lk_solutionbase_modifiedonbehalfby = "lk_solutionbase_modifiedonbehalfby";
+			public const string solution_configuration_webresource = "solution_configuration_webresource";
 			public const string Referencingsolution_parent_solution = "solution_parent_solution";
 		}
-
 		
 		/// <summary>
 		/// Default Constructor.
@@ -3562,6 +13378,10 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		}
 		
 		public const string EntityLogicalName = "solution";
+		
+		public const string PrimaryIdAttribute = "solutionid";
+		
+		public const string PrimaryNameAttribute = "friendlyname";
 		
 		public const int EntityTypeCode = 7100;
 		
@@ -3980,6 +13800,19 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		}
 		
 		/// <summary>
+		/// Date and time when the solution was updated.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("updatedon")]
+		public System.Nullable<System.DateTime> UpdatedOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("updatedon");
+			}
+		}
+		
+		/// <summary>
 		/// Solution version, used to identify a solution for upgrades and hotfixes.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("version")]
@@ -4103,6 +13936,27 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		}
 		
 		/// <summary>
+		/// N:1 solution_configuration_webresource
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("configurationpageid")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("solution_configuration_webresource")]
+		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.WebResource solution_configuration_webresource
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.WebResource>("solution_configuration_webresource", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("solution_configuration_webresource");
+				this.SetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.WebResource>("solution_configuration_webresource", null, value);
+				this.OnPropertyChanged("solution_configuration_webresource");
+			}
+		}
+		
+		/// <summary>
 		/// N:1 solution_parent_solution
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("parentsolutionid")]
@@ -4160,15 +14014,460 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 	}
 	
 	/// <summary>
+	/// Templates for Suggestion Card in Grid
+	/// </summary>
+	[System.Runtime.Serialization.DataContractAttribute()]
+	[Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute("suggestioncardtemplate")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "8.2.1.8676")]
+	public partial class SuggestionCardTemplate : Microsoft.Xrm.Sdk.Entity, System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
+	{
+		
+		public static class Fields
+		{
+			public const string CreatedBy = "createdby";
+			public const string CreatedOn = "createdon";
+			public const string CreatedOnBehalfBy = "createdonbehalfby";
+			public const string ExchangeRate = "exchangerate";
+			public const string ModifiedBy = "modifiedby";
+			public const string ModifiedOn = "modifiedon";
+			public const string ModifiedOnBehalfBy = "modifiedonbehalfby";
+			public const string name = "name";
+			public const string OrganizationId = "organizationid";
+			public const string StructuredLayout = "structuredlayout";
+			public const string SuggestionCardTemplateId = "suggestioncardtemplateid";
+			public const string Id = "suggestioncardtemplateid";
+			public const string TimeZoneRuleVersionNumber = "timezoneruleversionnumber";
+			public const string TransactionCurrencyId = "transactioncurrencyid";
+			public const string UTCConversionTimeZoneCode = "utcconversiontimezonecode";
+			public const string lk_suggestioncardtemplate_createdby = "lk_suggestioncardtemplate_createdby";
+			public const string lk_suggestioncardtemplate_createdonbehalfby = "lk_suggestioncardtemplate_createdonbehalfby";
+			public const string lk_suggestioncardtemplate_modifiedby = "lk_suggestioncardtemplate_modifiedby";
+			public const string lk_suggestioncardtemplate_modifiedonbehalfby = "lk_suggestioncardtemplate_modifiedonbehalfby";
+		}
+		
+		/// <summary>
+		/// Default Constructor.
+		/// </summary>
+		[System.Diagnostics.DebuggerNonUserCode()]
+		public SuggestionCardTemplate() : 
+				base(EntityLogicalName)
+		{
+		}
+		
+		public const string EntityLogicalName = "suggestioncardtemplate";
+		
+		public const string PrimaryIdAttribute = "suggestioncardtemplateid";
+		
+		public const string PrimaryNameAttribute = "name";
+		
+		public const int EntityTypeCode = 1190;
+		
+		public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+		
+		public event System.ComponentModel.PropertyChangingEventHandler PropertyChanging;
+		
+		[System.Diagnostics.DebuggerNonUserCode()]
+		private void OnPropertyChanged(string propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		[System.Diagnostics.DebuggerNonUserCode()]
+		private void OnPropertyChanging(string propertyName)
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, new System.ComponentModel.PropertyChangingEventArgs(propertyName));
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the user who created the record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
+		public Microsoft.Xrm.Sdk.EntityReference CreatedBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("createdby");
+			}
+		}
+		
+		/// <summary>
+		/// Date and time when the record was created.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdon")]
+		public System.Nullable<System.DateTime> CreatedOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("createdon");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the delegate user who created the record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
+		public Microsoft.Xrm.Sdk.EntityReference CreatedOnBehalfBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("createdonbehalfby");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("CreatedOnBehalfBy");
+				this.SetAttributeValue("createdonbehalfby", value);
+				this.OnPropertyChanged("CreatedOnBehalfBy");
+			}
+		}
+		
+		/// <summary>
+		/// Exchange rate for the currency associated with the suggestioncardtemplate with respect to the base currency.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("exchangerate")]
+		public System.Nullable<decimal> ExchangeRate
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<decimal>>("exchangerate");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the user who modified the record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
+		public Microsoft.Xrm.Sdk.EntityReference ModifiedBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("modifiedby");
+			}
+		}
+		
+		/// <summary>
+		/// Date and time when the record was modified.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedon")]
+		public System.Nullable<System.DateTime> ModifiedOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("modifiedon");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the delegate user who modified the record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
+		public Microsoft.Xrm.Sdk.EntityReference ModifiedOnBehalfBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("modifiedonbehalfby");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ModifiedOnBehalfBy");
+				this.SetAttributeValue("modifiedonbehalfby", value);
+				this.OnPropertyChanged("ModifiedOnBehalfBy");
+			}
+		}
+		
+		/// <summary>
+		/// The name of the custom entity.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("name")]
+		public string name
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("name");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("name");
+				this.SetAttributeValue("name", value);
+				this.OnPropertyChanged("name");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier for the organization
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
+		public Microsoft.Xrm.Sdk.EntityReference OrganizationId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("organizationid");
+			}
+		}
+		
+		/// <summary>
+		/// For internal use only.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("structuredlayout")]
+		public string StructuredLayout
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("structuredlayout");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("StructuredLayout");
+				this.SetAttributeValue("structuredlayout", value);
+				this.OnPropertyChanged("StructuredLayout");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier for entity instances
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("suggestioncardtemplateid")]
+		public System.Nullable<System.Guid> SuggestionCardTemplateId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("suggestioncardtemplateid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("SuggestionCardTemplateId");
+				this.SetAttributeValue("suggestioncardtemplateid", value);
+				if (value.HasValue)
+				{
+					base.Id = value.Value;
+				}
+				else
+				{
+					base.Id = System.Guid.Empty;
+				}
+				this.OnPropertyChanged("SuggestionCardTemplateId");
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("suggestioncardtemplateid")]
+		public override System.Guid Id
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return base.Id;
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.SuggestionCardTemplateId = value;
+			}
+		}
+		
+		/// <summary>
+		/// For internal use only.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("timezoneruleversionnumber")]
+		public System.Nullable<int> TimeZoneRuleVersionNumber
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("timezoneruleversionnumber");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("TimeZoneRuleVersionNumber");
+				this.SetAttributeValue("timezoneruleversionnumber", value);
+				this.OnPropertyChanged("TimeZoneRuleVersionNumber");
+			}
+		}
+		
+		/// <summary>
+		/// Exchange rate for the currency associated with the suggestioncardtemplate with respect to the base currency.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("transactioncurrencyid")]
+		public Microsoft.Xrm.Sdk.EntityReference TransactionCurrencyId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("transactioncurrencyid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("TransactionCurrencyId");
+				this.SetAttributeValue("transactioncurrencyid", value);
+				this.OnPropertyChanged("TransactionCurrencyId");
+			}
+		}
+		
+		/// <summary>
+		/// Time zone code that was in use when the record was created.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("utcconversiontimezonecode")]
+		public System.Nullable<int> UTCConversionTimeZoneCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("utcconversiontimezonecode");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("UTCConversionTimeZoneCode");
+				this.SetAttributeValue("utcconversiontimezonecode", value);
+				this.OnPropertyChanged("UTCConversionTimeZoneCode");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lk_suggestioncardtemplate_createdby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_suggestioncardtemplate_createdby")]
+		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser lk_suggestioncardtemplate_createdby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_suggestioncardtemplate_createdby", null);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lk_suggestioncardtemplate_createdonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_suggestioncardtemplate_createdonbehalfby")]
+		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser lk_suggestioncardtemplate_createdonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_suggestioncardtemplate_createdonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_suggestioncardtemplate_createdonbehalfby");
+				this.SetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_suggestioncardtemplate_createdonbehalfby", null, value);
+				this.OnPropertyChanged("lk_suggestioncardtemplate_createdonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lk_suggestioncardtemplate_modifiedby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_suggestioncardtemplate_modifiedby")]
+		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser lk_suggestioncardtemplate_modifiedby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_suggestioncardtemplate_modifiedby", null);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lk_suggestioncardtemplate_modifiedonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_suggestioncardtemplate_modifiedonbehalfby")]
+		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser lk_suggestioncardtemplate_modifiedonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_suggestioncardtemplate_modifiedonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_suggestioncardtemplate_modifiedonbehalfby");
+				this.SetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_suggestioncardtemplate_modifiedonbehalfby", null, value);
+				this.OnPropertyChanged("lk_suggestioncardtemplate_modifiedonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// Constructor for populating via LINQ queries given a LINQ anonymous type
+		/// <param name="anonymousType">LINQ anonymous type.</param>
+		/// </summary>
+		[System.Diagnostics.DebuggerNonUserCode()]
+		public SuggestionCardTemplate(object anonymousType) : 
+				this()
+		{
+            foreach (var p in anonymousType.GetType().GetProperties())
+            {
+                var value = p.GetValue(anonymousType, null);
+                var name = p.Name.ToLower();
+            
+                if (name.EndsWith("enum") && value.GetType().BaseType == typeof(System.Enum))
+                {
+                    value = new Microsoft.Xrm.Sdk.OptionSetValue((int) value);
+                    name = name.Remove(name.Length - "enum".Length);
+                }
+            
+                switch (name)
+                {
+                    case "id":
+                        base.Id = (System.Guid)value;
+                        Attributes["suggestioncardtemplateid"] = base.Id;
+                        break;
+                    case "suggestioncardtemplateid":
+                        var id = (System.Nullable<System.Guid>) value;
+                        if(id == null){ continue; }
+                        base.Id = id.Value;
+                        Attributes[name] = base.Id;
+                        break;
+                    case "formattedvalues":
+                        // Add Support for FormattedValues
+                        FormattedValues.AddRange((Microsoft.Xrm.Sdk.FormattedValueCollection)value);
+                        break;
+                    default:
+                        Attributes[name] = value;
+                        break;
+                }
+            }
+		}
+	}
+	
+	/// <summary>
 	/// Person with access to the Microsoft CRM system and who owns objects in the Microsoft CRM database.
 	/// </summary>
 	[System.Runtime.Serialization.DataContractAttribute()]
 	[Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute("systemuser")]
-	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "8.2.0.749")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "8.2.1.8676")]
 	public partial class SystemUser : Microsoft.Xrm.Sdk.Entity, System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
 	{
 		
-		public struct Fields
+		public static class Fields
 		{
 			public const string AccessMode = "accessmode";
 			public const string Address1_AddressId = "address1_addressid";
@@ -4241,6 +14540,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 			public const string FullName = "fullname";
 			public const string GovernmentId = "governmentid";
 			public const string HomePhone = "homephone";
+			public const string IdentityId = "identityid";
 			public const string ImportSequenceNumber = "importsequencenumber";
 			public const string IncomingEmailDeliveryMethod = "incomingemaildeliverymethod";
 			public const string InternalEMailAddress = "internalemailaddress";
@@ -4303,7 +14603,6 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 			public const string Referencinglk_systemuserbase_modifiedby = "lk_systemuserbase_modifiedby";
 			public const string Referencinguser_parent_user = "user_parent_user";
 		}
-
 		
 		/// <summary>
 		/// Default Constructor.
@@ -4315,6 +14614,10 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		}
 		
 		public const string EntityLogicalName = "systemuser";
+		
+		public const string PrimaryIdAttribute = "systemuserid";
+		
+		public const string PrimaryNameAttribute = "fullname";
 		
 		public const int EntityTypeCode = 8;
 		
@@ -5656,6 +15959,19 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		}
 		
 		/// <summary>
+		/// For internal use only.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("identityid")]
+		public System.Nullable<int> IdentityId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("identityid");
+			}
+		}
+		
+		/// <summary>
 		/// Unique identifier of the data import or data migration that created this record.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("importsequencenumber")]
@@ -5745,6 +16061,13 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 			get
 			{
 				return this.GetAttributeValue<System.Nullable<bool>>("isdisabled");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("IsDisabled");
+				this.SetAttributeValue("isdisabled", value);
+				this.OnPropertyChanged("IsDisabled");
 			}
 		}
 		
@@ -6730,6 +17053,466 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		}
 		
 		/// <summary>
+		/// 1:N createdby_expanderevent
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("createdby_expanderevent")]
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.ExpanderEvent> createdby_expanderevent
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.ExpanderEvent>("createdby_expanderevent", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("createdby_expanderevent");
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.ExpanderEvent>("createdby_expanderevent", null, value);
+				this.OnPropertyChanged("createdby_expanderevent");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N createdby_pluginassembly
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("createdby_pluginassembly")]
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.PluginAssembly> createdby_pluginassembly
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.PluginAssembly>("createdby_pluginassembly", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("createdby_pluginassembly");
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.PluginAssembly>("createdby_pluginassembly", null, value);
+				this.OnPropertyChanged("createdby_pluginassembly");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N createdby_plugintype
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("createdby_plugintype")]
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.PluginType> createdby_plugintype
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.PluginType>("createdby_plugintype", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("createdby_plugintype");
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.PluginType>("createdby_plugintype", null, value);
+				this.OnPropertyChanged("createdby_plugintype");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N createdby_sdkmessageprocessingstep
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("createdby_sdkmessageprocessingstep")]
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SdkMessageProcessingStep> createdby_sdkmessageprocessingstep
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SdkMessageProcessingStep>("createdby_sdkmessageprocessingstep", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("createdby_sdkmessageprocessingstep");
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SdkMessageProcessingStep>("createdby_sdkmessageprocessingstep", null, value);
+				this.OnPropertyChanged("createdby_sdkmessageprocessingstep");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N createdby_sdkmessageprocessingstepimage
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("createdby_sdkmessageprocessingstepimage")]
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SdkMessageProcessingStepImage> createdby_sdkmessageprocessingstepimage
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SdkMessageProcessingStepImage>("createdby_sdkmessageprocessingstepimage", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("createdby_sdkmessageprocessingstepimage");
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SdkMessageProcessingStepImage>("createdby_sdkmessageprocessingstepimage", null, value);
+				this.OnPropertyChanged("createdby_sdkmessageprocessingstepimage");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N createdby_sdkmessageprocessingstepsecureconfig
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("createdby_sdkmessageprocessingstepsecureconfig")]
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SdkMessageProcessingStepSecureConfig> createdby_sdkmessageprocessingstepsecureconfig
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SdkMessageProcessingStepSecureConfig>("createdby_sdkmessageprocessingstepsecureconfig", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("createdby_sdkmessageprocessingstepsecureconfig");
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SdkMessageProcessingStepSecureConfig>("createdby_sdkmessageprocessingstepsecureconfig", null, value);
+				this.OnPropertyChanged("createdby_sdkmessageprocessingstepsecureconfig");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N impersonatinguserid_sdkmessageprocessingstep
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("impersonatinguserid_sdkmessageprocessingstep")]
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SdkMessageProcessingStep> impersonatinguserid_sdkmessageprocessingstep
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SdkMessageProcessingStep>("impersonatinguserid_sdkmessageprocessingstep", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("impersonatinguserid_sdkmessageprocessingstep");
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SdkMessageProcessingStep>("impersonatinguserid_sdkmessageprocessingstep", null, value);
+				this.OnPropertyChanged("impersonatinguserid_sdkmessageprocessingstep");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N lk_ACIViewMapper_createdby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_ACIViewMapper_createdby")]
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.ACIViewMapper> lk_ACIViewMapper_createdby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.ACIViewMapper>("lk_ACIViewMapper_createdby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_ACIViewMapper_createdby");
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.ACIViewMapper>("lk_ACIViewMapper_createdby", null, value);
+				this.OnPropertyChanged("lk_ACIViewMapper_createdby");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N lk_ACIViewMapper_createdonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_ACIViewMapper_createdonbehalfby")]
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.ACIViewMapper> lk_ACIViewMapper_createdonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.ACIViewMapper>("lk_ACIViewMapper_createdonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_ACIViewMapper_createdonbehalfby");
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.ACIViewMapper>("lk_ACIViewMapper_createdonbehalfby", null, value);
+				this.OnPropertyChanged("lk_ACIViewMapper_createdonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N lk_ACIViewMapper_modifiedby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_ACIViewMapper_modifiedby")]
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.ACIViewMapper> lk_ACIViewMapper_modifiedby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.ACIViewMapper>("lk_ACIViewMapper_modifiedby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_ACIViewMapper_modifiedby");
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.ACIViewMapper>("lk_ACIViewMapper_modifiedby", null, value);
+				this.OnPropertyChanged("lk_ACIViewMapper_modifiedby");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N lk_ACIViewMapper_modifiedonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_ACIViewMapper_modifiedonbehalfby")]
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.ACIViewMapper> lk_ACIViewMapper_modifiedonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.ACIViewMapper>("lk_ACIViewMapper_modifiedonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_ACIViewMapper_modifiedonbehalfby");
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.ACIViewMapper>("lk_ACIViewMapper_modifiedonbehalfby", null, value);
+				this.OnPropertyChanged("lk_ACIViewMapper_modifiedonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N lk_appconfig_createdby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_appconfig_createdby")]
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.AppConfig> lk_appconfig_createdby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.AppConfig>("lk_appconfig_createdby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_appconfig_createdby");
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.AppConfig>("lk_appconfig_createdby", null, value);
+				this.OnPropertyChanged("lk_appconfig_createdby");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N lk_appconfig_createdonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_appconfig_createdonbehalfby")]
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.AppConfig> lk_appconfig_createdonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.AppConfig>("lk_appconfig_createdonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_appconfig_createdonbehalfby");
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.AppConfig>("lk_appconfig_createdonbehalfby", null, value);
+				this.OnPropertyChanged("lk_appconfig_createdonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N lk_appconfig_modifiedby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_appconfig_modifiedby")]
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.AppConfig> lk_appconfig_modifiedby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.AppConfig>("lk_appconfig_modifiedby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_appconfig_modifiedby");
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.AppConfig>("lk_appconfig_modifiedby", null, value);
+				this.OnPropertyChanged("lk_appconfig_modifiedby");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N lk_appconfig_modifiedonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_appconfig_modifiedonbehalfby")]
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.AppConfig> lk_appconfig_modifiedonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.AppConfig>("lk_appconfig_modifiedonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_appconfig_modifiedonbehalfby");
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.AppConfig>("lk_appconfig_modifiedonbehalfby", null, value);
+				this.OnPropertyChanged("lk_appconfig_modifiedonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N lk_appconfiginstance_createdby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_appconfiginstance_createdby")]
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.AppConfigInstance> lk_appconfiginstance_createdby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.AppConfigInstance>("lk_appconfiginstance_createdby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_appconfiginstance_createdby");
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.AppConfigInstance>("lk_appconfiginstance_createdby", null, value);
+				this.OnPropertyChanged("lk_appconfiginstance_createdby");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N lk_appconfiginstance_createdonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_appconfiginstance_createdonbehalfby")]
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.AppConfigInstance> lk_appconfiginstance_createdonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.AppConfigInstance>("lk_appconfiginstance_createdonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_appconfiginstance_createdonbehalfby");
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.AppConfigInstance>("lk_appconfiginstance_createdonbehalfby", null, value);
+				this.OnPropertyChanged("lk_appconfiginstance_createdonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N lk_appconfiginstance_modifiedby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_appconfiginstance_modifiedby")]
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.AppConfigInstance> lk_appconfiginstance_modifiedby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.AppConfigInstance>("lk_appconfiginstance_modifiedby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_appconfiginstance_modifiedby");
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.AppConfigInstance>("lk_appconfiginstance_modifiedby", null, value);
+				this.OnPropertyChanged("lk_appconfiginstance_modifiedby");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N lk_appconfiginstance_modifiedonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_appconfiginstance_modifiedonbehalfby")]
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.AppConfigInstance> lk_appconfiginstance_modifiedonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.AppConfigInstance>("lk_appconfiginstance_modifiedonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_appconfiginstance_modifiedonbehalfby");
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.AppConfigInstance>("lk_appconfiginstance_modifiedonbehalfby", null, value);
+				this.OnPropertyChanged("lk_appconfiginstance_modifiedonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N lk_appconfigmaster_createdby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_appconfigmaster_createdby")]
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.AppConfigMaster> lk_appconfigmaster_createdby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.AppConfigMaster>("lk_appconfigmaster_createdby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_appconfigmaster_createdby");
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.AppConfigMaster>("lk_appconfigmaster_createdby", null, value);
+				this.OnPropertyChanged("lk_appconfigmaster_createdby");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N lk_appconfigmaster_createdonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_appconfigmaster_createdonbehalfby")]
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.AppConfigMaster> lk_appconfigmaster_createdonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.AppConfigMaster>("lk_appconfigmaster_createdonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_appconfigmaster_createdonbehalfby");
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.AppConfigMaster>("lk_appconfigmaster_createdonbehalfby", null, value);
+				this.OnPropertyChanged("lk_appconfigmaster_createdonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N lk_appconfigmaster_modifiedby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_appconfigmaster_modifiedby")]
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.AppConfigMaster> lk_appconfigmaster_modifiedby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.AppConfigMaster>("lk_appconfigmaster_modifiedby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_appconfigmaster_modifiedby");
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.AppConfigMaster>("lk_appconfigmaster_modifiedby", null, value);
+				this.OnPropertyChanged("lk_appconfigmaster_modifiedby");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N lk_appconfigmaster_modifiedonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_appconfigmaster_modifiedonbehalfby")]
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.AppConfigMaster> lk_appconfigmaster_modifiedonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.AppConfigMaster>("lk_appconfigmaster_modifiedonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_appconfigmaster_modifiedonbehalfby");
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.AppConfigMaster>("lk_appconfigmaster_modifiedonbehalfby", null, value);
+				this.OnPropertyChanged("lk_appconfigmaster_modifiedonbehalfby");
+			}
+		}
+		
+		/// <summary>
 		/// 1:N lk_asyncoperation_createdby
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_asyncoperation_createdby")]
@@ -6886,6 +17669,46 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 				this.OnPropertyChanging("lk_bulkdeleteoperationbase_modifiedby");
 				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.BulkDeleteOperation>("lk_bulkdeleteoperationbase_modifiedby", null, value);
 				this.OnPropertyChanged("lk_bulkdeleteoperationbase_modifiedby");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N lk_expanderevent_createdonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_expanderevent_createdonbehalfby")]
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.ExpanderEvent> lk_expanderevent_createdonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.ExpanderEvent>("lk_expanderevent_createdonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_expanderevent_createdonbehalfby");
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.ExpanderEvent>("lk_expanderevent_createdonbehalfby", null, value);
+				this.OnPropertyChanged("lk_expanderevent_createdonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N lk_expanderevent_modifiedonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_expanderevent_modifiedonbehalfby")]
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.ExpanderEvent> lk_expanderevent_modifiedonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.ExpanderEvent>("lk_expanderevent_modifiedonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_expanderevent_modifiedonbehalfby");
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.ExpanderEvent>("lk_expanderevent_modifiedonbehalfby", null, value);
+				this.OnPropertyChanged("lk_expanderevent_modifiedonbehalfby");
 			}
 		}
 		
@@ -7050,6 +17873,366 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		}
 		
 		/// <summary>
+		/// 1:N lk_navigationsetting_createdby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_navigationsetting_createdby")]
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.NavigationSetting> lk_navigationsetting_createdby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.NavigationSetting>("lk_navigationsetting_createdby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_navigationsetting_createdby");
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.NavigationSetting>("lk_navigationsetting_createdby", null, value);
+				this.OnPropertyChanged("lk_navigationsetting_createdby");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N lk_navigationsetting_createdonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_navigationsetting_createdonbehalfby")]
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.NavigationSetting> lk_navigationsetting_createdonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.NavigationSetting>("lk_navigationsetting_createdonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_navigationsetting_createdonbehalfby");
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.NavigationSetting>("lk_navigationsetting_createdonbehalfby", null, value);
+				this.OnPropertyChanged("lk_navigationsetting_createdonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N lk_navigationsetting_modifiedby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_navigationsetting_modifiedby")]
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.NavigationSetting> lk_navigationsetting_modifiedby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.NavigationSetting>("lk_navigationsetting_modifiedby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_navigationsetting_modifiedby");
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.NavigationSetting>("lk_navigationsetting_modifiedby", null, value);
+				this.OnPropertyChanged("lk_navigationsetting_modifiedby");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N lk_navigationsetting_modifiedonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_navigationsetting_modifiedonbehalfby")]
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.NavigationSetting> lk_navigationsetting_modifiedonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.NavigationSetting>("lk_navigationsetting_modifiedonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_navigationsetting_modifiedonbehalfby");
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.NavigationSetting>("lk_navigationsetting_modifiedonbehalfby", null, value);
+				this.OnPropertyChanged("lk_navigationsetting_modifiedonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N lk_offlinecommanddefinition_createdby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_offlinecommanddefinition_createdby")]
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.OfflineCommandDefinition> lk_offlinecommanddefinition_createdby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.OfflineCommandDefinition>("lk_offlinecommanddefinition_createdby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_offlinecommanddefinition_createdby");
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.OfflineCommandDefinition>("lk_offlinecommanddefinition_createdby", null, value);
+				this.OnPropertyChanged("lk_offlinecommanddefinition_createdby");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N lk_offlinecommanddefinition_createdonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_offlinecommanddefinition_createdonbehalfby")]
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.OfflineCommandDefinition> lk_offlinecommanddefinition_createdonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.OfflineCommandDefinition>("lk_offlinecommanddefinition_createdonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_offlinecommanddefinition_createdonbehalfby");
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.OfflineCommandDefinition>("lk_offlinecommanddefinition_createdonbehalfby", null, value);
+				this.OnPropertyChanged("lk_offlinecommanddefinition_createdonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N lk_offlinecommanddefinition_modifiedby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_offlinecommanddefinition_modifiedby")]
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.OfflineCommandDefinition> lk_offlinecommanddefinition_modifiedby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.OfflineCommandDefinition>("lk_offlinecommanddefinition_modifiedby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_offlinecommanddefinition_modifiedby");
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.OfflineCommandDefinition>("lk_offlinecommanddefinition_modifiedby", null, value);
+				this.OnPropertyChanged("lk_offlinecommanddefinition_modifiedby");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N lk_offlinecommanddefinition_modifiedonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_offlinecommanddefinition_modifiedonbehalfby")]
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.OfflineCommandDefinition> lk_offlinecommanddefinition_modifiedonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.OfflineCommandDefinition>("lk_offlinecommanddefinition_modifiedonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_offlinecommanddefinition_modifiedonbehalfby");
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.OfflineCommandDefinition>("lk_offlinecommanddefinition_modifiedonbehalfby", null, value);
+				this.OnPropertyChanged("lk_offlinecommanddefinition_modifiedonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N lk_pluginassembly_createdonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_pluginassembly_createdonbehalfby")]
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.PluginAssembly> lk_pluginassembly_createdonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.PluginAssembly>("lk_pluginassembly_createdonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_pluginassembly_createdonbehalfby");
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.PluginAssembly>("lk_pluginassembly_createdonbehalfby", null, value);
+				this.OnPropertyChanged("lk_pluginassembly_createdonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N lk_pluginassembly_modifiedonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_pluginassembly_modifiedonbehalfby")]
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.PluginAssembly> lk_pluginassembly_modifiedonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.PluginAssembly>("lk_pluginassembly_modifiedonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_pluginassembly_modifiedonbehalfby");
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.PluginAssembly>("lk_pluginassembly_modifiedonbehalfby", null, value);
+				this.OnPropertyChanged("lk_pluginassembly_modifiedonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N lk_plugintype_createdonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_plugintype_createdonbehalfby")]
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.PluginType> lk_plugintype_createdonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.PluginType>("lk_plugintype_createdonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_plugintype_createdonbehalfby");
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.PluginType>("lk_plugintype_createdonbehalfby", null, value);
+				this.OnPropertyChanged("lk_plugintype_createdonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N lk_plugintype_modifiedonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_plugintype_modifiedonbehalfby")]
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.PluginType> lk_plugintype_modifiedonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.PluginType>("lk_plugintype_modifiedonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_plugintype_modifiedonbehalfby");
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.PluginType>("lk_plugintype_modifiedonbehalfby", null, value);
+				this.OnPropertyChanged("lk_plugintype_modifiedonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N lk_sdkmessageprocessingstep_createdonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_sdkmessageprocessingstep_createdonbehalfby")]
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SdkMessageProcessingStep> lk_sdkmessageprocessingstep_createdonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SdkMessageProcessingStep>("lk_sdkmessageprocessingstep_createdonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_sdkmessageprocessingstep_createdonbehalfby");
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SdkMessageProcessingStep>("lk_sdkmessageprocessingstep_createdonbehalfby", null, value);
+				this.OnPropertyChanged("lk_sdkmessageprocessingstep_createdonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N lk_sdkmessageprocessingstep_modifiedonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_sdkmessageprocessingstep_modifiedonbehalfby")]
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SdkMessageProcessingStep> lk_sdkmessageprocessingstep_modifiedonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SdkMessageProcessingStep>("lk_sdkmessageprocessingstep_modifiedonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_sdkmessageprocessingstep_modifiedonbehalfby");
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SdkMessageProcessingStep>("lk_sdkmessageprocessingstep_modifiedonbehalfby", null, value);
+				this.OnPropertyChanged("lk_sdkmessageprocessingstep_modifiedonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N lk_sdkmessageprocessingstepimage_createdonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_sdkmessageprocessingstepimage_createdonbehalfby")]
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SdkMessageProcessingStepImage> lk_sdkmessageprocessingstepimage_createdonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SdkMessageProcessingStepImage>("lk_sdkmessageprocessingstepimage_createdonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_sdkmessageprocessingstepimage_createdonbehalfby");
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SdkMessageProcessingStepImage>("lk_sdkmessageprocessingstepimage_createdonbehalfby", null, value);
+				this.OnPropertyChanged("lk_sdkmessageprocessingstepimage_createdonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N lk_sdkmessageprocessingstepimage_modifiedonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_sdkmessageprocessingstepimage_modifiedonbehalfby")]
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SdkMessageProcessingStepImage> lk_sdkmessageprocessingstepimage_modifiedonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SdkMessageProcessingStepImage>("lk_sdkmessageprocessingstepimage_modifiedonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_sdkmessageprocessingstepimage_modifiedonbehalfby");
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SdkMessageProcessingStepImage>("lk_sdkmessageprocessingstepimage_modifiedonbehalfby", null, value);
+				this.OnPropertyChanged("lk_sdkmessageprocessingstepimage_modifiedonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N lk_sdkmessageprocessingstepsecureconfig_createdonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_sdkmessageprocessingstepsecureconfig_createdonbehalfby")]
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SdkMessageProcessingStepSecureConfig> lk_sdkmessageprocessingstepsecureconfig_createdonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SdkMessageProcessingStepSecureConfig>("lk_sdkmessageprocessingstepsecureconfig_createdonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_sdkmessageprocessingstepsecureconfig_createdonbehalfby");
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SdkMessageProcessingStepSecureConfig>("lk_sdkmessageprocessingstepsecureconfig_createdonbehalfby", null, value);
+				this.OnPropertyChanged("lk_sdkmessageprocessingstepsecureconfig_createdonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N lk_sdkmessageprocessingstepsecureconfig_modifiedonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_sdkmessageprocessingstepsecureconfig_modifiedonbehalfby")]
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SdkMessageProcessingStepSecureConfig> lk_sdkmessageprocessingstepsecureconfig_modifiedonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SdkMessageProcessingStepSecureConfig>("lk_sdkmessageprocessingstepsecureconfig_modifiedonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_sdkmessageprocessingstepsecureconfig_modifiedonbehalfby");
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SdkMessageProcessingStepSecureConfig>("lk_sdkmessageprocessingstepsecureconfig_modifiedonbehalfby", null, value);
+				this.OnPropertyChanged("lk_sdkmessageprocessingstepsecureconfig_modifiedonbehalfby");
+			}
+		}
+		
+		/// <summary>
 		/// 1:N lk_solution_createdby
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_solution_createdby")]
@@ -7126,6 +18309,86 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 				this.OnPropertyChanging("lk_solutionbase_modifiedonbehalfby");
 				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.Solution>("lk_solutionbase_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_solutionbase_modifiedonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N lk_suggestioncardtemplate_createdby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_suggestioncardtemplate_createdby")]
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SuggestionCardTemplate> lk_suggestioncardtemplate_createdby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SuggestionCardTemplate>("lk_suggestioncardtemplate_createdby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_suggestioncardtemplate_createdby");
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SuggestionCardTemplate>("lk_suggestioncardtemplate_createdby", null, value);
+				this.OnPropertyChanged("lk_suggestioncardtemplate_createdby");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N lk_suggestioncardtemplate_createdonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_suggestioncardtemplate_createdonbehalfby")]
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SuggestionCardTemplate> lk_suggestioncardtemplate_createdonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SuggestionCardTemplate>("lk_suggestioncardtemplate_createdonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_suggestioncardtemplate_createdonbehalfby");
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SuggestionCardTemplate>("lk_suggestioncardtemplate_createdonbehalfby", null, value);
+				this.OnPropertyChanged("lk_suggestioncardtemplate_createdonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N lk_suggestioncardtemplate_modifiedby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_suggestioncardtemplate_modifiedby")]
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SuggestionCardTemplate> lk_suggestioncardtemplate_modifiedby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SuggestionCardTemplate>("lk_suggestioncardtemplate_modifiedby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_suggestioncardtemplate_modifiedby");
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SuggestionCardTemplate>("lk_suggestioncardtemplate_modifiedby", null, value);
+				this.OnPropertyChanged("lk_suggestioncardtemplate_modifiedby");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N lk_suggestioncardtemplate_modifiedonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_suggestioncardtemplate_modifiedonbehalfby")]
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SuggestionCardTemplate> lk_suggestioncardtemplate_modifiedonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SuggestionCardTemplate>("lk_suggestioncardtemplate_modifiedonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_suggestioncardtemplate_modifiedonbehalfby");
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SuggestionCardTemplate>("lk_suggestioncardtemplate_modifiedonbehalfby", null, value);
+				this.OnPropertyChanged("lk_suggestioncardtemplate_modifiedonbehalfby");
 			}
 		}
 		
@@ -7210,6 +18473,246 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		}
 		
 		/// <summary>
+		/// 1:N lk_ud_config_createdby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_ud_config_createdby")]
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.ud_config> lk_ud_config_createdby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.ud_config>("lk_ud_config_createdby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_ud_config_createdby");
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.ud_config>("lk_ud_config_createdby", null, value);
+				this.OnPropertyChanged("lk_ud_config_createdby");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N lk_ud_config_createdonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_ud_config_createdonbehalfby")]
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.ud_config> lk_ud_config_createdonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.ud_config>("lk_ud_config_createdonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_ud_config_createdonbehalfby");
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.ud_config>("lk_ud_config_createdonbehalfby", null, value);
+				this.OnPropertyChanged("lk_ud_config_createdonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N lk_ud_config_modifiedby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_ud_config_modifiedby")]
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.ud_config> lk_ud_config_modifiedby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.ud_config>("lk_ud_config_modifiedby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_ud_config_modifiedby");
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.ud_config>("lk_ud_config_modifiedby", null, value);
+				this.OnPropertyChanged("lk_ud_config_modifiedby");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N lk_ud_config_modifiedonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_ud_config_modifiedonbehalfby")]
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.ud_config> lk_ud_config_modifiedonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.ud_config>("lk_ud_config_modifiedonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_ud_config_modifiedonbehalfby");
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.ud_config>("lk_ud_config_modifiedonbehalfby", null, value);
+				this.OnPropertyChanged("lk_ud_config_modifiedonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N lk_webresourcebase_createdonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_webresourcebase_createdonbehalfby")]
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.WebResource> lk_webresourcebase_createdonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.WebResource>("lk_webresourcebase_createdonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_webresourcebase_createdonbehalfby");
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.WebResource>("lk_webresourcebase_createdonbehalfby", null, value);
+				this.OnPropertyChanged("lk_webresourcebase_createdonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N lk_webresourcebase_modifiedonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_webresourcebase_modifiedonbehalfby")]
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.WebResource> lk_webresourcebase_modifiedonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.WebResource>("lk_webresourcebase_modifiedonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_webresourcebase_modifiedonbehalfby");
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.WebResource>("lk_webresourcebase_modifiedonbehalfby", null, value);
+				this.OnPropertyChanged("lk_webresourcebase_modifiedonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N modifiedby_expanderevent
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("modifiedby_expanderevent")]
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.ExpanderEvent> modifiedby_expanderevent
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.ExpanderEvent>("modifiedby_expanderevent", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("modifiedby_expanderevent");
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.ExpanderEvent>("modifiedby_expanderevent", null, value);
+				this.OnPropertyChanged("modifiedby_expanderevent");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N modifiedby_pluginassembly
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("modifiedby_pluginassembly")]
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.PluginAssembly> modifiedby_pluginassembly
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.PluginAssembly>("modifiedby_pluginassembly", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("modifiedby_pluginassembly");
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.PluginAssembly>("modifiedby_pluginassembly", null, value);
+				this.OnPropertyChanged("modifiedby_pluginassembly");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N modifiedby_plugintype
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("modifiedby_plugintype")]
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.PluginType> modifiedby_plugintype
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.PluginType>("modifiedby_plugintype", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("modifiedby_plugintype");
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.PluginType>("modifiedby_plugintype", null, value);
+				this.OnPropertyChanged("modifiedby_plugintype");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N modifiedby_sdkmessageprocessingstep
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("modifiedby_sdkmessageprocessingstep")]
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SdkMessageProcessingStep> modifiedby_sdkmessageprocessingstep
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SdkMessageProcessingStep>("modifiedby_sdkmessageprocessingstep", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("modifiedby_sdkmessageprocessingstep");
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SdkMessageProcessingStep>("modifiedby_sdkmessageprocessingstep", null, value);
+				this.OnPropertyChanged("modifiedby_sdkmessageprocessingstep");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N modifiedby_sdkmessageprocessingstepimage
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("modifiedby_sdkmessageprocessingstepimage")]
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SdkMessageProcessingStepImage> modifiedby_sdkmessageprocessingstepimage
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SdkMessageProcessingStepImage>("modifiedby_sdkmessageprocessingstepimage", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("modifiedby_sdkmessageprocessingstepimage");
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SdkMessageProcessingStepImage>("modifiedby_sdkmessageprocessingstepimage", null, value);
+				this.OnPropertyChanged("modifiedby_sdkmessageprocessingstepimage");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N modifiedby_sdkmessageprocessingstepsecureconfig
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("modifiedby_sdkmessageprocessingstepsecureconfig")]
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SdkMessageProcessingStepSecureConfig> modifiedby_sdkmessageprocessingstepsecureconfig
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SdkMessageProcessingStepSecureConfig>("modifiedby_sdkmessageprocessingstepsecureconfig", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("modifiedby_sdkmessageprocessingstepsecureconfig");
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SdkMessageProcessingStepSecureConfig>("modifiedby_sdkmessageprocessingstepsecureconfig", null, value);
+				this.OnPropertyChanged("modifiedby_sdkmessageprocessingstepsecureconfig");
+			}
+		}
+		
+		/// <summary>
 		/// 1:N system_user_asyncoperation
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("system_user_asyncoperation")]
@@ -7290,6 +18793,26 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		}
 		
 		/// <summary>
+		/// 1:N user_bulkoperationlog
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("user_bulkoperationlog")]
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.BulkOperationLog> user_bulkoperationlog
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.BulkOperationLog>("user_bulkoperationlog", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("user_bulkoperationlog");
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.BulkOperationLog>("user_bulkoperationlog", null, value);
+				this.OnPropertyChanged("user_bulkoperationlog");
+			}
+		}
+		
+		/// <summary>
 		/// 1:N user_parent_user
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("user_parent_user", Microsoft.Xrm.Sdk.EntityRole.Referenced)]
@@ -7306,6 +18829,66 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 				this.OnPropertyChanging("Referenceduser_parent_user");
 				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("user_parent_user", Microsoft.Xrm.Sdk.EntityRole.Referenced, value);
 				this.OnPropertyChanged("Referenceduser_parent_user");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N user_ud_config
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("user_ud_config")]
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.ud_config> user_ud_config
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.ud_config>("user_ud_config", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("user_ud_config");
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.ud_config>("user_ud_config", null, value);
+				this.OnPropertyChanged("user_ud_config");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N webresource_createdby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("webresource_createdby")]
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.WebResource> webresource_createdby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.WebResource>("webresource_createdby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("webresource_createdby");
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.WebResource>("webresource_createdby", null, value);
+				this.OnPropertyChanged("webresource_createdby");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N webresource_modifiedby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("webresource_modifiedby")]
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.WebResource> webresource_modifiedby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.WebResource>("webresource_modifiedby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("webresource_modifiedby");
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.WebResource>("webresource_modifiedby", null, value);
+				this.OnPropertyChanged("webresource_modifiedby");
 			}
 		}
 		
@@ -7443,10 +19026,1394 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		}
 	}
 	
+	[System.Runtime.Serialization.DataContractAttribute()]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "8.2.1.8676")]
+	public enum ud_configState
+	{
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		Active = 0,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		Inactive = 1,
+	}
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	[System.Runtime.Serialization.DataContractAttribute()]
+	[Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute("ud_config")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "8.2.1.8676")]
+	public partial class ud_config : Microsoft.Xrm.Sdk.Entity, System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
+	{
+		
+		public static class Fields
+		{
+			public const string CreatedBy = "createdby";
+			public const string CreatedOn = "createdon";
+			public const string CreatedOnBehalfBy = "createdonbehalfby";
+			public const string ImportSequenceNumber = "importsequencenumber";
+			public const string ModifiedBy = "modifiedby";
+			public const string ModifiedOn = "modifiedon";
+			public const string ModifiedOnBehalfBy = "modifiedonbehalfby";
+			public const string OverriddenCreatedOn = "overriddencreatedon";
+			public const string OwnerId = "ownerid";
+			public const string OwningBusinessUnit = "owningbusinessunit";
+			public const string OwningTeam = "owningteam";
+			public const string OwningUser = "owninguser";
+			public const string StateCode = "statecode";
+			public const string StatusCode = "statuscode";
+			public const string TimeZoneRuleVersionNumber = "timezoneruleversionnumber";
+			public const string ud_configId = "ud_configid";
+			public const string Id = "ud_configid";
+			public const string ud_name = "ud_name";
+			public const string ud_Value = "ud_value";
+			public const string UTCConversionTimeZoneCode = "utcconversiontimezonecode";
+			public const string VersionNumber = "versionnumber";
+			public const string lk_ud_config_createdby = "lk_ud_config_createdby";
+			public const string lk_ud_config_createdonbehalfby = "lk_ud_config_createdonbehalfby";
+			public const string lk_ud_config_modifiedby = "lk_ud_config_modifiedby";
+			public const string lk_ud_config_modifiedonbehalfby = "lk_ud_config_modifiedonbehalfby";
+			public const string user_ud_config = "user_ud_config";
+		}
+		
+		/// <summary>
+		/// Default Constructor.
+		/// </summary>
+		[System.Diagnostics.DebuggerNonUserCode()]
+		public ud_config() : 
+				base(EntityLogicalName)
+		{
+		}
+		
+		public const string EntityLogicalName = "ud_config";
+		
+		public const string PrimaryIdAttribute = "ud_configid";
+		
+		public const string PrimaryNameAttribute = "ud_name";
+		
+		public const int EntityTypeCode = 10013;
+		
+		public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+		
+		public event System.ComponentModel.PropertyChangingEventHandler PropertyChanging;
+		
+		[System.Diagnostics.DebuggerNonUserCode()]
+		private void OnPropertyChanged(string propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		[System.Diagnostics.DebuggerNonUserCode()]
+		private void OnPropertyChanging(string propertyName)
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, new System.ComponentModel.PropertyChangingEventArgs(propertyName));
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the user who created the record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
+		public Microsoft.Xrm.Sdk.EntityReference CreatedBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("createdby");
+			}
+		}
+		
+		/// <summary>
+		/// Date and time when the record was created.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdon")]
+		public System.Nullable<System.DateTime> CreatedOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("createdon");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the delegate user who created the record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
+		public Microsoft.Xrm.Sdk.EntityReference CreatedOnBehalfBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("createdonbehalfby");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("CreatedOnBehalfBy");
+				this.SetAttributeValue("createdonbehalfby", value);
+				this.OnPropertyChanged("CreatedOnBehalfBy");
+			}
+		}
+		
+		/// <summary>
+		/// Sequence number of the import that created this record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("importsequencenumber")]
+		public System.Nullable<int> ImportSequenceNumber
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("importsequencenumber");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ImportSequenceNumber");
+				this.SetAttributeValue("importsequencenumber", value);
+				this.OnPropertyChanged("ImportSequenceNumber");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the user who modified the record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
+		public Microsoft.Xrm.Sdk.EntityReference ModifiedBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("modifiedby");
+			}
+		}
+		
+		/// <summary>
+		/// Date and time when the record was modified.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedon")]
+		public System.Nullable<System.DateTime> ModifiedOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("modifiedon");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the delegate user who modified the record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
+		public Microsoft.Xrm.Sdk.EntityReference ModifiedOnBehalfBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("modifiedonbehalfby");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ModifiedOnBehalfBy");
+				this.SetAttributeValue("modifiedonbehalfby", value);
+				this.OnPropertyChanged("ModifiedOnBehalfBy");
+			}
+		}
+		
+		/// <summary>
+		/// Date and time that the record was migrated.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("overriddencreatedon")]
+		public System.Nullable<System.DateTime> OverriddenCreatedOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("overriddencreatedon");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("OverriddenCreatedOn");
+				this.SetAttributeValue("overriddencreatedon", value);
+				this.OnPropertyChanged("OverriddenCreatedOn");
+			}
+		}
+		
+		/// <summary>
+		/// Owner Id
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("ownerid")]
+		public Microsoft.Xrm.Sdk.EntityReference OwnerId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("ownerid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("OwnerId");
+				this.SetAttributeValue("ownerid", value);
+				this.OnPropertyChanged("OwnerId");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier for the business unit that owns the record
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningbusinessunit")]
+		public Microsoft.Xrm.Sdk.EntityReference OwningBusinessUnit
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("owningbusinessunit");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier for the team that owns the record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningteam")]
+		public Microsoft.Xrm.Sdk.EntityReference OwningTeam
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("owningteam");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier for the user that owns the record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owninguser")]
+		public Microsoft.Xrm.Sdk.EntityReference OwningUser
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("owninguser");
+			}
+		}
+		
+		/// <summary>
+		/// Status of the Config
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
+		public System.Nullable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.ud_configState> StateCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				Microsoft.Xrm.Sdk.OptionSetValue optionSet = this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statecode");
+				if ((optionSet != null))
+				{
+					return ((Xrm.Framework.CI.PowerShell.Cmdlets.Common.ud_configState)(System.Enum.ToObject(typeof(Xrm.Framework.CI.PowerShell.Cmdlets.Common.ud_configState), optionSet.Value)));
+				}
+				else
+				{
+					return null;
+				}
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("StateCode");
+				if ((value == null))
+				{
+					this.SetAttributeValue("statecode", null);
+				}
+				else
+				{
+					this.SetAttributeValue("statecode", new Microsoft.Xrm.Sdk.OptionSetValue(((int)(value))));
+				}
+				this.OnPropertyChanged("StateCode");
+			}
+		}
+		
+		/// <summary>
+		/// Reason for the status of the Config
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statuscode")]
+		public Microsoft.Xrm.Sdk.OptionSetValue StatusCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statuscode");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("StatusCode");
+				this.SetAttributeValue("statuscode", value);
+				this.OnPropertyChanged("StatusCode");
+			}
+		}
+		
+		/// <summary>
+		/// For internal use only.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("timezoneruleversionnumber")]
+		public System.Nullable<int> TimeZoneRuleVersionNumber
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("timezoneruleversionnumber");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("TimeZoneRuleVersionNumber");
+				this.SetAttributeValue("timezoneruleversionnumber", value);
+				this.OnPropertyChanged("TimeZoneRuleVersionNumber");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier for entity instances
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("ud_configid")]
+		public System.Nullable<System.Guid> ud_configId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("ud_configid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ud_configId");
+				this.SetAttributeValue("ud_configid", value);
+				if (value.HasValue)
+				{
+					base.Id = value.Value;
+				}
+				else
+				{
+					base.Id = System.Guid.Empty;
+				}
+				this.OnPropertyChanged("ud_configId");
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("ud_configid")]
+		public override System.Guid Id
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return base.Id;
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.ud_configId = value;
+			}
+		}
+		
+		/// <summary>
+		/// The name of the custom entity.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("ud_name")]
+		public string ud_name
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("ud_name");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ud_name");
+				this.SetAttributeValue("ud_name", value);
+				this.OnPropertyChanged("ud_name");
+			}
+		}
+		
+		/// <summary>
+		/// 
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("ud_value")]
+		public string ud_Value
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("ud_value");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ud_Value");
+				this.SetAttributeValue("ud_value", value);
+				this.OnPropertyChanged("ud_Value");
+			}
+		}
+		
+		/// <summary>
+		/// Time zone code that was in use when the record was created.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("utcconversiontimezonecode")]
+		public System.Nullable<int> UTCConversionTimeZoneCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("utcconversiontimezonecode");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("UTCConversionTimeZoneCode");
+				this.SetAttributeValue("utcconversiontimezonecode", value);
+				this.OnPropertyChanged("UTCConversionTimeZoneCode");
+			}
+		}
+		
+		/// <summary>
+		/// Version Number
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("versionnumber")]
+		public System.Nullable<long> VersionNumber
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<long>>("versionnumber");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N ud_config_AsyncOperations
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("ud_config_AsyncOperations")]
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.AsyncOperation> ud_config_AsyncOperations
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.AsyncOperation>("ud_config_AsyncOperations", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ud_config_AsyncOperations");
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.AsyncOperation>("ud_config_AsyncOperations", null, value);
+				this.OnPropertyChanged("ud_config_AsyncOperations");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N ud_config_BulkDeleteFailures
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("ud_config_BulkDeleteFailures")]
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.BulkDeleteFailure> ud_config_BulkDeleteFailures
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.BulkDeleteFailure>("ud_config_BulkDeleteFailures", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ud_config_BulkDeleteFailures");
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.BulkDeleteFailure>("ud_config_BulkDeleteFailures", null, value);
+				this.OnPropertyChanged("ud_config_BulkDeleteFailures");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lk_ud_config_createdby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_ud_config_createdby")]
+		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser lk_ud_config_createdby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_ud_config_createdby", null);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lk_ud_config_createdonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_ud_config_createdonbehalfby")]
+		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser lk_ud_config_createdonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_ud_config_createdonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_ud_config_createdonbehalfby");
+				this.SetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_ud_config_createdonbehalfby", null, value);
+				this.OnPropertyChanged("lk_ud_config_createdonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lk_ud_config_modifiedby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_ud_config_modifiedby")]
+		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser lk_ud_config_modifiedby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_ud_config_modifiedby", null);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lk_ud_config_modifiedonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_ud_config_modifiedonbehalfby")]
+		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser lk_ud_config_modifiedonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_ud_config_modifiedonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_ud_config_modifiedonbehalfby");
+				this.SetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_ud_config_modifiedonbehalfby", null, value);
+				this.OnPropertyChanged("lk_ud_config_modifiedonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 user_ud_config
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owninguser")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("user_ud_config")]
+		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser user_ud_config
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("user_ud_config", null);
+			}
+		}
+		
+		/// <summary>
+		/// Constructor for populating via LINQ queries given a LINQ anonymous type
+		/// <param name="anonymousType">LINQ anonymous type.</param>
+		/// </summary>
+		[System.Diagnostics.DebuggerNonUserCode()]
+		public ud_config(object anonymousType) : 
+				this()
+		{
+            foreach (var p in anonymousType.GetType().GetProperties())
+            {
+                var value = p.GetValue(anonymousType, null);
+                var name = p.Name.ToLower();
+            
+                if (name.EndsWith("enum") && value.GetType().BaseType == typeof(System.Enum))
+                {
+                    value = new Microsoft.Xrm.Sdk.OptionSetValue((int) value);
+                    name = name.Remove(name.Length - "enum".Length);
+                }
+            
+                switch (name)
+                {
+                    case "id":
+                        base.Id = (System.Guid)value;
+                        Attributes["ud_configid"] = base.Id;
+                        break;
+                    case "ud_configid":
+                        var id = (System.Nullable<System.Guid>) value;
+                        if(id == null){ continue; }
+                        base.Id = id.Value;
+                        Attributes[name] = base.Id;
+                        break;
+                    case "formattedvalues":
+                        // Add Support for FormattedValues
+                        FormattedValues.AddRange((Microsoft.Xrm.Sdk.FormattedValueCollection)value);
+                        break;
+                    default:
+                        Attributes[name] = value;
+                        break;
+                }
+            }
+		}
+	}
+	
+	/// <summary>
+	/// Data equivalent to files used in Web development. Web resources provide client-side components that are used to provide custom user interface elements.
+	/// </summary>
+	[System.Runtime.Serialization.DataContractAttribute()]
+	[Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute("webresource")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "8.2.1.8676")]
+	public partial class WebResource : Microsoft.Xrm.Sdk.Entity, System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
+	{
+		
+		public static class Fields
+		{
+			public const string CanBeDeleted = "canbedeleted";
+			public const string ComponentState = "componentstate";
+			public const string Content = "content";
+			public const string ContentJson = "contentjson";
+			public const string CreatedBy = "createdby";
+			public const string CreatedOn = "createdon";
+			public const string CreatedOnBehalfBy = "createdonbehalfby";
+			public const string DependencyXml = "dependencyxml";
+			public const string Description = "description";
+			public const string DisplayName = "displayname";
+			public const string IntroducedVersion = "introducedversion";
+			public const string IsAvailableForMobileOffline = "isavailableformobileoffline";
+			public const string IsCustomizable = "iscustomizable";
+			public const string IsEnabledForMobileClient = "isenabledformobileclient";
+			public const string IsHidden = "ishidden";
+			public const string IsManaged = "ismanaged";
+			public const string LanguageCode = "languagecode";
+			public const string ModifiedBy = "modifiedby";
+			public const string ModifiedOn = "modifiedon";
+			public const string ModifiedOnBehalfBy = "modifiedonbehalfby";
+			public const string Name = "name";
+			public const string OrganizationId = "organizationid";
+			public const string OverwriteTime = "overwritetime";
+			public const string SilverlightVersion = "silverlightversion";
+			public const string SolutionId = "solutionid";
+			public const string VersionNumber = "versionnumber";
+			public const string WebResourceId = "webresourceid";
+			public const string Id = "webresourceid";
+			public const string WebResourceIdUnique = "webresourceidunique";
+			public const string WebResourceType = "webresourcetype";
+			public const string lk_webresourcebase_createdonbehalfby = "lk_webresourcebase_createdonbehalfby";
+			public const string lk_webresourcebase_modifiedonbehalfby = "lk_webresourcebase_modifiedonbehalfby";
+			public const string webresource_createdby = "webresource_createdby";
+			public const string webresource_modifiedby = "webresource_modifiedby";
+		}
+		
+		/// <summary>
+		/// Default Constructor.
+		/// </summary>
+		[System.Diagnostics.DebuggerNonUserCode()]
+		public WebResource() : 
+				base(EntityLogicalName)
+		{
+		}
+		
+		public const string EntityLogicalName = "webresource";
+		
+		public const string PrimaryIdAttribute = "webresourceid";
+		
+		public const string PrimaryNameAttribute = "name";
+		
+		public const int EntityTypeCode = 9333;
+		
+		public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+		
+		public event System.ComponentModel.PropertyChangingEventHandler PropertyChanging;
+		
+		[System.Diagnostics.DebuggerNonUserCode()]
+		private void OnPropertyChanged(string propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		[System.Diagnostics.DebuggerNonUserCode()]
+		private void OnPropertyChanging(string propertyName)
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, new System.ComponentModel.PropertyChangingEventArgs(propertyName));
+			}
+		}
+		
+		/// <summary>
+		/// Information that specifies whether this component can be deleted.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("canbedeleted")]
+		public Microsoft.Xrm.Sdk.BooleanManagedProperty CanBeDeleted
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.BooleanManagedProperty>("canbedeleted");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("CanBeDeleted");
+				this.SetAttributeValue("canbedeleted", value);
+				this.OnPropertyChanged("CanBeDeleted");
+			}
+		}
+		
+		/// <summary>
+		/// For internal use only.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("componentstate")]
+		public Microsoft.Xrm.Sdk.OptionSetValue ComponentState
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("componentstate");
+			}
+		}
+		
+		/// <summary>
+		/// Bytes of the web resource, in Base64 format.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("content")]
+		public string Content
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("content");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Content");
+				this.SetAttributeValue("content", value);
+				this.OnPropertyChanged("Content");
+			}
+		}
+		
+		/// <summary>
+		/// Json representation of the content of the resource.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("contentjson")]
+		public string ContentJson
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("contentjson");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ContentJson");
+				this.SetAttributeValue("contentjson", value);
+				this.OnPropertyChanged("ContentJson");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the user who created the web resource.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
+		public Microsoft.Xrm.Sdk.EntityReference CreatedBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("createdby");
+			}
+		}
+		
+		/// <summary>
+		/// Date and time when the web resource was created.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdon")]
+		public System.Nullable<System.DateTime> CreatedOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("createdon");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the delegate user who created the web resource.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
+		public Microsoft.Xrm.Sdk.EntityReference CreatedOnBehalfBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("createdonbehalfby");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("CreatedOnBehalfBy");
+				this.SetAttributeValue("createdonbehalfby", value);
+				this.OnPropertyChanged("CreatedOnBehalfBy");
+			}
+		}
+		
+		/// <summary>
+		/// For internal use only.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("dependencyxml")]
+		public string DependencyXml
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("dependencyxml");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("DependencyXml");
+				this.SetAttributeValue("dependencyxml", value);
+				this.OnPropertyChanged("DependencyXml");
+			}
+		}
+		
+		/// <summary>
+		/// Description of the web resource.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("description")]
+		public string Description
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("description");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Description");
+				this.SetAttributeValue("description", value);
+				this.OnPropertyChanged("Description");
+			}
+		}
+		
+		/// <summary>
+		/// Display name of the web resource.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("displayname")]
+		public string DisplayName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("displayname");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("DisplayName");
+				this.SetAttributeValue("displayname", value);
+				this.OnPropertyChanged("DisplayName");
+			}
+		}
+		
+		/// <summary>
+		/// Version in which the form is introduced.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("introducedversion")]
+		public string IntroducedVersion
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("introducedversion");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("IntroducedVersion");
+				this.SetAttributeValue("introducedversion", value);
+				this.OnPropertyChanged("IntroducedVersion");
+			}
+		}
+		
+		/// <summary>
+		/// Information that specifies whether this web resource is available for mobile client in offline mode.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isavailableformobileoffline")]
+		public System.Nullable<bool> IsAvailableForMobileOffline
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isavailableformobileoffline");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("IsAvailableForMobileOffline");
+				this.SetAttributeValue("isavailableformobileoffline", value);
+				this.OnPropertyChanged("IsAvailableForMobileOffline");
+			}
+		}
+		
+		/// <summary>
+		/// Information that specifies whether this component can be customized.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("iscustomizable")]
+		public Microsoft.Xrm.Sdk.BooleanManagedProperty IsCustomizable
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.BooleanManagedProperty>("iscustomizable");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("IsCustomizable");
+				this.SetAttributeValue("iscustomizable", value);
+				this.OnPropertyChanged("IsCustomizable");
+			}
+		}
+		
+		/// <summary>
+		/// Information that specifies whether this web resource is enabled for mobile client.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isenabledformobileclient")]
+		public System.Nullable<bool> IsEnabledForMobileClient
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isenabledformobileclient");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("IsEnabledForMobileClient");
+				this.SetAttributeValue("isenabledformobileclient", value);
+				this.OnPropertyChanged("IsEnabledForMobileClient");
+			}
+		}
+		
+		/// <summary>
+		/// Information that specifies whether this component should be hidden.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("ishidden")]
+		public Microsoft.Xrm.Sdk.BooleanManagedProperty IsHidden
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.BooleanManagedProperty>("ishidden");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("IsHidden");
+				this.SetAttributeValue("ishidden", value);
+				this.OnPropertyChanged("IsHidden");
+			}
+		}
+		
+		/// <summary>
+		/// 
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("ismanaged")]
+		public System.Nullable<bool> IsManaged
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("ismanaged");
+			}
+		}
+		
+		/// <summary>
+		/// Language of the web resource.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("languagecode")]
+		public System.Nullable<int> LanguageCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("languagecode");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("LanguageCode");
+				this.SetAttributeValue("languagecode", value);
+				this.OnPropertyChanged("LanguageCode");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the user who last modified the web resource.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
+		public Microsoft.Xrm.Sdk.EntityReference ModifiedBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("modifiedby");
+			}
+		}
+		
+		/// <summary>
+		/// Date and time when the web resource was last modified.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedon")]
+		public System.Nullable<System.DateTime> ModifiedOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("modifiedon");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the delegate user who modified the web resource.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
+		public Microsoft.Xrm.Sdk.EntityReference ModifiedOnBehalfBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("modifiedonbehalfby");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ModifiedOnBehalfBy");
+				this.SetAttributeValue("modifiedonbehalfby", value);
+				this.OnPropertyChanged("ModifiedOnBehalfBy");
+			}
+		}
+		
+		/// <summary>
+		/// Name of the web resource.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("name")]
+		public string Name
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("name");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Name");
+				this.SetAttributeValue("name", value);
+				this.OnPropertyChanged("Name");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the organization associated with the web resource.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
+		public Microsoft.Xrm.Sdk.EntityReference OrganizationId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("organizationid");
+			}
+		}
+		
+		/// <summary>
+		/// For internal use only.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("overwritetime")]
+		public System.Nullable<System.DateTime> OverwriteTime
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("overwritetime");
+			}
+		}
+		
+		/// <summary>
+		/// Silverlight runtime version number required by a silverlight web resource.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("silverlightversion")]
+		public string SilverlightVersion
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("silverlightversion");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("SilverlightVersion");
+				this.SetAttributeValue("silverlightversion", value);
+				this.OnPropertyChanged("SilverlightVersion");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the associated solution.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("solutionid")]
+		public System.Nullable<System.Guid> SolutionId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("solutionid");
+			}
+		}
+		
+		/// <summary>
+		/// 
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("versionnumber")]
+		public System.Nullable<long> VersionNumber
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<long>>("versionnumber");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the web resource.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("webresourceid")]
+		public System.Nullable<System.Guid> WebResourceId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("webresourceid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("WebResourceId");
+				this.SetAttributeValue("webresourceid", value);
+				if (value.HasValue)
+				{
+					base.Id = value.Value;
+				}
+				else
+				{
+					base.Id = System.Guid.Empty;
+				}
+				this.OnPropertyChanged("WebResourceId");
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("webresourceid")]
+		public override System.Guid Id
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return base.Id;
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.WebResourceId = value;
+			}
+		}
+		
+		/// <summary>
+		/// For internal use only.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("webresourceidunique")]
+		public System.Nullable<System.Guid> WebResourceIdUnique
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("webresourceidunique");
+			}
+		}
+		
+		/// <summary>
+		/// Drop-down list for selecting the type of the web resource.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("webresourcetype")]
+		public Microsoft.Xrm.Sdk.OptionSetValue WebResourceType
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("webresourcetype");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("WebResourceType");
+				this.SetAttributeValue("webresourcetype", value);
+				this.OnPropertyChanged("WebResourceType");
+			}
+		}
+		
+		/// <summary>
+		/// 1:N solution_configuration_webresource
+		/// </summary>
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("solution_configuration_webresource")]
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.Solution> solution_configuration_webresource
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.Solution>("solution_configuration_webresource", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("solution_configuration_webresource");
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.Solution>("solution_configuration_webresource", null, value);
+				this.OnPropertyChanged("solution_configuration_webresource");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lk_webresourcebase_createdonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_webresourcebase_createdonbehalfby")]
+		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser lk_webresourcebase_createdonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_webresourcebase_createdonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_webresourcebase_createdonbehalfby");
+				this.SetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_webresourcebase_createdonbehalfby", null, value);
+				this.OnPropertyChanged("lk_webresourcebase_createdonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 lk_webresourcebase_modifiedonbehalfby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_webresourcebase_modifiedonbehalfby")]
+		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser lk_webresourcebase_modifiedonbehalfby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_webresourcebase_modifiedonbehalfby", null);
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("lk_webresourcebase_modifiedonbehalfby");
+				this.SetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_webresourcebase_modifiedonbehalfby", null, value);
+				this.OnPropertyChanged("lk_webresourcebase_modifiedonbehalfby");
+			}
+		}
+		
+		/// <summary>
+		/// N:1 webresource_createdby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("webresource_createdby")]
+		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser webresource_createdby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("webresource_createdby", null);
+			}
+		}
+		
+		/// <summary>
+		/// N:1 webresource_modifiedby
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
+		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("webresource_modifiedby")]
+		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser webresource_modifiedby
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("webresource_modifiedby", null);
+			}
+		}
+		
+		/// <summary>
+		/// Constructor for populating via LINQ queries given a LINQ anonymous type
+		/// <param name="anonymousType">LINQ anonymous type.</param>
+		/// </summary>
+		[System.Diagnostics.DebuggerNonUserCode()]
+		public WebResource(object anonymousType) : 
+				this()
+		{
+            foreach (var p in anonymousType.GetType().GetProperties())
+            {
+                var value = p.GetValue(anonymousType, null);
+                var name = p.Name.ToLower();
+            
+                if (name.EndsWith("enum") && value.GetType().BaseType == typeof(System.Enum))
+                {
+                    value = new Microsoft.Xrm.Sdk.OptionSetValue((int) value);
+                    name = name.Remove(name.Length - "enum".Length);
+                }
+            
+                switch (name)
+                {
+                    case "id":
+                        base.Id = (System.Guid)value;
+                        Attributes["webresourceid"] = base.Id;
+                        break;
+                    case "webresourceid":
+                        var id = (System.Nullable<System.Guid>) value;
+                        if(id == null){ continue; }
+                        base.Id = id.Value;
+                        Attributes[name] = base.Id;
+                        break;
+                    case "formattedvalues":
+                        // Add Support for FormattedValues
+                        FormattedValues.AddRange((Microsoft.Xrm.Sdk.FormattedValueCollection)value);
+                        break;
+                    default:
+                        Attributes[name] = value;
+                        break;
+                }
+            }
+		}
+	}
+	
 	/// <summary>
 	/// Represents a source of entities bound to a CRM service. It tracks and manages changes made to the retrieved entities.
 	/// </summary>
-	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "8.2.0.749")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "8.2.1.8676")]
 	public partial class CIContext : Microsoft.Xrm.Sdk.Client.OrganizationServiceContext
 	{
 		
@@ -7457,6 +20424,54 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		public CIContext(Microsoft.Xrm.Sdk.IOrganizationService service) : 
 				base(service)
 		{
+		}
+		
+		/// <summary>
+		/// Gets a binding to the set of all <see cref="Xrm.Framework.CI.PowerShell.Cmdlets.Common.ACIViewMapper"/> entities.
+		/// </summary>
+		public System.Linq.IQueryable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.ACIViewMapper> ACIViewMapperSet
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.CreateQuery<Xrm.Framework.CI.PowerShell.Cmdlets.Common.ACIViewMapper>();
+			}
+		}
+		
+		/// <summary>
+		/// Gets a binding to the set of all <see cref="Xrm.Framework.CI.PowerShell.Cmdlets.Common.AppConfig"/> entities.
+		/// </summary>
+		public System.Linq.IQueryable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.AppConfig> AppConfigSet
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.CreateQuery<Xrm.Framework.CI.PowerShell.Cmdlets.Common.AppConfig>();
+			}
+		}
+		
+		/// <summary>
+		/// Gets a binding to the set of all <see cref="Xrm.Framework.CI.PowerShell.Cmdlets.Common.AppConfigInstance"/> entities.
+		/// </summary>
+		public System.Linq.IQueryable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.AppConfigInstance> AppConfigInstanceSet
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.CreateQuery<Xrm.Framework.CI.PowerShell.Cmdlets.Common.AppConfigInstance>();
+			}
+		}
+		
+		/// <summary>
+		/// Gets a binding to the set of all <see cref="Xrm.Framework.CI.PowerShell.Cmdlets.Common.AppConfigMaster"/> entities.
+		/// </summary>
+		public System.Linq.IQueryable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.AppConfigMaster> AppConfigMasterSet
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.CreateQuery<Xrm.Framework.CI.PowerShell.Cmdlets.Common.AppConfigMaster>();
+			}
 		}
 		
 		/// <summary>
@@ -7508,6 +20523,42 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		}
 		
 		/// <summary>
+		/// Gets a binding to the set of all <see cref="Xrm.Framework.CI.PowerShell.Cmdlets.Common.EntityDataProvider"/> entities.
+		/// </summary>
+		public System.Linq.IQueryable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.EntityDataProvider> EntityDataProviderSet
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.CreateQuery<Xrm.Framework.CI.PowerShell.Cmdlets.Common.EntityDataProvider>();
+			}
+		}
+		
+		/// <summary>
+		/// Gets a binding to the set of all <see cref="Xrm.Framework.CI.PowerShell.Cmdlets.Common.EntityDataSource"/> entities.
+		/// </summary>
+		public System.Linq.IQueryable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.EntityDataSource> EntityDataSourceSet
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.CreateQuery<Xrm.Framework.CI.PowerShell.Cmdlets.Common.EntityDataSource>();
+			}
+		}
+		
+		/// <summary>
+		/// Gets a binding to the set of all <see cref="Xrm.Framework.CI.PowerShell.Cmdlets.Common.ExpanderEvent"/> entities.
+		/// </summary>
+		public System.Linq.IQueryable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.ExpanderEvent> ExpanderEventSet
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.CreateQuery<Xrm.Framework.CI.PowerShell.Cmdlets.Common.ExpanderEvent>();
+			}
+		}
+		
+		/// <summary>
 		/// Gets a binding to the set of all <see cref="Xrm.Framework.CI.PowerShell.Cmdlets.Common.ImportJob"/> entities.
 		/// </summary>
 		public System.Linq.IQueryable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.ImportJob> ImportJobSet
@@ -7532,6 +20583,114 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		}
 		
 		/// <summary>
+		/// Gets a binding to the set of all <see cref="Xrm.Framework.CI.PowerShell.Cmdlets.Common.msdyn_odatav4ds"/> entities.
+		/// </summary>
+		public System.Linq.IQueryable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.msdyn_odatav4ds> msdyn_odatav4dsSet
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.CreateQuery<Xrm.Framework.CI.PowerShell.Cmdlets.Common.msdyn_odatav4ds>();
+			}
+		}
+		
+		/// <summary>
+		/// Gets a binding to the set of all <see cref="Xrm.Framework.CI.PowerShell.Cmdlets.Common.NavigationSetting"/> entities.
+		/// </summary>
+		public System.Linq.IQueryable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.NavigationSetting> NavigationSettingSet
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.CreateQuery<Xrm.Framework.CI.PowerShell.Cmdlets.Common.NavigationSetting>();
+			}
+		}
+		
+		/// <summary>
+		/// Gets a binding to the set of all <see cref="Xrm.Framework.CI.PowerShell.Cmdlets.Common.OfflineCommandDefinition"/> entities.
+		/// </summary>
+		public System.Linq.IQueryable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.OfflineCommandDefinition> OfflineCommandDefinitionSet
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.CreateQuery<Xrm.Framework.CI.PowerShell.Cmdlets.Common.OfflineCommandDefinition>();
+			}
+		}
+		
+		/// <summary>
+		/// Gets a binding to the set of all <see cref="Xrm.Framework.CI.PowerShell.Cmdlets.Common.OrgInsightsNotification"/> entities.
+		/// </summary>
+		public System.Linq.IQueryable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.OrgInsightsNotification> OrgInsightsNotificationSet
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.CreateQuery<Xrm.Framework.CI.PowerShell.Cmdlets.Common.OrgInsightsNotification>();
+			}
+		}
+		
+		/// <summary>
+		/// Gets a binding to the set of all <see cref="Xrm.Framework.CI.PowerShell.Cmdlets.Common.PluginAssembly"/> entities.
+		/// </summary>
+		public System.Linq.IQueryable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.PluginAssembly> PluginAssemblySet
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.CreateQuery<Xrm.Framework.CI.PowerShell.Cmdlets.Common.PluginAssembly>();
+			}
+		}
+		
+		/// <summary>
+		/// Gets a binding to the set of all <see cref="Xrm.Framework.CI.PowerShell.Cmdlets.Common.PluginType"/> entities.
+		/// </summary>
+		public System.Linq.IQueryable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.PluginType> PluginTypeSet
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.CreateQuery<Xrm.Framework.CI.PowerShell.Cmdlets.Common.PluginType>();
+			}
+		}
+		
+		/// <summary>
+		/// Gets a binding to the set of all <see cref="Xrm.Framework.CI.PowerShell.Cmdlets.Common.SdkMessageProcessingStep"/> entities.
+		/// </summary>
+		public System.Linq.IQueryable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SdkMessageProcessingStep> SdkMessageProcessingStepSet
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.CreateQuery<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SdkMessageProcessingStep>();
+			}
+		}
+		
+		/// <summary>
+		/// Gets a binding to the set of all <see cref="Xrm.Framework.CI.PowerShell.Cmdlets.Common.SdkMessageProcessingStepImage"/> entities.
+		/// </summary>
+		public System.Linq.IQueryable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SdkMessageProcessingStepImage> SdkMessageProcessingStepImageSet
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.CreateQuery<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SdkMessageProcessingStepImage>();
+			}
+		}
+		
+		/// <summary>
+		/// Gets a binding to the set of all <see cref="Xrm.Framework.CI.PowerShell.Cmdlets.Common.SdkMessageProcessingStepSecureConfig"/> entities.
+		/// </summary>
+		public System.Linq.IQueryable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SdkMessageProcessingStepSecureConfig> SdkMessageProcessingStepSecureConfigSet
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.CreateQuery<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SdkMessageProcessingStepSecureConfig>();
+			}
+		}
+		
+		/// <summary>
 		/// Gets a binding to the set of all <see cref="Xrm.Framework.CI.PowerShell.Cmdlets.Common.Solution"/> entities.
 		/// </summary>
 		public System.Linq.IQueryable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.Solution> SolutionSet
@@ -7544,6 +20703,18 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		}
 		
 		/// <summary>
+		/// Gets a binding to the set of all <see cref="Xrm.Framework.CI.PowerShell.Cmdlets.Common.SuggestionCardTemplate"/> entities.
+		/// </summary>
+		public System.Linq.IQueryable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SuggestionCardTemplate> SuggestionCardTemplateSet
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.CreateQuery<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SuggestionCardTemplate>();
+			}
+		}
+		
+		/// <summary>
 		/// Gets a binding to the set of all <see cref="Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser"/> entities.
 		/// </summary>
 		public System.Linq.IQueryable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser> SystemUserSet
@@ -7552,6 +20723,30 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 			get
 			{
 				return this.CreateQuery<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>();
+			}
+		}
+		
+		/// <summary>
+		/// Gets a binding to the set of all <see cref="Xrm.Framework.CI.PowerShell.Cmdlets.Common.ud_config"/> entities.
+		/// </summary>
+		public System.Linq.IQueryable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.ud_config> ud_configSet
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.CreateQuery<Xrm.Framework.CI.PowerShell.Cmdlets.Common.ud_config>();
+			}
+		}
+		
+		/// <summary>
+		/// Gets a binding to the set of all <see cref="Xrm.Framework.CI.PowerShell.Cmdlets.Common.WebResource"/> entities.
+		/// </summary>
+		public System.Linq.IQueryable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.WebResource> WebResourceSet
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.CreateQuery<Xrm.Framework.CI.PowerShell.Cmdlets.Common.WebResource>();
 			}
 		}
 	}
