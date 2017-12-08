@@ -19,8 +19,8 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
     ///   <para>Updates a Plugin Assembly.</para>
     /// </example>
     /// <para type="link" uri="http://msdn.microsoft.com/en-us/library/microsoft.xrm.sdk.messages.updaterequest.aspx">UpdateRequest.</para>
-    [Cmdlet(VerbsCommon.Set, "PluginAssembly")]
-    public class SetPluginAssembly : XrmCommandBase
+    [Cmdlet(VerbsCommon.Set, "XrmPluginAssembly")]
+    public class SetXrmPluginAssembly : XrmCommandBase
     {
         #region Parameters
 

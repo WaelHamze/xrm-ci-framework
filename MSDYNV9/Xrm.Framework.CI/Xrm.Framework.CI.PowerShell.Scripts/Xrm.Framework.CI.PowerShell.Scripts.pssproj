@@ -40,6 +40,7 @@
     <Compile Include="PublishCustomizations.ps1" />
     <Compile Include="BackupOnlineInstance.ps1" />
     <Compile Include="RestoreOnlineInstance.ps1" />
+    <Compile Include="UpdatePluginAssembly.ps1" />
     <Compile Include="UpdateSecureConfiguration.ps1" />
     <Compile Include="UpdateSolutionVersionInCRM.ps1" />
     <Compile Include="WaitForCRMOperation.ps1" />
