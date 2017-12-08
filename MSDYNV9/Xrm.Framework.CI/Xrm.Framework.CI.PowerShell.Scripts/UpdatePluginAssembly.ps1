@@ -29,7 +29,7 @@ Write-Verbose "Imported CIToolkit"
 
 Write-Host "Updating Plugin Assembly: $AssemblyPath"
 
-Set-XrmPluginAssembly -Path $AssemblyPath -ConnectionString $CrmConnectionString -Verbose
+Set-XrmPluginAssembly -Path $AssemblyPath -ConnectionString $CrmConnectionString -Timeout $Timeout -Verbose
 
 Write-Host "Updated Plugin Assembly"
 
