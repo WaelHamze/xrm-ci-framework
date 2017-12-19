@@ -2,7 +2,8 @@
 <package >
   <metadata>
     <id>XrmCIFramework</id>
-    <version>$version$</version>
+    <version>9.0.0.0</version>
+    <!--<version>$version$</version>-->
     <title>Xrm CI Framework</title>
     <authors>Wael Hamze</authors>
     <owners>WaelHamze</owners>
@@ -18,5 +19,10 @@
   <files>
     <file src="readme.txt" target="" />
     <file src="..\Xrm.Framework.CI.PowerShell.Scripts\*.ps1" target="tools" />
+    <file src="bin\release\Microsoft.Crm.Sdk.Proxy.dll" target="tools" />
+    <file src="bin\release\Microsoft.IdentityModel.Clients.ActiveDirectory.dll" target="tools" />
+    <file src="bin\release\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll" target="tools" />
+    <file src="bin\release\Microsoft.Xrm.Sdk.dll" target="tools" />
+    <file src="*.psd1" target="tools" />
   </files>
 </package>
