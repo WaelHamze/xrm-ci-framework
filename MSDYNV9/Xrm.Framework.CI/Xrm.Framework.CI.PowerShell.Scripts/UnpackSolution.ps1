@@ -1,5 +1,5 @@
 ﻿#
-# Filename: ExtractCustomizations.ps1
+# Filename: UnpackSolution.ps1
 #
 param([string]$solutionPackager, #The full path to the solutionpackager.exe
 [string]$solutionFilesFolder, #The folder to extract the CRM solution
@@ -10,7 +10,7 @@ param([string]$solutionPackager, #The full path to the solutionpackager.exe
 
 $ErrorActionPreference = "Stop"
 
-Write-Verbose 'Entering ExtractCustomizations.ps1'
+Write-Verbose 'Entering UnpackSolution.ps1'
 
 Write-Verbose "Solution Packager = $solutionPackager"
 Write-Verbose "Solution Files Folder = $solutionFilesFolder"
@@ -53,10 +53,10 @@ else
     }
 	else
 	{
-		Write-Host "Solution Pack Completed Successfully"
+		Write-Host "Solution Unpack Completed Successfully"
 	}
 }
 
 # End of script
 
-Write-Verbose 'Leaving ExtractCustomizations.ps1'
+Write-Verbose 'Leaving UnpackSolution.ps1'
