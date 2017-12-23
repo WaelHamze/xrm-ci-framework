@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F5034706-568F-408A-B7B3-4D38C6DB8A32}") = "Xrm.Framework.CI.PowerShell.Scripts", "Xrm.Framework.CI.PowerShell.Scripts\Xrm.Framework.CI.PowerShell.Scripts.pssproj", "{26E7A989-C329-4B54-A80D-200FC23306B9}"
 EndProject
@@ -80,6 +80,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MSCRMSetVersion", "MSCRMSet
 		Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMSetVersion\task.json = Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMSetVersion\task.json
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MSCRMUpdatePluginAssembly", "MSCRMUpdatePluginAssembly", "{2E36305A-6E24-40FF-8DF9-46815ED4553E}"
+	ProjectSection(SolutionItems) = preProject
+		Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMUpdatePluginAssembly\MSCRMUpdatePluginAssembly.ps1 = Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMUpdatePluginAssembly\MSCRMUpdatePluginAssembly.ps1
+		Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMUpdatePluginAssembly\task.json = Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMUpdatePluginAssembly\task.json
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -111,5 +117,9 @@ Global
 		{CE2E80E0-3570-4E48-8810-FDD6276D6BD1} = {0F51EB44-F666-43BE-BD77-E0E00C2C0347}
 		{83E4A838-01DB-4D10-BA5C-B1D93DB546DC} = {0F51EB44-F666-43BE-BD77-E0E00C2C0347}
 		{4FD15793-4498-462F-A5AA-B75E4F6D87F4} = {BBFA729B-4215-487C-BD89-FD77A7B54C72}
+		{2E36305A-6E24-40FF-8DF9-46815ED4553E} = {BBFA729B-4215-487C-BD89-FD77A7B54C72}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D53571E8-D671-4839-8010-A9AA5FC6AFA4}
 	EndGlobalSection
 EndGlobal

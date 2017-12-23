@@ -34,6 +34,7 @@
     <Compile Include="PackSolution.ps1" />
     <Compile Include="Ping.ps1" />
     <Compile Include="PublishCustomizations.ps1" />
+    <Compile Include="UpdatePluginAssembly.ps1" />
     <Compile Include="UpdateSolutionVersionInCRM.ps1" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
