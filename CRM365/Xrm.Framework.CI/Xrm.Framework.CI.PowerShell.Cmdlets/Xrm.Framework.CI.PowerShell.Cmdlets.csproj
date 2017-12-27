@@ -106,6 +106,8 @@
     <Compile Include="AddXrmEntityCommand.cs" />
     <Compile Include="Common\Entities.cs" />
     <Compile Include="Common\XrmSolutionInfo.cs" />
+    <Compile Include="ImportXrmAccessTeamTemplatesCommand.cs" />
+    <Compile Include="ExportXrmAccessTeamTemplatesCommand.cs" />
     <Compile Include="ExportXrmSolutionCommand.cs" />
     <Compile Include="GetXrmEntitiesCommand.cs" />
     <Compile Include="GetXrmEntityCommand.cs" />
