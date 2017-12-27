@@ -1,0 +1,93 @@
+{
+  "id": "77FB5553-32FE-471D-8E77-AE540BF7A32C",
+  "name": "MSCRMSetOnlineInstanceAdminMode",
+  "friendlyName": "MSCRM Set Online Instance Admin Mode",
+  "description": "Enable/Disable administration mode on Online Instances",
+  "author": "Wael Hamze",
+  "helpMarkDown": "This task uses the Microsoft.Xrm.OnlineManagementAPI: https://www.powershellgallery.com/packages/Microsoft.Xrm.OnlineManagementAPI",
+  "category": "Deploy",
+  "visibility": [
+    "Build",
+    "Release"
+  ],
+  "demands": [ ],
+  "version": {
+    "Major": "8",
+    "Minor": "0",
+    "Patch": "5"
+  },
+  "minimumAgentVersion": "1.95.0",
+  "instanceNameFormat": "Set $(instanceName) Admin Mode: $(enable)",
+  "groups": [
+    {
+      "name": "azureStorageInfo",
+      "displayName": "Azure Storage Info",
+      "isExpanded": false
+    }
+  ],
+  "inputs": [
+    {
+      "name": "apiUrl",
+      "type": "string",
+      "label": "ApiUrl",
+      "defaultValue": "https://admin.services.crm[n].dynamics.com",
+      "required": true,
+      "helpMarkDown": "Use the Service Url as per documentation: https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/online-management-api/get-started-online-management-api"
+    },
+    {
+      "name": "username",
+      "type": "string",
+      "label": "Username",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "The Dynamics 365 username"
+    },
+    {
+      "name": "password",
+      "type": "string",
+      "label": "Password",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "The Dynamics 365 password"
+    },
+    {
+      "name": "instanceName",
+      "type": "string",
+      "label": "Instance Name",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "Name used in the Dynamics 365 domain: https://[instancename].crm[n].dynamics.com"
+    },
+    {
+      "name": "enable",
+      "type": "boolean",
+      "label": "Enable",
+      "defaultValue": "false",
+      "required": true,
+      "helpMarkDown": "As per documentation: https://docs.microsoft.com/en-us/powershell/module/microsoft.xrm.onlinemanagementapi/disable-crmadminmode?view=dynamics365ce-ps"
+    },
+    {
+      "name": "allowBackgroundOperations",
+      "type": "boolean",
+      "label": "Allow Background Operations",
+      "defaultValue": "",
+      "required": false,
+      "helpMarkDown": "As per documentation: https://docs.microsoft.com/en-us/powershell/module/microsoft.xrm.onlinemanagementapi/enable-crmadminmode?view=dynamics365ce-ps",
+      "visibleRule": "enable = true"
+    },
+    {
+      "name": "notificationText",
+      "type": "string",
+      "label": "Notification Text",
+      "defaultValue": "",
+      "required": false,
+      "helpMarkDown": "As per documentation: https://docs.microsoft.com/en-us/powershell/module/microsoft.xrm.onlinemanagementapi/enable-crmadminmode?view=dynamics365ce-ps",
+      "visibleRule": "enable = true"
+    }
+  ],
+  "execution": {
+    "PowerShell3": {
+      "target": "MSCRMSetOnlineInstanceAdminMode.ps1"
+    }
+  }
+}

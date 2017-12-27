@@ -1,0 +1,206 @@
+{
+  "id": "015E2E58-9C77-4CBC-A9C1-A28158165365",
+  "name": "MSCRMExportSolution",
+  "friendlyName": "MSCRM Export Solution",
+  "description": "Exports a CRM Solution from the source CRM environment",
+  "author": "Wael Hamze",
+  "helpMarkDown": "More information here: https://msdn.microsoft.com/en-us/library/microsoft.crm.sdk.messages.exportsolutionrequest.aspx",
+  "category": "Build",
+  "visibility": [
+    "Build",
+    "Release"
+  ],
+  "demands": [ ],
+  "version": {
+    "Major": "9",
+    "Minor": "0",
+    "Patch": "1"
+  },
+  "minimumAgentVersion": "1.95.0",
+  "instanceNameFormat": "MSCRM Export Solution: $(solutionName)",
+  "groups": [
+    {
+      "name": "exportOptions",
+      "displayName": "Additional Export Options",
+      "isExpanded": false
+    }
+  ],
+  "inputs": [
+    {
+      "name": "crmConnectionString",
+      "type": "string",
+      "label": "CRM Connection String",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "For more information on format: https://msdn.microsoft.com/en-gb/library/mt608573.aspx"
+    },
+    {
+      "name": "solutionName",
+      "type": "string",
+      "label": "Solution Name",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "The unique name of the solution you want to export"
+    },
+    {
+      "name": "exportManaged",
+      "type": "boolean",
+      "label": "Export Managed",
+      "defaultValue": "false",
+      "required": true,
+      "helpMarkDown": "Set true to export the managed solution"
+    },
+    {
+      "name": "exportUnmanaged",
+      "type": "boolean",
+      "label": "Export Unmanaged",
+      "defaultValue": "true",
+      "required": true,
+      "helpMarkDown": "Set true to export the unmanaged solution"
+    },
+    {
+      "name": "targetVersion",
+      "type": "string",
+      "label": "Target Version",
+      "defaultValue": "",
+      "required": false,
+      "helpMarkDown": "Check task help for more information"
+    },
+    {
+      "name": "updateVersion",
+      "type": "boolean",
+      "label": "Update Version",
+      "defaultValue": "false",
+      "required": false,
+      "helpMarkDown": "Sets the solution version in the source environment to the build number. build number format must end with '_x.x.x.x' e.g. '$(BuildDefinitionName)_5.0.0$(Rev:.r)'"
+    },
+    {
+      "name": "includeVersionInSolutionFile",
+      "type": "boolean",
+      "label": "Include Version in Filename",
+      "defaultValue": "false",
+      "required": false,
+      "helpMarkDown": "Set to true to include the version number in the generated solution file name"
+    },
+    {
+      "name": "outputPath",
+      "type": "filePath",
+      "label": "Output Path",
+      "defaultValue": "$(build.binariesdirectory)",
+      "required": true,
+      "helpMarkDown": "The path on the agent machine where you want the solutions to be placed"
+    },
+    {
+      "name": "crmConnectionTimeout",
+      "type": "string",
+      "label": "Crm Connection Timeout",
+      "defaultValue": "120",
+      "required": false,
+      "helpMarkDown": "The Crm connection timeout in seconds"
+    },
+    {
+      "name": "exportAutoNumberingSettings",
+      "type": "boolean",
+      "label": "Export Auto Numbering Settings",
+      "defaultValue": "false",
+      "required": false,
+      "helpMarkDown": "Check task help for more information",
+      "groupName": "exportOptions"
+    },
+    {
+      "name": "exportCalendarSettings",
+      "type": "boolean",
+      "label": "Export Calendar Settings",
+      "defaultValue": "false",
+      "required": false,
+      "helpMarkDown": "Check task help for more information",
+      "groupName": "exportOptions"
+    },
+    {
+      "name": "exportCustomizationSettings",
+      "type": "boolean",
+      "label": "Export Customization Settings",
+      "defaultValue": "false",
+      "required": false,
+      "helpMarkDown": "Check task help for more information",
+      "groupName": "exportOptions"
+    },
+    {
+      "name": "exportEmailTrackingSettings",
+      "type": "boolean",
+      "label": "Export Email Tracking Settings",
+      "defaultValue": "false",
+      "required": false,
+      "helpMarkDown": "Check task help for more information",
+      "groupName": "exportOptions"
+    },
+    {
+      "name": "exportExternalApplications",
+      "type": "boolean",
+      "label": "Export External Applications",
+      "defaultValue": "false",
+      "required": false,
+      "helpMarkDown": "Check task help for more information",
+      "groupName": "exportOptions"
+    },
+    {
+      "name": "exportGeneralSettings",
+      "type": "boolean",
+      "label": "Export General Settings",
+      "defaultValue": "false",
+      "required": false,
+      "helpMarkDown": "Check task help for more information",
+      "groupName": "exportOptions"
+    },
+    {
+      "name": "exportIsvConfig",
+      "type": "boolean",
+      "label": "Export Isv Config",
+      "defaultValue": "false",
+      "required": false,
+      "helpMarkDown": "Check task help for more information",
+      "groupName": "exportOptions"
+    },
+    {
+      "name": "exportMarketingSettings",
+      "type": "boolean",
+      "label": "Export Marketing Settings",
+      "defaultValue": "false",
+      "required": false,
+      "helpMarkDown": "Check task help for more information",
+      "groupName": "exportOptions"
+    },
+    {
+      "name": "exportOutlookSynchronizationSettings",
+      "type": "boolean",
+      "label": "Export Outlook Synchronization Settings",
+      "defaultValue": "false",
+      "required": false,
+      "helpMarkDown": "Check task help for more information",
+      "groupName": "exportOptions"
+    },
+    {
+      "name": "exportRelationshipRoles",
+      "type": "boolean",
+      "label": "Export Relationship Roles",
+      "defaultValue": "false",
+      "required": false,
+      "helpMarkDown": "Check task help for more information",
+      "groupName": "exportOptions"
+    },
+    {
+      "name": "exportSales",
+      "type": "boolean",
+      "label": "Export Sales",
+      "defaultValue": "false",
+      "required": false,
+      "helpMarkDown": "Check task help for more information",
+      "groupName": "exportOptions"
+    }
+  ],
+  "execution": {
+    "PowerShell3": {
+      "target": "MSCRMExportSolution.ps1"
+    }
+  }
+}

@@ -1,0 +1,339 @@
+﻿<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.5\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.5\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{FC7C6A46-6D82-4D7B-A947-91876185D62E}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Xrm.CI.Framework.BuildTools</RootNamespace>
+    <AssemblyName>Xrm.CI.Framework.BuildTools</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.5\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="icon.png" />
+    <Content Include="icon_128x128.png" />
+    <Content Include="Lib\Microsoft.CrmSdk.CoreTools\8.2.0\CrmSvcUtil.exe.config" />
+    <Content Include="Lib\Microsoft.CrmSdk.CoreTools\8.2.0\LicenseTerms.docx" />
+    <Content Include="Lib\Microsoft.CrmSdk.CoreTools\9.0.0\CrmSvcUtil.exe.config" />
+    <Content Include="Lib\Microsoft.CrmSdk.CoreTools\9.0.0\LicenseTerms.docx" />
+    <Content Include="Lib\Microsoft.CrmSdk.XrmTooling.PackageDeployment.PowerShell\8.2.0\RegisterXRMTooling.ps1" />
+    <Content Include="Lib\Microsoft.CrmSdk.XrmTooling.PackageDeployment.PowerShell\8.2.0\Third Party Notices for Dynamics 365 SDK.docx" />
+    <Content Include="Lib\Microsoft.CrmSdk.XrmTooling.PackageDeployment.PowerShell\9.0.0\Microsoft.Xrm.Tooling.PackageDeployment.Powershell.psd1" />
+    <Content Include="Lib\Microsoft.CrmSdk.XrmTooling.PackageDeployment.PowerShell\9.0.0\Microsoft.Xrm.Tooling.PackageDeployment.Powershell.psm1" />
+    <Content Include="Lib\Microsoft.Xrm.OnlineManagementAPI\1.0.0\Microsoft.Xrm.OnlineManagementAPI.cat" />
+    <Content Include="Lib\Microsoft.Xrm.OnlineManagementAPI\1.0.0\Microsoft.Xrm.OnlineManagementAPI.psd1" />
+    <Content Include="Lib\Microsoft.Xrm.OnlineManagementAPI\1.0.0\Microsoft.Xrm.OnlineManagementAPI.psm1" />
+    <Content Include="Lib\VstsTaskSdk\0.10.0\FindFunctions.ps1" />
+    <Content Include="Lib\VstsTaskSdk\0.10.0\InputFunctions.ps1" />
+    <Content Include="Lib\VstsTaskSdk\0.10.0\LegacyFindFunctions.ps1" />
+    <Content Include="Lib\VstsTaskSdk\0.10.0\lib.json" />
+    <Content Include="Lib\VstsTaskSdk\0.10.0\LocalizationFunctions.ps1" />
+    <Content Include="Lib\VstsTaskSdk\0.10.0\LoggingCommandFunctions.ps1" />
+    <Content Include="Lib\VstsTaskSdk\0.10.0\LongPathFunctions.ps1" />
+    <Content Include="Lib\VstsTaskSdk\0.10.0\OutFunctions.ps1" />
+    <Content Include="Lib\VstsTaskSdk\0.10.0\ServerOMFunctions.ps1" />
+    <Content Include="Lib\VstsTaskSdk\0.10.0\ToolFunctions.ps1" />
+    <Content Include="Lib\VstsTaskSdk\0.10.0\TraceFunctions.ps1" />
+    <Content Include="Lib\VstsTaskSdk\0.10.0\VstsTaskSdk.psd1" />
+    <Content Include="Lib\VstsTaskSdk\0.10.0\VstsTaskSdk.psm1" />
+    <Content Include="Lib\xRMCIFramework\8.0.13\BackupOnlineInstance.ps1" />
+    <Content Include="Lib\xRMCIFramework\8.0.13\DeleteOnlineInstance.ps1" />
+    <Content Include="Lib\xRMCIFramework\8.0.13\DeployPackage.ps1" />
+    <Content Include="Lib\xRMCIFramework\8.0.13\ExportSolution.ps1" />
+    <Content Include="Lib\xRMCIFramework\8.0.13\ExtractCustomizations.ps1" />
+    <Content Include="Lib\xRMCIFramework\8.0.13\ImportSolution.ps1" />
+    <Content Include="Lib\xRMCIFramework\8.0.13\OnlineInstanceFunctions.ps1" />
+    <Content Include="Lib\xRMCIFramework\8.0.13\PackSolution.ps1" />
+    <Content Include="Lib\xRMCIFramework\8.0.13\Ping.ps1" />
+    <Content Include="Lib\xRMCIFramework\8.0.13\ProvisionOnlineInstance.ps1" />
+    <Content Include="Lib\xRMCIFramework\8.0.13\PublishCustomizations.ps1" />
+    <Content Include="Lib\xRMCIFramework\8.0.13\SetOnlineInstanceAdminMode.ps1" />
+    <Content Include="Lib\xRMCIFramework\8.0.13\UpdateSecureConfiguration.ps1" />
+    <Content Include="Lib\xRMCIFramework\8.0.13\UpdateSolutionVersionInCRM.ps1" />
+    <Content Include="Lib\xRMCIFramework\8.0.13\WaitForCRMOperation.ps1" />
+    <Content Include="Lib\xRMCIFramework\8.0.13\Xrm.Framework.CI.PowerShell.Cmdlets.dll.config" />
+    <Content Include="Lib\xRMCIFramework\9.0.0\BackupOnlineInstance.ps1" />
+    <Content Include="Lib\xRMCIFramework\9.0.0\DeleteOnlineInstance.ps1" />
+    <Content Include="Lib\xRMCIFramework\9.0.0\DeployPackage.ps1" />
+    <Content Include="Lib\xRMCIFramework\9.0.0\ExportSolution.ps1" />
+    <Content Include="Lib\xRMCIFramework\9.0.0\ExtractCustomizations.ps1" />
+    <Content Include="Lib\xRMCIFramework\9.0.0\ImportSolution.ps1" />
+    <Content Include="Lib\xRMCIFramework\9.0.0\OnlineInstanceFunctions.ps1" />
+    <Content Include="Lib\xRMCIFramework\9.0.0\PackSolution.ps1" />
+    <Content Include="Lib\xRMCIFramework\9.0.0\Ping.ps1" />
+    <Content Include="Lib\xRMCIFramework\9.0.0\ProvisionOnlineInstance.ps1" />
+    <Content Include="Lib\xRMCIFramework\9.0.0\PublishCustomizations.ps1" />
+    <Content Include="Lib\xRMCIFramework\9.0.0\RestoreOnlineInstance.ps1" />
+    <Content Include="Lib\xRMCIFramework\9.0.0\SetOnlineInstanceAdminMode.ps1" />
+    <Content Include="Lib\xRMCIFramework\9.0.0\UpdateSecureConfiguration.ps1" />
+    <Content Include="Lib\xRMCIFramework\9.0.0\UpdateSolutionVersionInCRM.ps1" />
+    <Content Include="Lib\xRMCIFramework\9.0.0\WaitForCRMOperation.ps1" />
+    <Content Include="Lib\xRMCIFramework\9.0.0\Xrm.Framework.CI.PowerShell.Cmdlets.dll.config" />
+    <Content Include="license.txt" />
+    <Content Include="Screenshots\OnlineBuildArtifacts.png" />
+    <Content Include="Screenshots\OnlineBuildDefinition.png" />
+    <Content Include="Screenshots\ThirdPartyReleaseDefinition.png" />
+    <Content Include="overview.md" />
+    <Content Include="Make.ps1" />
+    <Content Include="DeployTask.ps1" />
+    <Content Include="Package.ps1" />
+    <None Include="packages.config" />
+    <Content Include="Tasks\MSCRMBackupOnlineInstance\MSCRMBackupOnlineInstance.ps1" />
+    <Content Include="Tasks\MSCRMBackupOnlineInstance\task.json" />
+    <Content Include="Tasks\MSCRMDeleteOnlineInstance\MSCRMDeleteOnlineInstance.ps1" />
+    <Content Include="Tasks\MSCRMDeleteOnlineInstance\task.json" />
+    <Content Include="Tasks\MSCRMExportSolution\MSCRMExportSolution.ps1" />
+    <Content Include="Tasks\MSCRMExportSolution\task.json" />
+    <Content Include="Tasks\MSCRMGetOnlineInstanceByName\MSCRMGetOnlineInstanceByName.ps1" />
+    <Content Include="Tasks\MSCRMGetOnlineInstanceByName\task.json" />
+    <Content Include="Tasks\MSCRMImportSolution\MSCRMImportSolution.ps1" />
+    <Content Include="Tasks\MSCRMImportSolution\task.json" />
+    <Content Include="Tasks\MSCRMPackageDeployer\MSCRMPackageDeployer.ps1" />
+    <Content Include="Tasks\MSCRMPackageDeployer\task.json" />
+    <Content Include="Tasks\MSCRMPackSolution\MSCRMPackSolution.ps1" />
+    <Content Include="Tasks\MSCRMPackSolution\task.json" />
+    <Content Include="Tasks\MSCRMPing\MSCRMPing.ps1" />
+    <Content Include="Tasks\MSCRMPing\task.json" />
+    <Content Include="Tasks\MSCRMProvisionOnlineInstance\MSCRMProvisionOnlineInstance.ps1" />
+    <Content Include="Tasks\MSCRMProvisionOnlineInstance\task.json" />
+    <Content Include="Tasks\MSCRMPublishCustomizations\MSCRMPublishCustomizations.ps1" />
+    <Content Include="Tasks\MSCRMPublishCustomizations\task.json" />
+    <Content Include="Tasks\MSCRMRestoreOnlineInstance\MSCRMRestoreOnlineInstance.ps1" />
+    <Content Include="Tasks\MSCRMRestoreOnlineInstance\task.json" />
+    <Content Include="Tasks\MSCRMSetOnlineInstanceAdminMode\MSCRMSetOnlineInstanceAdminMode.ps1" />
+    <Content Include="Tasks\MSCRMSetOnlineInstanceAdminMode\task.json" />
+    <Content Include="Tasks\MSCRMSetVersion\MSCRMSetVersion.ps1" />
+    <Content Include="Tasks\MSCRMSetVersion\task.json" />
+    <Content Include="Tasks\MSCRMUpdateSecureConfiguration\MSCRMUpdateSecureConfiguration.ps1" />
+    <Content Include="Tasks\MSCRMUpdateSecureConfiguration\task.json" />
+    <Content Include="vss-extension.json" />
+    <Content Include="vss-extension-dev.json" />
+    <Content Include="vss-extension-preview.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Images\OnlineBuildArtifacts.png" />
+    <Content Include="Images\OnlineBuildConsole.png" />
+    <Content Include="Images\OnlineBuildDefinition.png" />
+    <Content Include="Images\TaskCatalog.png" />
+    <Content Include="Images\ThirdPartyReleaseDefinition.png" />
+    <Content Include="Images\ThirdPartyReleaseLogs.png" />
+    <Content Include="Images\ThirdPartySolutionImported.png" />
+    <Content Include="Lib\Microsoft.CrmSdk.CoreTools\8.2.0\CrmSvcUtil.exe" />
+    <Content Include="Lib\Microsoft.CrmSdk.CoreTools\8.2.0\CrmSvcUtil.xml" />
+    <Content Include="Lib\Microsoft.CrmSdk.CoreTools\8.2.0\Microsoft.Crm.Sdk.Proxy.dll" />
+    <Content Include="Lib\Microsoft.CrmSdk.CoreTools\8.2.0\Microsoft.IdentityModel.Clients.ActiveDirectory.dll" />
+    <Content Include="Lib\Microsoft.CrmSdk.CoreTools\8.2.0\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll" />
+    <Content Include="Lib\Microsoft.CrmSdk.CoreTools\8.2.0\Microsoft.Xrm.Sdk.Deployment.dll" />
+    <Content Include="Lib\Microsoft.CrmSdk.CoreTools\8.2.0\Microsoft.Xrm.Sdk.dll" />
+    <Content Include="Lib\Microsoft.CrmSdk.CoreTools\8.2.0\Microsoft.Xrm.Tooling.Connector.dll" />
+    <Content Include="Lib\Microsoft.CrmSdk.CoreTools\8.2.0\Microsoft.Xrm.Tooling.CrmConnectControl.dll" />
+    <Content Include="Lib\Microsoft.CrmSdk.CoreTools\8.2.0\Other Redistributable.txt" />
+    <Content Include="Lib\Microsoft.CrmSdk.CoreTools\8.2.0\SolutionPackager.exe" />
+    <Content Include="Lib\Microsoft.CrmSdk.CoreTools\9.0.0\CrmSvcUtil.exe" />
+    <Content Include="Lib\Microsoft.CrmSdk.CoreTools\9.0.0\CrmSvcUtil.xml" />
+    <Content Include="Lib\Microsoft.CrmSdk.CoreTools\9.0.0\Microsoft.Crm.Sdk.Proxy.dll" />
+    <Content Include="Lib\Microsoft.CrmSdk.CoreTools\9.0.0\Microsoft.IdentityModel.Clients.ActiveDirectory.dll" />
+    <Content Include="Lib\Microsoft.CrmSdk.CoreTools\9.0.0\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll" />
+    <Content Include="Lib\Microsoft.CrmSdk.CoreTools\9.0.0\Microsoft.Xrm.Sdk.Deployment.dll" />
+    <Content Include="Lib\Microsoft.CrmSdk.CoreTools\9.0.0\Microsoft.Xrm.Sdk.dll" />
+    <Content Include="Lib\Microsoft.CrmSdk.CoreTools\9.0.0\Microsoft.Xrm.Tooling.Connector.dll" />
+    <Content Include="Lib\Microsoft.CrmSdk.CoreTools\9.0.0\Microsoft.Xrm.Tooling.CrmConnectControl.dll" />
+    <Content Include="Lib\Microsoft.CrmSdk.CoreTools\9.0.0\Microsoft.Xrm.Tooling.Ui.Styles.dll" />
+    <Content Include="Lib\Microsoft.CrmSdk.CoreTools\9.0.0\Other Redistributable.txt" />
+    <Content Include="Lib\Microsoft.CrmSdk.CoreTools\9.0.0\SolutionPackager.exe" />
+    <Content Include="Lib\Microsoft.CrmSdk.XrmTooling.PackageDeployment.PowerShell\8.2.0\Microsoft.Crm.Sdk.Proxy.dll" />
+    <Content Include="Lib\Microsoft.CrmSdk.XrmTooling.PackageDeployment.PowerShell\8.2.0\Microsoft.IdentityModel.Clients.ActiveDirectory.dll" />
+    <Content Include="Lib\Microsoft.CrmSdk.XrmTooling.PackageDeployment.PowerShell\8.2.0\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll" />
+    <Content Include="Lib\Microsoft.CrmSdk.XrmTooling.PackageDeployment.PowerShell\8.2.0\Microsoft.IdentityModel.dll" />
+    <Content Include="Lib\Microsoft.CrmSdk.XrmTooling.PackageDeployment.PowerShell\8.2.0\Microsoft.Uii.AifServices.dll" />
+    <Content Include="Lib\Microsoft.CrmSdk.XrmTooling.PackageDeployment.PowerShell\8.2.0\Microsoft.Uii.Common.dll" />
+    <Content Include="Lib\Microsoft.CrmSdk.XrmTooling.PackageDeployment.PowerShell\8.2.0\Microsoft.Uii.Common.TypeProvider.dll" />
+    <Content Include="Lib\Microsoft.CrmSdk.XrmTooling.PackageDeployment.PowerShell\8.2.0\Microsoft.Uii.CrmEntityManager.dll" />
+    <Content Include="Lib\Microsoft.CrmSdk.XrmTooling.PackageDeployment.PowerShell\8.2.0\Microsoft.Xrm.Sdk.Deployment.dll" />
+    <Content Include="Lib\Microsoft.CrmSdk.XrmTooling.PackageDeployment.PowerShell\8.2.0\Microsoft.Xrm.Sdk.dll" />
+    <Content Include="Lib\Microsoft.CrmSdk.XrmTooling.PackageDeployment.PowerShell\8.2.0\Microsoft.Xrm.Tooling.Connector.dll" />
+    <Content Include="Lib\Microsoft.CrmSdk.XrmTooling.PackageDeployment.PowerShell\8.2.0\Microsoft.Xrm.Tooling.Connector.xml" />
+    <Content Include="Lib\Microsoft.CrmSdk.XrmTooling.PackageDeployment.PowerShell\8.2.0\Microsoft.Xrm.Tooling.CrmConnectControl.dll" />
+    <Content Include="Lib\Microsoft.CrmSdk.XrmTooling.PackageDeployment.PowerShell\8.2.0\Microsoft.Xrm.Tooling.CrmConnector.Powershell.dll" />
+    <Content Include="Lib\Microsoft.CrmSdk.XrmTooling.PackageDeployment.PowerShell\8.2.0\Microsoft.Xrm.Tooling.CrmConnector.Powershell.dll-Help.xml" />
+    <Content Include="Lib\Microsoft.CrmSdk.XrmTooling.PackageDeployment.PowerShell\8.2.0\Microsoft.Xrm.Tooling.Dmt.DataMigCommon.dll" />
+    <Content Include="Lib\Microsoft.CrmSdk.XrmTooling.PackageDeployment.PowerShell\8.2.0\Microsoft.Xrm.Tooling.Dmt.ImportProcessor.dll" />
+    <Content Include="Lib\Microsoft.CrmSdk.XrmTooling.PackageDeployment.PowerShell\8.2.0\Microsoft.Xrm.Tooling.Dmt.ImportProcessor.xml" />
+    <Content Include="Lib\Microsoft.CrmSdk.XrmTooling.PackageDeployment.PowerShell\8.2.0\Microsoft.Xrm.Tooling.Dmt.MetadataHandler.dll" />
+    <Content Include="Lib\Microsoft.CrmSdk.XrmTooling.PackageDeployment.PowerShell\8.2.0\Microsoft.Xrm.Tooling.Dmt.MetadataHandler.xml" />
+    <Content Include="Lib\Microsoft.CrmSdk.XrmTooling.PackageDeployment.PowerShell\8.2.0\Microsoft.Xrm.Tooling.PackageDeployment.CrmPackageCore.dll" />
+    <Content Include="Lib\Microsoft.CrmSdk.XrmTooling.PackageDeployment.PowerShell\8.2.0\Microsoft.Xrm.Tooling.PackageDeployment.CrmPackageCore.xml" />
+    <Content Include="Lib\Microsoft.CrmSdk.XrmTooling.PackageDeployment.PowerShell\8.2.0\Microsoft.Xrm.Tooling.PackageDeployment.CrmPackageExtentionBase.dll" />
+    <Content Include="Lib\Microsoft.CrmSdk.XrmTooling.PackageDeployment.PowerShell\8.2.0\Microsoft.Xrm.Tooling.PackageDeployment.CrmPackageExtentionBase.xml" />
+    <Content Include="Lib\Microsoft.CrmSdk.XrmTooling.PackageDeployment.PowerShell\8.2.0\Microsoft.Xrm.Tooling.PackageDeployment.Powershell.dll" />
+    <Content Include="Lib\Microsoft.CrmSdk.XrmTooling.PackageDeployment.PowerShell\8.2.0\Microsoft.Xrm.Tooling.PackageDeployment.PowerShell.dll-Help.xml" />
+    <Content Include="Lib\Microsoft.CrmSdk.XrmTooling.PackageDeployment.PowerShell\8.2.0\Microsoft.Xrm.Tooling.Ui.Styles.dll" />
+    <Content Include="Lib\Microsoft.CrmSdk.XrmTooling.PackageDeployment.PowerShell\8.2.0\Microsoft.Xrm.Tooling.WebResourceUtility.dll" />
+    <Content Include="Lib\Microsoft.CrmSdk.XrmTooling.PackageDeployment.PowerShell\8.2.0\Other Redistributable.txt" />
+    <Content Include="Lib\Microsoft.CrmSdk.XrmTooling.PackageDeployment.PowerShell\9.0.0\Microsoft.Crm.Sdk.Proxy.dll" />
+    <Content Include="Lib\Microsoft.CrmSdk.XrmTooling.PackageDeployment.PowerShell\9.0.0\Microsoft.Deployment.Compression.Cab.dll" />
+    <Content Include="Lib\Microsoft.CrmSdk.XrmTooling.PackageDeployment.PowerShell\9.0.0\Microsoft.Deployment.Compression.dll" />
+    <Content Include="Lib\Microsoft.CrmSdk.XrmTooling.PackageDeployment.PowerShell\9.0.0\Microsoft.IdentityModel.Clients.ActiveDirectory.dll" />
+    <Content Include="Lib\Microsoft.CrmSdk.XrmTooling.PackageDeployment.PowerShell\9.0.0\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll" />
+    <Content Include="Lib\Microsoft.CrmSdk.XrmTooling.PackageDeployment.PowerShell\9.0.0\Microsoft.IdentityModel.dll" />
+    <Content Include="Lib\Microsoft.CrmSdk.XrmTooling.PackageDeployment.PowerShell\9.0.0\Microsoft.Uii.AifServices.dll" />
+    <Content Include="Lib\Microsoft.CrmSdk.XrmTooling.PackageDeployment.PowerShell\9.0.0\Microsoft.Uii.Common.dll" />
+    <Content Include="Lib\Microsoft.CrmSdk.XrmTooling.PackageDeployment.PowerShell\9.0.0\Microsoft.Uii.Common.TypeProvider.dll" />
+    <Content Include="Lib\Microsoft.CrmSdk.XrmTooling.PackageDeployment.PowerShell\9.0.0\Microsoft.Uii.CrmEntityManager.dll" />
+    <Content Include="Lib\Microsoft.CrmSdk.XrmTooling.PackageDeployment.PowerShell\9.0.0\Microsoft.Xrm.Sdk.Deployment.dll" />
+    <Content Include="Lib\Microsoft.CrmSdk.XrmTooling.PackageDeployment.PowerShell\9.0.0\Microsoft.Xrm.Sdk.dll" />
+    <Content Include="Lib\Microsoft.CrmSdk.XrmTooling.PackageDeployment.PowerShell\9.0.0\Microsoft.Xrm.Tooling.Connector.dll" />
+    <Content Include="Lib\Microsoft.CrmSdk.XrmTooling.PackageDeployment.PowerShell\9.0.0\Microsoft.Xrm.Tooling.CrmConnectControl.dll" />
+    <Content Include="Lib\Microsoft.CrmSdk.XrmTooling.PackageDeployment.PowerShell\9.0.0\Microsoft.Xrm.Tooling.CrmConnector.Powershell.dll" />
+    <Content Include="Lib\Microsoft.CrmSdk.XrmTooling.PackageDeployment.PowerShell\9.0.0\Microsoft.Xrm.Tooling.Dmt.DataMigCommon.dll" />
+    <Content Include="Lib\Microsoft.CrmSdk.XrmTooling.PackageDeployment.PowerShell\9.0.0\Microsoft.Xrm.Tooling.Dmt.ImportProcessor.dll" />
+    <Content Include="Lib\Microsoft.CrmSdk.XrmTooling.PackageDeployment.PowerShell\9.0.0\Microsoft.Xrm.Tooling.Dmt.MetadataHandler.dll" />
+    <Content Include="Lib\Microsoft.CrmSdk.XrmTooling.PackageDeployment.PowerShell\9.0.0\Microsoft.Xrm.Tooling.PackageDeployment.CrmPackageCore.dll" />
+    <Content Include="Lib\Microsoft.CrmSdk.XrmTooling.PackageDeployment.PowerShell\9.0.0\Microsoft.Xrm.Tooling.PackageDeployment.CrmPackageExtentionBase.dll" />
+    <Content Include="Lib\Microsoft.CrmSdk.XrmTooling.PackageDeployment.PowerShell\9.0.0\Microsoft.Xrm.Tooling.PackageDeployment.Powershell.dll" />
+    <Content Include="Lib\Microsoft.CrmSdk.XrmTooling.PackageDeployment.PowerShell\9.0.0\Microsoft.Xrm.Tooling.Ui.Styles.dll" />
+    <Content Include="Lib\Microsoft.CrmSdk.XrmTooling.PackageDeployment.PowerShell\9.0.0\Microsoft.Xrm.Tooling.WebResourceUtility.dll" />
+    <Content Include="Lib\Microsoft.Xrm.OnlineManagementAPI\1.0.0\Microsoft.IdentityModel.Clients.ActiveDirectory.dll" />
+    <Content Include="Lib\Microsoft.Xrm.OnlineManagementAPI\1.0.0\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll" />
+    <Content Include="Lib\Microsoft.Xrm.OnlineManagementAPI\1.0.0\Microsoft.Rest.ClientRuntime.dll" />
+    <Content Include="Lib\Microsoft.Xrm.OnlineManagementAPI\1.0.0\Microsoft.Xrm.OnlineManagementAPI.dll" />
+    <Content Include="Lib\Microsoft.Xrm.OnlineManagementAPI\1.0.0\Newtonsoft.Json.dll" />
+    <Content Include="Lib\Microsoft.Xrm.OnlineManagementAPI\1.0.0\PSGetModuleInfo.xml" />
+    <Content Include="Lib\Microsoft.Xrm.OnlineManagementAPI\1.0.0\Xrm.Online.Admin.Client.dll" />
+    <Content Include="Lib\VstsTaskSdk\0.10.0\Minimatch.dll" />
+    <Content Include="Lib\VstsTaskSdk\0.10.0\Strings\resources.resjson\de-de\resources.resjson" />
+    <Content Include="Lib\VstsTaskSdk\0.10.0\Strings\resources.resjson\en-US\resources.resjson" />
+    <Content Include="Lib\VstsTaskSdk\0.10.0\Strings\resources.resjson\es-es\resources.resjson" />
+    <Content Include="Lib\VstsTaskSdk\0.10.0\Strings\resources.resjson\fr-fr\resources.resjson" />
+    <Content Include="Lib\VstsTaskSdk\0.10.0\Strings\resources.resjson\it-IT\resources.resjson" />
+    <Content Include="Lib\VstsTaskSdk\0.10.0\Strings\resources.resjson\ja-jp\resources.resjson" />
+    <Content Include="Lib\VstsTaskSdk\0.10.0\Strings\resources.resjson\ko-KR\resources.resjson" />
+    <Content Include="Lib\VstsTaskSdk\0.10.0\Strings\resources.resjson\ru-RU\resources.resjson" />
+    <Content Include="Lib\VstsTaskSdk\0.10.0\Strings\resources.resjson\zh-CN\resources.resjson" />
+    <Content Include="Lib\VstsTaskSdk\0.10.0\Strings\resources.resjson\zh-TW\resources.resjson" />
+    <Content Include="Lib\VstsTaskSdk\0.10.0\VstsTaskSdk.dll" />
+    <Content Include="Lib\xRMCIFramework\8.0.13\Microsoft.Crm.Sdk.Proxy.dll" />
+    <Content Include="Lib\xRMCIFramework\8.0.13\Microsoft.IdentityModel.Clients.ActiveDirectory.dll" />
+    <Content Include="Lib\xRMCIFramework\8.0.13\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll" />
+    <Content Include="Lib\xRMCIFramework\8.0.13\Microsoft.IdentityModel.dll" />
+    <Content Include="Lib\xRMCIFramework\8.0.13\Microsoft.Management.Infrastructure.dll" />
+    <Content Include="Lib\xRMCIFramework\8.0.13\Microsoft.Xrm.Sdk.Deployment.dll" />
+    <Content Include="Lib\xRMCIFramework\8.0.13\Microsoft.Xrm.Sdk.dll" />
+    <Content Include="Lib\xRMCIFramework\8.0.13\Microsoft.Xrm.Sdk.Workflow.dll" />
+    <Content Include="Lib\xRMCIFramework\8.0.13\Microsoft.Xrm.Tooling.Connector.dll" />
+    <Content Include="Lib\xRMCIFramework\8.0.13\System.Management.Automation.dll" />
+    <Content Include="Lib\xRMCIFramework\8.0.13\Xrm.Framework.CI.PowerShell.Cmdlets.dll" />
+    <Content Include="Lib\xRMCIFramework\9.0.0\Microsoft.Crm.Sdk.Proxy.dll" />
+    <Content Include="Lib\xRMCIFramework\9.0.0\Microsoft.IdentityModel.Clients.ActiveDirectory.dll" />
+    <Content Include="Lib\xRMCIFramework\9.0.0\Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll" />
+    <Content Include="Lib\xRMCIFramework\9.0.0\Microsoft.Management.Infrastructure.dll" />
+    <Content Include="Lib\xRMCIFramework\9.0.0\Microsoft.Xrm.Sdk.Deployment.dll" />
+    <Content Include="Lib\xRMCIFramework\9.0.0\Microsoft.Xrm.Sdk.dll" />
+    <Content Include="Lib\xRMCIFramework\9.0.0\Microsoft.Xrm.Sdk.Workflow.dll" />
+    <Content Include="Lib\xRMCIFramework\9.0.0\Microsoft.Xrm.Tooling.Connector.dll" />
+    <Content Include="Lib\xRMCIFramework\9.0.0\System.Management.Automation.dll" />
+    <Content Include="Lib\xRMCIFramework\9.0.0\Xrm.Framework.CI.PowerShell.Cmdlets.dll" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>52261</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:52261/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.5\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.5\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

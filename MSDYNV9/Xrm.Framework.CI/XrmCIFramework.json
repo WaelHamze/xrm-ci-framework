@@ -1,0 +1,454 @@
+{
+  "options": [
+    {
+      "enabled": true,
+      "definition": { "id": "5d58cc01-7c75-450c-be18-a388ddb129ec" },
+      "inputs": {
+        "branchFilters": "[\"+refs/heads/*\"]",
+        "additionalFields": "{}"
+      }
+    },
+    {
+      "enabled": false,
+      "definition": { "id": "a9db38f9-9fdc-478c-b0f9-464221e58316" },
+      "inputs": {
+        "workItemType": "1086088",
+        "assignToRequestor": "true",
+        "additionalFields": "{}"
+      }
+    },
+    {
+      "enabled": false,
+      "definition": { "id": "57578776-4c22-4526-aeb0-86b6da17ee9c" },
+      "inputs": {}
+    }
+  ],
+  "variables": {
+    "BuildConfiguration": {
+      "value": "release",
+      "allowOverride": true
+    },
+    "BuildPlatform": {
+      "value": "any cpu",
+      "allowOverride": true
+    },
+    "system.debug": {
+      "value": "false",
+      "allowOverride": true
+    }
+  },
+  "retentionRules": [
+    {
+      "branches": [ "+refs/heads/*" ],
+      "artifacts": [],
+      "artifactTypesToDelete": [ "FilePath", "SymbolStore" ],
+      "daysToKeep": 10,
+      "minimumToKeep": 1,
+      "deleteBuildRecord": true,
+      "deleteTestResults": true
+    }
+  ],
+  "metrics": [
+    {
+      "name": "CurrentBuildsInQueue",
+      "scope": "refs/heads/master",
+      "intValue": 0
+    },
+    {
+      "name": "CurrentBuildsInProgress",
+      "scope": "refs/heads/master",
+      "intValue": 0
+    },
+    {
+      "name": "CanceledBuilds",
+      "scope": "refs/heads/master",
+      "intValue": 0,
+      "date": "2017-11-21T00:00:00.000Z"
+    },
+    {
+      "name": "FailedBuilds",
+      "scope": "refs/heads/master",
+      "intValue": 0,
+      "date": "2017-11-21T00:00:00.000Z"
+    },
+    {
+      "name": "PartiallySuccessfulBuilds",
+      "scope": "refs/heads/master",
+      "intValue": 0,
+      "date": "2017-11-21T00:00:00.000Z"
+    },
+    {
+      "name": "SuccessfulBuilds",
+      "scope": "refs/heads/master",
+      "intValue": 2,
+      "date": "2017-11-21T00:00:00.000Z"
+    },
+    {
+      "name": "TotalBuilds",
+      "scope": "refs/heads/master",
+      "intValue": 2,
+      "date": "2017-11-21T00:00:00.000Z"
+    },
+    {
+      "name": "CanceledBuilds",
+      "scope": "refs/heads/master",
+      "intValue": 0,
+      "date": "2017-11-17T00:00:00.000Z"
+    },
+    {
+      "name": "FailedBuilds",
+      "scope": "refs/heads/master",
+      "intValue": 2,
+      "date": "2017-11-17T00:00:00.000Z"
+    },
+    {
+      "name": "PartiallySuccessfulBuilds",
+      "scope": "refs/heads/master",
+      "intValue": 0,
+      "date": "2017-11-17T00:00:00.000Z"
+    },
+    {
+      "name": "SuccessfulBuilds",
+      "scope": "refs/heads/master",
+      "intValue": 1,
+      "date": "2017-11-17T00:00:00.000Z"
+    },
+    {
+      "name": "TotalBuilds",
+      "scope": "refs/heads/master",
+      "intValue": 3,
+      "date": "2017-11-17T00:00:00.000Z"
+    }
+  ],
+  "_links": {
+    "self": { "href": "https://waelhamze.visualstudio.com/5353f2a6-fec0-4139-9e87-cc63b4434c1a/_apis/build/Definitions/1" },
+    "web": { "href": "https://waelhamze.visualstudio.com/_permalink/_build/index?collectionId=c095144a-c678-48b8-a8ad-55cc19d05d3c&projectId=5353f2a6-fec0-4139-9e87-cc63b4434c1a&definitionId=1" },
+    "editor": { "href": "https://waelhamze.visualstudio.com/_permalink/_build/definitionEditor?collectionId=c095144a-c678-48b8-a8ad-55cc19d05d3c&projectId=5353f2a6-fec0-4139-9e87-cc63b4434c1a&definitionId=1" },
+    "badge": { "href": "https://waelhamze.visualstudio.com/_apis/public/build/definitions/5353f2a6-fec0-4139-9e87-cc63b4434c1a/1/badge" }
+  },
+  "buildNumberFormat": "9.0.0$(rev:.r)",
+  "jobAuthorizationScope": 1,
+  "jobTimeoutInMinutes": 60,
+  "jobCancelTimeoutInMinutes": 5,
+  "badgeEnabled": true,
+  "process": {
+    "phases": [
+      {
+        "dependencies": [],
+        "steps": [
+          {
+            "environment": {},
+            "enabled": true,
+            "continueOnError": false,
+            "alwaysRun": false,
+            "displayName": "Use NuGet 4.3.0",
+            "timeoutInMinutes": 0,
+            "refName": "NuGetToolInstaller1",
+            "task": {
+              "id": "2c65196a-54fd-4a02-9be8-d9d1837b7c5d",
+              "versionSpec": "0.*",
+              "definitionType": "task"
+            },
+            "inputs": {
+              "versionSpec": "4.3.0",
+              "checkLatest": "false"
+            }
+          },
+          {
+            "environment": {},
+            "enabled": true,
+            "continueOnError": false,
+            "alwaysRun": false,
+            "displayName": "NuGet restore",
+            "timeoutInMinutes": 0,
+            "refName": "NuGetCommand2",
+            "task": {
+              "id": "333b11bd-d341-40d9-afcf-b32d5ce6f23b",
+              "versionSpec": "2.*",
+              "definitionType": "task"
+            },
+            "inputs": {
+              "command": "restore",
+              "solution": "$(Parameters.solution)",
+              "selectOrConfig": "select",
+              "feedRestore": "",
+              "includeNuGetOrg": "true",
+              "nugetConfigPath": "",
+              "externalEndpoints": "",
+              "noCache": "false",
+              "packagesDirectory": "",
+              "verbosityRestore": "Detailed",
+              "searchPatternPush": "$(Build.ArtifactStagingDirectory)/*.nupkg",
+              "nuGetFeedType": "internal",
+              "feedPublish": "",
+              "allowPackageConflicts": "false",
+              "externalEndpoint": "",
+              "verbosityPush": "Detailed",
+              "searchPatternPack": "**/*.csproj",
+              "configurationToPack": "$(BuildConfiguration)",
+              "outputDir": "$(Build.ArtifactStagingDirectory)",
+              "versioningScheme": "off",
+              "includeReferencedProjects": "false",
+              "versionEnvVar": "",
+              "requestedMajorVersion": "1",
+              "requestedMinorVersion": "0",
+              "requestedPatchVersion": "0",
+              "packTimezone": "utc",
+              "includeSymbols": "false",
+              "buildProperties": "",
+              "verbosityPack": "Detailed",
+              "arguments": ""
+            }
+          },
+          {
+            "environment": {},
+            "enabled": true,
+            "continueOnError": false,
+            "alwaysRun": false,
+            "displayName": "Version Assemblies",
+            "timeoutInMinutes": 0,
+            "condition": "succeeded()",
+            "refName": "VersionAssemblies1",
+            "task": {
+              "id": "e47012ed-074c-4f77-ac9f-a6812f900ab0",
+              "versionSpec": "1.*",
+              "definitionType": "task"
+            },
+            "inputs": {
+              "Path": "$(Build.SourcesDirectory)",
+              "VersionNumber": "$(Build.BuildNumber)",
+              "VersionRegex": "\\d+\\.\\d+\\.\\d+\\.\\d+",
+              "FilenamePattern": "AssemblyInfo.*",
+              "Field": "",
+              "OutputVersion": "OutputedVersion"
+            }
+          },
+          {
+            "environment": {},
+            "enabled": true,
+            "continueOnError": false,
+            "alwaysRun": false,
+            "displayName": "Build solution MSDYNV9/Xrm.Framework.CI/Xrm.Framework.CI.sln",
+            "timeoutInMinutes": 0,
+            "refName": "VSBuild3",
+            "task": {
+              "id": "71a9a2d3-a98a-4caa-96ab-affca411ecda",
+              "versionSpec": "1.*",
+              "definitionType": "task"
+            },
+            "inputs": {
+              "solution": "$(Parameters.solution)",
+              "vsVersion": "latest",
+              "msbuildArgs": "",
+              "platform": "$(BuildPlatform)",
+              "configuration": "$(BuildConfiguration)",
+              "clean": "false",
+              "maximumCpuCount": "false",
+              "restoreNugetPackages": "false",
+              "msbuildArchitecture": "x86",
+              "logProjectEvents": "true",
+              "createLogFile": "false"
+            }
+          },
+          {
+            "environment": {},
+            "enabled": true,
+            "continueOnError": false,
+            "alwaysRun": false,
+            "displayName": "NuGet pack",
+            "timeoutInMinutes": 0,
+            "condition": "succeeded()",
+            "refName": "NuGetCommand2",
+            "task": {
+              "id": "333b11bd-d341-40d9-afcf-b32d5ce6f23b",
+              "versionSpec": "2.*",
+              "definitionType": "task"
+            },
+            "inputs": {
+              "command": "pack",
+              "solution": "**/*.sln",
+              "selectOrConfig": "select",
+              "feedRestore": "",
+              "includeNuGetOrg": "true",
+              "nugetConfigPath": "",
+              "externalEndpoints": "",
+              "noCache": "false",
+              "packagesDirectory": "",
+              "verbosityRestore": "Detailed",
+              "searchPatternPush": "$(Build.ArtifactStagingDirectory)/*.nupkg",
+              "nuGetFeedType": "internal",
+              "feedPublish": "",
+              "allowPackageConflicts": "false",
+              "externalEndpoint": "",
+              "verbosityPush": "Detailed",
+              "searchPatternPack": "**/MSDYNV9/Xrm.Framework.CI/Xrm.Framework.CI.PowerShell.Cmdlets/Xrm.Framework.CI.PowerShell.Cmdlets.csproj",
+              "configurationToPack": "$(BuildConfiguration)",
+              "outputDir": "$(Build.ArtifactStagingDirectory)",
+              "versioningScheme": "off",
+              "includeReferencedProjects": "false",
+              "versionEnvVar": "",
+              "requestedMajorVersion": "1",
+              "requestedMinorVersion": "0",
+              "requestedPatchVersion": "0",
+              "packTimezone": "utc",
+              "includeSymbols": "false",
+              "buildProperties": "",
+              "verbosityPack": "Detailed",
+              "arguments": ""
+            }
+          },
+          {
+            "environment": {},
+            "enabled": true,
+            "continueOnError": false,
+            "alwaysRun": false,
+            "displayName": "Copy Files to: $(Build.SourcesDirectory)/MSDYNV9/Xrm.Framework.CI/Xrm.Framework.CI.PowerShell.Cmdlets/bin/$(BuildConfiguration)",
+            "timeoutInMinutes": 0,
+            "refName": "CopyFiles6",
+            "task": {
+              "id": "5bfb729a-a7c8-4a78-a7c3-8d717bb7c13c",
+              "versionSpec": "2.*",
+              "definitionType": "task"
+            },
+            "inputs": {
+              "SourceFolder": "MSDYNV9/Xrm.Framework.CI",
+              "Contents": "Xrm.Framework.CI.PowerShell.Scripts\\*.ps1\npackages\\Microsoft.CrmSdk.CoreTools.9.0.0.7\\content\\bin\\coretools\\solutionpackager.exe",
+              "TargetFolder": "$(Build.SourcesDirectory)/MSDYNV9/Xrm.Framework.CI/Xrm.Framework.CI.PowerShell.Cmdlets/bin/$(BuildConfiguration)",
+              "CleanTargetFolder": "false",
+              "OverWrite": "false",
+              "flattenFolders": "true"
+            }
+          },
+          {
+            "environment": {},
+            "enabled": true,
+            "continueOnError": false,
+            "alwaysRun": false,
+            "displayName": "Archive files ",
+            "timeoutInMinutes": 0,
+            "condition": "succeeded()",
+            "refName": "ArchiveFiles1",
+            "task": {
+              "id": "d8b84976-e99a-4b86-b885-4849694435b0",
+              "versionSpec": "1.*",
+              "definitionType": "task"
+            },
+            "inputs": {
+              "rootFolder": "MSDYNV9/Xrm.Framework.CI/Xrm.Framework.CI.PowerShell.Cmdlets/bin/$(BuildConfiguration)",
+              "includeRootFolder": "false",
+              "archiveType": "default",
+              "tarCompression": "gz",
+              "archiveFile": "$(Build.ArtifactStagingDirectory)/xRMCIFramework.$(Build.BuildNumber).zip",
+              "replaceExistingArchive": "true"
+            }
+          },
+          {
+            "environment": {},
+            "enabled": true,
+            "continueOnError": false,
+            "alwaysRun": false,
+            "displayName": "Publish Artifact: XrmCIFrameworkCmdlets",
+            "timeoutInMinutes": 0,
+            "refName": "PublishBuildArtifacts7",
+            "task": {
+              "id": "2ff763a7-ce83-4e1f-bc89-0ae63477cebe",
+              "versionSpec": "1.*",
+              "definitionType": "task"
+            },
+            "inputs": {
+              "PathtoPublish": "$(build.artifactstagingdirectory)",
+              "ArtifactName": "XrmCIFrameworkCmdlets",
+              "ArtifactType": "Container",
+              "TargetPath": "\\\\my\\share\\$(Build.DefinitionName)\\$(Build.BuildNumber)",
+              "Parallel": "false",
+              "ParallelCount": "8"
+            }
+          }
+        ],
+        "variables": {},
+        "name": "Phase 1",
+        "target": {
+          "demands": [],
+          "executionOptions": { "type": 0 },
+          "allowScriptsAuthAccessOption": false,
+          "type": 1
+        },
+        "jobAuthorizationScope": "projectCollection",
+        "jobCancelTimeoutInMinutes": 1
+      }
+    ],
+    "type": 1
+  },
+  "repository": {
+    "properties": {
+      "cleanOptions": "0",
+      "gitLfsSupport": "false",
+      "skipSyncSource": "false",
+      "checkoutNestedSubmodules": "false",
+      "reportBuildStatus": "true",
+      "fetchDepth": "0",
+      "connectedServiceId": "45fc0862-9503-4137-9821-314e5b3cfef3",
+      "apiUrl": "https://api.github.com/repos/WaelHamze/xrm-ci-framework",
+      "branchesUrl": "https://api.github.com/repos/WaelHamze/xrm-ci-framework/branches",
+      "cloneUrl": "https://github.com/WaelHamze/xrm-ci-framework.git",
+      "refsUrl": "https://api.github.com/repos/WaelHamze/xrm-ci-framework/git/refs"
+    },
+    "id": "https://github.com/WaelHamze/xrm-ci-framework.git",
+    "type": "GitHub",
+    "name": "WaelHamze/xrm-ci-framework",
+    "url": "https://github.com/WaelHamze/xrm-ci-framework.git",
+    "defaultBranch": "master",
+    "clean": "false",
+    "checkoutSubmodules": false
+  },
+  "processParameters": {
+    "inputs": [
+      {
+        "aliases": [],
+        "options": {},
+        "properties": {},
+        "name": "solution",
+        "label": "Solution",
+        "defaultValue": "MSDYNV9/Xrm.Framework.CI/Xrm.Framework.CI.sln",
+        "required": true,
+        "type": "filePath",
+        "helpMarkDown": "The path to the Visual Studio solution file or NuGet packages.config. Wildcards can be used.  For example, `**\\\\*.sln` for all sln files in all sub folders."
+      }
+    ]
+  },
+  "quality": 1,
+  "authoredBy": {
+    "id": "9023f4b8-9c17-4014-88c8-69ee606921e0",
+    "displayName": "Wael Hamze",
+    "uniqueName": "WaelHamze",
+    "url": "https://app.vssps.visualstudio.com/Af2c21436-be89-4d49-b2bf-ae666c032e29/_apis/Identities/9023f4b8-9c17-4014-88c8-69ee606921e0",
+    "imageUrl": "https://waelhamze.visualstudio.com/_api/_common/identityImage?id=9023f4b8-9c17-4014-88c8-69ee606921e0"
+  },
+  "drafts": [],
+  "queue": {
+    "id": 6,
+    "name": "Hosted VS2017",
+    "pool": {
+      "id": 4,
+      "name": "Hosted VS2017",
+      "isHosted": true
+    }
+  },
+  "id": 1,
+  "name": "XrmCIFramework",
+  "url": "https://waelhamze.visualstudio.com/5353f2a6-fec0-4139-9e87-cc63b4434c1a/_apis/build/Definitions/1",
+  "uri": "vstfs:///Build/Definition/1",
+  "path": "\\",
+  "type": 2,
+  "queueStatus": 0,
+  "revision": 6,
+  "createdDate": "2017-11-21T20:19:19.557Z",
+  "project": {
+    "id": "5353f2a6-fec0-4139-9e87-cc63b4434c1a",
+    "name": "MSDynamicsDevOps",
+    "url": "https://waelhamze.visualstudio.com/_apis/projects/5353f2a6-fec0-4139-9e87-cc63b4434c1a",
+    "state": "wellFormed",
+    "revision": 8,
+    "visibility": 0
+  }
+}

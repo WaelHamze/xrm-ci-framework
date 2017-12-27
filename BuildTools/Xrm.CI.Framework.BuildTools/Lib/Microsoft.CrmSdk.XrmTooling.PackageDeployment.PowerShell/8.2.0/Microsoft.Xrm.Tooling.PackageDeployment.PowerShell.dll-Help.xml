@@ -1,0 +1,369 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<helpItems schema="maml" xmlns="http://msh">
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Get-CrmPackages</command:name>
+      <maml:description>
+        <maml:para>Returns a list of available packages that can be deployed to a Microsoft Dynamics CRM instance.</maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para />
+      </maml:copyright>
+      <command:verb>Get</command:verb>
+      <command:noun>CrmPackages</command:noun>
+      <dev:version />
+    </command:details>
+    <maml:description>
+      <maml:para>The Get-CrmPackages cmdlet returns a list of packages. The cmdlet can also return information about a specific package if you specify the package name as a cmdlet parameter. A package can contain the following items: Microsoft Dynamics CRM solution files, files or exported data files from the Configuration Migration tool, custom code that can run during or after the package is deployed to the Microsoft Dynamics CRM instance, and HTML content specific to the package that can display at the beginning and end of the package deployment process. This HTML content can be useful to provide a description of the solutions and files that are deployed in the package.</maml:para>
+      <maml:para>This cmdlet applies to Microsoft Dynamics CRM Online and on-premises versions of Microsoft Dynamics CRM.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Get-CrmPackages</maml:name>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
+          <maml:name>PackageDirectory</maml:name>
+          <maml:description>
+            <maml:para>Directory where a package or packages can be found.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="1" aliases="">
+          <maml:name>PackageName</maml:name>
+          <maml:description>
+            <maml:para>Name of the assembly (.dll) that contains the package definition.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="1" aliases="">
+        <maml:name>PackageDirectory</maml:name>
+        <maml:description>
+          <maml:para>Directory where a package or packages can be found.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="false" position="1" aliases="">
+        <maml:name>PackageName</maml:name>
+        <maml:description>
+          <maml:para>Name of the assembly (.dll) that contains the package definition.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name></maml:name>
+          <maml:uri></maml:uri>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+        </dev:type>
+        <maml:description></maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>List&lt;PackageInfoClass&gt;</maml:name>
+          <maml:uri></maml:uri>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+        </dev:type>
+        <maml:description>
+          <maml:para>This cmdlet exports a list of PackageInfo objects. The short name of this object can be used as input to the Import-CrmPackage cmdlet.</maml:para>
+        </maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <command:terminatingErrors />
+    <command:nonTerminatingErrors />
+    <command:examples>
+      <command:example>
+        <maml:title>-------------------------- Example 1 --------------------------</maml:title>
+        <maml:introduction>
+          <maml:para></maml:para>
+        </maml:introduction>
+        <dev:code>
+          PS C:\&gt;Get-CrmPackages -PackageDirectory c:\CRM\SDK\Tools\PackageDeployer
+
+
+        </dev:code>
+        <dev:remarks>
+          <maml:para>This example returns a list of packages available for import in the specified directory (in this case, c:\CRM\SDK\Tools\PackageDeployer).</maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- Example 2 --------------------------</maml:title>
+        <maml:introduction>
+          <maml:para></maml:para>
+        </maml:introduction>
+        <dev:code>
+          PS C:\&gt;Get-CrmPackages -PackageDirectory c:\CRM\SDK\Tools\PackageDeployer -PackageName SampleCRMPackage.dll
+        </dev:code>
+        <dev:remarks>
+          <maml:para>This example displays information about a package available in the specified directory (in this case, c:\CRM\SDK\Tools\PackageDeployer). To display information about a package, you must specify the name of the assembly (in this case SampleCRMPackage.dll) in the -PackageName parameter that contains the package definition.</maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+    </command:examples>
+    <maml:relatedLinks>      
+      <maml:navigationLink>
+        <maml:linkText>Online help:</maml:linkText>
+        <maml:uri>https://technet.microsoft.com/en-us/library/dn756299.aspx</maml:uri>
+      </maml:navigationLink>
+    </maml:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Import-CrmPackage</command:name>
+      <maml:description>
+        <maml:para>Imports a package to a Microsoft Dynamics CRM instance.</maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para />
+      </maml:copyright>
+      <command:verb>Import</command:verb>
+      <command:noun>CrmPackage</command:noun>
+      <dev:version />
+    </command:details>
+    <maml:description>
+      <maml:para>The Import-CrmPackage cmdlet imports a package to a CRM instance. A package can contain CRM solution files, files or exported data files from the Configuration Migration tool, custom code that can run during or after the package is deployed to the CRM instance, and HTML content specific to the package that can display at the beginning and end of the package deployment process. The HTML content can be useful to provide a description of the solutions and files that are deployed in the package.</maml:para>
+      <maml:para>This cmdlet applies to Microsoft Dynamics CRM Online and on-premises versions of Microsoft Dynamics CRM.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Import-CrmPackage</maml:name>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
+          <maml:name>AllowCustomCode</maml:name>
+          <maml:description>
+            <maml:para>For internal use only.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
+          <maml:name>PackageDirectory</maml:name>
+          <maml:description>
+            <maml:para>Directory where a package or packages can be found.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
+          <maml:name>TimeOut</maml:name>
+          <maml:description>
+            <maml:para>For internal use only.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
+          <maml:name>UnpackFilesDirectory</maml:name>
+          <maml:description>
+            <maml:para>Directory where the files are extracted to. If your package doesn’t have files that need to be unpacked or extracted, you don’t have to specify this parameter.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
+          <maml:name>CrmConnection</maml:name>
+          <maml:description>
+            <maml:para>Connection object to the CRM instance. This is an initialized instance of the Microsoft.Xrm.Tooling.Connector class.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">CrmServiceClient</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
+          <maml:name>PackageName</maml:name>
+          <maml:description>
+            <maml:para>
+              Name of the assembly (.dll) that contains the package definition.
+            </maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+          <maml:name>Confirm</maml:name>
+          <maml:description>
+            <maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
+          </maml:description>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+          <maml:name>WhatIf</maml:name>
+          <maml:description>
+            <maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.</maml:para>
+          </maml:description>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
+        <maml:name>AllowCustomCode</maml:name>
+        <maml:description>
+          <maml:para>For internal use only.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
+        <maml:name>CrmConnection</maml:name>
+        <maml:description>
+          <maml:para>Connection object to the CRM instance. This is an initialized instance of the Microsoft.Xrm.Tooling.Connector class.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">CrmServiceClient</command:parameterValue>
+        <dev:type>
+          <maml:name>CrmServiceClient</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
+        <maml:name>PackageDirectory</maml:name>
+        <maml:description>
+          <maml:para>Directory where a package or packages can be found.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
+        <maml:name>PackageName</maml:name>
+        <maml:description>
+          <maml:para>
+            Name of the assembly (.dll) that contains the package definition.
+          </maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
+        <maml:name>TimeOut</maml:name>
+        <maml:description>
+          <maml:para>For internal use only.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="false" globbing="false" pipelineInput="True (ByPropertyName)" position="named" aliases="">
+        <maml:name>UnpackFilesDirectory</maml:name>
+        <maml:description>
+          <maml:para>Directory where the files are extracted to. If your package doesn’t have files that need to be unpacked or extracted, you don’t have to specify this parameter.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue></dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+        <maml:name>Confirm</maml:name>
+        <maml:description>
+          <maml:para>Prompts you for confirmation before running the cmdlet.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>false</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named">
+        <maml:name>WhatIf</maml:name>
+        <maml:description>
+          <maml:para>Shows what would happen if the cmdlet runs. The cmdlet is not run.</maml:para>
+        </maml:description>
+        <command:parameterValue required="false" variableLength="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>false</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name></maml:name>
+          <maml:uri></maml:uri>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+        </dev:type>
+        <maml:description></maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name></maml:name>
+          <maml:uri></maml:uri>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+        </dev:type>
+        <maml:description></maml:description>
+      </command:returnValue>
+    </command:returnValues>
+    <command:terminatingErrors />
+    <command:nonTerminatingErrors />
+    <command:examples>
+      <command:example>
+        <maml:title>-------------------------- EXAMPLE 1 --------------------------</maml:title>
+        <maml:introduction>
+          <maml:para></maml:para>
+        </maml:introduction>
+        <dev:code>
+          PS C:\&gt;Import-CrmPackage -CrmConnection $CRMConn -PackageDirectory c:\CRM\SDK\Tools\PackageDeployer -PackageName SampleCRMPackage.dll -UnpackFilesDirectory c:\UnpackedFiles -Verbose
+        </dev:code>
+        <dev:remarks>
+          <maml:para>This example imports a package defined by SampleCRMPackage.dll, which is available in the c:\CRM\SDK\Tools\PackageDeployer directory. </maml:para>
+          <maml:para>The -Verbose parameter at the end of the command is optional, and is used to display a detailed log of the activities performed during the package deployment process. For the –CrmConnection parameter, we pass the $CRMConn variable that stores the CRM connection information. We used the Get-CrmConnection cmdlet earlier to store the CRM connection information in the $CRMConn variable.</maml:para>
+        </dev:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+    </command:examples>
+    <maml:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>Online help:</maml:linkText>
+        <maml:uri>https://technet.microsoft.com/en-us/library/dn756301.aspx</maml:uri>
+      </maml:navigationLink>
+    </maml:relatedLinks>
+  </command:command>
+</helpItems>

@@ -80,6 +80,48 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MSCRMSetVersion", "MSCRMSet
 		Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMSetVersion\task.json = Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMSetVersion\task.json
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MSCRMBackupOnlineInstance", "MSCRMBackupOnlineInstance", "{71BA7451-0E6A-4555-840D-7C98F596787E}"
+	ProjectSection(SolutionItems) = preProject
+		Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMBackupOnlineInstance\MSCRMBackupOnlineInstance.ps1 = Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMBackupOnlineInstance\MSCRMBackupOnlineInstance.ps1
+		Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMBackupOnlineInstance\task.json = Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMBackupOnlineInstance\task.json
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MSCRMProvisionOnlineInstance", "MSCRMProvisionOnlineInstance", "{8EF5BEBD-D133-487C-A7B3-1A4A6622D56F}"
+	ProjectSection(SolutionItems) = preProject
+		Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMProvisionOnlineInstance\MSCRMProvisionOnlineInstance.ps1 = Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMProvisionOnlineInstance\MSCRMProvisionOnlineInstance.ps1
+		Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMProvisionOnlineInstance\task.json = Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMProvisionOnlineInstance\task.json
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MSCRMDeleteOnlineInstance", "MSCRMDeleteOnlineInstance", "{18CE11F7-EF38-40F6-B68B-60A321697FC9}"
+	ProjectSection(SolutionItems) = preProject
+		Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMDeleteOnlineInstance\MSCRMDeleteOnlineInstance.ps1 = Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMDeleteOnlineInstance\MSCRMDeleteOnlineInstance.ps1
+		Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMDeleteOnlineInstance\task.json = Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMDeleteOnlineInstance\task.json
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MSCRMRestoreOnlineInstance", "MSCRMRestoreOnlineInstance", "{6B4C12FE-71EE-4607-902B-2DCBBAB421C0}"
+	ProjectSection(SolutionItems) = preProject
+		Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMRestoreOnlineInstance\MSCRMRestoreOnlineInstance.ps1 = Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMRestoreOnlineInstance\MSCRMRestoreOnlineInstance.ps1
+		Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMRestoreOnlineInstance\task.json = Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMRestoreOnlineInstance\task.json
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MSCRMGetOnlineInstanceByName", "MSCRMGetOnlineInstanceByName", "{48E83348-0B04-4DF6-A45A-8080572C1DD0}"
+	ProjectSection(SolutionItems) = preProject
+		Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMGetOnlineInstanceByName\MSCRMGetOnlineInstanceByName.ps1 = Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMGetOnlineInstanceByName\MSCRMGetOnlineInstanceByName.ps1
+		Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMGetOnlineInstanceByName\task.json = Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMGetOnlineInstanceByName\task.json
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MSCRMUpdateSecureConfiguration", "MSCRMUpdateSecureConfiguration", "{D53745C7-9D26-417B-A305-1C5A6824A643}"
+	ProjectSection(SolutionItems) = preProject
+		Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMUpdateSecureConfiguration\MSCRMUpdateSecureConfiguration.ps1 = Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMUpdateSecureConfiguration\MSCRMUpdateSecureConfiguration.ps1
+		Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMUpdateSecureConfiguration\task.json = Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMUpdateSecureConfiguration\task.json
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MSCRMSetOnlineInstanceAdminMode", "MSCRMSetOnlineInstanceAdminMode", "{9DD9CB39-AD1A-425C-8BC7-A51273AB11D8}"
+	ProjectSection(SolutionItems) = preProject
+		Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMSetOnlineInstanceAdminMode\MSCRMSetOnlineInstanceAdminMode.ps1 = Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMSetOnlineInstanceAdminMode\MSCRMSetOnlineInstanceAdminMode.ps1
+		Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMSetOnlineInstanceAdminMode\task.json = Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMSetOnlineInstanceAdminMode\task.json
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -116,5 +158,12 @@ Global
 		{CE2E80E0-3570-4E48-8810-FDD6276D6BD1} = {0F51EB44-F666-43BE-BD77-E0E00C2C0347}
 		{83E4A838-01DB-4D10-BA5C-B1D93DB546DC} = {0F51EB44-F666-43BE-BD77-E0E00C2C0347}
 		{4FD15793-4498-462F-A5AA-B75E4F6D87F4} = {BBFA729B-4215-487C-BD89-FD77A7B54C72}
+		{71BA7451-0E6A-4555-840D-7C98F596787E} = {BBFA729B-4215-487C-BD89-FD77A7B54C72}
+		{8EF5BEBD-D133-487C-A7B3-1A4A6622D56F} = {BBFA729B-4215-487C-BD89-FD77A7B54C72}
+		{18CE11F7-EF38-40F6-B68B-60A321697FC9} = {BBFA729B-4215-487C-BD89-FD77A7B54C72}
+		{6B4C12FE-71EE-4607-902B-2DCBBAB421C0} = {BBFA729B-4215-487C-BD89-FD77A7B54C72}
+		{48E83348-0B04-4DF6-A45A-8080572C1DD0} = {BBFA729B-4215-487C-BD89-FD77A7B54C72}
+		{D53745C7-9D26-417B-A305-1C5A6824A643} = {BBFA729B-4215-487C-BD89-FD77A7B54C72}
+		{9DD9CB39-AD1A-425C-8BC7-A51273AB11D8} = {BBFA729B-4215-487C-BD89-FD77A7B54C72}
 	EndGlobalSection
 EndGlobal

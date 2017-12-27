@@ -1,0 +1,138 @@
+{
+  "id": "0C3E661C-D316-443E-9A77-470989DA8E29",
+  "name": "MSCRMBackupOnlineInstance",
+  "friendlyName": "MSCRM Backup Online Instance",
+  "description": "Creates a backup of a Dynamics 365 Customer Engagement Online Instance",
+  "author": "Wael Hamze",
+  "helpMarkDown": "This task uses the Microsoft.Xrm.OnlineManagementAPI: https://www.powershellgallery.com/packages/Microsoft.Xrm.OnlineManagementAPI",
+  "category": "Deploy",
+  "visibility": [
+    "Build",
+    "Release"
+  ],
+  "demands": [ ],
+  "version": {
+    "Major": "8",
+    "Minor": "0",
+    "Patch": "10"
+  },
+  "minimumAgentVersion": "1.95.0",
+  "instanceNameFormat": "Backup $(InstanceName)",
+  "groups": [
+    {
+      "name": "azureStorageInfo",
+      "displayName": "Azure Storage Info",
+      "isExpanded": false
+    }
+  ],
+  "inputs": [
+    {
+      "name": "apiUrl",
+      "type": "string",
+      "label": "ApiUrl",
+      "defaultValue": "https://admin.services.crm[n].dynamics.com",
+      "required": true,
+      "helpMarkDown": "Use the Service Url as per documentation: https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/online-management-api/get-started-online-management-api"
+    },
+    {
+      "name": "username",
+      "type": "string",
+      "label": "Username",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "The Dynamics 365 username"
+    },
+    {
+      "name": "Password",
+      "type": "string",
+      "label": "Password",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "The Dynamics 365 password"
+    },
+    {
+      "name": "instanceName",
+      "type": "string",
+      "label": "Instance Name",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "Name used in the Dynamics 365 domain: https://[instancename].crm[n].dynamics.com"
+    },
+    {
+      "name": "backupLabel",
+      "type": "string",
+      "label": "Label",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "As per documentation: https://docs.microsoft.com/en-us/rest/api/admin.services.crm.dynamics.com/backupinstance"
+    },
+    {
+      "name": "notes",
+      "type": "string",
+      "label": "Notes",
+      "defaultValue": "",
+      "required": false,
+      "helpMarkDown": "As per documentation: https://docs.microsoft.com/en-us/rest/api/admin.services.crm.dynamics.com/backupinstance"
+    },
+    {
+      "name": "isAzureBackup",
+      "type": "boolean",
+      "label": "Is Azure Backup",
+      "defaultValue": "false",
+      "required": true,
+      "helpMarkDown": "As per documentation: https://docs.microsoft.com/en-us/rest/api/admin.services.crm.dynamics.com/backupinstance",
+      "groupName": "azureStorageInfo"
+    },
+    {
+      "name": "containerName",
+      "type": "string",
+      "label": "Container Name",
+      "defaultValue": "",
+      "required": false,
+      "helpMarkDown": "As per documentation: https://docs.microsoft.com/en-us/rest/api/admin.services.crm.dynamics.com/backupinstance",
+      "groupName": "azureStorageInfo",
+      "visibleRule": "isAzureBackup = true"
+    },
+    {
+      "name": "storageAccountKey",
+      "type": "string",
+      "label": "Storage Account Key",
+      "defaultValue": "",
+      "required": false,
+      "helpMarkDown": "As per documentation: https://docs.microsoft.com/en-us/rest/api/admin.services.crm.dynamics.com/backupinstance",
+      "groupName": "azureStorageInfo",
+      "visibleRule": "isAzureBackup = true"
+    },
+    {
+      "name": "storageAccountName",
+      "type": "string",
+      "label": "Storage Account Name",
+      "defaultValue": "",
+      "required": false,
+      "helpMarkDown": "As per documentation: https://docs.microsoft.com/en-us/rest/api/admin.services.crm.dynamics.com/backupinstance",
+      "groupName": "azureStorageInfo",
+      "visibleRule": "isAzureBackup = true"
+    },
+    {
+      "name": "waitForCompletion",
+      "type": "boolean",
+      "label": "Wait For Completion",
+      "defaultValue": "true",
+      "required": true,
+      "helpMarkDown": "Setting this to true will cause the task to wait until the backup completes"
+    },
+    {
+      "name": "sleepDuration",
+      "type": "string",
+      "label": "Sleep Duration (seconds)",
+      "defaultValue": "5",
+      "required": false,
+      "helpMarkDown": "The frequency to query the status of the backup job while waiting for completion"
+    }
+  ],
+  "execution": {
+    "PowerShell3": {
+      "target": "MSCRMBackupOnlineInstance.ps1"
+    }
+  }
+}

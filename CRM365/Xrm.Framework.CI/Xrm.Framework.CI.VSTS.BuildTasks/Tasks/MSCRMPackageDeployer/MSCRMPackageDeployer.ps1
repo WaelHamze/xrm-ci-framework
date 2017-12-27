@@ -12,7 +12,7 @@ $packageName = Get-VstsInput -Name packageName -Require
 $packageDirectory = Get-VstsInput -Name packageDirectory -Require
 
 #TFS Release Parameters
-$artifactsFolder = $env:AGENT_RELEASEDIRECTORY 
+$artifactsFolder = $env:AGENT_RELEASEDIRECTORY
 
 #Print Verbose
 Write-Verbose "crmConnectionString = $crmConnectionString"
@@ -24,6 +24,23 @@ Write-Verbose "artifactsFolder = $artifactsFolder"
 $scriptPath = split-path -parent $MyInvocation.MyCommand.Definition
 Write-Verbose "Script Path: $scriptPath"
 
-& "$scriptPath\ps_modules\xRMCIFramework\DeployPackage.ps1" -CrmConnectionString $crmConnectionString -PackageName $packageName -PackageDirectory $packageDirectory
+$LogFile = "$packageDirectory" +"\Microsoft.Xrm.Tooling.PackageDeployment-" + (Get-Date -Format yyyy-MM-dd) + ".log"
+
+try
+{
+	& "$scriptPath\ps_modules\xRMCIFramework\DeployPackage.ps1" -CrmConnectionString $crmConnectionString -PackageName $packageName -PackageDirectory $packageDirectory -LogsDirectory $packageDirectory
+}
+finally
+{
+	Write-Host "Locating log file: $LogFile"
+
+	if (Test-Path $LogFile -PathType Leaf)
+	{
+		Write-Host "Writing Contents of Log File..."
+		Write-Host "------------------------------------------"
+		Get-Content $LogFile
+		Write-Host "------------------------------------------"
+	}
+}
 
 Write-Verbose 'Leaving MSCRMPackageDeployer.ps1'

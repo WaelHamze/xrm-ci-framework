@@ -1,0 +1,729 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CrmSvcUtil</name>
+    </assembly>
+    <members>
+        <member name="P:Microsoft.Crm.Services.Utility.CrmSvcUtilParameters.UseInteractiveLogin">
+            <summary>
+            Used to raise the interactive dialog to login. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.Services.Utility.CrmSvcUtilParameters.ConnectionString">
+            <summary>
+            Used to create a connection utilizing a passed in connection string. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.Services.Utility.CrmSvcUtilParameters.UseOAuth">
+            <summary>
+            Used to login via OAuth to CRM Online, Hidden for initial ship... but here to allow for complex auth situations. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.Services.Utility.CrmSvcUtilParameters.ConnectionProfileName">
+            <summary>
+            Hidden... Used by devToolkit to set the Connection profile to use for this call. 
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.Services.Utility.CrmSvcUtilParameters.ConnectionAppName">
+            <summary>
+            Hidden... Used by the devToolkit to set the appName whos connection is being used. 
+            </summary>
+        </member>
+        <member name="T:CrmSvcUtil.InteractiveLogin.CRMInteractiveLogin">
+            <summary>
+            Interaction logic for CRMInteractiveLogin.xaml
+            </summary>
+            <summary>
+            CRMInteractiveLogin
+            </summary>
+        </member>
+        <member name="F:CrmSvcUtil.InteractiveLogin.CRMInteractiveLogin.CrmSvc">
+            <summary>
+            Microsoft.Xrm.Tooling.Connector services
+            </summary>
+        </member>
+        <member name="F:CrmSvcUtil.InteractiveLogin.CRMInteractiveLogin.bIsConnectedComplete">
+            <summary>
+            Bool flag to determine if there is a connection 
+            </summary>
+        </member>
+        <member name="F:CrmSvcUtil.InteractiveLogin.CRMInteractiveLogin.mgr">
+            <summary>
+            CRM Connection Manager component. 
+            </summary>
+        </member>
+        <member name="F:CrmSvcUtil.InteractiveLogin.CRMInteractiveLogin.resetUiFlag">
+            <summary>
+             This is used to allow the UI to reset w/out closing 
+            </summary>
+        </member>
+        <member name="M:CrmSvcUtil.InteractiveLogin.CRMInteractiveLogin.Window_Loaded(System.Object,System.Windows.RoutedEventArgs)">
+            <summary>
+            Raised when the window loads for the first time. 
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:CrmSvcUtil.InteractiveLogin.CRMInteractiveLogin.ExecuteLoginProcess">
+            <summary>
+            Run Login process. 
+            </summary>
+        </member>
+        <member name="M:CrmSvcUtil.InteractiveLogin.CRMInteractiveLogin.mgr_ServerConnectionStatusUpdate(System.Object,Microsoft.Xrm.Tooling.CrmConnectControl.ServerConnectStatusEventArgs)">
+            <summary>
+            Updates from the Auto Login process. 
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:CrmSvcUtil.InteractiveLogin.CRMInteractiveLogin.mgr_ConnectionCheckComplete(System.Object,Microsoft.Xrm.Tooling.CrmConnectControl.ServerConnectStatusEventArgs)">
+            <summary>
+            Complete Event from the Auto Login process
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:CrmSvcUtil.InteractiveLogin.CRMInteractiveLogin.CrmLoginCtrl_ConnectionCheckBegining(System.Object,System.EventArgs)">
+            <summary>
+             Login control connect check starting. 
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:CrmSvcUtil.InteractiveLogin.CRMInteractiveLogin.CrmLoginCtrl_ConnectionStatusEvent(System.Object,Microsoft.Xrm.Tooling.CrmConnectControl.ConnectStatusEventArgs)">
+            <summary>
+            Login control connect check status event. 
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:CrmSvcUtil.InteractiveLogin.CRMInteractiveLogin.CrmLoginCtrl_ConnectErrorEvent(System.Object,Microsoft.Xrm.Tooling.CrmConnectControl.ConnectErrorEventArgs)">
+            <summary>
+            Login control Error event. 
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:CrmSvcUtil.InteractiveLogin.CRMInteractiveLogin.CrmLoginCtrl_UserCancelClicked(System.Object,System.EventArgs)">
+            <summary>
+            Login Control Cancel event raised. 
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:CrmSvcUtil.InteractiveLogin.CRMInteractiveLogin.ProcessSuccess">
+            <summary>
+            This raises and processes Success
+            </summary>
+        </member>
+        <member name="M:CrmSvcUtil.InteractiveLogin.CRMInteractiveLogin.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="P:CrmSvcUtil.InteractiveLogin.CRMInteractiveLogin.CrmConnectionMgr">
+            <summary>
+            CRM Connection Manager 
+            </summary>
+        </member>
+        <member name="P:CrmSvcUtil.InteractiveLogin.CRMInteractiveLogin.HostApplicatioNameOveride">
+            <summary>
+            Host Name to use.. 
+            </summary>
+        </member>
+        <member name="P:CrmSvcUtil.InteractiveLogin.CRMInteractiveLogin.HostProfileName">
+            <summary>
+            Profile Name to use
+            </summary>
+        </member>
+        <member name="P:CrmSvcUtil.InteractiveLogin.CRMInteractiveLogin.ForceDirectLogin">
+            <summary>
+            When set to true, forces a user login, 
+            </summary>
+        </member>
+        <member name="E:CrmSvcUtil.InteractiveLogin.CRMInteractiveLogin.ConnectionToCrmCompleted">
+            <summary>
+            Raised when a connection to CRM has completed. 
+            </summary>
+        </member>
+        <member name="T:Microsoft.Crm.Services.Utility.ArgumentType">
+            <remarks>
+            Type of command line argument represented.
+            </remarks>
+        </member>
+        <member name="F:Microsoft.Crm.Services.Utility.ArgumentType.Optional">
+            <summary>
+            Argument is optional.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.Services.Utility.ArgumentType.Required">
+            <summary>
+            Argument is required.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.Services.Utility.ArgumentType.Multiple">
+            <summary>
+            The argument may appear multiple times.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.Services.Utility.ArgumentType.Binary">
+            <summary>
+            Argument is a binary argument.  If it shows up
+            it is equivalent to a true value.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.Services.Utility.ArgumentType.Hidden">
+            <summary>
+            Argument is hidden from the user.  It can be supplied
+            on the command line, but will not show up in the
+            standard usage message.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Crm.Services.Utility.CommandLineArgument">
+            <remarks>
+            Wrapper class for Command Line Argument PropertyInfos.
+            </remarks>
+        </member>
+        <member name="F:Microsoft.Crm.Services.Utility.CommandLineArgument.ArgumentStartChar">
+            <summary>
+            Character used to start a new command line paramter.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.Services.Utility.CommandLineArgument.ArgumentSeparatorChar">
+            <summary>
+            Character used to seperate command line parameter and value.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.Services.Utility.CommandLineArgument.ShortFormFormat">
+            <summary>
+            Format to use when constructing the short form description for an argument.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Crm.Services.Utility.CommandLineArgumentAttribute">
+            <remarks>
+            Represents a command line argument.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Crm.Services.Utility.CommandLineArgumentAttribute.#ctor(Microsoft.Crm.Services.Utility.ArgumentType,System.String)">
+            <summary>
+            Creates a new command line argument attribute.
+            </summary>
+            <param name="argType">Type of argument represented by the property.</param>
+            <param name="name">Switch used by the command line argument</param>
+        </member>
+        <member name="P:Microsoft.Crm.Services.Utility.CommandLineArgumentAttribute.Type">
+            <summary>
+            Type of command line argument
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.Services.Utility.CommandLineArgumentAttribute.Name">
+            <summary>
+            Switch used to represent the argument.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.Services.Utility.CommandLineArgumentAttribute.Shortcut">
+            <summary>
+            Shortcut switch used to represent the argument.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.Services.Utility.CommandLineArgumentAttribute.Description">
+            <summary>
+            Description of the command line argument.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.Services.Utility.CommandLineArgumentAttribute.ParameterDescription">
+            <summary>
+            Description of the parameter.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Crm.Services.Utility.CommandLineParser">
+            <remarks>
+            Utility class to parse command line arguments.
+            </remarks>
+        </member>
+        <member name="F:Microsoft.Crm.Services.Utility.CommandLineParser._argsSource">
+            <summary>
+            The object that contains the properties to set.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.Services.Utility.CommandLineParser._argumentsMap">
+            <summary>
+            A mapping of argument switches to command line arguments.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.Services.Utility.CommandLineParser._arguments">
+            <summary>
+            A list of all of the arguments that are supported 
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.Services.Utility.CommandLineParser.#ctor(Microsoft.Crm.Services.Utility.ICommandLineArgumentSource)">
+            <summary>
+            Creates a new command line parser for the given object.
+            </summary>
+            <param name="argsSource">The object containing the properties representing the command line args to set.</param>
+        </member>
+        <member name="M:Microsoft.Crm.Services.Utility.CommandLineParser.GetPropertyMap">
+            <summary>
+            Populates the command line arguments map.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.Services.Utility.IOrganizationMetadata.Entities">
+            <summary>
+            Array of complete EntityMetadata for the Organization.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.Services.Utility.IOrganizationMetadata.OptionSets">
+            <summary>
+            Array of complete OptionSetMetadata for the Organization.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.Services.Utility.IOrganizationMetadata.Messages">
+            <summary>
+            All SdkMessages for the Organization.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Crm.Services.Utility.ICustomizeCodeDomService">
+            <summary>
+            Interface that can be used to customize the CodeDom before it generates code.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.Services.Utility.ICustomizeCodeDomService.CustomizeCodeDom(System.CodeDom.CodeCompileUnit,System.IServiceProvider)">
+            <summary>
+            Customize the generated types before code is generated
+            </summary>
+        </member>
+        <member name="T:Microsoft.Crm.Services.Utility.ICodeGenerationService">
+            <summary>
+            Interface that provides the ability to generate code based on organization metadata.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.Services.Utility.ICodeGenerationService.Write(Microsoft.Crm.Services.Utility.IOrganizationMetadata,System.String,System.String,System.String,System.IServiceProvider)">
+            <summary>
+            Writes code based on the organization metadata.
+            </summary>
+            <param name="organizationMetadata">Organization metadata to generate the code for.</param>
+            <param name="outputFile">Output file to write the generated code to.</param>
+            <param name="targetNamespace">Target namespace for the generated code.</param>
+            <param name="serviceProvider">ServiceProvider to query for additional services that can be used during code generation.</param>
+        </member>
+        <member name="M:Microsoft.Crm.Services.Utility.ICodeGenerationService.GetTypeForOptionSet(Microsoft.Xrm.Sdk.Metadata.EntityMetadata,Microsoft.Xrm.Sdk.Metadata.OptionSetMetadataBase,System.IServiceProvider)">
+            <summary>
+            Returns the type that gets generated for the OptionSetMetadata
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.Services.Utility.ICodeGenerationService.GetTypeForOption(Microsoft.Xrm.Sdk.Metadata.OptionSetMetadataBase,Microsoft.Xrm.Sdk.Metadata.OptionMetadata,System.IServiceProvider)">
+            <summary>
+            Returns the type that gets generated for the Option
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.Services.Utility.ICodeGenerationService.GetTypeForEntity(Microsoft.Xrm.Sdk.Metadata.EntityMetadata,System.IServiceProvider)">
+            <summary>
+            Returns the type that gets generated for the EntityMetadata
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.Services.Utility.ICodeGenerationService.GetTypeForAttribute(Microsoft.Xrm.Sdk.Metadata.EntityMetadata,Microsoft.Xrm.Sdk.Metadata.AttributeMetadata,System.IServiceProvider)">
+            <summary>
+            Returns the type that gets generated for the AttributeMetadata
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.Services.Utility.ICodeGenerationService.GetTypeForMessagePair(Microsoft.Crm.Services.Utility.SdkMessagePair,System.IServiceProvider)">
+            <summary>
+            Returns the type that gets generated for the SdkMessagePair
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.Services.Utility.ICodeGenerationService.GetTypeForRequestField(Microsoft.Crm.Services.Utility.SdkMessageRequest,Microsoft.Crm.Services.Utility.SdkMessageRequestField,System.IServiceProvider)">
+            <summary>
+            Returns the type that gets generated for the SdkMessageRequestField
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.Services.Utility.ICodeGenerationService.GetTypeForResponseField(Microsoft.Crm.Services.Utility.SdkMessageResponse,Microsoft.Crm.Services.Utility.SdkMessageResponseField,System.IServiceProvider)">
+            <summary>
+            Returns the type that gets generated for the SdkMessageResponseField
+            </summary>
+        </member>
+        <member name="T:Microsoft.Crm.Services.Utility.ICodeWriterFilterService">
+            <summary>
+            Interface that can be used to filter out specific pieces of metadata from having code generated for it.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.Services.Utility.ICodeWriterFilterService.GenerateOptionSet(Microsoft.Xrm.Sdk.Metadata.OptionSetMetadataBase,System.IServiceProvider)">
+            <summary>
+            Returns true to generate code for the OptionSet and false otherwise.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.Services.Utility.ICodeWriterFilterService.GenerateOption(Microsoft.Xrm.Sdk.Metadata.OptionMetadata,System.IServiceProvider)">
+            <summary>
+            Returns true to generate code for the Option and false otherwise.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.Services.Utility.ICodeWriterFilterService.GenerateEntity(Microsoft.Xrm.Sdk.Metadata.EntityMetadata,System.IServiceProvider)">
+            <summary>
+            Returns true to generate code for the Entity and false otherwise.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.Services.Utility.ICodeWriterFilterService.GenerateAttribute(Microsoft.Xrm.Sdk.Metadata.AttributeMetadata,System.IServiceProvider)">
+            <summary>
+            Returns true to generate code for the Attribute and false otherwise.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.Services.Utility.ICodeWriterFilterService.GenerateRelationship(Microsoft.Xrm.Sdk.Metadata.RelationshipMetadataBase,Microsoft.Xrm.Sdk.Metadata.EntityMetadata,System.IServiceProvider)">
+            <summary>
+            Returns true to generate code for the 1:N, N:N, or N:1 relationship and false otherwise.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.Services.Utility.ICodeWriterFilterService.GenerateServiceContext(System.IServiceProvider)">
+            <summary>
+            Returns true to generate code for the data context and false otherwise.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.Services.Utility.ICodeWriterMessageFilterService.GenerateSdkMessage(Microsoft.Crm.Services.Utility.SdkMessage,System.IServiceProvider)">
+            <summary>
+            Returns true to generate code for the SDK Message and false otherwise.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.Services.Utility.ICodeWriterMessageFilterService.GenerateSdkMessagePair(Microsoft.Crm.Services.Utility.SdkMessagePair,System.IServiceProvider)">
+            <summary>
+            Returns true to generate code for the SDK Message Pair and false otherwise.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.Services.Utility.CodeWriterFilterService.IsNotExposedChildAttribute(Microsoft.Xrm.Sdk.Metadata.AttributeMetadata)">
+            <summary>
+            If true a child attribute cannot be published or externally consumed. 
+            </summary>
+        </member>
+        <member name="T:Microsoft.Crm.Services.Utility.DeviceIdManager">
+            <summary>
+            Management utility for the Device Id
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.Services.Utility.DeviceIdManager.LoadOrRegisterDevice(System.Guid,System.Uri)">
+            <summary>
+            Loads the device credentials (if they exist). If they don't
+            </summary>
+            <param name="issuerUri">URL for the current token issuer</param>
+            <remarks>
+            The issuerUri can be retrieved from the IServiceConfiguration interface's CurrentIssuer property.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Crm.Services.Utility.DeviceIdManager.RegisterDevice(System.Guid,System.Uri)">
+            <summary>
+            Registers the given device with Live ID
+            </summary>
+            <param name="applicationId">ID for the application</param>
+            <param name="issuerUri">URL for the current token issuer</param>
+            <returns>ClientCredentials that were registered</returns>
+            <remarks>
+            The issuerUri can be retrieved from the IServiceConfiguration interface's CurrentIssuer property.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Crm.Services.Utility.DeviceIdManager.RegisterDevice(System.Guid,System.Uri,System.String,System.String)">
+            <summary>
+            Registers the given device with Live ID
+            </summary>
+            <param name="applicationId">ID for the application</param>
+            <param name="issuerUri">URL for the current token issuer</param>
+            <param name="deviceName">Device name that should be registered</param>
+            <param name="devicePassword">Device password that should be registered</param>
+            <returns>ClientCredentials that were registered</returns>
+            <remarks>
+            The issuerUri can be retrieved from the IServiceConfiguration interface's CurrentIssuer property.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.Crm.Services.Utility.DeviceIdManager.LoadDeviceCredentials(System.Uri)">
+            <summary>
+            Loads the device's credentials from the file system
+            </summary>
+            <param name="issuerUri">URL for the current token issuer</param>
+            <returns>Device Credentials (if set) or null</returns>
+            <remarks>
+            The issuerUri can be retrieved from the IServiceConfiguration interface's CurrentIssuer property.
+            </remarks>
+        </member>
+        <member name="T:Microsoft.Crm.Services.Utility.DeviceRegistrationErrorCode">
+            <summary>
+            Indicates an error during registration
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.Services.Utility.DeviceRegistrationErrorCode.Unknown">
+            <summary>
+            Unspecified or Unknown Error occurred
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.Services.Utility.DeviceRegistrationErrorCode.InterfaceDisabled">
+            <summary>
+            Interface Disabled
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.Services.Utility.DeviceRegistrationErrorCode.InvalidRequestFormat">
+            <summary>
+            Invalid Request Format
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.Services.Utility.DeviceRegistrationErrorCode.UnknownClientVersion">
+            <summary>
+            Unknown Client Version
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.Services.Utility.DeviceRegistrationErrorCode.BlankPassword">
+            <summary>
+            Blank Password
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.Services.Utility.DeviceRegistrationErrorCode.MissingDeviceUserNameOrPassword">
+            <summary>
+            Missing Device User Name or Password
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.Services.Utility.DeviceRegistrationErrorCode.InvalidParameterSyntax">
+            <summary>
+            Invalid Parameter Syntax
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.Services.Utility.DeviceRegistrationErrorCode.InternalError">
+            <summary>
+            Internal Error
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.Services.Utility.DeviceRegistrationErrorCode.DeviceAlreadyExists">
+            <summary>
+            Device Already Exists
+            </summary>
+        </member>
+        <member name="T:Microsoft.Crm.Services.Utility.DeviceRegistrationFailedException">
+            <summary>
+            Indicates that Device Registration failed
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.Services.Utility.DeviceRegistrationFailedException.#ctor">
+            <summary>
+            Construct an instance of the DeviceRegistrationFailedException class
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.Services.Utility.DeviceRegistrationFailedException.#ctor(Microsoft.Crm.Services.Utility.DeviceRegistrationErrorCode,System.String)">
+            <summary>
+            Construct an instance of the DeviceRegistrationFailedException class
+            </summary>
+            <param name="code">Error code that occurred</param>
+            <param name="subCode">Subcode that occurred</param>
+        </member>
+        <member name="M:Microsoft.Crm.Services.Utility.DeviceRegistrationFailedException.#ctor(Microsoft.Crm.Services.Utility.DeviceRegistrationErrorCode,System.String,System.Exception)">
+            <summary>
+            Construct an instance of the DeviceRegistrationFailedException class
+            </summary>
+            <param name="code">Error code that occurred</param>
+            <param name="subCode">Subcode that occurred</param>
+            <param name="innerException">Inner exception</param>
+        </member>
+        <member name="M:Microsoft.Crm.Services.Utility.DeviceRegistrationFailedException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Construct an instance of the DeviceRegistrationFailedException class
+            </summary>
+            <param name="si"></param>
+            <param name="sc"></param>
+        </member>
+        <member name="T:Microsoft.Crm.Services.Utility.StaticNamingService">
+            <summary>
+            Special class to hold hardcoded entity and attribute name mappings.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.Services.Utility.StaticNamingService.GetNameForEntity(Microsoft.Xrm.Sdk.Metadata.EntityMetadata)">
+            <summary>
+            Retrieves a name for the Entity being generated.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.Services.Utility.StaticNamingService.#cctor">
+            <summary>
+            Static constructor.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Crm.Services.Utility.INamingService">
+            <summary>
+            Used by the ICodeGenerationService to retrieve names for the CodeDOM objects being created.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.Services.Utility.INamingService.GetNameForOptionSet(Microsoft.Xrm.Sdk.Metadata.EntityMetadata,Microsoft.Xrm.Sdk.Metadata.OptionSetMetadataBase,System.IServiceProvider)">
+            <summary>
+            Returns a name for the OptionSet being generated.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.Services.Utility.INamingService.GetNameForOption(Microsoft.Xrm.Sdk.Metadata.OptionSetMetadataBase,Microsoft.Xrm.Sdk.Metadata.OptionMetadata,System.IServiceProvider)">
+            <summary>
+            Retrieves a name for the Option being generated.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.Services.Utility.INamingService.GetNameForEntity(Microsoft.Xrm.Sdk.Metadata.EntityMetadata,System.IServiceProvider)">
+            <summary>
+            Retrieves a name for the Entity being generated.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.Services.Utility.INamingService.GetNameForAttribute(Microsoft.Xrm.Sdk.Metadata.EntityMetadata,Microsoft.Xrm.Sdk.Metadata.AttributeMetadata,System.IServiceProvider)">
+            <summary>
+            Retrieves a name for the Attribute being generated.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.Services.Utility.INamingService.GetNameForRelationship(Microsoft.Xrm.Sdk.Metadata.EntityMetadata,Microsoft.Xrm.Sdk.Metadata.RelationshipMetadataBase,System.Nullable{Microsoft.Xrm.Sdk.EntityRole},System.IServiceProvider)">
+            <summary>
+            Retrieves a name for the 1:N, N:N, or N:1 relationship being generated.
+            </summary>
+            <param name="reflexiveRole">The nature of the reflexive relationship or null if not reflexive.</param>
+        </member>
+        <member name="M:Microsoft.Crm.Services.Utility.INamingService.GetNameForServiceContext(System.IServiceProvider)">
+            <summary>
+            Retrieves a name for the data context being generated.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.Services.Utility.INamingService.GetNameForEntitySet(Microsoft.Xrm.Sdk.Metadata.EntityMetadata,System.IServiceProvider)">
+            <summary>
+            Retrieves a name for a set of entities.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.Services.Utility.INamingService.GetNameForMessagePair(Microsoft.Crm.Services.Utility.SdkMessagePair,System.IServiceProvider)">
+            <summary>
+            Retrieves a name for the MessagePair being generated.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.Services.Utility.INamingService.GetNameForRequestField(Microsoft.Crm.Services.Utility.SdkMessageRequest,Microsoft.Crm.Services.Utility.SdkMessageRequestField,System.IServiceProvider)">
+            <summary>
+            Retrieves a name for the Request Field being generated.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.Services.Utility.INamingService.GetNameForResponseField(Microsoft.Crm.Services.Utility.SdkMessageResponse,Microsoft.Crm.Services.Utility.SdkMessageResponseField,System.IServiceProvider)">
+            <summary>
+            Retrieves a name for the Response Field being generated.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Crm.Services.Utility.IMetadataProviderService">
+            <summary>
+            Interface that provides metadata for a given organization.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.Services.Utility.IMetadataProviderService.LoadMetadata">
+            <summary>
+            Returns the metadata for a given organization.  Subsequent calls to the method should
+            return the same set of information on the IOrganizationMetadata object.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.Services.Utility.SdkMetadataProviderService.SetConnectionTimeoutValues">
+            <summary>
+            Updates the timeout value to extend the amount of item that a request will wait. 
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.Services.Utility.SdkMetadataProviderService.GetConnectionString">
+            <summary>
+            Builds a connection string from the passed in parameters. 
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Microsoft.Crm.Services.Utility.ITypeMappingService">
+            <summary>
+            Used by the ICodeGenerationService to retrieve types for the CodeDOM objects being created.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.Services.Utility.ITypeMappingService.GetTypeForEntity(Microsoft.Xrm.Sdk.Metadata.EntityMetadata,System.IServiceProvider)">
+            <summary>
+            Retrieves a CodeTypeReference for the entity set being generated.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.Services.Utility.ITypeMappingService.GetTypeForAttributeType(Microsoft.Xrm.Sdk.Metadata.EntityMetadata,Microsoft.Xrm.Sdk.Metadata.AttributeMetadata,System.IServiceProvider)">
+            <summary>
+            Retrieves a CodeTypeReference for the attribute being generated.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.Services.Utility.ITypeMappingService.GetTypeForRelationship(Microsoft.Xrm.Sdk.Metadata.RelationshipMetadataBase,Microsoft.Xrm.Sdk.Metadata.EntityMetadata,System.IServiceProvider)">
+            <summary>
+            Retrieves a CodeTypeReference for the 1:N, N:N, or N:1 relationship being generated.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.Services.Utility.ITypeMappingService.GetTypeForRequestField(Microsoft.Crm.Services.Utility.SdkMessageRequestField,System.IServiceProvider)">
+            <summary>
+            Retrieves a CodeTypeReference for the Request Field being generated.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.Services.Utility.ITypeMappingService.GetTypeForResponseField(Microsoft.Crm.Services.Utility.SdkMessageResponseField,System.IServiceProvider)">
+            <summary>
+            Retrieves a CodeTypeReference for the Response Field being generated.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Crm.Services.Utility.TraceLogger">
+            <summary>
+            Trace Logger for this project
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.Services.Utility.TraceLogger.source">
+            <summary>
+            Trace Tag. 
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.Services.Utility.TraceLogger._LastError">
+            <summary>
+            String Builder Info.
+            </summary>
+        </member>
+        <member name="F:Microsoft.Crm.Services.Utility.TraceLogger._LastException">
+            <summary>
+            Last Exception.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.Services.Utility.TraceLogger.#ctor(System.String)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="traceSourceName">trace source name</param>
+        </member>
+        <member name="M:Microsoft.Crm.Services.Utility.TraceLogger.ResetLastError">
+            <summary>
+            Last error reset.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Crm.Services.Utility.TraceLogger.Log(System.String)">
+            <summary>
+            Log a Message. 
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:Microsoft.Crm.Services.Utility.TraceLogger.Log(System.String,System.Diagnostics.TraceEventType)">
+            <summary>
+            Log a Trace event. 
+            </summary>
+            <param name="message"></param>
+            <param name="eventType"></param>
+        </member>
+        <member name="M:Microsoft.Crm.Services.Utility.TraceLogger.Log(System.String,System.Diagnostics.TraceEventType,System.Exception)">
+            <summary>
+            Log a Trace event.
+            </summary>
+            <param name="message">Error Message</param>
+            <param name="eventType">Trace Event type Information</param>
+            <param name="exception">Exception object</param>
+        </member>
+        <member name="M:Microsoft.Crm.Services.Utility.TraceLogger.Log(System.Exception)">
+            <summary>
+            Log an error with an Exception.
+            </summary>
+            <param name="exception"></param>
+        </member>
+        <member name="M:Microsoft.Crm.Services.Utility.TraceLogger.LogExceptionToFile(System.Exception,System.Text.StringBuilder,System.Int32)">
+            <summary>
+            Logs the error text to the stream.
+            </summary>
+            <param name="objException">Exception to be written.</param>
+            <param name="sw">Stream writer to use to write the exception.</param>
+            <param name="level">level of the exception, this deals with inner exceptions.</param>
+        </member>
+        <member name="P:Microsoft.Crm.Services.Utility.TraceLogger.LastError">
+            <summary>
+            Last Error from CRM.
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.Services.Utility.TraceLogger.LastException">
+            <summary>
+            Last Exception from CRM .
+            </summary>
+        </member>
+        <member name="P:Microsoft.Crm.Services.Utility.TraceLogger.CurrentTraceLevel">
+            <summary>
+            Returns the trace source level for the current logger. 
+            </summary>
+        </member>
+    </members>
+</doc>

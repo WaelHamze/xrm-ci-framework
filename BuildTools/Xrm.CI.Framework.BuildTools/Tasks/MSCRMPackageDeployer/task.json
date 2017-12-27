@@ -1,0 +1,64 @@
+{
+  "id": "F41BA110-0B12-45BC-94C9-67655CB59323",
+  "name": "MSCRMPackageDeployer",
+  "friendlyName": "MSCRM Package Deployer",
+  "description": "Deploys a CRM Package using the CRM Package Deployer PowerShell Cmdlets",
+  "author": "Wael Hamze",
+  "helpMarkDown": "For more information on CRM Package Deployer: https://technet.microsoft.com/en-us/library/dn647420.aspx",
+  "category": "Deploy",
+  "visibility": [
+    "Build",
+    "Release"
+  ],
+  "demands": [ ],
+  "version": {
+    "Major": "9",
+    "Minor": "0",
+    "Patch": "8"
+  },
+  "minimumAgentVersion": "1.95.0",
+  "instanceNameFormat": "MSCRM Package Deployer: $(packageName)",
+  "inputs": [
+    {
+      "name": "crmSdkVersion",
+      "type": "pickList",
+      "label": "Crm Sdk Version",
+      "defaultValue": "9.0.0",
+      "required": true,
+      "options": {
+        "8.2.0": "8.2",
+        "9.0.0": "9.0"
+      },
+      "helpMarkDown": "The Crm SDK version to use for executing Package Deployment Powershell"
+    },
+    {
+      "name": "crmConnectionString",
+      "type": "string",
+      "label": "CRM Connection String",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "For more information on format: https://msdn.microsoft.com/en-gb/library/mt608573.aspx"
+    },
+    {
+      "name": "packageName",
+      "type": "string",
+      "label": "Package Name",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "The name of the assembly that contains the package definition"
+    },
+    {
+      "name": "packageDirectory",
+      "type": "filePath",
+      "label": "Package Directory",
+      "defaultValue": "$(System.DefaultWorkingDirectory)/<BuildName>/<ArtifactName>/<PackageFolder>",
+      "required": false,
+      "helpMarkDown": "The absolute path to the CRM Package folder on the release agent machine"
+    }
+  ],
+  "execution": {
+    "PowerShell3": {
+      "target": "MSCRMPackageDeployer.ps1"
+    }
+  }
+}

@@ -14,7 +14,7 @@
   "version": {
     "Major": "8",
     "Minor": "1",
-    "Patch": "3"
+    "Patch": "4"
   },
   "minimumAgentVersion": "1.95.0",
   "instanceNameFormat": "MSCRM Import Solution",
@@ -90,6 +90,14 @@
       "defaultValue": "900",
       "required": false,
       "helpMarkDown": "The number of seconds to wait for async solution import to complete before timing out"
+    },
+    {
+      "name": "crmConnectionTimeout",
+      "type": "string",
+      "label": "Crm Connection Timeout",
+      "defaultValue": "120",
+      "required": false,
+      "helpMarkDown": "The Crm connection timeout in seconds"
     }
   ],
   "execution": {

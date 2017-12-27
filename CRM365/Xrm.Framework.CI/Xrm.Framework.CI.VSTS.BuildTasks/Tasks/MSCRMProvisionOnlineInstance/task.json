@@ -1,0 +1,239 @@
+{
+  "id": "75B16512-23B8-49BD-9F31-C56D491207AD",
+  "name": "MSCRMProvisionOnlineInstance",
+  "friendlyName": "MSCRM Provision Online Instance",
+  "description": "Creates a new Dynamics 365 Customer Engagement Online Instance",
+  "author": "Wael Hamze",
+  "helpMarkDown": "This task uses the Microsoft.Xrm.OnlineManagementAPI: https://www.powershellgallery.com/packages/Microsoft.Xrm.OnlineManagementAPI",
+  "category": "Deploy",
+  "visibility": [
+    "Build",
+    "Release"
+  ],
+  "demands": [ ],
+  "version": {
+    "Major": "8",
+    "Minor": "0",
+    "Patch": "25"
+  },
+  "minimumAgentVersion": "1.95.0",
+  "instanceNameFormat": "Provision $(domainName)",
+  "groups": [
+    {
+      "name": "currencyInfo",
+      "displayName": "Currency Info",
+      "isExpanded": true
+    },
+    {
+      "name": "templates",
+      "displayName": "Templates",
+      "isExpanded": true
+    }
+  ],
+  "inputs": [
+    {
+      "name": "apiUrl",
+      "type": "string",
+      "label": "ApiUrl",
+      "defaultValue": "https://admin.services.crm[n].dynamics.com",
+      "required": true,
+      "helpMarkDown": "Use the Service Url as per documentation: https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/online-management-api/get-started-online-management-api"
+    },
+    {
+      "name": "username",
+      "type": "string",
+      "label": "Username",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "The Dynamics 365 username"
+    },
+    {
+      "name": "password",
+      "type": "string",
+      "label": "Password",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "The Dynamics 365 password"
+    },
+    {
+      "name": "domainName",
+      "type": "string",
+      "label": "Domain Name",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "As per documentation: https://docs.microsoft.com/en-us/rest/api/admin.services.crm.dynamics.com/provisioninstance"
+    },
+    {
+      "name": "friendlyName",
+      "type": "string",
+      "label": "Friendly Name",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "As per documentation: https://docs.microsoft.com/en-us/rest/api/admin.services.crm.dynamics.com/provisioninstance"
+    },
+    {
+      "name": "purpose",
+      "type": "string",
+      "label": "Purpose",
+      "defaultValue": "",
+      "required": false,
+      "helpMarkDown": "As per documentation: https://docs.microsoft.com/en-us/rest/api/admin.services.crm.dynamics.com/provisioninstance"
+    },
+    {
+      "name": "initialUserEmail",
+      "type": "string",
+      "label": "Initial User Email",
+      "defaultValue": "",
+      "required": false,
+      "helpMarkDown": "As per documentation: https://docs.microsoft.com/en-us/rest/api/admin.services.crm.dynamics.com/provisioninstance"
+    },
+    {
+      "name": "instanceType",
+      "type": "pickList",
+      "label": "Instance Type",
+      "defaultValue": "",
+      "required": true,
+      "options": {
+        "None": "None",
+        "Production": "Production",
+        "Sandbox": "Sandbox",
+        "Support": "Support",
+        "Preview": "Preview",
+        "Trial": "Trial"
+      },
+      "helpMarkDown": "As per documentation: https://docs.microsoft.com/en-us/rest/api/admin.services.crm.dynamics.com/provisioninstance"
+    },
+    {
+      "name": "serviceVersion",
+      "type": "pickList",
+      "label": "Service Version",
+      "defaultValue": "31cafafe-c6b1-4c0a-bb53-73927841bc5c",
+      "required": true,
+      "options": {
+        "bce9abbf-90fd-42e7-b0e5-1ced6df22fa1": "July 2017 Update for Dynamics 365",
+        "31cafafe-c6b1-4c0a-bb53-73927841bc5c": "Dynamics 365",
+        "aaf5fa67-3f34-835d-85bb-6c8eb44aff8d": "Microsoft Dynamics CRM Online 2016 Update 1",
+        "015e6a5c-2fa5-e411-80ce-00155db07c21": "Microsoft Dynamics CRM Online 2016",
+        "9f2caf05-45b9-e411-80ec-6c3be5a88dd4": "Microsoft Dynamics CRM Online 2015 Update 1 (May 2015)"
+      },
+      "helpMarkDown": "As per documentation: https://docs.microsoft.com/en-us/rest/api/admin.services.crm.dynamics.com/provisioninstance"
+    },
+    {
+      "name": "sales",
+      "type": "boolean",
+      "label": "Sales",
+      "defaultValue": "false",
+      "required": false,
+      "helpMarkDown": "As per documentation: https://docs.microsoft.com/en-us/rest/api/admin.services.crm.dynamics.com/provisioninstance",
+      "groupName": "templates"
+    },
+    {
+      "name": "customerService",
+      "type": "boolean",
+      "label": "CustomerService",
+      "defaultValue": "false",
+      "required": false,
+      "helpMarkDown": "As per documentation: https://docs.microsoft.com/en-us/rest/api/admin.services.crm.dynamics.com/provisioninstance",
+      "groupName": "templates"
+    },
+    {
+      "name": "fieldService",
+      "type": "boolean",
+      "label": "Field Service",
+      "defaultValue": "false",
+      "required": false,
+      "helpMarkDown": "As per documentation: https://docs.microsoft.com/en-us/rest/api/admin.services.crm.dynamics.com/provisioninstance",
+      "groupName": "templates"
+    },
+    {
+      "name": "projectService",
+      "type": "boolean",
+      "label": "Project Service",
+      "defaultValue": "false",
+      "required": false,
+      "helpMarkDown": "As per documentation: https://docs.microsoft.com/en-us/rest/api/admin.services.crm.dynamics.com/provisioninstance",
+      "groupName": "templates"
+    },
+    {
+      "name": "languageId",
+      "type": "string",
+      "label": "Language Id",
+      "defaultValue": "1033",
+      "required": true,
+      "helpMarkDown": "As per documentation: https://docs.microsoft.com/en-us/rest/api/admin.services.crm.dynamics.com/provisioninstance"
+    },
+    {
+      "name": "currencyCode",
+      "type": "string",
+      "label": "Code",
+      "defaultValue": "",
+      "required": false,
+      "helpMarkDown": "As per documentation: https://docs.microsoft.com/en-us/rest/api/admin.services.crm.dynamics.com/provisioninstance",
+      "groupName": "currencyInfo"
+    },
+    {
+      "name": "currencyName",
+      "type": "string",
+      "label": "Name",
+      "defaultValue": "",
+      "required": false,
+      "helpMarkDown": "As per documentation: https://docs.microsoft.com/en-us/rest/api/admin.services.crm.dynamics.com/provisioninstance",
+      "groupName": "currencyInfo"
+    },
+    {
+      "name": "currencyPrecision",
+      "type": "string",
+      "label": "Precision",
+      "defaultValue": "",
+      "required": false,
+      "helpMarkDown": "As per documentation: https://docs.microsoft.com/en-us/rest/api/admin.services.crm.dynamics.com/provisioninstance",
+      "groupName": "currencyInfo"
+    },
+    {
+      "name": "currencySymbol",
+      "type": "string",
+      "label": "Symbol",
+      "defaultValue": "",
+      "required": false,
+      "helpMarkDown": "As per documentation: https://docs.microsoft.com/en-us/rest/api/admin.services.crm.dynamics.com/provisioninstance",
+      "groupName": "currencyInfo"
+    },
+    {
+      "name": "securityGroupId",
+      "type": "string",
+      "label": "Security Group Id",
+      "defaultValue": "",
+      "required": false,
+      "helpMarkDown": "As per documentation: https://docs.microsoft.com/en-us/rest/api/admin.services.crm.dynamics.com/provisioninstance"
+    },
+    {
+      "name": "securityGroupName",
+      "type": "string",
+      "label": "Security Group Name",
+      "defaultValue": "",
+      "required": false,
+      "helpMarkDown": "You can provide this instead of Security Group Id. Note you will need AzureAD PowerShell Module installed on the Agent"
+    },
+    {
+      "name": "waitForCompletion",
+      "type": "boolean",
+      "label": "Wait For Completion",
+      "defaultValue": "true",
+      "required": true,
+      "helpMarkDown": "Setting this to true will cause the task to wait until the backup completes"
+    },
+    {
+      "name": "sleepDuration",
+      "type": "string",
+      "label": "Sleep Duration (seconds)",
+      "defaultValue": "5",
+      "required": false,
+      "helpMarkDown": "The frequency to query the status of the backup job while waiting for completion"
+    }
+  ],
+  "execution": {
+    "PowerShell3": {
+      "target": "MSCRMProvisionOnlineInstance.ps1"
+    }
+  }
+}
