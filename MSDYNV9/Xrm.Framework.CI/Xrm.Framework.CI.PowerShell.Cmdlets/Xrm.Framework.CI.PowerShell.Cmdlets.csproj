@@ -80,6 +80,7 @@
     <Compile Include="AddXrmEntityCommand.cs" />
     <Compile Include="Common\Entities.cs" />
     <Compile Include="Common\XrmSolutionInfo.cs" />
+    <Compile Include="ExportXrmAccessTeamTemplatesCommand.cs" />
     <Compile Include="ExportXrmSolutionCommand.cs" />
     <Compile Include="GetXrmEntitiesCommand.cs" />
     <Compile Include="GetXrmEntityCommand.cs" />
@@ -87,6 +88,7 @@
     <Compile Include="GetXrmSolutionImportLog.cs" />
     <Compile Include="GetXrmSolutionInfoFromFolderCommand.cs" />
     <Compile Include="GetXrmSolutionInfoFromZipCommand.cs" />
+    <Compile Include="ImportXrmAccessTeamTemplatesCommand.cs" />
     <Compile Include="ImportXrmSolutionCommand.cs" />
     <Compile Include="NewXrmBulkDeleteJobCommand.cs" />
     <Compile Include="NewXrmEntityCommand.cs" />

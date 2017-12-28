@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F5034706-568F-408A-B7B3-4D38C6DB8A32}") = "Xrm.Framework.CI.PowerShell.Scripts", "Xrm.Framework.CI.PowerShell.Scripts\Xrm.Framework.CI.PowerShell.Scripts.pssproj", "{26E7A989-C329-4B54-A80D-200FC23306B9}"
 EndProject
@@ -125,15 +125,20 @@ EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Release_PS2|Any CPU = Release_PS2|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{26E7A989-C329-4B54-A80D-200FC23306B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{26E7A989-C329-4B54-A80D-200FC23306B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26E7A989-C329-4B54-A80D-200FC23306B9}.Release_PS2|Any CPU.ActiveCfg = Release|Any CPU
+		{26E7A989-C329-4B54-A80D-200FC23306B9}.Release_PS2|Any CPU.Build.0 = Release|Any CPU
 		{26E7A989-C329-4B54-A80D-200FC23306B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{26E7A989-C329-4B54-A80D-200FC23306B9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0AF2D810-8E16-4AA1-B3F8-75EB17CF8A24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0AF2D810-8E16-4AA1-B3F8-75EB17CF8A24}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0AF2D810-8E16-4AA1-B3F8-75EB17CF8A24}.Release_PS2|Any CPU.ActiveCfg = Release_PS2|Any CPU
+		{0AF2D810-8E16-4AA1-B3F8-75EB17CF8A24}.Release_PS2|Any CPU.Build.0 = Release_PS2|Any CPU
 		{0AF2D810-8E16-4AA1-B3F8-75EB17CF8A24}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0AF2D810-8E16-4AA1-B3F8-75EB17CF8A24}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
