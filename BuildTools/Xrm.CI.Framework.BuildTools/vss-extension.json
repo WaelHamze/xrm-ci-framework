@@ -101,6 +101,9 @@
     },
     {
       "path": "Tasks/MSCRMSetOnlineInstanceAdminMode"
+    },
+    {
+      "path": "Tasks/MSCRMUpdatePluginAssembly"
     }
   ],
   "contributions": [
@@ -232,6 +235,16 @@
       ],
       "properties": {
         "name": "Tasks/MSCRMSetOnlineInstanceAdminMode"
+      }
+    },
+    {
+      "id": "MSCRMUpdatePluginAssembly",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "Tasks/MSCRMUpdatePluginAssembly"
       }
     }
   ]

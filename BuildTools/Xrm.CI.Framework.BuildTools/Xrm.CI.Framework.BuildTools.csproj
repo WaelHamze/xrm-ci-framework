@@ -133,6 +133,7 @@
     <Content Include="Make.ps1" />
     <Content Include="DeployTask.ps1" />
     <Content Include="Package.ps1" />
+    <Content Include="Lib\xRMCIFramework\9.0.0\UpdatePluginAssembly.ps1" />
     <None Include="packages.config" />
     <Content Include="Tasks\MSCRMBackupOnlineInstance\MSCRMBackupOnlineInstance.ps1" />
     <Content Include="Tasks\MSCRMBackupOnlineInstance\task.json" />
@@ -165,6 +166,8 @@
     <Content Include="vss-extension.json" />
     <Content Include="vss-extension-dev.json" />
     <Content Include="vss-extension-preview.json" />
+    <Content Include="Tasks\MSCRMUpdatePluginAssembly\MSCRMUpdatePluginAssembly.ps1" />
+    <Content Include="Tasks\MSCRMUpdatePluginAssembly\task.json" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
