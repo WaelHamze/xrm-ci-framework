@@ -109,7 +109,9 @@
     <Compile Include="XrmCommandBase.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
     <None Include="Xrm.Framework.CI.PowerShell.Cmdlets.nuspec" />
     <None Include="Xrm.Framework.CI.PowerShell.Cmdlets.psd1" />
