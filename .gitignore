@@ -64,7 +64,7 @@
 /BuildTools/Xrm.CI.Framework.BuildTools/obj/Debug
 /Sample/Xrm.CI.Framework.Sample/packages
 /Sample/Xrm.CI.Framework.Sample/Xrm.CI.Framework.Sample.WFActivities/obj
-/Sample/Xrm.CI.Framework.Sample/Xrm.CI.Framework.Sample.WFActivities/bin
+/Sample/Xrm.CI.Framework.Sample/Xrm.CI.Framework.Sample.WFActivities/obj
 /Sample/Xrm.CI.Framework.Sample/Xrm.CI.Framework.Sample.Plugins/bin
 /Sample/Xrm.CI.Framework.Sample/Xrm.CI.Framework.Sample.Plugins/obj
 /Sample/Xrm.CI.Framework.Sample/Xrm.CI.Framework.Sample.CRMPackage/bin

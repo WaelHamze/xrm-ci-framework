@@ -1,9 +1,0 @@
-C:\Dev\Src\xrm-ci-framework\Sample\Xrm.CI.Framework.Sample\Xrm.CI.Framework.Sample.Plugins\bin\Debug\Xrm.CI.Framework.Sample.Plugins.dll
-C:\Dev\Src\xrm-ci-framework\Sample\Xrm.CI.Framework.Sample\Xrm.CI.Framework.Sample.Plugins\bin\Debug\Xrm.CI.Framework.Sample.Plugins.pdb
-C:\Dev\Src\xrm-ci-framework\Sample\Xrm.CI.Framework.Sample\Xrm.CI.Framework.Sample.Plugins\obj\Debug\Xrm.CI.Framework.Sample.Plugins.csproj.CoreCompileInputs.cache
-C:\Dev\Src\xrm-ci-framework\Sample\Xrm.CI.Framework.Sample\Xrm.CI.Framework.Sample.Plugins\obj\Debug\Xrm.CI.Framework.Sample.Plugins.dll
-C:\Dev\Src\xrm-ci-framework\Sample\Xrm.CI.Framework.Sample\Xrm.CI.Framework.Sample.Plugins\obj\Debug\Xrm.CI.Framework.Sample.Plugins.pdb
-C:\Dev\Src\xrm-ci-framework\Sample\Xrm.CI.Framework.Sample\Xrm.CI.Framework.Sample.Plugins\bin\Debug\Microsoft.Crm.Sdk.Proxy.dll
-C:\Dev\Src\xrm-ci-framework\Sample\Xrm.CI.Framework.Sample\Xrm.CI.Framework.Sample.Plugins\bin\Debug\Microsoft.Xrm.Sdk.dll
-C:\Dev\Src\xrm-ci-framework\Sample\Xrm.CI.Framework.Sample\Xrm.CI.Framework.Sample.Plugins\bin\Debug\Microsoft.Crm.Sdk.Proxy.xml
-C:\Dev\Src\xrm-ci-framework\Sample\Xrm.CI.Framework.Sample\Xrm.CI.Framework.Sample.Plugins\bin\Debug\Microsoft.Xrm.Sdk.xml
