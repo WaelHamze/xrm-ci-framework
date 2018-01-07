@@ -7,6 +7,7 @@ using System.Linq;
 using System.Management.Automation;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 using Xrm.Framework.CI.PowerShell.Cmdlets.Common;
 
 namespace Xrm.Framework.CI.PowerShell.Cmdlets
@@ -29,19 +30,13 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
         /// <para type="description">The full path to the web resource file. e.g. C:\Solution\WebResources\Test.js</para>
         /// </summary>
         [Parameter(Mandatory = true)]
-        public String Path { get; set; }
+        public String WebResourceProjectPath { get; set; }
 
         /// <summary>
         /// <para type="description">The unique name of the web resource in CRM. e.g. prefix_Test.js</para>
         /// </summary>
         [Parameter(Mandatory = false)]
-        public String UniqueName { get; set; }
-
-        /// <summary>
-        /// <para type="description">The unique name of the web resource in CRM. e.g. prefix_Test.js</para>
-        /// </summary>
-        [Parameter(Mandatory = false)]
-        public Boolean Publish { get; set; }
+        public String Publish { get; set; }
 
         #endregion
 
@@ -51,17 +46,41 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
         {
             base.ProcessRecord();
 
-            base.WriteVerbose(string.Format("Updating Web Resource: {0}", Path));
+            base.WriteVerbose(string.Format("Updating Web Resources from : {0}", WebResourceProjectPath));
 
-            FileInfo webResourceInfo = new FileInfo(Path);
+            bool publish = Convert.ToBoolean(Publish);
 
-            String content = Convert.ToBase64String(File.ReadAllBytes(Path));
+            string xmlFile = File.ReadAllText(WebResourceProjectPath);
+            string dirPath = System.IO.Path.GetDirectoryName(WebResourceProjectPath);
+            XmlDocument xmldoc = new XmlDocument();
+            xmldoc.LoadXml(xmlFile);
+            XmlNodeList nodeList = xmldoc.GetElementsByTagName("CRMWebResource");
+            foreach (XmlNode node in nodeList)
+            {
+                string path = dirPath + "\\" + node.Attributes["Include"].Value;
+                foreach (XmlNode childNode in node.ChildNodes)
+                {
+                    if (childNode.Name.Equals("UniqueName"))
+                    {
+                        string uniqueName = childNode.InnerText;
+                        base.WriteVerbose(string.Format("Updating Web Resource : {0}", path));
+                        this.UpdateWebResource(publish, path, uniqueName);
+                    }
+                }
+            }
+        }
+
+        private void UpdateWebResource(bool publish, string path, string uniqueName)
+        {
+            FileInfo webResourceInfo = new FileInfo(path);
+
+            String content = Convert.ToBase64String(File.ReadAllBytes(Uri.UnescapeDataString(path)));
 
             Guid resourceId;
 
             using (var context = new CIContext(OrganizationService))
             {
-                if (String.IsNullOrEmpty(UniqueName))
+                if (String.IsNullOrEmpty(uniqueName))
                 {
                     var query = from a in context.WebResourceSet
                                 where a.Name.Contains(webResourceInfo.Name)
@@ -80,20 +99,20 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
                     else
                     {
                         resourceId = resources[0].Id;
-                        UniqueName = resources[0].Name;
+                        uniqueName = resources[0].Name;
                     }
                 }
                 else
                 {
                     var query = from a in context.WebResourceSet
-                                where a.Name == UniqueName
+                                where a.Name == uniqueName
                                 select a.Id;
 
                     resourceId = query.FirstOrDefault();
 
                     if (resourceId == null || resourceId == Guid.Empty)
                     {
-                        throw new ItemNotFoundException(string.Format("{0} was not found", UniqueName));
+                        throw new ItemNotFoundException(string.Format("{0} was not found", uniqueName));
                     }
                 }
 
@@ -107,11 +126,11 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
 
                 WriteObject(resourceId);
 
-                base.WriteVerbose(string.Format("Web Resource Updated Name: {0}", UniqueName));
+                base.WriteVerbose(string.Format("Web Resource Updated Name: {0}", uniqueName));
 
-                if (Publish)
+                if (publish)
                 {
-                    base.WriteVerbose(string.Format("Publishing Web Resource: {0}", UniqueName));
+                    base.WriteVerbose(string.Format("Publishing Web Resource: {0}", uniqueName));
 
                     PublishXmlRequest req = new PublishXmlRequest()
                     {
@@ -120,7 +139,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
 
                     OrganizationService.Execute(req);
 
-                    base.WriteVerbose(string.Format("Published Web Resource: {0}", UniqueName));
+                    base.WriteVerbose(string.Format("Published Web Resource: {0}", uniqueName));
                 }
             }
         }

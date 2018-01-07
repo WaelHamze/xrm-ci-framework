@@ -1,0 +1,65 @@
+{
+  "id": "b48708ed-a5d6-4af5-a9be-589847132134",
+  "name": "MSCRMUpdateWebResource",
+  "friendlyName": "MSCRM Update Web Resources",
+  "description": "A task that updates Dynamics 365 web resources created using developer toolkit project",
+  "author": "Wael Hamze",
+  "helpMarkDown": "Update Dynamics 365 web resources",
+  "category": "Utility",
+  "visibility": [
+    "Build",
+    "Release"
+  ],
+  "demands": [],
+  "version": {
+    "Major": "9",
+    "Minor": "0",
+    "Patch": "51"
+  },
+  "minimumAgentVersion": "1.95.0",
+  "instanceNameFormat": "MSCRM Update Web resources",
+  "inputs": [
+    {
+      "name": "crmConnectionString",
+      "type": "string",
+      "label": "CRM Connection String",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "For more information on format: https://msdn.microsoft.com/en-gb/library/mt608573.aspx"
+    },
+    {
+      "name": "webResourceProjectPath",
+      "type": "filePath",
+      "label": "Web Resource Project Path",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": ""
+    },
+    {
+      "name": "publish",
+      "type": "boolean",
+      "label": "Publish Web Resource?",
+      "defaultValue": 0,
+      "required": true,
+      "helpMarkDown": ""
+    },
+    {
+      "name": "timeout",
+      "type": "int",
+      "label": "time out",
+      "defaultValue": 360,
+      "required": true,
+      "helpMarkDown": ""
+    }
+  ],
+  "execution": {
+    "PowerShell3": {
+      "target": "MSCRMUpdateWebResource.ps1",
+      "argumentFormat": "",
+      "workingDirectory": "$(currentDirectory)",
+      "platforms": [
+        "windows"
+      ]
+    }
+  }
+}

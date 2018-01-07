@@ -104,6 +104,9 @@
     },
     {
       "path": "Tasks/MSCRMUpdatePluginAssembly"
+    },
+    {
+      "path": "Tasks/MSCRMUpdateWebResource"
     }
   ],
   "contributions": [
@@ -245,6 +248,16 @@
       ],
       "properties": {
         "name": "Tasks/MSCRMUpdatePluginAssembly"
+      }
+    },
+    {
+      "id": "MSCRMUpdateWebResource",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "Tasks/MSCRMUpdateWebResource"
       }
     }
   ]
