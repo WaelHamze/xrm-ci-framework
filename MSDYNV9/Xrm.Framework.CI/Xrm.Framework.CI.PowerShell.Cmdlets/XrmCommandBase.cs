@@ -4,6 +4,7 @@ using Microsoft.Xrm.Tooling.Connector;
 using System.Configuration;
 using System.Threading;
 using System;
+using System.Net;
 
 namespace Xrm.Framework.CI.PowerShell.Cmdlets
 {
@@ -31,6 +32,29 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
         {
             base.BeginProcessing();
 
+            SetSecurityProtocol();
+
+            ConnectToCRM();
+        }
+
+        private void SetSecurityProtocol()
+        {
+            WriteVerbose(string.Format("Current Security Protocol: {0}", ServicePointManager.SecurityProtocol));
+
+            if (!ServicePointManager.SecurityProtocol.HasFlag(SecurityProtocolType.Tls11))
+            {
+                ServicePointManager.SecurityProtocol = ServicePointManager.SecurityProtocol ^ SecurityProtocolType.Tls11;
+            }
+            if (!ServicePointManager.SecurityProtocol.HasFlag(SecurityProtocolType.Tls12))
+            {
+                ServicePointManager.SecurityProtocol = ServicePointManager.SecurityProtocol ^ SecurityProtocolType.Tls12;
+            }
+
+            WriteVerbose(string.Format("Modified Security Protocol: {0}", ServicePointManager.SecurityProtocol));
+        }
+
+        private void ConnectToCRM()
+        {
             for (int i = 1; i <= ConnectRetryCount; i++)
             {
                 WriteVerbose(string.Format("Connecting to CRM [attempt {0}]", i));

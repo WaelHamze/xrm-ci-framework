@@ -113,7 +113,9 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
-    <None Include="Xrm.Framework.CI.PowerShell.Cmdlets.nuspec" />
+    <None Include="Xrm.Framework.CI.PowerShell.Cmdlets.nuspec">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Xrm.Framework.CI.PowerShell.Cmdlets.psd1" />
   </ItemGroup>
   <ItemGroup>
