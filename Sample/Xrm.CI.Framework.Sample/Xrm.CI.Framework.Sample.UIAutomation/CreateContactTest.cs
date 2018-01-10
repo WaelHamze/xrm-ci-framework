@@ -5,15 +5,18 @@ using System.Configuration;
 using Microsoft.Dynamics365.UIAutomation.Browser;
 using Microsoft.Dynamics365.UIAutomation.Api;
 using System.Collections.Generic;
+using OpenQA.Selenium;
 
 namespace Xrm.CI.Framework.Sample.UIAutomation
 {
     [TestClass]
     public class CreateContactTest
     {
-        private readonly SecureString _username = ConfigurationManager.AppSettings["OnlineUsername"].ToSecureString();
-        private readonly SecureString _password = ConfigurationManager.AppSettings["OnlinePassword"].ToSecureString();
-        private readonly Uri _xrmUri = new Uri(ConfigurationManager.AppSettings["OnlineCrmUrl"].ToString());
+        public TestContext TestContext { get; set; }
+
+        private readonly SecureString _username = Environment.GetEnvironmentVariable("CRMUser", EnvironmentVariableTarget.User).ToSecureString();
+        private readonly SecureString _password = Environment.GetEnvironmentVariable("CRMPassword", EnvironmentVariableTarget.User).ToSecureString();
+        private readonly Uri _xrmUri = new Uri(Environment.GetEnvironmentVariable("CRMUrl", EnvironmentVariableTarget.User));
 
 
         private readonly BrowserOptions _options = new BrowserOptions
@@ -44,8 +47,8 @@ namespace Xrm.CI.Framework.Sample.UIAutomation
 
                 var fields = new List<Field>
                 {
-                    new Field() {Id = "firstname", Value = "Test"},
-                    new Field() {Id = "lastname", Value = "Contact"}
+                    new Field() {Id = "firstname", Value = "Wael"},
+                    new Field() {Id = "lastname", Value = "Test"}
                 };
                 xrmBrowser.Entity.SetValue(new CompositeControl() { Id = "fullname", Fields = fields });
                 xrmBrowser.Entity.SetValue("emailaddress1", "test@contoso.com");
@@ -56,6 +59,9 @@ namespace Xrm.CI.Framework.Sample.UIAutomation
                 xrmBrowser.CommandBar.ClickCommand("Save");
                 xrmBrowser.ThinkTime(5000);
 
+                string screenShot = string.Format("{0}\\CreateNewContact.jpeg", TestContext.TestResultsDirectory);
+                xrmBrowser.TakeWindowScreenShot(screenShot, ScreenshotImageFormat.Jpeg);
+                TestContext.AddResultFile(screenShot);
             }
         }
     }
