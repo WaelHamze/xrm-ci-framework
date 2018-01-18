@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Management.Automation;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Xrm.Framework.CI.PowerShell.Cmdlets.Common;
 
@@ -43,6 +44,9 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
         [Parameter(Mandatory = false)]
         public Boolean Publish { get; set; }
 
+        [Parameter(Mandatory = false)]
+        public String RegExToMatchUniqueName { get; set; }
+
         #endregion
 
         #region Process Record
@@ -64,14 +68,31 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
                 if (String.IsNullOrEmpty(UniqueName))
                 {
                     var query = from a in context.WebResourceSet
-                                where a.Name.Contains(webResourceInfo.Name)
+                                where a.Name.Contains(System.IO.Path.GetFileNameWithoutExtension(webResourceInfo.Name))
                                 select new WebResource
                                 {
                                     Name = a.Name,
                                     Id = a.Id
                                 };
 
-                    var resources = query.ToList<WebResource>();
+                    List<WebResource> resources = new List<WebResource>();
+
+                    if (!string.IsNullOrEmpty(RegExToMatchUniqueName))
+                    {
+                        base.WriteVerbose(string.Format("Searching Web Resource with RegEx: {0}", RegExToMatchUniqueName));
+                        Regex rgx = new Regex(RegExToMatchUniqueName, RegexOptions.IgnoreCase);
+                        resources = (from a in query.ToList()
+                                    where rgx.IsMatch(a.Name)
+                                    select new WebResource
+                                    {
+                                        Name = a.Name,
+                                        Id = a.Id
+                                    }).ToList();
+                    }
+                    else
+                    {                        
+                        resources = query.ToList();
+                    }
 
                     if (resources.Count != 1)
                     {

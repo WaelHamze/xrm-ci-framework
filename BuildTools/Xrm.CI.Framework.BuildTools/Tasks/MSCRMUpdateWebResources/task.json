@@ -1,0 +1,109 @@
+{
+  "id": "b48708ed-a5d6-4af5-a9be-589847132134",
+  "name": "MSCRMUpdateWebResource",
+  "friendlyName": "MSCRM Update Web Resources",
+  "description": "A task that updates Dynamics 365 web resources created using developer toolkit project",
+  "author": "Wael Hamze",
+  "helpMarkDown": "Update Dynamics 365 web resources",
+  "category": "Utility",
+  "visibility": [
+    "Build",
+    "Release"
+  ],
+  "demands": [],
+  "version": {
+    "Major": "9",
+    "Minor": "0",
+    "Patch": "74"
+  },
+  "minimumAgentVersion": "1.95.0",
+  "instanceNameFormat": "MSCRM Update Web resources",
+  "inputs": [
+    {
+      "name": "crmConnectionString",
+      "type": "string",
+      "label": "CRM Connection String",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "For more information on format: https://msdn.microsoft.com/en-gb/library/mt608573.aspx"
+    },
+    {
+      "name": "webResourceDeploymentType",
+      "type": "pickList",
+      "label": "Deployment Type",
+      "defaultValue": "None",
+      "required": true,
+      "options": {
+        "developerToolkit": "Use developer toolkit Web Resource project file as mapping",
+        "folderPath": "Use Web Resource folder"
+      },
+      "helpMarkDown": "Type of Web Resource deployment."
+    },
+    {
+      "name": "webResourceProjectPath",
+      "type": "filePath",
+      "label": "Web Resource Project Path",
+      "defaultValue": "",
+      "helpMarkDown": "Path of web resources project created using developer toolkit",
+      "visibleRule": "webResourceDeploymentType = developerToolkit"
+    },
+    {
+      "name": "webResourceFolderPath",
+      "type": "filePath",
+      "label": "Web Resource Folder Path",
+      "defaultValue": "",
+      "helpMarkDown": "Path of folder contains web resources. File name are considered as unique name of web resource.",
+      "visibleRule": "webResourceDeploymentType = folderPath"
+    },
+    {
+      "name": "commaSeparatedWebResourceExtensions",
+      "type": "string",
+      "label": "Comma separated list of web resource extensions",
+      "defaultValue": "*.html,*.htm,*.js,*.css,*.png,*.jpeg",
+      "helpMarkDown": "Comma separated list of web resource extensions. E.g. *.html,*.htm,*.js,*.css,*.png,*.jpeg",
+      "visibleRule": "webResourceDeploymentType = folderPath"
+    },
+    {
+      "name": "regExToMatchUniqueName",
+      "type": "string",
+      "label": "Regular expression to match unique name of web resource",
+      "defaultValue": "",
+      "helpMarkDown": "Regular expression to match unique name of web resource. Please use $filename as placeholder to relate file name and unique name. E.g. new_.*?$fileName which will match string like new_/Script/test.js. Considering 'new_' is prefix of web resource and $fileName replaced dynamically.",
+      "visibleRule": "webResourceDeploymentType = folderPath"
+    },
+    {
+      "name": "includeFileExtensionForUniqueName",
+      "type": "boolean",
+      "label": "Include file extension to match unique name",
+      "defaultValue": 0,
+      "helpMarkDown": "Include file extension to match file name and unique name.",
+      "visibleRule": "webResourceDeploymentType = folderPath"
+    },
+    {
+      "name": "publish",
+      "type": "boolean",
+      "label": "Publish Web Resource?",
+      "defaultValue": 0,
+      "required": true,
+      "helpMarkDown": ""
+    },
+    {
+      "name": "timeout",
+      "type": "int",
+      "label": "time out",
+      "defaultValue": 360,
+      "required": true,
+      "helpMarkDown": ""
+    }
+  ],
+  "execution": {
+    "PowerShell3": {
+      "target": "MSCRMUpdateWebResources.ps1",
+      "argumentFormat": "",
+      "workingDirectory": "$(currentDirectory)",
+      "platforms": [
+        "windows"
+      ]
+    }
+  }
+}
