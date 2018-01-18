@@ -168,6 +168,8 @@
     <Content Include="vss-extension-preview.json" />
     <Content Include="Tasks\MSCRMUpdatePluginAssembly\MSCRMUpdatePluginAssembly.ps1" />
     <Content Include="Tasks\MSCRMUpdatePluginAssembly\task.json" />
+    <Content Include="Tasks\MSCRMUpdateWebResources\MSCRMUpdateWebResources.ps1" />
+    <Content Include="Tasks\MSCRMUpdateWebResources\task.json" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -296,6 +298,7 @@
     <Content Include="Lib\xRMCIFramework\9.0.0\System.Management.Automation.dll" />
     <Content Include="Lib\xRMCIFramework\9.0.0\Xrm.Framework.CI.PowerShell.Cmdlets.dll" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
