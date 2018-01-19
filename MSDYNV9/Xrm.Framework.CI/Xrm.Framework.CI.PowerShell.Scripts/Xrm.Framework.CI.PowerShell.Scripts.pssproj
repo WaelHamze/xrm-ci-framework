@@ -46,6 +46,7 @@
     <Compile Include="UpdateSecureConfiguration.ps1" />
     <Compile Include="UpdateSolutionVersionInCRM.ps1" />
     <Compile Include="UpdateWebResource.ps1" />
+    <Compile Include="UpdateWebResourcesJsonMapping.ps1" />
     <Compile Include="WaitForCRMOperation.ps1" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
