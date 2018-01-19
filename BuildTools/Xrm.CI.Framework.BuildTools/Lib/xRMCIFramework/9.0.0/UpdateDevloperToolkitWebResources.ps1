@@ -32,7 +32,7 @@ $WebResourceProjectFolderPath = [System.IO.Path]::GetDirectoryName($WebResourceP
 [xml]$xml = Get-Content $WebResourceProjectPath
 $xml.Project.ItemGroup.CRMWebResource | ForEach-Object {
     if($_.Include){
-        $WebResourcePath = [System.Uri]::UnescapeDataString([System.IO.Path]::Combine($WebResourceProjectFolderPath, $_.Include))
+      $WebResourcePath = [System.Uri]::UnescapeDataString([System.IO.Path]::Combine($WebResourceProjectFolderPath, $_.Include))
 	    Write-Verbose "Updating Web Resource: $WebResourcePath"          
 	    Set-XrmWebResource -Path $WebResourcePath -UniqueName $_.UniqueName -Publish $Publish -ConnectionString $CrmConnectionString -Timeout $Timeout -Verbose
 	    Write-Verbose "Updated Web Resource"
