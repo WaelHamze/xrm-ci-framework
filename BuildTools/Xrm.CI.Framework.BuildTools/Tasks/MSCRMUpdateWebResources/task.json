@@ -2,7 +2,7 @@
   "id": "b48708ed-a5d6-4af5-a9be-589847132134",
   "name": "MSCRMUpdateWebResource",
   "friendlyName": "MSCRM Update Web Resources",
-  "description": "A task that updates Dynamics 365 web resources created using developer toolkit project",
+  "description": "Updates Dynamics 365 Web Resources from source control",
   "author": "Wael Hamze",
   "helpMarkDown": "Update Dynamics 365 web resources",
   "category": "Utility",
@@ -14,7 +14,7 @@
   "version": {
     "Major": "9",
     "Minor": "0",
-    "Patch": "79"
+    "Patch": "81"
   },
   "minimumAgentVersion": "1.95.0",
   "instanceNameFormat": "MSCRM Update Web resources",
@@ -35,7 +35,7 @@
       "required": true,
       "options": {
         "developerToolkit": "Use developer toolkit Web Resource project file as mapping",
-        "jsonMapping": "Use JSON mapping for Web Resource folder"
+        "jsonMapping": "Use JSON mapping for Web Resource folder",
         "folderPath": "Use Web Resource folder"
       },
       "helpMarkDown": "Type of Web Resource deployment."
@@ -63,8 +63,6 @@
       "defaultValue": "",
       "helpMarkDown": "Path of JSON mapping file. JSON mapping e.g. {</br>&nbsp;&nbsp;'webresources':&nbsp;[</br>&nbsp;&nbsp;&nbsp;&nbsp;{</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'root':&nbsp;'',</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'files':&nbsp;[</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'uniquename':&nbsp;'new_/js/somefile.js',</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'file':&nbsp;'js\\somefile.js',</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'description':&nbsp;''</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'uniquename':&nbsp;'new_/html/HtmlPage.htm',</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'file':&nbsp;'html\\HtmlPage.htm',</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'description':&nbsp;''</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]</br>&nbsp;&nbsp;&nbsp;&nbsp;}</br>&nbsp;&nbsp;]</br>}",
       "visibleRule": "webResourceDeploymentType = jsonMapping"
-      "helpMarkDown": "Path of folder contains web resources. File name are considered as unique name of web resource.",
-      "visibleRule": "webResourceDeploymentType = folderPath"
     },
     {
       "name": "commaSeparatedWebResourceExtensions",
@@ -93,15 +91,15 @@
     {
       "name": "publish",
       "type": "boolean",
-      "label": "Publish Web Resource?",
+      "label": "Publish Web Resources",
       "defaultValue": 0,
       "required": true,
-      "helpMarkDown": ""
+      "helpMarkDown": "Set to true to publish web resources after update"
     },
     {
-      "name": "timeout",
+      "name": "crmConnectionTimeout",
       "type": "int",
-      "label": "time out",
+      "label": "Crm Connection Timeout",
       "defaultValue": 360,
       "required": true,
       "helpMarkDown": ""

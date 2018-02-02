@@ -16,7 +16,7 @@ $commaSeparatedWebResourceExtensions = Get-VstsInput -Name commaSeparatedWebReso
 $regExToMatchUniqueName = Get-VstsInput -Name regExToMatchUniqueName
 $includeFileExtensionForUniqueName = Get-VstsInput -Name includeFileExtensionForUniqueName -AsBool
 $publish = Get-VstsInput -Name publish -AsBool
-$timeout = Get-VstsInput -Name timeout -Require
+$crmConnectionTimeout = Get-VstsInput -Name crmConnectionTimeout -Require -AsInt
 
 #Print Verbose
 Write-Verbose "CrmConnectionString = $crmConnectionString"
@@ -28,16 +28,16 @@ Write-Verbose "CommaSeparatedWebResourceExtensions = $commaSeparatedWebResourceE
 Write-Verbose "RegExToMatchUniqueName = $regExToMatchUniqueName"
 Write-Verbose "IncludeFileExtensionForUniqueName = $includeFileExtensionForUniqueName"
 Write-Verbose "Publish = $publish"
-Write-Verbose "Timeout = $timeout"
+Write-Verbose "CrmConnectionTimeout = $crmConnectionTimeout"
 #Script Location
 $scriptPath = split-path -parent $MyInvocation.MyCommand.Definition
 Write-Verbose "Script Path: $scriptPath"
 
 if ($webResourceDeploymentType -eq "developerToolkit"){
-	& "$scriptPath\Lib\xRMCIFramework\9.0.0\UpdateDevloperToolkitWebResources.ps1" -CrmConnectionString $crmConnectionString -WebResourceProjectPath $webResourceProjectPath -Publish $publish -Timeout $timeout
+	& "$scriptPath\Lib\xRMCIFramework\9.0.0\UpdateDevloperToolkitWebResources.ps1" -CrmConnectionString $crmConnectionString -WebResourceProjectPath $webResourceProjectPath -Publish $publish -Timeout $crmConnectionTimeout
 } elseif ($webResourceDeploymentType -eq "folderPath"){
-	& "$scriptPath\Lib\xRMCIFramework\9.0.0\UpdateFoldersWebResources.ps1" -CrmConnectionString $crmConnectionString -WebResourceFolderPath $webResourceFolderPath -CommaSeparatedWebResourceExtensions $commaSeparatedWebResourceExtensions -RegExToMatchUniqueName $regExToMatchUniqueName -IncludeFileExtensionForUniqueName $includeFileExtensionForUniqueName -Publish $publish -Timeout $timeout
+	& "$scriptPath\Lib\xRMCIFramework\9.0.0\UpdateFoldersWebResources.ps1" -CrmConnectionString $crmConnectionString -WebResourceFolderPath $webResourceFolderPath -CommaSeparatedWebResourceExtensions $commaSeparatedWebResourceExtensions -RegExToMatchUniqueName $regExToMatchUniqueName -IncludeFileExtensionForUniqueName $includeFileExtensionForUniqueName -Publish $publish -Timeout $crmConnectionTimeout
 } elseif ($webResourceDeploymentType -eq "jsonMapping"){
-	& "$scriptPath\Lib\xRMCIFramework\9.0.0\UpdateWebResourcesJsonMapping.ps1" -CrmConnectionString $crmConnectionString -WebResourceFolderPath $webResourceFolderPath -WebResourceJsonMappingPath $webResourceJsonMappingPath -Publish $publish -Timeout $timeout
+	& "$scriptPath\Lib\xRMCIFramework\9.0.0\UpdateWebResourcesJsonMapping.ps1" -CrmConnectionString $crmConnectionString -WebResourceFolderPath $webResourceFolderPath -WebResourceJsonMappingPath $webResourceJsonMappingPath -Publish $publish -Timeout $crmConnectionTimeout
 }
 Write-Verbose 'Leaving MSCRMUpdateWebResources.ps1'

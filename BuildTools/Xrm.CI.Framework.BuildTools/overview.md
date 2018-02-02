@@ -21,7 +21,7 @@ Below is a list of tasks that is included with the xRM CI Framework
 
 | Task | Description |
 | --- | --- |
-| **MSCRM Ping** | A sample task that checks connectivity to a Dynamics 365 environment |
+| **MSCRM Ping** | Checks connectivity to a Dynamics 365 environment |
 | **MSCRM Export Solution** | Exports a CRM Solution from the source CRM environment |
 | **MSCRM Publish Customizations** | Publishes all CRM customizations |
 | **MSCRM Set Version** | Updates the version of a CRM Solution |
@@ -29,6 +29,8 @@ Below is a list of tasks that is included with the xRM CI Framework
 | **MSCRM Import** | Import a Dynamics CRM Solution package |
 | **MSCRM Package Deployer** | Deploys a CRM Package using the CRM Package Deployer PowerShell Cmdlets |
 | **MSCRM Update Secure Configuration** | A task that updates Dynamics 365 plugin secure configuration |
+| **MSCRM Update Plugin Assembly** | Updates Dynamics 365 plugin assembly during build |
+| **MSCRM Update Web Resources** | Updates Dynamics 365 Web Resources from source control |
 | **MSCRM Get Online Instance By Name** | Gets an Online instance ID based on the name of the instance |
 | **MSCRM Backup Online Instance** | Creates a backup of a Dynamics 365 Customer Engagement Online Instance |
 | **MSCRM Provision Online Instance** | Creates a new Dynamics 365 Customer Engagement Online Instance |
