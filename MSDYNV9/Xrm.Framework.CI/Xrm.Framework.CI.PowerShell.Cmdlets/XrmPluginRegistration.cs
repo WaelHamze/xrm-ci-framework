@@ -33,6 +33,9 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
 
         [Parameter(Mandatory = true)]
         public String MappingJsonPath { get; set; }
+
+        [Parameter(Mandatory = false)]
+        public String SolutionName { get; set; }
         #endregion
 
         #region Process Record
@@ -48,29 +51,30 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
             string assemblyName = lastIndex > 0 ? assemblyInfo.Name.Remove(lastIndex, 4) : assemblyInfo.Name;
             string version = FileVersionInfo.GetVersionInfo(AssemblyPath).FileVersion;
             string content = Convert.ToBase64String(File.ReadAllBytes(AssemblyPath));
-            string json = File.ReadAllText(MappingJsonPath);
-
+           
             base.WriteVerbose(string.Format("Assembly Name: {0}", assemblyName));
             base.WriteVerbose(string.Format("Assembly Version: {0}", version));
 
             using (var context = new CIContext(OrganizationService))
-            {
-                var pluginAssembly = JsonConvert.DeserializeObject<Assembly>(json);
+            {                
                 PluginRegistrationHelper pluginRegistrationHelper = new PluginRegistrationHelper(OrganizationService, context);
                 base.WriteVerbose("PluginRegistrationHelper intiated");
-                var pluginAssemblyId = pluginRegistrationHelper.UpsertPluginAssembly(pluginAssembly, version, content);
+                string json = File.ReadAllText(MappingJsonPath);
+                var pluginAssembly = JsonConvert.DeserializeObject<Assembly>(json);
+                
+                var pluginAssemblyId = pluginRegistrationHelper.UpsertPluginAssembly(pluginAssembly, version, content, SolutionName);
                 base.WriteVerbose(string.Format("UpsertPluginAssembly {0} completed", pluginAssemblyId));
                 foreach (var type in pluginAssembly.PluginTypes)
                 {
-                    var pluginTypeId = pluginRegistrationHelper.UpsertPluginType(pluginAssemblyId, type);
+                    var pluginTypeId = pluginRegistrationHelper.UpsertPluginType(pluginAssemblyId, type, SolutionName);
                     base.WriteVerbose(string.Format("UpsertPluginType {0} completed", pluginTypeId));
                     foreach (var step in type.Steps)
                     {
-                        var sdkMessageProcessingStepId = pluginRegistrationHelper.UpsertSdkMessageProcessingStep(pluginTypeId, step);
+                        var sdkMessageProcessingStepId = pluginRegistrationHelper.UpsertSdkMessageProcessingStep(pluginTypeId, step, SolutionName);
                         base.WriteVerbose(string.Format("UpsertSdkMessageProcessingStep {0} completed", sdkMessageProcessingStepId));
                         foreach (var image in step.Images)
                         {
-                            var sdkMessageProcessingStepImageId = pluginRegistrationHelper.UpsertSdkMessageProcessingStepImage(sdkMessageProcessingStepId, image);
+                            var sdkMessageProcessingStepImageId = pluginRegistrationHelper.UpsertSdkMessageProcessingStepImage(sdkMessageProcessingStepId, image, SolutionName);
                             base.WriteVerbose(string.Format("UpsertSdkMessageProcessingStepImage {0} completed", sdkMessageProcessingStepImageId));
                         }
                     }

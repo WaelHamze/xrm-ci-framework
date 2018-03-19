@@ -85,6 +85,12 @@
   <ItemGroup>
     <Compile Include="AddXrmEntityCommand.cs" />
     <Compile Include="Common\Entities.cs" />
+    <Compile Include="Common\PluginAssembly_IsolationMode.cs" />
+    <Compile Include="Common\PluginAssembly_SourceType.cs" />
+    <Compile Include="Common\SdkMessageProcessingStepImage_ImageType.cs" />
+    <Compile Include="Common\SdkMessageProcessingStep_Mode.cs" />
+    <Compile Include="Common\SdkMessageProcessingStep_Stage.cs" />
+    <Compile Include="Common\SdkMessageProcessingStep_SupportedDeployment.cs" />
     <Compile Include="Common\XrmSolutionInfo.cs" />
     <Compile Include="ExportXrmAccessTeamTemplatesCommand.cs" />
     <Compile Include="ExportXrmSolutionCommand.cs" />

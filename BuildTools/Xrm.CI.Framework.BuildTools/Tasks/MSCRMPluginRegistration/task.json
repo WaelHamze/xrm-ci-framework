@@ -14,7 +14,7 @@
   "version": {
     "Major": "9",
     "Minor": "0",
-    "Patch": "33"
+    "Patch": "38"
   },
   "minimumAgentVersion": "1.95.0",
   "instanceNameFormat": "MSCRM Update Plugin Assembly and steps",
@@ -41,6 +41,14 @@
       "label": "Mapping Json Path",
       "defaultValue": "",
       "required": true,
+      "helpMarkDown": ""
+    },
+    {
+      "name": "solutionName",
+      "type": "string",
+      "label": "CRM solution name",
+      "defaultValue": "",
+      "required": false,
       "helpMarkDown": ""
     },
     {

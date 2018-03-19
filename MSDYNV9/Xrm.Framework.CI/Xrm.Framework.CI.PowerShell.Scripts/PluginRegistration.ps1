@@ -6,6 +6,7 @@ param(
 	[string]$CrmConnectionString,
 	[string]$AssemblyPath,
 	[string]$MappingJsonPath,
+	[string]$SolutionName,
 	[int]$Timeout
 )
 
@@ -17,6 +18,7 @@ Write-Verbose 'Entering PluginRegistration.ps1' -Verbose
 Write-Verbose "CrmConnectionString = $CrmConnectionString"
 Write-Verbose "AssemblyPath = $AssemblyPath"
 Write-Verbose "MappingJsonPath = $MappingJsonPath"
+Write-Verbose "SolutionName = $SolutionName"
 Write-Verbose "Timeout = $Timeout"
 
 #Script Location
@@ -31,7 +33,7 @@ Write-Verbose "Imported CIToolkit"
 
 Write-Host "Updating Plugin Assembly: $AssemblyPath"
 
-Set-XrmPluginRegistration -AssemblyPath $AssemblyPath -MappingJsonPath $MappingJsonPath -ConnectionString $CrmConnectionString -Timeout $Timeout -Verbose
+Set-XrmPluginRegistration -AssemblyPath $AssemblyPath -MappingJsonPath $MappingJsonPath -SolutionName $SolutionName -ConnectionString $CrmConnectionString -Timeout $Timeout -Verbose
 
 Write-Host "Updated Plugin Assembly and Steps"
 
