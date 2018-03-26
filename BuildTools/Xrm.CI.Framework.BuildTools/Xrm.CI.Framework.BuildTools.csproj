@@ -114,6 +114,7 @@
     <Content Include="Lib\xRMCIFramework\9.0.0\ExportSolution.ps1" />
     <Content Include="Lib\xRMCIFramework\9.0.0\ExtractCustomizations.ps1" />
     <Content Include="Lib\xRMCIFramework\9.0.0\ImportSolution.ps1" />
+    <Content Include="Lib\xRMCIFramework\9.0.0\Newtonsoft.Json.dll" />
     <Content Include="Lib\xRMCIFramework\9.0.0\OnlineInstanceFunctions.ps1" />
     <Content Include="Lib\xRMCIFramework\9.0.0\PackSolution.ps1" />
     <Content Include="Lib\xRMCIFramework\9.0.0\Ping.ps1" />
@@ -134,6 +135,7 @@
     <Content Include="DeployTask.ps1" />
     <Content Include="Package.ps1" />
     <Content Include="Lib\xRMCIFramework\9.0.0\UpdatePluginAssembly.ps1" />
+    <Content Include="Lib\xRMCIFramework\9.0.0\PluginRegistration.ps1" />
     <None Include="packages.config" />
     <Content Include="Tasks\MSCRMBackupOnlineInstance\MSCRMBackupOnlineInstance.ps1" />
     <Content Include="Tasks\MSCRMBackupOnlineInstance\task.json" />
@@ -170,6 +172,8 @@
     <Content Include="Tasks\MSCRMUpdatePluginAssembly\task.json" />
     <Content Include="Tasks\MSCRMUpdateWebResources\MSCRMUpdateWebResources.ps1" />
     <Content Include="Tasks\MSCRMUpdateWebResources\task.json" />
+    <Content Include="Tasks\MSCRMPluginRegistration\MSCRMPluginRegistration.ps1" />
+    <Content Include="Tasks\MSCRMPluginRegistration\task.json" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -1,0 +1,73 @@
+{
+  "id": "b48708ef-a5d6-4af5-a9be-589847132834",
+  "name": "MSCRMPluginRegistration",
+  "friendlyName": "MSCRM Plugin Registration",
+  "description": "Updates Dynamics 365 plugin assembly and steps during build",
+  "author": "Wael Hamze",
+  "helpMarkDown": "Update plugin assembly and steps",
+  "category": "Utility",
+  "visibility": [
+    "Build",
+    "Release"
+  ],
+  "demands": [],
+  "version": {
+    "Major": "9",
+    "Minor": "0",
+    "Patch": "38"
+  },
+  "minimumAgentVersion": "1.95.0",
+  "instanceNameFormat": "MSCRM Update Plugin Assembly and steps",
+  "inputs": [
+    {
+      "name": "crmConnectionString",
+      "type": "string",
+      "label": "CRM Connection String",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "For more information on format: https://msdn.microsoft.com/en-gb/library/mt608573.aspx"
+    },
+    {
+      "name": "assemblyPath",
+      "type": "filePath",
+      "label": "Assembly path",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": ""
+    },
+    {
+      "name": "mappingJsonPath",
+      "type": "filePath",
+      "label": "Mapping Json Path",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": ""
+    },
+    {
+      "name": "solutionName",
+      "type": "string",
+      "label": "CRM solution name",
+      "defaultValue": "",
+      "required": false,
+      "helpMarkDown": ""
+    },
+    {
+      "name": "crmConnectionTimeout",
+      "type": "int",
+      "label": "Crm Connection Timeout",
+      "defaultValue": 360,
+      "required": true,
+      "helpMarkDown": "The Crm connection timeout in seconds"
+    }
+  ],
+  "execution": {
+    "PowerShell3": {
+      "target": "MSCRMPluginRegistration.ps1",
+      "argumentFormat": "",
+      "workingDirectory": "$(currentDirectory)",
+      "platforms": [
+        "windows"
+      ]
+    }
+  }
+}

@@ -49,6 +49,9 @@
     <Reference Include="Microsoft.Xrm.Tooling.Connector, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CrmSdk.XrmTooling.CoreAssembly.9.0.0.7\lib\net452\Microsoft.Xrm.Tooling.Connector.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Activities" />
@@ -82,11 +85,18 @@
   <ItemGroup>
     <Compile Include="AddXrmEntityCommand.cs" />
     <Compile Include="Common\Entities.cs" />
+    <Compile Include="Common\PluginAssembly_IsolationMode.cs" />
+    <Compile Include="Common\PluginAssembly_SourceType.cs" />
+    <Compile Include="Common\SdkMessageProcessingStepImage_ImageType.cs" />
+    <Compile Include="Common\SdkMessageProcessingStep_Mode.cs" />
+    <Compile Include="Common\SdkMessageProcessingStep_Stage.cs" />
+    <Compile Include="Common\SdkMessageProcessingStep_SupportedDeployment.cs" />
     <Compile Include="Common\XrmSolutionInfo.cs" />
     <Compile Include="ExportXrmAccessTeamTemplatesCommand.cs" />
     <Compile Include="ExportXrmSolutionCommand.cs" />
     <Compile Include="GetXrmEntitiesCommand.cs" />
     <Compile Include="GetXrmEntityCommand.cs" />
+    <Compile Include="GetXrmPluginRegistrationJsonMapping.cs" />
     <Compile Include="GetXrmSolutionCommand.cs" />
     <Compile Include="GetXrmSolutionImportLog.cs" />
     <Compile Include="GetXrmSolutionInfoFromFolderCommand.cs" />
@@ -95,6 +105,11 @@
     <Compile Include="ImportXrmSolutionCommand.cs" />
     <Compile Include="NewXrmBulkDeleteJobCommand.cs" />
     <Compile Include="NewXrmEntityCommand.cs" />
+    <Compile Include="PluginRegistration\Assembly.cs" />
+    <Compile Include="PluginRegistration\Image.cs" />
+    <Compile Include="PluginRegistration\PluginRegistrationHelper.cs" />
+    <Compile Include="PluginRegistration\Step.cs" />
+    <Compile Include="PluginRegistration\Types.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PublishXrmCustomizationsCommand.cs" />
     <Compile Include="RemoveXrmEntityAttribute.cs" />
@@ -107,6 +122,7 @@
     <Compile Include="SetXrmSolutionVersionCommand.cs" />
     <Compile Include="SetXrmSolutionVersionInFolderCommand.cs" />
     <Compile Include="XrmCommandBase.cs" />
+    <Compile Include="XrmPluginRegistration.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config">
