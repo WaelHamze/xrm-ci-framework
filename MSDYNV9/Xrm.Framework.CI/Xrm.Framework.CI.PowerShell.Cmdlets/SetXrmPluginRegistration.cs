@@ -21,7 +21,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
     /// </example>
     /// <para type="link" uri="http://msdn.microsoft.com/en-us/library/microsoft.xrm.sdk.messages.updaterequest.aspx">UpdateRequest.</para>
     [Cmdlet(VerbsCommon.Set, "XrmPluginRegistration")]
-    public class XrmPluginRegistration : XrmCommandBase
+    public class SetXrmPluginRegistration : XrmCommandBase
     {
         #region Parameters
 

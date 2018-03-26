@@ -122,7 +122,7 @@
     <Compile Include="SetXrmSolutionVersionCommand.cs" />
     <Compile Include="SetXrmSolutionVersionInFolderCommand.cs" />
     <Compile Include="XrmCommandBase.cs" />
-    <Compile Include="XrmPluginRegistration.cs" />
+    <Compile Include="SetXrmPluginRegistration.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config">
