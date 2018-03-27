@@ -41,23 +41,33 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
             OrganizationService.Execute(request);
         }
 
-        public Guid UpsertPluginAssembly(Assembly pluginAssembly, string version, string content, string solutionName)
+        public Guid UpsertPluginAssembly(Assembly pluginAssembly, string pluginAssemblyName, string version, string content, string solutionName)
         {
-            var lastIndex = pluginAssembly.Name.LastIndexOf(".dll");
-            string name = lastIndex > 0 ? pluginAssembly.Name.Remove(lastIndex, 4) : pluginAssembly.Name;
-
-            Guid Id = GetPluginAssemblyId(name);
-            DeletePluginStepsAndAssembly(Id);
+            Guid Id = GetPluginAssemblyId(pluginAssemblyName);
+            
             var assembly = new PluginAssembly()
             {
                 Version = version,
                 Content = content,
-                Name = name,
-                SourceType = new OptionSetValue((int)GetEnumValue<PluginAssembly_SourceType>(pluginAssembly.SourceType)),
-                IsolationMode = new OptionSetValue((int)GetEnumValue<PluginAssembly_IsolationMode>(pluginAssembly.IsolationMode)),
+                Name = pluginAssemblyName,
             };
 
-            Id = OrganizationService.Create(assembly);
+            if (pluginAssembly != null)
+            {
+                assembly.SourceType = new OptionSetValue((int)GetEnumValue<PluginAssembly_SourceType>(pluginAssembly.SourceType));
+                assembly.IsolationMode = new OptionSetValue((int)GetEnumValue<PluginAssembly_IsolationMode>(pluginAssembly.IsolationMode));
+                DeletePluginStepsAndAssembly(Id);
+            }
+
+            if (Id.Equals(Guid.Empty))
+            {
+                Id = OrganizationService.Create(assembly);
+            }
+            else
+            {
+                assembly.Id = Id;
+                OrganizationService.Update(assembly);
+            }
             AddComponentToSolution(Id, 91, solutionName);
 
             return Id;

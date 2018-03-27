@@ -31,7 +31,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
         [Parameter(Mandatory = true)]
         public String AssemblyPath { get; set; }
 
-        [Parameter(Mandatory = true)]
+        [Parameter(Mandatory = false)]
         public String MappingJsonPath { get; set; }
 
         [Parameter(Mandatory = false)]
@@ -59,23 +59,33 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
             {                
                 PluginRegistrationHelper pluginRegistrationHelper = new PluginRegistrationHelper(OrganizationService, context);
                 base.WriteVerbose("PluginRegistrationHelper intiated");
-                string json = File.ReadAllText(MappingJsonPath);
-                var pluginAssembly = JsonConvert.DeserializeObject<Assembly>(json);
-                
-                var pluginAssemblyId = pluginRegistrationHelper.UpsertPluginAssembly(pluginAssembly, version, content, SolutionName);
-                base.WriteVerbose(string.Format("UpsertPluginAssembly {0} completed", pluginAssemblyId));
-                foreach (var type in pluginAssembly.PluginTypes)
+                Assembly pluginAssembly = null;
+                if (File.Exists(MappingJsonPath))
                 {
-                    var pluginTypeId = pluginRegistrationHelper.UpsertPluginType(pluginAssemblyId, type, SolutionName);
-                    base.WriteVerbose(string.Format("UpsertPluginType {0} completed", pluginTypeId));
-                    foreach (var step in type.Steps)
+                    base.WriteVerbose("Reading mapping json file");
+                    string json = File.ReadAllText(MappingJsonPath);
+                    pluginAssembly = JsonConvert.DeserializeObject<Assembly>(json);
+                    base.WriteVerbose("Deserialized mapping json file");
+                }
+                
+                var pluginAssemblyId = pluginRegistrationHelper.UpsertPluginAssembly(pluginAssembly, assemblyName, version, content, SolutionName);
+                base.WriteVerbose(string.Format("UpsertPluginAssembly {0} completed", pluginAssemblyId));
+
+                if (pluginAssembly != null)
+                {
+                    foreach (var type in pluginAssembly.PluginTypes)
                     {
-                        var sdkMessageProcessingStepId = pluginRegistrationHelper.UpsertSdkMessageProcessingStep(pluginTypeId, step, SolutionName);
-                        base.WriteVerbose(string.Format("UpsertSdkMessageProcessingStep {0} completed", sdkMessageProcessingStepId));
-                        foreach (var image in step.Images)
+                        var pluginTypeId = pluginRegistrationHelper.UpsertPluginType(pluginAssemblyId, type, SolutionName);
+                        base.WriteVerbose(string.Format("UpsertPluginType {0} completed", pluginTypeId));
+                        foreach (var step in type.Steps)
                         {
-                            var sdkMessageProcessingStepImageId = pluginRegistrationHelper.UpsertSdkMessageProcessingStepImage(sdkMessageProcessingStepId, image, SolutionName);
-                            base.WriteVerbose(string.Format("UpsertSdkMessageProcessingStepImage {0} completed", sdkMessageProcessingStepImageId));
+                            var sdkMessageProcessingStepId = pluginRegistrationHelper.UpsertSdkMessageProcessingStep(pluginTypeId, step, SolutionName);
+                            base.WriteVerbose(string.Format("UpsertSdkMessageProcessingStep {0} completed", sdkMessageProcessingStepId));
+                            foreach (var image in step.Images)
+                            {
+                                var sdkMessageProcessingStepImageId = pluginRegistrationHelper.UpsertSdkMessageProcessingStepImage(sdkMessageProcessingStepId, image, SolutionName);
+                                base.WriteVerbose(string.Format("UpsertSdkMessageProcessingStepImage {0} completed", sdkMessageProcessingStepImageId));
+                            }
                         }
                     }
                 }
