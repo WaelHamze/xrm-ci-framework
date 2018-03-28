@@ -9,7 +9,7 @@ Write-Verbose 'Entering MSCRMPluginRegistration.ps1'
 #Get Parameters
 $crmConnectionString = Get-VstsInput -Name crmConnectionString -Require
 $assemblyPath = Get-VstsInput -Name assemblyPath -Require
-$mappingJsonPath = Get-VstsInput -Name mappingJsonPath -Require
+$mappingJsonPath = Get-VstsInput -Name mappingJsonPath
 $solutionName = Get-VstsInput -Name solutionName -Require
 $crmConnectionTimeout = Get-VstsInput -Name crmConnectionTimeout -Require -AsInt
 
