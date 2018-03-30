@@ -55,8 +55,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
             if (pluginAssembly != null)
             {
                 assembly.SourceType = new OptionSetValue((int)GetEnumValue<PluginAssembly_SourceType>(pluginAssembly.SourceType));
-                assembly.IsolationMode = new OptionSetValue((int)GetEnumValue<PluginAssembly_IsolationMode>(pluginAssembly.IsolationMode));
-                DeletePluginStepsAndAssembly(Id);
+                assembly.IsolationMode = new OptionSetValue((int)GetEnumValue<PluginAssembly_IsolationMode>(pluginAssembly.IsolationMode));                
             }
 
             if (Id.Equals(Guid.Empty))
@@ -65,9 +64,11 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
             }
             else
             {
+                DeletePluginStepsAndAssembly(Id);
                 assembly.Id = Id;
                 OrganizationService.Update(assembly);
             }
+
             AddComponentToSolution(Id, 91, solutionName);
 
             return Id;

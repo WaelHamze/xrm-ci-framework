@@ -15,8 +15,6 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
 
         public string TypeName { get; set; }
 
-        public Guid SolutionId { get; set; }
-
         public List<Step> Steps { get; set; }
     }
 }
