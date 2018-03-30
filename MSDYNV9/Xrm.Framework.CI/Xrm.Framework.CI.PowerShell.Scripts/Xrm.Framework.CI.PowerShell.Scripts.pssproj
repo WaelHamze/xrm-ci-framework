@@ -27,6 +27,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="ApplySolution.ps1" />
     <Compile Include="GetPluginRegistrationJsonMapping.ps1" />
     <Compile Include="PluginRegistration.ps1" />
     <Compile Include="SetOnlineInstanceAdminMode.ps1" />

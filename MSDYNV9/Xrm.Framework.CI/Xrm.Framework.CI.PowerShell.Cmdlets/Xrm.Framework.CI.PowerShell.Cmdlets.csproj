@@ -102,6 +102,7 @@
     <Compile Include="GetXrmSolutionInfoFromFolderCommand.cs" />
     <Compile Include="GetXrmSolutionInfoFromZipCommand.cs" />
     <Compile Include="ImportXrmAccessTeamTemplatesCommand.cs" />
+    <Compile Include="MergeXrmSolutionCommand.cs" />
     <Compile Include="ImportXrmSolutionCommand.cs" />
     <Compile Include="NewXrmBulkDeleteJobCommand.cs" />
     <Compile Include="NewXrmEntityCommand.cs" />
