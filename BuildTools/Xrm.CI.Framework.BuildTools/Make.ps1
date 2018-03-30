@@ -44,6 +44,14 @@ Copy-Item .\Screenshots $OutputDir -Force -Recurse
 #Copy Initial Tasks
 Copy-Item -Path .\Tasks -Destination $OutputDir -Recurse
 
+#MSCRMApplySolution
+$taskName = "MSCRMApplySolution"
+Copy-Item -Path .\icon.png -Destination "$OutputDir\Tasks\$taskName"
+New-Item "$OutputDir\Tasks\$taskName\ps_modules\VstsTaskSdk" -ItemType directory | Out-Null
+Copy-Item -Path .\Lib\VstsTaskSdk\0.10.0\*.* -Destination "$OutputDir\Tasks\$taskName\ps_modules\VstsTaskSdk"
+New-Item "$OutputDir\Tasks\$taskName\Lib\xRMCIFramework\9.0.0" -ItemType directory | Out-Null
+Copy-Item -Path .\Lib\xRMCIFramework\9.0.0\*.* -Destination "$OutputDir\Tasks\$taskName\Lib\xRMCIFramework\9.0.0"
+
 #Ping
 $taskName = "MSCRMPing"
 Copy-Item -Path .\icon.png -Destination "$OutputDir\Tasks\$taskName"
@@ -84,7 +92,7 @@ New-Item "$OutputDir\Tasks\$taskName\Lib\xRMCIFramework\9.0.0" -ItemType directo
 Copy-Item -Path .\Lib\xRMCIFramework\9.0.0\*.* -Destination "$OutputDir\Tasks\$taskName\Lib\xRMCIFramework\9.0.0"
 
 
-#MSCRMExportSolution
+#MSCRMImportSolution
 $taskName = "MSCRMImportSolution"
 Copy-Item -Path .\icon.png -Destination "$OutputDir\Tasks\$taskName"
 New-Item "$OutputDir\Tasks\$taskName\ps_modules\VstsTaskSdk" -ItemType directory | Out-Null

@@ -26,7 +26,8 @@ Below is a list of tasks that is included with the xRM CI Framework
 | **MSCRM Publish Customizations** | Publishes all CRM customizations |
 | **MSCRM Set Version** | Updates the version of a CRM Solution |
 | **MSCRM Pack Solution** | Packages a CRM Solution using SolutionPackager.exe |
-| **MSCRM Import** | Import a Dynamics CRM Solution package |
+| **MSCRM Import Solution** | Import a Dynamics CRM Solution package |
+| **MSCRM Apply Solution** | Applies a solution upgrade after solution is import using stage for upgrade option |
 | **MSCRM Package Deployer** | Deploys a CRM Package using the CRM Package Deployer PowerShell Cmdlets |
 | **MSCRM Update Secure Configuration** | A task that updates Dynamics 365 plugin secure configuration |
 | **MSCRM Update Plugin Assembly** | Updates Dynamics 365 plugin assembly during build |
