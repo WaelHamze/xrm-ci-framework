@@ -44,7 +44,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
         public Guid UpsertPluginAssembly(Assembly pluginAssembly, string pluginAssemblyName, string version, string content, string solutionName)
         {
             Guid Id = GetPluginAssemblyId(pluginAssemblyName);
-            
+
             var assembly = new PluginAssembly()
             {
                 Version = version,
@@ -56,7 +56,6 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
             {
                 assembly.SourceType = new OptionSetValue((int)GetEnumValue<PluginAssembly_SourceType>(pluginAssembly.SourceType));
                 assembly.IsolationMode = new OptionSetValue((int)GetEnumValue<PluginAssembly_IsolationMode>(pluginAssembly.IsolationMode));
-                DeletePluginStepsAndAssembly(Id);
             }
 
             if (Id.Equals(Guid.Empty))
@@ -65,15 +64,17 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
             }
             else
             {
+                DeletePluginStepsAndAssembly(Id);
                 assembly.Id = Id;
                 OrganizationService.Update(assembly);
             }
+
             AddComponentToSolution(Id, 91, solutionName);
 
             return Id;
         }
-        
-        private TEnum GetEnumValue<TEnum>(string name) where TEnum: struct
+
+        private TEnum GetEnumValue<TEnum>(string name) where TEnum : struct
         {
             if (!Enum.TryParse(name, true, out TEnum enumValue))
             {
@@ -100,13 +101,13 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
         }
 
         private Guid GetPluginAssemblyId(string name)
-        {   
+        {
             var query = from a in context.PluginAssemblySet
                         where a.Name == name
                         select a.Id;
 
             Guid Id = query.FirstOrDefault();
-            
+
             return Id;
         }
 
@@ -125,7 +126,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
             };
 
             Id = OrganizationService.Create(type);
-            
+
             return Id;
         }
 
@@ -136,7 +137,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
                         select a.Id;
 
             Guid Id = query.FirstOrDefault();
-            
+
             return Id;
         }
 
@@ -185,7 +186,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
                         select steps.Id;
 
             Guid Id = query.FirstOrDefault();
-            
+
             return Id;
         }
 
@@ -240,7 +241,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
                 throw exception;
             }
         }
-        
+
         public Guid UpsertSdkMessageProcessingStepImage(Guid parentId, Image image, string solutionName)
         {
             var name = image.EntityAlias;
@@ -257,7 +258,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
             };
 
             Id = OrganizationService.Create(sdkMessageProcessingStepImage);
-            
+
             return Id;
         }
 
@@ -302,8 +303,8 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
                 pluginAssemblyTemp = new Assembly()
                 {
                     Name = pluginAssemblies.Name + ".dll",
-                    IsolationMode = ((PluginAssembly_IsolationMode) pluginAssemblies.IsolationMode.Value).ToString(),
-                    SourceType = ((PluginAssembly_SourceType) pluginAssemblies.SourceType.Value).ToString(),
+                    IsolationMode = ((PluginAssembly_IsolationMode)pluginAssemblies.IsolationMode.Value).ToString(),
+                    SourceType = ((PluginAssembly_SourceType)pluginAssemblies.SourceType.Value).ToString(),
                     PluginTypes = new List<Type>()
                 };
 
@@ -353,11 +354,11 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
                     FilteringAttributes = pluginStep.FilteringAttributes,
                     ImpersonatingUserFullname = pluginStep.ImpersonatingUserId == null ? string.Empty : pluginStep.ImpersonatingUserId.Name,
                     MessageName = sdkMessage != null ? sdkMessage.CategoryName : null,
-                    Mode = ((SdkMessageProcessingStep_Mode) pluginStep.Mode.Value).ToString(),
+                    Mode = ((SdkMessageProcessingStep_Mode)pluginStep.Mode.Value).ToString(),
                     PrimaryEntityName = filter.PrimaryObjectTypeCode,
-                    Rank =  pluginStep.Rank,
-                    Stage = ((SdkMessageProcessingStep_Stage) pluginStep.Stage.Value).ToString(),
-                    SupportedDeployment = ((SdkMessageProcessingStep_SupportedDeployment) pluginStep.SupportedDeployment.Value).ToString(),
+                    Rank = pluginStep.Rank,
+                    Stage = ((SdkMessageProcessingStep_Stage)pluginStep.Stage.Value).ToString(),
+                    SupportedDeployment = ((SdkMessageProcessingStep_SupportedDeployment)pluginStep.SupportedDeployment.Value).ToString(),
                     Images = new List<Image>()
                 };
                 MapImagesObject(images, pluginStep, pluginAssemblyStepTemp);
@@ -396,7 +397,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
                     Attributes = image.Attributes1,
                     EntityAlias = image.EntityAlias,
                     MessagePropertyName = image.MessagePropertyName,
-                    ImageType = image.ImageType != null ? ((SdkMessageProcessingStepImage_ImageType) image.ImageType.Value).ToString() : null
+                    ImageType = image.ImageType != null ? ((SdkMessageProcessingStepImage_ImageType)image.ImageType.Value).ToString() : null
                 };
 
                 step.Images.Add(imageTemp);

@@ -51,12 +51,12 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
             string assemblyName = lastIndex > 0 ? assemblyInfo.Name.Remove(lastIndex, 4) : assemblyInfo.Name;
             string version = FileVersionInfo.GetVersionInfo(AssemblyPath).FileVersion;
             string content = Convert.ToBase64String(File.ReadAllBytes(AssemblyPath));
-           
+
             base.WriteVerbose(string.Format("Assembly Name: {0}", assemblyName));
             base.WriteVerbose(string.Format("Assembly Version: {0}", version));
 
             using (var context = new CIContext(OrganizationService))
-            {                
+            {
                 PluginRegistrationHelper pluginRegistrationHelper = new PluginRegistrationHelper(OrganizationService, context);
                 base.WriteVerbose("PluginRegistrationHelper intiated");
                 Assembly pluginAssembly = null;
@@ -67,7 +67,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
                     pluginAssembly = JsonConvert.DeserializeObject<Assembly>(json);
                     base.WriteVerbose("Deserialized mapping json file");
                 }
-                
+
                 var pluginAssemblyId = pluginRegistrationHelper.UpsertPluginAssembly(pluginAssembly, assemblyName, version, content, SolutionName);
                 base.WriteVerbose(string.Format("UpsertPluginAssembly {0} completed", pluginAssemblyId));
 
