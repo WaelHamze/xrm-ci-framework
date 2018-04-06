@@ -1,7 +1,7 @@
 ﻿#
-# Filename: UnpackSolution.ps1
+# Filename: ExtractSolution.ps1
 #
-param([string]$solutionFilesFolder, #The folder to extract the CRM solution
+param([string]$UnpackedFilesFolder, #The folder to extract the CRM solution
 [string]$mappingFile, #The full path to the mapping file
 [string]$PackageType, #Managed/Unmanaged/Both
 [string]$solutionName, #The unique CRM solution name
@@ -13,13 +13,14 @@ param([string]$solutionFilesFolder, #The folder to extract the CRM solution
 
 $ErrorActionPreference = "Stop"
 
-Write-Verbose 'Entering UnpackSolution.ps1'
+Write-Verbose 'Entering ExtractSolution.ps1'
 
-Write-Verbose "Solution Packager = $solutionPackager"
-Write-Verbose "Solution Files Folder = $solutionFilesFolder"
-Write-Verbose "Mapping File = $mappingFile"
+Write-Verbose "UnpackedFilesFolder = $UnpackedFilesFolder"
+Write-Verbose "MappingFile = $mappingFile"
 Write-Verbose "PackageType = $PackageType"
+Write-Verbose "SolutionName = $solutionName"
 Write-Verbose "ConnectionString = $connectionString"
+Write-Verbose "SolutionFile = $solutionFile"
 Write-Verbose "CoreToolsPath = $CoreToolsPath"
 Write-Verbose "TreatUnpackWarningsAsErrors = $TreatUnpackWarningsAsErrors"
 
@@ -59,11 +60,11 @@ if ($solutionFile -eq $null)
 #Solution Packager
 if ($MappingFile)
 {
-	$extractOuput = & "$SolutionPackagerFile" /action:Extract /zipfile:"$solutionFile" /folder:"$solutionFilesFolder" /packagetype:$PackageType /errorlevel:Info /allowWrite:Yes /allowDelete:Yes /map:$mappingFile
+	$extractOuput = & "$SolutionPackagerFile" /action:Extract /zipfile:"$solutionFile" /folder:"$UnpackedFilesFolder" /packagetype:$PackageType /errorlevel:Info /allowWrite:Yes /allowDelete:Yes /map:$mappingFile
 }
 else
 {
-	$extractOuput = & "$SolutionPackagerFile" /action:Extract /zipfile:"$solutionFile" /folder:"$solutionFilesFolder" /packagetype:$PackageType /errorlevel:Info /allowWrite:Yes /allowDelete:Yes
+	$extractOuput = & "$SolutionPackagerFile" /action:Extract /zipfile:"$solutionFile" /folder:"$UnpackedFilesFolder" /packagetype:$PackageType /errorlevel:Info /allowWrite:Yes /allowDelete:Yes
 }
 Write-Output $extractOuput
 
@@ -86,10 +87,10 @@ else
     }
 	else
 	{
-		Write-Host "Solution Unpack Completed Successfully"
+		Write-Host "Solution Extract Completed Successfully"
 	}
 }
 
 # End of script
 
-Write-Verbose 'Leaving UnpackSolution.ps1'
+Write-Verbose 'Leaving ExtractSolution.ps1'

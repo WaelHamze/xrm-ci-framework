@@ -34,7 +34,7 @@
     <Compile Include="DeleteOnlineInstance.ps1" />
     <Compile Include="DeployPackage.ps1" />
     <Compile Include="ExportSolution.ps1" />
-    <Compile Include="UnpackSolution.ps1" />
+    <Compile Include="ExtractSolution.ps1" />
     <Compile Include="ImportSolution.ps1" />
     <Compile Include="OnlineInstanceFunctions.ps1" />
     <Compile Include="PackSolution.ps1" />
