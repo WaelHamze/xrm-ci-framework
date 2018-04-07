@@ -25,11 +25,17 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
     {
         #region Parameters
 
+        [Parameter(Mandatory = true)]
+        public String RegistrationType { get; set; }
+
         /// <summary>
         /// <para type="description">The full path to the assembly. e.g. C:\Solution\bin\release\Plugin.dll</para>
         /// </summary>
         [Parameter(Mandatory = true)]
         public String AssemblyPath { get; set; }
+
+        [Parameter(Mandatory = true)]
+        public Boolean IsWorkflowActivityAssembly { get; set; }
 
         [Parameter(Mandatory = false)]
         public String MappingJsonPath { get; set; }
@@ -68,23 +74,34 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
                     base.WriteVerbose("Deserialized mapping json file");
                 }
 
-                var pluginAssemblyId = pluginRegistrationHelper.UpsertPluginAssembly(pluginAssembly, assemblyName, version, content, SolutionName);
+                var pluginAssemblyId = pluginRegistrationHelper.UpsertPluginAssembly(pluginAssembly, assemblyName, version, content, SolutionName, IsWorkflowActivityAssembly, RegistrationType);
                 base.WriteVerbose(string.Format("UpsertPluginAssembly {0} completed", pluginAssemblyId));
 
                 if (pluginAssembly != null)
                 {
-                    foreach (var type in pluginAssembly.PluginTypes)
+                    // var assemblyTypes = IsWorkflowActivityAssembly ? pluginAssembly.WorkflowTypes : pluginAssembly.PluginTypes;
+                    if (pluginAssembly.PluginTypes == null)
                     {
-                        var pluginTypeId = pluginRegistrationHelper.UpsertPluginType(pluginAssemblyId, type, SolutionName);
-                        base.WriteVerbose(string.Format("UpsertPluginType {0} completed", pluginTypeId));
-                        foreach (var step in type.Steps)
+                        base.WriteVerbose("No mapping found for types.");
+                    }
+                    else
+                    {
+                        foreach (var type in pluginAssembly.PluginTypes)
                         {
-                            var sdkMessageProcessingStepId = pluginRegistrationHelper.UpsertSdkMessageProcessingStep(pluginTypeId, step, SolutionName);
-                            base.WriteVerbose(string.Format("UpsertSdkMessageProcessingStep {0} completed", sdkMessageProcessingStepId));
-                            foreach (var image in step.Images)
+                            var pluginTypeId = pluginRegistrationHelper.UpsertPluginType(pluginAssemblyId, type, SolutionName, RegistrationType);
+                            base.WriteVerbose(string.Format("UpsertPluginType {0} completed", pluginTypeId));
+                            if (!IsWorkflowActivityAssembly)
                             {
-                                var sdkMessageProcessingStepImageId = pluginRegistrationHelper.UpsertSdkMessageProcessingStepImage(sdkMessageProcessingStepId, image, SolutionName);
-                                base.WriteVerbose(string.Format("UpsertSdkMessageProcessingStepImage {0} completed", sdkMessageProcessingStepImageId));
+                                foreach (var step in type.Steps)
+                                {
+                                    var sdkMessageProcessingStepId = pluginRegistrationHelper.UpsertSdkMessageProcessingStep(pluginTypeId, step, SolutionName, RegistrationType);
+                                    base.WriteVerbose(string.Format("UpsertSdkMessageProcessingStep {0} completed", sdkMessageProcessingStepId));
+                                    foreach (var image in step.Images)
+                                    {
+                                        var sdkMessageProcessingStepImageId = pluginRegistrationHelper.UpsertSdkMessageProcessingStepImage(sdkMessageProcessingStepId, image, SolutionName, RegistrationType);
+                                        base.WriteVerbose(string.Format("UpsertSdkMessageProcessingStepImage {0} completed", sdkMessageProcessingStepImageId));
+                                    }
+                                }
                             }
                         }
                     }

@@ -33,7 +33,13 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
         public string AssemblyName { get; set; }
 
         [Parameter(Mandatory = true)]
+        public bool IsWorkflowActivityAssembly { get; set; }
+
+        [Parameter(Mandatory = true)]
         public String MappingJsonPath { get; set; }
+
+        [Parameter(Mandatory = false)]
+        public String SolutionName { get; set; }
 
         #endregion
 
@@ -51,7 +57,18 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
                 PluginRegistrationHelper pluginRegistrationHelper = new PluginRegistrationHelper(OrganizationService, context);
                 base.WriteVerbose("PluginRegistrationHelper intiated");
                 base.WriteVerbose(string.Format("Assembly Name: {0}", AssemblyName));
-                json = pluginRegistrationHelper.GetJsonMappingFromCrm(AssemblyName);
+                base.WriteVerbose(string.Format("Mapping Json Path: {0}", MappingJsonPath));
+                base.WriteVerbose(string.Format("Solution Name: {0}", SolutionName));
+                var solutionId = pluginRegistrationHelper.GetSolutionId(SolutionName);
+                base.WriteVerbose(string.Format("Solution Id: {0}", solutionId));
+                if (IsWorkflowActivityAssembly)
+                {
+                    json = pluginRegistrationHelper.GetWorkflowActivityJsonMappingFromCrm(AssemblyName, solutionId);
+                }
+                else
+                {
+                    json = pluginRegistrationHelper.GetPluginJsonMappingFromCrm(AssemblyName, solutionId);
+                }
                 File.WriteAllText(MappingJsonPath, json);
             }
 

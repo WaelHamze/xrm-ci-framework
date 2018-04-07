@@ -4,7 +4,9 @@
 
 param(
 	[string]$CrmConnectionString,
+	[string]$RegistrationType,
 	[string]$AssemblyPath,
+	[bool]$IsWorkflowActivityAssembly,
 	[string]$MappingJsonPath,
 	[string]$SolutionName,
 	[int]$Timeout
@@ -16,7 +18,9 @@ Write-Verbose 'Entering PluginRegistration.ps1' -Verbose
 
 #Parameters
 Write-Verbose "CrmConnectionString = $CrmConnectionString"
+Write-Verbose "RegistrationType = $RegistrationType"
 Write-Verbose "AssemblyPath = $AssemblyPath"
+Write-Verbose "IsWorkflowActivityAssembly = $IsWorkflowActivityAssembly"
 Write-Verbose "MappingJsonPath = $MappingJsonPath"
 Write-Verbose "SolutionName = $SolutionName"
 Write-Verbose "Timeout = $Timeout"
@@ -33,7 +37,7 @@ Write-Verbose "Imported CIToolkit"
 
 Write-Host "Updating Plugin Assembly: $AssemblyPath"
 
-Set-XrmPluginRegistration -AssemblyPath $AssemblyPath -MappingJsonPath $MappingJsonPath -SolutionName $SolutionName -ConnectionString $CrmConnectionString -Timeout $Timeout -Verbose
+Set-XrmPluginRegistration -RegistrationType $RegistrationType -AssemblyPath $AssemblyPath -IsWorkflowActivityAssembly $IsWorkflowActivityAssembly -MappingJsonPath $MappingJsonPath -SolutionName $SolutionName -ConnectionString $CrmConnectionString -Timeout $Timeout -Verbose
 
 Write-Host "Updated Plugin Assembly and Steps"
 
