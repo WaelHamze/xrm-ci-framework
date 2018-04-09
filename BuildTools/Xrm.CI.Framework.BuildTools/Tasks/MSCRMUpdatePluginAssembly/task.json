@@ -1,7 +1,7 @@
 {
   "id": "b48708ef-a5d6-4af5-a9be-589847132134",
   "name": "MSCRMUpdatePluginAssembly",
-  "friendlyName": "MSCRM Update Plugin Assembly",
+  "friendlyName": "MSCRM Update Plugin Assembly (deprecated)",
   "description": "Updates Dynamics 365 plugin assembly during build",
   "author": "Wael Hamze",
   "helpMarkDown": "Update plugin assembly",

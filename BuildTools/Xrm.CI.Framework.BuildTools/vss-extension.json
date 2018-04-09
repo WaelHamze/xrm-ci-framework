@@ -2,7 +2,7 @@
   "manifestVersion": 1,
   "id": "xrm-ci-framework-build-tasks",
   "name": "Dynamics 365 Build Tools",
-  "version": "9.0.18",
+  "version": "9.0.23",
   "publisher": "WaelHamze",
   "targets": [
     {
@@ -61,6 +61,9 @@
       "addressable": true
     },
     {
+      "path": "Tasks/MSCRMApplySolution"
+    },
+    {
       "path": "Tasks/MSCRMPing"
     },
     {
@@ -68,6 +71,9 @@
     },
     {
       "path": "Tasks/MSCRMExportSolution"
+    },
+    {
+      "path": "Tasks/MSCRMExtractSolution"
     },
     {
       "path": "Tasks/MSCRMPublishCustomizations"
@@ -91,6 +97,9 @@
       "path": "Tasks/MSCRMGetOnlineInstanceByName"
     },
     {
+      "path": "Tasks/MSCRMPluginRegistration"
+    },
+    {
       "path": "Tasks/MSCRMProvisionOnlineInstance"
     },
     {
@@ -110,6 +119,16 @@
     }
   ],
   "contributions": [
+    {
+      "id": "MSCRMApplySolution",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "Tasks/MSCRMApplySolution"
+      }
+    },
     {
       "id": "MSCRMPing",
       "type": "ms.vss-distributed-task.task",
@@ -138,6 +157,16 @@
       ],
       "properties": {
         "name": "Tasks/MSCRMExportSolution"
+      }
+    },
+    {
+      "id": "MSCRMExtractSolution",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "Tasks/MSCRMExtractSolution"
       }
     },
     {
@@ -198,6 +227,16 @@
       ],
       "properties": {
         "name": "Tasks/MSCRMBackupOnlineInstance"
+      }
+    },
+    {
+      "id": "MSCRMPluginRegistration",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "Tasks/MSCRMPluginRegistration"
       }
     },
     {

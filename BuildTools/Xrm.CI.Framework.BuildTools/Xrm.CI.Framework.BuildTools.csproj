@@ -176,6 +176,8 @@
     <Content Include="Tasks\MSCRMPluginRegistration\task.json" />
     <Content Include="Tasks\MSCRMApplySolution\MSCRMApplySolution.ps1" />
     <Content Include="Tasks\MSCRMApplySolution\task.json" />
+    <Content Include="Tasks\MSCRMExtractSolution\MSCRMExtractSolution.ps1" />
+    <Content Include="Tasks\MSCRMExtractSolution\task.json" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />

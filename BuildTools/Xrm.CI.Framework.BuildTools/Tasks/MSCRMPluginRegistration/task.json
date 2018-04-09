@@ -1,10 +1,10 @@
 {
   "id": "a48708ef-a5d6-4af5-a9be-589847132834",
   "name": "MSCRMPluginRegistration",
-  "friendlyName": "MSCRM Plugin Registration",
-  "description": "Updates Dynamics 365 plugin assembly and steps during build",
+  "friendlyName": "MSCRM Plugin Registration (beta)",
+  "description": "Updates Dynamics 365 plugin/workflow activity assembly/types/steps",
   "author": "Wael Hamze",
-  "helpMarkDown": "Update plugin assembly and steps",
+  "helpMarkDown": "Update plugin assembly, types and steps",
   "category": "Utility",
   "visibility": [
     "Build",
@@ -14,10 +14,10 @@
   "version": {
     "Major": "9",
     "Minor": "0",
-    "Patch": "56"
+    "Patch": "57"
   },
   "minimumAgentVersion": "1.95.0",
-  "instanceNameFormat": "MSCRM Plugin/Workflow activity Registration",
+  "instanceNameFormat": "MSCRM Plugin Registration",
   "inputs": [
     {
       "name": "crmConnectionString",
@@ -34,10 +34,10 @@
       "defaultValue": "None",
       "required": true,
       "options": {
-        "upsert": "Upsert plugin/workflow activity assembly",
-        "reset": "Delete and create plugin/workflow activity assembly"
+        "upsert": "Upsert",
+        "reset": "Reset"
       },
-      "helpMarkDown": ""
+      "helpMarkDown": "Reset: Deletes assembly/types/steps and re-creates everything. Upsert: Updates existing assembly/types/steps and creates if not present."
     },
     {
       "name": "assemblyPath",
@@ -50,10 +50,10 @@
     {
       "name": "isWorkflowActivityAssembly",
       "type": "boolean",
-      "label": "Is workflow activity assembly?",
+      "label": "Is Workflow Activity Assembly?",
       "defaultValue": 0,
       "required": true,
-      "helpMarkDown": ""
+      "helpMarkDown": "Set to true for assemblies that contain workflow activities"
     },
     {
       "name": "solutionName",

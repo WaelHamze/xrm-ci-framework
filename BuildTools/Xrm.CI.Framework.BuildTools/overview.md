@@ -17,7 +17,7 @@ The latest version of all tasks work on the VSTS Hosted Agent.
 
 ## Task Catalog
 
-Below is a list of tasks that is included with the xRM CI Framework
+Below is a list of tasks that are included with this extension.
 
 | Task | Description |
 | --- | --- |
@@ -25,12 +25,14 @@ Below is a list of tasks that is included with the xRM CI Framework
 | **MSCRM Export Solution** | Exports a CRM Solution from the source CRM environment |
 | **MSCRM Publish Customizations** | Publishes all CRM customizations |
 | **MSCRM Set Version** | Updates the version of a CRM Solution |
+| **MSCRM Extract Solution (preview)** | Extracts CRM Solution xml files from CRM Solution zip using SolutionPackager.exe |
 | **MSCRM Pack Solution** | Packages a CRM Solution using SolutionPackager.exe |
 | **MSCRM Import Solution** | Import a Dynamics CRM Solution package |
-| **MSCRM Apply Solution** | Applies a solution upgrade after solution is import using stage for upgrade option |
+| **MSCRM Apply Solution (preview)** | Applies a solution upgrade after solution is import using stage for upgrade option |
 | **MSCRM Package Deployer** | Deploys a CRM Package using the CRM Package Deployer PowerShell Cmdlets |
 | **MSCRM Update Secure Configuration** | A task that updates Dynamics 365 plugin secure configuration |
-| **MSCRM Update Plugin Assembly** | Updates Dynamics 365 plugin assembly during build |
+| **MSCRM Update Plugin Assembly (deprecated)** | Updates Dynamics 365 plugin assembly during build |
+| **MSCRM Plugin Registration (beta)** | Updates Dynamics 365 plugin/workflow activity assembly/types/steps |
 | **MSCRM Update Web Resources** | Updates Dynamics 365 Web Resources from source control |
 | **MSCRM Get Online Instance By Name** | Gets an Online instance ID based on the name of the instance |
 | **MSCRM Backup Online Instance** | Creates a backup of a Dynamics 365 Customer Engagement Online Instance |
@@ -38,6 +40,11 @@ Below is a list of tasks that is included with the xRM CI Framework
 | **MSCRM Restore Online Instance** | Restores an online instance from a previous backup |
 | **MSCRM Delete Online Instance** | Deletes an Online Instance |
 | **MSCRM Set Online Instance Admin Mode** | Enable/Disable administration mode on Online Instances |
+
+Some explanation for tasks that have the below in the names:
+beta: Still under development. May contain many bugs. Subject to breaking changes.
+preview: New functionality. May contain some bugs. Subject to changes based on feedback.
+deprecated: Task has been replaced with another task or is no longer required. Will be removed in future release.
 
 ## Build Automation
 

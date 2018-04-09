@@ -123,7 +123,7 @@ if ($override -or ($solution -eq $null) -or ($solution.Version -ne $solutionInfo
     
 	$solution = Get-XrmSolution -ConnectionString "$CrmConnectionString" -UniqueSolutionName $solutionInfo.UniqueName
 
-    if ($solution.Version -ne $solutionInfo.Version) 
+    if (($holdingSolution -ne $true) -and ($solution.Version -ne $solutionInfo.Version)) 
     {
         throw "Import Failed. Check the solution import log file in the logs subfolder of the Drop folder."
     }

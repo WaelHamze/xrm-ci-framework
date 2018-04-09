@@ -1,7 +1,7 @@
 {
   "id": "F08CACCB-E6CD-4857-9E69-410C8ADB7EB8",
   "name": "MSCRMApplySolution",
-  "friendlyName": "MSCRM Apply Solution Upgrade",
+  "friendlyName": "MSCRM Apply Solution Upgrade (preview)",
   "description": "Applies a solution upgrade after solution is import using stage for upgrade option",
   "author": "Wael Hamze",
   "helpMarkDown": "This task invokes DeleteAndPromoteRequest in Async mode",
@@ -14,7 +14,7 @@
   "version": {
     "Major": "9",
     "Minor": "0",
-    "Patch": "2"
+    "Patch": "3"
   },
   "minimumAgentVersion": "1.95.0",
   "instanceNameFormat": "MSCRM Apply Solution: $(solutionName)",
