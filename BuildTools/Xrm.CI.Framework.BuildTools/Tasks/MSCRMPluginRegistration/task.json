@@ -1,5 +1,5 @@
 {
-  "id": "b48708ef-a5d6-4af5-a9be-589847132834",
+  "id": "a48708ef-a5d6-4af5-a9be-589847132834",
   "name": "MSCRMPluginRegistration",
   "friendlyName": "MSCRM Plugin Registration",
   "description": "Updates Dynamics 365 plugin assembly and steps during build",
@@ -14,10 +14,10 @@
   "version": {
     "Major": "9",
     "Minor": "0",
-    "Patch": "47"
+    "Patch": "56"
   },
   "minimumAgentVersion": "1.95.0",
-  "instanceNameFormat": "MSCRM Update Plugin Assembly and steps",
+  "instanceNameFormat": "MSCRM Plugin/Workflow activity Registration",
   "inputs": [
     {
       "name": "crmConnectionString",
@@ -28,10 +28,30 @@
       "helpMarkDown": "For more information on format: https://msdn.microsoft.com/en-gb/library/mt608573.aspx"
     },
     {
+      "name": "registrationType",
+      "type": "pickList",
+      "label": "Registration Type",
+      "defaultValue": "None",
+      "required": true,
+      "options": {
+        "upsert": "Upsert plugin/workflow activity assembly",
+        "reset": "Delete and create plugin/workflow activity assembly"
+      },
+      "helpMarkDown": ""
+    },
+    {
       "name": "assemblyPath",
       "type": "filePath",
       "label": "Assembly path",
       "defaultValue": "",
+      "required": true,
+      "helpMarkDown": ""
+    },
+    {
+      "name": "isWorkflowActivityAssembly",
+      "type": "boolean",
+      "label": "Is workflow activity assembly?",
+      "defaultValue": 0,
       "required": true,
       "helpMarkDown": ""
     },
