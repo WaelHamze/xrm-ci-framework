@@ -42,8 +42,11 @@ Below is a list of tasks that are included with this extension.
 | **MSCRM Set Online Instance Admin Mode** | Enable/Disable administration mode on Online Instances |
 
 Some explanation for tasks that have the below in the names:
+
 beta: Still under development. May contain many bugs. Subject to breaking changes.
+
 preview: New functionality. May contain some bugs. Subject to changes based on feedback.
+
 deprecated: Task has been replaced with another task or is no longer required. Will be removed in future release.
 
 ## Build Automation
