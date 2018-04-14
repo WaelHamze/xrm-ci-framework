@@ -9,8 +9,8 @@ Take a look at the [Wiki pages](https://github.com/WaelHamze/xrm-ci-framework/wi
 [![NuGet](https://img.shields.io/nuget/v/XrmCIFramework.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/XrmCIFramework/)
 
 You can download the xRM CI Framework PowerShell Cmdlets from one of the below sources
-1- Nuget: https://www.nuget.org/packages/XrmCIFramework/
-2- PowerShell Gallery: https://www.powershellgallery.com/packages/Xrm.Framework.CI.PowerShell.Cmdlets/
+1. [Nuget](https://www.nuget.org/packages/XrmCIFramework/)
+1. [PowerShell Gallery](https://www.powershellgallery.com/packages/Xrm.Framework.CI.PowerShell.Cmdlets/)
 
 # Build Status
 |Version|xRM CI Framework|
