@@ -8,7 +8,6 @@
       "Name": "CrmVSSolution.plugin.PostOperationaccountUpdate",
       "FriendlyName": "264cd3d4-a313-459f-977f-c263a5c44ff3",
       "TypeName": "CrmVSSolution.plugin.PostOperationaccountUpdate",
-      "SolutionId": "00000000-0000-0000-0000-000000000000",
       "Steps": [
         {
           "Name": "Update of account",
@@ -27,7 +26,7 @@
               "Attributes": "accountnumber,accountratingcode",
               "EntityAlias": "PostImage",
               "MessagePropertyName": "Target",
-              "ImageType": "PreImage"
+              "ImageType": "PostImage"
             },
             {
               "Attributes": "name,accountnumber",

@@ -1,5 +1,5 @@
 {
-  "$id": "http://example.com/example.json",
+  "$id": "https://github.com/WaelHamze/xrm-ci-framework/blob/master/MSDYNV9/Xrm.Framework.CI/Xrm.Framework.CI.PowerShell.Cmdlets/PluginRegistration/PluginRegistrationMappingExample.json",
   "type": "object",
   "properties": {
     "Name": {
@@ -84,7 +84,7 @@
             "examples": [
               "CrmVSSolution.plugin.AccountNumberPlugin"
             ]
-          },          
+          },
           "Steps": {
             "$id": "/properties/PluginTypes/items/properties/Steps",
             "type": "array",
