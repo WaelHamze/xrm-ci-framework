@@ -14878,11 +14878,401 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
             }
 		}
 	}
-	
-	/// <summary>
-	/// Templates for Suggestion Card in Grid
+
+    /// <summary>
+	/// A component of a CRM solution.
 	/// </summary>
 	[System.Runtime.Serialization.DataContractAttribute()]
+    [Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute("solutioncomponent")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.0.0.9154")]
+    public partial class SolutionComponent : Microsoft.Xrm.Sdk.Entity, System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
+    {
+
+        /// <summary>
+        /// Default Constructor.
+        /// </summary>
+        [System.Diagnostics.DebuggerNonUserCode()]
+        public SolutionComponent() :
+                base(EntityLogicalName)
+        {
+        }
+
+        public const string EntityLogicalName = "solutioncomponent";
+
+        public const string PrimaryIdAttribute = "solutioncomponentid";
+
+        public const int EntityTypeCode = 7103;
+
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+
+        public event System.ComponentModel.PropertyChangingEventHandler PropertyChanging;
+
+        [System.Diagnostics.DebuggerNonUserCode()]
+        private void OnPropertyChanged(string propertyName)
+        {
+            if ((this.PropertyChanged != null))
+            {
+                this.PropertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+
+        [System.Diagnostics.DebuggerNonUserCode()]
+        private void OnPropertyChanging(string propertyName)
+        {
+            if ((this.PropertyChanging != null))
+            {
+                this.PropertyChanging(this, new System.ComponentModel.PropertyChangingEventArgs(propertyName));
+            }
+        }
+
+        /// <summary>
+        /// The object type code of the component.
+        /// </summary>
+        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("componenttype")]
+        public Microsoft.Xrm.Sdk.OptionSetValue ComponentType
+        {
+            [System.Diagnostics.DebuggerNonUserCode()]
+            get
+            {
+                return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("componenttype");
+            }
+        }
+
+        /// <summary>
+        /// Unique identifier of the user who created the solution
+        /// </summary>
+        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
+        public Microsoft.Xrm.Sdk.EntityReference CreatedBy
+        {
+            [System.Diagnostics.DebuggerNonUserCode()]
+            get
+            {
+                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("createdby");
+            }
+        }
+
+        /// <summary>
+        /// Date and time when the solution was created.
+        /// </summary>
+        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdon")]
+        public System.Nullable<System.DateTime> CreatedOn
+        {
+            [System.Diagnostics.DebuggerNonUserCode()]
+            get
+            {
+                return this.GetAttributeValue<System.Nullable<System.DateTime>>("createdon");
+            }
+        }
+
+        /// <summary>
+        /// Unique identifier of the delegate user who created the solution.
+        /// </summary>
+        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
+        public Microsoft.Xrm.Sdk.EntityReference CreatedOnBehalfBy
+        {
+            [System.Diagnostics.DebuggerNonUserCode()]
+            get
+            {
+                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("createdonbehalfby");
+            }
+            [System.Diagnostics.DebuggerNonUserCode()]
+            set
+            {
+                this.OnPropertyChanging("CreatedOnBehalfBy");
+                this.SetAttributeValue("createdonbehalfby", value);
+                this.OnPropertyChanged("CreatedOnBehalfBy");
+            }
+        }
+
+        /// <summary>
+        /// Indicates whether this component is metadata or data.
+        /// </summary>
+        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("ismetadata")]
+        public System.Nullable<bool> IsMetadata
+        {
+            [System.Diagnostics.DebuggerNonUserCode()]
+            get
+            {
+                return this.GetAttributeValue<System.Nullable<bool>>("ismetadata");
+            }
+        }
+
+        /// <summary>
+        /// Unique identifier of the user who last modified the solution.
+        /// </summary>
+        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
+        public Microsoft.Xrm.Sdk.EntityReference ModifiedBy
+        {
+            [System.Diagnostics.DebuggerNonUserCode()]
+            get
+            {
+                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("modifiedby");
+            }
+        }
+
+        /// <summary>
+        /// Date and time when the solution was last modified.
+        /// </summary>
+        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedon")]
+        public System.Nullable<System.DateTime> ModifiedOn
+        {
+            [System.Diagnostics.DebuggerNonUserCode()]
+            get
+            {
+                return this.GetAttributeValue<System.Nullable<System.DateTime>>("modifiedon");
+            }
+        }
+
+        /// <summary>
+        /// Unique identifier of the delegate user who modified the solution.
+        /// </summary>
+        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
+        public Microsoft.Xrm.Sdk.EntityReference ModifiedOnBehalfBy
+        {
+            [System.Diagnostics.DebuggerNonUserCode()]
+            get
+            {
+                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("modifiedonbehalfby");
+            }
+            [System.Diagnostics.DebuggerNonUserCode()]
+            set
+            {
+                this.OnPropertyChanging("ModifiedOnBehalfBy");
+                this.SetAttributeValue("modifiedonbehalfby", value);
+                this.OnPropertyChanged("ModifiedOnBehalfBy");
+            }
+        }
+
+        /// <summary>
+        /// Unique identifier of the object with which the component is associated.
+        /// </summary>
+        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("objectid")]
+        public System.Nullable<System.Guid> ObjectId
+        {
+            [System.Diagnostics.DebuggerNonUserCode()]
+            get
+            {
+                return this.GetAttributeValue<System.Nullable<System.Guid>>("objectid");
+            }
+        }
+
+        /// <summary>
+        /// Indicates the include behavior of the root component.
+        /// </summary>
+        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("rootcomponentbehavior")]
+        public Microsoft.Xrm.Sdk.OptionSetValue RootComponentBehavior
+        {
+            [System.Diagnostics.DebuggerNonUserCode()]
+            get
+            {
+                return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("rootcomponentbehavior");
+            }
+        }
+
+        /// <summary>
+        /// The parent ID of the subcomponent, which will be a root
+        /// </summary>
+        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("rootsolutioncomponentid")]
+        public System.Nullable<System.Guid> RootSolutionComponentId
+        {
+            [System.Diagnostics.DebuggerNonUserCode()]
+            get
+            {
+                return this.GetAttributeValue<System.Nullable<System.Guid>>("rootsolutioncomponentid");
+            }
+        }
+
+        /// <summary>
+        /// Unique identifier of the solution component.
+        /// </summary>
+        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("solutioncomponentid")]
+        public System.Nullable<System.Guid> SolutionComponentId
+        {
+            [System.Diagnostics.DebuggerNonUserCode()]
+            get
+            {
+                return this.GetAttributeValue<System.Nullable<System.Guid>>("solutioncomponentid");
+            }
+        }
+
+        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("solutioncomponentid")]
+        public override System.Guid Id
+        {
+            [System.Diagnostics.DebuggerNonUserCode()]
+            get
+            {
+                return base.Id;
+            }
+            [System.Diagnostics.DebuggerNonUserCode()]
+            set
+            {
+                base.Id = value;
+            }
+        }
+
+        /// <summary>
+        /// Unique identifier of the solution.
+        /// </summary>
+        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("solutionid")]
+        public Microsoft.Xrm.Sdk.EntityReference SolutionId
+        {
+            [System.Diagnostics.DebuggerNonUserCode()]
+            get
+            {
+                return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("solutionid");
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("versionnumber")]
+        public System.Nullable<long> VersionNumber
+        {
+            [System.Diagnostics.DebuggerNonUserCode()]
+            get
+            {
+                return this.GetAttributeValue<System.Nullable<long>>("versionnumber");
+            }
+        }
+
+        /// <summary>
+        /// 1:N solutioncomponent_parent_solutioncomponent
+        /// </summary>
+        [Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("solutioncomponent_parent_solutioncomponent", Microsoft.Xrm.Sdk.EntityRole.Referenced)]
+        public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SolutionComponent> Referencedsolutioncomponent_parent_solutioncomponent
+        {
+            [System.Diagnostics.DebuggerNonUserCode()]
+            get
+            {
+                return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SolutionComponent>("solutioncomponent_parent_solutioncomponent", Microsoft.Xrm.Sdk.EntityRole.Referenced);
+            }
+            [System.Diagnostics.DebuggerNonUserCode()]
+            set
+            {
+                this.OnPropertyChanging("Referencedsolutioncomponent_parent_solutioncomponent");
+                this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SolutionComponent>("solutioncomponent_parent_solutioncomponent", Microsoft.Xrm.Sdk.EntityRole.Referenced, value);
+                this.OnPropertyChanged("Referencedsolutioncomponent_parent_solutioncomponent");
+            }
+        }
+
+        /// <summary>
+        /// N:1 lk_solutioncomponentbase_createdonbehalfby
+        /// </summary>
+        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
+        [Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_solutioncomponentbase_createdonbehalfby")]
+        public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser lk_solutioncomponentbase_createdonbehalfby
+        {
+            [System.Diagnostics.DebuggerNonUserCode()]
+            get
+            {
+                return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_solutioncomponentbase_createdonbehalfby", null);
+            }
+            [System.Diagnostics.DebuggerNonUserCode()]
+            set
+            {
+                this.OnPropertyChanging("lk_solutioncomponentbase_createdonbehalfby");
+                this.SetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_solutioncomponentbase_createdonbehalfby", null, value);
+                this.OnPropertyChanged("lk_solutioncomponentbase_createdonbehalfby");
+            }
+        }
+
+        /// <summary>
+        /// N:1 lk_solutioncomponentbase_modifiedonbehalfby
+        /// </summary>
+        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
+        [Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_solutioncomponentbase_modifiedonbehalfby")]
+        public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser lk_solutioncomponentbase_modifiedonbehalfby
+        {
+            [System.Diagnostics.DebuggerNonUserCode()]
+            get
+            {
+                return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_solutioncomponentbase_modifiedonbehalfby", null);
+            }
+            [System.Diagnostics.DebuggerNonUserCode()]
+            set
+            {
+                this.OnPropertyChanging("lk_solutioncomponentbase_modifiedonbehalfby");
+                this.SetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_solutioncomponentbase_modifiedonbehalfby", null, value);
+                this.OnPropertyChanged("lk_solutioncomponentbase_modifiedonbehalfby");
+            }
+        }
+
+        /// <summary>
+        /// N:1 solution_solutioncomponent
+        /// </summary>
+        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("solutionid")]
+        [Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("solution_solutioncomponent")]
+        public Xrm.Framework.CI.PowerShell.Cmdlets.Common.Solution solution_solutioncomponent
+        {
+            [System.Diagnostics.DebuggerNonUserCode()]
+            get
+            {
+                return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.Solution>("solution_solutioncomponent", null);
+            }
+        }
+
+        /// <summary>
+        /// N:1 solutioncomponent_parent_solutioncomponent
+        /// </summary>
+        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("rootsolutioncomponentid")]
+        [Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("solutioncomponent_parent_solutioncomponent", Microsoft.Xrm.Sdk.EntityRole.Referencing)]
+        public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SolutionComponent Referencingsolutioncomponent_parent_solutioncomponent
+        {
+            [System.Diagnostics.DebuggerNonUserCode()]
+            get
+            {
+                return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SolutionComponent>("solutioncomponent_parent_solutioncomponent", Microsoft.Xrm.Sdk.EntityRole.Referencing);
+            }
+        }
+
+        /// <summary>
+        /// Constructor for populating via LINQ queries given a LINQ anonymous type
+        /// <param name="anonymousType">LINQ anonymous type.</param>
+        /// </summary>
+        [System.Diagnostics.DebuggerNonUserCode()]
+        public SolutionComponent(object anonymousType) :
+                this()
+        {
+            foreach (var p in anonymousType.GetType().GetProperties())
+            {
+                var value = p.GetValue(anonymousType, null);
+                var name = p.Name.ToLower();
+
+                if (name.EndsWith("enum") && value.GetType().BaseType == typeof(System.Enum))
+                {
+                    value = new Microsoft.Xrm.Sdk.OptionSetValue((int)value);
+                    name = name.Remove(name.Length - "enum".Length);
+                }
+
+                switch (name)
+                {
+                    case "id":
+                        base.Id = (System.Guid)value;
+                        Attributes["solutioncomponentid"] = base.Id;
+                        break;
+                    case "solutioncomponentid":
+                        var id = (System.Nullable<System.Guid>)value;
+                        if (id == null) { continue; }
+                        base.Id = id.Value;
+                        Attributes[name] = base.Id;
+                        break;
+                    case "formattedvalues":
+                        // Add Support for FormattedValues
+                        FormattedValues.AddRange((Microsoft.Xrm.Sdk.FormattedValueCollection)value);
+                        break;
+                    default:
+                        Attributes[name] = value;
+                        break;
+                }
+            }
+        }        
+    }
+
+    /// <summary>
+    /// Templates for Suggestion Card in Grid
+    /// </summary>
+    [System.Runtime.Serialization.DataContractAttribute()]
 	[Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute("suggestioncardtemplate")]
 	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "8.2.1.8676")]
 	public partial class SuggestionCardTemplate : Microsoft.Xrm.Sdk.Entity, System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
@@ -21591,11 +21981,23 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 				return this.CreateQuery<Xrm.Framework.CI.PowerShell.Cmdlets.Common.Solution>();
 			}
 		}
-		
-		/// <summary>
-		/// Gets a binding to the set of all <see cref="Xrm.Framework.CI.PowerShell.Cmdlets.Common.SuggestionCardTemplate"/> entities.
+
+        /// <summary>
+		/// Gets a binding to the set of all <see cref="Xrm.Framework.CI.PowerShell.Cmdlets.Common.SolutionComponent"/> entities.
 		/// </summary>
-		public System.Linq.IQueryable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SuggestionCardTemplate> SuggestionCardTemplateSet
+		public System.Linq.IQueryable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SolutionComponent> SolutionComponentSet
+        {
+            [System.Diagnostics.DebuggerNonUserCode()]
+            get
+            {
+                return this.CreateQuery<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SolutionComponent>();
+            }
+        }
+
+        /// <summary>
+        /// Gets a binding to the set of all <see cref="Xrm.Framework.CI.PowerShell.Cmdlets.Common.SuggestionCardTemplate"/> entities.
+        /// </summary>
+        public System.Linq.IQueryable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SuggestionCardTemplate> SuggestionCardTemplateSet
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
