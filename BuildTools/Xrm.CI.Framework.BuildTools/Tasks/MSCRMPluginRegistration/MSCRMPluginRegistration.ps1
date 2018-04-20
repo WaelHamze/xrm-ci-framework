@@ -12,7 +12,7 @@ $registrationType = Get-VstsInput -Name registrationType -Require
 $assemblyPath = Get-VstsInput -Name assemblyPath -Require
 $isWorkflowActivityAssembly = Get-VstsInput -Name isWorkflowActivityAssembly -Require -AsBool
 $mappingJsonPath = Get-VstsInput -Name mappingJsonPath
-$solutionName = Get-VstsInput -Name solutionName -Require
+$solutionName = Get-VstsInput -Name solutionName
 $crmConnectionTimeout = Get-VstsInput -Name crmConnectionTimeout -Require -AsInt
 
 #Print Verbose
