@@ -35,7 +35,7 @@ $importJobId = [guid]::NewGuid()
 
 Write-Host "Solution Upgrade Starting. Import Job Id: $importJobId"
   
-$asyncOperationId = Merge-XrmSolution -ConnectionString "$CrmConnectionString" -UniqueSolutionName $SolutionName -ImportJobId $importJobId -AsyncWaitTimeout $AsyncWaitTimeout  -Timeout $Timeout -Verbose
+$asyncOperationId = Merge-XrmSolution -ConnectionString "$CrmConnectionString" -UniqueSolutionName $SolutionName -ImportJobId $importJobId -ImportAsync $true -AsyncWaitTimeout $AsyncWaitTimeout  -Timeout $Timeout -Verbose
  
 Write-Host "Solution Upgrade Completed. Import Job Id: $importJobId"
 

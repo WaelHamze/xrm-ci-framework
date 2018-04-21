@@ -5,7 +5,6 @@
 param(
 [string]$CrmConnectionString,
 [string]$SolutionName,
-[int]$AsyncWaitTimeout, #Optional - Async wait timeout in seconds
 [int]$Timeout #Optional - CRM connection timeout
 )
 
@@ -16,7 +15,6 @@ Write-Verbose 'Entering ApplySolution.ps1'
 #Parameters
 Write-Verbose "CrmConnectionString = $CrmConnectionString"
 Write-Verbose "SolutionName = $SolutionName"
-Write-Verbose "AsyncWaitTimeout = $AsyncWaitTimeout"
 Write-Verbose "Timeout = $Timeout"
 
 #Script Location
@@ -31,12 +29,10 @@ Write-Verbose "Imported CIToolkit"
 
 Write-Verbose "Upgrading Solution: $SolutionName"
 
-$importJobId = [guid]::NewGuid()
-
 Write-Host "Solution Upgrade Starting. Import Job Id: $importJobId"
   
-$asyncOperationId = Merge-XrmSolution -ConnectionString "$CrmConnectionString" -UniqueSolutionName $SolutionName -ImportJobId $importJobId -AsyncWaitTimeout $AsyncWaitTimeout  -Timeout $Timeout -Verbose
+$asyncOperationId = Merge-XrmSolution -ConnectionString "$CrmConnectionString" -UniqueSolutionName $SolutionName -Timeout $Timeout -Verbose
  
-Write-Host "Solution Upgrade Completed. Import Job Id: $importJobId"
+Write-Host "Solution Upgrade Completed."
 
 Write-Verbose 'Leaving ApplySolution.ps1'

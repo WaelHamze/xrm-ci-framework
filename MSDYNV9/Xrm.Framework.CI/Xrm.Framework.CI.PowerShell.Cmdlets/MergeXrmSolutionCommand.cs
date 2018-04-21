@@ -29,36 +29,6 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
         [Parameter(Mandatory = true)]
         public string UniqueSolutionName { get; set; }
 
-        /// <summary>
-        /// <para type="description">Specify whether to import the solution asynchronously using ExecuteAsyncRequest</para>
-        /// </summary>
-        [Parameter(Mandatory = false)]
-        public bool ImportAsync { get; set; }
-
-        /// <summary>
-        /// <para type="description">Specify whether to wait for async solution imports</para>
-        /// </summary>
-        [Parameter(Mandatory = false)]
-        public bool WaitForCompletion { get; set; }
-
-        /// <summary>
-        /// <para type="description">The sleep interval between checks on the import progress. Default = 15 seconds</para>
-        /// </summary>
-        [Parameter(Mandatory = false)]
-        public int SleepInterval { get; set; }
-
-        /// <summary>
-        /// <para type="description">Specify the timeout duration for waiting on async imports to complete. Default = 15 minutes</para>
-        /// </summary>
-        [Parameter(Mandatory = false)]
-        public int AsyncWaitTimeout { get; set; }
-
-        /// <summary>
-        /// <para type="description">Specify the Guid to be used for the async import job. This was be used to query the start of the job after.</para>
-        /// </summary>
-        [Parameter(Mandatory = false)]
-        public Guid ImportJobId { get; set; }
-
         public MergeXrmSolutionCommand()
         {
         }
@@ -73,105 +43,14 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
 
             base.WriteVerbose(string.Format("Upgrading Solution: {0}", UniqueSolutionName));
 
-            // TODO: I think this is not necessary because you will get back an Id if you overload Guid.Empty
-            if (ImportJobId == Guid.Empty)
-            {
-                ImportJobId = Guid.NewGuid();
-            }
-
-            if (AsyncWaitTimeout == 0)
-            {
-                AsyncWaitTimeout = 15 * 60;
-                base.WriteVerbose(string.Format("Setting Default AsyncWaitTimeout: {0}", AsyncWaitTimeout));
-            }
-
-            if (SleepInterval == 0)
-            {
-                SleepInterval = 15;
-                base.WriteVerbose(string.Format("Setting Default SleepInterval: {0}", SleepInterval));
-            }
-
-            base.WriteCommandDetail(string.Format("ImportJobId {0}", ImportJobId));
-
-
             var upgradeSolutionRequest = new DeleteAndPromoteRequest
             {
                 UniqueName = UniqueSolutionName,
-                RequestId = ImportJobId
             };
 
-            if (ImportAsync)
-            {
-                var asyncRequest = new ExecuteAsyncRequest
-                {
-                    Request = upgradeSolutionRequest,
-                    RequestId = ImportJobId
-                };
-                var asyncResponse = OrganizationService.Execute(asyncRequest) as ExecuteAsyncResponse;
+            OrganizationService.Execute(upgradeSolutionRequest);
 
-                Guid asyncJobId = asyncResponse.AsyncJobId;
-
-                WriteObject(asyncJobId);
-
-                if (WaitForCompletion)
-                {
-                    AwaitCompletion(asyncJobId);
-                }
-            }
-            else
-            {
-                OrganizationService.Execute(upgradeSolutionRequest);
-            }
-
-            base.WriteVerbose(string.Format("{0} Upgrade Completed {1}", UniqueSolutionName, ImportJobId));
-        }
-
-        private void AwaitCompletion(Guid asyncJobId)
-        {
-            DateTime end = DateTime.Now.AddSeconds(AsyncWaitTimeout);
-            int activityId = new Random().Next();
-
-            bool completed = false;
-            while (!completed)
-            {
-                if (end < DateTime.Now)
-                {
-                    throw new Exception(string.Format("Import Timeout Exceeded: {0}", AsyncWaitTimeout));
-                }
-
-                Thread.Sleep(SleepInterval * 1000);
-                base.WriteVerbose(string.Format("Sleeping for {0} seconds", SleepInterval));
-
-                AsyncOperation asyncOperation;
-
-                try
-                {
-                    asyncOperation = OrganizationService.Retrieve("asyncoperation", asyncJobId,
-                        new ColumnSet("asyncoperationid", "statuscode", "message")).ToEntity<AsyncOperation>();
-                }
-                catch (Exception ex)
-                {
-                    base.WriteWarning(ex.Message);
-                    continue;
-                }
-
-                base.WriteProgress(new ProgressRecord(activityId, "Apply Solution Upgrade", string.Format("StatusCode: {0}", asyncOperation.StatusCode.Value)));
-
-                switch (asyncOperation.StatusCode.Value)
-                {
-                    //Succeeded
-                    case 30:
-                        completed = true;
-                        break;
-                    //Pausing //Canceling //Failed //Canceled
-                    case 21:
-                    case 22:
-                    case 31:
-                    case 32:
-                        throw new Exception(string.Format("Solution Upgrade Failed: {0} {1}",
-                            asyncOperation.StatusCode.Value, asyncOperation.Message));
-                }
-            }
+            base.WriteVerbose(string.Format("{0} Upgrade Completed", UniqueSolutionName));
         }
 
         #endregion
