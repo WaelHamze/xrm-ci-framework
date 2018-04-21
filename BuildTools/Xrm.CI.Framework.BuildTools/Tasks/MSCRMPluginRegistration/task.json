@@ -14,7 +14,7 @@
   "version": {
     "Major": "9",
     "Minor": "0",
-    "Patch": "57"
+    "Patch": "58"
   },
   "minimumAgentVersion": "1.95.0",
   "instanceNameFormat": "MSCRM Plugin Registration",
@@ -60,7 +60,7 @@
       "type": "string",
       "label": "CRM solution name",
       "defaultValue": "",
-      "required": true,
+      "required": false,
       "helpMarkDown": "Unique name of solution to which plugin/workflow assembly has to be register."
     },
     {
