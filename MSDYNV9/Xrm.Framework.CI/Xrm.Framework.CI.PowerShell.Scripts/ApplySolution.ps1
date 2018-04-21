@@ -29,7 +29,7 @@ Write-Verbose "Imported CIToolkit"
 
 Write-Verbose "Upgrading Solution: $SolutionName"
 
-Write-Host "Solution Upgrade Starting. Import Job Id: $importJobId"
+Write-Host "Solution Upgrade Starting."
   
 $asyncOperationId = Merge-XrmSolution -ConnectionString "$CrmConnectionString" -UniqueSolutionName $SolutionName -Timeout $Timeout -Verbose
  

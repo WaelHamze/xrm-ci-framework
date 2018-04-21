@@ -14,7 +14,7 @@
   "version": {
     "Major": "9",
     "Minor": "0",
-    "Patch": "5"
+    "Patch": "6"
   },
   "minimumAgentVersion": "1.95.0",
   "instanceNameFormat": "MSCRM Apply Solution: $(solutionName)",
@@ -34,14 +34,6 @@
       "defaultValue": "",
       "required": true,
       "helpMarkDown": "The unique name of the solution you want to apply"
-    },
-    {
-      "name": "asyncWaitTimeout",
-      "type": "string",
-      "label": "Async Wait Timeout",
-      "defaultValue": "900",
-      "required": false,
-      "helpMarkDown": "The number of seconds to wait for async solution upgrade to complete before timing out"
     },
     {
       "name": "crmConnectionTimeout",
