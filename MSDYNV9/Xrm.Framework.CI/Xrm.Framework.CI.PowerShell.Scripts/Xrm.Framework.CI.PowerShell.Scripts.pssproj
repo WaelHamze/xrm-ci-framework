@@ -28,7 +28,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="ApplySolution.ps1" />
-    <Compile Include="MoveSolutionComponents.ps1" />
+    <Compile Include="CopySolutionComponents.ps1" />
     <Compile Include="RemoveSolutionComponents.ps1" />
     <Compile Include="GetPluginRegistrationJsonMapping.ps1" />
     <Compile Include="PluginRegistration.ps1" />

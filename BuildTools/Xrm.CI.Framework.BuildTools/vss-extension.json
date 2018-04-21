@@ -2,7 +2,7 @@
   "manifestVersion": 1,
   "id": "xrm-ci-framework-build-tasks",
   "name": "Dynamics 365 Build Tools",
-  "version": "9.0.24",
+  "version": "9.0.25",
   "publisher": "WaelHamze",
   "targets": [
     {
@@ -68,6 +68,12 @@
     },
     {
       "path": "Tasks/MSCRMPackSolution"
+    },
+    {
+      "path": "Tasks/MSCRMCopySolutionComponents"
+    },
+    {
+      "path": "Tasks/MSCRMRemoveSolutionComponents"
     },
     {
       "path": "Tasks/MSCRMExportSolution"
@@ -207,6 +213,26 @@
       ],
       "properties": {
         "name": "Tasks/MSCRMSetVersion"
+      }
+    },
+    {
+      "id": "MSCRMCopySolutionComponents",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "Tasks/MSCRMCopySolutionComponents"
+      }
+    },
+    {
+      "id": "MSCRMRemoveSolutionComponents",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "Tasks/MSCRMRemoveSolutionComponents"
       }
     },
     {

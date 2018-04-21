@@ -52,6 +52,22 @@ Copy-Item -Path .\Lib\VstsTaskSdk\0.10.0\*.* -Destination "$OutputDir\Tasks\$tas
 New-Item "$OutputDir\Tasks\$taskName\Lib\xRMCIFramework\9.0.0" -ItemType directory | Out-Null
 Copy-Item -Path .\Lib\xRMCIFramework\9.0.0\*.* -Destination "$OutputDir\Tasks\$taskName\Lib\xRMCIFramework\9.0.0"
 
+#MSCRMCopySolutionComponents
+$taskName = "MSCRMCopySolutionComponents"
+Copy-Item -Path .\icon.png -Destination "$OutputDir\Tasks\$taskName"
+New-Item "$OutputDir\Tasks\$taskName\ps_modules\VstsTaskSdk" -ItemType directory | Out-Null
+Copy-Item -Path .\Lib\VstsTaskSdk\0.10.0\*.* -Destination "$OutputDir\Tasks\$taskName\ps_modules\VstsTaskSdk"
+New-Item "$OutputDir\Tasks\$taskName\Lib\xRMCIFramework\9.0.0" -ItemType directory | Out-Null
+Copy-Item -Path .\Lib\xRMCIFramework\9.0.0\*.* -Destination "$OutputDir\Tasks\$taskName\Lib\xRMCIFramework\9.0.0"
+
+#MSCRMRemoveSolutionComponents
+$taskName = "MSCRMRemoveSolutionComponents"
+Copy-Item -Path .\icon.png -Destination "$OutputDir\Tasks\$taskName"
+New-Item "$OutputDir\Tasks\$taskName\ps_modules\VstsTaskSdk" -ItemType directory | Out-Null
+Copy-Item -Path .\Lib\VstsTaskSdk\0.10.0\*.* -Destination "$OutputDir\Tasks\$taskName\ps_modules\VstsTaskSdk"
+New-Item "$OutputDir\Tasks\$taskName\Lib\xRMCIFramework\9.0.0" -ItemType directory | Out-Null
+Copy-Item -Path .\Lib\xRMCIFramework\9.0.0\*.* -Destination "$OutputDir\Tasks\$taskName\Lib\xRMCIFramework\9.0.0"
+
 #Ping
 $taskName = "MSCRMPing"
 Copy-Item -Path .\icon.png -Destination "$OutputDir\Tasks\$taskName"

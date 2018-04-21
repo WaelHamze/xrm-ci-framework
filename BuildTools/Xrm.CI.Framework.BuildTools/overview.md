@@ -29,6 +29,8 @@ Below is a list of tasks that are included with this extension.
 | **MSCRM Pack Solution** | Packages a CRM Solution using SolutionPackager.exe |
 | **MSCRM Import Solution** | Import a Dynamics CRM Solution package |
 | **MSCRM Apply Solution (preview)** | Applies a solution upgrade after solution is import using stage for upgrade option |
+| **MSCRM Copy Solution Components (preview)** | Add components from a given solution to another solution if not present |
+| **MSCRM Remove Solution Components (preview)** | Removes all components from a given CRM Solution |
 | **MSCRM Package Deployer** | Deploys a CRM Package using the CRM Package Deployer PowerShell Cmdlets |
 | **MSCRM Update Secure Configuration** | A task that updates Dynamics 365 plugin secure configuration |
 | **MSCRM Update Plugin Assembly (deprecated)** | Updates Dynamics 365 plugin assembly during build |

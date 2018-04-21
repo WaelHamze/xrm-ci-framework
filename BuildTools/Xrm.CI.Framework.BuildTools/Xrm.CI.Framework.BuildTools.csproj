@@ -178,6 +178,10 @@
     <Content Include="Tasks\MSCRMApplySolution\task.json" />
     <Content Include="Tasks\MSCRMExtractSolution\MSCRMExtractSolution.ps1" />
     <Content Include="Tasks\MSCRMExtractSolution\task.json" />
+    <Content Include="Tasks\MSCRMRemoveSolutionComponents\MSCRMRemoveSolutionComponents.ps1" />
+    <Content Include="Tasks\MSCRMRemoveSolutionComponents\task.json" />
+    <Content Include="Tasks\MSCRMCopySolutionComponents\MSCRMCopySolutionComponents.ps1" />
+    <Content Include="Tasks\MSCRMCopySolutionComponents\task.json" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
