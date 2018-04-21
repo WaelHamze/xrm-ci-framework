@@ -27,6 +27,6 @@ Write-Verbose "Importing CIToolkit: $xrmCIToolkit"
 Import-Module $xrmCIToolkit
 Write-Verbose "Imported CIToolkit"
 
-Move-XrmSolutionComponents -FromSolutionName $FromSolutionName -ToSolutionName $ToSolutionName -ConnectionString $CrmConnectionString -Timeout $Timeout -Verbose
+Copy-XrmSolutionComponents -FromSolutionName $FromSolutionName -ToSolutionName $ToSolutionName -ConnectionString $CrmConnectionString -Timeout $Timeout -Verbose
 
 Write-Verbose 'Leaving MoveSolutionComponent.ps1'

@@ -1,0 +1,60 @@
+{
+  "id": "E89BE8B0-D102-4533-87AF-8F8F1206DD78",
+  "name": "MSCRMCopySolutionComponents",
+  "friendlyName": "MSCRM Copy Solution Components (preview)",
+  "description": "Add components from a given solution to another solution if not present",
+  "author": "Wael Hamze",
+  "helpMarkDown": "Add components from a given solution to another solution if not present",
+  "category": "Build",
+  "visibility": [
+    "Build",
+    "Release"
+  ],
+  "demands": [],
+  "version": {
+    "Major": "9",
+    "Minor": "0",
+    "Patch": "2"
+  },
+  "minimumAgentVersion": "1.95.0",
+  "instanceNameFormat": "Add components from solution: $(fromSolutionName)",
+  "inputs": [
+    {
+      "name": "crmConnectionString",
+      "type": "string",
+      "label": "CRM Connection String",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "For more information on format: https://msdn.microsoft.com/en-gb/library/mt608573.aspx"
+    },
+    {
+      "name": "fromSolutionName",
+      "type": "string",
+      "label": "From Solution Name",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "The unique name of the source solution"
+    },
+    {
+      "name": "toSolutionName",
+      "type": "string",
+      "label": "To Solution Name",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "The unique name of the target solution"
+    },
+    {
+      "name": "crmConnectionTimeout",
+      "type": "string",
+      "label": "Crm Connection Timeout",
+      "defaultValue": "120",
+      "required": false,
+      "helpMarkDown": "The Crm connection timeout in seconds"
+    }
+  ],
+  "execution": {
+    "PowerShell3": {
+      "target": "MSCRMCopySolutionComponents.ps1"
+    }
+  }
+}

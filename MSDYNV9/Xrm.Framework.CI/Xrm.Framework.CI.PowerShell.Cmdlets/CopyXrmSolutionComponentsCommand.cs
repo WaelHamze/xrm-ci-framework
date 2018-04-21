@@ -10,7 +10,7 @@ using Xrm.Framework.CI.PowerShell.Cmdlets.Common;
 namespace Xrm.Framework.CI.PowerShell.Cmdlets
 {
     /// <summary>
-    /// <para type="synopsis">Moves a CRM Solution Components.</para>
+    /// <para type="synopsis">Copies a CRM Solution Components.</para>
     /// <para type="description">The Move-XrmSolutionComponents of a CRM solution to another by unique name.
     /// </para>
     /// </summary>
@@ -18,8 +18,8 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
     ///   <code>C:\PS>Move-XrmSolutionComponents -ConnectionString "" -FromSolutionName "UniqueSolutionName -ToSolutionName "UniqueSolutionName"</code>
     ///   <para>Exports the "" managed solution to "" location</para>
     /// </example>
-    [Cmdlet(VerbsCommon.Move, "XrmSolutionComponents")]
-    public class MoveXrmSolutionComponentsCommand : XrmCommandBase
+    [Cmdlet(VerbsCommon.Copy, "XrmSolutionComponents")]
+    public class CopyXrmSolutionComponentsCommand : XrmCommandBase
     {
         #region Parameters
 

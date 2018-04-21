@@ -14,7 +14,7 @@
   "version": {
     "Major": "9",
     "Minor": "0",
-    "Patch": "6"
+    "Patch": "7"
   },
   "minimumAgentVersion": "1.95.0",
   "instanceNameFormat": "MSCRM Apply Solution: $(solutionName)",
@@ -39,7 +39,7 @@
       "name": "crmConnectionTimeout",
       "type": "string",
       "label": "Crm Connection Timeout",
-      "defaultValue": "120",
+      "defaultValue": "900",
       "required": false,
       "helpMarkDown": "The Crm connection timeout in seconds"
     }
