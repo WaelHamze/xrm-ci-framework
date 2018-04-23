@@ -1,0 +1,29 @@
+﻿{
+  "Name": "Xrm.CI.Framework.Sample.Plugins.dll",
+  "IsolationMode": "Sandbox",
+  "SourceType": "Database",
+  "PluginTypes": [
+    {
+      "Description": null,
+      "Name": "Xrm.CI.Framework.Sample.Plugins.AccountPostCreateAsync",
+      "FriendlyName": "Xrm.CI.Framework.Sample.Plugins.AccountPostCreateAsync",
+      "TypeName": "Xrm.CI.Framework.Sample.Plugins.AccountPostCreateAsync",
+      "Steps": [
+        {
+          "Name": "Xrm.CI.Framework.Sample.Plugins.AccountPostCreateAsync",
+          "MessageName": "Create",
+          "Description": "Xrm.CI.Framework.Sample.Plugins.AccountPostCreateAsync",
+          "CustomConfiguration": null,
+          "FilteringAttributes": null,
+          "ImpersonatingUserFullname": null,
+          "Mode": "Asynchronous",
+          "PrimaryEntityName": "account",
+          "Rank": 1,
+          "Stage": "Postoperation",
+          "SupportedDeployment": "ServerOnly",
+          "Images": []
+        }
+      ]
+    }
+  ]
+}

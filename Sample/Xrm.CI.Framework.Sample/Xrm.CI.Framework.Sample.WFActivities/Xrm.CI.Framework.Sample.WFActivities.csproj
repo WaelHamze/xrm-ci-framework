@@ -74,7 +74,10 @@
     <Compile Include="Send.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="GetPluginRegistration.ps1" />
     <None Include="packages.config" />
+    <None Include="PluginRegistration.json" />
+    <None Include="UpdatePluginRegistration.ps1" />
     <None Include="Xrm.CI.Framework.Sample.snk" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

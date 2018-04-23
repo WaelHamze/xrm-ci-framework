@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Xrm.CI.Framework.Sample.Plugins
 {
-    public class Account : IPlugin
+    public class ContactPreOperation : IPlugin
     {
         public void Execute(IServiceProvider serviceProvider)
         {
