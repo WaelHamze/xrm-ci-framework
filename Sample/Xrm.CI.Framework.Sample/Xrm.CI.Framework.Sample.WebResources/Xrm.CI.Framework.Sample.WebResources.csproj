@@ -67,13 +67,14 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <Content Include="UpdateWebResources.ps1" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="HTML\Dashboard.html" />
-    <Content Include="JScript\Contact.js" />
+    <Content Include="WebResources\HTML\Dashboard.html" />
+    <Content Include="WebResources\JScript\Contact.js" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
