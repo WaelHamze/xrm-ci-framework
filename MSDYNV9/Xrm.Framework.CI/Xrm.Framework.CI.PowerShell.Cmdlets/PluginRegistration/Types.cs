@@ -16,5 +16,9 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
         public string TypeName { get; set; }
 
         public List<Step> Steps { get; set; }
+
+        public string WorkflowActivityGroupName { get; set; }
+
+
     }
 }

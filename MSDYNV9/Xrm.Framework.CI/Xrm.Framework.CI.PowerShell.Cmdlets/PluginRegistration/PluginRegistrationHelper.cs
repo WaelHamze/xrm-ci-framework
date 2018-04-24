@@ -124,7 +124,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
             return Id;
         }
 
-        public Guid UpsertPluginType(Guid parentId, Type pluginType, string solutionName, string registrationType)
+        public Guid UpsertPluginType(Guid parentId, Type pluginType, string solutionName, string registrationType, bool isWorkflowActivity, string pluginAssemblyName)
         {
             var name = pluginType.Name;
             Guid Id = GetPluginTypeId(parentId, name);
@@ -135,6 +135,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
                 Description = pluginType.Description,
                 FriendlyName = pluginType.FriendlyName,
                 TypeName = pluginType.TypeName,
+                WorkflowActivityGroupName = isWorkflowActivity ? pluginType.WorkflowActivityGroupName ?? pluginAssemblyName : null,
                 PluginAssemblyId = new EntityReference(PluginAssembly.EntityLogicalName, parentId)
             };
 
@@ -306,7 +307,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
             var pluginAssembliesTypes = (from pluginAssembly in context.PluginAssemblySet
                                          join plugins in context.PluginTypeSet on pluginAssembly.Id equals plugins.PluginAssemblyId.Id                                         
                                          where (pluginAssembly.Name == name && pluginAssembly.SolutionId == solutionId) || pluginAssembly.Name == name
-                                         select MapPluginObject(pluginAssemblyList, pluginAssembly, plugins, null, null, null, null)).ToList();
+                                         select MapPluginObject(pluginAssemblyList, pluginAssembly, plugins, null, null, null, null, true)).ToList();
             string json = JsonConvert.SerializeObject(pluginAssemblyList.FirstOrDefault());
             return json;
         }
@@ -328,7 +329,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
                                          join message in context.SdkMessageSet on steps.SdkMessageId.Id equals message.SdkMessageId
                                          join filters in context.SdkMessageFilterSet on steps.SdkMessageFilterId.Id equals filters.Id
                                          where (pluginAssembly.Name == name && pluginAssembly.SolutionId == solutionId) || pluginAssembly.Name == name
-                                         select MapPluginObject(pluginAssemblyList, pluginAssembly, plugins, steps, message, filters, pluginStepImages)).ToList();
+                                         select MapPluginObject(pluginAssemblyList, pluginAssembly, plugins, steps, message, filters, pluginStepImages, false)).ToList();
             string json = JsonConvert.SerializeObject(pluginAssemblyList.FirstOrDefault());
             return json;
         }
@@ -354,11 +355,12 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
 
         private static bool MapWorkflowActivityObject(List<Assembly> pluginAssemblyList
             , PluginAssembly pluginAssembly
-            , PluginType pluginType)
+            , PluginType pluginType
+            , bool isWorkflowActivity)
         {
             var pluginAssemblyTemp = MapPluginAssemblyObject(pluginAssemblyList, pluginAssembly);
             if (pluginAssemblyTemp == null) { return false; }
-            var pluginAssemblyTypeTemp = MapPluginAssemblyTypeObject(pluginType, pluginAssemblyTemp);
+            var pluginAssemblyTypeTemp = MapPluginAssemblyTypeObject(pluginType, pluginAssemblyTemp, isWorkflowActivity);
             
             return true;
         }
@@ -369,11 +371,12 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
             , SdkMessageProcessingStep pluginStep
             , SdkMessage sdkMessage
             , SdkMessageFilter filter
-            , List<SdkMessageProcessingStepImage> images)
+            , List<SdkMessageProcessingStepImage> images
+            , bool isWorkflowActivity)
         {
             var pluginAssemblyTemp = MapPluginAssemblyObject(pluginAssemblyList, pluginAssembly);
             if (pluginAssemblyTemp == null) { return false; }
-            var pluginAssemblyTypeTemp = MapPluginAssemblyTypeObject(pluginType, pluginAssemblyTemp);
+            var pluginAssemblyTypeTemp = MapPluginAssemblyTypeObject(pluginType, pluginAssemblyTemp, isWorkflowActivity);
 
             if (pluginStep != null)
             {
@@ -416,7 +419,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
             }
         }
 
-        private static Type MapPluginAssemblyTypeObject(PluginType pluginType, Assembly pluginAssemblyTemp)
+        private static Type MapPluginAssemblyTypeObject(PluginType pluginType, Assembly pluginAssemblyTemp, bool isWorkflowActivity)
         {
             var pluginAssemblyTypeTemp = pluginAssemblyTemp.PluginTypes.FirstOrDefault(item1 => item1.Name == pluginType.Name);
             
@@ -428,6 +431,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
                     FriendlyName = pluginType.FriendlyName,
                     Name = pluginType.Name,
                     TypeName = pluginType.TypeName,
+                    WorkflowActivityGroupName = isWorkflowActivity ? pluginType.WorkflowActivityGroupName ?? pluginAssemblyTemp.Name : null,
                     Steps = new List<Step>()
                 };
 
