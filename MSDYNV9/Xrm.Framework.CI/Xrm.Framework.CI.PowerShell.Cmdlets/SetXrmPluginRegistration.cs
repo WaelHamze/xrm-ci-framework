@@ -88,7 +88,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
                     {
                         foreach (var type in pluginAssembly.PluginTypes)
                         {
-                            var pluginTypeId = pluginRegistrationHelper.UpsertPluginType(pluginAssemblyId, type, SolutionName, RegistrationType);
+                            var pluginTypeId = pluginRegistrationHelper.UpsertPluginType(pluginAssemblyId, type, SolutionName, RegistrationType, IsWorkflowActivityAssembly, assemblyName);
                             base.WriteVerbose(string.Format("UpsertPluginType {0} completed", pluginTypeId));
                             if (!IsWorkflowActivityAssembly)
                             {
