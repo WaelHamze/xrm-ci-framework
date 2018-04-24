@@ -1,5 +1,5 @@
 {
-  "$id": "https://github.com/WaelHamze/xrm-ci-framework/blob/master/MSDYNV9/Xrm.Framework.CI/Xrm.Framework.CI.PowerShell.Cmdlets/PluginRegistration/PluginRegistrationMappingExample.json",
+  "$id": "https://github.com/WaelHamze/xrm-ci-framework/blob/master/MSDYNV9/Xrm.Framework.CI/Xrm.Framework.CI.PowerShell.Cmdlets/PluginRegistration/PluginRegistrationSchema.json",
   "type": "object",
   "properties": {
     "Name": {

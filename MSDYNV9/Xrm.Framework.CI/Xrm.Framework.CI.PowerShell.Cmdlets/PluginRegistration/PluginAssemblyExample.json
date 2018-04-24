@@ -8,6 +8,7 @@
       "Name": "CrmVSSolution.plugin.PostOperationaccountUpdate",
       "FriendlyName": "264cd3d4-a313-459f-977f-c263a5c44ff3",
       "TypeName": "CrmVSSolution.plugin.PostOperationaccountUpdate",
+      "WorkflowActivityGroupName": "",
       "Steps": [
         {
           "Name": "Update of account",

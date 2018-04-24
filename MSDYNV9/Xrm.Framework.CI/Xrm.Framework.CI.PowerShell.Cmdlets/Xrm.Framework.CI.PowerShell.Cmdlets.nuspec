@@ -28,5 +28,8 @@
     <file src="bin\release\Microsoft.Xrm.Sdk.Deployment.dll" target="tools" />
     <file src="bin\release\Newtonsoft.Json.dll" target="tools" />
     <file src="*.psd1" target="tools" />
+    <file src="PluginRegistration\PluginAssemblyExample.json" target="tools" />
+    <file src="PluginRegistration\WorkflowAssemblyExample.json" target="tools" />
+    <file src="PluginRegistration\PluginRegistrationSchema.json" target="tools" />
   </files>
 </package>

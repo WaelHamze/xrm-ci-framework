@@ -132,8 +132,9 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
-    <None Include="PluginRegistration\PluginRegistrationMappingExample.json" />
-    <None Include="PluginRegistration\PluginRegistrationMappingSchema.json" />
+    <None Include="PluginRegistration\WorkflowAssemblyExample.json" />
+    <None Include="PluginRegistration\PluginAssemblyExample.json" />
+    <None Include="PluginRegistration\PluginRegistrationSchema.json" />
     <None Include="Xrm.Framework.CI.PowerShell.Cmdlets.nuspec">
       <SubType>Designer</SubType>
     </None>
@@ -151,7 +152,7 @@
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties PluginRegistration_4PluginRegistrationMappingExample_1json__JSONSchema="PluginRegistrationMappingSchema.json" />
+      <UserProperties PluginRegistration_4PluginAssemblyExample_1json__JSONSchema="PluginRegistrationSchema.json" PluginRegistration_4WorkflowAssemblyExample_1json__JSONSchema="PluginRegistrationSchema.json" />
     </VisualStudio>
   </ProjectExtensions>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
