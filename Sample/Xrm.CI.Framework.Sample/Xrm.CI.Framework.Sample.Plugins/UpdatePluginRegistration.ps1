@@ -23,4 +23,4 @@ $MappingJsonPath = "$scriptPath\PluginRegistration.json"
 $IsWorkflowActivityAssembly = $false
 $RegistrationType = "upsert"
 
-& "$scriptPath\..\packages\XrmCIFramework.9.0.0.16\tools\PluginRegistration.ps1" -Verbose -CrmConnectionString "$CrmConnectionString" -AssemblyPath "$AssemblyPath" -MappingJsonPath "$MappingJsonPath" -SolutionName $SolutionName -IsWorkflowActivityAssembly $IsWorkflowActivityAssembly -RegistrationType $RegistrationType
+& "$scriptPath\..\packages\XrmCIFramework.9.0.0.17\tools\PluginRegistration.ps1" -Verbose -CrmConnectionString "$CrmConnectionString" -AssemblyPath "$AssemblyPath" -MappingJsonPath "$MappingJsonPath" -SolutionName $SolutionName -IsWorkflowActivityAssembly $IsWorkflowActivityAssembly -RegistrationType $RegistrationType

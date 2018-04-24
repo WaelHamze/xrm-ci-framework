@@ -22,4 +22,4 @@ $MappingJsonPath = "$scriptPath\PluginRegistrationMapping.json"
 $IsWorkflowActivityAssembly = $false
 $SolutionName = 'xRMCISample'
 
-& "$scriptPath\..\packages\XrmCIFramework.9.0.0.16\tools\GetPluginRegistrationJsonMapping.ps1" -Verbose -CrmConnectionString "$CrmConnectionString" -AssemblyName "$AssemblyName" -MappingJsonPath "$MappingJsonPath" -IsWorkflowActivityAssembly $IsWorkflowActivityAssembly -SolutionName $SolutionName
+& "$scriptPath\..\packages\XrmCIFramework.9.0.0.17\tools\GetPluginRegistrationJsonMapping.ps1" -Verbose -CrmConnectionString "$CrmConnectionString" -AssemblyName "$AssemblyName" -MappingJsonPath "$MappingJsonPath" -IsWorkflowActivityAssembly $IsWorkflowActivityAssembly -SolutionName $SolutionName

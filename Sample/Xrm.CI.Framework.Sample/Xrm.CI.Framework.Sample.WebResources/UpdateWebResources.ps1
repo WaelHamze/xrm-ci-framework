@@ -25,4 +25,4 @@ $IncludeFileExtensionForUniqueName = $true
 $Publish = $true
 #$Timeout = 120
 
-& "$scriptPath\..\packages\XrmCIFramework.9.0.0.16\tools\UpdateFoldersWebResources.ps1" -Verbose -CrmConnectionString "$CrmConnectionString" -WebResourceFolderPath $WebResourceFolderPath -CommaSeparatedWebResourceExtensions $CommaSeparatedWebResourceExtensions -RegExToMatchUniqueName $RegExToMatchUniqueName -IncludeFileExtensionForUniqueName $IncludeFileExtensionForUniqueName -Publish $true
+& "$scriptPath\..\packages\XrmCIFramework.9.0.0.17\tools\UpdateFoldersWebResources.ps1" -Verbose -CrmConnectionString "$CrmConnectionString" -WebResourceFolderPath $WebResourceFolderPath -CommaSeparatedWebResourceExtensions $CommaSeparatedWebResourceExtensions -RegExToMatchUniqueName $RegExToMatchUniqueName -IncludeFileExtensionForUniqueName $IncludeFileExtensionForUniqueName -Publish $true

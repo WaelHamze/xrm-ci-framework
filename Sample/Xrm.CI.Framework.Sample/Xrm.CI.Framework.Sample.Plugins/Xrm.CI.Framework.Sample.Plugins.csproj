@@ -75,4 +75,9 @@
     <None Include="Xrm.CI.Framework.Sample.snk" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties PluginRegistration_1json__JSONSchema="..\packages\XrmCIFramework.9.0.0.17\tools\PluginRegistrationSchema.json" />
+    </VisualStudio>
+  </ProjectExtensions>
 </Project>

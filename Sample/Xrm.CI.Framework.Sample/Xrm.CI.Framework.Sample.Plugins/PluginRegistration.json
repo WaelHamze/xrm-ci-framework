@@ -4,15 +4,16 @@
   "SourceType": "Database",
   "PluginTypes": [
     {
-      "Description": null,
+      "Description": "Account Post Create Async Plugin",
       "Name": "Xrm.CI.Framework.Sample.Plugins.AccountPostCreateAsync",
-      "FriendlyName": "Xrm.CI.Framework.Sample.Plugins.AccountPostCreateAsync",
+      "FriendlyName": "Account Post Create Async Plugin",
       "TypeName": "Xrm.CI.Framework.Sample.Plugins.AccountPostCreateAsync",
+      "WorkflowActivityGroupName": "",
       "Steps": [
         {
           "Name": "Xrm.CI.Framework.Sample.Plugins.AccountPostCreateAsync",
           "MessageName": "Create",
-          "Description": "Xrm.CI.Framework.Sample.Plugins.AccountPostCreateAsync",
+          "Description": "Account Post Create Async Step",
           "CustomConfiguration": null,
           "FilteringAttributes": null,
           "ImpersonatingUserFullname": null,
@@ -20,6 +21,29 @@
           "PrimaryEntityName": "account",
           "Rank": 1,
           "Stage": "Postoperation",
+          "SupportedDeployment": "ServerOnly",
+          "Images": []
+        }
+      ]
+    },
+    {
+      "Description": "Contact Pre Operation Plugin",
+      "Name": "Xrm.CI.Framework.Sample.Plugins.ContactPreOperation",
+      "FriendlyName": "Contact Pre Operation Plugin",
+      "TypeName": "Xrm.CI.Framework.Sample.Plugins.ContactPreOperation",
+      "WorkflowActivityGroupName": "",
+      "Steps": [
+        {
+          "Name": "Xrm.CI.Framework.Sample.Plugins.ContactPreOperation",
+          "MessageName": "Create",
+          "Description": "Contact Pre Operation Step",
+          "CustomConfiguration": null,
+          "FilteringAttributes": null,
+          "ImpersonatingUserFullname": null,
+          "Mode": "Synchronous",
+          "PrimaryEntityName": "contact",
+          "Rank": 1,
+          "Stage": "Preoperation",
           "SupportedDeployment": "ServerOnly",
           "Images": []
         }

@@ -1,13 +1,14 @@
 ﻿{
-  "Name": "Xrm.CI.Framework.Sample.Plugins.dll",
+  "Name": "Xrm.CI.Framework.Sample.WFActivities.dll",
   "IsolationMode": "Sandbox",
   "SourceType": "Database",
   "PluginTypes": [
     {
-      "Description": "Xrm.CI.Framework.Sample.WFActivities.Send",
+      "Description": "Send Activity Description",
       "Name": "Xrm.CI.Framework.Sample.WFActivities.Send",
-      "FriendlyName": "Xrm.CI.Framework.Sample.WFActivities.Send",
+      "FriendlyName": "Send",
       "TypeName": "Xrm.CI.Framework.Sample.WFActivities.Send",
+      "WorkflowActivityGroupName": "CI Sample",
       "Steps": []
     }
   ]
