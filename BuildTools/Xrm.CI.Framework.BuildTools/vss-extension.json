@@ -2,7 +2,7 @@
   "manifestVersion": 1,
   "id": "xrm-ci-framework-build-tasks",
   "name": "Dynamics 365 Build Tools",
-  "version": "9.0.26",
+  "version": "9.0.28",
   "publisher": "WaelHamze",
   "targets": [
     {
