@@ -62,7 +62,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
 
             if (!Id.Equals(Guid.Empty) && registrationType == "reset")
             {
-                DeletePluginStepsAndAssembly(Id);
+                DeleteDependenciesAndParent(Id, PluginAssembly.EntityLogicalName, 91);                
             }
 
             Id = ExecuteRequest(registrationType, Id, assembly);
@@ -97,12 +97,12 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
             return enumValue;
         }
 
-        private void DeletePluginStepsAndAssembly(Guid pluginAssemblyId)
+        public void DeleteDependenciesAndParent(Guid objectId, string entityLogicalName, int dependencieComponentType)
         {
             RetrieveDependenciesForDeleteRequest retrieveDependenciesForDeleteRequest = new RetrieveDependenciesForDeleteRequest()
             {
-                ComponentType = 91,
-                ObjectId = pluginAssemblyId
+                ComponentType = dependencieComponentType,
+                ObjectId = objectId
             };
             var objectsToDelete = OrganizationService.Execute(retrieveDependenciesForDeleteRequest);
             foreach (var objectToDelete in ((EntityCollection)objectsToDelete.Results.Values.First()).Entities)
@@ -110,7 +110,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
                 OrganizationService.Delete(SdkMessageProcessingStep.EntityLogicalName, objectToDelete.GetAttributeValue<Guid>("dependentcomponentobjectid"));
             }
 
-            OrganizationService.Delete(PluginAssembly.EntityLogicalName, pluginAssemblyId);
+            OrganizationService.Delete(entityLogicalName, objectId);
         }
 
         private Guid GetPluginAssemblyId(string name)
@@ -153,6 +153,17 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
             Guid Id = query.FirstOrDefault();
 
             return Id;
+        }
+
+        private List<PluginType> GetPluginTypes(Guid parentId)
+        {
+            var query = from a in context.PluginTypeSet
+                        where a.PluginAssemblyId.Id == parentId
+                        select new PluginType { Id = a.Id, Name = a.Name };
+
+            var typeList = query.ToList();
+
+            return typeList;
         }
 
         public Guid UpsertSdkMessageProcessingStep(Guid parentId, Step step, string solutionName, string registrationType)
@@ -214,6 +225,17 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
             Guid Id = query.FirstOrDefault();
 
             return Id;
+        }
+
+        private List<SdkMessageProcessingStep> GetSdkMessageProcessingSteps(Guid parentId)
+        {
+            var query = from step in context.SdkMessageProcessingStepSet
+                        where step.EventHandler.Id == parentId
+                        select new SdkMessageProcessingStep { Id = step.Id, Name = step.Name };
+
+            var list = query.ToList();
+
+            return list;
         }
 
         private Guid GetSdkMessageId(string name)
@@ -459,6 +481,26 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
             }
 
             return imageTemp;
+        }
+
+        public void RemoveComponentsNotInMapping(string pluginAssemblyName, Assembly pluginAssembly)
+        {
+            var pluginAssemblyId = GetPluginAssemblyId(pluginAssemblyName);
+            var pluginTypesToDelete = GetPluginTypes(pluginAssemblyId).Where(p => !pluginAssembly.PluginTypes.Any(p2 => p2.Name == p.Name));
+            foreach (var pluginType in pluginTypesToDelete)
+            {
+                DeleteDependenciesAndParent(pluginType.Id, pluginType.LogicalName, 90);
+            }
+
+            foreach (var pluginType in pluginAssembly.PluginTypes)
+            {
+                var pluginTypeId = GetPluginTypeId(pluginAssemblyId, pluginType.Name);
+                var pluginStepsToDelete = GetSdkMessageProcessingSteps(pluginTypeId).Where(p => !pluginAssembly.PluginTypes.Any(p2 => p2.Name == p.Name));
+                foreach (var pluginStep in pluginStepsToDelete)
+                {
+                    OrganizationService.Delete(pluginStep.LogicalName, pluginStep.Id);
+                }
+            }
         }
     }
 }
