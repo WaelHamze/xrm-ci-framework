@@ -28,6 +28,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="ApplySolution.ps1" />
+    <Compile Include="CloneSolutionAsPatch.ps1" />
+    <Compile Include="CloneSolutionAsSolution.ps1" />
     <Compile Include="CopySolutionComponents.ps1" />
     <Compile Include="RemoveSolutionComponents.ps1" />
     <Compile Include="GetPluginRegistrationJsonMapping.ps1" />
