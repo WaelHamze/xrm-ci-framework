@@ -84,6 +84,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AddXrmEntityCommand.cs" />
+    <Compile Include="AddXrmSolutionPatch.cs" />
     <Compile Include="Common\Entities.cs" />
     <Compile Include="Common\PluginAssembly_IsolationMode.cs" />
     <Compile Include="Common\PluginAssembly_SourceType.cs" />
@@ -104,6 +105,7 @@
     <Compile Include="ImportXrmAccessTeamTemplatesCommand.cs" />
     <Compile Include="MergeXrmSolutionCommand.cs" />
     <Compile Include="ImportXrmSolutionCommand.cs" />
+    <Compile Include="MergeXrmSolutionPatches.cs" />
     <Compile Include="NewXrmBulkDeleteJobCommand.cs" />
     <Compile Include="NewXrmEntityCommand.cs" />
     <Compile Include="PluginRegistration\Assembly.cs" />
@@ -152,7 +154,7 @@
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties PluginRegistration_4PluginAssemblyExample_1json__JSONSchema="PluginRegistrationSchema.json" PluginRegistration_4WorkflowAssemblyExample_1json__JSONSchema="PluginRegistrationSchema.json" />
+      <UserProperties PluginRegistration_4WorkflowAssemblyExample_1json__JSONSchema="PluginRegistrationSchema.json" PluginRegistration_4PluginAssemblyExample_1json__JSONSchema="PluginRegistrationSchema.json" />
     </VisualStudio>
   </ProjectExtensions>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
