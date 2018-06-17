@@ -5,7 +5,7 @@
 param(
 	[string]$CrmConnectionString,
 	[string]$WebResourceFolderPath,
-	[string]$CommaSeparatedWebResourceExtensions,
+	[string]$SearchPattern,
 	[string]$RegExToMatchUniqueName,
 	[bool]$IncludeFileExtensionForUniqueName,
 	[bool]$Publish, #Will publish the web resource
@@ -19,7 +19,7 @@ Write-Verbose 'Entering UpdateFoldersWebResources.ps1' -Verbose
 #Parameters
 Write-Verbose "CrmConnectionString = $CrmConnectionString"
 Write-Verbose "WebResourceFolderPath = $WebResourceFolderPath"
-Write-Verbose "CommaSeparatedWebResourceExtensions = $CommaSeparatedWebResourceExtensions"
+Write-Verbose "SearchPattern = $SearchPattern"
 Write-Verbose "RegExToMatchUniqueName = $RegExToMatchUniqueName"
 Write-Verbose "IncludeFileExtensionForUniqueName = $IncludeFileExtensionForUniqueName"
 Write-Verbose "Publish = $Publish"
@@ -34,21 +34,5 @@ $xrmCIToolkit = $scriptPath + "\Xrm.Framework.CI.PowerShell.Cmdlets.dll"
 Write-Verbose "Importing CIToolkit: $xrmCIToolkit" 
 Import-Module $xrmCIToolkit
 Write-Verbose "Imported CIToolkit"
-[string]$RegEx = ''
-$fileNames = Get-ChildItem -Path $WebResourceFolderPath -File -Include $CommaSeparatedWebResourceExtensions.Split(',') -Recurse | ForEach-Object {
-	$WebResourcePath = $_.FullName
-	Write-Verbose "Updating Web Resource: $WebResourcePath"
-	if($RegExToMatchUniqueName){
-		[string]$fileName = [System.IO.Path]::GetFileNameWithoutExtension($WebResourcePath)
-		if($IncludeFileExtensionForUniqueName){		
-			[string]$fileExtension = [System.IO.Path]::GetExtension($WebResourcePath)
-			$RegEx = $RegExToMatchUniqueName + $fileExtension.Replace(".", "[.]")
-		}
-
-		$RegEx = $RegEx.Replace('$fileName',$fileName)
-	}
-	Set-XrmWebResource -Path $WebResourcePath -RegExToMatchUniqueName $RegEx -Publish $Publish -ConnectionString $CrmConnectionString -Timeout $Timeout -Verbose
-	Write-Verbose "Updated Web Resource"
-} 
-
-Write-Verbose 'Leaving UpdateFoldersWebResources.ps1' -Verbose
+Set-XrmWebResourcesFromFolder -Path $WebResourceFolderPath -SearchPattern $SearchPattern -RegExToMatchUniqueName $RegExToMatchUniqueName -IncludeFileExtensionForUniqueName $IncludeFileExtensionForUniqueName -Publish $Publish -ConnectionString $CrmConnectionString -Timeout $Timeout -Verbose
+Write-Verbose 'Leaving UpdateFoldersWebResources.ps1'
