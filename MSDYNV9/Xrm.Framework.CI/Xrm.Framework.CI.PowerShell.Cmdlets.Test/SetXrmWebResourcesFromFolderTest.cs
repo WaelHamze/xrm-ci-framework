@@ -111,7 +111,6 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Test
             {
                 Assert.That(webResourcesUpdated, Has.All.Not.Null);
                 Assert.That(webResourcesSkipped, Is.All.Null);
-
             });
 
         }
@@ -144,8 +143,22 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Test
             {
                 Assert.That(webResourcesUpdated, Has.All.Not.Null);
                 Assert.That(webResourcesSkipped, Is.All.Null);
-
             });
+        }
+
+        [Test]
+        public void ShouldWriteErrorIfWebesourceNotFound()
+        {
+            File.WriteAllText(Path.Combine(tempDir.FullName, Guid.NewGuid().ToString()), "");
+            File.WriteAllText(Path.Combine(tempDir.FullName, Guid.NewGuid().ToString()), "");
+
+
+            var cmd = $"{cmdletname} -FailIfWebResourceNotFound 1 -ConnectionString any -Path {tempDir.FullName}";
+            using (Pipeline p = TestData.Runspace.CreatePipeline(cmd))
+            {
+                p.Invoke();
+                Assert.That(p.Error.ReadToEnd().Count, Is.EqualTo(2));
+            }
         }
     }
 }

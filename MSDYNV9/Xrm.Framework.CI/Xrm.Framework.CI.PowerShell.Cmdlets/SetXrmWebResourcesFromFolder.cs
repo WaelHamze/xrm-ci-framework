@@ -47,6 +47,12 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
         [Parameter(Mandatory = false)]
         public bool IncludeFileExtensionForUniqueName { get; set; }
 
+        /// <summary>
+        /// Write error if resource was not found in CRM
+        /// </summary>
+        [Parameter(Mandatory = false)]
+        public bool FailIfWebResourceNotFound { get; set; }
+
         #endregion
 
 
@@ -91,7 +97,14 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
                     }
                     catch (Exception ex)
                     {
-                        WriteWarning($"Cannot process {resourceFile}: {ex.Message}");
+                        var message = $"Cannot process {resourceFile}: {ex.Message}";
+                        if (FailIfWebResourceNotFound)
+                            WriteError(new ErrorRecord(
+                                new Exception(message),
+                                resourceFile.GetHashCode().ToString(),
+                                ErrorCategory.ObjectNotFound, resourceFile));
+                        else
+                            WriteWarning($"Cannot process {resourceFile}: {ex.Message}");
                         continue;
                     }
 

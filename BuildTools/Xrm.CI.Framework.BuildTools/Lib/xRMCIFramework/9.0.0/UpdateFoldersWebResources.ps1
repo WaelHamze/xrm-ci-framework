@@ -9,6 +9,7 @@ param(
 	[string]$RegExToMatchUniqueName,
 	[bool]$IncludeFileExtensionForUniqueName,
 	[bool]$Publish, #Will publish the web resource
+	[bool]$FailIfWebResourceNotFound,
 	[int]$Timeout
 )
 
@@ -23,6 +24,7 @@ Write-Verbose "SearchPattern = $SearchPattern"
 Write-Verbose "RegExToMatchUniqueName = $RegExToMatchUniqueName"
 Write-Verbose "IncludeFileExtensionForUniqueName = $IncludeFileExtensionForUniqueName"
 Write-Verbose "Publish = $Publish"
+Write-Verbose "FailIfWebResourceNotFound = $FailIfWebResourceNotFound"
 Write-Verbose "Timeout = $Timeout"
 
 #Script Location
@@ -34,5 +36,5 @@ $xrmCIToolkit = $scriptPath + "\Xrm.Framework.CI.PowerShell.Cmdlets.dll"
 Write-Verbose "Importing CIToolkit: $xrmCIToolkit" 
 Import-Module $xrmCIToolkit
 Write-Verbose "Imported CIToolkit"
-Set-XrmWebResourcesFromFolder -Path $WebResourceFolderPath -SearchPattern $SearchPattern -RegExToMatchUniqueName $RegExToMatchUniqueName -IncludeFileExtensionForUniqueName $IncludeFileExtensionForUniqueName -Publish $Publish -ConnectionString $CrmConnectionString -Timeout $Timeout -Verbose
+Set-XrmWebResourcesFromFolder -Path $WebResourceFolderPath -SearchPattern $SearchPattern -RegExToMatchUniqueName $RegExToMatchUniqueName -IncludeFileExtensionForUniqueName $IncludeFileExtensionForUniqueName -FailIfWebResourceNotFound $FailIfWebResourceNotFound -Publish $Publish -ConnectionString $CrmConnectionString -Timeout $Timeout -Verbose
 Write-Verbose 'Leaving UpdateFoldersWebResources.ps1'
