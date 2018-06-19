@@ -1,10 +1,13 @@
 ﻿using Microsoft.Xrm.Sdk;
+using Microsoft.Xrm.Sdk.Query;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Management.Automation;
 using System.Management.Automation.Runspaces;
+using System.Text;
 using Xrm.Framework.CI.PowerShell.Cmdlets.Common;
 
 namespace Xrm.Framework.CI.PowerShell.Cmdlets.Test
@@ -29,12 +32,20 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Test
         }
 
         [Test]
-        public void ShouldUseAllFilesIfSearchPatternIsEmpty()
+        public void ShouldUpdateOnlyModifiedContent()
         {
             crm.Create(new WebResource { Id = Guid.NewGuid(), Name = "a_test" });
             crm.Create(new WebResource { Id = Guid.NewGuid(), Name = "a_test1" });
+            var id = crm.Create(new WebResource
+            {
+                Id = Guid.NewGuid(),
+                Name = "a_test2",
+                Content = Convert.ToBase64String(Encoding.UTF8.GetBytes("a_test2.js"))
+            });
+            var unmodifiedResource = crm.Retrieve(WebResource.EntityLogicalName, id, new ColumnSet(true)) as WebResource;
+            var expectedModifyDate = unmodifiedResource.ModifiedOn;
 
-            var files = new List<string> { "a_test.js", "a_test1.js" };
+            var files = new List<string> { "a_test.js", "a_test1.js", "a_test2.js" };
             files.ForEach((file) => File.WriteAllText(Path.Combine(tempDir.FullName, file), file.ToString()));
 
             var cmd = $"{cmdletname} -Path {tempDir.FullName} -ConnectionString fake";
@@ -42,11 +53,18 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Test
                 p.Invoke();
 
             var webResources = TestData.XrmFakedContext.Data.First(x => x.Key == WebResource.EntityLogicalName).Value.Values;
-            files.ForEach((file) =>
+            Assert.Multiple(() =>
             {
-                var res = (WebResource)webResources.First(x => (x as WebResource).Name == Path.GetFileNameWithoutExtension(file));
-                var expected = Convert.ToBase64String(File.ReadAllBytes(Path.Combine(tempDir.FullName, file)));
-                Assert.AreEqual(expected, res.Content);
+                // check modified content was updated
+                files.ForEach((file) =>
+                {
+                    var res = (WebResource)webResources.First(x => (x as WebResource).Name == Path.GetFileNameWithoutExtension(file));
+                    var expected = Convert.ToBase64String(File.ReadAllBytes(Path.Combine(tempDir.FullName, file)));
+                    Assert.AreEqual(expected, res.Content);
+                });
+                // check entity with unmodified content wasn't updated
+                unmodifiedResource = crm.Retrieve(WebResource.EntityLogicalName, id, new ColumnSet(true)) as WebResource;
+                Assert.AreEqual(expectedModifyDate, unmodifiedResource.ModifiedOn);
             });
         }
 
@@ -156,8 +174,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Test
             var cmd = $"{cmdletname} -FailIfWebResourceNotFound 1 -ConnectionString any -Path {tempDir.FullName}";
             using (Pipeline p = TestData.Runspace.CreatePipeline(cmd))
             {
-                p.Invoke();
-                Assert.That(p.Error.ReadToEnd().Count, Is.EqualTo(2));
+                Assert.Throws<CmdletInvocationException>(() => p.Invoke());
             }
         }
     }

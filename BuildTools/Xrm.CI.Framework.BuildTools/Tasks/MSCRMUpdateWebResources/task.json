@@ -14,7 +14,7 @@
   "version": {
     "Major": "9",
     "Minor": "0",
-    "Patch": "89"
+    "Patch": "93"
   },
   "minimumAgentVersion": "1.95.0",
   "instanceNameFormat": "MSCRM Update Web resources",
@@ -91,10 +91,10 @@
     {
       "name": "failIfWebResourceNotFound",
       "type": "boolean",
-      "label": "Fail task if web resource not found in CRM",
+      "label": "Exit with error if web resource not found in CRM",
       "defaultValue": 0,
       "required": true,
-      "helpMarkDown": "Task will write error message instead of warning for any web resource not found in CRM"
+      "helpMarkDown": "Throw an error if there were web resources not found in CRM during processing"
     },
     {
       "name": "publish",

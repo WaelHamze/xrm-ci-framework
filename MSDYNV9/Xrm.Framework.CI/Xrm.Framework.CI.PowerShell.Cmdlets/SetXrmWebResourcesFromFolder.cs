@@ -59,6 +59,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
         #region Process Record
         protected override void ProcessRecord()
         {
+            var missedWebResourcesCount = 0;
             var resourceFiles = new HashSet<string>();
             var patterns = (string.IsNullOrWhiteSpace(SearchPattern)) ? new string[1] { "*" } :
                 SearchPattern.Split(',');
@@ -97,28 +98,26 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
                     }
                     catch (Exception ex)
                     {
-                        var message = $"Cannot process {resourceFile}: {ex.Message}";
-                        if (FailIfWebResourceNotFound)
-                            WriteError(new ErrorRecord(
-                                new Exception(message),
-                                resourceFile.GetHashCode().ToString(),
-                                ErrorCategory.ObjectNotFound, resourceFile));
-                        else
-                            WriteWarning($"Cannot process {resourceFile}: {ex.Message}");
+                        missedWebResourcesCount++;
+                        WriteWarning($"Cannot process {resourceFile}: {ex.Message}");
                         continue;
                     }
 
                     // update in context
-                    webResource.Content = Convert.ToBase64String(File.ReadAllBytes(resourceFile));
-                    context.UpdateObject(webResource);
+                    var fileContent = Convert.ToBase64String(File.ReadAllBytes(resourceFile));
+                    if (webResource.Content?.GetHashCode() != fileContent.GetHashCode())
+                    {
+                        webResource.Content = fileContent;
+                        context.UpdateObject(webResource);
+                        // add id to publish xml
+                        if (Publish)
+                            importexportxml.Append($"<webresource>{webResource.Id}</webresource>");
+                    }
 
-                    // add id to publish xml
-                    if (Publish)
-                        importexportxml.Append($"<webresource>{webResource.Id}</webresource>");
                 }
 
                 // Update
-                WriteVerbose("Updating web resources...");
+                WriteVerbose("Saving changes...");
                 context.SaveChanges();
 
                 // Publish
@@ -130,6 +129,15 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
                         ParameterXml = $"<importexportxml><webresources>{importexportxml.ToString()}</webresources></importexportxml>"
                     };
                     OrganizationService.Execute(req);
+                }
+
+                WriteObject($"{resourceFiles.Count - missedWebResourcesCount} out of {resourceFiles.Count} web resources were processed");
+
+                if (FailIfWebResourceNotFound && missedWebResourcesCount > 0)
+                {
+                    ThrowTerminatingError(new ErrorRecord(
+                        new RuntimeException($"{missedWebResourcesCount} web resources were not found"),
+                        "", ErrorCategory.ObjectNotFound, null));
                 }
             }
         }
