@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Management.Automation;
-using System.Text;
-using System.Threading.Tasks;
 using Xrm.Framework.CI.PowerShell.Cmdlets.Common;
 
 namespace Xrm.Framework.CI.PowerShell.Cmdlets
@@ -36,43 +32,30 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
 
         protected override void ProcessRecord()
         {
-            base.ProcessRecord();
+            var assembly = System.Reflection.Assembly.LoadFile(Path);
+            var assemblyName = assembly.GetName().Name;
+            var version = assembly.GetName().Version.ToString();
 
-            base.WriteVerbose(string.Format("Updating Assembly: {0}", Path));
-
-            FileInfo assemblyInfo = new FileInfo(Path);
-
-            String assemblyName = assemblyInfo.Name.Replace(".dll", "");
-            String version = FileVersionInfo.GetVersionInfo(Path).FileVersion;
-            String content = Convert.ToBase64String(File.ReadAllBytes(Path));
-
-            base.WriteVerbose(string.Format("Assembly Name: {0}", assemblyName));
-            base.WriteVerbose(string.Format("Assembly Version: {0}", version));
+            WriteObject($"Reading Assembly: {Path}");
+            WriteObject($"Assembly Name: {assemblyName}");
+            WriteObject($"Assembly Version: {version}");
 
             using (var context = new CIContext(OrganizationService))
             {
-                var query = from a in context.PluginAssemblySet
-                            where a.Name == assemblyName
-                            select a.Id;
-
-                Guid Id = query.FirstOrDefault();
-
-                if (Id == null || Id == Guid.Empty)
+                var pluginAssembly = context.PluginAssemblySet.Single(x => x.Name == assemblyName);
+                var content = Convert.ToBase64String(File.ReadAllBytes(Path));
+                if (pluginAssembly.Version != version ||
+                    pluginAssembly.Content.GetHashCode() != content.GetHashCode())
                 {
-                    throw new ItemNotFoundException(string.Format("{0} was not found", assemblyName));
+                    WriteObject($"Updating Plugin Assembly: {assemblyName}");
+                    pluginAssembly.Content = content;
+                    context.UpdateObject(pluginAssembly);
+                    context.SaveChanges();
                 }
-
-                PluginAssembly pluginAssembly = new PluginAssembly()
-                {
-                    Id = Id,
-                    Version = version,
-                    Content = content
-                };
-
-                OrganizationService.Update(pluginAssembly);
+                else
+                    WriteObject($"Assembly version and content were not changed. Skipping update.");
             }
 
-            base.WriteVerbose(string.Format("Assembly Updated: {0}", Path));
         }
 
         #endregion

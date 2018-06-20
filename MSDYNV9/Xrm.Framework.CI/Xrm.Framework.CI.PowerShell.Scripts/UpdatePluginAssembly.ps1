@@ -27,10 +27,6 @@ Write-Verbose "Importing CIToolkit: $xrmCIToolkit"
 Import-Module $xrmCIToolkit
 Write-Verbose "Imported CIToolkit"
 
-Write-Host "Updating Plugin Assembly: $AssemblyPath"
-
 Set-XrmPluginAssembly -Path $AssemblyPath -ConnectionString $CrmConnectionString -Timeout $Timeout -Verbose
-
-Write-Host "Updated Plugin Assembly"
 
 Write-Verbose 'Leaving UpdatePluginAssembly.ps1' -Verbose
