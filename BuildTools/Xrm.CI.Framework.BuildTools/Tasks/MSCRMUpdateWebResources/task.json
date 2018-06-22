@@ -14,7 +14,7 @@
   "version": {
     "Major": "9",
     "Minor": "0",
-    "Patch": "81"
+    "Patch": "89"
   },
   "minimumAgentVersion": "1.95.0",
   "instanceNameFormat": "MSCRM Update Web resources",
@@ -95,6 +95,14 @@
       "defaultValue": 0,
       "required": true,
       "helpMarkDown": "Set to true to publish web resources after update"
+    },
+    {
+      "name": "solutionName",
+      "type": "string",
+      "label": "CRM solution name",
+      "defaultValue": "",
+      "required": false,
+      "helpMarkDown": "Unique name of solution to which web resources has to be register. Solution name will be used only for 'Deployment Type' is 'Use Web Resource folder'."
     },
     {
       "name": "crmConnectionTimeout",

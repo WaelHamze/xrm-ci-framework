@@ -47,6 +47,9 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
         [Parameter(Mandatory = false)]
         public String RegExToMatchUniqueName { get; set; }
 
+        [Parameter(Mandatory = false)]
+        public Guid SolutionId { get; set; }
+
         #endregion
 
         #region Process Record
@@ -56,7 +59,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
             base.ProcessRecord();
 
             base.WriteVerbose(string.Format("Updating Web Resource: {0}", Path));
-
+            base.WriteVerbose(string.Format("Solution Id: {0}", SolutionId));
             FileInfo webResourceInfo = new FileInfo(Path);
 
             String content = Convert.ToBase64String(File.ReadAllBytes(Path));
@@ -74,6 +77,18 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
                                     Name = a.Name,
                                     Id = a.Id
                                 };
+
+                    if (!SolutionId.Equals(Guid.Empty))
+                    {
+                        query = from a in context.WebResourceSet
+                                join sol in context.SolutionComponentSet on a.Id equals sol.ObjectId
+                                where a.Name.Contains(System.IO.Path.GetFileNameWithoutExtension(webResourceInfo.Name)) && sol.SolutionId.Equals(SolutionId)
+                                select new WebResource
+                                {
+                                    Name = a.Name,
+                                    Id = a.Id
+                                };
+                    }
 
                     List<WebResource> resources = new List<WebResource>();
 

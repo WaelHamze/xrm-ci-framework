@@ -9,6 +9,7 @@ param(
 	[string]$RegExToMatchUniqueName,
 	[bool]$IncludeFileExtensionForUniqueName,
 	[bool]$Publish, #Will publish the web resource
+	[string]$SolutionName,
 	[int]$Timeout
 )
 
@@ -23,6 +24,7 @@ Write-Verbose "CommaSeparatedWebResourceExtensions = $CommaSeparatedWebResourceE
 Write-Verbose "RegExToMatchUniqueName = $RegExToMatchUniqueName"
 Write-Verbose "IncludeFileExtensionForUniqueName = $IncludeFileExtensionForUniqueName"
 Write-Verbose "Publish = $Publish"
+Write-Verbose "SolutionName = $SolutionName"
 Write-Verbose "Timeout = $Timeout"
 
 #Script Location
@@ -35,9 +37,18 @@ Write-Verbose "Importing CIToolkit: $xrmCIToolkit"
 Import-Module $xrmCIToolkit
 Write-Verbose "Imported CIToolkit"
 [string]$RegEx = ''
+$solutionId = [GUID]::Empty
+if($SolutionName)
+{
+	$solution = Get-XrmSolution -ConnectionString $CrmConnectionString -UniqueSolutionName $SolutionName
+	$solutionId = $solution.Id
+	Write-Verbose "SolutionId = $solutionId"
+}
+
 $fileNames = Get-ChildItem -Path $WebResourceFolderPath -File -Include $CommaSeparatedWebResourceExtensions.Split(',') -Recurse | ForEach-Object {
 	$WebResourcePath = $_.FullName
 	Write-Verbose "Updating Web Resource: $WebResourcePath"
+	$RegEx = $RegExToMatchUniqueName
 	if($RegExToMatchUniqueName){
 		[string]$fileName = [System.IO.Path]::GetFileNameWithoutExtension($WebResourcePath)
 		if($IncludeFileExtensionForUniqueName){		
@@ -47,7 +58,8 @@ $fileNames = Get-ChildItem -Path $WebResourceFolderPath -File -Include $CommaSep
 
 		$RegEx = $RegEx.Replace('$fileName',$fileName)
 	}
-	Set-XrmWebResource -Path $WebResourcePath -RegExToMatchUniqueName $RegEx -Publish $Publish -ConnectionString $CrmConnectionString -Timeout $Timeout -Verbose
+	Write-Verbose "Final RegEx = $RegEx"
+	Set-XrmWebResource -Path $WebResourcePath -RegExToMatchUniqueName $RegEx -Publish $Publish -SolutionId $solutionId  -ConnectionString $CrmConnectionString -Timeout $Timeout -Verbose
 	Write-Verbose "Updated Web Resource"
 } 
 
