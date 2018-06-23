@@ -10,6 +10,7 @@ Write-Verbose 'Entering MSCRMPackageDeployer.ps1'
 $crmConnectionString = Get-VstsInput -Name crmConnectionString -Require
 $packageName = Get-VstsInput -Name packageName -Require
 $packageDirectory = Get-VstsInput -Name packageDirectory -Require
+$timeoutPD = Get-VstsInput -Name timeoutPD -Require
 
 #TFS Release Parameters
 $artifactsFolder = $env:AGENT_RELEASEDIRECTORY
@@ -19,6 +20,7 @@ Write-Verbose "crmConnectionString = $crmConnectionString"
 Write-Verbose "packageName = $packageName"
 Write-Verbose "packageDirectory = $packageDirectory"
 Write-Verbose "artifactsFolder = $artifactsFolder"
+Write-Verbose "timeoutPD = $timeoutPD"
 
 #Script Location
 $scriptPath = split-path -parent $MyInvocation.MyCommand.Definition
@@ -28,7 +30,7 @@ $LogFile = "$packageDirectory" +"\Microsoft.Xrm.Tooling.PackageDeployment-" + (G
 
 try
 {
-	& "$scriptPath\ps_modules\xRMCIFramework\DeployPackage.ps1" -CrmConnectionString $crmConnectionString -PackageName $packageName -PackageDirectory $packageDirectory -LogsDirectory $packageDirectory
+	& "$scriptPath\ps_modules\xRMCIFramework\DeployPackage.ps1" -CrmConnectionString $crmConnectionString -PackageName $packageName -PackageDirectory $packageDirectory -LogsDirectory $packageDirectory -Timeout $timeoutPD
 }
 finally
 {
