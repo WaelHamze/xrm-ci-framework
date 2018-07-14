@@ -42,6 +42,14 @@
       "defaultValue": "$(System.DefaultWorkingDirectory)/<BuildName>/<ArtifactName>/<PackageFolder>",
       "required": false,
       "helpMarkDown": "The absolute path to the CRM Package folder on the release agent machine"
+    },
+    {
+      "name": "tmeoutPD",
+      "type": "string",
+      "label": "Package Deployment Timeout",
+      "defaultValue": "1:30:00",
+      "required": true,
+      "helpMarkDown": "The timespan notation for the timeout value of a package deployment operation. The format applied is '[d:]h:mm:ss', where d is optional For example: 1:30:00 means wait up to 1 hr and 30 mins for the package deployment operation to complete. 1:14:30:00 means wait up to 1 day, 14 hrs, and 30 mins for the package deployment operation to complete."
     }
   ],
   "execution": {
