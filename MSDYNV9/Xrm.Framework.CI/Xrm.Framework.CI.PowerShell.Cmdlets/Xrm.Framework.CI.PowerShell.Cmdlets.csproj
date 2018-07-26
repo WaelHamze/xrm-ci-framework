@@ -121,6 +121,7 @@
     <Compile Include="CopyXrmSolutionComponentsCommand.cs" />
     <Compile Include="RemoveXrmSolutionComponentsCommand.cs" />
     <Compile Include="SelectXrmWhoAmICommand.cs" />
+    <Compile Include="SetXrmWebResourcesFromFolder.cs" />
     <Compile Include="SetXrmWebResource.cs" />
     <Compile Include="SetXrmPluginAssembly.cs" />
     <Compile Include="SetXrmEntityCommand.cs" />
@@ -154,7 +155,7 @@
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties PluginRegistration_4WorkflowAssemblyExample_1json__JSONSchema="PluginRegistrationSchema.json" PluginRegistration_4PluginAssemblyExample_1json__JSONSchema="PluginRegistrationSchema.json" />
+      <UserProperties PluginRegistration_4PluginAssemblyExample_1json__JSONSchema="PluginRegistrationSchema.json" PluginRegistration_4WorkflowAssemblyExample_1json__JSONSchema="PluginRegistrationSchema.json" />
     </VisualStudio>
   </ProjectExtensions>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
