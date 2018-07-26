@@ -14,7 +14,7 @@
   "version": {
     "Major": "9",
     "Minor": "0",
-    "Patch": "59"
+    "Patch": "102"
   },
   "minimumAgentVersion": "1.95.0",
   "instanceNameFormat": "MSCRM Plugin Registration",
@@ -63,6 +63,23 @@
       "defaultValue": "",
       "required": false,
       "helpMarkDown": "Unique name of solution to which plugin/workflow assembly has to be register."
+    },
+    {
+      "name": "useSplitAssembly",
+      "type": "boolean",
+      "label": "Split Plugin Assembly",
+      "defaultValue": 0,
+      "required": true,
+      "helpMarkDown": "Set to true to split plugin assembly."
+    },
+    {
+      "name": "projectFilePath",
+      "type": "filePath",
+      "label": "Project File Path",
+      "defaultValue": "",
+      "required": false,
+      "helpMarkDown": "Plugin project file path.",
+      "visibleRule": "useSplitAssembly = true"
     },
     {
       "name": "mappingJsonPath",

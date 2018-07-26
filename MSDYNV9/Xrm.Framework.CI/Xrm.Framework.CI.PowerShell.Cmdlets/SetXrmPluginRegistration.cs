@@ -8,6 +8,7 @@ using System.Management.Automation;
 using System.Text;
 using System.Threading.Tasks;
 using Xrm.Framework.CI.PowerShell.Cmdlets.Common;
+using Xrm.Framework.CI.PowerShell.Cmdlets.PluginRegistration;
 
 namespace Xrm.Framework.CI.PowerShell.Cmdlets
 {
@@ -34,6 +35,12 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
         [Parameter(Mandatory = true)]
         public String AssemblyPath { get; set; }
 
+        [Parameter(Mandatory = false)]
+        public bool UseSplitAssembly { get; set; }
+
+        [Parameter(Mandatory = false)]
+        public string ProjectFilePath { get; set; }
+
         [Parameter(Mandatory = true)]
         public Boolean IsWorkflowActivityAssembly { get; set; }
 
@@ -52,11 +59,17 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
 
             base.WriteVerbose("Plugin Registration intiated");
 
-            FileInfo assemblyInfo = new FileInfo(AssemblyPath);
-            var lastIndex = assemblyInfo.Name.LastIndexOf(".dll");
-            string assemblyName = lastIndex > 0 ? assemblyInfo.Name.Remove(lastIndex, 4) : assemblyInfo.Name;
-            string version = FileVersionInfo.GetVersionInfo(AssemblyPath).FileVersion;
-            string content = Convert.ToBase64String(File.ReadAllBytes(AssemblyPath));
+            if (UseSplitAssembly)
+            {
+                if (!File.Exists(ProjectFilePath)) throw new Exception("Project File Path is required if you want to split assembly.");
+                if (RegistrationType.Equals("delsert", StringComparison.InvariantCultureIgnoreCase)) throw new Exception("Registration type 'Remove Plugin Types and Steps which are not in mapping and Upsert' will not work when 'Split Assembly' is enabled.");
+                if (!File.Exists(MappingJsonPath)) throw new Exception("Mapping Json Path is required if you want to split assembly.");
+            }
+            
+            var assemblyDetails = AssemblyInfo.GetAssemblyInfo(AssemblyPath); 
+            string assemblyName = assemblyDetails.AssemblyName;
+            string version = assemblyDetails.Version;
+            string content = assemblyDetails.Content;
 
             base.WriteVerbose(string.Format("Assembly Name: {0}", assemblyName));
             base.WriteVerbose(string.Format("Assembly Version: {0}", version));
@@ -94,12 +107,20 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
                             pluginRegistrationHelper.RemoveComponentsNotInMapping(assemblyName, pluginAssembly);
                             RegistrationType = "upsert";
                         }
-                                                
-                        pluginAssemblyId = pluginRegistrationHelper.UpsertPluginAssembly(pluginAssembly, assemblyName, version, content, SolutionName, IsWorkflowActivityAssembly, RegistrationType);
-                        base.WriteVerbose(string.Format("UpsertPluginAssembly {0} completed", pluginAssemblyId));
+
+                        if (!UseSplitAssembly)
+                        {
+                            pluginAssemblyId = pluginRegistrationHelper.UpsertPluginAssembly(pluginAssembly, assemblyName, version, content, SolutionName, IsWorkflowActivityAssembly, RegistrationType);
+                            base.WriteVerbose(string.Format("UpsertPluginAssembly {0} completed", pluginAssemblyId));
+                        }
 
                         foreach (var type in pluginAssembly.PluginTypes)
                         {
+                            if (UseSplitAssembly)
+                            {
+                                pluginAssemblyId = UploadSplitAssembly(assemblyDetails, assemblyName, version, content, pluginRegistrationHelper, pluginAssembly, type);
+                            }
+
                             var pluginTypeId = pluginRegistrationHelper.UpsertPluginType(pluginAssemblyId, type, SolutionName, RegistrationType, IsWorkflowActivityAssembly, assemblyName);
                             base.WriteVerbose(string.Format("UpsertPluginType {0} completed", pluginTypeId));
                             if (!IsWorkflowActivityAssembly)
@@ -121,6 +142,18 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
             }
 
             base.WriteVerbose("Plugin Registration completed");
+        }
+
+        private Guid UploadSplitAssembly(AssemblyInfo assemblyDetails, string assemblyName, string version, string content, PluginRegistrationHelper pluginRegistrationHelper, Assembly pluginAssembly, Type type)
+        {
+            var temp = new FileInfo(ProjectFilePath);
+            var splitAssembly = AssemblyInfo.GetAssemblyInfo(assemblyDetails.AssemblyDirectory.Replace(temp.DirectoryName, temp.DirectoryName + type.Name) + "\\" + type.Name + ".dll");
+            assemblyName = splitAssembly.AssemblyName;
+            version = splitAssembly.Version;
+            content = splitAssembly.Content;
+            var pluginAssemblyId = pluginRegistrationHelper.UpsertPluginAssembly(pluginAssembly, assemblyName, version, content, SolutionName, IsWorkflowActivityAssembly, RegistrationType);
+            base.WriteVerbose(string.Format("UpsertPluginAssembly {0} completed", pluginAssemblyId));
+            return pluginAssemblyId;
         }
 
         #endregion

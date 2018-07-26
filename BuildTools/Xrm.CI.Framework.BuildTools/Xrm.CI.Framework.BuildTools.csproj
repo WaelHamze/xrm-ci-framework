@@ -182,6 +182,8 @@
     <Content Include="Tasks\MSCRMRemoveSolutionComponents\task.json" />
     <Content Include="Tasks\MSCRMCopySolutionComponents\MSCRMCopySolutionComponents.ps1" />
     <Content Include="Tasks\MSCRMCopySolutionComponents\task.json" />
+    <Content Include="Tasks\MSCRMSplitPluginAssembly\MSCRMSplitPluginAssembly.ps1" />
+    <Content Include="Tasks\MSCRMSplitPluginAssembly\task.json" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />

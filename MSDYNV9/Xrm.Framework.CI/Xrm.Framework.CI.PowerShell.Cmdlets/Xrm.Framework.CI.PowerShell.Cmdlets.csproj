@@ -109,6 +109,7 @@
     <Compile Include="NewXrmBulkDeleteJobCommand.cs" />
     <Compile Include="NewXrmEntityCommand.cs" />
     <Compile Include="PluginRegistration\Assembly.cs" />
+    <Compile Include="PluginRegistration\AssemblyInfo.cs" />
     <Compile Include="PluginRegistration\Image.cs" />
     <Compile Include="PluginRegistration\PluginRegistrationHelper.cs" />
     <Compile Include="PluginRegistration\Step.cs" />
@@ -127,6 +128,7 @@
     <Compile Include="SetXrmEntityCommand.cs" />
     <Compile Include="SetXrmSolutionVersionCommand.cs" />
     <Compile Include="SetXrmSolutionVersionInFolderCommand.cs" />
+    <Compile Include="SplitXrmPluginAssembly.cs" />
     <Compile Include="XrmCommandBase.cs" />
     <Compile Include="SetXrmPluginRegistration.cs" />
   </ItemGroup>

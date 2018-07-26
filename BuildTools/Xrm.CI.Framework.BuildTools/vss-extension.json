@@ -2,7 +2,7 @@
   "manifestVersion": 1,
   "id": "xrm-ci-framework-build-tasks",
   "name": "Dynamics 365 Build Tools",
-  "version": "9.0.29",
+  "version": "9.0.28",
   "publisher": "WaelHamze",
   "targets": [
     {
@@ -122,6 +122,9 @@
     },
     {
       "path": "Tasks/MSCRMUpdateWebResources"
+    },
+    {
+      "path": "Tasks/MSCRMSplitPluginAssembly"
     }
   ],
   "contributions": [
@@ -323,6 +326,16 @@
       ],
       "properties": {
         "name": "Tasks/MSCRMUpdateWebResources"
+      }
+    },
+    {
+      "id": "MSCRMPluginRegistration",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "Tasks/MSCRMPluginRegistration"
       }
     }
   ]
