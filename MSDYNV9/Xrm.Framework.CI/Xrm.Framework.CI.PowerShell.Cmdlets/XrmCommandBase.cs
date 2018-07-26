@@ -1,20 +1,20 @@
-﻿using System.Management.Automation;
-using Microsoft.Xrm.Sdk;
+﻿using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Tooling.Connector;
-using System.Configuration;
-using System.Threading;
 using System;
+using System.Management.Automation;
 using System.Net;
+using System.Threading;
 
 namespace Xrm.Framework.CI.PowerShell.Cmdlets
 {
     public abstract class XrmCommandBase : Cmdlet
     {
-        protected IOrganizationService OrganizationService;
         protected CrmServiceClient ServiceClient;
         private int DefaultTime = 120;
         private TimeSpan ConnectPolingInterval = TimeSpan.FromSeconds(15);
         private int ConnectRetryCount = 3;
+
+        protected virtual IOrganizationService OrganizationService { get; private set; }
 
         /// <summary>
         /// <para type="description">The connectionstring to the crm organization (see https://msdn.microsoft.com/en-us/library/mt608573.aspx ).</para>
