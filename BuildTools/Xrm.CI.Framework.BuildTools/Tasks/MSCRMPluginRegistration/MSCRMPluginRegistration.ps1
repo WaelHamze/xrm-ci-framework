@@ -11,6 +11,8 @@ $crmConnectionString = Get-VstsInput -Name crmConnectionString -Require
 $registrationType = Get-VstsInput -Name registrationType -Require
 $assemblyPath = Get-VstsInput -Name assemblyPath -Require
 $isWorkflowActivityAssembly = Get-VstsInput -Name isWorkflowActivityAssembly -Require -AsBool
+$useSplitAssembly = Get-VstsInput -Name useSplitAssembly -AsBool
+$projectFilePath = Get-VstsInput -Name projectFilePath 
 $mappingJsonPath = Get-VstsInput -Name mappingJsonPath
 $solutionName = Get-VstsInput -Name solutionName
 $crmConnectionTimeout = Get-VstsInput -Name crmConnectionTimeout -Require -AsInt
@@ -20,6 +22,8 @@ Write-Verbose "crmConnectionString = $crmConnectionString"
 Write-Verbose "registrationType = $registrationType"
 Write-Verbose "assemblyPath = $assemblyPath"
 Write-Verbose "isWorkflowActivityAssembly = $isWorkflowActivityAssembly"
+Write-Verbose "projectFilePath = $projectFilePath"
+Write-Verbose "useSplitAssembly = $useSplitAssembly"
 Write-Verbose "mappingJsonPath = $mappingJsonPath"
 Write-Verbose "solutionName = $solutionName"
 Write-Verbose "crmConnectionTimeout = $crmConnectionTimeout"
@@ -28,6 +32,6 @@ Write-Verbose "crmConnectionTimeout = $crmConnectionTimeout"
 $scriptPath = split-path -parent $MyInvocation.MyCommand.Definition
 Write-Verbose "Script Path: $scriptPath"
 
-& "$scriptPath\Lib\xRMCIFramework\9.0.0\PluginRegistration.ps1" -CrmConnectionString $crmConnectionString -RegistrationType $registrationType -AssemblyPath $assemblyPath -IsWorkflowActivityAssembly $isWorkflowActivityAssembly -MappingJsonPath $mappingJsonPath -SolutionName $solutionName -Timeout $crmConnectionTimeout
+& "$scriptPath\Lib\xRMCIFramework\9.0.0\PluginRegistration.ps1" -CrmConnectionString $crmConnectionString -RegistrationType $registrationType -AssemblyPath $assemblyPath -IsWorkflowActivityAssembly $isWorkflowActivityAssembly -MappingJsonPath $mappingJsonPath -SolutionName $solutionName -useSplitAssembly $useSplitAssembly -projectFilePath $projectFilePath -Timeout $crmConnectionTimeout
 
 Write-Verbose 'Leaving MSCRMPluginRegistration.ps1'
