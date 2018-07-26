@@ -16,11 +16,13 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
     {
         private IOrganizationService OrganizationService;
         private CIContext context;
+        private XrmCommandBase xrmCommandBase;
 
-        public PluginRegistrationHelper(IOrganizationService service, CIContext xrmContext)
+        public PluginRegistrationHelper(IOrganizationService service, CIContext xrmContext, XrmCommandBase xrmCommand)
         {
             this.OrganizationService = service;
             this.context = xrmContext;
+            this.xrmCommandBase = xrmCommand;
         }
 
         private void AddComponentToSolution(Guid componentId, int componentType, string solutionName)
@@ -43,7 +45,13 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
 
         public Guid UpsertPluginAssembly(Assembly pluginAssembly, string pluginAssemblyName, string version, string content, string solutionName, bool isWorkflowActivity, string registrationType)
         {
-            Guid Id = GetPluginAssemblyId(pluginAssemblyName);
+            Guid Id = Guid.Empty;
+
+            if (pluginAssembly == null || string.IsNullOrEmpty(pluginAssembly.Id) || !Guid.TryParse(pluginAssembly.Id, out Id))
+            {                
+                Id = GetPluginAssemblyId(pluginAssemblyName);
+                xrmCommandBase.WriteWarning(string.Format("Extracted id using plugin assembly name {0}", pluginAssemblyName));
+            }
 
             var assembly = new PluginAssembly()
             {
@@ -127,7 +135,13 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
         public Guid UpsertPluginType(Guid parentId, Type pluginType, string solutionName, string registrationType, bool isWorkflowActivity, string pluginAssemblyName)
         {
             var name = pluginType.Name;
-            Guid Id = GetPluginTypeId(parentId, name);
+            Guid Id = Guid.Empty;
+
+            if (pluginType == null || string.IsNullOrEmpty(pluginType.Id) || !Guid.TryParse(pluginType.Id, out Id))
+            {
+                Id = GetPluginTypeId(parentId, name);
+                xrmCommandBase.WriteWarning(string.Format("Extracted id using plugin type name {0}", name));
+            }
 
             var type = new PluginType()
             {
@@ -169,7 +183,14 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
         public Guid UpsertSdkMessageProcessingStep(Guid parentId, Step step, string solutionName, string registrationType)
         {
             var name = step.Name;
-            Guid Id = GetSdkMessageProcessingStepId(parentId, name);
+            Guid Id = Guid.Empty;
+
+            if (step == null || string.IsNullOrEmpty(step.Id) || !Guid.TryParse(step.Id, out Id))
+            {
+                Id = GetSdkMessageProcessingStepId(parentId, name);
+                xrmCommandBase.WriteWarning(string.Format("Extracted id using plugin step name {0}", name));
+            }
+                        
             var sdkMessageId = GetSdkMessageId(step.MessageName);
             var sdkMessageFilterId = GetSdkMessageFilterId(step.PrimaryEntityName, sdkMessageId);
             var sdkMessageProcessingStep = new SdkMessageProcessingStep()
@@ -294,7 +315,13 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
         {
             var name = image.EntityAlias;
             var imageType = (int)GetEnumValue<SdkMessageProcessingStepImage_ImageType>(image.ImageType);
-            Guid Id = GetSdkMessageProcessingStepImageId(parentId, name, imageType);
+            Guid Id = Guid.Empty;
+
+            if (image == null || string.IsNullOrEmpty(image.Id) || !Guid.TryParse(image.Id, out Id))
+            {
+                Id = GetSdkMessageProcessingStepImageId(parentId, name, imageType);
+                xrmCommandBase.WriteWarning(string.Format("Extracted id using plugin step image name {0}", name));
+            }
 
             var sdkMessageProcessingStepImage = new SdkMessageProcessingStepImage()
             {
@@ -363,6 +390,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
             {
                 pluginAssemblyTemp = new Assembly()
                 {
+                    Id = pluginAssemblies.PluginAssemblyId.ToString(),
                     Name = pluginAssemblies.Name + ".dll",
                     IsolationMode = ((PluginAssembly_IsolationMode)pluginAssemblies.IsolationMode.Value).ToString(),
                     SourceType = ((PluginAssembly_SourceType)pluginAssemblies.SourceType.Value).ToString(),
@@ -422,6 +450,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
             {
                 pluginAssemblyStepTemp = new Step()
                 {
+                    Id = pluginStep.SdkMessageProcessingStepId.ToString(),
                     CustomConfiguration = pluginStep.Configuration,
                     Name = pluginStep.Name,
                     Description = pluginStep.Description,
@@ -449,6 +478,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
             {
                 pluginAssemblyTypeTemp = new Type()
                 {
+                    Id = pluginType.PluginTypeId.ToString(),
                     Description = pluginType.Description,
                     FriendlyName = pluginType.FriendlyName,
                     Name = pluginType.Name,
@@ -471,6 +501,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
             {
                 imageTemp = new Image()
                 {
+                    Id = image.SdkMessageProcessingStepImageId.ToString(),
                     Attributes = image.Attributes1,
                     EntityAlias = image.EntityAlias,
                     MessagePropertyName = image.MessagePropertyName,

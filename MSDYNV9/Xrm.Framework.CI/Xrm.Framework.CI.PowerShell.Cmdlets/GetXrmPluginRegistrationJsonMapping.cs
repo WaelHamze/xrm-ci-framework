@@ -54,7 +54,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
 
             using (var context = new CIContext(OrganizationService))
             {
-                PluginRegistrationHelper pluginRegistrationHelper = new PluginRegistrationHelper(OrganizationService, context);
+                PluginRegistrationHelper pluginRegistrationHelper = new PluginRegistrationHelper(OrganizationService, context, this);
                 base.WriteVerbose("PluginRegistrationHelper intiated");
                 base.WriteVerbose(string.Format("Assembly Name: {0}", AssemblyName));
                 base.WriteVerbose(string.Format("Mapping Json Path: {0}", MappingJsonPath));

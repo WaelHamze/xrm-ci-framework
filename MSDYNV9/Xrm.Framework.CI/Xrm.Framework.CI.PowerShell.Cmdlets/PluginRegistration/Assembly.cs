@@ -8,6 +8,8 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
 {
     public class Assembly
     {
+        public string Id { get; set; }
+
         public string Name { get; set; }
 
         public string IsolationMode { get; set; }

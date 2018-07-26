@@ -1,9 +1,11 @@
 {
+  "Id": "{019A6F34-E4C5-40A2-86E7-631F0C1FDFA7}",
   "Name": "Xrm.CI.Framework.Sample.WFActivities.dll",
   "IsolationMode": "Sandbox",
   "SourceType": "Database",
   "PluginTypes": [
     {
+      "Id": "{019A6F34-E4C5-40A2-86E7-631F0C1FDFA6}",
       "Description": "Send Activity Description",
       "Name": "Xrm.CI.Framework.Sample.WFActivities.Send",
       "FriendlyName": "Send",

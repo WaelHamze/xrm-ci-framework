@@ -63,7 +63,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
 
             using (var context = new CIContext(OrganizationService))
             {
-                PluginRegistrationHelper pluginRegistrationHelper = new PluginRegistrationHelper(OrganizationService, context);
+                PluginRegistrationHelper pluginRegistrationHelper = new PluginRegistrationHelper(OrganizationService, context, this);
                 base.WriteVerbose("PluginRegistrationHelper intiated");
                 Assembly pluginAssembly = null;
                 Guid pluginAssemblyId = Guid.Empty;

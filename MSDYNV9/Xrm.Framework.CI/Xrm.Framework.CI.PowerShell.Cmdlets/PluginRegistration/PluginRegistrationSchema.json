@@ -2,6 +2,16 @@
   "$id": "https://github.com/WaelHamze/xrm-ci-framework/blob/master/MSDYNV9/Xrm.Framework.CI/Xrm.Framework.CI.PowerShell.Cmdlets/PluginRegistration/PluginRegistrationSchema.json",
   "type": "object",
   "properties": {
+    "Id": {
+      "$id": "/properties/Id",
+      "type": "string",
+      "title": "The Guid of the assembly",
+      "description": "The Guid of the assembly we want to register",
+      "default": "",
+      "examples": [
+        "{7FA750EC-5AB6-48C0-ACD0-1F6AD9625953}"
+      ]
+    },
     "Name": {
       "$id": "/properties/Name",
       "type": "string",
@@ -58,6 +68,16 @@
               null
             ]
           },
+          "Id": {
+            "$id": "/properties/PluginTypes/items/properties/Id",
+            "type": "string",
+            "title": "The Guid of the Plugin/Workflow type",
+            "description": "The Guid of the Plugin/Workflow type we want to register",
+            "default": "",
+            "examples": [
+              "{7FA750EC-5AB6-48C0-ACD0-1F6AD9625954}"
+            ]
+          },
           "Name": {
             "$id": "/properties/PluginTypes/items/properties/Name",
             "type": "string",
@@ -101,6 +121,15 @@
               "$id": "/properties/PluginTypes/items/properties/Steps/items",
               "type": "object",
               "properties": {
+                "Id": {
+                  "$id": "/properties/PluginTypes/items/properties/Steps/items/properties/Id",
+                  "type": "string",
+                  "title": "The Id of Plugin step to register ",
+                  "default": "",
+                  "examples": [
+                    "{7FA750EC-5AB6-48C0-ACD0-1F6AD9625955}"
+                  ]
+                },
                 "Name": {
                   "$id": "/properties/PluginTypes/items/properties/Steps/items/properties/Name",
                   "type": "string",
@@ -232,6 +261,15 @@
                     "$id": "/properties/PluginTypes/items/properties/Steps/items/properties/Images/items",
                     "type": "object",
                     "properties": {
+                      "Id": {
+                        "$id": "/properties/PluginTypes/items/properties/Steps/items/properties/Images/items/properties/Id",
+                        "type": "string",
+                        "title": "The Id of plugin image to register",
+                        "default": "",
+                        "examples": [
+                          "{0D4644A0-FA6E-485F-B191-780912A48BA7}"
+                        ]
+                      },
                       "Attributes": {
                         "$id": "/properties/PluginTypes/items/properties/Steps/items/properties/Images/items/properties/Attributes",
                         "type": "string",

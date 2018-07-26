@@ -7,6 +7,8 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
 {
     public class Step
     {
+        public string Id { get; set; }
+
         public string Name { get; set; }
 
         public string MessageName { get; set; }
