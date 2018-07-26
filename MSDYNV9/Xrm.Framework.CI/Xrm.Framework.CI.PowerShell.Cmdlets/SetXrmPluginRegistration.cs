@@ -66,6 +66,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
                 PluginRegistrationHelper pluginRegistrationHelper = new PluginRegistrationHelper(OrganizationService, context);
                 base.WriteVerbose("PluginRegistrationHelper intiated");
                 Assembly pluginAssembly = null;
+                Guid pluginAssemblyId = Guid.Empty;
                 if (File.Exists(MappingJsonPath))
                 {
                     base.WriteVerbose("Reading mapping json file");
@@ -73,9 +74,11 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
                     pluginAssembly = JsonConvert.DeserializeObject<Assembly>(json);
                     base.WriteVerbose("Deserialized mapping json file");
                 }
-
-                var pluginAssemblyId = pluginRegistrationHelper.UpsertPluginAssembly(pluginAssembly, assemblyName, version, content, SolutionName, IsWorkflowActivityAssembly, RegistrationType);
-                base.WriteVerbose(string.Format("UpsertPluginAssembly {0} completed", pluginAssemblyId));
+                else
+                {
+                    pluginAssemblyId = pluginRegistrationHelper.UpsertPluginAssembly(pluginAssembly, assemblyName, version, content, SolutionName, IsWorkflowActivityAssembly, RegistrationType);
+                    base.WriteVerbose(string.Format("UpsertPluginAssembly {0} completed", pluginAssemblyId));
+                }
 
                 if (pluginAssembly != null)
                 {
@@ -86,6 +89,15 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
                     }
                     else
                     {
+                        if (RegistrationType.Equals("delsert", StringComparison.InvariantCultureIgnoreCase))
+                        {
+                            pluginRegistrationHelper.RemoveComponentsNotInMapping(assemblyName, pluginAssembly);
+                            RegistrationType = "upsert";
+                        }
+                                                
+                        pluginAssemblyId = pluginRegistrationHelper.UpsertPluginAssembly(pluginAssembly, assemblyName, version, content, SolutionName, IsWorkflowActivityAssembly, RegistrationType);
+                        base.WriteVerbose(string.Format("UpsertPluginAssembly {0} completed", pluginAssemblyId));
+
                         foreach (var type in pluginAssembly.PluginTypes)
                         {
                             var pluginTypeId = pluginRegistrationHelper.UpsertPluginType(pluginAssemblyId, type, SolutionName, RegistrationType, IsWorkflowActivityAssembly, assemblyName);

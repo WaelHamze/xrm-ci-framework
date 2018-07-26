@@ -6,7 +6,8 @@ param(
 [string]$CrmConnectionString,
 [string]$PackageName,
 [string]$PackageDirectory,
-[string]$LogsDirectory = ''
+[string]$LogsDirectory = '',
+[string]$Timeout = '1:30:00' #optional timeout for Import-CrmPackage, default to 1 hour and 20 min. See https://technet.microsoft.com/en-us/library/dn756301.aspx
 )
 
 $ErrorActionPreference = "Stop"
@@ -18,6 +19,7 @@ Write-Verbose "CrmConnectionString = $CrmConnectionString"
 Write-Verbose "PackageName = $PackageName"
 Write-Verbose "PackageDirectory = $PackageDirectory"
 Write-Verbose "LogsDirectory = $LogsDirectory"
+Write-Verbose "Timeout = $Timeout"
 
 #Script Location
 $scriptPath = split-path -parent $MyInvocation.MyCommand.Definition
@@ -48,6 +50,6 @@ $CRMConn = Get-CrmConnection -ConnectionString $CrmConnectionString -Verbose
 
 #Deploy Package
 
-Import-CrmPackage –CrmConnection $CRMConn –PackageDirectory $PackageDirectory –PackageName $PackageName -LogWriteDirectory $LogsDirectory -Verbose
+Import-CrmPackage –CrmConnection $CRMConn –PackageDirectory $PackageDirectory –PackageName $PackageName -LogWriteDirectory $LogsDirectory -Timeout $Timeout -Verbose 
 
 Write-Verbose 'Leaving DeployPackage.ps1'
