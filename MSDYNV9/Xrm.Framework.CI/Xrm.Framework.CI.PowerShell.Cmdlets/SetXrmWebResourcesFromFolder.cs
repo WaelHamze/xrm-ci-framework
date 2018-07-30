@@ -53,6 +53,12 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
         [Parameter(Mandatory = false)]
         public bool FailIfWebResourceNotFound { get; set; }
 
+        /// <summary>
+        /// Unique name of solution to which web resources has to be register.
+        /// </summary>
+        [Parameter(Mandatory = false)]
+        public String SolutionName { get; set; }
+
         #endregion
 
 
@@ -83,7 +89,15 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
             using (var context = new CIContext(OrganizationService))
             {
                 WriteVerbose($"Retrieving web resources from CRM...");
-                var allWebResources = context.WebResourceSet.ToList();
+                var query = from resource in context.WebResourceSet                            
+                            select resource;
+                var solutionId = GetSolutionId(context, SolutionName);
+                if (!solutionId.Equals(Guid.Empty))
+                {
+                    query.Where(resource => resource.SolutionId == solutionId);
+                }
+
+                var allWebResources = query.ToList();
                 WriteVerbose($"Found {allWebResources.Count}");
 
                 var importexportxml = new StringBuilder();
@@ -159,6 +173,22 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
                 return x => Regex.IsMatch(x.Name, RegExToMatchUniqueName.Replace(
                     "{filename}", resourceFile));
             }
+        }
+
+        private Guid GetSolutionId(CIContext context, string solutionName)
+        {
+            var query1 = from solution in context.SolutionSet
+                         where solution.UniqueName == solutionName
+                         select solution.Id;
+
+            if (query1 == null)
+            {
+                return Guid.Empty;
+            }
+
+            var solutionId = query1.FirstOrDefault();
+
+            return solutionId;
         }
     }
 }
