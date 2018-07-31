@@ -5,11 +5,12 @@
 param(
 	[string]$CrmConnectionString,
 	[string]$WebResourceFolderPath,
-	[string]$CommaSeparatedWebResourceExtensions,
+	[string]$SearchPattern, 
 	[string]$RegExToMatchUniqueName,
 	[bool]$IncludeFileExtensionForUniqueName,
 	[bool]$Publish, #Will publish the web resource
 	[string]$SolutionName,
+	[bool]$FailIfWebResourceNotFound, 
 	[int]$Timeout
 )
 
@@ -20,11 +21,12 @@ Write-Verbose 'Entering UpdateFoldersWebResources.ps1' -Verbose
 #Parameters
 Write-Verbose "CrmConnectionString = $CrmConnectionString"
 Write-Verbose "WebResourceFolderPath = $WebResourceFolderPath"
-Write-Verbose "CommaSeparatedWebResourceExtensions = $CommaSeparatedWebResourceExtensions"
+Write-Verbose "SearchPattern = $SearchPattern" 
 Write-Verbose "RegExToMatchUniqueName = $RegExToMatchUniqueName"
 Write-Verbose "IncludeFileExtensionForUniqueName = $IncludeFileExtensionForUniqueName"
 Write-Verbose "Publish = $Publish"
 Write-Verbose "SolutionName = $SolutionName"
+Write-Verbose "FailIfWebResourceNotFound = $FailIfWebResourceNotFound" 
 Write-Verbose "Timeout = $Timeout"
 
 #Script Location
@@ -36,31 +38,5 @@ $xrmCIToolkit = $scriptPath + "\Xrm.Framework.CI.PowerShell.Cmdlets.dll"
 Write-Verbose "Importing CIToolkit: $xrmCIToolkit" 
 Import-Module $xrmCIToolkit
 Write-Verbose "Imported CIToolkit"
-[string]$RegEx = ''
-$solutionId = [GUID]::Empty
-if($SolutionName)
-{
-	$solution = Get-XrmSolution -ConnectionString $CrmConnectionString -UniqueSolutionName $SolutionName
-	$solutionId = $solution.Id
-	Write-Verbose "SolutionId = $solutionId"
-}
-
-$fileNames = Get-ChildItem -Path $WebResourceFolderPath -File -Include $CommaSeparatedWebResourceExtensions.Split(',') -Recurse | ForEach-Object {
-	$WebResourcePath = $_.FullName
-	Write-Verbose "Updating Web Resource: $WebResourcePath"
-	$RegEx = $RegExToMatchUniqueName
-	if($RegExToMatchUniqueName){
-		[string]$fileName = [System.IO.Path]::GetFileNameWithoutExtension($WebResourcePath)
-		if($IncludeFileExtensionForUniqueName){		
-			[string]$fileExtension = [System.IO.Path]::GetExtension($WebResourcePath)
-			$RegEx = $RegExToMatchUniqueName + $fileExtension.Replace(".", "[.]")
-		}
-
-		$RegEx = $RegEx.Replace('$fileName',$fileName)
-	}
-	Write-Verbose "Final RegEx = $RegEx"
-	Set-XrmWebResource -Path $WebResourcePath -RegExToMatchUniqueName $RegEx -Publish $Publish -SolutionId $solutionId  -ConnectionString $CrmConnectionString -Timeout $Timeout -Verbose
-	Write-Verbose "Updated Web Resource"
-} 
-
+Set-XrmWebResourcesFromFolder -Path $WebResourceFolderPath -SolutionName $SolutionName -SearchPattern $SearchPattern -RegExToMatchUniqueName $RegExToMatchUniqueName -IncludeFileExtensionForUniqueName $IncludeFileExtensionForUniqueName -FailIfWebResourceNotFound $FailIfWebResourceNotFound -Publish $Publish -ConnectionString $CrmConnectionString -Timeout $Timeout -Verbose 
 Write-Verbose 'Leaving UpdateFoldersWebResources.ps1' -Verbose
