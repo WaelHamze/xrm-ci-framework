@@ -7,7 +7,8 @@ param(
 [string]$PackageName,
 [string]$PackageDirectory,
 [string]$LogsDirectory = '',
-[string]$Timeout = '1:30:00' #optional timeout for Import-CrmPackage, default to 1 hour and 20 min. See https://technet.microsoft.com/en-us/library/dn756301.aspx
+[string]$PackageDeploymentPath,
+[string]$Timeout = '00:30:00' #optional timeout for Import-CrmPackage, default to 1 hour and 20 min. See https://technet.microsoft.com/en-us/library/dn756301.aspx
 )
 
 $ErrorActionPreference = "Stop"
@@ -19,16 +20,37 @@ Write-Verbose "CrmConnectionString = $CrmConnectionString"
 Write-Verbose "PackageName = $PackageName"
 Write-Verbose "PackageDirectory = $PackageDirectory"
 Write-Verbose "LogsDirectory = $LogsDirectory"
+Write-Verbose "PackageDeploymentPath = $PackageDeploymentPath"
 Write-Verbose "Timeout = $Timeout"
 
 #Script Location
 $scriptPath = split-path -parent $MyInvocation.MyCommand.Definition
 Write-Verbose "Script Path: $scriptPath"
 
+#Set Security Protocol
+$currentProtocol = [System.Net.ServicePointManager]::SecurityProtocol
+Write-Verbose "Current Security Protocol: $currentProtocol"
+if (-not $currentProtocol.HasFlag([System.Net.SecurityProtocolType]::Tls11))
+{
+    [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol  -bor [System.Net.SecurityProtocolType]::Tls11;
+}
+if (-not $currentProtocol.HasFlag([System.Net.SecurityProtocolType]::Tls12))
+{
+    [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol  -bor [System.Net.SecurityProtocolType]::Tls12;
+}
+$currentProtocol = [System.Net.ServicePointManager]::SecurityProtocol
+Write-Verbose "Modified Security Protocol: $currentProtocol"
+
 #Load XRM Tooling
 
 $crmToolingConnector = $scriptPath + "\Microsoft.Xrm.Tooling.CrmConnector.Powershell.dll"
 $crmToolingDeployment = $scriptPath + "\Microsoft.Xrm.Tooling.PackageDeployment.Powershell.dll"
+
+if ($PackageDeploymentPath)
+{
+	$crmToolingConnector = $PackageDeploymentPath + "\Microsoft.Xrm.Tooling.CrmConnector.Powershell.dll"
+	$crmToolingDeployment = $PackageDeploymentPath + "\Microsoft.Xrm.Tooling.PackageDeployment.Powershell.dll"
+}
 
 Write-Verbose "Importing: $crmToolingConnector" 
 Import-Module $crmToolingConnector
@@ -50,6 +72,6 @@ $CRMConn = Get-CrmConnection -ConnectionString $CrmConnectionString -Verbose
 
 #Deploy Package
 
-Import-CrmPackage –CrmConnection $CRMConn –PackageDirectory $PackageDirectory –PackageName $PackageName -LogWriteDirectory $LogsDirectory -Timeout $Timeout -Verbose 
+Import-CrmPackage –CrmConnection $CRMConn –PackageDirectory $PackageDirectory –PackageName $PackageName -LogWriteDirectory $LogsDirectory -Timeout $Timeout -Verbose
 
 Write-Verbose 'Leaving DeployPackage.ps1'

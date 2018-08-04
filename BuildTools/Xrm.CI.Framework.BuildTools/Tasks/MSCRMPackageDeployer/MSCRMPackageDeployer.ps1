@@ -11,7 +11,7 @@ $crmConnectionString = Get-VstsInput -Name crmConnectionString -Require
 $packageName = Get-VstsInput -Name packageName -Require
 $packageDirectory = Get-VstsInput -Name packageDirectory -Require
 $crmSdkVersion = Get-VstsInput -Name crmSdkVersion -Require
-$timeoutPD = Get-VstsInput -Name timeoutPD -Require
+pdTimeout = Get-VstsInput -Name pdTimeout -Require
 
 #TFS Release Parameters
 $artifactsFolder = $env:AGENT_RELEASEDIRECTORY
@@ -22,7 +22,7 @@ Write-Verbose "packageName = $packageName"
 Write-Verbose "packageDirectory = $packageDirectory"
 Write-Verbose "artifactsFolder = $artifactsFolder"
 Write-Verbose "crmSdkVersion = $crmSdkVersion"
-Write-Verbose "timeoutPD = $timeoutPD"
+Write-Verbose "pdTimeout = pdTimeout"
 
 #Script Location
 $scriptPath = split-path -parent $MyInvocation.MyCommand.Definition
@@ -34,7 +34,7 @@ $PackageDeploymentPath = "$scriptPath\Lib\PackageDeployment\$crmSdkVersion"
 
 try
 {
-	& "$scriptPath\Lib\xRMCIFramework\$crmSdkVersion\DeployPackage.ps1" -CrmConnectionString $crmConnectionString -PackageName $packageName -PackageDirectory $packageDirectory -LogsDirectory $packageDirectory -PackageDeploymentPath $PackageDeploymentPath -Timeout $timeoutPD
+	& "$scriptPath\Lib\xRMCIFramework\$crmSdkVersion\DeployPackage.ps1" -CrmConnectionString $crmConnectionString -PackageName $packageName -PackageDirectory $packageDirectory -LogsDirectory $packageDirectory -PackageDeploymentPath $PackageDeploymentPath -Timeout $pdTimeout
 }
 finally
 {
