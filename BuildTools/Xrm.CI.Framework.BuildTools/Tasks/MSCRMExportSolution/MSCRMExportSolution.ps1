@@ -67,7 +67,8 @@ Write-Verbose "Script Path: $scriptPath"
 
 if ($updateVersion)
 {
-	$versionNumber = $buildNumber.Substring($buildNumber.IndexOf("_") + 1)
+    $splits = $buildNumber.Split("_")
+    $versionNumber = $splits[$splits.Count-1]
 }
 
 & "$scriptPath\Lib\xRMCIFramework\9.0.0\ExportSolution.ps1"  -CrmConnectionString $crmConnectionString -SolutionName $solutionName -ExportManaged $exportManaged -ExportUnmanaged $exportUnmanaged -ExportSolutionOutputPath $outputPath -TargetVersion $targetVersion -UpdateVersion $updateVersion -RequiredVersion $versionNumber -ExportIncludeVersionInSolutionName $includeVersionInSolutionFile -ExportAutoNumberingSettings $exportAutoNumberingSettings -ExportCalendarSettings $exportCalendarSettings -ExportCustomizationSettings $exportCustomizationSettings -ExportEmailTrackingSettings $exportEmailTrackingSettings -ExportExternalApplications $exportExternalApplications -ExportGeneralSettings $exportGeneralSettings -ExportMarketingSettings $exportMarketingSettings -ExportOutlookSynchronizationSettings $exportOutlookSynchronizationSettings -ExportIsvConfig $exportIsvConfig -ExportRelationshipRoles $exportRelationshipRoles -ExportSales $exportSales -Timeout $crmConnectionTimeout
