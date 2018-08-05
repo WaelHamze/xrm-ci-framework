@@ -85,7 +85,18 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
             if (registrationType == "upsert" && !Id.Equals(Guid.Empty))
             {
                 entity.Id = Id;
-                OrganizationService.Update(entity);
+                var query = new QueryExpression(entity.LogicalName) { Criteria = new FilterExpression(), ColumnSet = new ColumnSet(columns: new[] { entity.LogicalName + "id" }) };
+                query.Criteria.AddCondition(entity.LogicalName + "id", ConditionOperator.Equal, Id);
+                var ids = OrganizationService.RetrieveMultiple(query);
+
+                if (ids != null && ids.Entities.Count > 0 && !ids[0].Id.Equals(Guid.Empty))
+                {
+                    OrganizationService.Update(entity);
+                }
+                else
+                {
+                    OrganizationService.Create(entity);
+                }
             }
             else
             {
