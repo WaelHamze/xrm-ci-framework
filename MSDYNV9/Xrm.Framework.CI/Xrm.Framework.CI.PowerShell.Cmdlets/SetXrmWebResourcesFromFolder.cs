@@ -94,7 +94,10 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
                 var solutionId = GetSolutionId(context, SolutionName);
                 if (!solutionId.Equals(Guid.Empty))
                 {
-                    query.Where(resource => resource.SolutionId == solutionId);
+                    query = from resource in context.WebResourceSet
+                            join sol in context.SolutionComponentSet on resource.Id equals sol.ObjectId
+                            where sol.SolutionId.Equals(solutionId)
+                            select resource;
                 }
 
                 var allWebResources = query.ToList();
