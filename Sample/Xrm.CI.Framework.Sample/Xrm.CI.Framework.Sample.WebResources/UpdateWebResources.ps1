@@ -20,7 +20,7 @@ if ($CrmConnectionString -eq '')
 $AssemblyName = 'Xrm.CI.Framework.Sample.Plugins'
 $WebResourceFolderPath = "$scriptPath\WebResources"
 $SearchPattern = "*.js,*.html"
-$RegExToMatchUniqueName = 'ud_.*?{fileName}'
+$RegExToMatchUniqueName = 'ud_.*?{filename}'
 $IncludeFileExtensionForUniqueName = $true
 $Publish = $false
 $SolutionName = "xRMCISample"
