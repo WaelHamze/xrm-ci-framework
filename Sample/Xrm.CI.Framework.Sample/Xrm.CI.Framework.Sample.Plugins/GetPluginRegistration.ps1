@@ -18,8 +18,9 @@ if ($CrmConnectionString -eq '')
 	$CrmConnectionString = $Env:CrmCon
 }
 $AssemblyName = 'Xrm.CI.Framework.Sample.Plugins'
-$MappingJsonPath = "$scriptPath\PluginRegistrationMapping.json"
+$MappingJsonPath = "$scriptPath\PluginRegistration.json"
 $IsWorkflowActivityAssembly = $false
 $SolutionName = 'xRMCISample'
+$Timeout = 360
 
-& "$scriptPath\..\packages\XrmCIFramework.9.0.0.17\tools\GetPluginRegistrationJsonMapping.ps1" -Verbose -CrmConnectionString "$CrmConnectionString" -AssemblyName "$AssemblyName" -MappingJsonPath "$MappingJsonPath" -IsWorkflowActivityAssembly $IsWorkflowActivityAssembly -SolutionName $SolutionName
+& "$scriptPath\..\packages\XrmCIFramework.9.0.0.17\tools\GetPluginRegistrationJsonMapping.ps1" -Verbose -CrmConnectionString "$CrmConnectionString" -AssemblyName "$AssemblyName" -MappingJsonPath "$MappingJsonPath" -IsWorkflowActivityAssembly $IsWorkflowActivityAssembly -SolutionName $SolutionName -Timeout $Timeout

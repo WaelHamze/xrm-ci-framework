@@ -19,10 +19,12 @@ if ($CrmConnectionString -eq '')
 }
 $AssemblyName = 'Xrm.CI.Framework.Sample.Plugins'
 $WebResourceFolderPath = "$scriptPath\WebResources"
-$CommaSeparatedWebResourceExtensions = '*.html,*.js'
-$RegExToMatchUniqueName = '$fileName'
+$SearchPattern = "*.js,*.html"
+$RegExToMatchUniqueName = 'ud_.*?{fileName}'
 $IncludeFileExtensionForUniqueName = $true
-$Publish = $true
-#$Timeout = 120
+$Publish = $false
+$SolutionName = "xRMCISample"
+$FailIfWebResourceNotFound = $true
+$Timeout = 120
 
-& "$scriptPath\..\packages\XrmCIFramework.9.0.0.17\tools\UpdateFoldersWebResources.ps1" -Verbose -CrmConnectionString "$CrmConnectionString" -WebResourceFolderPath $WebResourceFolderPath -CommaSeparatedWebResourceExtensions $CommaSeparatedWebResourceExtensions -RegExToMatchUniqueName $RegExToMatchUniqueName -IncludeFileExtensionForUniqueName $IncludeFileExtensionForUniqueName -Publish $true
+& "$scriptPath\..\packages\XrmCIFramework.9.0.0.17\tools\UpdateFoldersWebResources.ps1" -Verbose -CrmConnectionString "$CrmConnectionString" -WebResourceFolderPath $WebResourceFolderPath -SearchPattern $SearchPattern -RegExToMatchUniqueName $RegExToMatchUniqueName -IncludeFileExtensionForUniqueName $IncludeFileExtensionForUniqueName -SolutionName $SolutionName -Publish $Publish -FailIfWebResourceNotFound $FailIfWebResourceNotFound -Timeout $Timeout
