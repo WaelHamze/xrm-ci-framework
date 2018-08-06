@@ -107,7 +107,7 @@
           },
           "WorkflowActivityGroupName": {
             "$id": "/properties/PluginTypes/items/properties/WorkflowActivityGroupName",
-            "type": "string",
+            "type": [ "string", "null" ],  
             "title": "The Workflow activity group name used only for workflow registration",
             "default": "",
             "examples": [
