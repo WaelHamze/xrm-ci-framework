@@ -2,9 +2,9 @@
   "id": "a48708ef-a5d6-40f5-a9be-589847132834",
   "name": "MSCRMSplitPluginAssebly",
   "friendlyName": "MSCRM Split Plugin Assembly",
-  "description": "This task splits the plugin assembly into multiple pluginn assemblies based on class files filteredd by regex.",
+  "description": "Splits the plugin assembly into multiple plugin assemblies",
   "author": "Wael Hamze",
-  "helpMarkDown": "This task splits the plugin assembly into multiple pluginn assemblies based on class files filteredd by regex.",
+  "helpMarkDown": "This task splits the plugin assembly into multiple plugin assemblies based on class files filtered by regex.",
   "category": "Utility",
   "visibility": [
     "Build",
@@ -14,8 +14,9 @@
   "version": {
     "Major": "9",
     "Minor": "0",
-    "Patch": "89"
+    "Patch": "91"
   },
+  "preview": true,
   "minimumAgentVersion": "1.95.0",
   "instanceNameFormat": "MSCRM Split Plugin Assembly",
   "inputs": [

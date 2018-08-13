@@ -1,7 +1,7 @@
 {
   "id": "76DA6C87-B541-476B-8294-D47DC5679312",
   "name": "MSCRMRemoveSolutionComponents",
-  "friendlyName": "MSCRM Remove Solution Components (pre.)",
+  "friendlyName": "MSCRM Remove Solution Components",
   "description": "Removes all components from a given CRM Solution",
   "author": "Wael Hamze",
   "helpMarkDown": "Removes all components from a given CRM Solution",
@@ -14,7 +14,7 @@
   "version": {
     "Major": "9",
     "Minor": "0",
-    "Patch": "2"
+    "Patch": "3"
   },
   "minimumAgentVersion": "1.95.0",
   "instanceNameFormat": "Remove components from solution: $(solutionName)",

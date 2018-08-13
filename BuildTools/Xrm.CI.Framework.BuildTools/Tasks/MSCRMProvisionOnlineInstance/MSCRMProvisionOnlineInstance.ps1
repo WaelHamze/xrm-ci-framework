@@ -76,6 +76,6 @@ if ($projectService)
 }
 
 
-& "$scriptPath\ProvisionOnlineInstance.ps1" -ApiUrl $apiUrl -Username $username -Password $password  -DomainName $domainName -FriendlyName $friendlyName -Purpose $purpose -InitialUserEmail $initialUserEmail -InstanceType $instanceType -ReleaseId $serviceVersion -TemplateNames $templateNames -LanguageId $languageId -CurrencyCode $currencyCode -CurrencyName $currencyName -CurrencyPrecision $currencyPrecision -CurrencySymbol $currencySymbol -PSModulePath $PSModulePath -WaitForCompletion $WaitForCompletion -SleepDuration $sleepDuration
+& "$scriptPath\ProvisionOnlineInstance.ps1" -ApiUrl $apiUrl -Username $username -Password $password  -DomainName $domainName -FriendlyName $friendlyName -Purpose $purpose -InitialUserEmail $initialUserEmail -InstanceType $instanceType -ReleaseId $serviceVersion -TemplateNames $templateNames -LanguageId $languageId -CurrencyCode $currencyCode -CurrencyName $currencyName -CurrencyPrecision $currencyPrecision -CurrencySymbol $currencySymbol -SecurityGroupId $securityGroupId -SecurityGroupName $securityGroupName -PSModulePath $PSModulePath -WaitForCompletion $WaitForCompletion -SleepDuration $sleepDuration
 
 Write-Verbose 'Leaving MSCRMProvisionOnlineInstance.ps1'

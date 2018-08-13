@@ -21,7 +21,7 @@ $AssemblyPath = "$scriptPath\bin\Debug\Xrm.CI.Framework.Sample.Plugins.dll"
 $SolutionName = 'xRMCISample'
 $MappingJsonPath = "$scriptPath\PluginRegistration.json"
 $IsWorkflowActivityAssembly = $false
-$RegistrationType = "Upsert"
+$RegistrationType = "upsert"
 $Timeout = 360
 
 & "$scriptPath\..\packages\XrmCIFramework.9.0.0.17\tools\PluginRegistration.ps1" -Verbose -CrmConnectionString "$CrmConnectionString" -AssemblyPath "$AssemblyPath" -MappingJsonPath "$MappingJsonPath" -SolutionName $SolutionName -IsWorkflowActivityAssembly $IsWorkflowActivityAssembly -RegistrationType $RegistrationType -Timeout $Timeout

@@ -11,7 +11,7 @@ $crmConnectionString = Get-VstsInput -Name crmConnectionString -Require
 $packageName = Get-VstsInput -Name packageName -Require
 $packageDirectory = Get-VstsInput -Name packageDirectory -Require
 $crmSdkVersion = Get-VstsInput -Name crmSdkVersion -Require
-pdTimeout = Get-VstsInput -Name pdTimeout -Require
+$pdTimeout = Get-VstsInput -Name pdTimeout -Require
 
 #TFS Release Parameters
 $artifactsFolder = $env:AGENT_RELEASEDIRECTORY

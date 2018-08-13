@@ -25,27 +25,27 @@ Below is a list of tasks that are included with this extension.
 | **MSCRM Export Solution** | Exports a CRM Solution from the source CRM environment |
 | **MSCRM Publish Customizations** | Publishes all CRM customizations |
 | **MSCRM Set Version** | Updates the version of a CRM Solution |
-| **MSCRM Extract Solution (preview)** | Extracts CRM Solution xml files from CRM Solution zip using SolutionPackager.exe |
+| **MSCRM Extract Solution** | Extracts CRM Solution xml files from CRM Solution zip using SolutionPackager.exe |
 | **MSCRM Pack Solution** | Packages a CRM Solution using SolutionPackager.exe |
 | **MSCRM Import Solution** | Import a Dynamics CRM Solution package |
-| **MSCRM Apply Solution (preview)** | Applies a solution upgrade after solution is import using stage for upgrade option |
-| **MSCRM Copy Solution Components (preview)** | Add components from a given solution to another solution if not present |
-| **MSCRM Remove Solution Components (preview)** | Removes all components from a given CRM Solution |
+| **MSCRM Apply Solution** | Applies a solution upgrade after solution is import using stage for upgrade option |
+| **MSCRM Copy Solution Components** | Add components from a given solution to another solution if not present |
+| **MSCRM Remove Solution Components** | Removes all components from a given CRM Solution |
 | **MSCRM Package Deployer** | Deploys a CRM Package using the CRM Package Deployer PowerShell Cmdlets |
 | **MSCRM Update Secure Configuration** | A task that updates Dynamics 365 plugin secure configuration |
 | **MSCRM Update Plugin Assembly (deprecated)** | Updates Dynamics 365 plugin assembly during build |
-| **MSCRM Plugin Registration (beta)** | Updates Dynamics 365 plugin/workflow activity assembly/types/steps |
+| **MSCRM Plugin Registration (preview)** | Updates Dynamics 365 plugin/workflow activity assembly/types/steps |
+| **MSCRM Split Plugin Assembly (preview)** | Splits the plugin assembly into multiple plugin assemblies |
 | **MSCRM Update Web Resources** | Updates Dynamics 365 Web Resources from source control |
 | **MSCRM Get Online Instance By Name** | Gets an Online instance ID based on the name of the instance |
 | **MSCRM Backup Online Instance** | Creates a backup of a Dynamics 365 Customer Engagement Online Instance |
+| **MSCRM Set Online Instance Admin Mode** | Enable/Disable administration mode on Online Instances |
 | **MSCRM Provision Online Instance** | Creates a new Dynamics 365 Customer Engagement Online Instance |
 | **MSCRM Restore Online Instance** | Restores an online instance from a previous backup |
 | **MSCRM Delete Online Instance** | Deletes an Online Instance |
 | **MSCRM Set Online Instance Admin Mode** | Enable/Disable administration mode on Online Instances |
 
 Some explanation for tasks that have the below in the names:
-
-beta: Still under development. May contain many bugs. Subject to breaking changes.
 
 preview: New functionality. May contain some bugs. Subject to changes based on feedback.
 
@@ -97,5 +97,11 @@ Added Task Set Online Instance Admin Mode
 
 **9.0.x**
 Updated to use Dynamics 365 CE v9 Assemblies and Tools
+
+**9.1.x**
+Added Tasks to managing Plugin Registration
+Added Task for updating Web Resources
+Added Tasks for removing/copying solution components 
+Added tasks for Exracting Customisations into source
 
 For more information on changes between versions, check the commits on GitHub

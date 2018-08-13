@@ -12,10 +12,11 @@
   ],
   "demands": [],
   "version": {
-    "Major": "9",
+    "Major": "10",
     "Minor": "0",
-    "Patch": "91"
+    "Patch": "4"
   },
+  "preview": true,
   "minimumAgentVersion": "1.95.0",
   "instanceNameFormat": "MSCRM Update Web resources",
   "inputs": [
@@ -77,7 +78,7 @@
       "type": "string",
       "label": "Regular expression to match unique name of web resource",
       "defaultValue": "",
-      "helpMarkDown": "Regular expression to match unique name of web resource. Please use {filename} placeholder to relate file name and unique name. E.g. new_.*?{fileName} which will match string like new_someResource. Considering 'new_' is prefix of web resource and someResource was replaced dynamically from {filename}",
+      "helpMarkDown": "Regular expression to match unique name of web resource. Please use {filename} placeholder to relate file name and unique name. E.g. new_.*?{filename} which will match string like new_someResource. Considering 'new_' is prefix of web resource and someResource was replaced dynamically from {filename}",
       "visibleRule": "webResourceDeploymentType = folderPath"
     },
     {
