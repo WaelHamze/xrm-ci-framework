@@ -98,7 +98,7 @@
     <Compile Include="ExportXrmSolutionCommand.cs" />
     <Compile Include="GetXrmEntitiesCommand.cs" />
     <Compile Include="GetXrmEntityCommand.cs" />
-    <Compile Include="GetXrmLanguagePack.cs" />
+    <Compile Include="GetXrmLanguagePacks.cs" />
     <Compile Include="GetXrmPluginRegistrationJsonMapping.cs" />
     <Compile Include="GetXrmSolutionCommand.cs" />
     <Compile Include="GetXrmSolutionImportLog.cs" />
