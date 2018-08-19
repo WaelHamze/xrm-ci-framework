@@ -16,7 +16,6 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
     ///   <para>Provision a new language on CRM server.</para>
     /// </example>
     [Cmdlet(VerbsCommon.Add, "XrmLanguagePack")]
-    [OutputType(typeof(bool))]
     public class AddXrmLanguagePack : XrmCommandBase
     {
         /// <summary>
@@ -35,7 +34,6 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
             if (availableLanguagesPacks.Contains(Language))
             {
                 WriteVerbose($"LanguagePack {Language} already provisioned");
-                WriteObject(true);
                 return;
             }
 
