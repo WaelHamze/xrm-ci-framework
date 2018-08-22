@@ -166,6 +166,8 @@
     <Content Include="Tasks\MSCRMCopySolutionComponents\task.json" />
     <Content Include="Tasks\MSCRMSplitPluginAssembly\MSCRMSplitPluginAssembly.ps1" />
     <Content Include="Tasks\MSCRMSplitPluginAssembly\task.json" />
+    <Content Include="Tasks\MSCRMToolInstaller\MSCRMToolInstaller.ps1" />
+    <Content Include="Tasks\MSCRMToolInstaller\task.json" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
