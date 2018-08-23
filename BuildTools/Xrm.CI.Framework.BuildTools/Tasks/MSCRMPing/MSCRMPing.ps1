@@ -22,7 +22,7 @@ Write-Verbose "MSCRM Tools Path: $mscrmToolsPath"
 
 if (-not $mscrmToolsPath)
 {
-	Write-Error "MSCRM_Tools_Path not found. Add 'MSCRM Tool Installer' task to this phase."
+	Write-Error "MSCRM_Tools_Path not found. Add 'MSCRM Tool Installer' before this task."
 }
 
 & "$mscrmToolsPath\xRMCIFramework\9.0.0\Ping.ps1" -CrmConnectionString $crmConnectionString
