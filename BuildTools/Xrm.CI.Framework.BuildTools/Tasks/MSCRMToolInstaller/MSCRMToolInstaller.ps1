@@ -47,8 +47,8 @@ else
 	Copy-Item -Path "$scriptPath\Lib\**" -Destination $currentVersionPath -Force -Recurse
 
 	Write-Host "Copy completed"
-
-	Write-Host "##vso[task.setvariable variable=MSCRM_Tools_Path]$currentVersionPath"
 }
+
+Write-Host "##vso[task.setvariable variable=MSCRM_Tools_Path]$currentVersionPath"
 
 Write-Verbose 'Leaving MSCRMToolInstaller.ps1'
