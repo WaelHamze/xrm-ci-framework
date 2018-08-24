@@ -232,7 +232,12 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
 
         private Guid ExecuteRequest(RegistrationTypeEnum registrationType, Guid Id, Entity entity)
         {
-            if (registrationType == RegistrationTypeEnum.Upsert && Id != Guid.Empty)
+            if (Id != Guid.Empty)
+            {
+                entity.Id = Id;
+            }
+
+            if (registrationType == RegistrationTypeEnum.Upsert)
             {
                 entity.Id = Id;
                 var query = new QueryExpression(entity.LogicalName) { Criteria = new FilterExpression(), ColumnSet = new ColumnSet(columns: new[] { entity.LogicalName + "id" }) };
