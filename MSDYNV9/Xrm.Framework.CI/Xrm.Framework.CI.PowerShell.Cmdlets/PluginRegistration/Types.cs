@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Xrm.Framework.CI.PowerShell.Cmdlets
 {
     public class Type
     {
-        public string Id { get; set; }
+        public Guid? Id { get; set; }
 
         public string Description { get; set; }
 
