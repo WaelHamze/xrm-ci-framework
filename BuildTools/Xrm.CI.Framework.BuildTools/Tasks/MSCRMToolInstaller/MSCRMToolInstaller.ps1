@@ -9,8 +9,9 @@ Write-Verbose 'Entering MSCRMToolInstaller.ps1'
 #Script Location
 $scriptPath = split-path -parent $MyInvocation.MyCommand.Definition
 Write-Verbose "Script Path: $scriptPath"
-
-if (Test-Path $env:VSTS_TOOLS_PATH)
+Write-Verbose "env VSTS_TOOLS_PATH: $env:VSTS_TOOLS_PATH"
+Write-Verbose "env AGENT_WORKFOLDER: $env:AGENT_WORKFOLDER"
+if ($env:VSTS_TOOLS_PATH)
 {
 	$toolPath = $env:VSTS_TOOLS_PATH
 }

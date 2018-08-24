@@ -6,10 +6,9 @@ param(
 	[string]$CrmConnectionString,
 	[string]$RegistrationType,
 	[string]$AssemblyPath,
-	[bool]$IsWorkflowActivityAssembly,
 	[string]$projectFilePath,
 	[bool]$useSplitAssembly,
-	[string]$MappingJsonPath,
+	[string]$MappingFile,
 	[string]$SolutionName,
 	[int]$Timeout
 )
@@ -22,8 +21,7 @@ Write-Verbose 'Entering PluginRegistration.ps1' -Verbose
 Write-Verbose "CrmConnectionString = $CrmConnectionString"
 Write-Verbose "RegistrationType = $RegistrationType"
 Write-Verbose "AssemblyPath = $AssemblyPath"
-Write-Verbose "IsWorkflowActivityAssembly = $IsWorkflowActivityAssembly"
-Write-Verbose "MappingJsonPath = $MappingJsonPath"
+Write-Verbose "MappingFile = $MappingFile"
 Write-Verbose "SolutionName = $SolutionName"
 Write-Verbose "Timeout = $Timeout"
 
@@ -39,7 +37,7 @@ Write-Verbose "Imported CIToolkit"
 
 Write-Host "Updating Plugin Assembly: $AssemblyPath"
 
-Set-XrmPluginRegistration -RegistrationType $RegistrationType -AssemblyPath $AssemblyPath -IsWorkflowActivityAssembly $IsWorkflowActivityAssembly -MappingJsonPath $MappingJsonPath -SolutionName $SolutionName -UseSplitAssembly $useSplitAssembly -ProjectFilePath $projectFilePath -ConnectionString $CrmConnectionString -Timeout $Timeout -Verbose
+Set-XrmPluginRegistration -RegistrationType $RegistrationType -AssemblyPath $AssemblyPath -MappingFile $MappingFile -SolutionName $SolutionName -UseSplitAssembly $useSplitAssembly -ProjectFilePath $projectFilePath -ConnectionString $CrmConnectionString -Timeout $Timeout -Verbose
 
 Write-Host "Updated Plugin Assembly and Steps"
 
