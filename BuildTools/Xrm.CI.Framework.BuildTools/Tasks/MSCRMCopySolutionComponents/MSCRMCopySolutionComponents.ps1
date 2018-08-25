@@ -18,10 +18,15 @@ Write-Verbose "fromSolutionName = $fromSolutionName"
 Write-Verbose "toSolutionName = $toSolutionName"
 Write-Verbose "crmConnectionTimeout = $crmConnectionTimeout"
 
-#Script Location
-$scriptPath = split-path -parent $MyInvocation.MyCommand.Definition
-Write-Verbose "Script Path: $scriptPath"
+#MSCRM Tools
+$mscrmToolsPath = $env:MSCRM_Tools_Path
+Write-Verbose "MSCRM Tools Path: $mscrmToolsPath"
 
-& "$scriptPath\Lib\xRMCIFramework\9.0.0\CopySolutionComponents.ps1" -fromSolutionName "$fromSolutionName" -toSolutionName "$toSolutionName" -crmConnectionString "$CrmConnectionString" -Timeout $crmConnectionTimeout
+if (-not $mscrmToolsPath)
+{
+	Write-Error "MSCRM_Tools_Path not found. Add 'MSCRM Tool Installer' before this task."
+}
+
+& "$mscrmToolsPath\xRMCIFramework\9.0.0\CopySolutionComponents.ps1" -fromSolutionName "$fromSolutionName" -toSolutionName "$toSolutionName" -crmConnectionString "$CrmConnectionString" -Timeout $crmConnectionTimeout
 
 Write-Verbose 'Leaving MSCRMCopySolutionComponents.ps1'

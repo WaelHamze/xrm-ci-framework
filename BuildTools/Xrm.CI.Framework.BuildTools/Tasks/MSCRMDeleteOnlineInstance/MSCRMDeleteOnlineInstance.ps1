@@ -20,12 +20,17 @@ Write-Verbose "instanceName = $instanceName"
 Write-Verbose "waitForCompletion = $waitForCompletion"
 Write-Verbose "sleepDuration = $sleepDuration"
 
-#Script Location
-$scriptPath = split-path -parent $MyInvocation.MyCommand.Definition
-Write-Verbose "Script Path: $scriptPath"
+#MSCRM Tools
+$mscrmToolsPath = $env:MSCRM_Tools_Path
+Write-Verbose "MSCRM Tools Path: $mscrmToolsPath"
 
-$PSModulePath = "$scriptPath\Lib\OnlineManagementAPI\1.0.0"
+if (-not $mscrmToolsPath)
+{
+	Write-Error "MSCRM_Tools_Path not found. Add 'MSCRM Tool Installer' before this task."
+}
 
-& "$scriptPath\DeleteOnlineInstance.ps1" -ApiUrl $apiUrl -Username $username -Password $password  -InstanceName $InstanceName -PSModulePath $PSModulePath -WaitForCompletion $WaitForCompletion -SleepDuration $sleepDuration
+$PSModulePath = "$mscrmToolsPath\OnlineManagementAPI\1.0.0"
+
+& "$mscrmToolsPath\xRMCIFramework\9.0.0\DeleteOnlineInstance.ps1" -ApiUrl $apiUrl -Username $username -Password $password  -InstanceName $InstanceName -PSModulePath $PSModulePath -WaitForCompletion $WaitForCompletion -SleepDuration $sleepDuration
 
 Write-Verbose 'Leaving MSCRMDeleteOnlineInstance.ps1'

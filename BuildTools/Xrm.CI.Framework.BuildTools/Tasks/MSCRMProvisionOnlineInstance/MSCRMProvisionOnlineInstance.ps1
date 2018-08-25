@@ -52,11 +52,16 @@ Write-Verbose "securityGroupName = $securityGroupName"
 Write-Verbose "waitForCompletion = $waitForCompletion"
 Write-Verbose "sleepDuration = $sleepDuration"
 
-#Script Location
-$scriptPath = split-path -parent $MyInvocation.MyCommand.Definition
-Write-Verbose "Script Path: $scriptPath"
+#MSCRM Tools
+$mscrmToolsPath = $env:MSCRM_Tools_Path
+Write-Verbose "MSCRM Tools Path: $mscrmToolsPath"
 
-$PSModulePath = "$scriptPath\Lib\OnlineManagementAPI\1.0.0"
+if (-not $mscrmToolsPath)
+{
+	Write-Error "MSCRM_Tools_Path not found. Add 'MSCRM Tool Installer' before this task."
+}
+
+$PSModulePath = "$mscrmToolsPath\OnlineManagementAPI\1.0.0"
 
 if ($sales)
 {
@@ -76,6 +81,6 @@ if ($projectService)
 }
 
 
-& "$scriptPath\ProvisionOnlineInstance.ps1" -ApiUrl $apiUrl -Username $username -Password $password  -DomainName $domainName -FriendlyName $friendlyName -Purpose $purpose -InitialUserEmail $initialUserEmail -InstanceType $instanceType -ReleaseId $serviceVersion -TemplateNames $templateNames -LanguageId $languageId -CurrencyCode $currencyCode -CurrencyName $currencyName -CurrencyPrecision $currencyPrecision -CurrencySymbol $currencySymbol -SecurityGroupId $securityGroupId -SecurityGroupName $securityGroupName -PSModulePath $PSModulePath -WaitForCompletion $WaitForCompletion -SleepDuration $sleepDuration
+& "$mscrmToolsPath\xRMCIFramework\9.0.0\ProvisionOnlineInstance.ps1" -ApiUrl $apiUrl -Username $username -Password $password  -DomainName $domainName -FriendlyName $friendlyName -Purpose $purpose -InitialUserEmail $initialUserEmail -InstanceType $instanceType -ReleaseId $serviceVersion -TemplateNames $templateNames -LanguageId $languageId -CurrencyCode $currencyCode -CurrencyName $currencyName -CurrencyPrecision $currencyPrecision -CurrencySymbol $currencySymbol -SecurityGroupId $securityGroupId -SecurityGroupName $securityGroupName -PSModulePath $PSModulePath -WaitForCompletion $WaitForCompletion -SleepDuration $sleepDuration
 
 Write-Verbose 'Leaving MSCRMProvisionOnlineInstance.ps1'

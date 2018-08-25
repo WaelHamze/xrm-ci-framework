@@ -1,7 +1,7 @@
 {
   "id": "a48708ef-a5d6-4af5-a9be-589847132834",
   "name": "MSCRMPluginRegistration",
-  "friendlyName": "MSCRM Plugin Registration",
+  "friendlyName": "MSCRM Plugin Registration (beta)",
   "description": "Upsert Dynamics 365 plugin/workflow activity assembly/types/steps",
   "author": "Wael Hamze",
   "helpMarkDown": "Upsert plugin/workflow assembly, types and steps",
@@ -14,7 +14,7 @@
   "version": {
     "Major": "10",
     "Minor": "0",
-    "Patch": "2"
+    "Patch": "5"
   },
   "preview": true,
   "minimumAgentVersion": "1.95.0",
@@ -50,14 +50,6 @@
       "helpMarkDown": "Path of assembly to be register."
     },
     {
-      "name": "isWorkflowActivityAssembly",
-      "type": "boolean",
-      "label": "Is Workflow Activity Assembly?",
-      "defaultValue": 0,
-      "required": true,
-      "helpMarkDown": "Set to true for assemblies that contain workflow activities"
-    },
-    {
       "name": "solutionName",
       "type": "string",
       "label": "CRM solution name",
@@ -83,12 +75,12 @@
       "visibleRule": "useSplitAssembly = true"
     },
     {
-      "name": "mappingJsonPath",
+      "name": "mappingFile",
       "type": "filePath",
-      "label": "Mapping Json Path",
+      "label": "Mapping File Path",
       "defaultValue": "",
       "required": false,
-      "helpMarkDown": "Plugin registration json mapping used to register assembly/types/steps.</br> Mapping json file sample can be found here: https://github.com/WaelHamze/xrm-ci-framework/blob/master/MSDYNV9/Xrm.Framework.CI/Xrm.Framework.CI.PowerShell.Cmdlets/PluginRegistration/PluginRegistrationMappingExample.json. </br> JSON schema which will help you to generate plugin registration mapping can be found here: https://github.com/WaelHamze/xrm-ci-framework/blob/master/MSDYNV9/Xrm.Framework.CI/Xrm.Framework.CI.PowerShell.Cmdlets/PluginRegistration/PluginRegistrationMappingSchema.json. </br> How to use schema can be found here: https://blogs.msdn.microsoft.com/webdev/2014/04/10/intellisense-for-json-schema-in-the-json-editor/. </br> To generate plugin registration JSON mapping from existing assembly/type/steps from a specific solution, please use cmdlet: https://github.com/WaelHamze/xrm-ci-framework/blob/master/MSDYNV9/Xrm.Framework.CI/Xrm.Framework.CI.PowerShell.Scripts/GetPluginRegistrationJsonMapping.ps1 </br>"
+      "helpMarkDown": "Plugin registration json/xml mapping used to register assembly/types/steps.</br> Mapping json(PluginRegistrationMappingExample.json)/xml file sample can be found here: https://github.com/WaelHamze/xrm-ci-framework/blob/master/MSDYNV9/Xrm.Framework.CI/Xrm.Framework.CI.PowerShell.Cmdlets/PluginRegistration. </br> JSON schema which will help you to generate plugin registration mapping can be found here: https://github.com/WaelHamze/xrm-ci-framework/blob/master/MSDYNV9/Xrm.Framework.CI/Xrm.Framework.CI.PowerShell.Cmdlets/PluginRegistration/PluginRegistrationMappingSchema.json. </br> How to use schema can be found here: https://blogs.msdn.microsoft.com/webdev/2014/04/10/intellisense-for-json-schema-in-the-json-editor/. </br> To generate plugin registration JSON mapping from existing assembly/type/steps from a specific solution, please use cmdlet: https://github.com/WaelHamze/xrm-ci-framework/blob/master/MSDYNV9/Xrm.Framework.CI/Xrm.Framework.CI.PowerShell.Scripts/GetPluginRegistrationJsonMapping.ps1 </br>"
     },
     {
       "name": "crmConnectionTimeout",

@@ -23,12 +23,17 @@ Write-Verbose "Enable = $enable"
 Write-Verbose "AllowBackgroundOperations = $allowBackgroundOperations"
 Write-Verbose "NotificationText = $notificationText"
 
-#Script Location
-$scriptPath = split-path -parent $MyInvocation.MyCommand.Definition
-Write-Verbose "Script Path: $scriptPath"
+#MSCRM Tools
+$mscrmToolsPath = $env:MSCRM_Tools_Path
+Write-Verbose "MSCRM Tools Path: $mscrmToolsPath"
 
-$PSModulePath = "$scriptPath\Lib\OnlineManagementAPI\1.0.0"
+if (-not $mscrmToolsPath)
+{
+	Write-Error "MSCRM_Tools_Path not found. Add 'MSCRM Tool Installer' before this task."
+}
 
-& "$scriptPath\SetOnlineInstanceAdminMode.ps1" -ApiUrl $apiUrl -Username $username -Password $password -InstanceName $instanceName  -Enable $enable -AllowBackgroundOperations $allowBackgroundOperations -NotificationText $notificationText -PSModulePath $PSModulePath -WaitForCompletion $true -SleepDuration 5
+$PSModulePath = "$mscrmToolsPath\OnlineManagementAPI\1.0.0"
+
+& "$mscrmToolsPath\xRMCIFramework\9.0.0\SetOnlineInstanceAdminMode.ps1" -ApiUrl $apiUrl -Username $username -Password $password -InstanceName $instanceName  -Enable $enable -AllowBackgroundOperations $allowBackgroundOperations -NotificationText $notificationText -PSModulePath $PSModulePath -WaitForCompletion $true -SleepDuration 5
 
 Write-Verbose 'Leaving MSCRMSetOnlineInstanceAdminMode.ps1'

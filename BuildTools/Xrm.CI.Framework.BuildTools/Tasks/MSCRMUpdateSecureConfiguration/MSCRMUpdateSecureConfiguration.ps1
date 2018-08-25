@@ -14,10 +14,15 @@ $secureConfiguration = Get-VstsInput -Name secureConfiguration -Require
 Write-Verbose "crmConnectionString = $crmConnectionString"
 Write-Verbose "secureConfiguration = $secureConfiguration"
 
-#Script Location
-$scriptPath = split-path -parent $MyInvocation.MyCommand.Definition
-Write-Verbose "Script Path: $scriptPath"
+#MSCRM Tools
+$mscrmToolsPath = $env:MSCRM_Tools_Path
+Write-Verbose "MSCRM Tools Path: $mscrmToolsPath"
 
-& "$scriptPath\Lib\xRMCIFramework\9.0.0\UpdateSecureConfiguration.ps1" -CrmConnectionString $crmConnectionString -SecureConfiguration $secureConfiguration
+if (-not $mscrmToolsPath)
+{
+	Write-Error "MSCRM_Tools_Path not found. Add 'MSCRM Tool Installer' before this task."
+}
+
+& "$mscrmToolsPath\xRMCIFramework\9.0.0\UpdateSecureConfiguration.ps1" -CrmConnectionString $crmConnectionString -SecureConfiguration $secureConfiguration
 
 Write-Verbose 'Leaving MSCRMUpdateSecureConfiguration.ps1'
