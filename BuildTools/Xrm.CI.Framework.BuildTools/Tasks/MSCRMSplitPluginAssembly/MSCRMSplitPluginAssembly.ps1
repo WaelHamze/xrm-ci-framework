@@ -12,11 +12,16 @@ $regex = Get-VstsInput -Name regex -Require
 $projectFilePath = Get-VstsInput -Name projectFilePath -Require
 $solutionFilePath = Get-VstsInput -Name solutionFilePath 
 
-#Script Location
-$scriptPath = split-path -parent $MyInvocation.MyCommand.Definition
-Write-Verbose "Script Path: $scriptPath"
+#MSCRM Tools
+$mscrmToolsPath = $env:MSCRM_Tools_Path
+Write-Verbose "MSCRM Tools Path: $mscrmToolsPath"
 
-& "$scriptPath\Lib\xRMCIFramework\9.0.0\SplitPluginAssembly.ps1" -regexType $regexType -regex $regex -projectFilePath $projectFilePath -solutionFilePath $solutionFilePath
+if (-not $mscrmToolsPath)
+{
+	Write-Error "MSCRM_Tools_Path not found. Add 'MSCRM Tool Installer' before this task."
+}
+
+& "$mscrmToolsPath\xRMCIFramework\9.0.0\SplitPluginAssembly.ps1" -regexType $regexType -regex $regex -projectFilePath $projectFilePath -solutionFilePath $solutionFilePath
 
 
 Write-Verbose 'Leaving MSCRMSplitPluginAssembly.ps1'

@@ -33,12 +33,17 @@ Write-Verbose "storageAccountName = $storageAccountName"
 Write-Verbose "waitForCompletion = $waitForCompletion"
 Write-Verbose "sleepDuration = $sleepDuration"
 
-#Script Location
-$scriptPath = split-path -parent $MyInvocation.MyCommand.Definition
-Write-Verbose "Script Path: $scriptPath"
+#MSCRM Tools
+$mscrmToolsPath = $env:MSCRM_Tools_Path
+Write-Verbose "MSCRM Tools Path: $mscrmToolsPath"
 
-$PSModulePath = "$scriptPath\Lib\OnlineManagementAPI\1.0.0"
+if (-not $mscrmToolsPath)
+{
+	Write-Error "MSCRM_Tools_Path not found. Add 'MSCRM Tool Installer' before this task."
+}
 
-& "$scriptPath\BackupOnlineInstance.ps1" -ApiUrl $apiUrl -Username $username -Password $password -InstanceName $instanceName -BackupLabel $backupLabel -BackupNotes $backupNotes -WaitForCompletion $waitForCompletion -SleepDuration $sleepDuration -PSModulePath $PSModulePath  -IsAzureBackup $isAzureBackup -ContainerName $containerName -StorageAccountKey $storageAccountKey -StorageAccountName $storageAccountName
+$PSModulePath = "$mscrmToolsPath\OnlineManagementAPI\1.0.0"
+
+& "$mscrmToolsPath\xRMCIFramework\9.0.0\BackupOnlineInstance.ps1" -ApiUrl $apiUrl -Username $username -Password $password -InstanceName $instanceName -BackupLabel $backupLabel -BackupNotes $backupNotes -WaitForCompletion $waitForCompletion -SleepDuration $sleepDuration -PSModulePath $PSModulePath  -IsAzureBackup $isAzureBackup -ContainerName $containerName -StorageAccountKey $storageAccountKey -StorageAccountName $storageAccountName
 
 Write-Verbose 'Leaving MSCRMBackupOnlineInstance.ps1'
