@@ -1,15 +1,17 @@
 ﻿{
+  "Id": "ca934c19-3a47-e811-a956-00224800510b",
   "Name": "Xrm.CI.Framework.Sample.WFActivities.dll",
   "IsolationMode": "Sandbox",
   "SourceType": "Database",
   "PluginTypes": [
     {
+      "Id": "41f27208-ee47-e811-a957-0022480053e9",
       "Description": "Send Activity Description",
       "Name": "Xrm.CI.Framework.Sample.WFActivities.Send",
       "FriendlyName": "Send",
       "TypeName": "Xrm.CI.Framework.Sample.WFActivities.Send",
-      "WorkflowActivityGroupName": "CI Sample",
-      "Steps": []
+      "Steps": [],
+      "WorkflowActivityGroupName": "CI Sample"
     }
   ]
 }
