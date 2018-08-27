@@ -1,26 +1,27 @@
-# xRM CI Framework
-**The xRM Continuous Integration (CI) Framework is a set of tools that makes it easy and quick to automate builds and deployment of your CRM components.**
+# Dynamics 365 Build Tools
+**Dynamics 365 Build Tools is a set of tools that makes it easy and quick to automate builds and deployment of your Dynamics 365 CE solutions.**
 
 This will allow you to setup a fully automated DevOps pipeline so you can deliver CRM more frequently in a consistent and reliable way.
 
-The latest version of all tasks work on the VSTS Hosted Agent.
-
-## Supported Versions
+## Compatibility
 
 **Dynamics 365 (8.x.x)**
-
 **Dynamics 365 (9.x.x)**
-
 (Some tasks may work with previous version of CRM)
 
 **VSTS/TFS** For support and installation [instructions](https://docs.microsoft.com/en-us/vsts/marketplace/get-tfs-extensions)
+
+Works with Hosted VSTS Agents
 
 ## Task Catalog
 
 Below is a list of tasks that are included with this extension.
 
+**You must add the 'MSCRM Tool Installer' at the begining of every agent phase for the task to work.**
+
 | Task | Description |
 | --- | --- |
+| **MSCRM Tool Installer** | Installs the Dynamics 365 tools required by all of the tasks |
 | **MSCRM Ping** | Checks connectivity to a Dynamics 365 environment |
 | **MSCRM Export Solution** | Exports a CRM Solution from the source CRM environment |
 | **MSCRM Publish Customizations** | Publishes all CRM customizations |
@@ -36,7 +37,7 @@ Below is a list of tasks that are included with this extension.
 | **MSCRM Update Plugin Assembly (deprecated)** | Updates Dynamics 365 plugin assembly during build |
 | **MSCRM Plugin Registration (preview)** | Updates Dynamics 365 plugin/workflow activity assembly/types/steps |
 | **MSCRM Split Plugin Assembly (preview)** | Splits the plugin assembly into multiple plugin assemblies |
-| **MSCRM Update Web Resources** | Updates Dynamics 365 Web Resources from source control |
+| **MSCRM Update Web Resources (preview)** | Updates Dynamics 365 Web Resources from source control |
 | **MSCRM Get Online Instance By Name** | Gets an Online instance ID based on the name of the instance |
 | **MSCRM Backup Online Instance** | Creates a backup of a Dynamics 365 Customer Engagement Online Instance |
 | **MSCRM Set Online Instance Admin Mode** | Enable/Disable administration mode on Online Instances |
@@ -47,7 +48,7 @@ Below is a list of tasks that are included with this extension.
 
 Some explanation for tasks that have the below in the names:
 
-preview: New functionality. May contain some bugs. Subject to changes based on feedback.
+preview: New functionality. May contain some bugs. Subject to breaking changes while in preview.
 
 deprecated: Task has been replaced with another task or is no longer required. Will be removed in future release.
 
@@ -79,6 +80,10 @@ Below is a sample release definition that imports the solution generated from th
 
 For more documentation and source code, check out Github using the links on this page.
 
+## Known Issues
+
+MSCRM Restore Online Instance: May return 'internval server error' due to issue at vendor platform
+
 ## Version History
 
 **8.0.x**
@@ -103,5 +108,9 @@ Added Tasks to managing Plugin Registration
 Added Task for updating Web Resources
 Added Tasks for removing/copying solution components 
 Added tasks for Exracting Customisations into source
+
+**9.2.x**
+Added Tools Installer Task to improve efficieny and reduce extension size
+Improvements to Plugin Registration and Web Resource Tasks
 
 For more information on changes between versions, check the commits on GitHub

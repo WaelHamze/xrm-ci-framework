@@ -1,7 +1,7 @@
 {
   "id": "b48708ef-a5d6-4af5-a9be-589847132134",
   "name": "MSCRMUpdatePluginAssembly",
-  "friendlyName": "MSCRM Update Plugin Assembly (dep.)",
+  "friendlyName": "MSCRM Update Plugin Assembly",
   "description": "Updates Dynamics 365 plugin assembly from file",
   "author": "Wael Hamze",
   "helpMarkDown": "Update plugin assembly",
@@ -16,6 +16,7 @@
     "Minor": "0",
     "Patch": "36"
   },
+  "deprecated": true,
   "minimumAgentVersion": "1.95.0",
   "instanceNameFormat": "MSCRM Update Plugin Assembly",
   "inputs": [

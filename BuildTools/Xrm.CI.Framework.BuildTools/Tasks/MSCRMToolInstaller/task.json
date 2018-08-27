@@ -2,9 +2,9 @@
   "id": "04AD1C72-5E49-4686-8A3A-DDA6948B0FCD",
   "name": "MSCRMToolInstaller",
   "friendlyName": "MSCRM Tool Installer",
-  "description": "Installer the tools required to support a specific Dynamics 365 version",
+  "description": "Installs the Dynamics 365 tools required by all of the tasks",
   "author": "Wael Hamze",
-  "helpMarkDown": "Select the required Dynamics 365 version",
+  "helpMarkDown": "Tools are installed under {agentroot}/_work/tools. e.g 'D:\\Agent1_work\\tools\\MSCRMBuildTools\\9.0.1'",
   "category": "Utility",
   "visibility": [
     "Build",

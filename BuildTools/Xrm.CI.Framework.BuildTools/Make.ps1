@@ -69,24 +69,18 @@ $taskName = "MSCRMApplySolution"
 Copy-Item -Path .\icon.png -Destination "$OutputDir\Tasks\$taskName"
 New-Item "$OutputDir\Tasks\$taskName\ps_modules\VstsTaskSdk" -ItemType directory | Out-Null
 Copy-Item -Path .\Lib\VstsTaskSdk\0.10.0\*.* -Destination "$OutputDir\Tasks\$taskName\ps_modules\VstsTaskSdk"
-New-Item "$OutputDir\Tasks\$taskName\Lib\xRMCIFramework\9.0.0" -ItemType directory | Out-Null
-Copy-Item -Path .\Lib\xRMCIFramework\9.0.0\*.* -Destination "$OutputDir\Tasks\$taskName\Lib\xRMCIFramework\9.0.0"
 
 #MSCRMCopySolutionComponents
 $taskName = "MSCRMCopySolutionComponents"
 Copy-Item -Path .\icon.png -Destination "$OutputDir\Tasks\$taskName"
 New-Item "$OutputDir\Tasks\$taskName\ps_modules\VstsTaskSdk" -ItemType directory | Out-Null
 Copy-Item -Path .\Lib\VstsTaskSdk\0.10.0\*.* -Destination "$OutputDir\Tasks\$taskName\ps_modules\VstsTaskSdk"
-New-Item "$OutputDir\Tasks\$taskName\Lib\xRMCIFramework\9.0.0" -ItemType directory | Out-Null
-Copy-Item -Path .\Lib\xRMCIFramework\9.0.0\*.* -Destination "$OutputDir\Tasks\$taskName\Lib\xRMCIFramework\9.0.0"
 
 #MSCRMRemoveSolutionComponents
 $taskName = "MSCRMRemoveSolutionComponents"
 Copy-Item -Path .\icon.png -Destination "$OutputDir\Tasks\$taskName"
 New-Item "$OutputDir\Tasks\$taskName\ps_modules\VstsTaskSdk" -ItemType directory | Out-Null
 Copy-Item -Path .\Lib\VstsTaskSdk\0.10.0\*.* -Destination "$OutputDir\Tasks\$taskName\ps_modules\VstsTaskSdk"
-New-Item "$OutputDir\Tasks\$taskName\Lib\xRMCIFramework\9.0.0" -ItemType directory | Out-Null
-Copy-Item -Path .\Lib\xRMCIFramework\9.0.0\*.* -Destination "$OutputDir\Tasks\$taskName\Lib\xRMCIFramework\9.0.0"
 
 #Ping
 $taskName = "MSCRMPing"
@@ -99,178 +93,108 @@ $taskName = "MSCRMPublishCustomizations"
 Copy-Item -Path .\icon.png -Destination "$OutputDir\Tasks\$taskName"
 New-Item "$OutputDir\Tasks\$taskName\ps_modules\VstsTaskSdk" -ItemType directory | Out-Null
 Copy-Item -Path .\Lib\VstsTaskSdk\0.10.0\*.* -Destination "$OutputDir\Tasks\$taskName\ps_modules\VstsTaskSdk"
-New-Item "$OutputDir\Tasks\$taskName\Lib\xRMCIFramework\9.0.0" -ItemType directory | Out-Null
-Copy-Item -Path .\Lib\xRMCIFramework\9.0.0\*.* -Destination "$OutputDir\Tasks\$taskName\Lib\xRMCIFramework\9.0.0"
 
 #MSCRMPackSolution
 $taskName = "MSCRMPackSolution"
 Copy-Item -Path .\icon.png -Destination "$OutputDir\Tasks\$taskName"
 New-Item "$OutputDir\Tasks\$taskName\ps_modules\VstsTaskSdk" -ItemType directory | Out-Null
 Copy-Item -Path .\Lib\VstsTaskSdk\0.10.0\*.* -Destination "$OutputDir\Tasks\$taskName\ps_modules\VstsTaskSdk"
-New-Item "$OutputDir\Tasks\$taskName\Lib\xRMCIFramework\8.2.0" -ItemType directory | Out-Null
-Copy-Item -Path .\Lib\xRMCIFramework\9.0.0\*.* -Destination "$OutputDir\Tasks\$taskName\Lib\xRMCIFramework\8.2.0"
-New-Item "$OutputDir\Tasks\$taskName\Lib\xRMCIFramework\9.0.0" -ItemType directory | Out-Null
-Copy-Item -Path .\Lib\xRMCIFramework\9.0.0\*.* -Destination "$OutputDir\Tasks\$taskName\Lib\xRMCIFramework\9.0.0"
-New-Item "$OutputDir\Tasks\$taskName\Lib\CoreTools\8.2.0" -ItemType directory | Out-Null
-Copy-Item -Path .\Lib\Microsoft.CrmSdk.CoreTools\8.2.0\SolutionPackager.exe -Destination "$OutputDir\Tasks\$taskName\Lib\CoreTools\8.2.0"
-New-Item "$OutputDir\Tasks\$taskName\Lib\CoreTools\9.0.0" -ItemType directory | Out-Null
-Copy-Item -Path .\Lib\Microsoft.CrmSdk.CoreTools\9.0.0\SolutionPackager.exe -Destination "$OutputDir\Tasks\$taskName\Lib\CoreTools\9.0.0"
-
 
 #MSCRMExportSolution
 $taskName = "MSCRMExportSolution"
 Copy-Item -Path .\icon.png -Destination "$OutputDir\Tasks\$taskName"
 New-Item "$OutputDir\Tasks\$taskName\ps_modules\VstsTaskSdk" -ItemType directory | Out-Null
 Copy-Item -Path .\Lib\VstsTaskSdk\0.10.0\*.* -Destination "$OutputDir\Tasks\$taskName\ps_modules\VstsTaskSdk"
-New-Item "$OutputDir\Tasks\$taskName\Lib\xRMCIFramework\9.0.0" -ItemType directory | Out-Null
-Copy-Item -Path .\Lib\xRMCIFramework\9.0.0\*.* -Destination "$OutputDir\Tasks\$taskName\Lib\xRMCIFramework\9.0.0"
-
 
 #MSCRMExtractSolution
 $taskName = "MSCRMExtractSolution"
 Copy-Item -Path .\icon.png -Destination "$OutputDir\Tasks\$taskName"
 New-Item "$OutputDir\Tasks\$taskName\ps_modules\VstsTaskSdk" -ItemType directory | Out-Null
 Copy-Item -Path .\Lib\VstsTaskSdk\0.10.0\*.* -Destination "$OutputDir\Tasks\$taskName\ps_modules\VstsTaskSdk"
-New-Item "$OutputDir\Tasks\$taskName\Lib\xRMCIFramework\8.2.0" -ItemType directory | Out-Null
-Copy-Item -Path .\Lib\xRMCIFramework\9.0.0\*.* -Destination "$OutputDir\Tasks\$taskName\Lib\xRMCIFramework\8.2.0"
-New-Item "$OutputDir\Tasks\$taskName\Lib\xRMCIFramework\9.0.0" -ItemType directory | Out-Null
-Copy-Item -Path .\Lib\xRMCIFramework\9.0.0\*.* -Destination "$OutputDir\Tasks\$taskName\Lib\xRMCIFramework\9.0.0"
-New-Item "$OutputDir\Tasks\$taskName\Lib\CoreTools\8.2.0" -ItemType directory | Out-Null
-Copy-Item -Path .\Lib\Microsoft.CrmSdk.CoreTools\8.2.0\SolutionPackager.exe -Destination "$OutputDir\Tasks\$taskName\Lib\CoreTools\8.2.0"
-New-Item "$OutputDir\Tasks\$taskName\Lib\CoreTools\9.0.0" -ItemType directory | Out-Null
-Copy-Item -Path .\Lib\Microsoft.CrmSdk.CoreTools\9.0.0\SolutionPackager.exe -Destination "$OutputDir\Tasks\$taskName\Lib\CoreTools\9.0.0"
-
 
 #MSCRMImportSolution
 $taskName = "MSCRMImportSolution"
 Copy-Item -Path .\icon.png -Destination "$OutputDir\Tasks\$taskName"
 New-Item "$OutputDir\Tasks\$taskName\ps_modules\VstsTaskSdk" -ItemType directory | Out-Null
 Copy-Item -Path .\Lib\VstsTaskSdk\0.10.0\*.* -Destination "$OutputDir\Tasks\$taskName\ps_modules\VstsTaskSdk"
-New-Item "$OutputDir\Tasks\$taskName\Lib\xRMCIFramework\9.0.0" -ItemType directory | Out-Null
-Copy-Item -Path .\Lib\xRMCIFramework\9.0.0\*.* -Destination "$OutputDir\Tasks\$taskName\Lib\xRMCIFramework\9.0.0"
-
 
 #MSCRMPackageDeployer
 $taskName = "MSCRMPackageDeployer"
 Copy-Item -Path .\icon.png -Destination "$OutputDir\Tasks\$taskName"
 New-Item "$OutputDir\Tasks\$taskName\ps_modules\VstsTaskSdk" -ItemType directory | Out-Null
 Copy-Item -Path .\Lib\VstsTaskSdk\0.10.0\*.* -Destination "$OutputDir\Tasks\$taskName\ps_modules\VstsTaskSdk"
-New-Item "$OutputDir\Tasks\$taskName\Lib\xRMCIFramework\8.2.0" -ItemType directory | Out-Null
-Copy-Item -Path .\Lib\xRMCIFramework\9.0.0\DeployPackage.ps1 -Destination "$OutputDir\Tasks\$taskName\Lib\xRMCIFramework\8.2.0"
-New-Item "$OutputDir\Tasks\$taskName\Lib\xRMCIFramework\9.0.0" -ItemType directory | Out-Null
-Copy-Item -Path .\Lib\xRMCIFramework\9.0.0\DeployPackage.ps1 -Destination "$OutputDir\Tasks\$taskName\Lib\xRMCIFramework\9.0.0"
-New-Item "$OutputDir\Tasks\$taskName\Lib\PackageDeployment\8.2.0" -ItemType directory | Out-Null
-Copy-Item -Path .\Lib\Microsoft.CrmSdk.XrmTooling.PackageDeployment.PowerShell\8.2.0\*.* -Destination "$OutputDir\Tasks\$taskName\Lib\PackageDeployment\8.2.0"
-New-Item "$OutputDir\Tasks\$taskName\Lib\PackageDeployment\9.0.0" -ItemType directory | Out-Null
-Copy-Item -Path .\Lib\Microsoft.CrmSdk.XrmTooling.PackageDeployment.PowerShell\9.0.0\*.* -Destination "$OutputDir\Tasks\$taskName\Lib\PackageDeployment\9.0.0"
 
 #MSCRMSetVersion
 $taskName = "MSCRMSetVersion"
 Copy-Item -Path .\icon.png -Destination "$OutputDir\Tasks\$taskName"
 New-Item "$OutputDir\Tasks\$taskName\ps_modules\VstsTaskSdk" -ItemType directory | Out-Null
 Copy-Item -Path .\Lib\VstsTaskSdk\0.10.0\*.* -Destination "$OutputDir\Tasks\$taskName\ps_modules\VstsTaskSdk"
-New-Item "$OutputDir\Tasks\$taskName\Lib\xRMCIFramework\9.0.0" -ItemType directory | Out-Null
-Copy-Item -Path .\Lib\xRMCIFramework\9.0.0\*.* -Destination "$OutputDir\Tasks\$taskName\Lib\xRMCIFramework\9.0.0"
 
 #MSCRMUpdateSecureConfiguration
 $taskName = "MSCRMUpdateSecureConfiguration"
 Copy-Item -Path .\icon.png -Destination "$OutputDir\Tasks\$taskName"
 New-Item "$OutputDir\Tasks\$taskName\ps_modules\VstsTaskSdk" -ItemType directory | Out-Null
 Copy-Item -Path .\Lib\VstsTaskSdk\0.10.0\*.* -Destination "$OutputDir\Tasks\$taskName\ps_modules\VstsTaskSdk"
-New-Item "$OutputDir\Tasks\$taskName\Lib\xRMCIFramework\9.0.0" -ItemType directory | Out-Null
-Copy-Item -Path .\Lib\xRMCIFramework\9.0.0\*.* -Destination "$OutputDir\Tasks\$taskName\Lib\xRMCIFramework\9.0.0"
 
 #MSCRMBackupOnlineInstance
 $taskName = "MSCRMBackupOnlineInstance"
 Copy-Item -Path .\icon.png -Destination "$OutputDir\Tasks\$taskName"
 New-Item "$OutputDir\Tasks\$taskName\ps_modules\VstsTaskSdk" -ItemType directory | Out-Null
 Copy-Item -Path .\Lib\VstsTaskSdk\0.10.0\*.* -Destination "$OutputDir\Tasks\$taskName\ps_modules\VstsTaskSdk"
-New-Item "$OutputDir\Tasks\$taskName\Lib\OnlineManagementAPI\1.0.0" -ItemType directory | Out-Null
-Copy-Item -Path .\Lib\Microsoft.Xrm.OnlineManagementAPI\1.0.0\*.* -Destination "$OutputDir\Tasks\$taskName\Lib\OnlineManagementAPI\1.0.0"
-Copy-Item -Path .\Lib\xRMCIFramework\9.0.0\BackupOnlineInstance.ps1 -Destination "$OutputDir\Tasks\$taskName"
-Copy-Item -Path .\Lib\xRMCIFramework\9.0.0\OnlineInstanceFunctions.ps1 -Destination "$OutputDir\Tasks\$taskName"
 
 #MSCRMProvisionOnlineInstance
 $taskName = "MSCRMProvisionOnlineInstance"
 Copy-Item -Path .\icon.png -Destination "$OutputDir\Tasks\$taskName"
 New-Item "$OutputDir\Tasks\$taskName\ps_modules\VstsTaskSdk" -ItemType directory | Out-Null
 Copy-Item -Path .\Lib\VstsTaskSdk\0.10.0\*.* -Destination "$OutputDir\Tasks\$taskName\ps_modules\VstsTaskSdk"
-New-Item "$OutputDir\Tasks\$taskName\Lib\OnlineManagementAPI\1.0.0" -ItemType directory | Out-Null
-Copy-Item -Path .\Lib\Microsoft.Xrm.OnlineManagementAPI\1.0.0\*.* -Destination "$OutputDir\Tasks\$taskName\Lib\OnlineManagementAPI\1.0.0"
-Copy-Item -Path .\Lib\xRMCIFramework\9.0.0\ProvisionOnlineInstance.ps1 -Destination "$OutputDir\Tasks\$taskName"
-Copy-Item -Path .\Lib\xRMCIFramework\9.0.0\OnlineInstanceFunctions.ps1 -Destination "$OutputDir\Tasks\$taskName"
 
 #MSCRMGetOnlineInstanceByName
 $taskName = "MSCRMGetOnlineInstanceByName"
 Copy-Item -Path .\icon.png -Destination "$OutputDir\Tasks\$taskName"
 New-Item "$OutputDir\Tasks\$taskName\ps_modules\VstsTaskSdk" -ItemType directory | Out-Null
 Copy-Item -Path .\Lib\VstsTaskSdk\0.10.0\*.* -Destination "$OutputDir\Tasks\$taskName\ps_modules\VstsTaskSdk"
-New-Item "$OutputDir\Tasks\$taskName\Lib\OnlineManagementAPI\1.0.0" -ItemType directory | Out-Null
-Copy-Item -Path .\Lib\Microsoft.Xrm.OnlineManagementAPI\1.0.0\*.* -Destination "$OutputDir\Tasks\$taskName\Lib\OnlineManagementAPI\1.0.0"
-Copy-Item -Path .\Lib\xRMCIFramework\9.0.0\OnlineInstanceFunctions.ps1 -Destination "$OutputDir\Tasks\$taskName"
 
 #MSCRMDeleteOnlineInstance
 $taskName = "MSCRMDeleteOnlineInstance"
 Copy-Item -Path .\icon.png -Destination "$OutputDir\Tasks\$taskName"
 New-Item "$OutputDir\Tasks\$taskName\ps_modules\VstsTaskSdk" -ItemType directory | Out-Null
 Copy-Item -Path .\Lib\VstsTaskSdk\0.10.0\*.* -Destination "$OutputDir\Tasks\$taskName\ps_modules\VstsTaskSdk"
-New-Item "$OutputDir\Tasks\$taskName\Lib\OnlineManagementAPI\1.0.0" -ItemType directory | Out-Null
-Copy-Item -Path .\Lib\Microsoft.Xrm.OnlineManagementAPI\1.0.0\*.* -Destination "$OutputDir\Tasks\$taskName\Lib\OnlineManagementAPI\1.0.0"
-Copy-Item -Path .\Lib\xRMCIFramework\9.0.0\DeleteOnlineInstance.ps1 -Destination "$OutputDir\Tasks\$taskName"
-Copy-Item -Path .\Lib\xRMCIFramework\9.0.0\OnlineInstanceFunctions.ps1 -Destination "$OutputDir\Tasks\$taskName"
 
 #MSCRMRestoreOnlineInstance
 $taskName = "MSCRMRestoreOnlineInstance"
 Copy-Item -Path .\icon.png -Destination "$OutputDir\Tasks\$taskName"
 New-Item "$OutputDir\Tasks\$taskName\ps_modules\VstsTaskSdk" -ItemType directory | Out-Null
 Copy-Item -Path .\Lib\VstsTaskSdk\0.10.0\*.* -Destination "$OutputDir\Tasks\$taskName\ps_modules\VstsTaskSdk"
-New-Item "$OutputDir\Tasks\$taskName\Lib\OnlineManagementAPI\1.0.0" -ItemType directory | Out-Null
-Copy-Item -Path .\Lib\Microsoft.Xrm.OnlineManagementAPI\1.0.0\*.* -Destination "$OutputDir\Tasks\$taskName\Lib\OnlineManagementAPI\1.0.0"
-Copy-Item -Path .\Lib\xRMCIFramework\9.0.0\RestoreOnlineInstance.ps1 -Destination "$OutputDir\Tasks\$taskName"
-Copy-Item -Path .\Lib\xRMCIFramework\9.0.0\OnlineInstanceFunctions.ps1 -Destination "$OutputDir\Tasks\$taskName"
 
 #MSCRMSetOnlineInstanceAdminMode
 $taskName = "MSCRMSetOnlineInstanceAdminMode"
 Copy-Item -Path .\icon.png -Destination "$OutputDir\Tasks\$taskName"
 New-Item "$OutputDir\Tasks\$taskName\ps_modules\VstsTaskSdk" -ItemType directory | Out-Null
 Copy-Item -Path .\Lib\VstsTaskSdk\0.10.0\*.* -Destination "$OutputDir\Tasks\$taskName\ps_modules\VstsTaskSdk"
-New-Item "$OutputDir\Tasks\$taskName\Lib\OnlineManagementAPI\1.0.0" -ItemType directory | Out-Null
-Copy-Item -Path .\Lib\Microsoft.Xrm.OnlineManagementAPI\1.0.0\*.* -Destination "$OutputDir\Tasks\$taskName\Lib\OnlineManagementAPI\1.0.0"
-Copy-Item -Path .\Lib\xRMCIFramework\9.0.0\SetOnlineInstanceAdminMode.ps1 -Destination "$OutputDir\Tasks\$taskName"
-Copy-Item -Path .\Lib\xRMCIFramework\9.0.0\OnlineInstanceFunctions.ps1 -Destination "$OutputDir\Tasks\$taskName"
-
 
 #MSCRMUpdatePluginAssembly
 $taskName = "MSCRMUpdatePluginAssembly"
 Copy-Item -Path .\icon.png -Destination "$OutputDir\Tasks\$taskName"
 New-Item "$OutputDir\Tasks\$taskName\ps_modules\VstsTaskSdk" -ItemType directory | Out-Null
 Copy-Item -Path .\Lib\VstsTaskSdk\0.10.0\*.* -Destination "$OutputDir\Tasks\$taskName\ps_modules\VstsTaskSdk"
-New-Item "$OutputDir\Tasks\$taskName\Lib\xRMCIFramework\9.0.0" -ItemType directory | Out-Null
-Copy-Item -Path .\Lib\xRMCIFramework\9.0.0\*.* -Destination "$OutputDir\Tasks\$taskName\Lib\xRMCIFramework\9.0.0"
 
 #MSCRMUpdateWebResource
 $taskName = "MSCRMUpdateWebResources"
 Copy-Item -Path .\icon.png -Destination "$OutputDir\Tasks\$taskName"
 New-Item "$OutputDir\Tasks\$taskName\ps_modules\VstsTaskSdk" -ItemType directory | Out-Null
 Copy-Item -Path .\Lib\VstsTaskSdk\0.10.0\*.* -Destination "$OutputDir\Tasks\$taskName\ps_modules\VstsTaskSdk"
-New-Item "$OutputDir\Tasks\$taskName\Lib\xRMCIFramework\9.0.0" -ItemType directory | Out-Null
-Copy-Item -Path .\Lib\xRMCIFramework\9.0.0\*.* -Destination "$OutputDir\Tasks\$taskName\Lib\xRMCIFramework\9.0.0"
 
 #MSCRMPluginRegistration
 $taskName = "MSCRMPluginRegistration"
 Copy-Item -Path .\icon.png -Destination "$OutputDir\Tasks\$taskName"
 New-Item "$OutputDir\Tasks\$taskName\ps_modules\VstsTaskSdk" -ItemType directory | Out-Null
 Copy-Item -Path .\Lib\VstsTaskSdk\0.10.0\*.* -Destination "$OutputDir\Tasks\$taskName\ps_modules\VstsTaskSdk"
-New-Item "$OutputDir\Tasks\$taskName\Lib\xRMCIFramework\9.0.0" -ItemType directory | Out-Null
-Copy-Item -Path .\Lib\xRMCIFramework\9.0.0\*.* -Destination "$OutputDir\Tasks\$taskName\Lib\xRMCIFramework\9.0.0"
 
 #MSCRMSplitPluginAssembly
 $taskName = "MSCRMSplitPluginAssembly"
 Copy-Item -Path .\icon.png -Destination "$OutputDir\Tasks\$taskName"
 New-Item "$OutputDir\Tasks\$taskName\ps_modules\VstsTaskSdk" -ItemType directory | Out-Null
 Copy-Item -Path .\Lib\VstsTaskSdk\0.10.0\*.* -Destination "$OutputDir\Tasks\$taskName\ps_modules\VstsTaskSdk"
-New-Item "$OutputDir\Tasks\$taskName\Lib\xRMCIFramework\9.0.0" -ItemType directory | Out-Null
-Copy-Item -Path .\Lib\xRMCIFramework\9.0.0\*.* -Destination "$OutputDir\Tasks\$taskName\Lib\xRMCIFramework\9.0.0"
 
 #Clean Up
 Remove-Item $TempDir -Force -Recurse

@@ -1,7 +1,7 @@
 {
   "id": "a48708ef-a5d6-4af5-a9be-589847132834",
   "name": "MSCRMPluginRegistration",
-  "friendlyName": "MSCRM Plugin Registration (beta)",
+  "friendlyName": "MSCRM Plugin Registration",
   "description": "Upsert Dynamics 365 plugin/workflow activity assembly/types/steps",
   "author": "Wael Hamze",
   "helpMarkDown": "Upsert plugin/workflow assembly, types and steps",
