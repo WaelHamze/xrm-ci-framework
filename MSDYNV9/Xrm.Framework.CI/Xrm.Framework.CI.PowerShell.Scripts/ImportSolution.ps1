@@ -30,6 +30,9 @@ Write-Verbose "Importing CIToolkit: $xrmCIToolkit"
 Import-Module $xrmCIToolkit
 Write-Verbose "Imported CIToolkit"
 
+#Resolve solution path before handing off to other cmdlets
+$solutionFile = Resolve-Path $solutionFile
+
 Write-Verbose "solutionFile = $solutionFile"
 Write-Verbose "crmConnectionString = $crmConnectionString"
 Write-Verbose "override = $override"
