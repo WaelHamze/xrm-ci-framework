@@ -23,4 +23,4 @@ $MappingFile = "$scriptPath\PluginRegistration.json"
 $RegistrationType = "upsert"
 $Timeout = 360
 
-& "$scriptPath\..\packages\XrmCIFramework.9.0.0.20\tools\PluginRegistration.ps1" -Verbose -CrmConnectionString "$CrmConnectionString" -AssemblyPath "$AssemblyPath" -MappingFile "$MappingFile" -SolutionName $SolutionName -RegistrationType $RegistrationType -Timeout $Timeout
+& "$scriptPath\..\packages\XrmCIFramework.9.0.0.21\tools\PluginRegistration.ps1" -Verbose -CrmConnectionString "$CrmConnectionString" -AssemblyPath "$AssemblyPath" -MappingFile "$MappingFile" -SolutionName $SolutionName -RegistrationType $RegistrationType -Timeout $Timeout
