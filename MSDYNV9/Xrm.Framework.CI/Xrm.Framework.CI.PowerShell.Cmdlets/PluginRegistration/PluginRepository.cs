@@ -42,7 +42,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.PluginRegistration
         public Guid GetSdkMessageId(string name) =>
             (from a in context.SdkMessageSet
              where a.Name == name
-             select a.Id).First();
+             select a.Id).FirstOrDefault();
 
         public Guid GetSdkMessageFilterId(string EntityLogicalName, Guid sdkMessageId) =>
             (from a in context.SdkMessageFilterSet
@@ -147,7 +147,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.PluginRegistration
                 Description = pluginStep.Description,
                 FilteringAttributes = pluginStep.FilteringAttributes,
                 ImpersonatingUserFullname = pluginStep.ImpersonatingUserId?.Name ?? string.Empty,
-                MessageName = sdkMessage?.CategoryName,
+                MessageName = sdkMessage?.Name,
                 Mode = pluginStep.ModeEnum,
                 PrimaryEntityName = filter.PrimaryObjectTypeCode,
                 Rank = pluginStep.Rank,
