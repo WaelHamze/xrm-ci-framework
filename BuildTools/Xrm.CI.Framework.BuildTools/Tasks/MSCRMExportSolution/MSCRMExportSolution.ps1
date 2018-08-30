@@ -61,16 +61,21 @@ Write-Verbose "buildNumber = $buildNumber"
 Write-Verbose "sourcesDirectory = $sourcesDirectory"
 Write-Verbose "binariesDirectory = $binariesDirectory"
 
-#Script Location
-$scriptPath = split-path -parent $MyInvocation.MyCommand.Definition
-Write-Verbose "Script Path: $scriptPath"
-
 if ($updateVersion)
 {
     $splits = $buildNumber.Split("_")
     $versionNumber = $splits[$splits.Count-1]
 }
 
-& "$scriptPath\Lib\xRMCIFramework\9.0.0\ExportSolution.ps1"  -CrmConnectionString $crmConnectionString -SolutionName $solutionName -ExportManaged $exportManaged -ExportUnmanaged $exportUnmanaged -ExportSolutionOutputPath $outputPath -TargetVersion $targetVersion -UpdateVersion $updateVersion -RequiredVersion $versionNumber -ExportIncludeVersionInSolutionName $includeVersionInSolutionFile -ExportAutoNumberingSettings $exportAutoNumberingSettings -ExportCalendarSettings $exportCalendarSettings -ExportCustomizationSettings $exportCustomizationSettings -ExportEmailTrackingSettings $exportEmailTrackingSettings -ExportExternalApplications $exportExternalApplications -ExportGeneralSettings $exportGeneralSettings -ExportMarketingSettings $exportMarketingSettings -ExportOutlookSynchronizationSettings $exportOutlookSynchronizationSettings -ExportIsvConfig $exportIsvConfig -ExportRelationshipRoles $exportRelationshipRoles -ExportSales $exportSales -Timeout $crmConnectionTimeout
+#MSCRM Tools
+$mscrmToolsPath = $env:MSCRM_Tools_Path
+Write-Verbose "MSCRM Tools Path: $mscrmToolsPath"
+
+if (-not $mscrmToolsPath)
+{
+	Write-Error "MSCRM_Tools_Path not found. Add 'MSCRM Tool Installer' before this task."
+}
+
+& "$mscrmToolsPath\xRMCIFramework\9.0.0\ExportSolution.ps1"  -CrmConnectionString $crmConnectionString -SolutionName $solutionName -ExportManaged $exportManaged -ExportUnmanaged $exportUnmanaged -ExportSolutionOutputPath $outputPath -TargetVersion $targetVersion -UpdateVersion $updateVersion -RequiredVersion $versionNumber -ExportIncludeVersionInSolutionName $includeVersionInSolutionFile -ExportAutoNumberingSettings $exportAutoNumberingSettings -ExportCalendarSettings $exportCalendarSettings -ExportCustomizationSettings $exportCustomizationSettings -ExportEmailTrackingSettings $exportEmailTrackingSettings -ExportExternalApplications $exportExternalApplications -ExportGeneralSettings $exportGeneralSettings -ExportMarketingSettings $exportMarketingSettings -ExportOutlookSynchronizationSettings $exportOutlookSynchronizationSettings -ExportIsvConfig $exportIsvConfig -ExportRelationshipRoles $exportRelationshipRoles -ExportSales $exportSales -Timeout $crmConnectionTimeout
 
 Write-Verbose 'Leaving MSCRMExportSolution.ps1'

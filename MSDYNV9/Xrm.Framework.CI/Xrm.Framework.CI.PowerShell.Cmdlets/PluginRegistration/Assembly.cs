@@ -1,21 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Xrm.Framework.CI.PowerShell.Cmdlets.Common;
 
 namespace Xrm.Framework.CI.PowerShell.Cmdlets
 {
     public class Assembly
     {
-        public string Id { get; set; }
+        public Guid? Id { get; set; }
 
         public string Name { get; set; }
 
-        public string IsolationMode { get; set; }
+        public PluginAssembly_IsolationMode? IsolationMode { get; set; }
 
-        public string SourceType { get; set; }
+        public PluginAssembly_SourceType? SourceType { get; set; }
 
         public List<Type> PluginTypes { get; set; }
+
+        public Assembly()
+        {
+            PluginTypes = new List<Type>();
+        }
     }
 }

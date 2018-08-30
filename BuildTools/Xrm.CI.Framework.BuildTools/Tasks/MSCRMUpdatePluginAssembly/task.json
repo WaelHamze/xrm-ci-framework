@@ -14,8 +14,9 @@
   "version": {
     "Major": "9",
     "Minor": "0",
-    "Patch": "34"
+    "Patch": "36"
   },
+  "deprecated": true,
   "minimumAgentVersion": "1.95.0",
   "instanceNameFormat": "MSCRM Update Plugin Assembly",
   "inputs": [

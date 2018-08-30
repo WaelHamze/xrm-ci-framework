@@ -30,17 +30,22 @@ Write-Verbose "sourcesDirectory = $sourcesDirectory"
 Write-Verbose "binariesDirectory = $binariesDirectory"
 Write-Verbose "crmSdkVersion = $crmSdkVersion"
 
-#Script Location
-$scriptPath = split-path -parent $MyInvocation.MyCommand.Definition
-Write-Verbose "Script Path: $scriptPath"
-
-$CoreToolsPath = "$scriptPath\Lib\CoreTools\$crmSdkVersion"
-
 if ($mappingFile -eq $sourcesDirectory)
 {
 	$mappingFile = $null
 }
 
-& "$scriptPath\Lib\xRMCIFramework\$crmSdkVersion\ExtractSolution.ps1" -UnpackedFilesFolder $unpackedFilesFolder -MappingFile $mappingFile -PackageType $packageType -solutionFile $solutionFile $includeVersionInSolutionFile -OutputPath -TreatUnpackWarningsAsErrors $treatUnpackWarningsAsErrors -CoreToolsPath $CoreToolsPath
+#MSCRM Tools
+$mscrmToolsPath = $env:MSCRM_Tools_Path
+Write-Verbose "MSCRM Tools Path: $mscrmToolsPath"
+
+if (-not $mscrmToolsPath)
+{
+	Write-Error "MSCRM_Tools_Path not found. Add 'MSCRM Tool Installer' before this task."
+}
+
+$CoreToolsPath = "$mscrmToolsPath\CoreTools\$crmSdkVersion"
+
+& "$mscrmToolsPath\xRMCIFramework\$crmSdkVersion\ExtractSolution.ps1" -UnpackedFilesFolder $unpackedFilesFolder -MappingFile $mappingFile -PackageType $packageType -solutionFile $solutionFile $includeVersionInSolutionFile -OutputPath -TreatUnpackWarningsAsErrors $treatUnpackWarningsAsErrors -CoreToolsPath $CoreToolsPath
 
 Write-Verbose 'Leaving MSCRMExtractSolution.ps1'
