@@ -18,12 +18,17 @@ Write-Verbose "username = $username"
 Write-Verbose "instanceName = $instanceName"
 Write-Verbose "vstsInstanceIdOutputVariableName = $vstsInstanceIdOutputVariableName"
 
-#Script Location
-$scriptPath = split-path -parent $MyInvocation.MyCommand.Definition
-Write-Verbose "Script Path: $scriptPath"
+#MSCRM Tools
+$mscrmToolsPath = $env:MSCRM_Tools_Path
+Write-Verbose "MSCRM Tools Path: $mscrmToolsPath"
+
+if (-not $mscrmToolsPath)
+{
+	Write-Error "MSCRM_Tools_Path not found. Add 'MSCRM Tool Installer' before this task."
+}
 
 #Load Online Management Module
-$PSModulePath = "$scriptPath\Lib\OnlineManagementAPI\1.0.0"
+$PSModulePath = "$mscrmToolsPath\OnlineManagementAPI\1.0.0"
 
 $xrmOnlineModule = $PSModulePath + "\Microsoft.Xrm.OnlineManagementAPI.dll"
 
@@ -31,7 +36,7 @@ Write-Verbose "Importing Online Management Module: $xrmOnlineModule"
 Import-Module $xrmOnlineModule
 Write-Verbose "Imported Online Management Module"
 
-. "$scriptPath\ps_modules\xRMCIFramework\OnlineInstanceFunctions.ps1"
+. "$mscrmToolsPath\xRMCIFramework\9.0.0\OnlineInstanceFunctions.ps1"
 
 $secPassword = ConvertTo-SecureString $password -AsPlainText -Force
 $cred = New-Object System.Management.Automation.PSCredential ($username, $secPassword)

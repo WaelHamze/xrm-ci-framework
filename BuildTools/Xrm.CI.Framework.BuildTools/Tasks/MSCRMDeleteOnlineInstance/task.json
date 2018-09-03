@@ -12,9 +12,9 @@
   ],
   "demands": [],
   "version": {
-    "Major": "9",
+    "Major": "10",
     "Minor": "0",
-    "Patch": "2"
+    "Patch": "1"
   },
   "minimumAgentVersion": "1.95.0",
   "instanceNameFormat": "Delete $(instanceName)",

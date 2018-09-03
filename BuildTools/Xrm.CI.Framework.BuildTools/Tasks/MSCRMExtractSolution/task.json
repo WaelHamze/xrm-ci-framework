@@ -1,7 +1,7 @@
 {
   "id": "48834E5A-A932-49AF-A7FD-A805B5E1CFB5",
   "name": "MSCRMExtractSolution",
-  "friendlyName": "MSCRM Extract Solution (preview)",
+  "friendlyName": "MSCRM Extract Solution",
   "description": "Extracts CRM Solution xml files from CRM Solution zip using SolutionPackager.exe",
   "author": "Wael Hamze",
   "helpMarkDown": "Solution zip file(s) must be provided",
@@ -12,9 +12,9 @@
   ],
   "demands": [],
   "version": {
-    "Major": "9",
+    "Major": "10",
     "Minor": "0",
-    "Patch": "7"
+    "Patch": "1"
   },
   "minimumAgentVersion": "1.95.0",
   "instanceNameFormat": "MSCRM Extract Solution",

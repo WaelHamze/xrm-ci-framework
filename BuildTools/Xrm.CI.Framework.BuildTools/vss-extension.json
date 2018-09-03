@@ -2,7 +2,7 @@
   "manifestVersion": 1,
   "id": "xrm-ci-framework-build-tasks",
   "name": "Dynamics 365 Build Tools",
-  "version": "9.0.28",
+  "version": "9.2.1",
   "publisher": "WaelHamze",
   "targets": [
     {
@@ -59,6 +59,9 @@
     {
       "path": "Images",
       "addressable": true
+    },
+    {
+      "path": "Tasks/MSCRMToolInstaller"
     },
     {
       "path": "Tasks/MSCRMApplySolution"
@@ -128,6 +131,16 @@
     }
   ],
   "contributions": [
+    {
+      "id": "MSCRMToolInstaller",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "Tasks/MSCRMToolInstaller"
+      }
+    },
     {
       "id": "MSCRMApplySolution",
       "type": "ms.vss-distributed-task.task",
@@ -329,13 +342,13 @@
       }
     },
     {
-      "id": "MSCRMPluginRegistration",
+      "id": "MSCRMSplitPluginAssembly",
       "type": "ms.vss-distributed-task.task",
       "targets": [
         "ms.vss-distributed-task.tasks"
       ],
       "properties": {
-        "name": "Tasks/MSCRMPluginRegistration"
+        "name": "Tasks/MSCRMSplitPluginAssembly"
       }
     }
   ]

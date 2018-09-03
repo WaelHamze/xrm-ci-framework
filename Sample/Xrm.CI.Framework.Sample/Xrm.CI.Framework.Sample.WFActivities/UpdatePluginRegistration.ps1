@@ -19,8 +19,8 @@ if ($CrmConnectionString -eq '')
 }
 $AssemblyPath = "$scriptPath\bin\Debug\Xrm.CI.Framework.Sample.WFActivities.dll"
 $SolutionName = 'xRMCISample'
-$MappingJsonPath = "$scriptPath\PluginRegistration.json"
-$IsWorkflowActivityAssembly = $true
+$MappingFile = "$scriptPath\PluginRegistration.json"
 $RegistrationType = "upsert"
+$Timeout = 360
 
-& "$scriptPath\..\packages\XrmCIFramework.9.0.0.17\tools\PluginRegistration.ps1" -Verbose -CrmConnectionString "$CrmConnectionString" -AssemblyPath "$AssemblyPath" -MappingJsonPath "$MappingJsonPath" -SolutionName $SolutionName -IsWorkflowActivityAssembly $IsWorkflowActivityAssembly -RegistrationType $RegistrationType
+& "$scriptPath\..\packages\XrmCIFramework.9.0.0.20\tools\PluginRegistration.ps1" -Verbose -CrmConnectionString "$CrmConnectionString" -AssemblyPath "$AssemblyPath" -MappingFile "$MappingFile" -SolutionName $SolutionName -RegistrationType $RegistrationType -Timeout $Timeout

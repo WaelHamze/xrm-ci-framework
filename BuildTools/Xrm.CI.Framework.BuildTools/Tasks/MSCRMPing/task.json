@@ -10,11 +10,14 @@
     "Build",
     "Release"
   ],
-  "demands": [],
+  "demands": [
+    "powershell",
+    "mscrmtools"
+  ],
   "version": {
-    "Major": "9",
+    "Major": "10",
     "Minor": "0",
-    "Patch": "9"
+    "Patch": "3"
   },
   "minimumAgentVersion": "1.95.0",
   "instanceNameFormat": "MSCRM CRM Ping",

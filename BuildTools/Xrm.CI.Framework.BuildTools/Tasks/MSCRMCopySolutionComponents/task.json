@@ -1,7 +1,7 @@
 {
   "id": "E89BE8B0-D102-4533-87AF-8F8F1206DD78",
   "name": "MSCRMCopySolutionComponents",
-  "friendlyName": "MSCRM Copy Solution Components (preview)",
+  "friendlyName": "MSCRM Copy Solution Components",
   "description": "Add components from a given solution to another solution if not present",
   "author": "Wael Hamze",
   "helpMarkDown": "Add components from a given solution to another solution if not present",
@@ -12,9 +12,9 @@
   ],
   "demands": [],
   "version": {
-    "Major": "9",
+    "Major": "10",
     "Minor": "0",
-    "Patch": "2"
+    "Patch": "1"
   },
   "minimumAgentVersion": "1.95.0",
   "instanceNameFormat": "Add components from solution: $(fromSolutionName)",

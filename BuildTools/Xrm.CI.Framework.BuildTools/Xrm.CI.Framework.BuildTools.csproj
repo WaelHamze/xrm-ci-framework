@@ -166,6 +166,8 @@
     <Content Include="Tasks\MSCRMCopySolutionComponents\task.json" />
     <Content Include="Tasks\MSCRMSplitPluginAssembly\MSCRMSplitPluginAssembly.ps1" />
     <Content Include="Tasks\MSCRMSplitPluginAssembly\task.json" />
+    <Content Include="Tasks\MSCRMToolInstaller\MSCRMToolInstaller.ps1" />
+    <Content Include="Tasks\MSCRMToolInstaller\task.json" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -303,6 +305,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
+      <UserProperties Tasks_4MSCRMSplitPluginAssembly_4task_1json__JSONSchema="https://github.com/Microsoft/vsts-task-lib/blob/master/tasks.schema.json" />
     </VisualStudio>
   </ProjectExtensions>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

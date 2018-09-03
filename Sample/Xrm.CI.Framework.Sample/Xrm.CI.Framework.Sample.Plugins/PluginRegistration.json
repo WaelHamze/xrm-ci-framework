@@ -1,34 +1,9 @@
-{
+﻿{
   "Id": "e091c0c0-2d49-e811-a957-0022480050c6",
   "Name": "Xrm.CI.Framework.Sample.Plugins.dll",
   "IsolationMode": "Sandbox",
   "SourceType": "Database",
   "PluginTypes": [
-    {
-      "Id": "656afac1-2d49-e811-a957-0022480053e9",
-      "Description": "Contact Pre Operation Plugin",
-      "Name": "Xrm.CI.Framework.Sample.Plugins.ContactPreOperation",
-      "FriendlyName": "Contact Pre Operation Plugin",
-      "TypeName": "Xrm.CI.Framework.Sample.Plugins.ContactPreOperation",
-      "Steps": [
-        {
-          "Id": "bbffd4c1-2d49-e811-a956-00224800510b",
-          "Name": "Xrm.CI.Framework.Sample.Plugins.ContactPreOperation",
-          "MessageName": "Create",
-          "Description": "Contact Pre Operation Step",
-          "CustomConfiguration": null,
-          "FilteringAttributes": null,
-          "ImpersonatingUserFullname": null,
-          "Mode": "Synchronous",
-          "PrimaryEntityName": "contact",
-          "Rank": 1,
-          "Stage": "Preoperation",
-          "SupportedDeployment": "ServerOnly",
-          "Images": []
-        }
-      ],
-      "WorkflowActivityGroupName": null
-    },
     {
       "Id": "b8ffd4c1-2d49-e811-a956-00224800510b",
       "Description": "Account Post Create Async Plugin",
@@ -43,7 +18,7 @@
           "Description": "Account Post Create Async Step",
           "CustomConfiguration": null,
           "FilteringAttributes": null,
-          "ImpersonatingUserFullname": null,
+          "ImpersonatingUserFullname": "",
           "Mode": "Asynchronous",
           "PrimaryEntityName": "account",
           "Rank": 1,
@@ -58,6 +33,56 @@
               "ImageType": "PostImage"
             }
           ]
+        }
+      ],
+      "WorkflowActivityGroupName": null
+    },
+    {
+      "Id": "656afac1-2d49-e811-a957-0022480053e9",
+      "Description": "Contact Pre Operation Plugin",
+      "Name": "Xrm.CI.Framework.Sample.Plugins.ContactPreOperation",
+      "FriendlyName": "Contact Pre Operation Plugin",
+      "TypeName": "Xrm.CI.Framework.Sample.Plugins.ContactPreOperation",
+      "Steps": [
+        {
+          "Id": "bbffd4c1-2d49-e811-a956-00224800510b",
+          "Name": "Xrm.CI.Framework.Sample.Plugins.ContactPreOperation",
+          "MessageName": "Create",
+          "Description": "Contact Pre Operation Step",
+          "CustomConfiguration": null,
+          "FilteringAttributes": null,
+          "ImpersonatingUserFullname": "",
+          "Mode": "Synchronous",
+          "PrimaryEntityName": "contact",
+          "Rank": 1,
+          "Stage": "Preoperation",
+          "SupportedDeployment": "ServerOnly",
+          "Images": []
+        }
+      ],
+      "WorkflowActivityGroupName": null
+    },
+    {
+      "Id": "fad9406c-6c33-49e4-b8ff-39253ac9037c",
+      "Description": "Account Plugin for SampleAction",
+      "Name": "Xrm.CI.Framework.Sample.Plugins.AccountSampleActionPreOperation",
+      "FriendlyName": "Account Plugin for SampleAction",
+      "TypeName": "Xrm.CI.Framework.Sample.Plugins.AccountSampleActionPreOperation",
+      "Steps": [
+        {
+          "Id": "1269d7d8-c4aa-e811-a974-0022480050c6",
+          "Name": "Xrm.CI.Framework.Sample.Plugins.AccountSampleActionPreOperation: ud_SampleAction of account",
+          "MessageName": "ud_SampleAction",
+          "Description": "Xrm.CI.Framework.Sample.Plugins.AccountSampleActionPreOperation: ud_SampleAction of account",
+          "CustomConfiguration": null,
+          "FilteringAttributes": null,
+          "ImpersonatingUserFullname": "",
+          "Mode": "Synchronous",
+          "PrimaryEntityName": "account",
+          "Rank": 1,
+          "Stage": "Preoperation",
+          "SupportedDeployment": "ServerOnly",
+          "Images": []
         }
       ],
       "WorkflowActivityGroupName": null

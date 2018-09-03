@@ -34,15 +34,20 @@ Write-Verbose "asyncWaitTimeout = $asyncWaitTimeout"
 Write-Verbose "crmConnectionTimeout = $crmConnectionTimeout"
 Write-Verbose "artifactsFolder = $artifactsFolder"
 
-#Script Location
-$scriptPath = split-path -parent $MyInvocation.MyCommand.Definition
-Write-Verbose "Script Path: $scriptPath"
-
 $solutionFilename = $solutionFile.Substring($solutionFile.LastIndexOf("\") + 1)
 
 $logFilename = $solutionFilename.replace(".zip", "_importlog_" + [System.DateTime]::Now.ToString("yyyy_MM_dd__HH_mm") + ".xml")
 
-& "$scriptPath\Lib\xRMCIFramework\9.0.0\ImportSolution.ps1" -solutionFile "$solutionFile" -crmConnectionString "$CrmConnectionString" -override $override -publishWorkflows $publishWorkflows -overwriteUnmanagedCustomizations $overwriteUnmanagedCustomizations -skipProductUpdateDependencies $skipProductUpdateDependencies -ConvertToManaged $convertToManaged -HoldingSolution $holdingSolution -logsDirectory "$artifactsFolder" -logFileName "$logFilename" -AsyncWaitTimeout $AsyncWaitTimeout -Timeout $crmConnectionTimeout
+#MSCRM Tools
+$mscrmToolsPath = $env:MSCRM_Tools_Path
+Write-Verbose "MSCRM Tools Path: $mscrmToolsPath"
+
+if (-not $mscrmToolsPath)
+{
+	Write-Error "MSCRM_Tools_Path not found. Add 'MSCRM Tool Installer' before this task."
+}
+
+& "$mscrmToolsPath\xRMCIFramework\9.0.0\ImportSolution.ps1" -solutionFile "$solutionFile" -crmConnectionString "$CrmConnectionString" -override $override -publishWorkflows $publishWorkflows -overwriteUnmanagedCustomizations $overwriteUnmanagedCustomizations -skipProductUpdateDependencies $skipProductUpdateDependencies -ConvertToManaged $convertToManaged -HoldingSolution $holdingSolution -logsDirectory "$artifactsFolder" -logFileName "$logFilename" -AsyncWaitTimeout $AsyncWaitTimeout -Timeout $crmConnectionTimeout
 
 if (Test-Path "$artifactsFolder\$logFilename")
 {
