@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.Crm.Sdk.Messages;
+using System.Threading;
+using Xrm.Framework.CI.PowerShell.Cmdlets.Common;
 
 namespace Xrm.Framework.CI.PowerShell.Cmdlets
 {
@@ -24,12 +26,33 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
         [Parameter(Mandatory = true)]
         public int Language { get; set; }
 
+        [Parameter(Mandatory = false)]
+        public bool Async { get; set; } = true;
+
+        /// <summary>
+        /// <para type="description">Specify the timeout duration for waiting on async mode to complete. Default = 60 minutes</para>
+        /// </summary>
+        [Parameter(Mandatory = false)]
+        public int AsyncWaitTimeout { get; set; } = 60 * 60;
+
+        /// <summary>
+        /// <para type="description">The sleep interval between checks on the provisioning progress. Default = 15 seconds</para>
+        /// </summary>
+        [Parameter(Mandatory = false)]
+        public int SleepInterval { get; set; } = 15;
+
+        public void xx()
+        {
+            BeginProcessing();
+            ProcessRecord();
+        }
+
         protected override void ProcessRecord()
         {
             base.ProcessRecord();
 
-            var availableLanguagesPacks = ((RetrieveProvisionedLanguagesResponse)OrganizationService.Execute(new RetrieveProvisionedLanguagesRequest())).RetrieveProvisionedLanguages;
-            var installedLanguagePacks = ((RetrieveInstalledLanguagePacksResponse)OrganizationService.Execute(new RetrieveInstalledLanguagePacksRequest())).RetrieveInstalledLanguagePacks;
+            var availableLanguagesPacks = OrganizationService.GetProvisionedLanguages();
+            var installedLanguagePacks = OrganizationService.GetInstalledLanguages();
 
             if (availableLanguagesPacks.Contains(Language))
             {
@@ -42,16 +65,41 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
                 throw new ArgumentException($"LanguagePack {Language} is not installed on server", nameof(Language));
             }
 
-            if (Timeout == 0)
+            if (!Async && Timeout == 0)
             {
                 WriteWarning($"It's recommended to use Timeout parameter for this cmdlet. Language provisioning will continue on server if this cmdlet timeout.");
             }
 
-            OrganizationService.Execute(new ProvisionLanguageRequest
+            WriteVerbose("Executing ProvisionLanguageRequest");
+            var stopwatch = Stopwatch.StartNew();
+            if (Async)
             {
-                Language = Language
-            });
-            WriteVerbose($"LanguagePack {Language} sucessfully provisioned.");
+                var end = DateTime.Now.AddSeconds(AsyncWaitTimeout);
+                try
+                {
+                    OrganizationService.ProvisionLanguage(Language);
+                }
+                catch (TimeoutException ex)
+                {
+                    WriteVerbose($"Synchronous operation aborted after {stopwatch.Elapsed} with message {ex.Message}. But please be patient - operation will go forward in background.");
+                }
+
+                while (!OrganizationService.GetProvisionedLanguages().Contains(Language))
+                {
+                    if (end < DateTime.Now)
+                    {
+                        throw new Exception($"Asynchronous wait timeout after {stopwatch.Elapsed}");
+                    }
+
+                    Thread.Sleep(SleepInterval * 1000);
+                    WriteVerbose($"Sleeping for {SleepInterval} seconds");
+                }
+            }
+            else
+            {
+                OrganizationService.ProvisionLanguage(Language);
+            }
+            WriteVerbose($"LanguagePack {Language} sucessfully provisioned in {stopwatch.Elapsed}.");
         }
     }
 }

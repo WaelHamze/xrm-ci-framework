@@ -1,6 +1,5 @@
-﻿using System;
-using System.Management.Automation;
-using Microsoft.Crm.Sdk.Messages;
+﻿using System.Management.Automation;
+using Xrm.Framework.CI.PowerShell.Cmdlets.Common;
 
 namespace Xrm.Framework.CI.PowerShell.Cmdlets
 {
@@ -30,12 +29,12 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
             if (Type == LanguagePackGetType.Installed)
             {
                 WriteVerbose("Installed language packs");
-                WriteObject(((RetrieveInstalledLanguagePacksResponse)OrganizationService.Execute(new RetrieveInstalledLanguagePacksRequest())).RetrieveInstalledLanguagePacks);
+                WriteObject(OrganizationService.GetInstalledLanguages());
             }
             else
             {
                 WriteVerbose("Available (provisioned) language packs");
-                WriteObject(((RetrieveProvisionedLanguagesResponse)OrganizationService.Execute(new RetrieveProvisionedLanguagesRequest())).RetrieveProvisionedLanguages);
+                WriteObject(OrganizationService.GetProvisionedLanguages());
             }
         }
     }
