@@ -41,12 +41,6 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
         [Parameter(Mandatory = false)]
         public int SleepInterval { get; set; } = 15;
 
-        public void xx()
-        {
-            BeginProcessing();
-            ProcessRecord();
-        }
-
         protected override void ProcessRecord()
         {
             base.ProcessRecord();
