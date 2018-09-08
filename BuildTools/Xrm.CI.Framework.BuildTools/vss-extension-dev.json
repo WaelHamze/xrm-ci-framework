@@ -1,6 +1,0 @@
-{
-  "manifestVersion": 1,
-  "id": "xrm-ci-framework-build-tasks-dev",
-  "name": "Dynamics 365 Build Tools (Dev)",
-  "public":  false
-}
