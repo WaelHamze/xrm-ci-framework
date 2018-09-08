@@ -40,7 +40,7 @@ For ($i=0; $i -lt $array.Count; $i++)
 	$lookup = $array[$i][0]
 	$value =  $array[$i][1]
 
-	Write-Host ("Processing record with lookup: {0} - value: {1}" -f $lookup, $value)
+	Write-Host ("Processing record with lookup: {0}" -f $lookup)
 
     $records = Get-XrmEntities -ConnectionString $CrmConnectionString -EntityName $EntityName -Attribute $LookupFieldName -Value $lookup -ConditionOperator 0
 
@@ -74,7 +74,7 @@ For ($i=0; $i -lt $array.Count; $i++)
 	}
 	else
 	{
-		Write-Error ("Multiple matches found for {0}" -f $lookup)
+		Write-Error "Multiple matches found for $lookup"
 	}
 }
 
