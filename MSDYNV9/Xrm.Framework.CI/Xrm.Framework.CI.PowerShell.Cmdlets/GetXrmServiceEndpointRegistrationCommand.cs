@@ -1,4 +1,4 @@
-﻿using System;
+﻿   using System;
 using System.IO;
 using System.Management.Automation;
 using System.Text;
@@ -8,25 +8,19 @@ using Xrm.Framework.CI.PowerShell.Cmdlets.PluginRegistration;
 namespace Xrm.Framework.CI.PowerShell.Cmdlets
 {
     /// <summary>
-    /// <para type="synopsis">Plugin Registration.</para>
-    /// <para type="description">The Get-XrmPluginRegistration cmdlet reads an existing Plugin Assembly and steps in CRM.
+    /// <para type="synopsis">Service Endpoint Registration.</para>
+    /// <para type="description">The Get-XrmServiceEndpointRegistration cmdlet reads an existing Service Endpoints and steps in CRM.
     /// </summary>
     /// <example>
-    ///   <code>C:\PS>Get-XrmPluginRegistration -AssemblyPath $path -MappingFile $mappingFile</code>
-    ///   <para>Reads a Plugin Assembly Types, Steps and Images.</para>
+    ///   <code>C:\PS>Get-XrmServiceEndpointRegistration -MappingFile $mappingFile</code>
+    ///   <para>Reads a Service Endpoint and Steps.</para>
     /// </example>
-    [Cmdlet(VerbsCommon.Get, "XrmPluginRegistration")]
+    [Cmdlet(VerbsCommon.Get, "XrmServiceEndpointRegistration")]
     [OutputType(typeof(string))]
-    public class GetXrmPluginRegistrationCommand : XrmCommandBase
+    public class GetXrmServiceEndpointRegistrationCommand : XrmCommandBase
     {
         #region Parameters
-
-        /// <summary>
-        /// <para type="description">The name of assembly for which mapping file has to be created.</para>
-        /// </summary>
-        [Parameter(Mandatory = true)]
-        public string AssemblyName { get; set; }
-
+        
         [Parameter(Mandatory = true)]
         public string MappingFile { get; set; }
 
@@ -37,15 +31,15 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
         protected override void ProcessRecord()
         {
             base.ProcessRecord();
-            WriteVerbose("Get Plugin Registration Mapping intiated");
+            WriteVerbose("Get Service Endpoint Registration Mapping intiated");
             using (var context = new CIContext(OrganizationService))
             {
                 PluginRegistrationHelper pluginRegistrationHelper = new PluginRegistrationHelper(OrganizationService, context, WriteVerbose, WriteWarning);
                 WriteVerbose("PluginRegistrationHelper intiated");
-                WriteVerbose($"Assembly Name: {AssemblyName}");
+                //WriteVerbose($"Solution Name: {SolutionName}");
                 WriteVerbose($"Mapping Path: {MappingFile}");
-                var assembly = pluginRegistrationHelper.GetAssemblyRegistration(AssemblyName);
-                pluginRegistrationHelper.SerializerObjectToFile(MappingFile, assembly);
+                var webHookList = pluginRegistrationHelper.GetServiceEndpoints(Guid.Empty);
+                pluginRegistrationHelper.SerializerObjectToFile(MappingFile, webHookList);
             }
 
             WriteVerbose("Get Plugin Registration Mapping completed");

@@ -31,9 +31,11 @@
     <Compile Include="CloneSolutionAsPatch.ps1" />
     <Compile Include="CloneSolutionAsSolution.ps1" />
     <Compile Include="CopySolutionComponents.ps1" />
+    <Compile Include="GetServiceEndpointRegistration.ps1" />
     <Compile Include="RemoveSolutionComponents.ps1" />
     <Compile Include="GetPluginRegistration.ps1" />
     <Compile Include="PluginRegistration.ps1" />
+    <Compile Include="ServiceEndpointRegistration.ps1" />
     <Compile Include="SetOnlineInstanceAdminMode.ps1" />
     <Compile Include="DeleteOnlineInstance.ps1" />
     <Compile Include="DeployPackage.ps1" />

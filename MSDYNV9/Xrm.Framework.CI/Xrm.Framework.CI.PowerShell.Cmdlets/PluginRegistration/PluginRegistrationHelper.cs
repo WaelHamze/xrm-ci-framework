@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Xrm.Framework.CI.PowerShell.Cmdlets.PluginRegistration;
+using System.IO;
 
 namespace Xrm.Framework.CI.PowerShell.Cmdlets
 {
@@ -161,9 +162,11 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
             // AddComponentToSolution(Id, ComponentType.PluginType, solutionName);
             logVerbose?.Invoke($"UpsertPluginType {Id} completed");
 
+            var typeRef = new EntityReference(PluginType.EntityLogicalName, Id);
+
             foreach (var step in pluginType.Steps)
             {
-                var sdkMessageProcessingStepId = UpsertSdkMessageProcessingStep(Id, step, solutionName, registrationType);
+                var sdkMessageProcessingStepId = UpsertSdkMessageProcessingStep(typeRef, step, solutionName, registrationType);
                 logVerbose?.Invoke($"Upsert SdkMessageProcessingStep {sdkMessageProcessingStepId} completed");
                 foreach (var image in step.Images)
                 {
@@ -173,12 +176,88 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
             }
         }
 
-        private Guid UpsertSdkMessageProcessingStep(Guid parentId, Step step, string solutionName, RegistrationTypeEnum registrationType)
+        public List<ServiceEndpt> GetServiceEndpoints(Guid solutionId) => pluginRepository.GetServiceEndpoints(solutionId);
+
+        public void SerializerObjectToFile(string mappingFile, object obj)
+        {
+            var fileInfo = new FileInfo(mappingFile);
+            switch (fileInfo.Extension.ToLower())
+            {
+                case ".json":
+                    Serializers.SaveJson(mappingFile, obj);
+                    break;
+                case ".xml":
+                    Serializers.SaveXml(mappingFile, obj);
+                    break;
+                default:
+                    throw new ArgumentException("Only .json and .xml mapping files are supported", nameof(mappingFile));
+            }
+        }
+
+        public void UpsertServiceEndpoints(List<ServiceEndpt> serviceEndptLst, string solutionName, RegistrationTypeEnum registrationType)
+        {
+            foreach (var serviceEndPt in serviceEndptLst)
+            {
+                logVerbose?.Invoke($"UpsertServiceEndpoint {serviceEndPt.Id} started");
+                var serviceEndpointId = UpsertServiceEndpoint(serviceEndPt, solutionName, RegistrationTypeEnum.Upsert);
+                logVerbose?.Invoke($"UpsertServiceEndpoint {serviceEndpointId} completed");
+
+                foreach (var step in serviceEndPt.Steps)
+                {
+                    var serviceEndpointRef = new EntityReference(ServiceEndpoint.EntityLogicalName, serviceEndpointId);
+                    logVerbose?.Invoke($"UpsertSdkMessageProcessingStep {step.Id} started");
+                    var stepId = UpsertSdkMessageProcessingStep(serviceEndpointRef, step, solutionName, registrationType);
+                    logVerbose?.Invoke($"UpsertSdkMessageProcessingStep {stepId} completed");
+                }
+
+            }
+        }
+
+        private Guid UpsertServiceEndpoint(ServiceEndpt serviceEndpt, string solutionName, RegistrationTypeEnum registrationType)
+        {
+            Guid Id = serviceEndpt?.Id ?? Guid.Empty;
+            if (Id == Guid.Empty)
+            {
+                Id = pluginRepository.GetServiceEndpointId(serviceEndpt.Name);
+                logWarning?.Invoke($"Extracted id using plugin assembly name {serviceEndpt.Name}");
+            }
+
+            var serviceEndpoint = new ServiceEndpoint()
+            {
+                Name = serviceEndpt.Name,
+                NamespaceAddress = serviceEndpt.NamespaceAddress,
+                ContractEnum = serviceEndpt.Contract,
+                Path = serviceEndpt.Path,
+                MessageFormatEnum = serviceEndpt.MessageFormat,
+                AuthTypeEnum = serviceEndpt.AuthType,
+                SASKeyName = serviceEndpt.SASKeyName,
+                SASKey = serviceEndpt.SASKey,
+                SASToken = serviceEndpt.SASToken,
+                UserClaimEnum = serviceEndpt.UserClaim,
+                Description = serviceEndpt.Description,
+                Url = serviceEndpt.Url,                
+                AuthValue = serviceEndpt.AuthValue,
+            };
+
+            if (!Id.Equals(Guid.Empty) && registrationType == RegistrationTypeEnum.Reset)
+            {
+                DeleteObjectWithDependencies(Id, ComponentType.ServiceEndpoint);
+            }
+
+            logVerbose?.Invoke($"Trying to upsert {serviceEndpt.Name} / {Id}");
+            Id = ExecuteRequest(registrationType, Id, serviceEndpoint);
+
+            AddComponentToSolution(Id, ComponentType.ServiceEndpoint, solutionName);
+
+            return Id;
+        }
+
+        public Guid UpsertSdkMessageProcessingStep(EntityReference parentRef, Step step, string solutionName, RegistrationTypeEnum registrationType)
         {
             Guid Id = step.Id ?? Guid.Empty;
             if (Id == Guid.Empty)
             {
-                Id = pluginRepository.GetSdkMessageProcessingStepId(parentId, step.Name);
+                Id = pluginRepository.GetSdkMessageProcessingStepId(parentRef.Id, step.Name);
                 logWarning?.Invoke($"Extracted id using plugin step name {step.Name}");
             }
 
@@ -197,7 +276,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
                 Rank = step.Rank,
                 StageEnum = step.Stage,
                 SupportedDeploymentEnum = step.SupportedDeployment,
-                EventHandler = new EntityReference(PluginType.EntityLogicalName, parentId),
+                EventHandler = parentRef,
             };
 
             Id = ExecuteRequest(registrationType, Id, sdkMessageProcessingStep);

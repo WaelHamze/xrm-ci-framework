@@ -21693,11 +21693,23 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 				return this.CreateQuery<Xrm.Framework.CI.PowerShell.Cmdlets.Common.ACIViewMapper>();
 			}
 		}
-		
-		/// <summary>
-		/// Gets a binding to the set of all <see cref="Xrm.Framework.CI.PowerShell.Cmdlets.Common.AppConfig"/> entities.
+
+        /// <summary>
+		/// Gets a binding to the set of all <see cref="Xrm.Framework.CI.PowerShell.Cmdlets.Common.ServiceEndpoint"/> entities.
 		/// </summary>
-		public System.Linq.IQueryable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.AppConfig> AppConfigSet
+		public System.Linq.IQueryable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.ServiceEndpoint> ServiceEndpointSet
+        {
+            [System.Diagnostics.DebuggerNonUserCode()]
+            get
+            {
+                return this.CreateQuery<Xrm.Framework.CI.PowerShell.Cmdlets.Common.ServiceEndpoint>();
+            }
+        }
+
+        /// <summary>
+        /// Gets a binding to the set of all <see cref="Xrm.Framework.CI.PowerShell.Cmdlets.Common.AppConfig"/> entities.
+        /// </summary>
+        public System.Linq.IQueryable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.AppConfig> AppConfigSet
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
