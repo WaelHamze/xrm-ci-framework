@@ -8,7 +8,9 @@ param(
 [string]$PackageDirectory,
 [string]$LogsDirectory = '',
 [string]$PackageDeploymentPath,
-[string]$Timeout = '00:30:00' #optional timeout for Import-CrmPackage, default to 1 hour and 20 min. See https://technet.microsoft.com/en-us/library/dn756301.aspx
+[string]$Timeout = '00:30:00', #optional timeout for Import-CrmPackage, default to 1 hour and 20 min. See https://technet.microsoft.com/en-us/library/dn756301.aspx
+[string]$RuntimePackageSettings,
+[string]$UnpackFilesDirectory
 )
 
 $ErrorActionPreference = "Stop"
@@ -22,6 +24,8 @@ Write-Verbose "PackageDirectory = $PackageDirectory"
 Write-Verbose "LogsDirectory = $LogsDirectory"
 Write-Verbose "PackageDeploymentPath = $PackageDeploymentPath"
 Write-Verbose "Timeout = $Timeout"
+Write-Verbose "RuntimePackageSettings = $RuntimePackageSettings"
+Write-Verbose "UnpackFilesDirectory = $UnpackFilesDirectory"
 
 #Script Location
 $scriptPath = split-path -parent $MyInvocation.MyCommand.Definition
@@ -72,6 +76,24 @@ $CRMConn = Get-CrmConnection -ConnectionString $CrmConnectionString -Verbose
 
 #Deploy Package
 
-Import-CrmPackage –CrmConnection $CRMConn –PackageDirectory $PackageDirectory –PackageName $PackageName -LogWriteDirectory $LogsDirectory -Timeout $Timeout -Verbose
+$PackageParams = @{
+	CrmConnection = $CRMConn
+	PackageDirectory = $PackageDirectory
+	PackageName = $PackageName
+	LogWriteDirectory = $LogsDirectory
+	Timeout = $Timeout
+}
+
+if ($UnpackFilesDirectory)
+{
+	$PackageParams.UnpackFilesDirectory = $UnpackFilesDirectory
+}
+
+if ($RuntimePackageSettings)
+{
+	$PackageParams.RuntimePackageSettings = $RuntimePackageSettings
+}
+
+Import-CrmPackage -Verbose @PackageParams
 
 Write-Verbose 'Leaving DeployPackage.ps1'
