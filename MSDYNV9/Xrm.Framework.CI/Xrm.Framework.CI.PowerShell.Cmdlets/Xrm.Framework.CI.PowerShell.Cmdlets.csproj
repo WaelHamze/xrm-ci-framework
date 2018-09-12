@@ -111,6 +111,13 @@
     <Compile Include="Common\SdkMessageProcessingStep_Mode.cs" />
     <Compile Include="Common\SdkMessageProcessingStep_Stage.cs" />
     <Compile Include="Common\SdkMessageProcessingStep_SupportedDeployment.cs" />
+    <Compile Include="Common\ServiceEndpoint.cs" />
+    <Compile Include="Common\ServiceEndpoint_AuthType.cs" />
+    <Compile Include="Common\ServiceEndpoint_ConnectionMode.cs" />
+    <Compile Include="Common\ServiceEndpoint_Contract.cs" />
+    <Compile Include="Common\ServiceEndpoint_MessageFormat.cs" />
+    <Compile Include="Common\ServiceEndpoint_NamespaceFormat.cs" />
+    <Compile Include="Common\ServiceEndpoint_UserClaim.cs" />
     <Compile Include="Common\Workflow.cs" />
     <Compile Include="Common\Workflow_BusinessProcessType.cs" />
     <Compile Include="Common\Workflow_Category.cs" />
@@ -125,6 +132,7 @@
     <Compile Include="ExportXrmSolutionCommand.cs" />
     <Compile Include="GetXrmEntitiesCommand.cs" />
     <Compile Include="GetXrmEntityCommand.cs" />
+    <Compile Include="GetXrmServiceEndpointRegistrationCommand.cs" />
     <Compile Include="GetXrmPluginRegistrationCommand.cs" />
     <Compile Include="GetXrmSolutionCommand.cs" />
     <Compile Include="GetXrmSolutionImportLog.cs" />
@@ -142,6 +150,7 @@
     <Compile Include="PluginRegistration\Image.cs" />
     <Compile Include="PluginRegistration\PluginRegistrationHelper.cs" />
     <Compile Include="PluginRegistration\PluginRepository.cs" />
+    <Compile Include="PluginRegistration\ServiceEndpt.cs" />
     <Compile Include="PluginRegistration\Step.cs" />
     <Compile Include="PluginRegistration\Types.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -154,6 +163,7 @@
     <Compile Include="RemoveXrmSolutionComponentsCommand.cs" />
     <Compile Include="SelectXrmWhoAmICommand.cs" />
     <Compile Include="RemoveXrmPluginAssembly.cs" />
+    <Compile Include="SetXrmServiceEndpointRegistration.cs" />
     <Compile Include="SetXrmWebResourcesFromFolder.cs" />
     <Compile Include="SetXrmWebResource.cs" />
     <Compile Include="SetXrmPluginAssembly.cs" />
@@ -247,7 +257,7 @@
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties PluginRegistration_4PluginAssemblyExample_1json__JSONSchema="PluginRegistrationSchema.json" PluginRegistration_4WorkflowAssemblyExample_1json__JSONSchema="PluginRegistrationSchema.json" />
+      <UserProperties PluginRegistration_4WorkflowAssemblyExample_1json__JSONSchema="PluginRegistrationSchema.json" PluginRegistration_4PluginAssemblyExample_1json__JSONSchema="PluginRegistrationSchema.json" />
     </VisualStudio>
   </ProjectExtensions>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
