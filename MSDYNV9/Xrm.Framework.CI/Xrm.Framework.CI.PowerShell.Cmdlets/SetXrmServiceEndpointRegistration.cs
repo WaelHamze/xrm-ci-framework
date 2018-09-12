@@ -38,6 +38,12 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
         {
             base.ProcessRecord();
 
+            if (RegistrationType == RegistrationTypeEnum.Delsert)
+            {
+                WriteWarning("Registration Type not supported.");
+                return;
+            }
+
             WriteVerbose("Service Endpoint Registration intiated");
             
             using (var context = new CIContext(OrganizationService))
@@ -46,7 +52,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
                 WriteVerbose("PluginRegistrationHelper intiated");
 
                 if (File.Exists(MappingFile))
-                {
+                {   
                     var serviceEndptLst = ReadServiceEndpointMappingFile(MappingFile);
                     pluginRegistrationHelper.UpsertServiceEndpoints(serviceEndptLst, SolutionName, RegistrationType);
                 }

@@ -99,6 +99,10 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
                     logVerbose?.Invoke($"Trying to delete {componentType} {objectId}");
                     organizationService.Delete(PluginAssembly.EntityLogicalName, objectId);
                     break;
+                case ComponentType.ServiceEndpoint:
+                    logVerbose?.Invoke($"Trying to delete {componentType} {objectId}");
+                    organizationService.Delete(ServiceEndpoint.EntityLogicalName, objectId);
+                    break;
             }
         }
 
@@ -199,7 +203,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
             foreach (var serviceEndPt in serviceEndptLst)
             {
                 logVerbose?.Invoke($"UpsertServiceEndpoint {serviceEndPt.Id} started");
-                var serviceEndpointId = UpsertServiceEndpoint(serviceEndPt, solutionName, RegistrationTypeEnum.Upsert);
+                var serviceEndpointId = UpsertServiceEndpoint(serviceEndPt, solutionName, registrationType);
                 logVerbose?.Invoke($"UpsertServiceEndpoint {serviceEndpointId} completed");
 
                 foreach (var step in serviceEndPt.Steps)
