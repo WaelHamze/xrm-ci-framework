@@ -49,6 +49,7 @@
     <Compile Include="PublishCustomizations.ps1" />
     <Compile Include="BackupOnlineInstance.ps1" />
     <Compile Include="RestoreOnlineInstance.ps1" />
+    <Compile Include="SetTlsVersion.ps1" />
     <Compile Include="SplitPluginAssembly.ps1" />
     <Compile Include="UpdateDevloperToolkitWebResources.ps1" />
     <Compile Include="UpdateFoldersWebResources.ps1" />
