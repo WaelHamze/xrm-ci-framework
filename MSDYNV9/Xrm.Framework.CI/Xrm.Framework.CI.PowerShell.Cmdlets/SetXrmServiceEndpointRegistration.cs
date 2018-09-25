@@ -56,6 +56,10 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
                     var serviceEndptLst = ReadServiceEndpointMappingFile(MappingFile);
                     pluginRegistrationHelper.UpsertServiceEndpoints(serviceEndptLst, SolutionName, RegistrationType);
                 }
+                else
+                {
+                    WriteError(new ErrorRecord(new ArgumentException("No operation performed. Mapping File not exists."), "FileMissing", ErrorCategory.InvalidArgument, MappingFile));
+                }
             }
 
             WriteVerbose("Service Endpoint completed");

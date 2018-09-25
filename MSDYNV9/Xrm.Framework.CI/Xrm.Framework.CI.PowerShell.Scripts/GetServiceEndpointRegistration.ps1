@@ -4,6 +4,7 @@
 
 param(
 	[string]$CrmConnectionString,
+	[string]$EndpointName,
 	[string]$MappingFile,
 	[int]$Timeout=360
 )
@@ -14,6 +15,7 @@ Write-Verbose 'Entering GetServiceEndpointRegistration.ps1' -Verbose
 
 #Parameters
 Write-Verbose "CrmConnectionString = $CrmConnectionString"
+Write-Verbose "EndpointName = $EndpointName"
 Write-Verbose "MappingFile = $MappingFile"
 Write-Verbose "Timeout = $Timeout"
 
@@ -27,6 +29,6 @@ Write-Verbose "Importing CIToolkit: $xrmCIToolkit"
 Import-Module $xrmCIToolkit
 Write-Verbose "Imported CIToolkit"
 
-Get-XrmServiceEndpointRegistration -MappingFile $MappingFile -ConnectionString $CrmConnectionString -Timeout $Timeout -Verbose
+Get-XrmServiceEndpointRegistration -EndpointName $EndpointName -MappingFile $MappingFile -ConnectionString $CrmConnectionString -Timeout $Timeout -Verbose
 
 Write-Verbose 'Leaving GetServiceEndpointRegistration.ps1' -Verbose
