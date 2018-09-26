@@ -69,10 +69,16 @@ if ($IncludeVersionInSolutionFile)
 $packManagedFile = $packStringBuilder + "_managed.zip"
 $packUnmanagedFile = $packStringBuilder + ".zip"
 
-$targetFile = $OutputPath + "\" + $packUnmanagedFile
+if ($PackageType -eq 'Managed')
+{
+	$targetFile = $OutputPath + "\" + $packManagedFile
+}
+else
+{
+	$targetFile = $OutputPath + "\" + $packUnmanagedFile
+}
 
 $SolutionPackagerFile = $scriptPath + "\SolutionPackager.exe"
-
 if ($CoreToolsPath)
 {
 	$SolutionPackagerFile = $CoreToolsPath + "\SolutionPackager.exe"

@@ -23,6 +23,7 @@
     <file src="bin\release\Microsoft.Xrm.Sdk.dll" target="tools" />
     <file src="bin\release\Microsoft.Crm.Sdk.Proxy.dll" target="tools" />
     <file src="bin\release\Microsoft.Xrm.Tooling.Connector.dll" target="tools" />
+    <file src="bin\release\Microsoft.Rest.ClientRuntime.dll" target="tools" />
     <file src="bin\release\Microsoft.IdentityModel.Clients.ActiveDirectory.dll" target="tools" />
     <file src="bin\release\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll" target="tools" />
     <file src="bin\release\Microsoft.Xrm.Sdk.Deployment.dll" target="tools" />

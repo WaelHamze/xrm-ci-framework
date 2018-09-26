@@ -83,6 +83,57 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.PluginRegistration
             return pluginAssemblyObject;
         }
 
+        public Guid GetServiceEndpointId(string name) =>
+            (from a in context.ServiceEndpointSet
+             where a.Name == name
+             select a.Id).FirstOrDefault();
+        public List<ServiceEndpt> GetServiceEndpoints(Guid solutionId, string endpointName)
+        {
+            var webHookList = new List<ServiceEndpt>();
+            var resuts = (from serviceEndpoint in context.ServiceEndpointSet
+                          join steps in context.SdkMessageProcessingStepSet on serviceEndpoint.ServiceEndpointId equals steps.EventHandler.Id
+                          join message in context.SdkMessageSet on steps.SdkMessageId.Id equals message.SdkMessageId
+                          join filters in context.SdkMessageFilterSet on steps.SdkMessageFilterId.Id equals filters.Id
+                          select MapWebHookObject(webHookList, serviceEndpoint, steps, message, filters)).ToList(); ;
+            
+            if (!string.IsNullOrEmpty(endpointName))
+            {
+                webHookList = (from webHook in webHookList
+                               where webHook.Name.Equals(endpointName)
+                               select webHook).ToList();
+            }
+
+            return webHookList;
+        }
+
+        private static bool MapWebHookObject(List<ServiceEndpt> webHookList, ServiceEndpoint serviceEndpoint, SdkMessageProcessingStep steps, SdkMessage message, SdkMessageFilter filters)
+        {
+            var webHook = MapWebHook(serviceEndpoint);
+            webHook.Steps.Add(MapStep(steps, message, filters));
+            webHookList.Add(webHook);
+
+            return true;
+        }
+
+        private static ServiceEndpt MapWebHook(ServiceEndpoint serviceEndpoint) => new ServiceEndpt()
+        {
+            Id = serviceEndpoint.ServiceEndpointId,
+            Name = serviceEndpoint.Name,
+            NamespaceAddress = serviceEndpoint.NamespaceAddress,
+            Contract = serviceEndpoint.ContractEnum,
+            Path = serviceEndpoint.Path,
+            MessageFormat = serviceEndpoint.MessageFormatEnum,
+            SASKey = serviceEndpoint.SASKey,
+            SASKeyName = serviceEndpoint.SASKeyName,
+            SASToken = serviceEndpoint.SASToken,
+            UserClaim = serviceEndpoint.UserClaimEnum,
+            Description = serviceEndpoint.Description,
+            Url = serviceEndpoint.Url,
+            AuthType = serviceEndpoint.AuthTypeEnum,
+            AuthValue = serviceEndpoint.AuthValue,
+            Steps = new List<Step>(),
+        };
+
         private static Assembly MapPluginAssemblyObject(PluginAssembly pluginAssembly) => new Assembly
         {
             Id = pluginAssembly.PluginAssemblyId,
@@ -139,25 +190,27 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.PluginRegistration
             , Assembly pluginAssembly
             , Type pluginType)
         {
-            var step = new Step()
-            {
-                Id = pluginStep.SdkMessageProcessingStepId,
-                CustomConfiguration = pluginStep.Configuration,
-                Name = pluginStep.Name,
-                Description = pluginStep.Description,
-                FilteringAttributes = pluginStep.FilteringAttributes,
-                ImpersonatingUserFullname = pluginStep.ImpersonatingUserId?.Name ?? string.Empty,
-                MessageName = sdkMessage?.Name,
-                Mode = pluginStep.ModeEnum,
-                PrimaryEntityName = filter.PrimaryObjectTypeCode,
-                Rank = pluginStep.Rank,
-                Stage = pluginStep.StageEnum,
-                SupportedDeployment = pluginStep.SupportedDeploymentEnum,
-                Images = new List<Image>()
-            };
+            var step = MapStep(pluginStep, sdkMessage, filter);
             MapImagesObject(images, pluginStep, step);
             pluginType.Steps.Add(step);
         }
+
+        private static Step MapStep(SdkMessageProcessingStep pluginStep, SdkMessage sdkMessage, SdkMessageFilter filter) => new Step()
+        {
+            Id = pluginStep.SdkMessageProcessingStepId,
+            CustomConfiguration = pluginStep.Configuration,
+            Name = pluginStep.Name,
+            Description = pluginStep.Description,
+            FilteringAttributes = pluginStep.FilteringAttributes,
+            ImpersonatingUserFullname = pluginStep.ImpersonatingUserId?.Name ?? string.Empty,
+            MessageName = sdkMessage?.CategoryName,
+            Mode = pluginStep.ModeEnum,
+            PrimaryEntityName = filter.PrimaryObjectTypeCode,
+            Rank = pluginStep.Rank,
+            Stage = pluginStep.StageEnum,
+            SupportedDeployment = pluginStep.SupportedDeploymentEnum,
+            Images = new List<Image>()
+        };
 
         private static void MapImagesObject(List<SdkMessageProcessingStepImage> images, SdkMessageProcessingStep pluginStep, Step step)
         {
