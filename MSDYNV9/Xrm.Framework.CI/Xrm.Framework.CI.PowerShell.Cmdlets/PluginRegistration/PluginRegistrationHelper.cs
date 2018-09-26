@@ -180,7 +180,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
             }
         }
 
-        public List<ServiceEndpt> GetServiceEndpoints(Guid solutionId) => pluginRepository.GetServiceEndpoints(solutionId);
+        public List<ServiceEndpt> GetServiceEndpoints(string solutionName, string endPointName) => pluginRepository.GetServiceEndpoints(Guid.Empty, endPointName);
 
         public void SerializerObjectToFile(string mappingFile, object obj)
         {
