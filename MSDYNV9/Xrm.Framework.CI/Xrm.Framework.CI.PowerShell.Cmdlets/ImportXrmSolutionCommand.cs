@@ -3,6 +3,7 @@ using System.IO;
 using System.Management.Automation;
 using System.Threading;
 using Microsoft.Crm.Sdk.Messages;
+using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Messages;
 using Microsoft.Xrm.Sdk.Query;
 using Xrm.Framework.CI.PowerShell.Cmdlets.Common;
@@ -139,6 +140,8 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
 
             if (ImportAsync)
             {
+                base.WriteVerbose(string.Format("Importing solution in Async Mode"));
+
                 var asyncRequest = new ExecuteAsyncRequest
                 {
                     Request = importSolutionRequest,
@@ -152,15 +155,96 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
 
                 if (WaitForCompletion)
                 {
+                    base.WriteVerbose(string.Format("Awaiting for Async Operation Completion"));
+
                     AwaitCompletion(asyncJobId);
                 }
             }
             else
             {
-                OrganizationService.Execute(importSolutionRequest);
+                base.WriteVerbose(string.Format("Importing solution in Sync Mode"));
+
+                try
+                {
+                    OrganizationService.Execute(importSolutionRequest);
+                }
+                catch(Exception ex)
+                {
+                    if (WaitForCompletion)
+                    {
+                        base.WriteWarning(ex.Message);
+
+                        base.WriteVerbose("Exception Handled. Attempting to Wait for ImportJob to Complete.");
+
+                        AwaitImportJob();
+                    }
+                    else
+                    {
+                        throw ex;
+                    }
+                }
             }
 
             base.WriteVerbose(string.Format("{0} Imported Completed {1}", SolutionFilePath, ImportJobId));
+        }
+
+        private void AwaitImportJob()
+        {
+            DateTime end = DateTime.Now.AddSeconds(AsyncWaitTimeout);
+
+            bool completed = false;
+            bool notFound = false;
+            while (!completed)
+            {
+                if (end < DateTime.Now)
+                {
+                    throw new Exception(string.Format("Import Timeout Exceeded: {0}", AsyncWaitTimeout));
+                }
+
+                base.WriteVerbose(string.Format("Sleeping for {0} seconds", SleepInterval));
+                Thread.Sleep(SleepInterval * 1000);
+
+                ImportJob importJob;
+
+                try
+                {
+                    QueryByAttribute query = new QueryByAttribute(ImportJob.EntityLogicalName);
+                    query.AddAttributeValue("importjobid", ImportJobId);
+                    query.ColumnSet = new ColumnSet("importjobid", "completedon", "progress");
+
+                    EntityCollection results = OrganizationService.RetrieveMultiple(query);
+
+                    if (results.TotalRecordCount == 0)
+                    {
+                        completed = true;
+                        notFound = true;
+                        break;
+                    }
+                    else
+                    {
+                        importJob = results.Entities[0].ToEntity<ImportJob>();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    base.WriteWarning(ex.Message);
+                    continue;
+                }
+
+                base.WriteVerbose(string.Format("Progress: {0}", importJob.Progress));
+                base.WriteVerbose(string.Format("CompletedOn: {0}", importJob.CompletedOn));
+
+                if (importJob.CompletedOn.HasValue)
+                {
+                    completed = true;
+                    break;
+                }
+            }
+
+            if (notFound)
+            {
+                throw new Exception(String.Format("Unable to find Import Job with Id {0}", ImportJobId));
+            }
         }
 
         private void AwaitCompletion(Guid asyncJobId)
@@ -175,8 +259,8 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
                     throw new Exception(string.Format("Import Timeout Exceeded: {0}", AsyncWaitTimeout));
                 }
 
-                Thread.Sleep(SleepInterval * 1000);
                 base.WriteVerbose(string.Format("Sleeping for {0} seconds", SleepInterval));
+                Thread.Sleep(SleepInterval * 1000);
 
                 AsyncOperation asyncOperation;
 
