@@ -94,6 +94,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AddXrmEntityCommand.cs" />
+    <Compile Include="AddXrmLanguagePack.cs" />
     <Compile Include="AddXrmSolutionPatch.cs" />
     <Compile Include="Common\ComponentState.cs" />
     <Compile Include="Common\EntityOptionSetEnum.cs" />
@@ -132,6 +133,7 @@
     <Compile Include="ExportXrmSolutionCommand.cs" />
     <Compile Include="GetXrmEntitiesCommand.cs" />
     <Compile Include="GetXrmEntityCommand.cs" />
+    <Compile Include="GetXrmLanguagePacks.cs" />
     <Compile Include="GetXrmServiceEndpointRegistrationCommand.cs" />
     <Compile Include="GetXrmPluginRegistrationCommand.cs" />
     <Compile Include="GetXrmSolutionCommand.cs" />
@@ -173,6 +175,7 @@
     <Compile Include="SplitXrmPluginAssembly.cs" />
     <Compile Include="XrmCommandBase.cs" />
     <Compile Include="SetXrmPluginRegistration.cs" />
+    <Compile Include="Common\XrmSdkMessagesHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config">
@@ -257,7 +260,7 @@
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties PluginRegistration_4WorkflowAssemblyExample_1json__JSONSchema="PluginRegistrationSchema.json" PluginRegistration_4PluginAssemblyExample_1json__JSONSchema="PluginRegistrationSchema.json" />
+      <UserProperties PluginRegistration_4PluginAssemblyExample_1json__JSONSchema="PluginRegistrationSchema.json" PluginRegistration_4WorkflowAssemblyExample_1json__JSONSchema="PluginRegistrationSchema.json" />
     </VisualStudio>
   </ProjectExtensions>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

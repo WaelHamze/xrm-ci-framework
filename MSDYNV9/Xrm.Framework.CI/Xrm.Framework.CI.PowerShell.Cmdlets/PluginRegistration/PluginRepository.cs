@@ -87,15 +87,22 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.PluginRegistration
             (from a in context.ServiceEndpointSet
              where a.Name == name
              select a.Id).FirstOrDefault();
-        public List<ServiceEndpt> GetServiceEndpoints(Guid solutionId)
+        public List<ServiceEndpt> GetServiceEndpoints(Guid solutionId, string endpointName)
         {
             var webHookList = new List<ServiceEndpt>();
-            var pluginAssembliesTypes = (from serviceEndpoint in context.ServiceEndpointSet
-                                         join steps in context.SdkMessageProcessingStepSet on serviceEndpoint.ServiceEndpointId equals steps.EventHandler.Id
-                                         join message in context.SdkMessageSet on steps.SdkMessageId.Id equals message.SdkMessageId
-                                         join filters in context.SdkMessageFilterSet on steps.SdkMessageFilterId.Id equals filters.Id
-                                         // where serviceEndpoint.SolutionId == solutionId
-                                         select MapWebHookObject(webHookList, serviceEndpoint, steps, message, filters)).ToList();
+            var resuts = (from serviceEndpoint in context.ServiceEndpointSet
+                          join steps in context.SdkMessageProcessingStepSet on serviceEndpoint.ServiceEndpointId equals steps.EventHandler.Id
+                          join message in context.SdkMessageSet on steps.SdkMessageId.Id equals message.SdkMessageId
+                          join filters in context.SdkMessageFilterSet on steps.SdkMessageFilterId.Id equals filters.Id
+                          select MapWebHookObject(webHookList, serviceEndpoint, steps, message, filters)).ToList(); ;
+            
+            if (!string.IsNullOrEmpty(endpointName))
+            {
+                webHookList = (from webHook in webHookList
+                               where webHook.Name.Equals(endpointName)
+                               select webHook).ToList();
+            }
+
             return webHookList;
         }
 
