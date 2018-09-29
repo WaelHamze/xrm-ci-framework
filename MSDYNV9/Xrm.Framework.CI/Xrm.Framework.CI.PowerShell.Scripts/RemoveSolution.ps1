@@ -32,8 +32,8 @@ if ($solution -eq $null)
     Write-Error "Solution is not currently installed."
 }
 
-Write-Verbose "Removing solution, version: $solution.Version"
+Write-Host "Removing solution, version: $solution.Version"
 Remove-XrmRecord -EntityName "solution" -Id $solution.Id -ConnectionString $CrmConnectionString -Timeout $Timeout -Verbose
-Write-Verbose "Solution removed"
+Write-Host "Solution removed"
 
 Write-Verbose 'Leaving RemoveSolution.ps1'
