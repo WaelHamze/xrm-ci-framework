@@ -14,7 +14,7 @@ $ErrorActionPreference = "Stop"
 Write-Verbose 'Entering UpdateConfigurationRecords.ps1'
 
 #Parameters
-Write-Verbose "EntityName = $EntityName,"
+Write-Verbose "EntityName = $EntityName"
 Write-Verbose "LookupFieldName = $LookupFieldName"
 Write-Verbose "ValueFieldNames = $ValueFieldNames"
 Write-Verbose "ConfigurationRecordsJson = $ConfigurationRecordsJson"
@@ -53,7 +53,7 @@ For ($i=0; $i -lt $array.Count; $i++)
 
 		For ($j=0; $j -lt $valueFields.Count; $j++)
 		{
-			$value =  $array[$i][$j]
+			$value =  $array[$i][$j+1]
 
 			if ($record.Attributes[$valueFields[$j]] -cne $value)
 			{
@@ -80,7 +80,7 @@ For ($i=0; $i -lt $array.Count; $i++)
 
 		For ($j=0; $j -lt $valueFields.Count; $j++)
 		{
-			$value =  $array[$i][$j]
+			$value =  $array[$i][$j+1]
 			$record.Attributes[$valueFields[$j]] = $value
 		}
 
