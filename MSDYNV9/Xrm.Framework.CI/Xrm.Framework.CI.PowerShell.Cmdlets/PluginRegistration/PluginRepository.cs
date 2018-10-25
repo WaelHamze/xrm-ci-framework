@@ -208,7 +208,9 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.PluginRegistration
             PrimaryEntityName = filter.PrimaryObjectTypeCode,
             Rank = pluginStep.Rank,
             Stage = pluginStep.StageEnum,
+            AsyncAutoDelete = pluginStep.AsyncAutoDelete,
             SupportedDeployment = pluginStep.SupportedDeploymentEnum,
+            StateCode = pluginStep.StateCode,
             Images = new List<Image>()
         };
 
