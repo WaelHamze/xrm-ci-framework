@@ -203,7 +203,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.PluginRegistration
             Description = pluginStep.Description,
             FilteringAttributes = pluginStep.FilteringAttributes,
             ImpersonatingUserFullname = pluginStep.ImpersonatingUserId?.Name ?? string.Empty,
-            MessageName = sdkMessage?.CategoryName,
+            MessageName = sdkMessage?.Name,
             Mode = pluginStep.ModeEnum,
             PrimaryEntityName = filter.PrimaryObjectTypeCode,
             Rank = pluginStep.Rank,
