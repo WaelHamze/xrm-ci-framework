@@ -7,11 +7,11 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
 {
     /// <summary>
     /// <para type="synopsis">Publishes a Dynamics Theme</para>
-    /// <para type="description">The Set-PublishTheme cmdlet publishes a Dynamics Theme.
+    /// <para type="description">The Publish-XrmTheme cmdlet publishes a Dynamics Theme.
     /// </summary>
     /// <example>
-    ///   <code>C:\PS>Set-PublishTheme -ThemeName $themeName</code>
-    ///   <para>Updates a record.</para>
+    ///   <code>C:\PS>Publish-XrmTheme -ThemeId $themeId</code>
+    ///   <para>Publishes a theme.</para>
     /// </example>
     /// <para type="link" uri="https://docs.microsoft.com/en-us/dotnet/api/microsoft.crm.sdk.messages.publishthemerequest?view=dynamics-general-ce-9">PublishTheme.</para>
     [Cmdlet(VerbsData.Publish, "XrmTheme")]
