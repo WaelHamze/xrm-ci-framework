@@ -14,8 +14,8 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
     ///   <para>Updates a record.</para>
     /// </example>
     /// <para type="link" uri="https://docs.microsoft.com/en-us/dotnet/api/microsoft.crm.sdk.messages.publishthemerequest?view=dynamics-general-ce-9">PublishTheme.</para>
-    [Cmdlet(VerbsCommon.Set, "PublishTheme")]
-    public class SetPublishThemeCommand : XrmCommandBase
+    [Cmdlet(VerbsData.Publish, "XrmTheme")]
+    public class PublishXrmThemeCommand : XrmCommandBase
     {
         #region Parameters
 
