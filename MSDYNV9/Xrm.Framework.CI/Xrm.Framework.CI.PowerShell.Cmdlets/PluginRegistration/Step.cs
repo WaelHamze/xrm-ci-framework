@@ -30,6 +30,10 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
 
         public SdkMessageProcessingStep_SupportedDeployment? SupportedDeployment { get; set; }
 
+        public bool? AsyncAutoDelete { get; set; }
+
+        public SdkMessageProcessingStepState? StateCode { get; set; }
+
         public List<Image> Images { get; set; }
 
         public override int GetHashCode()
@@ -46,6 +50,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
             hashCode = hashCode * -1521134295 + EqualityComparer<int?>.Default.GetHashCode(Rank);
             hashCode = hashCode * -1521134295 + EqualityComparer<SdkMessageProcessingStep_Stage?>.Default.GetHashCode(Stage);
             hashCode = hashCode * -1521134295 + EqualityComparer<SdkMessageProcessingStep_SupportedDeployment?>.Default.GetHashCode(SupportedDeployment);
+            hashCode = hashCode * -1521134295 + EqualityComparer<bool?>.Default.GetHashCode(AsyncAutoDelete);
             return hashCode;
         }
     }
