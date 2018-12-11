@@ -2,6 +2,10 @@
 using System.Management.Automation;
 using Microsoft.Crm.Sdk.Messages;
 using Microsoft.Xrm.Sdk;
+using Xrm.Framework.CI.PowerShell.Cmdlets.Common;
+using System.Linq;
+using Microsoft.Xrm.Sdk.Messages;
+using Microsoft.Xrm.Sdk.Query;
 
 namespace Xrm.Framework.CI.PowerShell.Cmdlets
 {
@@ -22,8 +26,11 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
         /// <summary>
         /// <para type="description">The Id of the Theme to publish.</para>
         /// </summary>
-        [Parameter(Mandatory = true)]
-        public Guid ThemeId { get; set; }
+        [Parameter(Mandatory = false)]
+        public Guid? ThemeId { get; set; }
+
+        [Parameter(Mandatory = false)]
+        public string ThemeName { get; set; }
 
         #endregion
 
@@ -33,10 +40,37 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
         {
             base.ProcessRecord();
 
+            if (ThemeId == null && ThemeName == null)
+            {
+                throw new Exception("ThemeId or ThemeName not provided");
+            }
+
+            if (ThemeId != null && ThemeName != null)
+            {
+                throw new Exception("Only 1 of ThemeId or ThemeName can be specified");
+            }
+
+            if (ThemeName != null)
+            {
+                //query for the theme to get the Id
+                var q = new QueryExpression("theme");
+                q.Criteria.AddCondition("name", ConditionOperator.Equal, ThemeName);
+
+                var entities = OrganizationService.RetrieveMultiple(q);
+                if (!entities.Entities.Any())
+                {
+                    throw new Exception("Could not locate theme by name");
+                }
+
+                ThemeId = entities.Entities.First().Id;
+
+            }
+
+
             base.WriteVerbose(string.Format("Publishing Theme"));
 
             var req = new PublishThemeRequest();
-            req.Target = new EntityReference("theme", ThemeId);
+            req.Target = new EntityReference("theme", ThemeId.Value);
 
             OrganizationService.Execute(req);
 
