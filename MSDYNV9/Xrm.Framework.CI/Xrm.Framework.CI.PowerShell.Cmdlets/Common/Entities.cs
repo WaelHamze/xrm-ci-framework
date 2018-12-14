@@ -22564,5 +22564,17 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 				return this.CreateQuery<Xrm.Framework.CI.PowerShell.Cmdlets.Common.WebResource>();
 			}
 		}
-	}
+
+	    /// <summary>
+	    /// Gets a binding to the set of all <see cref="Xrm.Framework.CI.PowerShell.Cmdlets.Common.DuplicateRule"/> entities.
+	    /// </summary>
+	    public System.Linq.IQueryable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.DuplicateRule> DuplicateRuleSet
+        {
+	        [System.Diagnostics.DebuggerNonUserCode()]
+	        get
+	        {
+	            return this.CreateQuery<Xrm.Framework.CI.PowerShell.Cmdlets.Common.DuplicateRule>();
+	        }
+	    }
+    }
 }
