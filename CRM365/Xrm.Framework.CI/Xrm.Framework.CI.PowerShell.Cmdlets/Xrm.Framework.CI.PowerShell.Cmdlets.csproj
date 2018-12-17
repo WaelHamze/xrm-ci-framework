@@ -124,6 +124,7 @@
     <Compile Include="RemoveXrmEntityCommand.cs" />
     <Compile Include="RemoveXrmRecordCommand.cs" />
     <Compile Include="SelectXrmWhoAmICommand.cs" />
+    <Compile Include="PublishXrmThemeCommand.cs" />
     <Compile Include="SetXrmEntityCommand.cs" />
     <Compile Include="SetXrmSolutionVersionCommand.cs" />
     <Compile Include="SetXrmSolutionVersionInFolderCommand.cs" />
