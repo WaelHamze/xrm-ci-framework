@@ -58,6 +58,7 @@
     <Compile Include="UpdatePluginAssembly.ps1" />
     <Compile Include="UpdateConfigurationRecords.ps1" />
     <Compile Include="UpdateSecureConfiguration.ps1" />
+    <Compile Include="UpdateSolutionDescriptionInCRM.ps1" />
     <Compile Include="UpdateSolutionVersionInCRM.ps1" />
     <Compile Include="UpdateWebResource.ps1" />
     <Compile Include="UpdateWebResourcesJsonMapping.ps1" />
