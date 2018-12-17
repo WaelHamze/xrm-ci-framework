@@ -161,6 +161,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PublishXrmCustomizationsCommand.cs" />
     <Compile Include="PluginRegistration\RegistrationTypeEnum.cs" />
+    <Compile Include="PublishXrmDuplicateRuleCommand.cs" />
     <Compile Include="RemoveXrmEntityAttribute.cs" />
     <Compile Include="RemoveXrmEntityCommand.cs" />
     <Compile Include="RemoveXrmRecordCommand.cs" />
