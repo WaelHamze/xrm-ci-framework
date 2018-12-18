@@ -31,6 +31,7 @@
     <Compile Include="CloneSolutionAsPatch.ps1" />
     <Compile Include="CloneSolutionAsSolution.ps1" />
     <Compile Include="CopySolutionComponents.ps1" />
+    <Compile Include="CreateSolution.ps1" />
     <Compile Include="GetServiceEndpointRegistration.ps1" />
     <Compile Include="RemoveSolution.ps1" />
     <Compile Include="RemoveSolutionComponents.ps1" />
@@ -57,6 +58,7 @@
     <Compile Include="UpdatePluginAssembly.ps1" />
     <Compile Include="UpdateConfigurationRecords.ps1" />
     <Compile Include="UpdateSecureConfiguration.ps1" />
+    <Compile Include="UpdateSolutionDescriptionInCRM.ps1" />
     <Compile Include="UpdateSolutionVersionInCRM.ps1" />
     <Compile Include="UpdateWebResource.ps1" />
     <Compile Include="UpdateWebResourcesJsonMapping.ps1" />

@@ -203,12 +203,14 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.PluginRegistration
             Description = pluginStep.Description,
             FilteringAttributes = pluginStep.FilteringAttributes,
             ImpersonatingUserFullname = pluginStep.ImpersonatingUserId?.Name ?? string.Empty,
-            MessageName = sdkMessage?.CategoryName,
+            MessageName = sdkMessage?.Name,
             Mode = pluginStep.ModeEnum,
             PrimaryEntityName = filter.PrimaryObjectTypeCode,
             Rank = pluginStep.Rank,
             Stage = pluginStep.StageEnum,
+            AsyncAutoDelete = pluginStep.AsyncAutoDelete,
             SupportedDeployment = pluginStep.SupportedDeploymentEnum,
+            StateCode = pluginStep.StateCode,
             Images = new List<Image>()
         };
 

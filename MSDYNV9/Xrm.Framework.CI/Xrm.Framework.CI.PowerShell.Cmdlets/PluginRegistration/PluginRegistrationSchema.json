@@ -254,6 +254,28 @@
                     "Both"
                   ]
                 },
+                "StateCode": {
+                  "$id": "/properties/PluginTypes/items/properties/Steps/items/properties/StateCode",
+                  "type": "string",
+                  "title": "The State Code of Plugin step to register ",
+                  "default": "",
+                  "examples": [
+                    "Enabled"
+                  ],
+                  "enum": [
+                    "Enabled",
+                    "Disabled"
+                  ]
+                },
+                "AsyncAutoDelete": {
+                  "$id": "/properties/PluginTypes/items/properties/Steps/items/properties/AsyncAutoDelete",
+                  "type": "boolean",
+                  "title": "The AsyncAutoDelete of Plugin step to register ",
+                  "default": "",
+                  "examples": [
+                    false
+                  ]
+                },
                 "Images": {
                   "$id": "/properties/PluginTypes/items/properties/Steps/items/properties/Images",
                   "type": "array",
