@@ -107,6 +107,7 @@
     <Compile Include="Common\Entities.cs" />
     <Compile Include="Common\XrmSolutionInfo.cs" />
     <Compile Include="Common\XrmThemeInfo.cs" />
+    <Compile Include="ImportXrmThemeCommand.cs" />
     <Compile Include="ImportXrmAccessTeamTemplatesCommand.cs" />
     <Compile Include="ExportXrmAccessTeamTemplatesCommand.cs" />
     <Compile Include="ExportXrmSolutionCommand.cs" />

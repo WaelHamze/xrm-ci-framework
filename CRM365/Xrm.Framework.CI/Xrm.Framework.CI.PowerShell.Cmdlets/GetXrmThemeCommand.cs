@@ -77,10 +77,27 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
             {
                 themeInfo.LogoId = theme.GetAttributeValue<EntityReference>("logoid").Id ;
             }
+            themeInfo.HeaderColor = theme.GetAttributeValue<string>("headercolor");
+            themeInfo.HoverLinkEffect = theme.GetAttributeValue<string>("hoverlinkeffect");
+            themeInfo.LogoToolTip = theme.GetAttributeValue<string>("logotooltip");
+            themeInfo.MainColor = theme.GetAttributeValue<string>("maincolor");
+            themeInfo.NavBarBackgroundColor = theme.GetAttributeValue<string>("navbarbackgroundcolor");
+            themeInfo.NavBarShelfColor = theme.GetAttributeValue<string>("navbarshelfcolor");
+            themeInfo.PageHeaderBackgroundColor = theme.GetAttributeValue<string>("pageheaderbackgroundcolor");
+            themeInfo.PanelHeaderBackgroundColor = theme.GetAttributeValue<string>("panelheaderbackgroundcolor");
+            themeInfo.ProcessControlColor = theme.GetAttributeValue<string>("processcontrolcolor");
+            themeInfo.SelectedLinkEffect = theme.GetAttributeValue<string>("selectedlinkeffect");
+            themeInfo.AccentColor = theme.GetAttributeValue<string>("accentcolor");
+            themeInfo.BackgroundColor = theme.GetAttributeValue<string>("backgroundcolor");
+            themeInfo.ControlBorder = theme.GetAttributeValue<string>("controlborder");
+            themeInfo.ControlShade = theme.GetAttributeValue<string>("controlshade");
+            themeInfo.DefaultCustomEntityColor = theme.GetAttributeValue<string>("defaultcustomentitycolor");
+            themeInfo.DefaultEntityColor = theme.GetAttributeValue<string>("defaultentitycolor");
+            themeInfo.GlobalLinkColor = theme.GetAttributeValue<string>("globallinkcolor");
 
             WriteObject(themeInfo);
 
-            base.WriteVerbose(string.Format("Theme Published"));
+            base.WriteVerbose(string.Format("Got Theme"));
         }
 
         #endregion
