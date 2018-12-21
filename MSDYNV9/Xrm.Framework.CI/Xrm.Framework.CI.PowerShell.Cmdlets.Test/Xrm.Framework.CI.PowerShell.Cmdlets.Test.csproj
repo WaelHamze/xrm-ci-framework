@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Xrm.Framework.CI.Common\Xrm.Framework.CI.Common.csproj" />
     <ProjectReference Include="..\Xrm.Framework.CI.PowerShell.Cmdlets\Xrm.Framework.CI.PowerShell.Cmdlets.csproj" />
   </ItemGroup>
 
