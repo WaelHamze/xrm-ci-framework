@@ -5,6 +5,7 @@ using System.Management.Automation;
 using System.Text;
 using Microsoft.Crm.Sdk.Messages;
 using Microsoft.Xrm.Sdk;
+using Xrm.Framework.CI.Common.Entities;
 using Xrm.Framework.CI.PowerShell.Cmdlets.Common;
 
 namespace Xrm.Framework.CI.PowerShell.Cmdlets

@@ -3,6 +3,7 @@ using System.IO;
 using System.Management.Automation;
 using Microsoft.Crm.Sdk.Messages;
 using Microsoft.Xrm.Sdk.Query;
+using Xrm.Framework.CI.Common.Entities;
 using Xrm.Framework.CI.PowerShell.Cmdlets.Common;
 
 namespace Xrm.Framework.CI.PowerShell.Cmdlets

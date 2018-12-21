@@ -4,6 +4,8 @@ using System;
 using System.Management.Automation;
 using System.Net;
 using System.Threading;
+using Xrm.Framework.CI.Common.Logging;
+using Xrm.Framework.CI.PowerShell.Cmdlets.Logging;
 
 namespace Xrm.Framework.CI.PowerShell.Cmdlets
 {
@@ -15,6 +17,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
         private int ConnectRetryCount = 3;
 
         protected virtual IOrganizationService OrganizationService { get; private set; }
+        protected virtual ILogger Logger { get; set; }
 
         /// <summary>
         /// <para type="description">The connectionstring to the crm organization (see https://msdn.microsoft.com/en-us/library/mt608573.aspx ).</para>
@@ -35,6 +38,8 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
             SetSecurityProtocol();
 
             ConnectToCRM();
+
+            Logger = new PSLogger(this);
         }
 
         private void SetSecurityProtocol()

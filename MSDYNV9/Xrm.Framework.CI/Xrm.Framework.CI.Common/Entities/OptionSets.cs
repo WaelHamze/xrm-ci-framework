@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
+namespace Xrm.Framework.CI.Common.Entities
 {
 	
 	

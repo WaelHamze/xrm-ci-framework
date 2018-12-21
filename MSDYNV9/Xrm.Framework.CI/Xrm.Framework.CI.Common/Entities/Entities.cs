@@ -10,7 +10,7 @@
 
 [assembly: Microsoft.Xrm.Sdk.Client.ProxyTypesAssemblyAttribute()]
 
-namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
+namespace Xrm.Framework.CI.Common.Entities
 {
 	
 	
@@ -696,14 +696,14 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		/// Status of the system job.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
-		public System.Nullable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.AsyncOperationState> StateCode
+		public System.Nullable<Xrm.Framework.CI.Common.Entities.AsyncOperationState> StateCode
 		{
 			get
 			{
 				Microsoft.Xrm.Sdk.OptionSetValue optionSet = this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statecode");
 				if ((optionSet != null))
 				{
-					return ((Xrm.Framework.CI.PowerShell.Cmdlets.Common.AsyncOperationState)(System.Enum.ToObject(typeof(Xrm.Framework.CI.PowerShell.Cmdlets.Common.AsyncOperationState), optionSet.Value)));
+					return ((Xrm.Framework.CI.Common.Entities.AsyncOperationState)(System.Enum.ToObject(typeof(Xrm.Framework.CI.Common.Entities.AsyncOperationState), optionSet.Value)));
 				}
 				else
 				{
@@ -1144,14 +1144,14 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		/// Status of the bulk deletion job.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
-		public System.Nullable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.BulkDeleteOperationState> StateCode
+		public System.Nullable<Xrm.Framework.CI.Common.Entities.BulkDeleteOperationState> StateCode
 		{
 			get
 			{
 				Microsoft.Xrm.Sdk.OptionSetValue optionSet = this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statecode");
 				if ((optionSet != null))
 				{
-					return ((Xrm.Framework.CI.PowerShell.Cmdlets.Common.BulkDeleteOperationState)(System.Enum.ToObject(typeof(Xrm.Framework.CI.PowerShell.Cmdlets.Common.BulkDeleteOperationState), optionSet.Value)));
+					return ((Xrm.Framework.CI.Common.Entities.BulkDeleteOperationState)(System.Enum.ToObject(typeof(Xrm.Framework.CI.Common.Entities.BulkDeleteOperationState), optionSet.Value)));
 				}
 				else
 				{
@@ -1876,14 +1876,14 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		/// Status of the duplicate detection rule.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
-		public System.Nullable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.DuplicateRuleState> StateCode
+		public System.Nullable<Xrm.Framework.CI.Common.Entities.DuplicateRuleState> StateCode
 		{
 			get
 			{
 				Microsoft.Xrm.Sdk.OptionSetValue optionSet = this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statecode");
 				if ((optionSet != null))
 				{
-					return ((Xrm.Framework.CI.PowerShell.Cmdlets.Common.DuplicateRuleState)(System.Enum.ToObject(typeof(Xrm.Framework.CI.PowerShell.Cmdlets.Common.DuplicateRuleState), optionSet.Value)));
+					return ((Xrm.Framework.CI.Common.Entities.DuplicateRuleState)(System.Enum.ToObject(typeof(Xrm.Framework.CI.Common.Entities.DuplicateRuleState), optionSet.Value)));
 				}
 				else
 				{
@@ -4982,14 +4982,14 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		/// Status of the SDK message processing step.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
-		public System.Nullable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SdkMessageProcessingStepState> StateCode
+		public System.Nullable<Xrm.Framework.CI.Common.Entities.SdkMessageProcessingStepState> StateCode
 		{
 			get
 			{
 				Microsoft.Xrm.Sdk.OptionSetValue optionSet = this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statecode");
 				if ((optionSet != null))
 				{
-					return ((Xrm.Framework.CI.PowerShell.Cmdlets.Common.SdkMessageProcessingStepState)(System.Enum.ToObject(typeof(Xrm.Framework.CI.PowerShell.Cmdlets.Common.SdkMessageProcessingStepState), optionSet.Value)));
+					return ((Xrm.Framework.CI.Common.Entities.SdkMessageProcessingStepState)(System.Enum.ToObject(typeof(Xrm.Framework.CI.Common.Entities.SdkMessageProcessingStepState), optionSet.Value)));
 				}
 				else
 				{
@@ -11229,14 +11229,14 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		/// Status of the process.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
-		public System.Nullable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.WorkflowState> StateCode
+		public System.Nullable<Xrm.Framework.CI.Common.Entities.WorkflowState> StateCode
 		{
 			get
 			{
 				Microsoft.Xrm.Sdk.OptionSetValue optionSet = this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statecode");
 				if ((optionSet != null))
 				{
-					return ((Xrm.Framework.CI.PowerShell.Cmdlets.Common.WorkflowState)(System.Enum.ToObject(typeof(Xrm.Framework.CI.PowerShell.Cmdlets.Common.WorkflowState), optionSet.Value)));
+					return ((Xrm.Framework.CI.Common.Entities.WorkflowState)(System.Enum.ToObject(typeof(Xrm.Framework.CI.Common.Entities.WorkflowState), optionSet.Value)));
 				}
 				else
 				{
@@ -11669,200 +11669,200 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		}
 		
 		/// <summary>
-		/// Gets a binding to the set of all <see cref="Xrm.Framework.CI.PowerShell.Cmdlets.Common.AsyncOperation"/> entities.
+		/// Gets a binding to the set of all <see cref="Xrm.Framework.CI.Common.Entities.AsyncOperation"/> entities.
 		/// </summary>
-		public System.Linq.IQueryable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.AsyncOperation> AsyncOperationSet
+		public System.Linq.IQueryable<Xrm.Framework.CI.Common.Entities.AsyncOperation> AsyncOperationSet
 		{
 			get
 			{
-				return this.CreateQuery<Xrm.Framework.CI.PowerShell.Cmdlets.Common.AsyncOperation>();
+				return this.CreateQuery<Xrm.Framework.CI.Common.Entities.AsyncOperation>();
 			}
 		}
 		
 		/// <summary>
-		/// Gets a binding to the set of all <see cref="Xrm.Framework.CI.PowerShell.Cmdlets.Common.BulkDeleteOperation"/> entities.
+		/// Gets a binding to the set of all <see cref="Xrm.Framework.CI.Common.Entities.BulkDeleteOperation"/> entities.
 		/// </summary>
-		public System.Linq.IQueryable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.BulkDeleteOperation> BulkDeleteOperationSet
+		public System.Linq.IQueryable<Xrm.Framework.CI.Common.Entities.BulkDeleteOperation> BulkDeleteOperationSet
 		{
 			get
 			{
-				return this.CreateQuery<Xrm.Framework.CI.PowerShell.Cmdlets.Common.BulkDeleteOperation>();
+				return this.CreateQuery<Xrm.Framework.CI.Common.Entities.BulkDeleteOperation>();
 			}
 		}
 		
 		/// <summary>
-		/// Gets a binding to the set of all <see cref="Xrm.Framework.CI.PowerShell.Cmdlets.Common.Dependency"/> entities.
+		/// Gets a binding to the set of all <see cref="Xrm.Framework.CI.Common.Entities.Dependency"/> entities.
 		/// </summary>
-		public System.Linq.IQueryable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.Dependency> DependencySet
+		public System.Linq.IQueryable<Xrm.Framework.CI.Common.Entities.Dependency> DependencySet
 		{
 			get
 			{
-				return this.CreateQuery<Xrm.Framework.CI.PowerShell.Cmdlets.Common.Dependency>();
+				return this.CreateQuery<Xrm.Framework.CI.Common.Entities.Dependency>();
 			}
 		}
 		
 		/// <summary>
-		/// Gets a binding to the set of all <see cref="Xrm.Framework.CI.PowerShell.Cmdlets.Common.DuplicateRule"/> entities.
+		/// Gets a binding to the set of all <see cref="Xrm.Framework.CI.Common.Entities.DuplicateRule"/> entities.
 		/// </summary>
-		public System.Linq.IQueryable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.DuplicateRule> DuplicateRuleSet
+		public System.Linq.IQueryable<Xrm.Framework.CI.Common.Entities.DuplicateRule> DuplicateRuleSet
 		{
 			get
 			{
-				return this.CreateQuery<Xrm.Framework.CI.PowerShell.Cmdlets.Common.DuplicateRule>();
+				return this.CreateQuery<Xrm.Framework.CI.Common.Entities.DuplicateRule>();
 			}
 		}
 		
 		/// <summary>
-		/// Gets a binding to the set of all <see cref="Xrm.Framework.CI.PowerShell.Cmdlets.Common.ImportJob"/> entities.
+		/// Gets a binding to the set of all <see cref="Xrm.Framework.CI.Common.Entities.ImportJob"/> entities.
 		/// </summary>
-		public System.Linq.IQueryable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.ImportJob> ImportJobSet
+		public System.Linq.IQueryable<Xrm.Framework.CI.Common.Entities.ImportJob> ImportJobSet
 		{
 			get
 			{
-				return this.CreateQuery<Xrm.Framework.CI.PowerShell.Cmdlets.Common.ImportJob>();
+				return this.CreateQuery<Xrm.Framework.CI.Common.Entities.ImportJob>();
 			}
 		}
 		
 		/// <summary>
-		/// Gets a binding to the set of all <see cref="Xrm.Framework.CI.PowerShell.Cmdlets.Common.PluginAssembly"/> entities.
+		/// Gets a binding to the set of all <see cref="Xrm.Framework.CI.Common.Entities.PluginAssembly"/> entities.
 		/// </summary>
-		public System.Linq.IQueryable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.PluginAssembly> PluginAssemblySet
+		public System.Linq.IQueryable<Xrm.Framework.CI.Common.Entities.PluginAssembly> PluginAssemblySet
 		{
 			get
 			{
-				return this.CreateQuery<Xrm.Framework.CI.PowerShell.Cmdlets.Common.PluginAssembly>();
+				return this.CreateQuery<Xrm.Framework.CI.Common.Entities.PluginAssembly>();
 			}
 		}
 		
 		/// <summary>
-		/// Gets a binding to the set of all <see cref="Xrm.Framework.CI.PowerShell.Cmdlets.Common.PluginType"/> entities.
+		/// Gets a binding to the set of all <see cref="Xrm.Framework.CI.Common.Entities.PluginType"/> entities.
 		/// </summary>
-		public System.Linq.IQueryable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.PluginType> PluginTypeSet
+		public System.Linq.IQueryable<Xrm.Framework.CI.Common.Entities.PluginType> PluginTypeSet
 		{
 			get
 			{
-				return this.CreateQuery<Xrm.Framework.CI.PowerShell.Cmdlets.Common.PluginType>();
+				return this.CreateQuery<Xrm.Framework.CI.Common.Entities.PluginType>();
 			}
 		}
 		
 		/// <summary>
-		/// Gets a binding to the set of all <see cref="Xrm.Framework.CI.PowerShell.Cmdlets.Common.SdkMessage"/> entities.
+		/// Gets a binding to the set of all <see cref="Xrm.Framework.CI.Common.Entities.SdkMessage"/> entities.
 		/// </summary>
-		public System.Linq.IQueryable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SdkMessage> SdkMessageSet
+		public System.Linq.IQueryable<Xrm.Framework.CI.Common.Entities.SdkMessage> SdkMessageSet
 		{
 			get
 			{
-				return this.CreateQuery<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SdkMessage>();
+				return this.CreateQuery<Xrm.Framework.CI.Common.Entities.SdkMessage>();
 			}
 		}
 		
 		/// <summary>
-		/// Gets a binding to the set of all <see cref="Xrm.Framework.CI.PowerShell.Cmdlets.Common.SdkMessageFilter"/> entities.
+		/// Gets a binding to the set of all <see cref="Xrm.Framework.CI.Common.Entities.SdkMessageFilter"/> entities.
 		/// </summary>
-		public System.Linq.IQueryable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SdkMessageFilter> SdkMessageFilterSet
+		public System.Linq.IQueryable<Xrm.Framework.CI.Common.Entities.SdkMessageFilter> SdkMessageFilterSet
 		{
 			get
 			{
-				return this.CreateQuery<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SdkMessageFilter>();
+				return this.CreateQuery<Xrm.Framework.CI.Common.Entities.SdkMessageFilter>();
 			}
 		}
 		
 		/// <summary>
-		/// Gets a binding to the set of all <see cref="Xrm.Framework.CI.PowerShell.Cmdlets.Common.SdkMessageProcessingStep"/> entities.
+		/// Gets a binding to the set of all <see cref="Xrm.Framework.CI.Common.Entities.SdkMessageProcessingStep"/> entities.
 		/// </summary>
-		public System.Linq.IQueryable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SdkMessageProcessingStep> SdkMessageProcessingStepSet
+		public System.Linq.IQueryable<Xrm.Framework.CI.Common.Entities.SdkMessageProcessingStep> SdkMessageProcessingStepSet
 		{
 			get
 			{
-				return this.CreateQuery<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SdkMessageProcessingStep>();
+				return this.CreateQuery<Xrm.Framework.CI.Common.Entities.SdkMessageProcessingStep>();
 			}
 		}
 		
 		/// <summary>
-		/// Gets a binding to the set of all <see cref="Xrm.Framework.CI.PowerShell.Cmdlets.Common.SdkMessageProcessingStepImage"/> entities.
+		/// Gets a binding to the set of all <see cref="Xrm.Framework.CI.Common.Entities.SdkMessageProcessingStepImage"/> entities.
 		/// </summary>
-		public System.Linq.IQueryable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SdkMessageProcessingStepImage> SdkMessageProcessingStepImageSet
+		public System.Linq.IQueryable<Xrm.Framework.CI.Common.Entities.SdkMessageProcessingStepImage> SdkMessageProcessingStepImageSet
 		{
 			get
 			{
-				return this.CreateQuery<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SdkMessageProcessingStepImage>();
+				return this.CreateQuery<Xrm.Framework.CI.Common.Entities.SdkMessageProcessingStepImage>();
 			}
 		}
 		
 		/// <summary>
-		/// Gets a binding to the set of all <see cref="Xrm.Framework.CI.PowerShell.Cmdlets.Common.ServiceEndpoint"/> entities.
+		/// Gets a binding to the set of all <see cref="Xrm.Framework.CI.Common.Entities.ServiceEndpoint"/> entities.
 		/// </summary>
-		public System.Linq.IQueryable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.ServiceEndpoint> ServiceEndpointSet
+		public System.Linq.IQueryable<Xrm.Framework.CI.Common.Entities.ServiceEndpoint> ServiceEndpointSet
 		{
 			get
 			{
-				return this.CreateQuery<Xrm.Framework.CI.PowerShell.Cmdlets.Common.ServiceEndpoint>();
+				return this.CreateQuery<Xrm.Framework.CI.Common.Entities.ServiceEndpoint>();
 			}
 		}
 		
 		/// <summary>
-		/// Gets a binding to the set of all <see cref="Xrm.Framework.CI.PowerShell.Cmdlets.Common.Solution"/> entities.
+		/// Gets a binding to the set of all <see cref="Xrm.Framework.CI.Common.Entities.Solution"/> entities.
 		/// </summary>
-		public System.Linq.IQueryable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.Solution> SolutionSet
+		public System.Linq.IQueryable<Xrm.Framework.CI.Common.Entities.Solution> SolutionSet
 		{
 			get
 			{
-				return this.CreateQuery<Xrm.Framework.CI.PowerShell.Cmdlets.Common.Solution>();
+				return this.CreateQuery<Xrm.Framework.CI.Common.Entities.Solution>();
 			}
 		}
 		
 		/// <summary>
-		/// Gets a binding to the set of all <see cref="Xrm.Framework.CI.PowerShell.Cmdlets.Common.SolutionComponent"/> entities.
+		/// Gets a binding to the set of all <see cref="Xrm.Framework.CI.Common.Entities.SolutionComponent"/> entities.
 		/// </summary>
-		public System.Linq.IQueryable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SolutionComponent> SolutionComponentSet
+		public System.Linq.IQueryable<Xrm.Framework.CI.Common.Entities.SolutionComponent> SolutionComponentSet
 		{
 			get
 			{
-				return this.CreateQuery<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SolutionComponent>();
+				return this.CreateQuery<Xrm.Framework.CI.Common.Entities.SolutionComponent>();
 			}
 		}
 		
 		/// <summary>
-		/// Gets a binding to the set of all <see cref="Xrm.Framework.CI.PowerShell.Cmdlets.Common.SolutionHistoryData"/> entities.
+		/// Gets a binding to the set of all <see cref="Xrm.Framework.CI.Common.Entities.SolutionHistoryData"/> entities.
 		/// </summary>
-		public System.Linq.IQueryable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SolutionHistoryData> SolutionHistoryDataSet
+		public System.Linq.IQueryable<Xrm.Framework.CI.Common.Entities.SolutionHistoryData> SolutionHistoryDataSet
 		{
 			get
 			{
-				return this.CreateQuery<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SolutionHistoryData>();
+				return this.CreateQuery<Xrm.Framework.CI.Common.Entities.SolutionHistoryData>();
 			}
 		}
 		
 		/// <summary>
-		/// Gets a binding to the set of all <see cref="Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser"/> entities.
+		/// Gets a binding to the set of all <see cref="Xrm.Framework.CI.Common.Entities.SystemUser"/> entities.
 		/// </summary>
-		public System.Linq.IQueryable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser> SystemUserSet
+		public System.Linq.IQueryable<Xrm.Framework.CI.Common.Entities.SystemUser> SystemUserSet
 		{
 			get
 			{
-				return this.CreateQuery<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>();
+				return this.CreateQuery<Xrm.Framework.CI.Common.Entities.SystemUser>();
 			}
 		}
 		
 		/// <summary>
-		/// Gets a binding to the set of all <see cref="Xrm.Framework.CI.PowerShell.Cmdlets.Common.WebResource"/> entities.
+		/// Gets a binding to the set of all <see cref="Xrm.Framework.CI.Common.Entities.WebResource"/> entities.
 		/// </summary>
-		public System.Linq.IQueryable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.WebResource> WebResourceSet
+		public System.Linq.IQueryable<Xrm.Framework.CI.Common.Entities.WebResource> WebResourceSet
 		{
 			get
 			{
-				return this.CreateQuery<Xrm.Framework.CI.PowerShell.Cmdlets.Common.WebResource>();
+				return this.CreateQuery<Xrm.Framework.CI.Common.Entities.WebResource>();
 			}
 		}
 		
 		/// <summary>
-		/// Gets a binding to the set of all <see cref="Xrm.Framework.CI.PowerShell.Cmdlets.Common.Workflow"/> entities.
+		/// Gets a binding to the set of all <see cref="Xrm.Framework.CI.Common.Entities.Workflow"/> entities.
 		/// </summary>
-		public System.Linq.IQueryable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.Workflow> WorkflowSet
+		public System.Linq.IQueryable<Xrm.Framework.CI.Common.Entities.Workflow> WorkflowSet
 		{
 			get
 			{
-				return this.CreateQuery<Xrm.Framework.CI.PowerShell.Cmdlets.Common.Workflow>();
+				return this.CreateQuery<Xrm.Framework.CI.Common.Entities.Workflow>();
 			}
 		}
 	}

@@ -6,7 +6,7 @@ using Microsoft.Crm.Sdk.Messages;
 using Microsoft.Xrm.Sdk.Messages;
 using Microsoft.Xrm.Sdk.Query;
 using System.Linq;
-using Xrm.Framework.CI.PowerShell.Cmdlets.Common;
+using Xrm.Framework.CI.Common.Entities;
 
 namespace Xrm.Framework.CI.PowerShell.Cmdlets
 {

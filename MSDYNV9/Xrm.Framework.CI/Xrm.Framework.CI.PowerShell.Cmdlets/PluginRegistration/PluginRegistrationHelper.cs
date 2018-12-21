@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Xrm.Framework.CI.PowerShell.Cmdlets.PluginRegistration;
 using System.IO;
+using Xrm.Framework.CI.Common.Entities;
 
 namespace Xrm.Framework.CI.PowerShell.Cmdlets
 {

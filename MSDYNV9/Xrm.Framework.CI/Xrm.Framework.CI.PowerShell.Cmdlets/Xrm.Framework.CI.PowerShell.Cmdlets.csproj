@@ -42,7 +42,7 @@
       <HintPath>..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.22.302111727\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.CrmSdk.XrmTooling.CoreAssembly.9.0.2.5\lib\net452\Microsoft.Rest.ClientRuntime.dll</HintPath>
+      <HintPath>..\packages\Microsoft.CrmSdk.XrmTooling.CoreAssembly.9.0.2.7\lib\net452\Microsoft.Rest.ClientRuntime.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Xrm.Sdk, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -57,7 +57,7 @@
       <HintPath>..\packages\Microsoft.CrmSdk.Workflow.9.0.2.5\lib\net452\Microsoft.Xrm.Sdk.Workflow.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Xrm.Tooling.Connector, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.CrmSdk.XrmTooling.CoreAssembly.9.0.2.5\lib\net452\Microsoft.Xrm.Tooling.Connector.dll</HintPath>
+      <HintPath>..\packages\Microsoft.CrmSdk.XrmTooling.CoreAssembly.9.0.2.7\lib\net452\Microsoft.Xrm.Tooling.Connector.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -99,8 +99,6 @@
     <Compile Include="AddXrmLanguagePack.cs" />
     <Compile Include="AddXrmSolution.cs" />
     <Compile Include="AddXrmSolutionPatch.cs" />
-    <Compile Include="Common\Entities.cs" />
-    <Compile Include="Common\OptionSets.cs" />
     <Compile Include="Common\XrmSolutionInfo.cs" />
     <Compile Include="ExportXrmAccessTeamTemplatesCommand.cs" />
     <Compile Include="ExportXrmSolutionCommand.cs" />
@@ -114,6 +112,7 @@
     <Compile Include="GetXrmSolutionInfoFromFolderCommand.cs" />
     <Compile Include="GetXrmSolutionInfoFromZipCommand.cs" />
     <Compile Include="ImportXrmAccessTeamTemplatesCommand.cs" />
+    <Compile Include="Logging\PSLogger.cs" />
     <Compile Include="MergeXrmSolutionCommand.cs" />
     <Compile Include="ImportXrmSolutionCommand.cs" />
     <Compile Include="MergeXrmSolutionPatches.cs" />
@@ -223,11 +222,15 @@
     <Content Include="bin\Release\System.Management.Automation.xml" />
     <Content Include="bin\Release\Xrm.Framework.CI.PowerShell.Cmdlets.dll" />
     <Content Include="bin\Release\Xrm.Framework.CI.PowerShell.Cmdlets.pdb" />
-    <Content Include="Common\EarlyBoundGenerator.Settings.xml" />
     <Content Include="icon_128x128.png" />
     <Content Include="readme.txt" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Xrm.Framework.CI.Common\Xrm.Framework.CI.Common.csproj">
+      <Project>{15de1597-6dab-4b21-840c-4818b7bc22ab}</Project>
+      <Name>Xrm.Framework.CI.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>
@@ -235,7 +238,7 @@
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties PluginRegistration_4PluginAssemblyExample_1json__JSONSchema="PluginRegistrationSchema.json" PluginRegistration_4WorkflowAssemblyExample_1json__JSONSchema="PluginRegistrationSchema.json" />
+      <UserProperties PluginRegistration_4WorkflowAssemblyExample_1json__JSONSchema="PluginRegistrationSchema.json" PluginRegistration_4PluginAssemblyExample_1json__JSONSchema="PluginRegistrationSchema.json" />
     </VisualStudio>
   </ProjectExtensions>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

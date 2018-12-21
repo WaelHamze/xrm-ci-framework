@@ -117,7 +117,7 @@
     <Argument>
       <SettingType>All</SettingType>
       <Name>namespace</Name>
-      <Value>Xrm.Framework.CI.PowerShell.Cmdlets.Common</Value>
+      <Value>Xrm.Framework.CI.Common.Entities</Value>
     </Argument>
     <Argument>
       <SettingType>Entities</SettingType>
