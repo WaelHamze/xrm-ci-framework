@@ -25,8 +25,7 @@ namespace Xrm.Framework.CI.Common.IntegrationTests
         public IOrganizationService CreateConnection()
         {
             string name = "CrmConnection";
-            //string connectionString = GetConnectionString(name);
-            string connectionString = "AuthType=Office365;Username=admin@ultradynamics.co.uk;Password=MSDYN365!!;Url=https://ultradynamicsprod.crm11.dynamics.com";
+            string connectionString = GetConnectionString(name);
 
             return  new CrmServiceClient(connectionString);
         }
