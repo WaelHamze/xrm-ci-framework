@@ -100,6 +100,18 @@
     <Compile Include="XrmConnectionManager.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Artifacts\MissingDependency_1_0_0_0.zip">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Artifacts\MissingDependency_1_0_0_0_managed.zip">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Artifacts\Success_1_0_0_0.zip">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Artifacts\Success_1_0_0_0_managed.zip">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -107,6 +119,11 @@
       <Project>{15de1597-6dab-4b21-840c-4818b7bc22ab}</Project>
       <Name>Xrm.Framework.CI.Common</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Artifacts\InvalidSolutionFile.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

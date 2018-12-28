@@ -62,6 +62,12 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
         public bool HoldingSolution { get; set; }
 
         /// <summary>
+        /// <para type="description">Set to true to import solution even if solution with same version is already installed.<para>
+        /// </summary>
+        [Parameter(Mandatory = false)]
+        public bool OverrideSameVersion { get; set; } = true;
+
+        /// <summary>
         /// <para type="description">Specify whether to import the solution asynchronously using ExecuteAsyncRequest</para>
         /// </summary>
         [Parameter(Mandatory = false)]
@@ -115,7 +121,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
         {
             base.ProcessRecord();
 
-            base.WriteVerbose(string.Format("Importing Solution: {0}", SolutionFilePath));
+            Logger.LogVerbose("Entering XrmImportSolution");
 
             SolutionManager solutionManager = new SolutionManager(
                 Logger,
@@ -129,6 +135,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
                 OverwriteUnmanagedCustomizations,
                 SkipProductUpdateDependencies,
                 HoldingSolution,
+                OverrideSameVersion,
                 ImportAsync,
                 SleepInterval,
                 AsyncWaitTimeout,
@@ -139,12 +146,14 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
 
             if (result.Success)
             {
-                base.WriteVerbose(string.Format("{0} Imported Completed Successfully {1}", SolutionFilePath, ImportJobId));
+                Logger.LogInformation(string.Format("{0} Imported Completed Successfully {1}", SolutionFilePath, ImportJobId));
             }
             else
             {
                 throw new Exception(string.Format("Solution import Failed. Error: {0}", result.ErrorMessage));
             }
+
+            Logger.LogVerbose("Leaving XrmImportSolution");
         }
 
         #endregion

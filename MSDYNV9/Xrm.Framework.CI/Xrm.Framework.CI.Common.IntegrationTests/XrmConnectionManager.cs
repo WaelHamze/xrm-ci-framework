@@ -24,7 +24,8 @@ namespace Xrm.Framework.CI.Common.IntegrationTests
 
         public IOrganizationService CreateConnection()
         {
-            string name = "CrmConnection";
+            string name = "CrmConn";
+
             string connectionString = GetConnectionString(name);
 
             return  new CrmServiceClient(connectionString);
@@ -36,7 +37,7 @@ namespace Xrm.Framework.CI.Common.IntegrationTests
             if (string.IsNullOrEmpty(value))
                 value = ConfigurationManager.ConnectionStrings[name].ConnectionString;
             if (string.IsNullOrEmpty(value))
-                throw new Exception(name);
+                throw new Exception($"connection with {name} was not found");
             return value;
         }
 

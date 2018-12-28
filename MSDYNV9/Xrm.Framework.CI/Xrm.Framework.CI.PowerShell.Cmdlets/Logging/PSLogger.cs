@@ -33,22 +33,29 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Logging
 
         public void LogError(string format, params object[] args)
         {
-            XrmCmdlet.WriteVerbose(string.Format(format, args));
+            string message = string.Format(format, args);
+            ErrorRecord error = new ErrorRecord(
+                new Exception(message),
+                "XrmCIFramework", ErrorCategory.WriteError, null);
+            XrmCmdlet.WriteError(error);
         }
 
         public void LogInformation(string format, params object[] args)
         {
-            XrmCmdlet.WriteVerbose(string.Format(format, args));
+            string message = string.Format(format, args);
+            XrmCmdlet.WriteInformation(message, new string[]{ "XrmCIFramework"});
         }
 
         public void LogVerbose(string format, params object[] args)
         {
-            XrmCmdlet.WriteVerbose(string.Format(format, args));
+            string message = string.Format(format, args);
+            XrmCmdlet.WriteVerbose(message);
         }
 
         public void LogWarning(string format, params object[] args)
         {
-            XrmCmdlet.WriteVerbose(string.Format(format, args));
+            string message = string.Format(format, args);
+            XrmCmdlet.WriteWarning(message);
         }
 
         #endregion

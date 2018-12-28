@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using System.Reflection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.Xrm.Sdk;
 using Xrm.Framework.CI.Common.IntegrationTests.Logging;
@@ -23,6 +25,30 @@ namespace Xrm.Framework.CI.Common.IntegrationTests
             set;
         }
 
+        public TestContext TestContext
+        {
+            get;
+            set;
+        }
+
+        public string ArtifactsDirectory
+        {
+            get;
+            set;
+        }
+
+        public string LogsDirectory
+        {
+            get;
+            set;
+        }
+
+        public string LogFileName
+        {
+            get;
+            set;
+        }
+
         #endregion
 
         [TestInitialize()]
@@ -30,19 +56,25 @@ namespace Xrm.Framework.CI.Common.IntegrationTests
         {
             Logger = new TestLogger();
             OrganizationService = new XrmConnectionManager().CreateConnection();
+            ArtifactsDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\Artifacts";
+            LogsDirectory = TestContext.TestLogsDir;
+            LogFileName = $"{TestContext.TestName}.xml";
         }
 
         [TestMethod]
-        public void ImportSolutionAsyncSuccess()
+        public void ImportSolution_Async_Success()
         {
             SolutionManager solutionManager = 
                 new SolutionManager(Logger, OrganizationService);
 
+            solutionManager.DeleteSolution("Success");
+
             SolutionImportResult result = solutionManager.ImportSolution(
-                @"C:\Temp\TestPatches\BaseSolution_1_0_0_0_managed.zip",
+                $"{ArtifactsDirectory}\\Success_1_0_0_0.zip",
                 true,
                 false,
                 true,
+                false,
                 false,
                 false,
                 true,
@@ -50,23 +82,21 @@ namespace Xrm.Framework.CI.Common.IntegrationTests
                 300,
                 Guid.NewGuid(),
                 true,
-                @"C:\Temp\TestPatches",
-                "Hi.xml");
+                LogsDirectory,
+                LogFileName);
 
             Assert.IsTrue(result.Success);
-        }
+            Assert.IsTrue(string.IsNullOrEmpty(result.ErrorMessage));
+            Assert.IsTrue(result.UnprocessedComponents == 0);
+            Assert.IsTrue(result.ImportJobAvailable);
+            Assert.IsTrue(File.Exists($"{LogsDirectory}\\{LogFileName}"));
 
-        [TestMethod]
-        public void ImportSolutionAsyncFail()
-        {
-            SolutionManager solutionManager =
-                new SolutionManager(Logger, OrganizationService);
-
-            SolutionImportResult result = solutionManager.ImportSolution(
-                @"C:\Temp\TestPatches\Broken_1_0_0_0_managed.zip",
+            result = solutionManager.ImportSolution(
+                $"{ArtifactsDirectory}\\Success_1_0_0_0.zip",
                 true,
                 false,
                 true,
+                false,
                 false,
                 false,
                 true,
@@ -74,82 +104,43 @@ namespace Xrm.Framework.CI.Common.IntegrationTests
                 300,
                 Guid.NewGuid(),
                 true,
-                @"C:\Temp\TestPatches",
-                "Hi.xml");
-
-            Assert.IsFalse(result.Success);
-        }
-
-        [TestMethod]
-        public void ImportSolutionSyncSuccess()
-        {
-            SolutionManager solutionManager =
-                new SolutionManager(Logger, OrganizationService);
-
-            SolutionImportResult result = solutionManager.ImportSolution(
-                @"C:\Temp\TestPatches\BaseSolution_1_0_0_0_managed.zip",
-                true,
-                false,
-                true,
-                false,
-                false,
-                false,
-                1,
-                300,
-                Guid.NewGuid(),
-                true,
-                @"C:\Temp\TestPatches",
-                "Hi.xml");
+                LogsDirectory,
+                LogFileName);
 
             Assert.IsTrue(result.Success);
+            Assert.IsTrue(result.ImportSkipped);
+            Assert.IsTrue(string.IsNullOrEmpty(result.ErrorMessage));
+            Assert.IsTrue(result.UnprocessedComponents == -1);
+            Assert.IsFalse(result.ImportJobAvailable);
         }
 
         [TestMethod]
-        public void ImportSolutionSyncFail()
+        public void ImportSolution_Async_Fail_MissingDependency()
         {
             SolutionManager solutionManager =
                 new SolutionManager(Logger, OrganizationService);
 
             SolutionImportResult result = solutionManager.ImportSolution(
-                @"C:\Temp\TestPatches\Broken_1_0_0_0_managed.zip",
+                $"{ArtifactsDirectory}\\MissingDependency_1_0_0_0_managed.zip",
                 true,
                 false,
                 true,
                 false,
                 false,
                 false,
+                true,
                 1,
                 300,
                 Guid.NewGuid(),
                 true,
-                @"C:\Temp\TestPatches",
-                "Hi.xml");
+                LogsDirectory,
+                LogFileName);
 
             Assert.IsFalse(result.Success);
-        }
-
-        [TestMethod]
-        public void ImportSolution_Sync_Fail_InvalidFile()
-        {
-            SolutionManager solutionManager =
-                new SolutionManager(Logger, OrganizationService);
-
-            SolutionImportResult result = solutionManager.ImportSolution(
-                @"C:\Temp\TestPatches\PowerApps Governance and Deployment Whitepaper.pdf",
-                true,
-                false,
-                true,
-                false,
-                false,
-                false,
-                1,
-                300,
-                Guid.NewGuid(),
-                true,
-                @"C:\Temp\TestPatches",
-                "Hi.xml");
-
-            Assert.IsFalse(result.Success);
+            Assert.IsTrue(result.ErrorMessage.Contains("MissingDependency"));
+            Assert.IsTrue(result.UnprocessedComponents > 0);
+            Assert.IsTrue(result.ImportJobAvailable);
+            Assert.IsTrue(File.Exists($"{LogsDirectory}\\{LogFileName}"));
         }
 
         [TestMethod]
@@ -159,10 +150,11 @@ namespace Xrm.Framework.CI.Common.IntegrationTests
                 new SolutionManager(Logger, OrganizationService);
 
             SolutionImportResult result = solutionManager.ImportSolution(
-                @"C:\Temp\TestPatches\PowerApps Governance and Deployment Whitepaper.pdf",
+                $"{ArtifactsDirectory}\\InvalidSolutionFile.txt",
                 true,
                 false,
                 true,
+                false,
                 false,
                 false,
                 true,
@@ -170,10 +162,103 @@ namespace Xrm.Framework.CI.Common.IntegrationTests
                 300,
                 Guid.NewGuid(),
                 true,
-                @"C:\Temp\TestPatches",
-                "Hi.xml");
+                LogsDirectory,
+                LogFileName);
 
             Assert.IsFalse(result.Success);
+            Assert.IsTrue(result.ErrorMessage.Contains("The solution file is invalid"));
+            Assert.IsTrue(result.UnprocessedComponents == -1);
+            Assert.IsFalse(result.ImportJobAvailable);
+            Assert.IsFalse(File.Exists($"{LogsDirectory}\\{LogFileName}"));
+        }
+
+        [TestMethod]
+        public void ImportSolution_Sync_Success()
+        {
+            SolutionManager solutionManager =
+                new SolutionManager(Logger, OrganizationService);
+
+            solutionManager.DeleteSolution("Success");
+
+            SolutionImportResult result = solutionManager.ImportSolution(
+                $"{ArtifactsDirectory}\\Success_1_0_0_0.zip",
+                true,
+                false,
+                true,
+                false,
+                false,
+                false,
+                false,
+                1,
+                300,
+                Guid.NewGuid(),
+                true,
+                LogsDirectory,
+                LogFileName);
+
+            Assert.IsTrue(result.Success);
+            Assert.IsTrue(string.IsNullOrEmpty(result.ErrorMessage));
+            Assert.IsTrue(result.UnprocessedComponents == 0);
+            Assert.IsTrue(result.ImportJobAvailable);
+            Assert.IsTrue(File.Exists($"{LogsDirectory}\\{LogFileName}"));
+        }
+
+        [TestMethod]
+        public void ImportSolution_Sync_Fail_MissingDependency()
+        {
+            SolutionManager solutionManager =
+                new SolutionManager(Logger, OrganizationService);
+
+            SolutionImportResult result = solutionManager.ImportSolution(
+                $"{ArtifactsDirectory}\\MissingDependency_1_0_0_0_managed.zip",
+                true,
+                false,
+                true,
+                false,
+                false,
+                false,
+                false,
+                1,
+                300,
+                Guid.NewGuid(),
+                true,
+                LogsDirectory,
+                LogFileName);
+
+            Assert.IsFalse(result.Success);
+            Assert.IsTrue(result.ErrorMessage.Contains("MissingDependency"));
+            Assert.IsTrue(result.UnprocessedComponents > 0);
+            Assert.IsTrue(result.ImportJobAvailable);
+            Assert.IsTrue(File.Exists($"{LogsDirectory}\\{LogFileName}"));
+        }
+
+        [TestMethod]
+        public void ImportSolution_Sync_Fail_InvalidFile()
+        {
+            SolutionManager solutionManager =
+                new SolutionManager(Logger, OrganizationService);
+
+            SolutionImportResult result = solutionManager.ImportSolution(
+                $"{ArtifactsDirectory}\\InvalidSolutionFile.txt",
+                true,
+                false,
+                true,
+                false,
+                false,
+                false,
+                false,
+                1,
+                300,
+                Guid.NewGuid(),
+                true,
+                LogsDirectory,
+                LogFileName);
+
+            Assert.IsFalse(result.Success);
+            Assert.IsTrue(result.ErrorMessage.Contains("The solution file is invalid"));
+            Assert.IsTrue(result.UnprocessedComponents == -1);
+            Assert.IsFalse(result.ImportJobAvailable);
+            Assert.IsFalse(File.Exists($"{LogsDirectory}\\{LogFileName}"));
         }
     }
 }

@@ -5,11 +5,12 @@ using Microsoft.Xrm.Sdk.Query;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Xml;
+using System.Xml.Linq;
 using Xrm.Framework.CI.Common.Entities;
 using Xrm.Framework.CI.Common.Logging;
 
@@ -44,6 +45,7 @@ namespace Xrm.Framework.CI.Common
             bool overwriteUnmanagedCustomizations,
             bool skipProductUpdateDependencies,
             bool holdingSolution,
+            bool overrideSameVersion,
             bool importAsync,
             int sleepInterval,
             int asyncWaitTimeout,
@@ -53,7 +55,7 @@ namespace Xrm.Framework.CI.Common
             string logFileName
             )
         {
-            Logger.LogVerbose("Importing Solution: {0}", solutionFilePath);
+            Logger.LogInformation("Importing Solution: {0}", solutionFilePath);
 
             if (!importJobId.HasValue || importJobId.Value == Guid.Empty)
             {
@@ -79,12 +81,53 @@ namespace Xrm.Framework.CI.Common
                 throw new FileNotFoundException("Solution File does not exist", solutionFilePath);
             }
 
+            SolutionImportResult result = null;
+
+            XrmSolutionInfo info = GetSolutionInfo(solutionFilePath);
+
+            if (info == null)
+            {
+                result = new SolutionImportResult()
+                {
+                    ErrorMessage = "Invalid Solution File"
+                };
+
+                return result;
+            }
+            else
+            {
+                Logger.LogInformation("Solution Unique Name: {0}, Version: {1}",
+                    info.UniqueName,
+                    info.Version);
+            }
+
+            bool skipImport = SkipImport(info, holdingSolution, overrideSameVersion);
+
+            if (skipImport)
+            {
+                Logger.LogInformation("Solution Import Skipped");
+
+                result = new SolutionImportResult()
+                {
+                    Success = true,
+                    ImportSkipped = true
+                };
+
+                return result;
+            }
+
             if (downloadFormattedLog)
             {
                 if (string.IsNullOrEmpty(logFileName))
                 {
-                    Logger.LogError("logFileName is required", solutionFilePath);
-                    throw new Exception("logFileName is required");
+                    logFileName = $"{info.UniqueName}_{(info.Version).Replace('.', '_')}_{DateTime.Now.ToString("yyyy_MM_dd__HH_mm")}.xml";
+                    Logger.LogVerbose("Settings logFileName to {0}", logFileName);
+                }
+
+                if (string.IsNullOrEmpty(logDirectory))
+                {
+                    logDirectory = Path.GetDirectoryName(solutionFilePath);
+                    Logger.LogVerbose("Settings logDirectory to {0}", logDirectory);
                 }
 
                 if (!Directory.Exists(logDirectory))
@@ -93,8 +136,6 @@ namespace Xrm.Framework.CI.Common
                     throw new DirectoryNotFoundException("logDirectory does not exist");
                 }
             }
-
-            SolutionImportResult result = null;
 
             byte[] solutionBytes = File.ReadAllBytes(solutionFilePath);
 
@@ -201,6 +242,144 @@ namespace Xrm.Framework.CI.Common
             return result;
         }
 
+        public XrmSolutionInfo GetSolutionInfo(string solutionFilePath)
+        {
+            Logger.LogVerbose("Reading Solution Zip: {0}", solutionFilePath);
+
+            XrmSolutionInfo info = null;
+
+            try
+            {
+                string uniqueName;
+                string version;
+
+                using (ZipArchive solutionZip = ZipFile.Open(solutionFilePath, ZipArchiveMode.Read))
+                {
+                    ZipArchiveEntry solutionEntry = solutionZip.GetEntry("solution.xml");
+
+                    using (var reader = new StreamReader(solutionEntry.Open()))
+                    {
+                        XElement solutionNode = XElement.Load(reader);
+                        uniqueName = solutionNode.Descendants("UniqueName").First().Value;
+                        version = solutionNode.Descendants("Version").First().Value;
+                    }
+                }
+
+                info = new XrmSolutionInfo
+                {
+                    UniqueName = uniqueName,
+                    Version = version
+                };
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError(ex.Message);
+            }
+
+            return info;
+        }
+
+        public Solution GetSolution(string uniqueName, ColumnSet columns)
+        {
+            Logger.LogVerbose("Retrieving solution {0}", uniqueName);
+
+            QueryByAttribute queryByAttribute = new QueryByAttribute();
+            queryByAttribute.EntityName = Solution.EntityLogicalName;
+            queryByAttribute.ColumnSet = columns;
+            queryByAttribute.Attributes.Add("uniquename");
+            queryByAttribute.Values.Add(uniqueName);
+
+            EntityCollection results = OrganizationService.RetrieveMultiple(queryByAttribute);
+
+            if (results.Entities.Count == 0)
+            {
+                return null;
+            }
+            else
+            {
+                return results.Entities[0].ToEntity<Solution>();
+            }
+        }
+
+        public void DeleteSolution(string uniqueName)
+        {
+            Logger.LogVerbose("Deleting solution '{0}'", uniqueName);
+
+            Solution solution = GetSolution(uniqueName, new ColumnSet());
+
+            if (solution == null)
+            {
+                Logger.LogWarning("Solution '{0}' was not found", uniqueName);
+            }
+            else
+            {
+                OrganizationService.Delete(Solution.EntityLogicalName,
+                    solution.Id);
+
+                Logger.LogInformation("Solution '{0}' was deleted", uniqueName);
+            }
+        }
+
+        private bool SkipImport(
+            XrmSolutionInfo info,
+            bool holdingSolution,
+            bool overrideSameVersion)
+        {
+            using (var context = new CIContext(OrganizationService))
+            {
+                ColumnSet columns = new ColumnSet("version");
+
+                if (!holdingSolution)
+                {
+                    var baseSolution = GetSolution(info.UniqueName, columns);
+
+                    if (baseSolution == null)
+                    {
+                        Logger.LogInformation("{0} not currently installed.", info.UniqueName);
+                    }
+                    else
+                    {
+                        Logger.LogInformation("{0} currently installed with version: {1}", info.UniqueName, info.Version);
+                    }
+
+                    if (baseSolution == null ||
+                        overrideSameVersion ||
+                        (info.Version != baseSolution.Version))
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        return true;
+                    }
+                }
+                else
+                {
+                    string upgradeName = $"{info.UniqueName}_Upgrade";
+
+                    var upgradeSolution = GetSolution(upgradeName, columns);
+
+                    if (upgradeSolution == null)
+                    {
+                        Logger.LogInformation("{0} not currently installed.", upgradeName);
+                    }
+                    else
+                    {
+                        Logger.LogInformation("{0} currently installed with version: {1}", upgradeName, info.Version);
+                    }
+
+                    if (upgradeSolution == null)
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        return true;
+                    }
+                }
+            }
+        }
+
         private SolutionImportResult VerifySolutionImport(
             bool importAsync,
             Guid importJobId,
@@ -238,7 +417,14 @@ namespace Xrm.Framework.CI.Common
                 result.ImportJobAvailable = true;
             }
 
-            Logger.LogInformation("Completed Progress: {0}", importJob.Progress);
+            if (importJob.Progress == 100)
+            {
+                Logger.LogInformation("Completed Progress: {0}", importJob.Progress);
+            }
+            else
+            {
+                Logger.LogWarning("Completed Progress: {0}", importJob.Progress);
+            }
             Logger.LogInformation("Completed On: {0}", importJob.CompletedOn);
 
             XmlDocument doc = new XmlDocument();
@@ -264,7 +450,7 @@ namespace Xrm.Framework.CI.Common
             }
             else
             {
-                Logger.LogVerbose("Total number of unprocessed components: {0}", unprocessedNodes.Count);
+                Logger.LogInformation("Total number of unprocessed components: {0}", unprocessedNodes.Count);
             }
 
             if (solutionImportResult == ImportSuccess)
@@ -288,6 +474,7 @@ namespace Xrm.Framework.CI.Common
         public string ErrorMessage { get; set; }
         public int UnprocessedComponents { get; set; }
         public bool ImportJobAvailable { get; set; }
+        public bool ImportSkipped { get; set; }
 
         #endregion
 
@@ -299,9 +486,16 @@ namespace Xrm.Framework.CI.Common
             ErrorMessage = "";
             UnprocessedComponents = -1;
             ImportJobAvailable = false;
+            ImportSkipped = false;
         }
 
         #endregion
+    }
+
+    public class XrmSolutionInfo
+    {
+        public string UniqueName { get; set; }
+        public string Version { get; set; }
     }
 
     class SyncImportHandler : XrmBase
@@ -309,12 +503,6 @@ namespace Xrm.Framework.CI.Common
         #region Properties
 
         private ImportSolutionRequest ImportRequest
-        {
-            get;
-            set;
-        }
-
-        public bool Finished
         {
             get;
             set;
@@ -347,7 +535,7 @@ namespace Xrm.Framework.CI.Common
         {
             try
             {
-                Logger.LogInformation("Calling Execute Import Request");
+                Logger.LogVerbose("Calling Execute Import Request");
 
                 Thread.Sleep(30 * 1000);
 
@@ -357,11 +545,9 @@ namespace Xrm.Framework.CI.Common
             }
             catch (Exception ex)
             {
-                Logger.LogError(ex.Message);
+                Logger.LogWarning(ex.Message);
                 Error = ex;
             }
-
-            Finished = true;
         }
 
         #endregion
@@ -404,7 +590,14 @@ namespace Xrm.Framework.CI.Common
                 ImportJob importJob = jobManager.GetImportJob(ImportJobId,
                     new ColumnSet("importjobid", "completedon", "progress"));
 
-                Logger.LogVerbose("Import Job Progress: {0}", importJob.Progress);
+                if (importJob != null)
+                {
+                    Logger.LogVerbose("Import Job Progress: {0}", importJob.Progress);
+                }
+                else
+                {
+                    Logger.LogVerbose("Import job not found with Id: {0}", ImportJobId);
+                }
             }
         }
 
