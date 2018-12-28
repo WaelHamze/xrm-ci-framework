@@ -33,7 +33,7 @@ if ($solution -eq $null)
 }
 else
 {
-	Write-Host "Removing solution, version: $solution.Version"
+	Write-Host "Removing Solution $SolutionName, Version: " + $solution.Version
 	Remove-XrmRecord -EntityName "solution" -Id $solution.Id -ConnectionString $CrmConnectionString -Timeout $Timeout -Verbose
 	Write-Host "Solution removed"
 }
