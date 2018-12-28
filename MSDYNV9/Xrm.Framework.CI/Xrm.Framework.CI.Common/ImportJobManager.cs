@@ -54,7 +54,7 @@ namespace Xrm.Framework.CI.Common
 
             File.WriteAllText(logFile, importLogResponse.FormattedResults);
 
-            Logger.LogVerbose("Import Job Log successfully saved.");
+            Logger.LogInformation("Import Job Log successfully saved to: {0}", logFile);
         }
 
         public ImportJob AwaitImportJob(

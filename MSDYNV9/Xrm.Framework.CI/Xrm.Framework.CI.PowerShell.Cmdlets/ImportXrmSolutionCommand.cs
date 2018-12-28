@@ -144,11 +144,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
                 LogsDirectory,
                 LogFileName);
 
-            if (result.Success)
-            {
-                Logger.LogInformation(string.Format("{0} Imported Completed Successfully {1}", SolutionFilePath, ImportJobId));
-            }
-            else
+            if (!result.Success)
             {
                 throw new Exception(string.Format("Solution import Failed. Error: {0}", result.ErrorMessage));
             }
