@@ -64,7 +64,7 @@ namespace #NAMESPACE#
         public PluginExecutionMode ExecutionMode { get; private set; }
 
         public string FriendlyName { get; set; }
-        public string GroupName { get; set; }
+        public string WorkflowGroupName { get; set; }
         public string Image1Name { get; set; }
         public string Image1Attributes { get; set; }
         public string Image2Name { get; set; }
@@ -73,6 +73,7 @@ namespace #NAMESPACE#
         public bool DeleteAsyncOperation { get; set; }
         public string CustomConfiguration { get; set; }
         public bool Offline { get; set; }
+        public SdkMessageProcessingStepState State { get; set; }
         public PluginImageType Image1Type { get; set; }
         public PluginImageType Image2Type { get; set; }
         public string Name { get; set; }
@@ -82,6 +83,7 @@ namespace #NAMESPACE#
 
         #endregion
 
+        //Plugin - one image
         public XrmCiPluginRegistration(
             string entityLogicalName,
             string description,
@@ -95,6 +97,7 @@ namespace #NAMESPACE#
             string image1Name,
             string image1Attributes,
             PluginImageType image1Type,
+            SdkMessageProcessingStepState state = SdkMessageProcessingStepState.Enabled,
             bool deleteAsyncOperation = false,
             string customConfiguration = """",
             string impersonatingUser = """",
@@ -114,6 +117,7 @@ namespace #NAMESPACE#
             Image1Name = image1Name;
             Image1Attributes = image1Attributes;
             Image1Type = image1Type;
+            State = state;
             DeleteAsyncOperation = deleteAsyncOperation;
             CustomConfiguration = customConfiguration;
             ImpersonatingUser = impersonatingUser;
@@ -121,6 +125,7 @@ namespace #NAMESPACE#
             SupportedDeployment = supportedDeployment;
         }
 
+        //Plugin - two images
         public XrmCiPluginRegistration(
             string entityLogicalName,
             string description,
@@ -137,6 +142,7 @@ namespace #NAMESPACE#
             string image2Name,
             string image2Attributes,
             PluginImageType image2Type,
+            SdkMessageProcessingStepState state = SdkMessageProcessingStepState.Enabled,
             bool deleteAsyncOperation=false,
             string customConfiguration = """",
             string impersonatingUser = """",
@@ -156,14 +162,44 @@ namespace #NAMESPACE#
             Image1Name = image1Name;
             Image1Attributes = image1Attributes;
             Image1Type = image1Type;
-            Image1Name = image2Name;
-            Image1Attributes = image2Attributes;
-            Image1Type = image2Type;
+            Image2Name = image2Name;
+            Image2Attributes = image2Attributes;
+            Image2Type = image2Type;
+            State = state;
             DeleteAsyncOperation = deleteAsyncOperation;
             CustomConfiguration = customConfiguration;
             ImpersonatingUser = impersonatingUser;
             Offline = offline;
             SupportedDeployment = supportedDeployment;
+        }
+
+        //Plugin - no steps
+        public XrmCiPluginRegistration(
+            string entityLogicalName,
+            string description,
+            PluginIsolationMode isolationMode,
+            PluginSourceType sourceType
+        )
+        {
+            EntityLogicalName = entityLogicalName;
+            Description = description;
+            IsolationMode = isolationMode;
+            SourceType = sourceType;
+        }
+
+        //Workflow
+        public XrmCiPluginRegistration(
+            string description,
+            PluginIsolationMode isolationMode,
+            PluginSourceType sourceType,
+            string friendlyName,
+            string workflowGroupName)
+        {
+            Description = description;
+            IsolationMode = isolationMode;
+            SourceType = sourceType;
+            FriendlyName = friendlyName;
+            WorkflowGroupName = workflowGroupName;
         }
     }
 
@@ -207,6 +243,12 @@ namespace #NAMESPACE#
         ServerOnly = 0,
         MicrosoftDynamics365ClientforOutlookOnly = 1,
         Both = 2
+    }
+
+    public enum SdkMessageProcessingStepState
+    {
+        Enabled = 0,
+        Disabled = 1,
     }
 
     public enum PluginMessage

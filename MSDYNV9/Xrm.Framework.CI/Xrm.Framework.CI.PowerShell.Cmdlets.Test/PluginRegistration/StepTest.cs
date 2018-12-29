@@ -29,7 +29,9 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Test.PluginRegistration
                 ImpersonatingUserFullname = "mo left",
                 Mode = SdkMessageProcessingStep_Mode.Synchronous,
                 Rank = 0,
-                SupportedDeployment = SdkMessageProcessingStep_SupportedDeployment.ServerOnly
+                SupportedDeployment = SdkMessageProcessingStep_SupportedDeployment.ServerOnly,
+                AsyncAutoDelete = false,
+                StateCode = SdkMessageProcessingStepState.Enabled
             };
 
             _stepRight = new Step
@@ -43,7 +45,9 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Test.PluginRegistration
                 ImpersonatingUserFullname = "mo right",
                 Mode = SdkMessageProcessingStep_Mode.Asynchronous,
                 Rank = 1,
-                SupportedDeployment = SdkMessageProcessingStep_SupportedDeployment.Both
+                SupportedDeployment = SdkMessageProcessingStep_SupportedDeployment.Both,
+                AsyncAutoDelete = false,
+                StateCode = SdkMessageProcessingStepState.Enabled
             };
 
             _imageLeft = new Image

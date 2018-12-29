@@ -50,7 +50,9 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Test
                 {"image1Attributes", "im1attr1,im1attr2"},
                 {"image1Type", SdkMessageProcessingStepImage_ImageType.PreImage},
                 {"image2Attributes", "im2attr1,im2attr2"},
-                {"image2Type", SdkMessageProcessingStepImage_ImageType.PostImage}
+                {"image2Type", SdkMessageProcessingStepImage_ImageType.PostImage},
+                {"deleteAsyncOperation", false},
+                {"state", SdkMessageProcessingStepState.Enabled}
             };
         }
         #endregion
