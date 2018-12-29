@@ -54,14 +54,16 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.PluginRegistration
                     WorkflowActivityGroupName = (string) GetMappedObject(args,"workflowGroupName", "")
                 };
 
-                if(string.IsNullOrEmpty(type.WorkflowActivityGroupName))
-                    type.Steps = new List<Step> {BuildStep(args, className)};
+                type.Steps = new List<Step> {BuildStep(args, className)};
+                type.Steps.RemoveAll(x => x == null);
 
                 return type;
             }
 
             private static Step BuildStep(Dictionary<string, object> args, string className)
             {
+                if (!args.ContainsKey("executionMode"))
+                    return null;
                 var step = new Step
                 {
                     Id = Guid.NewGuid(),
@@ -79,7 +81,10 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.PluginRegistration
                     SupportedDeployment =
                         ParseEnum<SdkMessageProcessingStep_SupportedDeployment>(
                             GetMappedObject(args, "supportedDeployment").ToString()),
-                    Images = new List<Image> {BuildImage(args, 1), BuildImage(args, 2)}
+                    Images = new List<Image> {BuildImage(args, 1), BuildImage(args, 2)},
+                    AsyncAutoDelete = (bool)GetMappedObject(args, "deleteAsyncOperation"),
+                    StateCode = ParseEnum<SdkMessageProcessingStepState>(
+                        GetMappedObject(args, "state").ToString())
                 };
                 step.Images.RemoveAll(x => x == null);
                 return step;
@@ -104,8 +109,8 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.PluginRegistration
             
             private static object GetMappedObject(Dictionary<string, object> args, string mapping, object defaultReturn = null)
             {
-                var obj = args.FirstOrDefault(m => m.Key == mapping).Value;
-                return obj ?? defaultReturn;
+                var obj = args.FirstOrDefault(m => m.Key == mapping);
+                return obj.Value ?? defaultReturn;
             }
             
             private static T? ParseEnum<T>(string value) where T : struct, IConvertible

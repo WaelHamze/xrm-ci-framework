@@ -109,8 +109,9 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
         {
             var allTypes = _assembly.GetTypes();
             return (from t in allTypes let ca = t.GetCustomAttributes().ToList()
-                where ca.Count == 1 && ca[0].GetType().FullName == customAttributeClassName
-                select t.FullName).ToList();
+                where ca.FirstOrDefault(x => x.GetType().FullName == customAttributeClassName) != null  
+                      && t.FullName != customAttributeClassName
+                    select t.FullName).ToList();
         }
 
         private System.Reflection.Assembly CurrentDomain_ReflectionOnlyAssemblyResolve(object sender, ResolveEventArgs args)
