@@ -281,7 +281,7 @@ namespace Xrm.Framework.CI.Common
 
         public Solution GetSolution(string uniqueName, ColumnSet columns)
         {
-            Logger.LogVerbose("Retrieving solution {0}", uniqueName);
+            Logger.LogVerbose("Retrieving solution '{0}'", uniqueName);
 
             QueryByAttribute queryByAttribute = new QueryByAttribute();
             queryByAttribute.EntityName = Solution.EntityLogicalName;
@@ -303,8 +303,6 @@ namespace Xrm.Framework.CI.Common
 
         public void DeleteSolution(string uniqueName)
         {
-            Logger.LogVerbose("Deleting solution '{0}'", uniqueName);
-
             Solution solution = GetSolution(uniqueName, new ColumnSet());
 
             if (solution == null)
@@ -313,6 +311,8 @@ namespace Xrm.Framework.CI.Common
             }
             else
             {
+                Logger.LogVerbose("Deleting solution '{0}'", uniqueName);
+
                 OrganizationService.Delete(Solution.EntityLogicalName,
                     solution.Id);
 
@@ -536,8 +536,6 @@ namespace Xrm.Framework.CI.Common
             try
             {
                 Logger.LogVerbose("Calling Execute Import Request");
-
-                Thread.Sleep(30 * 1000);
 
                 OrganizationService.Execute(ImportRequest);
 
