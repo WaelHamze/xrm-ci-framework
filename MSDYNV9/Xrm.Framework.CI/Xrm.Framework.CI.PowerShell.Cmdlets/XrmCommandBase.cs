@@ -12,11 +12,6 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
 {
     public abstract class XrmCommandBase : Cmdlet
     {
-        protected CrmServiceClient ServiceClient;
-        private int DefaultTime = 120;
-        private TimeSpan ConnectPolingInterval = TimeSpan.FromSeconds(15);
-        private int ConnectRetryCount = 3;
-
         protected virtual IOrganizationService OrganizationService { get; private set; }
         protected virtual ILogger Logger { get; set; }
 
