@@ -55,7 +55,7 @@ namespace Xrm.Framework.CI.Common.IntegrationTests
         public void Setup()
         {
             Logger = new TestLogger();
-            OrganizationService = new XrmConnectionManager().CreateConnection();
+            OrganizationService = new TestConnectionManager().CreateConnection();
             ArtifactsDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\Artifacts";
             LogsDirectory = TestContext.TestLogsDir;
             LogFileName = $"{TestContext.TestName}.xml";

@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace Xrm.Framework.CI.Common.IntegrationTests
 {
-    public class XrmConnectionManager
+    public class TestConnectionManager
     {
         #region Constructors
         
-        public XrmConnectionManager()
+        public TestConnectionManager()
         {
 
         }
@@ -28,7 +28,10 @@ namespace Xrm.Framework.CI.Common.IntegrationTests
 
             string connectionString = GetConnectionString(name);
 
-            return  new CrmServiceClient(connectionString);
+            XrmConnectionManager con
+                = new XrmConnectionManager(new Logging.TestLogger());
+
+            return con.Connect(connectionString, 0);
         }
 
         private string GetConnectionString(string name)
