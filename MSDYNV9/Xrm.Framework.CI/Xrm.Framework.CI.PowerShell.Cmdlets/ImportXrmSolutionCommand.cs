@@ -123,10 +123,17 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
 
             Logger.LogVerbose("Entering XrmImportSolution");
 
+            XrmConnectionManager xrmConnection = new XrmConnectionManager(
+                Logger);
+
+            IOrganizationService pollingOrganizationService = xrmConnection.Connect(
+                ConnectionString,
+                120);
+
             SolutionManager solutionManager = new SolutionManager(
                 Logger,
-                OrganizationService
-                );
+                OrganizationService,
+                pollingOrganizationService);
 
             SolutionImportResult result = solutionManager.ImportSolution(
                 SolutionFilePath,

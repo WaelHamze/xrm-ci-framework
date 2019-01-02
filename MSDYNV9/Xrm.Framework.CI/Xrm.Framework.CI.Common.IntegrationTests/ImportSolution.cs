@@ -25,6 +25,12 @@ namespace Xrm.Framework.CI.Common.IntegrationTests
             set;
         }
 
+        public IOrganizationService PollingOrganizationService
+        {
+            get;
+            set;
+        }
+
         public TestContext TestContext
         {
             get;
@@ -49,6 +55,12 @@ namespace Xrm.Framework.CI.Common.IntegrationTests
             set;
         }
 
+        public SolutionManager SolutionManager
+        {
+            get;
+            set;
+        }
+
         #endregion
 
         [TestInitialize()]
@@ -56,21 +68,20 @@ namespace Xrm.Framework.CI.Common.IntegrationTests
         {
             Logger = new TestLogger();
             OrganizationService = new TestConnectionManager().CreateConnection();
+            PollingOrganizationService = new TestConnectionManager().CreateConnection();
             ArtifactsDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\Artifacts";
             LogsDirectory = TestContext.TestLogsDir;
             LogFileName = $"{TestContext.TestName}.xml";
+            SolutionManager = new SolutionManager(Logger, OrganizationService, PollingOrganizationService);
         }
 
         [TestMethod]
         public void ImportSolution_Async_Success()
         {
-            SolutionManager solutionManager = 
-                new SolutionManager(Logger, OrganizationService);
+            SolutionManager.DeleteSolution("Success");
 
-            solutionManager.DeleteSolution("Success");
-
-            SolutionImportResult result = solutionManager.ImportSolution(
-                $"{ArtifactsDirectory}\\Success_1_0_0_0.zip",
+            SolutionImportResult result = SolutionManager.ImportSolution(
+                $"{ArtifactsDirectory}\\Success_1_0_0_0_managed.zip",
                 true,
                 false,
                 true,
@@ -91,7 +102,7 @@ namespace Xrm.Framework.CI.Common.IntegrationTests
             Assert.IsTrue(result.ImportJobAvailable);
             Assert.IsTrue(File.Exists($"{LogsDirectory}\\{LogFileName}"));
 
-            result = solutionManager.ImportSolution(
+            result = SolutionManager.ImportSolution(
                 $"{ArtifactsDirectory}\\Success_1_0_0_0.zip",
                 true,
                 false,
@@ -117,13 +128,10 @@ namespace Xrm.Framework.CI.Common.IntegrationTests
         [TestMethod]
         public void ImportSolution_Async_Success_Holding()
         {
-            SolutionManager solutionManager =
-                new SolutionManager(Logger, OrganizationService);
+            SolutionManager.DeleteSolution("Success_Upgrade");
+            SolutionManager.DeleteSolution("Success");
 
-            solutionManager.DeleteSolution("Success_Upgrade");
-            solutionManager.DeleteSolution("Success");
-
-            SolutionImportResult result = solutionManager.ImportSolution(
+            SolutionImportResult result = SolutionManager.ImportSolution(
                 $"{ArtifactsDirectory}\\Success_1_0_0_0_managed.zip",
                 true,
                 false,
@@ -145,7 +153,7 @@ namespace Xrm.Framework.CI.Common.IntegrationTests
             Assert.IsTrue(result.ImportJobAvailable);
             Assert.IsTrue(File.Exists($"{LogsDirectory}\\{LogFileName}"));
 
-            result = solutionManager.ImportSolution(
+            result = SolutionManager.ImportSolution(
                 $"{ArtifactsDirectory}\\Success_1_1_0_0_managed.zip",
                 true,
                 false,
@@ -167,7 +175,7 @@ namespace Xrm.Framework.CI.Common.IntegrationTests
             Assert.IsTrue(result.ImportJobAvailable);
             Assert.IsTrue(File.Exists($"{LogsDirectory}\\{LogFileName}"));
 
-            result = solutionManager.ImportSolution(
+            result = SolutionManager.ImportSolution(
                 $"{ArtifactsDirectory}\\Success_1_1_0_0_managed.zip",
                 true,
                 false,
@@ -193,10 +201,7 @@ namespace Xrm.Framework.CI.Common.IntegrationTests
         [TestMethod]
         public void ImportSolution_Async_Fail_MissingDependency()
         {
-            SolutionManager solutionManager =
-                new SolutionManager(Logger, OrganizationService);
-
-            SolutionImportResult result = solutionManager.ImportSolution(
+            SolutionImportResult result = SolutionManager.ImportSolution(
                 $"{ArtifactsDirectory}\\MissingDependency_1_0_0_0_managed.zip",
                 true,
                 false,
@@ -222,10 +227,7 @@ namespace Xrm.Framework.CI.Common.IntegrationTests
         [TestMethod]
         public void ImportSolution_Async_Fail_InvalidFile()
         {
-            SolutionManager solutionManager =
-                new SolutionManager(Logger, OrganizationService);
-
-            SolutionImportResult result = solutionManager.ImportSolution(
+            SolutionImportResult result = SolutionManager.ImportSolution(
                 $"{ArtifactsDirectory}\\InvalidSolutionFile.txt",
                 true,
                 false,
@@ -251,13 +253,10 @@ namespace Xrm.Framework.CI.Common.IntegrationTests
         [TestMethod]
         public void ImportSolution_Sync_Success()
         {
-            SolutionManager solutionManager =
-                new SolutionManager(Logger, OrganizationService);
+            SolutionManager.DeleteSolution("Success_Upgrade");
+            SolutionManager.DeleteSolution("Success");
 
-            solutionManager.DeleteSolution("Success_Upgrade");
-            solutionManager.DeleteSolution("Success");
-
-            SolutionImportResult result = solutionManager.ImportSolution(
+            SolutionImportResult result = SolutionManager.ImportSolution(
                 $"{ArtifactsDirectory}\\Success_1_0_0_0_managed.zip",
                 true,
                 false,
@@ -283,13 +282,10 @@ namespace Xrm.Framework.CI.Common.IntegrationTests
         [TestMethod]
         public void ImportSolution_Sync_Success_Holding()
         {
-            SolutionManager solutionManager =
-                new SolutionManager(Logger, OrganizationService);
+            SolutionManager.DeleteSolution("Success_Upgrade");
+            SolutionManager.DeleteSolution("Success");
 
-            solutionManager.DeleteSolution("Success_Upgrade");
-            solutionManager.DeleteSolution("Success");
-
-            SolutionImportResult result = solutionManager.ImportSolution(
+            SolutionImportResult result = SolutionManager.ImportSolution(
                 $"{ArtifactsDirectory}\\Success_1_0_0_0_managed.zip",
                 true,
                 false,
@@ -311,7 +307,7 @@ namespace Xrm.Framework.CI.Common.IntegrationTests
             Assert.IsTrue(result.ImportJobAvailable);
             Assert.IsTrue(File.Exists($"{LogsDirectory}\\{LogFileName}"));
 
-            result = solutionManager.ImportSolution(
+            result = SolutionManager.ImportSolution(
                 $"{ArtifactsDirectory}\\Success_1_1_0_0_managed.zip",
                 true,
                 false,
@@ -333,7 +329,7 @@ namespace Xrm.Framework.CI.Common.IntegrationTests
             Assert.IsTrue(result.ImportJobAvailable);
             Assert.IsTrue(File.Exists($"{LogsDirectory}\\1_{LogFileName}"));
 
-            result = solutionManager.ImportSolution(
+            result = SolutionManager.ImportSolution(
                 $"{ArtifactsDirectory}\\Success_1_1_0_0_managed.zip",
                 true,
                 false,
@@ -359,10 +355,7 @@ namespace Xrm.Framework.CI.Common.IntegrationTests
         [TestMethod]
         public void ImportSolution_Sync_Fail_MissingDependency()
         {
-            SolutionManager solutionManager =
-                new SolutionManager(Logger, OrganizationService);
-
-            SolutionImportResult result = solutionManager.ImportSolution(
+            SolutionImportResult result = SolutionManager.ImportSolution(
                 $"{ArtifactsDirectory}\\MissingDependency_1_0_0_0_managed.zip",
                 true,
                 false,
@@ -388,10 +381,7 @@ namespace Xrm.Framework.CI.Common.IntegrationTests
         [TestMethod]
         public void ImportSolution_Sync_Fail_InvalidFile()
         {
-            SolutionManager solutionManager =
-                new SolutionManager(Logger, OrganizationService);
-
-            SolutionImportResult result = solutionManager.ImportSolution(
+            SolutionImportResult result = SolutionManager.ImportSolution(
                 $"{ArtifactsDirectory}\\InvalidSolutionFile.txt",
                 true,
                 false,

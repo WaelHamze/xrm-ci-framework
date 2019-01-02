@@ -27,11 +27,24 @@ namespace Xrm.Framework.CI.Common
 
         #endregion
 
+        #region Properties
+
+        protected IOrganizationService PollingOrganizationService
+        {
+            get;
+            set;
+        }
+
+        #endregion
+
         #region Constructors
 
-        public SolutionManager(ILogger logger, IOrganizationService organizationService)
+        public SolutionManager(ILogger logger,
+            IOrganizationService organizationService,
+            IOrganizationService pollingOrganizationService)
             :base(logger, organizationService)
         {
+            PollingOrganizationService = pollingOrganizationService;
         }
 
         #endregion
@@ -166,10 +179,10 @@ namespace Xrm.Framework.CI.Common
                 Logger.LogVerbose("Awaiting for Async Operation Completion");
 
                 AsyncUpdateHandler updateHandler = new AsyncUpdateHandler(
-                    Logger, OrganizationService, importJobId.Value);
+                    Logger, PollingOrganizationService, importJobId.Value);
 
                 AsyncOperationManager operationManager
-                    = new AsyncOperationManager(Logger, OrganizationService);
+                    = new AsyncOperationManager(Logger, PollingOrganizationService);
 
                 AsyncOperation asyncOperation = operationManager.AwaitCompletion(
                     asyncJobId,
@@ -213,7 +226,7 @@ namespace Xrm.Framework.CI.Common
 
                 Logger.LogVerbose("Thread Started. Starting to Query Import Status");
 
-                ImportJobManager jobManager = new ImportJobManager(Logger, OrganizationService);
+                ImportJobManager jobManager = new ImportJobManager(Logger, PollingOrganizationService);
                 jobManager.AwaitImportJob(importJobId.Value, asyncWaitTimeout, sleepInterval, true, jobHandler);
 
                 importThread.Join();
