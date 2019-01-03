@@ -550,6 +550,8 @@ namespace Xrm.Framework.CI.Common
             {
                 Logger.LogVerbose("Calling Execute Import Request");
 
+                Thread.Sleep(1000);
+
                 OrganizationService.Execute(ImportRequest);
 
                 Logger.LogInformation("Synchronous Solution Import Request Completed");
