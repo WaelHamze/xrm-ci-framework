@@ -9,6 +9,7 @@ using System.IO.Compression;
 using System.Linq;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
 using Xrm.Framework.CI.Common.Entities;
@@ -215,21 +216,22 @@ namespace Xrm.Framework.CI.Common
                    OrganizationService,
                    importHandler);
 
-                Logger.LogVerbose("Creating Import Thread");
+                Logger.LogVerbose("Creating Import Task");
 
-                Thread importThread = new Thread(
-                    () => importHandler.ImportSolution()
-                    );
-                Logger.LogVerbose("Starting Import Thread");
+                Action importAction = () => importHandler.ImportSolution();
 
-                importThread.Start();
+                Task importTask = new Task(importAction);
+
+                Logger.LogVerbose("Starting Import Task");
+
+                importTask.Start();
 
                 Logger.LogVerbose("Thread Started. Starting to Query Import Status");
 
                 ImportJobManager jobManager = new ImportJobManager(Logger, PollingOrganizationService);
                 jobManager.AwaitImportJob(importJobId.Value, asyncWaitTimeout, sleepInterval, true, jobHandler);
 
-                importThread.Join();
+                importTask.Wait();
 
                 result = VerifySolutionImport(importAsync,
                     importJobId.Value,
@@ -548,17 +550,10 @@ namespace Xrm.Framework.CI.Common
         {
             try
             {
-                Logger.LogVerbose("Calling Execute Import Request");
-
-                Thread.Sleep(1000);
-
                 OrganizationService.Execute(ImportRequest);
-
-                Logger.LogInformation("Synchronous Solution Import Request Completed");
             }
             catch (Exception ex)
             {
-                Logger.LogWarning(ex.Message);
                 Error = ex;
             }
         }
@@ -651,6 +646,7 @@ namespace Xrm.Framework.CI.Common
             if (importJob == null && ImportHandler.Error != null)
             {
                 Logger.LogVerbose("Execute Failed and Import Job couldn't be found");
+                Logger.LogVerbose("Execute Request Error: {0}", ImportHandler.Error.Message);
                 return false;
             }
 

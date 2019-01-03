@@ -110,6 +110,8 @@ namespace Xrm.Framework.CI.Common
 
                         if (!continueWaiting)
                         {
+                            Logger.LogVerbose("continueWaiting = false. Existing loop.");
+
                             completed = true;
                         }
                     }
