@@ -36,7 +36,6 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
         #endregion
 
         #region Process Record
-
         protected override void ProcessRecord()
         {
             base.ProcessRecord();
@@ -44,11 +43,9 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
             base.WriteVerbose($"Generating custom attribute class with namespace: {Namespace}");
             WriteObject(ClassText.Replace("#NAMESPACE#", Namespace));
         }
-
         #endregion
 
         #region Class Text
-
         private static string ClassText => @"using System;
 
 namespace #NAMESPACE#
@@ -58,7 +55,11 @@ namespace #NAMESPACE#
     {
         #region Members
         public PluginIsolationMode IsolationMode { get; private set; }
+<<<<<<< HEAD
         public string Message { get; private set; }
+=======
+        public PluginMessage Message { get; private set; }
+>>>>>>> a2caea83848be917e1d5e9731ce0cf58316a3d96
         public string EntityLogicalName { get; private set; }
         public string FilteringAttributes { get; private set; }
         public int ExecutionOrder { get; private set; }
@@ -82,6 +83,10 @@ namespace #NAMESPACE#
         public PluginSourceType SourceType { get; set; }
         public string ImpersonatingUser { get; set; }
         public SdkMessageProcessingStep_SupportedDeployment SupportedDeployment { get; set; }
+<<<<<<< HEAD
+=======
+
+>>>>>>> a2caea83848be917e1d5e9731ce0cf58316a3d96
         #endregion
 
         //Plugin - one image
@@ -94,7 +99,11 @@ namespace #NAMESPACE#
             int order,
             PluginStage stage,
             PluginExecutionMode executionMode,
+<<<<<<< HEAD
             string message,
+=======
+            PluginMessage message,
+>>>>>>> a2caea83848be917e1d5e9731ce0cf58316a3d96
             string image1Name,
             string image1Attributes,
             PluginImageType image1Type,
@@ -136,7 +145,11 @@ namespace #NAMESPACE#
             int order,
             PluginStage stage,
             PluginExecutionMode executionMode,
+<<<<<<< HEAD
             string message,
+=======
+            PluginMessage message,
+>>>>>>> a2caea83848be917e1d5e9731ce0cf58316a3d96
             string image1Name,
             string image1Attributes,
             PluginImageType image1Type,
@@ -202,6 +215,7 @@ namespace #NAMESPACE#
             FriendlyName = friendlyName;
             WorkflowGroupName = workflowGroupName;
         }
+<<<<<<< HEAD
 
         #region MessageConsts
         public const string AddItem = ""AddItem"";
@@ -294,6 +308,8 @@ namespace #NAMESPACE#
         public const string ValidateRecurrenceRule = ""ValidateRecurrenceRule"";
         public const string Win = ""Win"";
         #endregion
+=======
+>>>>>>> a2caea83848be917e1d5e9731ce0cf58316a3d96
     }
 
     #region Enums
@@ -332,6 +348,10 @@ namespace #NAMESPACE#
 
     public enum SdkMessageProcessingStep_SupportedDeployment
     {
+<<<<<<< HEAD
+=======
+
+>>>>>>> a2caea83848be917e1d5e9731ce0cf58316a3d96
         ServerOnly = 0,
         MicrosoftDynamics365ClientforOutlookOnly = 1,
         Both = 2
@@ -343,6 +363,101 @@ namespace #NAMESPACE#
         Disabled = 1,
     }
 
+<<<<<<< HEAD
+=======
+    public enum PluginMessage
+    {
+        AddItem,
+        AddListMembers,
+        AddMember,
+        AddMembers,
+        AddPrincipalToQueue,
+        AddPrivileges,
+        AddProductToKit,
+        AddRecurrence,
+        AddToQueue,
+        AddUserToRecordTeam,
+        ApplyRecordCreationAndUpdateRule,
+        Assign,
+        Associate,
+        BackgroundSend,
+        Book,
+        CalculatePrice,
+        Cancel,
+        CheckIncoming,
+        CheckPromote,
+        Clone,
+        CloneMobileOfflineProfile,
+        CloneProduct,
+        Close,
+        CopyDynamicListToStatic,
+        CopySystemForm,
+        Create,
+        CreateException,
+        CreateInstance,
+        CreateKnowledgeArticleTranslation,
+        CreateKnowledgeArticleVersion,
+        Delete,
+        DeleteOpenInstances,
+        DeliverIncoming,
+        DeliverPromote,
+        Disassociate,
+        Execute,
+        ExecuteById,
+        Export,
+        GenerateSocialProfile,
+        GetDefaultPriceLevel,
+        GrantAccess,
+        Import,
+        LockInvoicePricing,
+        LockSalesOrderPricing,
+        Lose,
+        Merge,
+        ModifyAccess,
+        PickFromQueue,
+        Publish,
+        PublishAll,
+        PublishTheme,
+        QualifyLead,
+        Recalculate,
+        ReleaseToQueue,
+        RemoveFromQueue,
+        RemoveItem,
+        RemoveMember,
+        RemoveMembers,
+        RemovePrivilege,
+        RemoveProductFromKit,
+        RemoveRelated,
+        RemoveUserFromRecordTeam,
+        ReplacePrivileges,
+        Reschedule,
+        Retrieve,
+        RetrieveExchangeRate,
+        RetrieveFilteredForms,
+        RetrieveMultiple,
+        RetrievePersonalWall,
+        RetrievePrincipalAccess,
+        RetrieveRecordWall,
+        RetrieveSharedPrincipalsAndAccess,
+        RetrieveUnpublished,
+        RetrieveUnpublishedMultiple,
+        RetrieveUserQueues,
+        RevokeAccess,
+        RouteTo,
+        Send,
+        SendFromTemplate,
+        SetLocLabels,
+        SetRelated,
+        SetState,
+        SetStateDynamicEntity,
+        TriggerServiceEndpointCheck,
+        UnlockInvoicePricing,
+        UnlockSalesOrderPricing,
+        Update,
+        ValidateRecurrenceRule,
+        Win
+    }
+>>>>>>> a2caea83848be917e1d5e9731ce0cf58316a3d96
     #endregion
 }";
 

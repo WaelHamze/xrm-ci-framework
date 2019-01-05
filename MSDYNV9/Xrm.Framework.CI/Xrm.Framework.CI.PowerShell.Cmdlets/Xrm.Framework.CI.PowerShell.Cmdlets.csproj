@@ -244,7 +244,7 @@
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties PluginRegistration_4WorkflowAssemblyExample_1json__JSONSchema="PluginRegistrationSchema.json" PluginRegistration_4PluginAssemblyExample_1json__JSONSchema="PluginRegistrationSchema.json" />
+      <UserProperties PluginRegistration_4PluginAssemblyExample_1json__JSONSchema="PluginRegistrationSchema.json" PluginRegistration_4WorkflowAssemblyExample_1json__JSONSchema="PluginRegistrationSchema.json" />
     </VisualStudio>
   </ProjectExtensions>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

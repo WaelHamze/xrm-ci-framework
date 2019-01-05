@@ -4,6 +4,7 @@ using System.Linq;
 using Xrm.Framework.CI.Common.Entities;
 using Xrm.Framework.CI.PowerShell.Cmdlets.Common;
 
+
 namespace Xrm.Framework.CI.PowerShell.Cmdlets.PluginRegistration
 {
     public interface IPluginRegistrationObjectFactory
