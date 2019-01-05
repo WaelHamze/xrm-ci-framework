@@ -12,13 +12,13 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
     /// </para>
     /// </summary>
     /// <example>
-    ///   <code>Get-XrmPluginRegistrationFromAssembly -AssemblyPath "C:\repos\DemonstratePlugin.dll" -MappingFile "C:\repos\PluginRegistration.json" -MaintainIdsAndSteps $true</code>
+    ///   <code>Get-XrmPluginRegistrationFromAssembly -AssemblyPath "C:\repos\DemonstratePlugin.dll" -MappingFile "C:\repos\PluginRegistration.json"</code>
     ///   <para>Outputs plugin registration JSON to C:\repos\PluginRegistration.json, built from classes using
     ///     custom attribute in C:\repos\DemonstratePlugin.dll. USes default custom attribute class name
     ///   </para>
     /// </example>
     ///    /// <example>
-    ///   <code>Get-XrmPluginRegistrationFromAssembly -AssemblyPath "C:\repos\DemonstratePlugin.dll" -MappingFile "C:\repos\PluginRegistration.json" -MaintainIdsAndSteps $true -CustomAttributeClassName "Common.MyClass"</code>
+    ///   <code>Get-XrmPluginRegistrationFromAssembly -AssemblyPath "C:\repos\DemonstratePlugin.dll" -MappingFile "C:\repos\PluginRegistration.json" -CustomAttributeClassName "Common.MyClass"</code>
     ///   <para>Outputs plugin registration JSON to C:\repos\PluginRegistration.json, built from classes using
     ///     custom attribute in C:\repos\DemonstratePlugin.dll. Searches for Custom Attribute class named Common.MyClass
     ///   </para>
@@ -48,7 +48,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
             var assembly =
                 pluginRegistrationHelper.GetPluginRegistrationObject(AssemblyPath, CustomAttributeClassName) as Assembly;
 
-            if (MaintainIdsAndSteps.HasValue && MaintainIdsAndSteps == true)
+            if (!MaintainIdsAndSteps.HasValue || (MaintainIdsAndSteps.HasValue && MaintainIdsAndSteps == true))
             {
                 var assemblyFromMappingFile = pluginRegistrationHelper.ReadMappingFile(MappingFile);
                 if(assemblyFromMappingFile != null)

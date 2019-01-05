@@ -70,8 +70,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.PluginRegistration
                     CustomConfiguration = (string) GetMappedObject(args, "customConfiguration"),
                     FilteringAttributes = (string) GetMappedObject(args, "filters"),
                     ImpersonatingUserFullname = (string) GetMappedObject(args, "impersonatingUser"),
-                    MessageName = ParseEnum<PluginAssembly_Message>(GetMappedObject(args, "message").ToString())
-                        .ToString(),
+                    MessageName = (string) GetMappedObject(args, "message"),
                     PrimaryEntityName = (string) GetMappedObject(args, "entityLogicalName"),
                     Mode = ParseEnum<SdkMessageProcessingStep_Mode>(GetMappedObject(args, "executionMode").ToString()),
                     Name = className,
@@ -126,14 +125,14 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.PluginRegistration
                     "stage").ToString()).ToString();
 
                 var entity = (string)GetMappedObject(args, "entityLogicalName");
-                var msg = ParseEnum<PluginAssembly_Message>(GetMappedObject(args, "message").ToString()).ToString();
+                var msg = (string) GetMappedObject(args, "message");
 
                 return $"{stage} {msg} of {entity}";
             }
 
             private static string GetMessagePropertyName(Dictionary<string, object> args)
             {
-                var message = ParseEnum<PluginAssembly_Message>(GetMappedObject(args, "message").ToString()).ToString();
+                var message = (string) GetMappedObject(args, "message");
                 if (message == "SetState" || message == "SetStateDynamicEntity") return "entityMoniker";
 
                 if (message != "Create") return "Target";

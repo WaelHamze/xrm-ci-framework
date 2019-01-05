@@ -104,6 +104,8 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Test.PluginRegistration
             Assert.AreEqual(addedStep.Mode, _stepLeft.Mode);
             Assert.AreEqual(addedStep.Rank, _stepLeft.Rank);
             Assert.AreEqual(addedStep.SupportedDeployment, _stepLeft.SupportedDeployment);
+            Assert.AreEqual(addedStep.AsyncAutoDelete, _stepLeft.AsyncAutoDelete);
+            Assert.AreEqual(addedStep.StateCode, _stepLeft.StateCode);
         }
 
         [Test]

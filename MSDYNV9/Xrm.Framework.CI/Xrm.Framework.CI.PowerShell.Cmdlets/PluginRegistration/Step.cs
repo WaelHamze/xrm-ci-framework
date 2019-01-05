@@ -71,6 +71,8 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
                 Rank = b.Rank,
                 Stage = b.Stage,
                 SupportedDeployment = b.SupportedDeployment,
+                AsyncAutoDelete = b.AsyncAutoDelete,
+                StateCode = b.StateCode,
                 Images = new List<Image>()
             };
 

@@ -41,7 +41,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Test
                 {"customConfiguration", "custom config"},
                 {"filters", "firstname,lastname"},
                 {"impersonatingUser", "Mo G"},
-                {"message", PluginAssembly_Message.Update},
+                {"message", "Update"},
                 {"entityLogicalName", "contact"},
                 {"executionMode", SdkMessageProcessingStep_Mode.Synchronous},
                 {"order", 1},
@@ -139,7 +139,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Test
         [Test]
         public void MessagePropertyName_Set_To_EntityMoniker_For_SetState()
         {
-            _args["message"] = PluginAssembly_Message.SetState;
+            _args["message"] = "SetState";
             IPluginRegistrationObjectFactory pluginRegistrationObjectFactory = new PluginRegistrationObjectFactory();
             var assembly = pluginRegistrationObjectFactory.GetAssembly(_fakeReflectionLoader);
             var image = assembly.PluginTypes[0].Steps[0].Images[1];
@@ -149,7 +149,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Test
         [Test]
         public void MessagePropertyName_Set_To_EntityMoniker_For_SetStateDynamicEntity()
         {
-            _args["message"] = PluginAssembly_Message.SetStateDynamicEntity;
+            _args["message"] = "SetStateDynamicEntity";
             IPluginRegistrationObjectFactory pluginRegistrationObjectFactory = new PluginRegistrationObjectFactory();
             var assembly = pluginRegistrationObjectFactory.GetAssembly(_fakeReflectionLoader);
             var image = assembly.PluginTypes[0].Steps[0].Images[1];
@@ -159,7 +159,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Test
         [Test]
         public void MessagePropertyName_Set_To_Id_For_PostCreate()
         {
-            _args["message"] = PluginAssembly_Message.Create;
+            _args["message"] = "Create";
             IPluginRegistrationObjectFactory pluginRegistrationObjectFactory = new PluginRegistrationObjectFactory();
             var assembly = pluginRegistrationObjectFactory.GetAssembly(_fakeReflectionLoader);
             var image = assembly.PluginTypes[0].Steps[0].Images[1];
@@ -169,7 +169,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Test
         [Test]
         public void MessagePropertyName_Set_To_Target_For_PreCreate()
         {
-            _args["message"] = PluginAssembly_Message.Create;
+            _args["message"] = "Create";
             _args["stage"] = SdkMessageProcessingStep_Stage.Preoperation;
             _args.Remove("image2Attributes");
             _args.Remove("image2Type");
