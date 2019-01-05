@@ -25,6 +25,11 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Logging
         public PSLogger(XrmCommandBase xrmCmdlet)
         {
             XrmCmdlet = xrmCmdlet;
+            XrmCmdlet.WriteVerbose(string.Format("PS Version: {0}", GetPSVersion().ToString()));
+            if (GetPSVersion().Major < 5)
+            {
+                XrmCmdlet.WriteVerbose("Switching to Console.WriteLine instead of WriteInformation due to PS Version");
+            }
         }
 
         #endregion
@@ -43,7 +48,14 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Logging
         public void LogInformation(string format, params object[] args)
         {
             string message = string.Format(format, args);
-            XrmCmdlet.WriteInformation(message, new string[]{ "XrmCIFramework"});
+            if (GetPSVersion().Major < 5)
+            {
+                Console.WriteLine(message);
+            }
+            else
+            {
+                XrmCmdlet.WriteInformation(message, new string[] { "XrmCIFramework" });
+            }
         }
 
         public void LogVerbose(string format, params object[] args)
@@ -56,6 +68,15 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Logging
         {
             string message = string.Format(format, args);
             XrmCmdlet.WriteWarning(message);
+        }
+
+        #endregion
+
+        #region Private Methods
+
+        private Version GetPSVersion()
+        {
+            return XrmCmdlet.CommandRuntime.Host.Version;
         }
 
         #endregion
