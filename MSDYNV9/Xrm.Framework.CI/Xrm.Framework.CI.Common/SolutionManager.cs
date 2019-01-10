@@ -316,6 +316,19 @@ namespace Xrm.Framework.CI.Common
             }
         }
 
+        public Solution GetSolution(Guid Id, ColumnSet columns)
+        {
+            if (columns == null)
+            {
+                columns = new ColumnSet();
+            }
+
+            Solution solution = OrganizationService.Retrieve(Solution.EntityLogicalName,
+                Id, columns).ToEntity<Solution>();
+
+            return solution;
+        }
+
         public void DeleteSolution(string uniqueName)
         {
             Solution solution = GetSolution(uniqueName, new ColumnSet());
@@ -333,6 +346,184 @@ namespace Xrm.Framework.CI.Common
 
                 Logger.LogInformation("Solution '{0}' was deleted", uniqueName);
             }
+        }
+
+        public List<Solution> GetSolutionPatches(string uniqueName)
+        {
+            Solution parent = GetSolution(uniqueName, new ColumnSet());
+
+            if (parent is null)
+            {
+                throw new Exception(string.Format("{0} solution can't be found", uniqueName));
+            }
+
+            Logger.LogVerbose("Retrieving patches for solution {0}", uniqueName);
+
+            using (var context = new CIContext(OrganizationService))
+            {
+                var query = from s in context.SolutionSet
+                            where s.ParentSolutionId.Id == parent.Id
+                            orderby s.Version descending
+                            select s;
+
+                List<Solution> solutions = query.ToList<Solution>();
+
+                return solutions;
+            }
+        }
+
+        public Solution CreatePatch(string uniqueName,
+                                    string versionNumber,
+                                    string displayName)
+        {
+            using (var context = new CIContext(OrganizationService))
+            {
+                if (string.IsNullOrEmpty(versionNumber))
+                {
+                    Logger.LogVerbose("VersionNumber not supplied. Generating default VersionNumber");
+
+                    var solution = (from sol in context.SolutionSet
+                                    where sol.UniqueName == uniqueName || sol.UniqueName.StartsWith(uniqueName + "_Patch")
+                                    orderby sol.Version descending
+                                    select new Solution { Version = sol.Version, FriendlyName = sol.FriendlyName }).FirstOrDefault();
+                    if (solution == null || string.IsNullOrEmpty(solution.Version))
+                    {
+                        throw new Exception(string.Format("Parent solution with unique name {0} not found.", uniqueName));
+                    }
+
+                    string[] versions = solution.Version.Split('.');
+                    char dot = '.';
+                    versionNumber = string.Concat(versions[0], dot, versions[1], dot, Convert.ToInt32(versions[2]) + 1, dot, 0);
+                    Logger.LogVerbose("New VersionNumber: {0}", versionNumber);
+                }
+
+                if (string.IsNullOrEmpty(displayName))
+                {
+                    Logger.LogVerbose("displayName not supplied. Generating default DisplayName");
+
+                    var solution = (from sol in context.SolutionSet
+                                    where sol.UniqueName == uniqueName
+                                    select new Solution { FriendlyName = sol.FriendlyName }).FirstOrDefault();
+
+                    if (solution == null || string.IsNullOrEmpty(solution.FriendlyName))
+                    {
+                        throw new Exception(string.Format("Parent solution with unique name {0} not found.", uniqueName));
+                    }
+
+                    displayName = solution.FriendlyName;
+                }
+
+                var cloneAsPatch = new CloneAsPatchRequest
+                {
+                    DisplayName = displayName,
+                    ParentSolutionUniqueName = uniqueName,
+                    VersionNumber = versionNumber,
+                };
+
+                CloneAsPatchResponse response = OrganizationService.Execute(cloneAsPatch) as CloneAsPatchResponse;
+
+                Logger.LogInformation("Patch solution created with Id {0}", response.SolutionId);
+
+                Solution patch = GetSolution(response.SolutionId, new ColumnSet(true));
+
+                Logger.LogInformation("Patch solution name: {0}", patch.UniqueName);
+
+                return patch;
+            }
+        }
+
+        public Solution CloneSolution(string uniqueName,
+                                    string versionNumber,
+                                    string displayName)
+        {
+            using (var context = new CIContext(OrganizationService))
+            {
+                var solution = (from sol in context.SolutionSet
+                                where sol.UniqueName == uniqueName
+                                select new Solution { Version = sol.Version, FriendlyName = sol.FriendlyName }).FirstOrDefault();
+                if (solution == null || string.IsNullOrEmpty(solution.Version))
+                {
+                    throw new Exception(string.Format("Parent solution with unique name {0} not found.", uniqueName));
+                }
+
+                if (string.IsNullOrEmpty(versionNumber))
+                {
+                    Logger.LogVerbose("VersionNumber not supplied. Generating default VersionNumber");
+
+                    string[] versions = solution.Version.Split('.');
+                    char dot = '.';
+                    versionNumber = string.Concat(versions[0], dot, Convert.ToInt32(versions[1]) + 1, dot, versions[2], dot, versions[3]);
+                    Logger.LogVerbose("New version number {0}", versionNumber);
+                }
+
+                if (string.IsNullOrEmpty(displayName))
+                {
+                    Logger.LogVerbose("displayName not supplied. Generating default displayName");
+
+                    displayName = solution.FriendlyName;
+                }
+
+                var cloneAsPatch = new CloneAsSolutionRequest
+                {
+                    DisplayName = displayName,
+                    ParentSolutionUniqueName = uniqueName,
+                    VersionNumber = versionNumber,
+                };
+
+                CloneAsSolutionResponse response = 
+                    OrganizationService.Execute(cloneAsPatch) as CloneAsSolutionResponse;
+
+                Logger.LogInformation("Clone solution created with Id {0}", response.SolutionId);
+
+                Solution clone = GetSolution(response.SolutionId, new ColumnSet(true));
+
+                Logger.LogInformation("Clone solution name: {0}", clone.UniqueName);
+
+                return clone;
+            }
+        }
+
+        public Solution CreateSolution(string publisherUniqueName,
+                                        string uniqueName,
+                                        string displayName,
+                                        string description,
+                                        string versionNumber)
+        {
+            Logger.LogVerbose("Searching for Publisher: {0}", publisherUniqueName);
+
+            QueryByAttribute queryPublishers = new QueryByAttribute("publisher");
+            queryPublishers.Attributes.Add("uniquename");
+            queryPublishers.ColumnSet = new ColumnSet(true);
+            queryPublishers.Values.Add(publisherUniqueName);
+
+            EntityCollection publishers = OrganizationService.RetrieveMultiple(queryPublishers);
+
+            Logger.LogVerbose("# of Publishers found: {0}", publishers.Entities.Count);
+
+            if (publishers.Entities.Count != 1)
+            {
+                throw new Exception(string.Format("Unique Publisher with name '{0}' was not found", publisherUniqueName));
+            }
+
+            Entity publisher = publishers[0];
+
+            Logger.LogVerbose("Publisher Located Display Name: {0}, Id: {1}", publisher.Attributes["friendlyname"], publisher.Id);
+
+            Logger.LogVerbose("Creating Solution");
+
+            Solution newSolution = new Solution();
+
+            newSolution.UniqueName = uniqueName;
+            newSolution.FriendlyName = displayName;
+            newSolution.Version = versionNumber;
+            newSolution.Description = description;
+            newSolution.PublisherId = publisher.ToEntityReference();
+
+            Guid solutionId = OrganizationService.Create(newSolution);
+
+            Logger.LogVerbose("Solution Created with Id: {0}", solutionId);
+
+            return GetSolution(solutionId, new ColumnSet(true));
         }
 
         private bool SkipImport(
