@@ -344,8 +344,9 @@ namespace #NAMESPACE#
 
     public enum PluginIsolationMode
     {
-        None = 0,
-        Sandbox = 1
+        None = 1,
+        Sandbox = 2,
+        External = 3;
     }
 
     public enum PluginStage
