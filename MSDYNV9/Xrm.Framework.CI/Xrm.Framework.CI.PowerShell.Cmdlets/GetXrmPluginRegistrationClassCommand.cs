@@ -346,7 +346,7 @@ namespace #NAMESPACE#
     {
         None = 1,
         Sandbox = 2,
-        External = 3;
+        External = 3
     }
 
     public enum PluginStage
