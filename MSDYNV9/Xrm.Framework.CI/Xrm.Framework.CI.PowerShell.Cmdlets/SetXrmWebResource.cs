@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Management.Automation;
 using System.Text.RegularExpressions;
+using Xrm.Framework.CI.Common.Entities;
 using Xrm.Framework.CI.PowerShell.Cmdlets.Common;
 
 namespace Xrm.Framework.CI.PowerShell.Cmdlets

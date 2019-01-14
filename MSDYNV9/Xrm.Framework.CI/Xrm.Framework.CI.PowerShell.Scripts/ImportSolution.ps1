@@ -1,6 +1,8 @@
 #
 # Filename: ImportSolution.ps1
 #
+[CmdletBinding()]
+
 param(
 [string]$solutionFile, #The absolute path to the solution file zip to be imported
 [string]$crmConnectionString, #The target CRM organization connection string
@@ -9,8 +11,8 @@ param(
 [bool]$overwriteUnmanagedCustomizations, #Will overwrite unmanaged customizations
 [bool]$skipProductUpdateDependencies, #Will skip product update dependencies
 [bool]$convertToManaged, #Direct the system to convert any matching unmanaged customizations into your managed solution. Optional.
-[bool]$holdingSolution,
-[bool]$ImportAsync = $true,
+[bool]$holdingSolution, #Imports by creating a holding/upgrade solution
+[bool]$ImportAsync = $true, #Import solution in Async Mode, recommended
 [int]$AsyncWaitTimeout, #Optional - Async wait timeout in seconds
 [int]$Timeout, #Optional - CRM connection timeout
 [string]$logsDirectory, #Optional - will place the import log in here
@@ -18,6 +20,7 @@ param(
 )
 
 $ErrorActionPreference = "Stop"
+$InformationPreference = "Continue"
 
 Write-Verbose 'Entering ImportSolution.ps1'
 
@@ -46,100 +49,8 @@ Write-Verbose "Timeout = $Timeout"
 Write-Verbose "logsDirectory = $logsDirectory"
 Write-Verbose "logFilename = $logFilename"
 
-Write-Verbose "Getting solution info from zip"
+$importJobId = [guid]::NewGuid()
 
-$solutionInfo = Get-XrmSolutionInfoFromZip -SolutionFilePath "$solutionFile"
-
-Write-Host "Solution Name: " $solutionInfo.UniqueName
-Write-Host "Solution Version: " $solutionInfo.Version
-
-$solution = Get-XrmSolution -ConnectionString "$CrmConnectionString" -UniqueSolutionName $solutionInfo.UniqueName
-
-if ($solution -eq $null)
-{
-    Write-Host "Solution not currently installed"
-}
-else
-{
-    Write-Host "Solution Installed Current version: " $solution.Version
-}
+Import-XrmSolution -ConnectionString "$CrmConnectionString" -SolutionFilePath "$solutionFile" -publishWorkflows $publishWorkflows -overwriteUnmanagedCustomizations $overwriteUnmanagedCustomizations -SkipProductUpdateDependencies $skipProductUpdateDependencies -ConvertToManaged $convertToManaged -HoldingSolution $holdingSolution -OverrideSameVersion $override -ImportAsync $ImportAsync -ImportJobId $importJobId -AsyncWaitTimeout $AsyncWaitTimeout -DownloadFormattedLog $true -LogsDirectory "$logsDirectory" -LogFileName "$logFilename" -Timeout $Timeout
  
-if ($override -or ($solution -eq $null) -or ($solution.Version -ne $solutionInfo.Version))
-{    
-    Write-Verbose "Importing Solution: $solutionFile"
-
-    $importJobId = [guid]::NewGuid()
-
-	Write-Host "Solution Import Starting. Import Job Id: $importJobId"
-  
-    $asyncOperationId = Import-XrmSolution -ConnectionString "$CrmConnectionString" -SolutionFilePath "$solutionFile" -publishWorkflows $publishWorkflows -overwriteUnmanagedCustomizations $overwriteUnmanagedCustomizations -SkipProductUpdateDependencies $skipProductUpdateDependencies -ConvertToManaged $convertToManaged -HoldingSolution $holdingSolution -ImportAsync $ImportAsync -WaitForCompletion $true -ImportJobId $importJobId -AsyncWaitTimeout $AsyncWaitTimeout  -Timeout $Timeout -Verbose
- 
-    Write-Host "Solution Import Completed. Import Job Id: $importJobId"
-
-    if ($logsDirectory)
-    {
-        if ($logFilename)
-		{
-			$importLogFile = $logsDirectory + "\" + $logFilename
-		}
-		else
-		{
-			$importLogFile = $logsDirectory + "\" + $solutionInfo.UniqueName + '_' + ($solutionInfo.Version).replace('.','_') + '_' + [System.DateTime]::Now.ToString("yyyy_MM_dd__HH_mm") + ".xml"
-		}
-	}
-
-    $importJob = Get-XrmSolutionImportLog -ImportJobId $importJobId -ConnectionString "$CrmConnectionString" -OutputFile "$importLogFile"
-
-    $importProgress = $importJob.Progress
-    $importResult = (Select-Xml -Content $importJob.Data -XPath "//solutionManifest/result/@result").Node.Value
-    $importErrorText = (Select-Xml -Content $importJob.Data -XPath "//solutionManifest/result/@errortext").Node.Value
-
-    Write-Host "Import Progress: $importProgress"
-    Write-Host "Import Result: $importResult"
-    Write-Host "Import Error Text: $importErrorText"
-    Write-Verbose $importJob.Data
-
-    	if ($importResult -ne "success")
-    {
-        throw "Import Failed"
-    }
-
-	#parse the importexportxml and look for result notes with result="failure"
-	$importFailed = $false
-	$importjobXml = [xml]$importJob.Data
-	$failureNodes = $importjobXml.SelectNodes("//*[@result='failure']")
-
-	foreach ($failureNode in $failureNodes){
-		$componentName = $failureNode.ParentNode.Attributes['name'].Value
-		$errorText = $failureNode.Attributes['errortext'].Value
-		Write-Host "Component Import Failure: '$componentName' failed with error: '$errorText'"
-		$importFailed = $true
-	}
-		
-	if ($importFailed -eq $true)
-	{	
-		throw "The Solution Import failed because one or more components with a result of 'failure' were found. For detals, check the Diagnostics for this build or the solution import log file in the logs subfolder of the Drop folder."
-	}
-	else
-	{
-		Write-Host "The import result of all components is 'success'."
-	}
-	#end parse the importexportxml and look for result notes with result="failure"
-    
-	$solution = Get-XrmSolution -ConnectionString "$CrmConnectionString" -UniqueSolutionName $solutionInfo.UniqueName
-
-    if (($holdingSolution -ne $true) -and ($solution.Version -ne $solutionInfo.Version)) 
-    {
-        throw "Import Failed. Check the solution import log file in the logs subfolder of the Drop folder."
-    }
-    else
-    {
-        Write-Host "Solution Imported Successfully"
-    }
-}
-else
-{
-    Write-Host "Skipped Import of Solution..."
-}
-
 Write-Verbose 'Leaving ImportSolution.ps1'

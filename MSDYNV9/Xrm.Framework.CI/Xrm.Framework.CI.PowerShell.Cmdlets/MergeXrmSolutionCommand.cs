@@ -5,7 +5,8 @@ using System.Threading;
 using Microsoft.Crm.Sdk.Messages;
 using Microsoft.Xrm.Sdk.Messages;
 using Microsoft.Xrm.Sdk.Query;
-using Xrm.Framework.CI.PowerShell.Cmdlets.Common;
+using System.Linq;
+using Xrm.Framework.CI.Common.Entities;
 
 namespace Xrm.Framework.CI.PowerShell.Cmdlets
 {
@@ -113,6 +114,8 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
             }
 
             base.WriteVerbose(string.Format("{0} Upgrade Completed", UniqueSolutionName));
+
+            VerifyUpgrade();
         }
 
         private void AwaitCompletion(Guid asyncJobId)
@@ -158,6 +161,32 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
                     case 32:
                         throw new Exception(string.Format("Solution Apply with asyncJobId {0} Failed: {1} {2}",
                             asyncJobId, asyncOperation.StatusCode.Value, asyncOperation.Message));
+                }
+            }
+        }
+
+
+        private void VerifyUpgrade()
+        {
+            string upgradeName = UniqueSolutionName + "_Upgrade";
+
+            base.WriteVerbose(string.Format("Retrieving Solution: {0}", upgradeName));
+
+            using (var context = new CIContext(OrganizationService))
+            {
+                var query = from s in context.SolutionSet
+                            where s.UniqueName == upgradeName
+                            select s;
+
+                Solution solution = query.FirstOrDefault();
+
+                if (solution != null)
+                {
+                    throw new Exception(string.Format("Solution still exists after upgrade: {0}", upgradeName));
+                }
+                else
+                {
+                    base.WriteVerbose(string.Format("Upgrade Solution Merged: {0}", upgradeName));
                 }
             }
         }

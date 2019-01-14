@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Xrm.Framework.CI.PowerShell.Cmdlets.PluginRegistration;
 using System.IO;
+using Xrm.Framework.CI.Common.Entities;
 
 namespace Xrm.Framework.CI.PowerShell.Cmdlets
 {
@@ -304,9 +305,17 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
                 StageEnum = step.Stage,
                 SupportedDeploymentEnum = step.SupportedDeployment,
                 EventHandler = parentRef,
+                AsyncAutoDelete = step.AsyncAutoDelete,
             };
 
             Id = ExecuteRequest(registrationType, Id, sdkMessageProcessingStep);
+            int stateCode = (int)step.StateCode;
+            organizationService.Execute(new SetStateRequest
+            {
+                EntityMoniker = new EntityReference(sdkMessageProcessingStep.LogicalName, Id),
+                State = new OptionSetValue(stateCode),
+                Status = new OptionSetValue(stateCode + 1)
+            });
 
             AddComponentToSolution(Id, ComponentType.SDKMessageProcessingStep, solutionName);
             return Id;

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Xrm.Framework.CI.Common.Entities;
 using Xrm.Framework.CI.PowerShell.Cmdlets.Common;
 
 namespace Xrm.Framework.CI.PowerShell.Cmdlets.PluginRegistration
@@ -89,6 +90,13 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.PluginRegistration
                                join filters in context.SdkMessageFilterSet on steps.SdkMessageFilterId.Id equals filters.Id
                                where plugins.PluginAssemblyId.Id == pluginAssembly.Id && plugins.IsWorkflowActivity == false
                                select MapPluginObject(steps, message, filters, pluginStepImages, pluginAssemblyObject, plugins)).ToList();
+            var typesHasSteps = new HashSet<string>(pluginAssemblyObject.PluginTypes.Select(t => t.Name));
+            var allPluginType = (from plugins in context.PluginTypeSet
+                                 where plugins.PluginAssemblyId.Id == pluginAssembly.Id && plugins.IsWorkflowActivity == false //&& !typesHasSteps.Contains(plugins.Name)
+                                 select plugins).ToList();
+            var pluginTypesWithNoSteps = (from plugins in allPluginType
+                                          where !typesHasSteps.Contains(plugins.Name)
+                                          select MapPluginObject(null, null, null, null, pluginAssemblyObject, plugins)).ToList();
 
             return pluginAssemblyObject;
         }
@@ -213,12 +221,14 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.PluginRegistration
             Description = pluginStep.Description,
             FilteringAttributes = pluginStep.FilteringAttributes,
             ImpersonatingUserFullname = pluginStep.ImpersonatingUserId?.Name ?? string.Empty,
-            MessageName = sdkMessage?.CategoryName,
+            MessageName = sdkMessage?.Name,
             Mode = pluginStep.ModeEnum,
             PrimaryEntityName = filter.PrimaryObjectTypeCode,
             Rank = pluginStep.Rank,
             Stage = pluginStep.StageEnum,
+            AsyncAutoDelete = pluginStep.AsyncAutoDelete,
             SupportedDeployment = pluginStep.SupportedDeploymentEnum,
+            StateCode = pluginStep.StateCode,
             Images = new List<Image>()
         };
 
