@@ -10,6 +10,7 @@ param(
 [bool]$skipProductUpdateDependencies, #Will skip product update dependencies
 [bool]$convertToManaged, #Direct the system to convert any matching unmanaged customizations into your managed solution. Optional.
 [bool]$holdingSolution,
+[bool]$ImportAsync = $true,
 [int]$AsyncWaitTimeout, #Optional - Async wait timeout in seconds
 [int]$Timeout, #Optional - CRM connection timeout
 [string]$logsDirectory, #Optional - will place the import log in here
@@ -39,6 +40,8 @@ Write-Verbose "skipProductUpdateDependencies = $skipProductUpdateDependencies"
 Write-Verbose "convertToManaged = $convertToManaged"
 Write-Verbose "holdingSolution = $holdingSolution"
 Write-Verbose "AsyncWaitTimeout = $AsyncWaitTimeout"
+Write-Verbose "ImportAsync = $ImportAsync"
+Write-Verbose "AsyncWaitTimeout = $AsyncWaitTimeout"
 Write-Verbose "Timeout = $Timeout"
 Write-Verbose "logsDirectory = $logsDirectory"
 Write-Verbose "logFilename = $logFilename"
@@ -66,8 +69,10 @@ if ($override -or ($solution -eq $null) -or ($solution.Version -ne $solutionInfo
     Write-Verbose "Importing Solution: $solutionFile"
 
     $importJobId = [guid]::NewGuid()
+
+	Write-Host "Solution Import Starting. Import Job Id: $importJobId"
   
-    $asyncOperationId = Import-XrmSolution -ConnectionString "$CrmConnectionString" -SolutionFilePath "$solutionFile" -publishWorkflows $publishWorkflows -overwriteUnmanagedCustomizations $overwriteUnmanagedCustomizations -SkipProductUpdateDependencies $skipProductUpdateDependencies -ConvertToManaged $convertToManaged -HoldingSolution $holdingSolution -ImportAsync $true -WaitForCompletion $true -ImportJobId $importJobId -AsyncWaitTimeout $AsyncWaitTimeout  -Timeout $Timeout -Verbose
+    $asyncOperationId = Import-XrmSolution -ConnectionString "$CrmConnectionString" -SolutionFilePath "$solutionFile" -publishWorkflows $publishWorkflows -overwriteUnmanagedCustomizations $overwriteUnmanagedCustomizations -SkipProductUpdateDependencies $skipProductUpdateDependencies -ConvertToManaged $convertToManaged -HoldingSolution $holdingSolution -ImportAsync $ImportAsync -WaitForCompletion $true -ImportJobId $importJobId -AsyncWaitTimeout $AsyncWaitTimeout  -Timeout $Timeout -Verbose
  
     Write-Host "Solution Import Completed. Import Job Id: $importJobId"
 
@@ -89,9 +94,9 @@ if ($override -or ($solution -eq $null) -or ($solution.Version -ne $solutionInfo
     $importResult = (Select-Xml -Content $importJob.Data -XPath "//solutionManifest/result/@result").Node.Value
     $importErrorText = (Select-Xml -Content $importJob.Data -XPath "//solutionManifest/result/@errortext").Node.Value
 
-    Write-Verbose "Import Progress: $importProgress"
-    Write-Verbose "Import Result: $importResult"
-    Write-Verbose "Import Error Text: $importErrorText"
+    Write-Host "Import Progress: $importProgress"
+    Write-Host "Import Result: $importResult"
+    Write-Host "Import Error Text: $importErrorText"
     Write-Verbose $importJob.Data
 
     	if ($importResult -ne "success")

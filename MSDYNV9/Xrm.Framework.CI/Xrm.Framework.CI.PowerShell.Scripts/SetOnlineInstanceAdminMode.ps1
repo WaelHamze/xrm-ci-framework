@@ -34,6 +34,9 @@ Write-Verbose "PSModulePath = $PSModulePath"
 $scriptPath = split-path -parent $MyInvocation.MyCommand.Definition
 Write-Verbose "Script Path: $scriptPath"
 
+#Set Security Protocol
+& "$scriptPath\SetTlsVersion.ps1"
+
 #Load Online Management Module
 $xrmOnlineModule = $scriptPath + "\Microsoft.Xrm.OnlineManagementAPI.dll"
 

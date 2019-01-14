@@ -1,7 +1,9 @@
 # xrm-ci-framework
 xRM CI Framework provides you with the tools to automate the build and deployment of your CRM Solution. Using the framework to implement a fully automated DevOps pipeline will allow you to deploy more frequently with added consistency and quality.
 
-The framework contains CRM PowerShell Cmdlets and Sample Scripts that you can use with Build and/or Release Automation Tools (VSTS, Jenkins, Team City, etc...). The Framework now also contains Build & Release tasks that you can install into your Visual Studio Team System.
+The framework contains CRM PowerShell Cmdlets and Sample Scripts that you can use with Build and/or Release Automation Tools (VSTS, Jenkins, Team City, etc...).
+
+**Dynamics 365 Build Tools** have been migrated to this repo: https://github.com/WaelHamze/dyn365-ce-vsts-tasks
 
 Take a look at the [Wiki pages](https://github.com/WaelHamze/xrm-ci-framework/wiki) for more information.
 
