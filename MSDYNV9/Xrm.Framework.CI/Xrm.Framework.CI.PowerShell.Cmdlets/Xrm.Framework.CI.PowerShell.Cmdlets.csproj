@@ -40,6 +40,7 @@
     <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms, Version=2.22.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.22.302111727\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Microsoft.Xrm.Sdk, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CrmSdk.CoreAssemblies.9.0.0.7\lib\net452\Microsoft.Xrm.Sdk.dll</HintPath>
     </Reference>
@@ -141,6 +142,8 @@
     <Compile Include="PluginRegistration\RegistrationTypeEnum.cs" />
     <Compile Include="RemoveXrmEntityAttribute.cs" />
     <Compile Include="RemoveXrmEntityCommand.cs" />
+    <Compile Include="ResetXrmWorkflow.cs" />
+    <Compile Include="RemoveXrmWorkflow.cs" />
     <Compile Include="RemoveXrmRecordCommand.cs" />
     <Compile Include="CopyXrmSolutionComponentsCommand.cs" />
     <Compile Include="RemoveXrmSolutionComponentsCommand.cs" />
@@ -182,7 +185,7 @@
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties PluginRegistration_4PluginAssemblyExample_1json__JSONSchema="PluginRegistrationSchema.json" PluginRegistration_4WorkflowAssemblyExample_1json__JSONSchema="PluginRegistrationSchema.json" />
+      <UserProperties PluginRegistration_4WorkflowAssemblyExample_1json__JSONSchema="PluginRegistrationSchema.json" PluginRegistration_4PluginAssemblyExample_1json__JSONSchema="PluginRegistrationSchema.json" />
     </VisualStudio>
   </ProjectExtensions>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

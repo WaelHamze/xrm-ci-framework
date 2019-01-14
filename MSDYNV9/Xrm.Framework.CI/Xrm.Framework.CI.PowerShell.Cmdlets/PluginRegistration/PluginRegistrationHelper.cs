@@ -61,12 +61,23 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
             }
         }
 
-        public void DeleteObjectWithDependencies(Guid objectId, ComponentType? componentType)
+        public void DeleteObjectWithDependencies(Guid objectId, ComponentType? componentType, HashSet<string> deletingHashSet = null)
         {
-            logVerbose?.Invoke($"Checking dependecies for {componentType} / {objectId}");
+            if (deletingHashSet == null)
+            {
+                deletingHashSet = new HashSet<string>();
+            }
+            var objectkey = $"{componentType}{objectId}";
+            if (deletingHashSet.Contains(objectkey))
+            {
+                return;
+            }
+            deletingHashSet.Add(objectkey);
+
+            logVerbose?.Invoke($"Checking dependencies for {componentType} / {objectId}");
             foreach (var objectToDelete in GetDependeciesForDelete(objectId, componentType))
             {
-                DeleteObjectWithDependencies(objectToDelete.DependentComponentObjectId.Value, objectToDelete.DependentComponentTypeEnum);
+                DeleteObjectWithDependencies(objectToDelete.DependentComponentObjectId.Value, objectToDelete.DependentComponentTypeEnum, deletingHashSet);
             }
 
             switch (componentType)
@@ -83,15 +94,27 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
                             Status = new OptionSetValue((int)Workflow_StatusCode.Draft)
                         });
                     }
+                    if (workflow.CategoryEnum == Workflow_Category.BusinessProcessFlow)
+                    {
+                        var entityMetadata = organizationService.GetEntityMetadata(workflow.UniqueName);
+                        logVerbose?.Invoke($"Checking dependencies for BPF entity: {workflow.UniqueName}");
+                        DeleteObjectWithDependencies(entityMetadata.MetadataId.Value, ComponentType.Entity, deletingHashSet);
+                    }
                     logVerbose?.Invoke($"Trying to delete {componentType} {workflow.Name}");
                     organizationService.Delete(Workflow.EntityLogicalName, objectId);
                     break;
                 case ComponentType.SDKMessageProcessingStep:
-                    logVerbose?.Invoke($"Trying to delete {componentType} {objectId}");
+                    var step = pluginRepository.GetSdkMessageProcessingStepById(objectId);
+                    if (step.IsHidden.Value == true)
+                    {
+                        return;
+                    }
+                    logVerbose?.Invoke($"Trying to delete {componentType} {step.Name} / {objectId}");
                     organizationService.Delete(SdkMessageProcessingStep.EntityLogicalName, objectId);
                     break;
                 case ComponentType.PluginType:
-                    logVerbose?.Invoke($"Trying to delete {componentType} {objectId}");
+                    var type = pluginRepository.GetPluginTypeById(objectId);
+                    logVerbose?.Invoke($"Trying to delete {componentType} {type.Name} / {objectId}");
                     organizationService.Delete(PluginType.EntityLogicalName, objectId);
                     break;
                 case ComponentType.PluginAssembly:

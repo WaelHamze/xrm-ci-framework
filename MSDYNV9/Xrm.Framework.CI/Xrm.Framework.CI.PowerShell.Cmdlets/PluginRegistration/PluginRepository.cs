@@ -34,6 +34,16 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.PluginRegistration
              where steps.EventHandler.Id == parentId && steps.Name == name
              select steps.Id).FirstOrDefault();
 
+        public SdkMessageProcessingStep GetSdkMessageProcessingStepById(Guid id) =>
+            (from steps in context.SdkMessageProcessingStepSet
+             where steps.SdkMessageProcessingStepId == id
+             select steps).SingleOrDefault();
+
+        internal PluginType GetPluginTypeById(Guid objectId) =>
+            (from type in context.PluginTypeSet
+             where type.PluginTypeId == objectId
+             select type).SingleOrDefault();
+
         public Guid GetSdkMessageProcessingStepImageId(Guid parentId, string name, SdkMessageProcessingStepImage_ImageType? imageType) =>
             (from a in context.SdkMessageProcessingStepImageSet
              where a.SdkMessageProcessingStepId.Id == parentId && a.ImageTypeEnum == imageType && a.EntityAlias == name
