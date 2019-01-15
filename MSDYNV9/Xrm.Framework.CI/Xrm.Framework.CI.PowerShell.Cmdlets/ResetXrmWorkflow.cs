@@ -4,7 +4,6 @@ using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Messages;
 using Microsoft.Xrm.Sdk.Query;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Management.Automation;
@@ -12,17 +11,17 @@ using System.ServiceModel;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.XPath;
-using Xrm.Framework.CI.PowerShell.Cmdlets.Common;
+using Xrm.Framework.CI.Common.Entities;
 
 namespace Xrm.Framework.CI.PowerShell.Cmdlets
 {
     /// <summary>
     /// <para type="synopsis">Reset a workflow.</para>
-    /// <para type="description">The Reset-XrmWorkflow cmdlet try an existing workflow or workflows in CRM.
+    /// <para type="description">The Reset-XrmWorkflow cmdlet try to publish an existing workflow or workflows in CRM.
     /// </summary>
     /// <example>
     ///   <code>C:\PS>Reset-XrmWorkflow -Name $workflowNamePattern</code>
-    ///   <para>Workflow Name Pattern to Remove</para>
+    ///   <para>Workflow Name Pattern to Reset</para>
     /// </example>
     [Cmdlet(VerbsCommon.Reset, "XrmWorkflow")]
     public class ResetXrmWorkflow : XrmCommandBase
@@ -52,21 +51,21 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
                 {
                     Conditions =
                     {
-                        new ConditionExpression(Workflow.Fields.Category, ConditionOperator.Equal, (int)Workflow_Category.Workflow),
-                        new ConditionExpression(Workflow.Fields.Type, ConditionOperator.In, new int[] {(int) Workflow_Type.Definition, (int) Workflow_Type.Template}),
-                        new ConditionExpression(Workflow.Fields.IsManaged, ConditionOperator.Equal, false),
-                        new ConditionExpression(Workflow.Fields.StateCode, ConditionOperator.Equal, (int) WorkflowState.Draft),
+                        new ConditionExpression("category", ConditionOperator.In, new [] {(int)Workflow_Category.Workflow, (int) Workflow_Category.BusinessProcessFlow}),
+                        new ConditionExpression("type", ConditionOperator.In, new [] {(int) Workflow_Type.Definition, (int) Workflow_Type.Template}),
+                        new ConditionExpression("ismanaged", ConditionOperator.Equal, false),
+                        new ConditionExpression("statecode", ConditionOperator.Equal, (int) WorkflowState.Draft),
                     }
                 }
             };
 
             if (!string.IsNullOrEmpty(Name))
             {
-                query.Criteria.AddCondition(Workflow.Fields.Name, ConditionOperator.Equal, Name);
+                query.Criteria.AddCondition("name", ConditionOperator.Equal, Name);
             }
             else if (!string.IsNullOrEmpty(Pattern))
             {
-                query.Criteria.AddCondition(Workflow.Fields.Name, ConditionOperator.Like, Pattern);
+                query.Criteria.AddCondition("name", ConditionOperator.Like, Pattern);
             }
             else 
             {

@@ -8,6 +8,9 @@ using System.Linq;
 using Xrm.Framework.CI.PowerShell.Cmdlets.PluginRegistration;
 using System.IO;
 using Xrm.Framework.CI.Common.Entities;
+using System.Xml.Linq;
+using System.Xml;
+using System.Xml.XPath;
 
 namespace Xrm.Framework.CI.PowerShell.Cmdlets
 {
@@ -102,6 +105,14 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
                         logVerbose?.Invoke($"Checking dependencies for BPF entity: {workflow.UniqueName}");
                         DeleteObjectWithDependencies(entityMetadata.MetadataId.Value, ComponentType.Entity, deletingHashSet);
                     }
+
+                    if (workflow.CategoryEnum == Workflow_Category.BusinessProcessFlow)
+                    {
+                        RemoveAllWorkflowsFromBpf(workflow);
+                        logVerbose?.Invoke($"Preserving BPF {workflow.Name}");
+                        return;
+                    }
+
                     logVerbose?.Invoke($"Trying to delete {componentType} {workflow.Name}");
                     organizationService.Delete(Workflow.EntityLogicalName, objectId);
                     break;
@@ -109,6 +120,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
                     var step = pluginRepository.GetSdkMessageProcessingStepById(objectId);
                     if (step.IsHidden.Value == true)
                     {
+                        logVerbose?.Invoke($"Preserving hidden SdkMessageProcessingStep {step.Name}");
                         return;
                     }
                     logVerbose?.Invoke($"Trying to delete {componentType} {step.Name} / {objectId}");
@@ -128,6 +140,26 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
                     organizationService.Delete(ServiceEndpoint.EntityLogicalName, objectId);
                     break;
             }
+        }
+
+        private const string ActionComposieClassWithAssemblyQualifiedName = "Microsoft.Crm.Workflow.Activities.ActionComposite, Microsoft.Crm.Workflow, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35";
+        private const string mxswaNamespace = "clr-namespace:Microsoft.Xrm.Sdk.Workflow.Activities;assembly=Microsoft.Xrm.Sdk.Workflow, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35";
+
+        private void RemoveAllWorkflowsFromBpf(Workflow bpf)
+        {
+            var xaml = XDocument.Parse(bpf.Xaml);
+            var nsmgr = new XmlNamespaceManager(new NameTable());
+            nsmgr.AddNamespace("mxswa", mxswaNamespace);
+            var actionsElements = xaml.XPathSelectElements($"//mxswa:ActivityReference[@AssemblyQualifiedName='{ActionComposieClassWithAssemblyQualifiedName}']", nsmgr).ToList();
+            foreach (var element in actionsElements)
+            {
+                element.Remove();
+            }
+            organizationService.Update(new Workflow
+            {
+                Xaml = xaml.ToString(SaveOptions.DisableFormatting),
+                Id = bpf.Id
+            });
         }
 
         public Guid UpsertPluginAssembly(Assembly pluginAssembly, AssemblyInfo assemblyInfo, string solutionName, RegistrationTypeEnum registrationType)

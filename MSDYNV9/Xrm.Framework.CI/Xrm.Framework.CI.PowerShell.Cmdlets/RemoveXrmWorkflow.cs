@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using Xrm.Framework.CI.PowerShell.Cmdlets.Common;
+using Xrm.Framework.CI.Common.Entities;
 
 namespace Xrm.Framework.CI.PowerShell.Cmdlets
 {
@@ -43,20 +43,20 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
                 {
                     Conditions =
                     {
-                        new ConditionExpression(Workflow.Fields.Category, ConditionOperator.Equal, (int)Workflow_Category.Workflow),
-                        new ConditionExpression(Workflow.Fields.Type, ConditionOperator.In, new int[] {(int) Workflow_Type.Definition, (int) Workflow_Type.Template}),
-                        new ConditionExpression(Workflow.Fields.IsManaged, ConditionOperator.Equal, false),
+                        new ConditionExpression("category", ConditionOperator.Equal, (int)Workflow_Category.Workflow),
+                        new ConditionExpression("type", ConditionOperator.In, new int[] {(int) Workflow_Type.Definition, (int) Workflow_Type.Template}),
+                        new ConditionExpression("ismanaged", ConditionOperator.Equal, false),
                     }
                 }
             };
 
             if (!string.IsNullOrEmpty(Name))
             {
-                query.Criteria.AddCondition(Workflow.Fields.Name, ConditionOperator.Equal, Name);
+                query.Criteria.AddCondition("name", ConditionOperator.Equal, Name);
             }
             else if (!string.IsNullOrEmpty(Pattern))
             {
-                query.Criteria.AddCondition(Workflow.Fields.Name, ConditionOperator.Like, Pattern);
+                query.Criteria.AddCondition("name", ConditionOperator.Like, Pattern);
             }
             else 
             {
