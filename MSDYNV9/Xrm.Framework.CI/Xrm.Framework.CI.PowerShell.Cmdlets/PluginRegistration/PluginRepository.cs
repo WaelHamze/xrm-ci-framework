@@ -51,11 +51,19 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.PluginRegistration
 
         public Workflow GetWorkflowById(Guid id) => context.CreateQuery<Workflow>().Single(x => x.Id == id);
 
-        public Assembly GetAssemblyRegistration(string assemblyName)
+        public Assembly GetAssemblyRegistration(string assemblyName, string version)
         {
             var lastIndex = assemblyName.LastIndexOf(".dll");
             string name = lastIndex > 0 ? assemblyName.Remove(lastIndex, 4) : assemblyName;
-            var pluginAssembly = context.PluginAssemblySet.SingleOrDefault(x => x.Name == name);
+            PluginAssembly pluginAssembly = null;
+            if (string.IsNullOrEmpty(version))
+            {
+                pluginAssembly = context.PluginAssemblySet.SingleOrDefault(x => x.Name == name);
+            }
+            else
+            {
+                pluginAssembly = context.PluginAssemblySet.SingleOrDefault(x => x.Name == name && x.Version == version);
+            }
             if (pluginAssembly == null)
             {
                 return null;
@@ -146,7 +154,8 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.PluginRegistration
             Id = pluginAssembly.PluginAssemblyId,
             Name = pluginAssembly.Name + ".dll",
             IsolationMode = pluginAssembly.IsolationModeEnum,
-            SourceType = pluginAssembly.SourceTypeEnum
+            SourceType = pluginAssembly.SourceTypeEnum,
+            Version = pluginAssembly.Version
         };
 
         private static bool MapPluginObject(SdkMessageProcessingStep pluginStep

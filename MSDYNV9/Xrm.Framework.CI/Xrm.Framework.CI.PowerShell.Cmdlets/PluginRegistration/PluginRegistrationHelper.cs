@@ -25,11 +25,11 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
             pluginRepository = new PluginRepository(xrmContext);
         }
 
-        public Assembly GetAssemblyRegistration(string assemblyName) => pluginRepository.GetAssemblyRegistration(assemblyName);
+        public Assembly GetAssemblyRegistration(string assemblyName, string version) => pluginRepository.GetAssemblyRegistration(assemblyName, version);
 
         public void RemoveComponentsNotInMapping(Assembly assemblyMapping)
         {
-            var assemblyInCrm = pluginRepository.GetAssemblyRegistration(assemblyMapping.Name);
+            var assemblyInCrm = pluginRepository.GetAssemblyRegistration(assemblyMapping.Name, assemblyMapping.Version);
             if (assemblyInCrm == null)
             {
                 logVerbose?.Invoke($"Assembly {assemblyMapping.Name} not found in CRM");
