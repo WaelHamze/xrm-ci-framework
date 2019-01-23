@@ -45,7 +45,6 @@
       <HintPath>..\packages\Microsoft.CrmSdk.XrmTooling.CoreAssembly.9.0.2.5\lib\net452\Microsoft.Rest.ClientRuntime.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Microsoft.Xrm.Sdk, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CrmSdk.CoreAssemblies.9.0.2.5\lib\net452\Microsoft.Xrm.Sdk.dll</HintPath>
       <Private>True</Private>
@@ -154,7 +153,6 @@
     <Compile Include="SplitXrmPluginAssembly.cs" />
     <Compile Include="XrmCommandBase.cs" />
     <Compile Include="SetXrmPluginRegistration.cs" />
-    <Compile Include="Common\XrmSdkMessagesHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config">

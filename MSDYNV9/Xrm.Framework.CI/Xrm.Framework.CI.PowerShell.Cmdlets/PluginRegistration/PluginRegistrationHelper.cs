@@ -12,6 +12,8 @@ using System.Xml.Linq;
 using System.Xml;
 using System.Xml.XPath;
 
+using Xrm.Framework.CI.Common;
+
 namespace Xrm.Framework.CI.PowerShell.Cmdlets
 {
     public class PluginRegistrationHelper

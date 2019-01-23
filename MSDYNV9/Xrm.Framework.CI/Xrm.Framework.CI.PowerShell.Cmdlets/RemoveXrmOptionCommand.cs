@@ -3,6 +3,7 @@ using System.Linq;
 using System.Management.Automation;
 using Microsoft.Xrm.Sdk.Metadata;
 
+using Xrm.Framework.CI.Common;
 using Xrm.Framework.CI.PowerShell.Cmdlets.Common;
 
 namespace Xrm.Framework.CI.PowerShell.Cmdlets

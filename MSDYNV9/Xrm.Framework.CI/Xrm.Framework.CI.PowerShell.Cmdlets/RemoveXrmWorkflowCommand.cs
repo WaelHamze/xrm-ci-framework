@@ -9,11 +9,12 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
 {
     /// <summary>
     /// <para type="synopsis">Removes the workflow or workflows in CRM.</para>
-    /// <para type="description">The Remove-XrmWorkflow cmdlet removes an existing workflow or workflows in CRM.</para>
+    /// <para type="description">The Remove-XrmWorkflow cmdlet removes an existing workflow or workflows in CRM with dependencies.</para>
     /// </summary>
     /// <example>
-    ///   <code>C:\PS>Remove-XrmWorkflow -Name $workflowNamePattern</code>
-    ///   <para>Workflow Name Pattern to Remove</para>
+    ///   <code>C:\PS>Remove-XrmWorkflow -Name "My First Workflow"</code>
+    ///   <code>C:\PS>Remove-XrmWorkflow -Pattern "ISV%"</code>
+    ///   <para>Workflow Name or Pattern to Remove</para>
     /// </example>
     [Cmdlet(VerbsCommon.Remove, "XrmWorkflow")]
     public class RemoveXrmWorkflowCommand : XrmCommandBase
@@ -24,13 +25,13 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
         private const string findByPattern = "FindByPattern";
 
         /// <summary>
-        /// <para type="description">The assembly name. e.g. Contoso.Plugin.dll</para>
+        /// <para type="description">Name of Workflow to delete, eq. "My First Workflow"</para>
         /// </summary>
         [Parameter(Mandatory = true, ParameterSetName = findByName)]
         public string Name { get; set; }
 
         /// <summary>
-        /// <para type="description">The assembly name. e.g. Contoso.Plugin.dll</para>
+        /// <para type="description">Pattern of Workflows to delete, eq. "ISV%</para>
         /// </summary>
         [Parameter(Mandatory = true, ParameterSetName = findByPattern)]
         public string Pattern { get; set; }
@@ -72,7 +73,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
 
                 if (workflows.Count == 0)
                 {
-                    WriteVerbose("Couldn't find matching workflows.");
+                    WriteVerbose("Couldn't find matching unmanaged workflows.");
                     return;
                 }
 
