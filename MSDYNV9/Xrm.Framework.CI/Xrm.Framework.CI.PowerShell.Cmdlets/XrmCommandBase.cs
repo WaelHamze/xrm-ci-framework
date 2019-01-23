@@ -10,7 +10,7 @@ using Xrm.Framework.CI.PowerShell.Cmdlets.Logging;
 
 namespace Xrm.Framework.CI.PowerShell.Cmdlets
 {
-    public abstract class XrmCommandBase : Cmdlet
+    public abstract class XrmCommandBase : PSCmdlet
     {
         protected virtual IOrganizationService OrganizationService { get; private set; }
         protected virtual ILogger Logger { get; set; }

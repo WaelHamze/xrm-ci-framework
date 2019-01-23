@@ -1,34 +1,38 @@
 ﻿using Microsoft.Xrm.Sdk.Query;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+
 using Xrm.Framework.CI.Common.Entities;
 
 namespace Xrm.Framework.CI.PowerShell.Cmdlets
 {
     /// <summary>
-    /// <para type="synopsis">Remove a workflow.</para>
-    /// <para type="description">The Remove-XrmWorkflow cmdlet removes an existing workflow or workflows in CRM.
+    /// <para type="synopsis">Removes the workflow or workflows in CRM.</para>
+    /// <para type="description">The Remove-XrmWorkflow cmdlet removes an existing workflow or workflows in CRM.</para>
     /// </summary>
     /// <example>
     ///   <code>C:\PS>Remove-XrmWorkflow -Name $workflowNamePattern</code>
     ///   <para>Workflow Name Pattern to Remove</para>
     /// </example>
     [Cmdlet(VerbsCommon.Remove, "XrmWorkflow")]
-    public class RemoveXrmWorkflow : XrmCommandBase
+    public class RemoveXrmWorkflowCommand : XrmCommandBase
     {
         #region Parameters
+
+        private const string findByName = "FindByName";
+        private const string findByPattern = "FindByPattern";
+
         /// <summary>
         /// <para type="description">The assembly name. e.g. Contoso.Plugin.dll</para>
         /// </summary>
-        [Parameter(Mandatory = false)]
+        [Parameter(Mandatory = true, ParameterSetName = findByName)]
         public string Name { get; set; }
 
         /// <summary>
         /// <para type="description">The assembly name. e.g. Contoso.Plugin.dll</para>
         /// </summary>
-        [Parameter(Mandatory = false)]
+        [Parameter(Mandatory = true, ParameterSetName = findByPattern)]
         public string Pattern { get; set; }
         #endregion
 
@@ -54,20 +58,19 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
             {
                 query.Criteria.AddCondition("name", ConditionOperator.Equal, Name);
             }
-            else if (!string.IsNullOrEmpty(Pattern))
-            {
-                query.Criteria.AddCondition("name", ConditionOperator.Like, Pattern);
-            }
             else 
             {
-                throw new ArgumentException("You must provide Name or Pattern argument");
+                query.Criteria.AddCondition("name", ConditionOperator.Like, Pattern);
             }
 
             using (var context = new CIContext(OrganizationService))
             {
-                var result = OrganizationService.RetrieveMultiple(query);
+                var workflows = OrganizationService.RetrieveMultiple(query)
+                    .Entities
+                    .Select(x => x.ToEntity<Workflow>())
+                    .ToList();
 
-                if (result.Entities.Count == 0)
+                if (workflows.Count == 0)
                 {
                     WriteVerbose("Couldn't find matching workflows.");
                     return;
@@ -75,7 +78,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
 
                 var pluginRegistrationHelper = new PluginRegistrationHelper(OrganizationService, context, WriteVerbose, WriteWarning);
                 var deletingHashSet = new HashSet<string>();
-                foreach (var wf in result.Entities.Select(x => x.ToEntity<Workflow>()))
+                foreach (var wf in workflows)
                 {
                     pluginRegistrationHelper.DeleteObjectWithDependencies(wf.Id, ComponentType.Workflow, deletingHashSet);
                     WriteVerbose($"Workflow {wf.Name} / {wf.Id} removed from CRM");

@@ -41,11 +41,11 @@
     <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms, Version=2.22.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.22.302111727\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Microsoft.Rest.ClientRuntime, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CrmSdk.XrmTooling.CoreAssembly.9.0.2.5\lib\net452\Microsoft.Rest.ClientRuntime.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Microsoft.Xrm.Sdk, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CrmSdk.CoreAssemblies.9.0.2.5\lib\net452\Microsoft.Xrm.Sdk.dll</HintPath>
       <Private>True</Private>
@@ -62,7 +62,6 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
@@ -136,9 +135,11 @@
     <Compile Include="PublishXrmDuplicateRuleCommand.cs" />
     <Compile Include="RemoveXrmEntityAttribute.cs" />
     <Compile Include="RemoveXrmEntityCommand.cs" />
-    <Compile Include="ResetXrmWorkflow.cs" />
-    <Compile Include="RemoveXrmWorkflow.cs" />
+    <Compile Include="RemoveXrmOptionCommand.cs" />
+    <Compile Include="RemoveXrmWorkflowCommand.cs" />
     <Compile Include="RemoveXrmRecordCommand.cs" />
+    <Compile Include="SetXrmDashboardRoleCommand.cs" />
+    <Compile Include="SetXrmWorkflowStateCommand.cs" />
     <Compile Include="ShowXrmLogging.cs" />
     <Compile Include="RemoveXrmSolutionComponentsCommand.cs" />
     <Compile Include="SelectXrmWhoAmICommand.cs" />
@@ -167,7 +168,9 @@
     <None Include="bin\Debug\XrmCIFramework.9.0.0.nupkg" />
     <None Include="bin\Debug\XrmCIFramework.9.0.0.symbols.nupkg" />
     <None Include="bin\Release\Xrm.Framework.CI.PowerShell.Cmdlets.dll.config" />
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="PluginRegistration\WorkflowAssemblyExample.json" />
     <None Include="PluginRegistration\PluginAssemblyExample.json" />
     <None Include="PluginRegistration\PluginRegistrationSchema.json" />

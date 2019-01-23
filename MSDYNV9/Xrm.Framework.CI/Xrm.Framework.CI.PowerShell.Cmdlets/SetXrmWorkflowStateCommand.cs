@@ -11,7 +11,11 @@ using System.ServiceModel;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.XPath;
+
+using Microsoft.Xrm.Sdk.Metadata;
+
 using Xrm.Framework.CI.Common.Entities;
+using Xrm.Framework.CI.PowerShell.Cmdlets.Common;
 
 namespace Xrm.Framework.CI.PowerShell.Cmdlets
 {
@@ -23,26 +27,37 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
     ///   <code>C:\PS>Reset-XrmWorkflow -Name $workflowNamePattern</code>
     ///   <para>Workflow Name Pattern to Reset</para>
     /// </example>
-    [Cmdlet(VerbsCommon.Reset, "XrmWorkflow")]
-    public class ResetXrmWorkflow : XrmCommandBase
+    [Cmdlet(VerbsCommon.Set, "XrmWorkflowState")]
+    public class SetXrmWorkflowStateCommand : XrmCommandBase
     {
         #region Parameters
+
+        private const string findByName = "FindByName";
+        private const string findByPattern = "FindByPattern";
+
         /// <summary>
         /// <para type="description">The assembly name. e.g. Contoso.Plugin.dll</para>
         /// </summary>
-        [Parameter(Mandatory = false)]
+        [Parameter(Mandatory = true, ParameterSetName = findByName)]
         public string Name { get; set; }
 
         /// <summary>
         /// <para type="description">The assembly name. e.g. Contoso.Plugin.dll</para>
         /// </summary>
-        [Parameter(Mandatory = false)]
+        [Parameter(Mandatory = true, ParameterSetName = findByPattern)]
         public string Pattern { get; set; }
+
+        /// <summary>
+        /// <para type="description">The assembly name. e.g. Contoso.Plugin.dll</para>
+        /// </summary>
+        [Parameter(Mandatory = true)]
+        public bool Activated { get; set; }
         #endregion
 
         #region Process Record
         protected override void ProcessRecord()
         {
+            var sourceState = Activated ? WorkflowState.Draft : WorkflowState.Activated;
             var query = new QueryExpression
             {
                 EntityName = Workflow.EntityLogicalName,
@@ -53,8 +68,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
                     {
                         new ConditionExpression("category", ConditionOperator.In, new [] {(int)Workflow_Category.Workflow, (int) Workflow_Category.BusinessProcessFlow}),
                         new ConditionExpression("type", ConditionOperator.In, new [] {(int) Workflow_Type.Definition, (int) Workflow_Type.Template}),
-                        new ConditionExpression("ismanaged", ConditionOperator.Equal, false),
-                        new ConditionExpression("statecode", ConditionOperator.Equal, (int) WorkflowState.Draft),
+                        new ConditionExpression("statecode", ConditionOperator.Equal, (int) sourceState),
                     }
                 }
             };
@@ -63,26 +77,34 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
             {
                 query.Criteria.AddCondition("name", ConditionOperator.Equal, Name);
             }
-            else if (!string.IsNullOrEmpty(Pattern))
+            else
             {
                 query.Criteria.AddCondition("name", ConditionOperator.Like, Pattern);
             }
-            else 
-            {
-                throw new ArgumentException("You must provide Name or Pattern argument");
-            }
 
-            var result = OrganizationService.RetrieveMultiple(query);
+            var workflows = OrganizationService.RetrieveMultiple(query)
+                .Entities
+                .Select(x => x.ToEntity<Workflow>())
+                .ToList();
 
-            if (result.Entities.Count == 0)
+            if (workflows.Count == 0)
             {
-                WriteVerbose("Couldn't find matching workflows in draft state.");
+                WriteVerbose($"Couldn't find matching workflows in {sourceState} state.");
                 return;
             }
 
-            foreach (var wf in result.Entities.Select(x => x.ToEntity<Workflow>()))
+            foreach (var workflow in workflows)
             {
-                PublishWorkflow(wf, true);
+                if (Activated)
+                {
+                    WriteVerbose($"Trying to publish {workflow.CategoryEnum} {workflow.Name}");
+                    PublishWorkflow(workflow, true);
+                }
+                else
+                {
+                    WriteVerbose($"Trying to unpublish {workflow.CategoryEnum} {workflow.Name}");
+                    UnpublishWorkflow(workflow);
+                }
             }
         }
         #endregion
@@ -110,19 +132,13 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
 
         private string ExtractName(string s) => ExtractField(s, 2);
 
-        //  Microsoft.Xrm.Sdk.Workflow.WorkflowPropertyType.EntityReference, "team", "DSR", AssignStep3_2, "Lookup" }
         private string ExtractEntityLogicalName(string s) => ExtractField(s, 1);
 
-        //  Microsoft.Xrm.Sdk.Workflow.WorkflowPropertyType.EntityReference, "team", "DSR", AssignStep3_2, "Lookup" }
         private string ExtractGuidParameterName(string s) => ExtractField(s, 3);
 
         private Guid? RecordLookup(string entityLogicalName, string name, Guid id)
         {
-            var metadata = ((RetrieveEntityResponse) OrganizationService.Execute(new RetrieveEntityRequest
-            {
-                LogicalName = entityLogicalName,
-                EntityFilters = Microsoft.Xrm.Sdk.Metadata.EntityFilters.Entity
-            })).EntityMetadata;
+            var metadata = OrganizationService.GetEntityMetadata(entityLogicalName);
             var results = OrganizationService.RetrieveMultiple(new QueryByAttribute
             {
                 EntityName = entityLogicalName,
@@ -144,7 +160,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
 
         private bool FixWorkflow(Workflow workflow)
         {
-            WriteVerbose($"Trying to fix workflow {workflow.Name}");
+            WriteVerbose($" Trying to fix workflow {workflow.Name}");
             var xaml = XDocument.Parse(workflow.Xaml);
             var nsmgr = new XmlNamespaceManager(new NameTable());
             nsmgr.AddNamespace("a", WindowsWorkflowFoundationNamespace);
@@ -198,15 +214,14 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
 
         private void PublishWorkflow(Workflow workflow, bool tryFixOnErrors)
         {
-            WriteVerbose($"Trying to publish {workflow.CategoryEnum} {workflow.Name}");
             try
             {
                 PublishWorkflow(workflow);
-                WriteVerbose(" - ok");
+                WriteVerbose(" ok");
             }
             catch (FaultException<OrganizationServiceFault> ex) when ((uint)ex.Detail.ErrorCode == ErrorsInWorkflowDefinition && tryFixOnErrors)
             {
-                WriteWarning($" - workflow has errors in definition");
+                WriteWarning($" workflow {workflow.Name} has errors in definition");
                 if (FixWorkflow(workflow))
                 {
                     PublishWorkflow(workflow, false);
@@ -214,7 +229,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
             }
             catch (Exception ex)
             {
-                WriteWarning($" - error: {ex.Message}");
+                WriteWarning($" error during publishing workflow {workflow.Name}: {ex.Message}");
             }
         }
 
@@ -223,6 +238,13 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
             EntityMoniker = workflow.ToEntityReference(),
             State = new OptionSetValue((int)WorkflowState.Activated),
             Status = new OptionSetValue((int)Workflow_StatusCode.Activated)
+        });
+
+        private void UnpublishWorkflow(Workflow workflow) => OrganizationService.Execute(new SetStateRequest
+        {
+            EntityMoniker = workflow.ToEntityReference(),
+            State = new OptionSetValue((int)WorkflowState.Draft),
+            Status = new OptionSetValue((int)Workflow_StatusCode.Draft)
         });
     }
 }

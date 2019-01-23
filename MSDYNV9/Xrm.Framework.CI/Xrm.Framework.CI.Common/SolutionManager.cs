@@ -659,9 +659,10 @@ namespace Xrm.Framework.CI.Common
                 Logger.LogInformation("Total number of unprocessed components: {0}", unprocessedNodes.Count);
             }
 
-            if (solutionImportResult == ImportSuccess)
+            result.Success = solutionImportResult == ImportSuccess;
+            if (importAsync)
             {
-                result.Success = true;
+                result.Success = result.Success && asyncOperation.StatusCodeEnum == AsyncOperation_StatusCode.Succeeded;
             }
 
             return result;
