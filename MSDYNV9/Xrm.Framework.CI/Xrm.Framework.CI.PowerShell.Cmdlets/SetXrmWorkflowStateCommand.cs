@@ -24,37 +24,39 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
     public class SetXrmWorkflowStateCommand : XrmCommandBase
     {
         #region Parameters
-        private readonly WorkflowFixer workflowfixer;
+        private WorkflowFixer workflowfixer;
         private const uint ErrorsInWorkflowDefinition = 0x80048455;
         private const string findByName = "FindByName";
         private const string findByPattern = "FindByPattern";
 
         /// <summary>
-        /// <para type="description">The assembly name. e.g. Contoso.Plugin.dll</para>
+        /// <para type="description">Name of Workflow to delete, eq. "My First Workflow"</para>
         /// </summary>
         [Parameter(Mandatory = true, ParameterSetName = findByName)]
         public string Name { get; set; }
 
         /// <summary>
-        /// <para type="description">The assembly name. e.g. Contoso.Plugin.dll</para>
+        /// <para type="description">Pattern of Workflows to delete, eq. "ISV%</para>
         /// </summary>
         [Parameter(Mandatory = true, ParameterSetName = findByPattern)]
         public string Pattern { get; set; }
 
         /// <summary>
-        /// <para type="description">The assembly name. e.g. Contoso.Plugin.dll</para>
+        /// <para type="description">Specified workflows should be activated/deactivated</para>
         /// </summary>
         [Parameter(Mandatory = true)]
         public bool Activate { get; set; }
         #endregion
 
-        #region Process Record
-
-        public SetXrmWorkflowStateCommand()
+        #region Begin Processing
+        protected override void BeginProcessing()
         {
+            base.BeginProcessing();
             workflowfixer = new WorkflowFixer(OrganizationService, Logger);
         }
+        #endregion
 
+        #region Process Record
         protected override void ProcessRecord()
         {
             var sourceState = Activate ? WorkflowState.Draft : WorkflowState.Activated;
