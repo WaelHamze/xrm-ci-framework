@@ -127,6 +127,9 @@ namespace Xrm.Framework.CI.Common
                     ImportSkipped = true
                 };
 
+                result.SolutionName = info.UniqueName;
+                result.VersionNumber = info.Version;
+
                 return result;
             }
 
@@ -134,8 +137,8 @@ namespace Xrm.Framework.CI.Common
             {
                 if (string.IsNullOrEmpty(logFileName))
                 {
-                    logFileName = $"{info.UniqueName}_{(info.Version).Replace('.', '_')}_{DateTime.Now.ToString("yyyy_MM_dd__HH_mm")}.xml";
-                    Logger.LogVerbose("Settings logFileName to {0}", logFileName);
+                    logFileName = $"ImportLog_{Path.GetFileNameWithoutExtension(solutionFilePath)}_{DateTime.Now.ToString("yyyy_MM_dd__HH_mm")}.xml";
+                    Logger.LogVerbose("Setting logFileName to {0}", logFileName);
                 }
 
                 if (string.IsNullOrEmpty(logDirectory))
@@ -239,6 +242,9 @@ namespace Xrm.Framework.CI.Common
                     importHandler.Error);
             }
 
+            result.SolutionName = info.UniqueName;
+            result.VersionNumber = info.Version;
+
             if (result.ImportJobAvailable && downloadFormattedLog)
             {
                 ImportJobManager jobManager = new ImportJobManager(Logger, OrganizationService);
@@ -252,6 +258,178 @@ namespace Xrm.Framework.CI.Common
             else
             {
                 Logger.LogInformation("Solution Import Failed");
+            }
+
+            return result;
+        }
+
+        public SolutionImportResult ImportSolution(
+            string importFolder,
+            string logsFolder,
+            SolutionImportOptions options)
+        {
+            SolutionImportResult importResult = ImportSolution(
+                $"{importFolder}\\{options.SolutionFilePath}",
+                options.PublishWorkflows,
+                options.ConvertToManaged,
+                options.OverwriteUnmanagedCustomizations,
+                options.SkipProductUpdateDependencies,
+                options.HoldingSolution,
+                options.OverrideSameVersion,
+                options.ImportAsync,
+                options.SleepInterval,
+                options.AsyncWaitTimeout,
+                Guid.NewGuid(),
+                true,
+                logsFolder,
+                string.Empty);
+
+            if (importResult.Success && 
+                options.ApplySolution)
+            {
+                SolutionApplyResult applyResult = ApplySolution(
+                    importResult.SolutionName,
+                    options.ApplyAsync,
+                    options.SleepInterval,
+                    options.AsyncWaitTimeout);
+
+                importResult.Success = applyResult.Success;
+                importResult.ErrorMessage = applyResult.ErrorMessage;
+            }
+
+            return importResult;
+        }
+
+        public List<SolutionImportResult> ImportSolutions(
+            string importFolder,
+            string logsFolder,
+            SolutionImportConfig config)
+        {
+            List<SolutionImportResult> results = new List<SolutionImportResult>();
+
+            foreach (SolutionImportOptions option in config.Solutions)
+            {
+                results.Add(ImportSolution(
+                    importFolder,
+                    logsFolder,
+                    option));
+            }
+
+            return results;
+        }
+
+        public List<SolutionImportResult> ImportSolutions(
+            string logsFolder,
+            string configFilePath)
+        {
+            if (!Directory.Exists(logsFolder))
+            {
+                throw new Exception($"{logsFolder} does not exist");
+            }
+
+            if (!File.Exists(configFilePath))
+            {
+                throw new Exception($"{configFilePath} does not exist");
+            }
+
+            Logger.LogVerbose("Parsing import json file {0}", configFilePath);
+
+            SolutionImportConfig config =
+                Serializers.ParseJson<SolutionImportConfig>(configFilePath);
+
+            Logger.LogVerbose("Finished parsing import json file {0}", configFilePath);
+
+            Logger.LogVerbose("{0} solution for import found", config.Solutions.Count);
+
+            FileInfo configInfo = new FileInfo(configFilePath);
+
+            List<SolutionImportResult> results = ImportSolutions(
+                configInfo.Directory.FullName,
+                logsFolder,
+                config);
+
+            return results;
+        }
+
+        public SolutionApplyResult ApplySolution(
+            string solutionName,
+            bool importAsync,
+            int sleepInterval,
+            int asyncWaitTimeout
+            )
+        {
+            Logger.LogVerbose("Upgrading Solution: {0}", solutionName);
+
+            if (SkipUpgrade(solutionName))
+            {
+                return new SolutionApplyResult()
+                {
+                    Success = true,
+                    ApplySkipped = true
+                };
+            }
+
+            Exception syncApplyException = null;
+            AsyncOperation asyncOperation = null;
+
+            var upgradeSolutionRequest = new DeleteAndPromoteRequest
+            {
+                UniqueName = solutionName
+            };
+
+            if (importAsync)
+            {
+                var asyncRequest = new ExecuteAsyncRequest
+                {
+                    Request = upgradeSolutionRequest
+                };
+
+                Logger.LogVerbose("Applying using Async Mode");
+
+                var asyncResponse = OrganizationService.Execute(asyncRequest) as ExecuteAsyncResponse;
+
+                Guid asyncJobId = asyncResponse.AsyncJobId;
+
+                Logger.LogInformation(string.Format("Async JobId: {0}", asyncJobId));
+
+                Logger.LogVerbose("Awaiting for Async Operation Completion");
+
+                AsyncOperationManager asyncOperationManager = new AsyncOperationManager(
+                    Logger, PollingOrganizationService);
+
+                asyncOperation = asyncOperationManager.AwaitCompletion(
+                    asyncJobId, asyncWaitTimeout, sleepInterval, null);
+
+                Logger.LogInformation("Async Operation completed with status: {0}",
+                    ((AsyncOperation_StatusCode)asyncOperation.StatusCode.Value).ToString());
+
+                Logger.LogInformation("Async Operation completed with message: {0}",
+                    asyncOperation.Message);
+            }
+            else
+            {
+                try
+                {
+                    OrganizationService.Execute(upgradeSolutionRequest);
+                }
+                catch (Exception ex)
+                {
+                    syncApplyException = ex;
+                }
+            }
+
+            SolutionApplyResult result = VerifyUpgrade(
+                solutionName,
+                asyncOperation,
+                syncApplyException);
+
+            if (result.Success)
+            {
+                Logger.LogInformation("Solution Apply Completed Successfully");
+            }
+            else
+            {
+                Logger.LogInformation("Solution Apply Failed");
             }
 
             return result;
@@ -526,63 +704,181 @@ namespace Xrm.Framework.CI.Common
             return GetSolution(solutionId, new ColumnSet(true));
         }
 
+        public string ExportSolution(
+            string outputFolder,
+            SolutionExportOptions options)
+        {
+            Logger.LogVerbose("Exporting Solution: {0}", options.SolutionName);
+
+            var solutionFile = new StringBuilder();
+            Solution solution = GetSolution(options.SolutionName,
+                new ColumnSet("version"));
+
+            solutionFile.Append(options.SolutionName);
+
+            if (options.IncludeVersionInName)
+            {
+                solutionFile.Append("_");
+                solutionFile.Append(solution.Version.Replace(".", "_"));
+            }
+
+            if (options.Managed)
+            {
+                solutionFile.Append("_managed");
+            }
+
+            solutionFile.Append(".zip");
+
+            var exportSolutionRequest = new ExportSolutionRequest
+            {
+                Managed = options.Managed,
+                SolutionName = options.SolutionName,
+                ExportAutoNumberingSettings = options.ExportAutoNumberingSettings,
+                ExportCalendarSettings = options.ExportCalendarSettings,
+                ExportCustomizationSettings = options.ExportCustomizationSettings,
+                ExportEmailTrackingSettings = options.ExportEmailTrackingSettings,
+                ExportGeneralSettings = options.ExportGeneralSettings,
+                ExportIsvConfig = options.ExportIsvConfig,
+                ExportMarketingSettings = options.ExportMarketingSettings,
+                ExportOutlookSynchronizationSettings = options.ExportOutlookSynchronizationSettings,
+                ExportRelationshipRoles = options.ExportRelationshipRoles,
+                ExportSales = options.ExportSales,
+                TargetVersion = options.TargetVersion,
+                ExportExternalApplications = options.ExportExternalApplications
+            };
+
+            var exportSolutionResponse = OrganizationService.Execute(exportSolutionRequest) as ExportSolutionResponse;
+
+            string solutionFilePath = Path.Combine(outputFolder, solutionFile.ToString());
+            File.WriteAllBytes(solutionFilePath, exportSolutionResponse.ExportSolutionFile);
+
+            return solutionFilePath;
+        }
+
+        public List<string> ExportSolutions(
+            string outputFolder,
+            SolutionExportConfig config)
+        {
+            List<string> solutionFilePaths = new List<string>();
+
+            foreach (SolutionExportOptions option in config.Solutions)
+            {
+                solutionFilePaths.Add(ExportSolution(outputFolder,
+                    option));
+            }
+
+            return solutionFilePaths;
+        }
+
+        public List<string> ExportSolutions(
+            string outputFolder,
+            string configFilePath)
+        {
+            SolutionExportConfig config = 
+                Serializers.ParseJson<SolutionExportConfig>(configFilePath);
+
+            List<string> solutionFilePaths = ExportSolutions(outputFolder,
+                config);
+
+            return solutionFilePaths;
+        }
+
+        public void UpdateVersion(
+            string solutionName,
+            string version)
+        {
+            Logger.LogVerbose("Updating Solution {0} Version: {1}", solutionName, version);
+
+            Solution solution = GetSolution(solutionName, new ColumnSet());
+
+            if (solution == null)
+            {
+                throw new Exception(string.Format("Solution {0} could not be found", solutionName));
+            }
+
+            var update = new Solution
+            {
+                Id = solution.Id,
+                Version = version
+            };
+
+            OrganizationService.Update(update);
+
+            Logger.LogInformation("Solution {0} version updated to : {1}", solutionName, version);
+        }
+
+        #endregion
+
+        #region Private Methods
+
         private bool SkipImport(
             XrmSolutionInfo info,
             bool holdingSolution,
             bool overrideSameVersion)
         {
-            using (var context = new CIContext(OrganizationService))
+            bool skip = false;
+
+            ColumnSet columns = new ColumnSet("version");
+
+            var baseSolution = GetSolution(info.UniqueName, columns);
+
+            if (baseSolution == null)
             {
-                ColumnSet columns = new ColumnSet("version");
+                Logger.LogInformation("{0} not currently installed.", info.UniqueName);
+            }
+            else
+            {
+                Logger.LogInformation("{0} currently installed with version: {1}", info.UniqueName, info.Version);
+            }
 
-                if (!holdingSolution)
+            if (baseSolution == null ||
+                overrideSameVersion ||
+                (info.Version != baseSolution.Version))
+            {
+                skip = false;
+            }
+            else
+            {
+                return true;
+            }
+
+            if (holdingSolution)
+            {
+                string upgradeName = $"{info.UniqueName}_Upgrade";
+
+                var upgradeSolution = GetSolution(upgradeName, columns);
+
+                if (upgradeSolution == null)
                 {
-                    var baseSolution = GetSolution(info.UniqueName, columns);
-
-                    if (baseSolution == null)
-                    {
-                        Logger.LogInformation("{0} not currently installed.", info.UniqueName);
-                    }
-                    else
-                    {
-                        Logger.LogInformation("{0} currently installed with version: {1}", info.UniqueName, info.Version);
-                    }
-
-                    if (baseSolution == null ||
-                        overrideSameVersion ||
-                        (info.Version != baseSolution.Version))
-                    {
-                        return false;
-                    }
-                    else
-                    {
-                        return true;
-                    }
+                    Logger.LogInformation("{0} not currently installed.", upgradeName);
+                    skip = false;
                 }
                 else
                 {
-                    string upgradeName = $"{info.UniqueName}_Upgrade";
-
-                    var upgradeSolution = GetSolution(upgradeName, columns);
-
-                    if (upgradeSolution == null)
-                    {
-                        Logger.LogInformation("{0} not currently installed.", upgradeName);
-                    }
-                    else
-                    {
-                        Logger.LogInformation("{0} currently installed with version: {1}", upgradeName, info.Version);
-                    }
-
-                    if (upgradeSolution == null)
-                    {
-                        return false;
-                    }
-                    else
-                    {
-                        return true;
-                    }
+                    Logger.LogInformation("{0} currently installed with version: {1}", upgradeName, info.Version);
+                    skip = true;
                 }
+            }
+
+            return skip;
+        }
+
+        private bool SkipUpgrade(
+            string solutionName)
+        {
+            string upgradeName = $"{solutionName}_Upgrade";
+
+            var upgradeSolution = GetSolution(upgradeName, new ColumnSet("version"));
+
+            if (upgradeSolution == null)
+            {
+                Logger.LogInformation("Skipping Upgrade. {0} not currently installed.", upgradeName);
+                return true;
+            }
+            else
+            {
+                Logger.LogInformation("{0} currently installed with version: {1}", upgradeName, upgradeSolution.Version);
+                return false;
             }
         }
 
@@ -667,6 +963,50 @@ namespace Xrm.Framework.CI.Common
             return result;
         }
 
+        private SolutionApplyResult VerifyUpgrade(
+            string solutionName,
+            AsyncOperation asyncOperation,
+            Exception syncApplyException)
+        {
+            SolutionApplyResult result = new SolutionApplyResult();
+
+            if (asyncOperation != null)
+            {
+                if ((AsyncOperation_StatusCode)asyncOperation.StatusCode.Value
+                    != AsyncOperation_StatusCode.Succeeded)
+                {
+                    result.Success = false;
+                    result.ErrorMessage = asyncOperation.Message;
+                    return result;
+                }
+            }
+            if (syncApplyException != null)
+            {
+                result.Success = false;
+                result.ErrorMessage = syncApplyException.Message;
+                return result;
+            }
+
+            string upgradeName = solutionName + "_Upgrade";
+
+            Solution solution = GetSolution(upgradeName, new ColumnSet());
+
+            Logger.LogVerbose("Retrieving Solution: {0}", upgradeName);
+
+            if (solution != null)
+            {
+                result.Success = false;
+                result.ErrorMessage = string.Format("Solution still exists after upgrade: {0}", upgradeName);
+                return result;
+            }
+            else
+            {
+                result.Success = true;
+                Logger.LogVerbose("Apply Upgrade completed: {0}", upgradeName);
+                return result;
+            }
+        }
+
         #endregion
     }
 
@@ -676,6 +1016,8 @@ namespace Xrm.Framework.CI.Common
     {
         #region Properties
 
+        public string SolutionName { get; set; }
+        public string VersionNumber { get; set; }
         public bool Success { get; set; }
         public string ErrorMessage { get; set; }
         public int UnprocessedComponents { get; set; }
@@ -693,6 +1035,29 @@ namespace Xrm.Framework.CI.Common
             UnprocessedComponents = -1;
             ImportJobAvailable = false;
             ImportSkipped = false;
+        }
+
+        #endregion
+    }
+
+    public class SolutionApplyResult
+    {
+        #region Properties
+
+        public bool Success { get; set; }
+        public string ErrorMessage { get; set; }
+
+        public bool ApplySkipped { get; set; }
+
+        #endregion
+
+        #region Constructor
+
+        public SolutionApplyResult()
+        {
+            Success = false;
+            ApplySkipped = false;
+            ErrorMessage = "";
         }
 
         #endregion
@@ -842,6 +1207,104 @@ namespace Xrm.Framework.CI.Common
             }
 
             return true;
+        }
+
+        #endregion
+    }
+
+    public class SolutionExportConfig
+    {
+        #region Properties
+
+        public List<SolutionExportOptions> Solutions { get; set; }
+
+        #endregion
+
+        #region Constructors
+
+        public SolutionExportConfig()
+        {
+            Solutions = new List<SolutionExportOptions>();
+        }
+
+        #endregion
+    }
+
+    public class SolutionExportOptions
+    {
+        #region Properties
+
+        public string SolutionName { get; set; }
+        public bool Managed { get; set; }
+        public string TargetVersion { get; set; }
+        public bool ExportAutoNumberingSettings { get; set; }
+        public bool ExportCalendarSettings { get; set; }
+        public bool ExportCustomizationSettings { get; set; }
+        public bool ExportEmailTrackingSettings { get; set; }
+        public bool ExportExternalApplications { get; set; }
+        public bool ExportGeneralSettings { get; set; }
+        public bool ExportIsvConfig { get; set; }
+        public bool ExportMarketingSettings { get; set; }
+        public bool ExportOutlookSynchronizationSettings { get; set; }
+        public bool ExportRelationshipRoles { get; set; }
+        public bool ExportSales { get; set; }
+        public bool IncludeVersionInName { get; set; }
+
+        #endregion
+
+        #region Constructors
+
+        public SolutionExportOptions()
+        {
+        }
+
+        #endregion
+    }
+
+    public class SolutionImportOptions
+    {
+        #region Properties
+
+        public string SolutionFilePath { get; set; }
+        public bool PublishWorkflows { get; set; }
+        public bool ConvertToManaged { get; set; }
+        public bool OverwriteUnmanagedCustomizations { get; set; }
+        public bool SkipProductUpdateDependencies { get; set; }
+        public bool HoldingSolution { get; set; }
+        public bool OverrideSameVersion { get; set; }
+        public bool ImportAsync { get; set; }
+        public bool ApplySolution { get; set; }
+        public bool ApplyAsync { get; set; }
+        public int SleepInterval { get; set; }
+        public int AsyncWaitTimeout { get; set; }
+
+        #endregion
+
+        #region Constructors
+
+        public SolutionImportOptions()
+        {
+            SleepInterval = 15;
+            AsyncWaitTimeout = 15 * 60;
+            ImportAsync = true;
+        }
+
+        #endregion
+    }
+
+    public class SolutionImportConfig
+    {
+        #region Properties
+
+        public List<SolutionImportOptions> Solutions { get; set; }
+
+        #endregion
+
+        #region Constructors
+
+        public SolutionImportConfig()
+        {
+            Solutions = new List<SolutionImportOptions>();
         }
 
         #endregion

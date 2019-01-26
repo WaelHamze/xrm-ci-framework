@@ -32,6 +32,8 @@
     <Compile Include="CloneSolution.ps1" />
     <Compile Include="CopySolutionComponents.ps1" />
     <Compile Include="CreateSolution.ps1" />
+    <Compile Include="ImportSolutionsUsingConfig.ps1" />
+    <Compile Include="ExportSolutionsUsingConfig.ps1" />
     <Compile Include="GetServiceEndpointRegistration.ps1" />
     <Compile Include="RemoveSolution.ps1" />
     <Compile Include="RemoveSolutionComponents.ps1" />

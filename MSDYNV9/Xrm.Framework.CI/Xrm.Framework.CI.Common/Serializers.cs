@@ -5,7 +5,7 @@ using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
 
-namespace Xrm.Framework.CI.PowerShell.Cmdlets.PluginRegistration
+namespace Xrm.Framework.CI.Common
 {
     public static class Serializers
     {

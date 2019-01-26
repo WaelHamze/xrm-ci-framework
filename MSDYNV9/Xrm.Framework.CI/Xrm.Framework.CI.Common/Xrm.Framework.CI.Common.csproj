@@ -90,6 +90,7 @@
     <Compile Include="ImportJobManager.cs" />
     <Compile Include="Logging\ILogger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Serializers.cs" />
     <Compile Include="SolutionManager.cs" />
     <Compile Include="XrmBase.cs" />
     <Compile Include="XrmConnectionManager.cs" />
@@ -99,6 +100,8 @@
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Schema\ExportSolutionsExample.json" />
+    <None Include="Schema\ImportSolutionsExample.json" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

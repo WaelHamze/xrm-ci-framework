@@ -87,6 +87,9 @@ namespace Xrm.Framework.CI.Common
                     }
 
                     serviceClient.OrganizationServiceProxy.EnableProxyTypes(Assembly.GetAssembly(typeof(Entities.Solution)));
+
+                    Logger.LogVerbose("Connection to CRM Established");
+
                     return serviceClient;
                 }
                 else

@@ -93,6 +93,8 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ExportSolution.cs" />
+    <Compile Include="ManagePatches.cs" />
     <Compile Include="ImportSolution.cs" />
     <Compile Include="Logging\TestLogger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
