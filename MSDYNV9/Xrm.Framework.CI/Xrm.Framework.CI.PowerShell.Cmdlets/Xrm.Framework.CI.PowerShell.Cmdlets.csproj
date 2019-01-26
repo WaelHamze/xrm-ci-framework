@@ -100,6 +100,7 @@
     <Compile Include="AddXrmLanguagePack.cs" />
     <Compile Include="AddXrmSolution.cs" />
     <Compile Include="AddXrmSolutionPatch.cs" />
+    <Compile Include="Common\ReflectionLoader.cs" />
     <Compile Include="Common\XrmSolutionInfo.cs" />
     <Compile Include="CopyXrmSolutionComponentsCommand.cs" />
     <Compile Include="ExportXrmAccessTeamTemplatesCommand.cs" />
@@ -108,6 +109,8 @@
     <Compile Include="GetXrmEntitiesCommand.cs" />
     <Compile Include="GetXrmEntityCommand.cs" />
     <Compile Include="GetXrmLanguagePacks.cs" />
+    <Compile Include="GetXrmPluginRegistrationClassCommand.cs" />
+    <Compile Include="GetXrmPluginRegistrationFromAssemblyCommand.cs" />
     <Compile Include="GetXrmServiceEndpointRegistrationCommand.cs" />
     <Compile Include="GetXrmPluginRegistrationCommand.cs" />
     <Compile Include="GetXrmSolutionPatchesCommand.cs" />
@@ -125,6 +128,8 @@
     <Compile Include="NewXrmEntityCommand.cs" />
     <Compile Include="PluginRegistration\Assembly.cs" />
     <Compile Include="PluginRegistration\AssemblyInfo.cs" />
+    <Compile Include="PluginRegistration\PluginRegistrationObjectFactory.cs" />
+    <Compile Include="PluginRegistration\Serializers.cs" />
     <Compile Include="PluginRegistration\Image.cs" />
     <Compile Include="PluginRegistration\PluginRegistrationHelper.cs" />
     <Compile Include="PluginRegistration\PluginRepository.cs" />
@@ -228,7 +233,7 @@
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties PluginRegistration_4PluginAssemblyExample_1json__JSONSchema="PluginRegistrationSchema.json" PluginRegistration_4WorkflowAssemblyExample_1json__JSONSchema="PluginRegistrationSchema.json" />
+      <UserProperties PluginRegistration_4WorkflowAssemblyExample_1json__JSONSchema="PluginRegistrationSchema.json" PluginRegistration_4PluginAssemblyExample_1json__JSONSchema="PluginRegistrationSchema.json" />
     </VisualStudio>
   </ProjectExtensions>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
