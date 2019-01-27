@@ -98,6 +98,7 @@
     <Compile Include="ImportSolution.cs" />
     <Compile Include="Logging\TestLogger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SolutionPackagerTest.cs" />
     <Compile Include="TestConnectionManager.cs" />
   </ItemGroup>
   <ItemGroup>

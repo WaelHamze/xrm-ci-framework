@@ -1,0 +1,12 @@
+{
+  "Solutions": [
+    {
+      "Folder": "..\\xRMCISample\\Customizations",
+      "MappingFile": "..\\xRMCISample\\mapping.xml",
+      "PackageType": "Both",
+      "IncludeVersionInName": true,
+      "TreamWarningsAsErrors": false,
+      "Version": ""
+    }
+  ]
+}

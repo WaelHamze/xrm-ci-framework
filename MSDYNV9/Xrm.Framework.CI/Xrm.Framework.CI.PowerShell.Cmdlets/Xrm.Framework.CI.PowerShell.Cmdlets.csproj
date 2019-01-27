@@ -142,6 +142,7 @@
     <Compile Include="RemoveXrmEntityAttribute.cs" />
     <Compile Include="RemoveXrmEntityCommand.cs" />
     <Compile Include="RemoveXrmRecordCommand.cs" />
+    <Compile Include="CompressXrmSolutionUsingConfig.cs" />
     <Compile Include="ShowXrmLogging.cs" />
     <Compile Include="RemoveXrmSolutionComponentsCommand.cs" />
     <Compile Include="SelectXrmWhoAmICommand.cs" />
@@ -154,6 +155,7 @@
     <Compile Include="SetXrmSolutionVersionCommand.cs" />
     <Compile Include="SetXrmSolutionVersionInFolderCommand.cs" />
     <Compile Include="SplitXrmPluginAssembly.cs" />
+    <Compile Include="CommandBase.cs" />
     <Compile Include="XrmCommandBase.cs" />
     <Compile Include="SetXrmPluginRegistration.cs" />
     <Compile Include="Common\XrmSdkMessagesHelper.cs" />

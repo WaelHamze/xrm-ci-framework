@@ -4,6 +4,7 @@ using Microsoft.Xrm.Sdk.Messages;
 using Microsoft.Xrm.Sdk.Query;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
@@ -97,7 +98,9 @@ namespace Xrm.Framework.CI.Common
 
             SolutionImportResult result = null;
 
-            XrmSolutionInfo info = GetSolutionInfo(solutionFilePath);
+            SolutionXml solutionXml = new SolutionXml(Logger);
+
+            XrmSolutionInfo info = solutionXml.GetSolutionInfoFromZip(solutionFilePath);
 
             if (info == null)
             {
@@ -433,43 +436,6 @@ namespace Xrm.Framework.CI.Common
             }
 
             return result;
-        }
-
-        public XrmSolutionInfo GetSolutionInfo(string solutionFilePath)
-        {
-            Logger.LogVerbose("Reading Solution Zip: {0}", solutionFilePath);
-
-            XrmSolutionInfo info = null;
-
-            try
-            {
-                string uniqueName;
-                string version;
-
-                using (ZipArchive solutionZip = ZipFile.Open(solutionFilePath, ZipArchiveMode.Read))
-                {
-                    ZipArchiveEntry solutionEntry = solutionZip.GetEntry("solution.xml");
-
-                    using (var reader = new StreamReader(solutionEntry.Open()))
-                    {
-                        XElement solutionNode = XElement.Load(reader);
-                        uniqueName = solutionNode.Descendants("UniqueName").First().Value;
-                        version = solutionNode.Descendants("Version").First().Value;
-                    }
-                }
-
-                info = new XrmSolutionInfo
-                {
-                    UniqueName = uniqueName,
-                    Version = version
-                };
-            }
-            catch (Exception ex)
-            {
-                Logger.LogError(ex.Message);
-            }
-
-            return info;
         }
 
         public Solution GetSolution(string uniqueName, ColumnSet columns)

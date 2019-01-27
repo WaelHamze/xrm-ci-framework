@@ -10,10 +10,9 @@ using Xrm.Framework.CI.PowerShell.Cmdlets.Logging;
 
 namespace Xrm.Framework.CI.PowerShell.Cmdlets
 {
-    public abstract class XrmCommandBase : Cmdlet
+    public abstract class XrmCommandBase : CommandBase
     {
         protected virtual IOrganizationService OrganizationService { get; private set; }
-        protected virtual ILogger Logger { get; set; }
 
         /// <summary>
         /// <para type="description">The connectionstring to the crm organization (see https://msdn.microsoft.com/en-us/library/mt608573.aspx ).</para>
@@ -30,8 +29,6 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
         protected override void BeginProcessing()
         {
             base.BeginProcessing();
-
-            Logger = new PSLogger(this);
 
             XrmConnectionManager xrmConnection = new XrmConnectionManager(
                 Logger);
