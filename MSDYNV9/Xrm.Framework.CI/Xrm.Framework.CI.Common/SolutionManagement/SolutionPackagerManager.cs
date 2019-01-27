@@ -62,7 +62,7 @@ namespace Xrm.Framework.CI.Common
                     managed);
             }
 
-            string log = $"PackagerLog_{zipFile.Replace(".zip", ".txt")}_{DateTime.Now.ToString("yyyy_MM_dd__HH_mm")}";
+            string log = $"PackagerLog_{zipFile.Replace(".zip", "")}_{DateTime.Now.ToString("yyyy_MM_dd__HH_mm")}.txt";
 
             SolutionPackager packager = new SolutionPackager(
                 Logger,
