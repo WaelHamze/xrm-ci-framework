@@ -10,6 +10,7 @@ param(
 )
 
 $ErrorActionPreference = "Stop"
+$InformationPreference = "Continue"
 
 Write-Verbose 'Entering ExportSolutionsUsingConfig.ps1'
 

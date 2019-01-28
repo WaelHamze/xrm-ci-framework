@@ -17,7 +17,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
     /// </example>
     [Cmdlet(VerbsData.Compress, "XrmSolutions")]
     [OutputType(typeof(WhoAmIResponse))]
-    public class CompressXrmSolutionUsingConfig : CommandBase
+    public class CompressXrmSolutionsUsingConfig : CommandBase
     {
         #region Parameters
 

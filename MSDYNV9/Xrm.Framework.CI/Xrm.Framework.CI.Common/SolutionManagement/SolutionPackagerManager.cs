@@ -91,7 +91,12 @@ namespace Xrm.Framework.CI.Common
 
             Logger.LogVerbose("zipFile: {0}", zipFilePath);
 
-            string log = $"{logsDirectory}\\PackagerLog_{zipFile.Replace(".zip", "")}_{DateTime.Now.ToString("yyyy_MM_dd__HH_mm")}.txt";
+            string log = string.Empty;
+
+            if (!string.IsNullOrEmpty(logsDirectory))
+            {
+                log = $"{logsDirectory}\\PackagerLog_{zipFile.Replace(".zip", "")}_{DateTime.Now.ToString("yyyy_MM_dd__HH_mm")}.txt";
+            }
 
             Logger.LogVerbose("log: {0}", log);
 
@@ -128,11 +133,6 @@ namespace Xrm.Framework.CI.Common
             if (!File.Exists(configFilePath))
             {
                 throw new Exception(string.Format("Config file couldn't be found at {0}", configFilePath));
-            }
-
-            if (!Directory.Exists(logsDirectory))
-            {
-                throw new Exception(string.Format("logsDirectory couldn't be found at {0}", logsDirectory));
             }
 
             SolutionPackConfig config =
