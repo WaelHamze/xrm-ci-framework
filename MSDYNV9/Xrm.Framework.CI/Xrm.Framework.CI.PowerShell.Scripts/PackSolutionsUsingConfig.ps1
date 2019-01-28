@@ -6,10 +6,11 @@ param(
 [string]$solutionPackagerPath, #Path to solutionpackager.exe
 [string]$OutputFolder,
 [string]$ConfigFilePath,
-[int]$LogsDirectory
+[string]$LogsDirectory
 )
 
 $ErrorActionPreference = "Stop"
+$InformationPreference = "Continue"
 
 Write-Verbose 'Entering PackSolutionsUsingConfig.ps1'
 

@@ -128,6 +128,8 @@ namespace Xrm.Framework.CI.Common
         {
             StringBuilder arguments = new StringBuilder();
 
+            Logger.LogVerbose("Generating Solution Packager Arguments");
+
             arguments.Append($" /action:{action.ToString()}");
             arguments.Append($" /zipFile:\"{ZipFile}\"");
             arguments.Append($" /folder:\"{Folder}\"");
@@ -183,6 +185,8 @@ namespace Xrm.Framework.CI.Common
                 arguments.Append($" /localize");
             }
 
+            Logger.LogVerbose("Solution Packager Arguments: {0}", arguments.ToString());
+
             ProcessStartInfo packagerInfo = new ProcessStartInfo()
             {
                 FileName = Packager,
@@ -202,6 +206,8 @@ namespace Xrm.Framework.CI.Common
                 packagerProcess.OutputDataReceived += PackagerProcess_OutputDataReceived;
                 packagerProcess.ErrorDataReceived += PackagerProcess_ErrorDataReceived;
 
+                Logger.LogVerbose("Invoking SolutionPackager: {0}", Packager);
+
                 bool start = packagerProcess.Start();
                 packagerProcess.BeginOutputReadLine();
                 packagerProcess.BeginErrorReadLine();
@@ -209,6 +215,8 @@ namespace Xrm.Framework.CI.Common
                 packagerProcess.WaitForExit(1000*60*15); //15 minutes
 
                 exitCode = packagerProcess.ExitCode;
+
+                Logger.LogVerbose("SolutionPackager exit code@ {0}", exitCode);
             }
 
             if (exitCode != 0)

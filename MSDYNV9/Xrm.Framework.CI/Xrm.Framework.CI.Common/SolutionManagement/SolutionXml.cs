@@ -65,6 +65,29 @@ namespace Xrm.Framework.CI.Common
             }
         }
 
+        public void UpdateSolutionVersion(string folder, string version)
+        {
+            string solutionFile = folder + "\\Other\\Solution.xml";
+
+            Logger.LogVerbose("Reading Solution File: {0}", solutionFile);
+
+            XElement solutionNode;
+
+            using (var reader = new StreamReader(solutionFile))
+            {
+                solutionNode = XElement.Load(reader);
+                string uniqueName = solutionNode.Descendants("UniqueName").First().Value;
+
+                Logger.LogVerbose(string.Format("Updating Version for Solution: {0}", uniqueName));
+
+                solutionNode.Descendants("Version").First().Value = version;
+            }
+
+            solutionNode.Save(solutionFile);
+
+            Logger.LogInformation("Version Updated to: {0}", version);
+        }
+
         private XrmSolutionInfo GetXrmSolutionInfoFromStream(StreamReader reader)
         {
             XrmSolutionInfo info = null;

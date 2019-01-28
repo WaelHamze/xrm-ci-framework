@@ -93,12 +93,14 @@ namespace Xrm.Framework.CI.Common.IntegrationTests
 
             SolutionPackConfig config = new SolutionPackConfig();
             config.Solutions.Add(new SolutionPackOptions()
-                {
-                    Folder = folder,
-                    MappingFile = mapping,
-                    IncludeVersionInName = true,
-                    PackageType = SolutionPackager_PackageType.Both,
-                    TreamWarningsAsErrors = false,
+            {
+                Folder = folder,
+                MappingFile = mapping,
+                IncludeVersionInName = true,
+                PackageType = SolutionPackager_PackageType.Both,
+                TreamWarningsAsErrors = false,
+                IncrementReleaseVersion = true,
+                Version = string.Empty
                 }
             );
 

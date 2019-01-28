@@ -51,7 +51,7 @@ namespace Xrm.Framework.CI.Common.IntegrationTests.Logging
             string msg = PrefixMsg("Verbose: ", format);
             if (args.Length != 0)
             {
-                Debug.WriteLine(format, msg);
+                Debug.WriteLine(msg, args);
             }
             else
             {

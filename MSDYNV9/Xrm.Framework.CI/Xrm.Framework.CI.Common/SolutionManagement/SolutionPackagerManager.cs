@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xrm.Framework.CI.Common.Logging;
 
 namespace Xrm.Framework.CI.Common
@@ -24,11 +21,14 @@ namespace Xrm.Framework.CI.Common
 
         public bool PackSolution(
             string solutionPackager,
+            string outputFolder,
             string folder,
             SolutionPackager_PackageType packageType,
             bool includeVersionInName,
             string mappingFile,
             bool treatWarningsAsErrors,
+            bool incrementReleaseVersion,
+            string version,
             string logsDirectory
             )
         {
@@ -42,6 +42,32 @@ namespace Xrm.Framework.CI.Common
                 throw new Exception("Invalid solution file");
             }
 
+            Logger.LogInformation("Packing Solution Name: {0} - Version {1}", info.UniqueName, info.Version);
+
+            string newVersion;
+
+            if (incrementReleaseVersion)
+            {
+                Logger.LogVerbose("Incrementing release version");
+
+                int release = Int32.Parse(info.Version.Substring(info.Version.LastIndexOf(".") + 1));
+                newVersion = $"{info.Version.Substring(0, info.Version.LastIndexOf(".") + 1)}{release + 1}";
+
+                solutionXml.UpdateSolutionVersion(folder, newVersion);
+            }
+            else if (!string.IsNullOrEmpty(version))
+            {
+                Logger.LogInformation("Updating solution version to {0}", version);
+
+                solutionXml.UpdateSolutionVersion(folder, version);
+
+                newVersion = version;
+            }
+            else
+            {
+                newVersion = info.Version;
+            }
+
             SolutionNameGenerator generator = new SolutionNameGenerator();
 
             string zipFile;
@@ -51,7 +77,7 @@ namespace Xrm.Framework.CI.Common
             {
                 zipFile = generator.GetZipName(
                     info.UniqueName,
-                    info.Version,
+                    newVersion,
                     managed);
             }
             else
@@ -61,13 +87,18 @@ namespace Xrm.Framework.CI.Common
                     string.Empty,
                     managed);
             }
+            string zipFilePath = $"{outputFolder}\\{zipFile}";
 
-            string log = $"PackagerLog_{zipFile.Replace(".zip", "")}_{DateTime.Now.ToString("yyyy_MM_dd__HH_mm")}.txt";
+            Logger.LogVerbose("zipFile: {0}", zipFilePath);
+
+            string log = $"{logsDirectory}\\PackagerLog_{zipFile.Replace(".zip", "")}_{DateTime.Now.ToString("yyyy_MM_dd__HH_mm")}.txt";
+
+            Logger.LogVerbose("log: {0}", log);
 
             SolutionPackager packager = new SolutionPackager(
                 Logger,
                 solutionPackager,
-                zipFile,
+                zipFilePath,
                 folder,
                 log
                 );
@@ -84,6 +115,26 @@ namespace Xrm.Framework.CI.Common
             string configFilePath,
             string logsDirectory)
         {
+            if (!File.Exists(solutionPackager))
+            {
+                throw new Exception(string.Format("SolutionPackager.exe file couldn't be found at {0}", solutionPackager));
+            }
+
+            if (!Directory.Exists(outputFolder))
+            {
+                throw new Exception(string.Format("outputFolder couldn't be found at {0}", outputFolder));
+            }
+
+            if (!File.Exists(configFilePath))
+            {
+                throw new Exception(string.Format("Config file couldn't be found at {0}", configFilePath));
+            }
+
+            if (!Directory.Exists(logsDirectory))
+            {
+                throw new Exception(string.Format("logsDirectory couldn't be found at {0}", logsDirectory));
+            }
+
             SolutionPackConfig config =
                 Serializers.ParseJson<SolutionPackConfig>(configFilePath);
 
@@ -98,11 +149,14 @@ namespace Xrm.Framework.CI.Common
 
                 bool result = PackSolution(
                     solutionPackager,
+                    outputFolder,
                     folder,
                     option.PackageType,
                     option.IncludeVersionInName,
                     mapping,
                     option.TreamWarningsAsErrors,
+                    option.IncrementReleaseVersion,
+                    option.Version,
                     logsDirectory
                     );
 
@@ -113,6 +167,8 @@ namespace Xrm.Framework.CI.Common
                     break;
                 }
             }
+
+            Logger.LogInformation("{0} solutions processed out of {1}", results.Count, config.Solutions.Count);
 
             return results;
         }
@@ -127,6 +183,7 @@ namespace Xrm.Framework.CI.Common
         public SolutionPackager_PackageType PackageType { get; set; }
         public bool IncludeVersionInName { get; set; }
         public bool TreamWarningsAsErrors { get; set; }
+        public bool IncrementReleaseVersion { get; set; }
         public string Version { get; set; }
 
         #endregion

@@ -15,7 +15,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
     ///   <code>C:\PS>Export-XrmSolution -ConnectionString "" -EntityName "account"</code>
     ///   <para>Exports the "" managed solution to "" location</para>
     /// </example>
-    [Cmdlet(VerbsData.Compress, "XrmSolution")]
+    [Cmdlet(VerbsData.Compress, "XrmSolutions")]
     [OutputType(typeof(WhoAmIResponse))]
     public class CompressXrmSolutionUsingConfig : CommandBase
     {
@@ -57,7 +57,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
 
             SolutionPackagerManager packagerManager = new SolutionPackagerManager(Logger);
 
-            List<bool> results = packagerManager.PackSolutions(SolutionPackagerPath, LogsDirectory, ConfigFilePath, LogsDirectory);
+            List<bool> results = packagerManager.PackSolutions(SolutionPackagerPath, OutputFolder, ConfigFilePath, LogsDirectory);
 
             if (results.Contains(false))
             {
