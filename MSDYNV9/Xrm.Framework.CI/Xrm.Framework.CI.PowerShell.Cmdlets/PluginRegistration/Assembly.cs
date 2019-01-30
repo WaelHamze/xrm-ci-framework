@@ -15,6 +15,8 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
 
         public PluginAssembly_SourceType? SourceType { get; set; }
 
+        public string Version { get; set; }
+
         public List<Type> PluginTypes { get; set; }
 
         public Assembly()
