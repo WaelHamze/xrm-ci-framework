@@ -5,6 +5,7 @@
 param(
 	[string]$CrmConnectionString,
 	[string]$AssemblyName,
+	[string]$AssemblyVersion,
 	[string]$MappingFile,
 	[int]$Timeout=360
 )
@@ -16,6 +17,7 @@ Write-Verbose 'Entering GetPluginRegistration.ps1' -Verbose
 #Parameters
 Write-Verbose "CrmConnectionString = $CrmConnectionString"
 Write-Verbose "AssemblyName = $AssemblyName"
+Write-Verbose "AssemblyVersion = $AssemblyVersion"
 Write-Verbose "MappingFile = $MappingFile"
 Write-Verbose "Timeout = $Timeout"
 
@@ -29,6 +31,6 @@ Write-Verbose "Importing CIToolkit: $xrmCIToolkit"
 Import-Module $xrmCIToolkit
 Write-Verbose "Imported CIToolkit"
 
-Get-XrmPluginRegistration -AssemblyName $AssemblyName -MappingFile $MappingFile -ConnectionString $CrmConnectionString -Timeout $Timeout -Verbose
+Get-XrmPluginRegistration -AssemblyName $AssemblyName -AssemblyVersion $AssemblyVersion -MappingFile $MappingFile -ConnectionString $CrmConnectionString -Timeout $Timeout -Verbose
 
 Write-Verbose 'Leaving GetPluginRegistration.ps1' -Verbose
