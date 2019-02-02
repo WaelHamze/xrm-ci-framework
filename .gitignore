@@ -290,3 +290,16 @@ __pycache__/
 *.xsd.cs
 
 BuildTools/Lib/xRMCIFramework/9.0.0/
+/MSDYNV9/Xrm.Framework.CI/Xrm.Framework.CI.PowerShell.Scripts/Xrm.Framework.CI.PowerShell.Cmdlets.dll
+/MSDYNV9/Xrm.Framework.CI/Xrm.Framework.CI.PowerShell.Scripts/Xrm.Framework.CI.Common.dll
+/MSDYNV9/Xrm.Framework.CI/Xrm.Framework.CI.PowerShell.Scripts/System.Management.Automation.dll
+/MSDYNV9/Xrm.Framework.CI/Xrm.Framework.CI.PowerShell.Scripts/Newtonsoft.Json.dll
+/MSDYNV9/Xrm.Framework.CI/Xrm.Framework.CI.PowerShell.Scripts/Microsoft.Xrm.Tooling.Connector.dll
+/MSDYNV9/Xrm.Framework.CI/Xrm.Framework.CI.PowerShell.Scripts/Microsoft.Xrm.Sdk.Workflow.dll
+/MSDYNV9/Xrm.Framework.CI/Xrm.Framework.CI.PowerShell.Scripts/Microsoft.Xrm.Sdk.dll
+/MSDYNV9/Xrm.Framework.CI/Xrm.Framework.CI.PowerShell.Scripts/Microsoft.Xrm.Sdk.Deployment.dll
+/MSDYNV9/Xrm.Framework.CI/Xrm.Framework.CI.PowerShell.Scripts/Microsoft.Rest.ClientRuntime.dll
+/MSDYNV9/Xrm.Framework.CI/Xrm.Framework.CI.PowerShell.Scripts/Microsoft.Management.Infrastructure.dll
+/MSDYNV9/Xrm.Framework.CI/Xrm.Framework.CI.PowerShell.Scripts/Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll
+/MSDYNV9/Xrm.Framework.CI/Xrm.Framework.CI.PowerShell.Scripts/Microsoft.IdentityModel.Clients.ActiveDirectory.dll
+/MSDYNV9/Xrm.Framework.CI/Xrm.Framework.CI.PowerShell.Scripts/Microsoft.Crm.Sdk.Proxy.dll

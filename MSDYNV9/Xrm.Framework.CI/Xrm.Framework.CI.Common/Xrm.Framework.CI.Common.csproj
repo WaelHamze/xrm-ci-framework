@@ -98,6 +98,8 @@
     <Compile Include="SolutionManagement\SolutionXml.cs" />
     <Compile Include="XrmBase.cs" />
     <Compile Include="XrmConnectionManager.cs" />
+    <Compile Include="XrmEncryptionManager.cs" />
+    <Compile Include="XrmConnectionConfigManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

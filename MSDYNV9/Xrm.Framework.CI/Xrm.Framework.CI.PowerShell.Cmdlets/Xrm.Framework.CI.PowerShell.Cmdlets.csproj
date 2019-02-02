@@ -103,6 +103,10 @@
     <Compile Include="Common\ReflectionLoader.cs" />
     <Compile Include="Common\XrmSolutionInfo.cs" />
     <Compile Include="CompressXrmSolution.cs" />
+    <Compile Include="GetXrmConnectionsCommand.cs" />
+    <Compile Include="RemoveXrmConnectionCommand.cs" />
+    <Compile Include="GetXrmConnectionCommand.cs" />
+    <Compile Include="SetXrmConnectionCommand.cs" />
     <Compile Include="CopyXrmSolutionComponentsCommand.cs" />
     <Compile Include="ExportXrmAccessTeamTemplatesCommand.cs" />
     <Compile Include="ExportXrmSolutionsCommand.cs" />
@@ -230,12 +234,11 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
+    <PostBuildEvent>Copy /Y $(TargetDir)\*.dll $(SolutionDir)\Xrm.Framework.CI.PowerShell.Scripts\</PostBuildEvent>
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties PluginRegistration_4PluginAssemblyExample_1json__JSONSchema="PluginRegistrationSchema.json" PluginRegistration_4WorkflowAssemblyExample_1json__JSONSchema="PluginRegistrationSchema.json" />
+      <UserProperties PluginRegistration_4WorkflowAssemblyExample_1json__JSONSchema="PluginRegistrationSchema.json" PluginRegistration_4PluginAssemblyExample_1json__JSONSchema="PluginRegistrationSchema.json" />
     </VisualStudio>
   </ProjectExtensions>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
