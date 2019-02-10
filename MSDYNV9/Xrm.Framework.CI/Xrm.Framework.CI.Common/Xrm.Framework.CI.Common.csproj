@@ -91,18 +91,28 @@
     <Compile Include="ImportJobManager.cs" />
     <Compile Include="Logging\ILogger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SolutionManager.cs" />
     <Compile Include="Workflows\WorkflowFixer.cs" />
     <Compile Include="Workflows\XamlValuesHelper.cs" />
+    <Compile Include="Serializers.cs" />
+    <Compile Include="SolutionManagement\SolutionManager.cs" />
+    <Compile Include="SolutionManagement\SolutionNameGenerator.cs" />
+    <Compile Include="SolutionManagement\SolutionPackager.cs" />
+    <Compile Include="SolutionManagement\SolutionPackagerManager.cs" />
+    <Compile Include="SolutionManagement\SolutionXml.cs" />
     <Compile Include="XrmBase.cs" />
     <Compile Include="XrmConnectionManager.cs" />
     <Compile Include="XrmSdkMessagesHelper.cs" />
+    <Compile Include="XrmEncryptionManager.cs" />
+    <Compile Include="XrmConnectionConfigManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Schema\ExportSolutionsExample.json" />
+    <None Include="Schema\ImportSolutionsExample.json" />
+    <None Include="Schema\PackSolutionsExample.json" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

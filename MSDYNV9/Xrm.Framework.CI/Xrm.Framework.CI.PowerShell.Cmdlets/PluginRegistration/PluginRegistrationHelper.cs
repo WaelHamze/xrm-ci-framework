@@ -22,6 +22,8 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
         private readonly PluginRepository pluginRepository;
         private readonly Action<string> logVerbose;
         private readonly Action<string> logWarning;
+        private readonly IReflectionLoader reflectionLoader;
+        private readonly IPluginRegistrationObjectFactory pluginRegistrationObjectFactory;
 
         public PluginRegistrationHelper(IOrganizationService service, CIContext xrmContext, Action<string> logVerbose, Action<string> logWarning)
         {
@@ -29,13 +31,32 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
             this.logWarning = logWarning;
             organizationService = service;
             pluginRepository = new PluginRepository(xrmContext);
+            reflectionLoader = new ReflectionLoader();
+            pluginRegistrationObjectFactory = new PluginRegistrationObjectFactory();
         }
 
-        public Assembly GetAssemblyRegistration(string assemblyName) => pluginRepository.GetAssemblyRegistration(assemblyName);
+        public PluginRegistrationHelper(Action<string> logVerbose, Action<string> logWarning)
+        {
+            this.logVerbose = logVerbose;
+            this.logWarning = logWarning;
+            reflectionLoader = new ReflectionLoader();
+            pluginRegistrationObjectFactory = new PluginRegistrationObjectFactory();
+        }
+
+        public PluginRegistrationHelper(Action<string> logVerbose, Action<string> logWarning,
+            IReflectionLoader reflectionLoader, IPluginRegistrationObjectFactory pluginRegistrationObjectFactory)
+        {
+            this.logVerbose = logVerbose;
+            this.logWarning = logWarning;
+            this.reflectionLoader = reflectionLoader;
+            this.pluginRegistrationObjectFactory = pluginRegistrationObjectFactory;
+        }
+
+        public Assembly GetAssemblyRegistration(string assemblyName, string version) => pluginRepository.GetAssemblyRegistration(assemblyName, version);
 
         public void RemoveComponentsNotInMapping(Assembly assemblyMapping)
         {
-            var assemblyInCrm = pluginRepository.GetAssemblyRegistration(assemblyMapping.Name);
+            var assemblyInCrm = pluginRepository.GetAssemblyRegistration(assemblyMapping.Name, assemblyMapping.Version);
             if (assemblyInCrm == null)
             {
                 logVerbose?.Invoke($"Assembly {assemblyMapping.Name} not found in CRM");
@@ -297,7 +318,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
                 SASToken = serviceEndpt.SASToken,
                 UserClaimEnum = serviceEndpt.UserClaim,
                 Description = serviceEndpt.Description,
-                Url = serviceEndpt.Url,                
+                Url = serviceEndpt.Url,
                 AuthValue = serviceEndpt.AuthValue,
             };
 
@@ -427,11 +448,36 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
             });
         }
 
-
         private IEnumerable<Dependency> GetDependeciesForDelete(Guid objectId, ComponentType? componentType) => ((RetrieveDependenciesForDeleteResponse)organizationService.Execute(new RetrieveDependenciesForDeleteRequest()
         {
             ComponentType = (int)componentType,
             ObjectId = objectId
         })).EntityCollection.Entities.Select(x => x.ToEntity<Dependency>());
+
+        public object GetPluginRegistrationObject(string assemblyPath, string customAttributeClass)
+        {
+            reflectionLoader.Initialise(assemblyPath, customAttributeClass);
+            return pluginRegistrationObjectFactory.GetAssembly(reflectionLoader);
+        }
+
+        public Assembly ReadMappingFile(string mappingFile)
+        {
+            var fileInfo = new FileInfo(mappingFile);
+            switch (fileInfo.Extension.ToLower())
+            {
+                case ".json":
+                    logVerbose("Reading mapping json file");
+                    var pluginAssembly = Serializers.ParseJson<Assembly>(mappingFile);
+                    logVerbose("Deserialized mapping json file");
+                    return pluginAssembly;
+                case ".xml":
+                    logVerbose("Reading mapping xml file");
+                    pluginAssembly = Serializers.ParseXml<Assembly>(mappingFile);
+                    logVerbose("Deserialized mapping xml file");
+                    return pluginAssembly;
+                default:
+                    throw new ArgumentException("Only .json and .xml mapping files are supported", nameof(ReadMappingFile));
+            }
+        }
     }
 }

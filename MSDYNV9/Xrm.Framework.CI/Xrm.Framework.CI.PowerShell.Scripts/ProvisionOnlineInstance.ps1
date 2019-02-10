@@ -144,6 +144,8 @@ if ($operation.Errors.Count -gt 0)
 
 if ($WaitForCompletion -and ($OperationStatus -ne "Succeeded"))
 {
+	Write-Verbose "Waiting for AsyncOperation to complete"
+
 	$status = Wait-XrmOperation -ApiUrl $ApiUrl -Cred $Cred -operationId $operation.OperationId
 
 	$status
@@ -153,19 +155,31 @@ if ($WaitForCompletion -and ($OperationStatus -ne "Succeeded"))
 		throw "Operation status: $status.Status"
 	}
 }
+else
+{
+	Write-Verbose "Skipped waiting for Async Operation"
+}
 
 if ($WaitForCompletion)
 {
 	#Sometimes instance is created but the API still returns NOT FOUND (no other instances available).
 	#Added this delay to give chance for operation to progress.
+
+	Write-Verbose "Starting Initial Sleep for 30 seconds"
+
 	Start-Sleep -Seconds 30
 	
 	$provisioning = $true
 	while ($provisioning)
 	{
+		Write-Verbose "Starting Sleep for $SleepDuration seconds"
+		
 		Start-Sleep -Seconds $SleepDuration
 
+		Write-Verbose "Retrieving instance"
+
 		$instance = Get-XrmInstanceByName -ApiUrl $ApiUrl -Cred $Cred -InstanceName $DomainName
+
 		$State = $instance.State
 
 		Write-Verbose "Instance State: $State"

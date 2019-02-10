@@ -28,11 +28,16 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="ApplySolution.ps1" />
+    <Compile Include="ConnectionFunctions.ps1" />
     <Compile Include="CreatePatch.ps1" />
     <Compile Include="CloneSolution.ps1" />
     <Compile Include="CopySolutionComponents.ps1" />
     <Compile Include="CreateSolution.ps1" />
+    <Compile Include="PackSolutionsUsingConfig.ps1" />
+    <Compile Include="ImportSolutionsUsingConfig.ps1" />
+    <Compile Include="ExportSolutionsUsingConfig.ps1" />
     <Compile Include="GetServiceEndpointRegistration.ps1" />
+    <Compile Include="ManageXrmConnections.ps1" />
     <Compile Include="RemoveSolution.ps1" />
     <Compile Include="RemoveSolutionComponents.ps1" />
     <Compile Include="GetPluginRegistration.ps1" />
@@ -59,6 +64,7 @@
     <Compile Include="UpdateConfigurationRecords.ps1" />
     <Compile Include="UpdateSecureConfiguration.ps1" />
     <Compile Include="UpdateSolutionDescriptionInCRM.ps1" />
+    <Compile Include="UpdateSolutionVersionInFolder.ps1" />
     <Compile Include="UpdateSolutionVersionInCRM.ps1" />
     <Compile Include="UpdateWebResource.ps1" />
     <Compile Include="UpdateWebResourcesJsonMapping.ps1" />

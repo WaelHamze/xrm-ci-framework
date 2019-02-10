@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -402,6 +403,70 @@ namespace Xrm.Framework.CI.Common.IntegrationTests
             Assert.IsTrue(result.UnprocessedComponents == -1);
             Assert.IsFalse(result.ImportJobAvailable);
             Assert.IsFalse(File.Exists($"{LogsDirectory}\\{LogFileName}"));
+        }
+
+        [TestMethod]
+        public void ImportExport_E2E()
+        {
+            SolutionImportConfig importConfig = new SolutionImportConfig();
+
+            importConfig.Solutions.Add(
+                new SolutionImportOptions()
+                {
+                    SolutionFilePath = "Success_1_0_0_0_managed.zip",
+                    ImportAsync = true,
+                    OverrideSameVersion = true,
+                    OverwriteUnmanagedCustomizations = true,
+                    PublishWorkflows = true,
+                });
+
+            importConfig.Solutions.Add(
+                new SolutionImportOptions()
+                {
+                    SolutionFilePath = "Success_1_1_0_0_managed.zip",
+                    ImportAsync = true,
+                    HoldingSolution = true,
+                    ApplySolution = true,
+                    ApplyAsync = true,
+                    OverwriteUnmanagedCustomizations = true,
+                    PublishWorkflows = true,
+                });
+
+            string importConfigFile = $"{ArtifactsDirectory}\\ImportConfig.json";
+
+            Serializers.SaveJson<SolutionImportConfig>(
+                importConfigFile,
+                importConfig);
+
+            List<SolutionImportResult> results = SolutionManager.ImportSolutions(
+                ArtifactsDirectory,
+                LogsDirectory,
+                importConfig);
+
+            Assert.IsTrue(results[0].Success);
+            Assert.IsTrue(results[1].Success);
+
+            //SolutionExportConfig config = new SolutionExportConfig();
+
+            //config.Solutions.Add(
+            //    new SolutionExportOptions()
+            //    {
+            //        SolutionName = "Success",
+            //        IncludeVersionInName = true,
+            //        Managed = true
+            //    }
+            //    );
+
+            //string exportConfigFile = $"{TestContext.TestLogsDir}\\ExportConfig.json";
+
+            //Serializers.SaveJson<SolutionExportConfig>(
+            //    exportConfigFile,
+            //    config);
+
+            //List<string> exportedFiles =
+            //    SolutionManager.ExportSolutions(LogsDirectory, config);
+
+            //Assert.IsTrue(File.Exists(exportedFiles[0]));
         }
     }
 }

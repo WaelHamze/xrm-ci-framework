@@ -12,7 +12,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Logging
     {
         #region Properties
 
-        protected XrmCommandBase XrmCmdlet
+        protected CommandBase XrmCmdlet
         {
             get;
             set;
@@ -22,7 +22,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Logging
 
         #region Constructors
 
-        public PSLogger(XrmCommandBase xrmCmdlet)
+        public PSLogger(CommandBase xrmCmdlet)
         {
             XrmCmdlet = xrmCmdlet;
             XrmCmdlet.WriteVerbose(string.Format("PS Version: {0}", GetPSVersion().ToString()));
@@ -38,7 +38,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Logging
 
         public void LogError(string format, params object[] args)
         {
-            string message = string.Format(format, args);
+            string message = (args.Length > 0) ? string.Format(format, args) : format;
             ErrorRecord error = new ErrorRecord(
                 new Exception(message),
                 "XrmCIFramework", ErrorCategory.WriteError, null);
@@ -47,7 +47,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Logging
 
         public void LogInformation(string format, params object[] args)
         {
-            string message = string.Format(format, args);
+            string message = (args.Length > 0) ? string.Format(format, args) : format;
             if (GetPSVersion().Major < 5)
             {
                 Console.WriteLine(message);
@@ -60,13 +60,13 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Logging
 
         public void LogVerbose(string format, params object[] args)
         {
-            string message = string.Format(format, args);
+            string message = (args.Length > 0) ? string.Format(format, args) : format;
             XrmCmdlet.WriteVerbose(message);
         }
 
         public void LogWarning(string format, params object[] args)
         {
-            string message = string.Format(format, args);
+            string message = (args.Length > 0) ? string.Format(format, args) : format;
             XrmCmdlet.WriteWarning(message);
         }
 
