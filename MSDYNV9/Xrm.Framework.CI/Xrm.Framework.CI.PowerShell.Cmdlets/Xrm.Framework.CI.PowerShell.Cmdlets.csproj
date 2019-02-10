@@ -104,6 +104,7 @@
     <Compile Include="Common\XrmSolutionInfo.cs" />
     <Compile Include="CompressXrmSolution.cs" />
     <Compile Include="GetXrmConnectionsCommand.cs" />
+    <Compile Include="PublishXrmThemeCommand.cs" />
     <Compile Include="RemoveXrmConnectionCommand.cs" />
     <Compile Include="GetXrmConnectionCommand.cs" />
     <Compile Include="SetXrmConnectionCommand.cs" />
