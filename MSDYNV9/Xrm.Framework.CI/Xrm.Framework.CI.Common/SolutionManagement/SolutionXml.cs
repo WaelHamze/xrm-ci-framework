@@ -33,7 +33,7 @@ namespace Xrm.Framework.CI.Common
             {
                 using (ZipArchive solutionZip = ZipFile.Open(zipFile, ZipArchiveMode.Read))
                 {
-                    ZipArchiveEntry solutionEntry = solutionZip.GetEntry("Solution.xml");
+                    ZipArchiveEntry solutionEntry = solutionZip.GetEntry("solution.xml");
 
                     using (var reader = new StreamReader(solutionEntry.Open()))
                     {
