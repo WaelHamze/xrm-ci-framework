@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Xrm.Sdk;
 using Xrm.Framework.CI.Common.Entities;
 using Xrm.Framework.CI.PowerShell.Cmdlets.Common;
 
@@ -34,6 +35,16 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.PluginRegistration
             (from steps in context.SdkMessageProcessingStepSet
              where steps.EventHandler.Id == parentId && steps.Name == name
              select steps.Id).FirstOrDefault();
+
+        public SdkMessageProcessingStep GetSdkMessageProcessingStepById(Guid id) =>
+            (from steps in context.SdkMessageProcessingStepSet
+             where steps.SdkMessageProcessingStepId == id
+             select steps).SingleOrDefault();
+
+        internal PluginType GetPluginTypeById(Guid objectId) =>
+            (from type in context.PluginTypeSet
+             where type.PluginTypeId == objectId
+             select type).SingleOrDefault();
 
         public Guid GetSdkMessageProcessingStepImageId(Guid parentId, string name, SdkMessageProcessingStepImage_ImageType? imageType) =>
             (from a in context.SdkMessageProcessingStepImageSet
@@ -85,9 +96,10 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.PluginRegistration
             var pluginTypes = (from plugins in context.PluginTypeSet
                                join steps in context.SdkMessageProcessingStepSet on plugins.PluginTypeId equals steps.EventHandler.Id
                                join message in context.SdkMessageSet on steps.SdkMessageId.Id equals message.SdkMessageId
-                               join filters in context.SdkMessageFilterSet on steps.SdkMessageFilterId.Id equals filters.Id
                                where plugins.PluginAssemblyId.Id == pluginAssembly.Id && plugins.IsWorkflowActivity == false
-                               select MapPluginObject(steps, message, filters, pluginStepImages, pluginAssemblyObject, plugins)).ToList();
+                               select MapPluginObject( 
+                                   steps, message, GetMessageFilter( context.SdkMessageFilterSet, steps.SdkMessageFilterId ), pluginStepImages, pluginAssemblyObject, plugins )
+                              ).ToList();
             var typesHasSteps = new HashSet<string>(pluginAssemblyObject.PluginTypes.Select(t => t.Name));
             var allPluginType = (from plugins in context.PluginTypeSet
                                  where plugins.PluginAssemblyId.Id == pluginAssembly.Id && plugins.IsWorkflowActivity == false //&& !typesHasSteps.Contains(plugins.Name)
@@ -99,7 +111,16 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.PluginRegistration
             return pluginAssemblyObject;
         }
 
-        public Guid GetServiceEndpointId(string name) =>
+		private SdkMessageFilter GetMessageFilter( IQueryable<SdkMessageFilter> sdkMessageFilterSet, EntityReference sdkMessageFilterId )
+		{
+			if( sdkMessageFilterId == null )
+			{
+				return null;
+			}
+			return sdkMessageFilterSet.FirstOrDefault( f => f.Id == sdkMessageFilterId.Id );
+		}
+
+		public Guid GetServiceEndpointId(string name) =>
             (from a in context.ServiceEndpointSet
              where a.Name == name
              select a.Id).FirstOrDefault();
@@ -222,7 +243,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.PluginRegistration
             ImpersonatingUserFullname = pluginStep.ImpersonatingUserId?.Name ?? string.Empty,
             MessageName = sdkMessage?.Name,
             Mode = pluginStep.ModeEnum,
-            PrimaryEntityName = filter.PrimaryObjectTypeCode,
+            PrimaryEntityName = filter?.PrimaryObjectTypeCode,
             Rank = pluginStep.Rank,
             Stage = pluginStep.StageEnum,
             AsyncAutoDelete = pluginStep.AsyncAutoDelete,

@@ -61,7 +61,6 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
@@ -104,6 +103,7 @@
     <Compile Include="Common\XrmSolutionInfo.cs" />
     <Compile Include="CompressXrmSolution.cs" />
     <Compile Include="GetXrmConnectionsCommand.cs" />
+    <Compile Include="PublishXrmThemeCommand.cs" />
     <Compile Include="RemoveXrmConnectionCommand.cs" />
     <Compile Include="GetXrmConnectionCommand.cs" />
     <Compile Include="SetXrmConnectionCommand.cs" />
@@ -146,7 +146,11 @@
     <Compile Include="PublishXrmDuplicateRuleCommand.cs" />
     <Compile Include="RemoveXrmEntityAttribute.cs" />
     <Compile Include="RemoveXrmEntityCommand.cs" />
+    <Compile Include="RemoveXrmOptionCommand.cs" />
+    <Compile Include="RemoveXrmWorkflowCommand.cs" />
     <Compile Include="RemoveXrmRecordCommand.cs" />
+    <Compile Include="SetXrmDashboardRoleCommand.cs" />
+    <Compile Include="SetXrmWorkflowStateCommand.cs" />
     <Compile Include="CompressXrmSolutionsUsingConfig.cs" />
     <Compile Include="ShowXrmLogging.cs" />
     <Compile Include="RemoveXrmSolutionComponentsCommand.cs" />
@@ -163,7 +167,6 @@
     <Compile Include="CommandBase.cs" />
     <Compile Include="XrmCommandBase.cs" />
     <Compile Include="SetXrmPluginRegistration.cs" />
-    <Compile Include="Common\XrmSdkMessagesHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config">
@@ -241,7 +244,7 @@
       <UserProperties PluginRegistration_4WorkflowAssemblyExample_1json__JSONSchema="PluginRegistrationSchema.json" PluginRegistration_4PluginAssemblyExample_1json__JSONSchema="PluginRegistrationSchema.json" />
     </VisualStudio>
   </ProjectExtensions>
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>

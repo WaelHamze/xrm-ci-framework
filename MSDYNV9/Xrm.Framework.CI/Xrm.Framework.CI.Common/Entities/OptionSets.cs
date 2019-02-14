@@ -755,6 +755,18 @@ namespace Xrm.Framework.CI.Common.Entities
 	
 	[System.Runtime.Serialization.DataContractAttribute()]
 	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.0.0.9369")]
+	public enum AllocationType
+	{
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		Numberofcases = 0,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		Numberofhours = 1,
+	}
+	
+	[System.Runtime.Serialization.DataContractAttribute()]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.0.0.9369")]
 	public enum AppConfig_StatusCode
 	{
 		
@@ -2616,9 +2628,6 @@ namespace Xrm.Framework.CI.Common.Entities
 		Contract = 1010,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		DDMAPluginsConfig = 10025,
-		
-		[System.Runtime.Serialization.EnumMemberAttribute()]
 		Email = 4202,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
@@ -2679,7 +2688,7 @@ namespace Xrm.Framework.CI.Common.Entities
 		Product = 1024,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		ProfileAlbum = 10016,
+		ProfileAlbum = 10022,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		Quote = 1084,
@@ -2751,9 +2760,6 @@ namespace Xrm.Framework.CI.Common.Entities
 		Contract = 1010,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		DDMAPluginsConfig = 10025,
-		
-		[System.Runtime.Serialization.EnumMemberAttribute()]
 		Email = 4202,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
@@ -2814,7 +2820,7 @@ namespace Xrm.Framework.CI.Common.Entities
 		Product = 1024,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		ProfileAlbum = 10016,
+		ProfileAlbum = 10022,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		Quote = 1084,
@@ -3708,9 +3714,6 @@ namespace Xrm.Framework.CI.Common.Entities
 	{
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		Abc = 10028,
-		
-		[System.Runtime.Serialization.EnumMemberAttribute()]
 		Account = 1,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
@@ -3741,7 +3744,7 @@ namespace Xrm.Framework.CI.Common.Entities
 		Address = 1071,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		admin_settings_entity = 10010,
+		admin_settings_entity = 10016,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		AdvancedSimilarityRule = 9949,
@@ -3990,6 +3993,9 @@ namespace Xrm.Framework.CI.Common.Entities
 		CustomerRelationship = 4502,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
+		DatabaseVersion = 10005,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
 		DataImport = 4410,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
@@ -3997,9 +4003,6 @@ namespace Xrm.Framework.CI.Common.Entities
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		DataPerformanceDashboard = 4450,
-		
-		[System.Runtime.Serialization.EnumMemberAttribute()]
-		DDMAPluginsConfig = 10025,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		DelveActionHub = 9961,
@@ -4071,6 +4074,9 @@ namespace Xrm.Framework.CI.Common.Entities
 		EntitlementContact = 7272,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
+		EntitlementEntityAllocationTypeMapping = 9704,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
 		EntitlementProduct = 6363,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
@@ -4119,7 +4125,7 @@ namespace Xrm.Framework.CI.Common.Entities
 		FieldSharing = 44,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		Filter = 10020,
+		Filter = 10026,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		FilterTemplate = 30,
@@ -4149,7 +4155,7 @@ namespace Xrm.Framework.CI.Common.Entities
 		HolidayWrapper = 9996,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		icebreakersconfig = 10015,
+		icebreakersconfig = 10021,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		ImageDescriptor = 1007,
@@ -4278,13 +4284,10 @@ namespace Xrm.Framework.CI.Common.Entities
 		MarketingListMember = 4301,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		MetadataAudit = 10022,
-		
-		[System.Runtime.Serialization.EnumMemberAttribute()]
 		MetadataDifference = 4231,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		MicrosoftTeamsCollaborationentity = 10021,
+		MicrosoftTeamsCollaborationentity = 10027,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		MobileOfflineProfile = 9866,
@@ -4302,7 +4305,7 @@ namespace Xrm.Framework.CI.Common.Entities
 		MonthlyFiscalCalendar = 2003,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		msdyn_relationshipinsightsunifiedconfig = 10011,
+		msdyn_relationshipinsightsunifiedconfig = 10017,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		MultiEntitySearch = 9910,
@@ -4320,7 +4323,7 @@ namespace Xrm.Framework.CI.Common.Entities
 		Note = 5,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		NotesanalysisConfig = 10014,
+		NotesanalysisConfig = 10020,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		Notification = 4110,
@@ -4398,22 +4401,22 @@ namespace Xrm.Framework.CI.Common.Entities
 		PhoneToCaseProcess = 952,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		Playbook = 10007,
+		Playbook = 10013,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		Playbookactivity = 10004,
+		Playbookactivity = 10010,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		Playbookactivityattribute = 10005,
+		Playbookactivityattribute = 10011,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		PlaybookCallableContext = 10003,
+		PlaybookCallableContext = 10009,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		Playbookcategory = 10006,
+		Playbookcategory = 10012,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		Playbooktemplate = 10008,
+		Playbooktemplate = 10014,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		PluginAssembly = 4605,
@@ -4434,7 +4437,7 @@ namespace Xrm.Framework.CI.Common.Entities
 		Post = 8000,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		PostConfiguration = 10017,
+		PostConfiguration = 10023,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		PostRegarding = 8002,
@@ -4443,7 +4446,7 @@ namespace Xrm.Framework.CI.Common.Entities
 		PostRole = 8001,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		PostRuleConfiguration = 10018,
+		PostRuleConfiguration = 10024,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		PriceList = 1022,
@@ -4494,7 +4497,7 @@ namespace Xrm.Framework.CI.Common.Entities
 		ProductSalesLiterature = 21,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		ProfileAlbum = 10016,
+		ProfileAlbum = 10022,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		Property = 1048,
@@ -4713,7 +4716,7 @@ namespace Xrm.Framework.CI.Common.Entities
 		SharePointSite = 9502,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		siconfig = 10012,
+		siconfig = 10018,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		SimilarityRule = 9951,
@@ -4749,13 +4752,19 @@ namespace Xrm.Framework.CI.Common.Entities
 		SolutionComponent = 7103,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		SolutionComponentDataSource = 10036,
+		SolutionComponentDataSource = 10002,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		SolutionComponentSummary = 10035,
+		SolutionComponentSummary = 10001,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		SolutionHistory = 10003,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		SolutionHistoryData = 9890,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		SolutionHistoryDataSource = 10004,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		StatusMap = 1075,
@@ -4905,10 +4914,19 @@ namespace Xrm.Framework.CI.Common.Entities
 		UnresolvedAddress = 2012,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		UntrackedAppointment = 10013,
+		UntrackedAppointment = 10019,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		UntrackedEmail = 4220,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		UpgradeRun = 10006,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		UpgradeStep = 10007,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		UpgradeVersion = 10008,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		User = 8,
@@ -4950,7 +4968,7 @@ namespace Xrm.Framework.CI.Common.Entities
 		VirtualEntityDataSource = 85,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		WallView = 10019,
+		WallView = 10025,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		WebResource = 9333,
@@ -4974,9 +4992,6 @@ namespace Xrm.Framework.CI.Common.Entities
 	{
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		Abc = 10028,
-		
-		[System.Runtime.Serialization.EnumMemberAttribute()]
 		Account = 1,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
@@ -5007,7 +5022,7 @@ namespace Xrm.Framework.CI.Common.Entities
 		Address = 1071,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		admin_settings_entity = 10010,
+		admin_settings_entity = 10016,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		AdvancedSimilarityRule = 9949,
@@ -5256,6 +5271,9 @@ namespace Xrm.Framework.CI.Common.Entities
 		CustomerRelationship = 4502,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
+		DatabaseVersion = 10005,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
 		DataImport = 4410,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
@@ -5263,9 +5281,6 @@ namespace Xrm.Framework.CI.Common.Entities
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		DataPerformanceDashboard = 4450,
-		
-		[System.Runtime.Serialization.EnumMemberAttribute()]
-		DDMAPluginsConfig = 10025,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		DelveActionHub = 9961,
@@ -5337,6 +5352,9 @@ namespace Xrm.Framework.CI.Common.Entities
 		EntitlementContact = 7272,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
+		EntitlementEntityAllocationTypeMapping = 9704,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
 		EntitlementProduct = 6363,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
@@ -5385,7 +5403,7 @@ namespace Xrm.Framework.CI.Common.Entities
 		FieldSharing = 44,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		Filter = 10020,
+		Filter = 10026,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		FilterTemplate = 30,
@@ -5415,7 +5433,7 @@ namespace Xrm.Framework.CI.Common.Entities
 		HolidayWrapper = 9996,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		icebreakersconfig = 10015,
+		icebreakersconfig = 10021,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		ImageDescriptor = 1007,
@@ -5544,13 +5562,10 @@ namespace Xrm.Framework.CI.Common.Entities
 		MarketingListMember = 4301,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		MetadataAudit = 10022,
-		
-		[System.Runtime.Serialization.EnumMemberAttribute()]
 		MetadataDifference = 4231,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		MicrosoftTeamsCollaborationentity = 10021,
+		MicrosoftTeamsCollaborationentity = 10027,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		MobileOfflineProfile = 9866,
@@ -5568,7 +5583,7 @@ namespace Xrm.Framework.CI.Common.Entities
 		MonthlyFiscalCalendar = 2003,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		msdyn_relationshipinsightsunifiedconfig = 10011,
+		msdyn_relationshipinsightsunifiedconfig = 10017,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		MultiEntitySearch = 9910,
@@ -5586,7 +5601,7 @@ namespace Xrm.Framework.CI.Common.Entities
 		Note = 5,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		NotesanalysisConfig = 10014,
+		NotesanalysisConfig = 10020,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		Notification = 4110,
@@ -5664,22 +5679,22 @@ namespace Xrm.Framework.CI.Common.Entities
 		PhoneToCaseProcess = 952,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		Playbook = 10007,
+		Playbook = 10013,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		Playbookactivity = 10004,
+		Playbookactivity = 10010,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		Playbookactivityattribute = 10005,
+		Playbookactivityattribute = 10011,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		PlaybookCallableContext = 10003,
+		PlaybookCallableContext = 10009,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		Playbookcategory = 10006,
+		Playbookcategory = 10012,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		Playbooktemplate = 10008,
+		Playbooktemplate = 10014,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		PluginAssembly = 4605,
@@ -5700,7 +5715,7 @@ namespace Xrm.Framework.CI.Common.Entities
 		Post = 8000,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		PostConfiguration = 10017,
+		PostConfiguration = 10023,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		PostRegarding = 8002,
@@ -5709,7 +5724,7 @@ namespace Xrm.Framework.CI.Common.Entities
 		PostRole = 8001,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		PostRuleConfiguration = 10018,
+		PostRuleConfiguration = 10024,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		PriceList = 1022,
@@ -5760,7 +5775,7 @@ namespace Xrm.Framework.CI.Common.Entities
 		ProductSalesLiterature = 21,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		ProfileAlbum = 10016,
+		ProfileAlbum = 10022,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		Property = 1048,
@@ -5979,7 +5994,7 @@ namespace Xrm.Framework.CI.Common.Entities
 		SharePointSite = 9502,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		siconfig = 10012,
+		siconfig = 10018,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		SimilarityRule = 9951,
@@ -6015,13 +6030,19 @@ namespace Xrm.Framework.CI.Common.Entities
 		SolutionComponent = 7103,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		SolutionComponentDataSource = 10036,
+		SolutionComponentDataSource = 10002,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		SolutionComponentSummary = 10035,
+		SolutionComponentSummary = 10001,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		SolutionHistory = 10003,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		SolutionHistoryData = 9890,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		SolutionHistoryDataSource = 10004,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		StatusMap = 1075,
@@ -6171,10 +6192,19 @@ namespace Xrm.Framework.CI.Common.Entities
 		UnresolvedAddress = 2012,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		UntrackedAppointment = 10013,
+		UntrackedAppointment = 10019,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		UntrackedEmail = 4220,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		UpgradeRun = 10006,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		UpgradeStep = 10007,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		UpgradeVersion = 10008,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		User = 8,
@@ -6216,7 +6246,7 @@ namespace Xrm.Framework.CI.Common.Entities
 		VirtualEntityDataSource = 85,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		WallView = 10019,
+		WallView = 10025,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		WebResource = 9333,
@@ -6686,6 +6716,18 @@ namespace Xrm.Framework.CI.Common.Entities
 	
 	[System.Runtime.Serialization.DataContractAttribute()]
 	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.0.0.9369")]
+	public enum EntitlementEntityAllocationTypeMapping_StatusCode
+	{
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		Active = 1,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		Inactive = 2,
+	}
+	
+	[System.Runtime.Serialization.DataContractAttribute()]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.0.0.9369")]
 	public enum EntitlementTemplate_AllocationTypeCode
 	{
 		
@@ -6721,6 +6763,15 @@ namespace Xrm.Framework.CI.Common.Entities
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		Standard = 0,
+	}
+	
+	[System.Runtime.Serialization.DataContractAttribute()]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.0.0.9369")]
+	public enum EntityType
+	{
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		Case = 0,
 	}
 	
 	[System.Runtime.Serialization.DataContractAttribute()]
@@ -7506,9 +7557,6 @@ namespace Xrm.Framework.CI.Common.Entities
 	{
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		Abc = 10028,
-		
-		[System.Runtime.Serialization.EnumMemberAttribute()]
 		Account = 1,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
@@ -7539,7 +7587,7 @@ namespace Xrm.Framework.CI.Common.Entities
 		Address = 1071,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		admin_settings_entity = 10010,
+		admin_settings_entity = 10016,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		AdvancedSimilarityRule = 9949,
@@ -7788,6 +7836,9 @@ namespace Xrm.Framework.CI.Common.Entities
 		CustomerRelationship = 4502,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
+		DatabaseVersion = 10005,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
 		DataImport = 4410,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
@@ -7795,9 +7846,6 @@ namespace Xrm.Framework.CI.Common.Entities
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		DataPerformanceDashboard = 4450,
-		
-		[System.Runtime.Serialization.EnumMemberAttribute()]
-		DDMAPluginsConfig = 10025,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		DelveActionHub = 9961,
@@ -7869,6 +7917,9 @@ namespace Xrm.Framework.CI.Common.Entities
 		EntitlementContact = 7272,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
+		EntitlementEntityAllocationTypeMapping = 9704,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
 		EntitlementProduct = 6363,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
@@ -7917,7 +7968,7 @@ namespace Xrm.Framework.CI.Common.Entities
 		FieldSharing = 44,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		Filter = 10020,
+		Filter = 10026,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		FilterTemplate = 30,
@@ -7947,7 +7998,7 @@ namespace Xrm.Framework.CI.Common.Entities
 		HolidayWrapper = 9996,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		icebreakersconfig = 10015,
+		icebreakersconfig = 10021,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		ImageDescriptor = 1007,
@@ -8076,13 +8127,10 @@ namespace Xrm.Framework.CI.Common.Entities
 		MarketingListMember = 4301,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		MetadataAudit = 10022,
-		
-		[System.Runtime.Serialization.EnumMemberAttribute()]
 		MetadataDifference = 4231,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		MicrosoftTeamsCollaborationentity = 10021,
+		MicrosoftTeamsCollaborationentity = 10027,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		MobileOfflineProfile = 9866,
@@ -8100,7 +8148,7 @@ namespace Xrm.Framework.CI.Common.Entities
 		MonthlyFiscalCalendar = 2003,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		msdyn_relationshipinsightsunifiedconfig = 10011,
+		msdyn_relationshipinsightsunifiedconfig = 10017,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		MultiEntitySearch = 9910,
@@ -8118,7 +8166,7 @@ namespace Xrm.Framework.CI.Common.Entities
 		Note = 5,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		NotesanalysisConfig = 10014,
+		NotesanalysisConfig = 10020,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		Notification = 4110,
@@ -8196,22 +8244,22 @@ namespace Xrm.Framework.CI.Common.Entities
 		PhoneToCaseProcess = 952,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		Playbook = 10007,
+		Playbook = 10013,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		Playbookactivity = 10004,
+		Playbookactivity = 10010,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		Playbookactivityattribute = 10005,
+		Playbookactivityattribute = 10011,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		PlaybookCallableContext = 10003,
+		PlaybookCallableContext = 10009,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		Playbookcategory = 10006,
+		Playbookcategory = 10012,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		Playbooktemplate = 10008,
+		Playbooktemplate = 10014,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		PluginAssembly = 4605,
@@ -8232,7 +8280,7 @@ namespace Xrm.Framework.CI.Common.Entities
 		Post = 8000,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		PostConfiguration = 10017,
+		PostConfiguration = 10023,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		PostRegarding = 8002,
@@ -8241,7 +8289,7 @@ namespace Xrm.Framework.CI.Common.Entities
 		PostRole = 8001,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		PostRuleConfiguration = 10018,
+		PostRuleConfiguration = 10024,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		PriceList = 1022,
@@ -8292,7 +8340,7 @@ namespace Xrm.Framework.CI.Common.Entities
 		ProductSalesLiterature = 21,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		ProfileAlbum = 10016,
+		ProfileAlbum = 10022,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		Property = 1048,
@@ -8511,7 +8559,7 @@ namespace Xrm.Framework.CI.Common.Entities
 		SharePointSite = 9502,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		siconfig = 10012,
+		siconfig = 10018,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		SimilarityRule = 9951,
@@ -8547,13 +8595,19 @@ namespace Xrm.Framework.CI.Common.Entities
 		SolutionComponent = 7103,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		SolutionComponentDataSource = 10036,
+		SolutionComponentDataSource = 10002,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		SolutionComponentSummary = 10035,
+		SolutionComponentSummary = 10001,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		SolutionHistory = 10003,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		SolutionHistoryData = 9890,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		SolutionHistoryDataSource = 10004,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		StatusMap = 1075,
@@ -8703,10 +8757,19 @@ namespace Xrm.Framework.CI.Common.Entities
 		UnresolvedAddress = 2012,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		UntrackedAppointment = 10013,
+		UntrackedAppointment = 10019,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		UntrackedEmail = 4220,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		UpgradeRun = 10006,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		UpgradeStep = 10007,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		UpgradeVersion = 10008,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		User = 8,
@@ -8748,7 +8811,7 @@ namespace Xrm.Framework.CI.Common.Entities
 		VirtualEntityDataSource = 85,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		WallView = 10019,
+		WallView = 10025,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		WebResource = 9333,
@@ -10143,9 +10206,6 @@ namespace Xrm.Framework.CI.Common.Entities
 	{
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		Abc = 10028,
-		
-		[System.Runtime.Serialization.EnumMemberAttribute()]
 		Account = 1,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
@@ -10176,7 +10236,7 @@ namespace Xrm.Framework.CI.Common.Entities
 		Address = 1071,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		admin_settings_entity = 10010,
+		admin_settings_entity = 10016,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		AdvancedSimilarityRule = 9949,
@@ -10425,6 +10485,9 @@ namespace Xrm.Framework.CI.Common.Entities
 		CustomerRelationship = 4502,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
+		DatabaseVersion = 10005,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
 		DataImport = 4410,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
@@ -10432,9 +10495,6 @@ namespace Xrm.Framework.CI.Common.Entities
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		DataPerformanceDashboard = 4450,
-		
-		[System.Runtime.Serialization.EnumMemberAttribute()]
-		DDMAPluginsConfig = 10025,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		DelveActionHub = 9961,
@@ -10506,6 +10566,9 @@ namespace Xrm.Framework.CI.Common.Entities
 		EntitlementContact = 7272,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
+		EntitlementEntityAllocationTypeMapping = 9704,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
 		EntitlementProduct = 6363,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
@@ -10554,7 +10617,7 @@ namespace Xrm.Framework.CI.Common.Entities
 		FieldSharing = 44,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		Filter = 10020,
+		Filter = 10026,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		FilterTemplate = 30,
@@ -10584,7 +10647,7 @@ namespace Xrm.Framework.CI.Common.Entities
 		HolidayWrapper = 9996,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		icebreakersconfig = 10015,
+		icebreakersconfig = 10021,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		ImageDescriptor = 1007,
@@ -10713,13 +10776,10 @@ namespace Xrm.Framework.CI.Common.Entities
 		MarketingListMember = 4301,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		MetadataAudit = 10022,
-		
-		[System.Runtime.Serialization.EnumMemberAttribute()]
 		MetadataDifference = 4231,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		MicrosoftTeamsCollaborationentity = 10021,
+		MicrosoftTeamsCollaborationentity = 10027,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		MobileOfflineProfile = 9866,
@@ -10737,7 +10797,7 @@ namespace Xrm.Framework.CI.Common.Entities
 		MonthlyFiscalCalendar = 2003,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		msdyn_relationshipinsightsunifiedconfig = 10011,
+		msdyn_relationshipinsightsunifiedconfig = 10017,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		MultiEntitySearch = 9910,
@@ -10755,7 +10815,7 @@ namespace Xrm.Framework.CI.Common.Entities
 		Note = 5,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		NotesanalysisConfig = 10014,
+		NotesanalysisConfig = 10020,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		Notification = 4110,
@@ -10833,22 +10893,22 @@ namespace Xrm.Framework.CI.Common.Entities
 		PhoneToCaseProcess = 952,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		Playbook = 10007,
+		Playbook = 10013,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		Playbookactivity = 10004,
+		Playbookactivity = 10010,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		Playbookactivityattribute = 10005,
+		Playbookactivityattribute = 10011,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		PlaybookCallableContext = 10003,
+		PlaybookCallableContext = 10009,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		Playbookcategory = 10006,
+		Playbookcategory = 10012,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		Playbooktemplate = 10008,
+		Playbooktemplate = 10014,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		PluginAssembly = 4605,
@@ -10869,7 +10929,7 @@ namespace Xrm.Framework.CI.Common.Entities
 		Post = 8000,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		PostConfiguration = 10017,
+		PostConfiguration = 10023,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		PostRegarding = 8002,
@@ -10878,7 +10938,7 @@ namespace Xrm.Framework.CI.Common.Entities
 		PostRole = 8001,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		PostRuleConfiguration = 10018,
+		PostRuleConfiguration = 10024,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		PriceList = 1022,
@@ -10929,7 +10989,7 @@ namespace Xrm.Framework.CI.Common.Entities
 		ProductSalesLiterature = 21,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		ProfileAlbum = 10016,
+		ProfileAlbum = 10022,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		Property = 1048,
@@ -11148,7 +11208,7 @@ namespace Xrm.Framework.CI.Common.Entities
 		SharePointSite = 9502,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		siconfig = 10012,
+		siconfig = 10018,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		SimilarityRule = 9951,
@@ -11184,13 +11244,19 @@ namespace Xrm.Framework.CI.Common.Entities
 		SolutionComponent = 7103,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		SolutionComponentDataSource = 10036,
+		SolutionComponentDataSource = 10002,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		SolutionComponentSummary = 10035,
+		SolutionComponentSummary = 10001,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		SolutionHistory = 10003,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		SolutionHistoryData = 9890,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		SolutionHistoryDataSource = 10004,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		StatusMap = 1075,
@@ -11340,10 +11406,19 @@ namespace Xrm.Framework.CI.Common.Entities
 		UnresolvedAddress = 2012,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		UntrackedAppointment = 10013,
+		UntrackedAppointment = 10019,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		UntrackedEmail = 4220,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		UpgradeRun = 10006,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		UpgradeStep = 10007,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		UpgradeVersion = 10008,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		User = 8,
@@ -11385,7 +11460,7 @@ namespace Xrm.Framework.CI.Common.Entities
 		VirtualEntityDataSource = 85,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		WallView = 10019,
+		WallView = 10025,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		WebResource = 9333,
@@ -11417,7 +11492,7 @@ namespace Xrm.Framework.CI.Common.Entities
 	
 	[System.Runtime.Serialization.DataContractAttribute()]
 	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.0.0.9369")]
-	public enum msdyn_ddmaconfig_StatusCode
+	public enum msdyn_databaseversion_StatusCode
 	{
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
@@ -11469,9 +11544,6 @@ namespace Xrm.Framework.CI.Common.Entities
 	{
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		Abc = 10028,
-		
-		[System.Runtime.Serialization.EnumMemberAttribute()]
 		Account = 1,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
@@ -11502,7 +11574,7 @@ namespace Xrm.Framework.CI.Common.Entities
 		Address = 1071,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		admin_settings_entity = 10010,
+		admin_settings_entity = 10016,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		AdvancedSimilarityRule = 9949,
@@ -11751,6 +11823,9 @@ namespace Xrm.Framework.CI.Common.Entities
 		CustomerRelationship = 4502,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
+		DatabaseVersion = 10005,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
 		DataImport = 4410,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
@@ -11758,9 +11833,6 @@ namespace Xrm.Framework.CI.Common.Entities
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		DataPerformanceDashboard = 4450,
-		
-		[System.Runtime.Serialization.EnumMemberAttribute()]
-		DDMAPluginsConfig = 10025,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		DelveActionHub = 9961,
@@ -11832,6 +11904,9 @@ namespace Xrm.Framework.CI.Common.Entities
 		EntitlementContact = 7272,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
+		EntitlementEntityAllocationTypeMapping = 9704,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
 		EntitlementProduct = 6363,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
@@ -11880,7 +11955,7 @@ namespace Xrm.Framework.CI.Common.Entities
 		FieldSharing = 44,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		Filter = 10020,
+		Filter = 10026,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		FilterTemplate = 30,
@@ -11910,7 +11985,7 @@ namespace Xrm.Framework.CI.Common.Entities
 		HolidayWrapper = 9996,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		icebreakersconfig = 10015,
+		icebreakersconfig = 10021,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		ImageDescriptor = 1007,
@@ -12039,13 +12114,10 @@ namespace Xrm.Framework.CI.Common.Entities
 		MarketingListMember = 4301,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		MetadataAudit = 10022,
-		
-		[System.Runtime.Serialization.EnumMemberAttribute()]
 		MetadataDifference = 4231,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		MicrosoftTeamsCollaborationentity = 10021,
+		MicrosoftTeamsCollaborationentity = 10027,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		MobileOfflineProfile = 9866,
@@ -12063,7 +12135,7 @@ namespace Xrm.Framework.CI.Common.Entities
 		MonthlyFiscalCalendar = 2003,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		msdyn_relationshipinsightsunifiedconfig = 10011,
+		msdyn_relationshipinsightsunifiedconfig = 10017,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		MultiEntitySearch = 9910,
@@ -12081,7 +12153,7 @@ namespace Xrm.Framework.CI.Common.Entities
 		Note = 5,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		NotesanalysisConfig = 10014,
+		NotesanalysisConfig = 10020,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		Notification = 4110,
@@ -12159,22 +12231,22 @@ namespace Xrm.Framework.CI.Common.Entities
 		PhoneToCaseProcess = 952,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		Playbook = 10007,
+		Playbook = 10013,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		Playbookactivity = 10004,
+		Playbookactivity = 10010,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		Playbookactivityattribute = 10005,
+		Playbookactivityattribute = 10011,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		PlaybookCallableContext = 10003,
+		PlaybookCallableContext = 10009,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		Playbookcategory = 10006,
+		Playbookcategory = 10012,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		Playbooktemplate = 10008,
+		Playbooktemplate = 10014,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		PluginAssembly = 4605,
@@ -12195,7 +12267,7 @@ namespace Xrm.Framework.CI.Common.Entities
 		Post = 8000,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		PostConfiguration = 10017,
+		PostConfiguration = 10023,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		PostRegarding = 8002,
@@ -12204,7 +12276,7 @@ namespace Xrm.Framework.CI.Common.Entities
 		PostRole = 8001,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		PostRuleConfiguration = 10018,
+		PostRuleConfiguration = 10024,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		PriceList = 1022,
@@ -12255,7 +12327,7 @@ namespace Xrm.Framework.CI.Common.Entities
 		ProductSalesLiterature = 21,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		ProfileAlbum = 10016,
+		ProfileAlbum = 10022,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		Property = 1048,
@@ -12474,7 +12546,7 @@ namespace Xrm.Framework.CI.Common.Entities
 		SharePointSite = 9502,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		siconfig = 10012,
+		siconfig = 10018,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		SimilarityRule = 9951,
@@ -12510,13 +12582,19 @@ namespace Xrm.Framework.CI.Common.Entities
 		SolutionComponent = 7103,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		SolutionComponentDataSource = 10036,
+		SolutionComponentDataSource = 10002,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		SolutionComponentSummary = 10035,
+		SolutionComponentSummary = 10001,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		SolutionHistory = 10003,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		SolutionHistoryData = 9890,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		SolutionHistoryDataSource = 10004,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		StatusMap = 1075,
@@ -12666,10 +12744,19 @@ namespace Xrm.Framework.CI.Common.Entities
 		UnresolvedAddress = 2012,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		UntrackedAppointment = 10013,
+		UntrackedAppointment = 10019,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		UntrackedEmail = 4220,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		UpgradeRun = 10006,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		UpgradeStep = 10007,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		UpgradeVersion = 10008,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		User = 8,
@@ -12711,7 +12798,7 @@ namespace Xrm.Framework.CI.Common.Entities
 		VirtualEntityDataSource = 85,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		WallView = 10019,
+		WallView = 10025,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		WebResource = 9333,
@@ -12977,6 +13064,54 @@ namespace Xrm.Framework.CI.Common.Entities
 	
 	[System.Runtime.Serialization.DataContractAttribute()]
 	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.0.0.9369")]
+	public enum msdyn_solutionhistory_msdyn_operation
+	{
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		Export = 2,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		Import = 0,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		Uninstall = 1,
+	}
+	
+	[System.Runtime.Serialization.DataContractAttribute()]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.0.0.9369")]
+	public enum msdyn_solutionhistory_msdyn_status
+	{
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		Completed = 1,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		Started = 0,
+	}
+	
+	[System.Runtime.Serialization.DataContractAttribute()]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.0.0.9369")]
+	public enum msdyn_solutionhistory_msdyn_suboperation
+	{
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		Delete = 4,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		New = 1,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		None = 0,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		Ugrade = 2,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		Update = 3,
+	}
+	
+	[System.Runtime.Serialization.DataContractAttribute()]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.0.0.9369")]
 	public enum msdyn_TeamsCollaboration_StatusCode
 	{
 		
@@ -12990,6 +13125,57 @@ namespace Xrm.Framework.CI.Common.Entities
 	[System.Runtime.Serialization.DataContractAttribute()]
 	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.0.0.9369")]
 	public enum msdyn_untrackedappointment_StatusCode
+	{
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		Active = 1,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		Inactive = 2,
+	}
+	
+	[System.Runtime.Serialization.DataContractAttribute()]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.0.0.9369")]
+	public enum msdyn_upgraderun_StatusCode
+	{
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		Active = 1,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		Inactive = 2,
+	}
+	
+	[System.Runtime.Serialization.DataContractAttribute()]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.0.0.9369")]
+	public enum msdyn_UpgradeStatus
+	{
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		Failure = 100000002,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		Started = 100000000,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		Success = 100000001,
+	}
+	
+	[System.Runtime.Serialization.DataContractAttribute()]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.0.0.9369")]
+	public enum msdyn_upgradestep_StatusCode
+	{
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		Active = 1,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		Inactive = 2,
+	}
+	
+	[System.Runtime.Serialization.DataContractAttribute()]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.0.0.9369")]
+	public enum msdyn_upgradeversion_StatusCode
 	{
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
@@ -13057,30 +13243,6 @@ namespace Xrm.Framework.CI.Common.Entities
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		Shouldhave = 1,
-	}
-	
-	[System.Runtime.Serialization.DataContractAttribute()]
-	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.0.0.9369")]
-	public enum new_abc_StatusCode
-	{
-		
-		[System.Runtime.Serialization.EnumMemberAttribute()]
-		Active = 1,
-		
-		[System.Runtime.Serialization.EnumMemberAttribute()]
-		Inactive = 2,
-	}
-	
-	[System.Runtime.Serialization.DataContractAttribute()]
-	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.0.0.9369")]
-	public enum new_metadataaudit_StatusCode
-	{
-		
-		[System.Runtime.Serialization.EnumMemberAttribute()]
-		Active = 1,
-		
-		[System.Runtime.Serialization.EnumMemberAttribute()]
-		Inactive = 2,
 	}
 	
 	[System.Runtime.Serialization.DataContractAttribute()]
@@ -14560,6 +14722,9 @@ namespace Xrm.Framework.CI.Common.Entities
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		ProductNotInPriceLevel = 11,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		Transactioncurrencyisnotsetfortheproductpricelistitem = 38,
 	}
 	
 	[System.Runtime.Serialization.DataContractAttribute()]
@@ -15984,9 +16149,6 @@ namespace Xrm.Framework.CI.Common.Entities
 	{
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		Abc = 10028,
-		
-		[System.Runtime.Serialization.EnumMemberAttribute()]
 		Account = 1,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
@@ -16017,7 +16179,7 @@ namespace Xrm.Framework.CI.Common.Entities
 		Address = 1071,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		admin_settings_entity = 10010,
+		admin_settings_entity = 10016,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		AdvancedSimilarityRule = 9949,
@@ -16266,6 +16428,9 @@ namespace Xrm.Framework.CI.Common.Entities
 		CustomerRelationship = 4502,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
+		DatabaseVersion = 10005,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
 		DataImport = 4410,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
@@ -16273,9 +16438,6 @@ namespace Xrm.Framework.CI.Common.Entities
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		DataPerformanceDashboard = 4450,
-		
-		[System.Runtime.Serialization.EnumMemberAttribute()]
-		DDMAPluginsConfig = 10025,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		DelveActionHub = 9961,
@@ -16347,6 +16509,9 @@ namespace Xrm.Framework.CI.Common.Entities
 		EntitlementContact = 7272,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
+		EntitlementEntityAllocationTypeMapping = 9704,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
 		EntitlementProduct = 6363,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
@@ -16395,7 +16560,7 @@ namespace Xrm.Framework.CI.Common.Entities
 		FieldSharing = 44,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		Filter = 10020,
+		Filter = 10026,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		FilterTemplate = 30,
@@ -16425,7 +16590,7 @@ namespace Xrm.Framework.CI.Common.Entities
 		HolidayWrapper = 9996,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		icebreakersconfig = 10015,
+		icebreakersconfig = 10021,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		ImageDescriptor = 1007,
@@ -16554,13 +16719,10 @@ namespace Xrm.Framework.CI.Common.Entities
 		MarketingListMember = 4301,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		MetadataAudit = 10022,
-		
-		[System.Runtime.Serialization.EnumMemberAttribute()]
 		MetadataDifference = 4231,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		MicrosoftTeamsCollaborationentity = 10021,
+		MicrosoftTeamsCollaborationentity = 10027,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		MobileOfflineProfile = 9866,
@@ -16578,7 +16740,7 @@ namespace Xrm.Framework.CI.Common.Entities
 		MonthlyFiscalCalendar = 2003,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		msdyn_relationshipinsightsunifiedconfig = 10011,
+		msdyn_relationshipinsightsunifiedconfig = 10017,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		MultiEntitySearch = 9910,
@@ -16596,7 +16758,7 @@ namespace Xrm.Framework.CI.Common.Entities
 		Note = 5,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		NotesanalysisConfig = 10014,
+		NotesanalysisConfig = 10020,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		Notification = 4110,
@@ -16674,22 +16836,22 @@ namespace Xrm.Framework.CI.Common.Entities
 		PhoneToCaseProcess = 952,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		Playbook = 10007,
+		Playbook = 10013,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		Playbookactivity = 10004,
+		Playbookactivity = 10010,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		Playbookactivityattribute = 10005,
+		Playbookactivityattribute = 10011,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		PlaybookCallableContext = 10003,
+		PlaybookCallableContext = 10009,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		Playbookcategory = 10006,
+		Playbookcategory = 10012,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		Playbooktemplate = 10008,
+		Playbooktemplate = 10014,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		PluginAssembly = 4605,
@@ -16710,7 +16872,7 @@ namespace Xrm.Framework.CI.Common.Entities
 		Post = 8000,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		PostConfiguration = 10017,
+		PostConfiguration = 10023,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		PostRegarding = 8002,
@@ -16719,7 +16881,7 @@ namespace Xrm.Framework.CI.Common.Entities
 		PostRole = 8001,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		PostRuleConfiguration = 10018,
+		PostRuleConfiguration = 10024,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		PriceList = 1022,
@@ -16770,7 +16932,7 @@ namespace Xrm.Framework.CI.Common.Entities
 		ProductSalesLiterature = 21,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		ProfileAlbum = 10016,
+		ProfileAlbum = 10022,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		Property = 1048,
@@ -16989,7 +17151,7 @@ namespace Xrm.Framework.CI.Common.Entities
 		SharePointSite = 9502,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		siconfig = 10012,
+		siconfig = 10018,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		SimilarityRule = 9951,
@@ -17025,13 +17187,19 @@ namespace Xrm.Framework.CI.Common.Entities
 		SolutionComponent = 7103,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		SolutionComponentDataSource = 10036,
+		SolutionComponentDataSource = 10002,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		SolutionComponentSummary = 10035,
+		SolutionComponentSummary = 10001,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		SolutionHistory = 10003,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		SolutionHistoryData = 9890,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		SolutionHistoryDataSource = 10004,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		StatusMap = 1075,
@@ -17181,10 +17349,19 @@ namespace Xrm.Framework.CI.Common.Entities
 		UnresolvedAddress = 2012,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		UntrackedAppointment = 10013,
+		UntrackedAppointment = 10019,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		UntrackedEmail = 4220,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		UpgradeRun = 10006,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		UpgradeStep = 10007,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		UpgradeVersion = 10008,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		User = 8,
@@ -17226,7 +17403,7 @@ namespace Xrm.Framework.CI.Common.Entities
 		VirtualEntityDataSource = 85,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
-		WallView = 10019,
+		WallView = 10025,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		WebResource = 9333,
@@ -17889,10 +18066,25 @@ namespace Xrm.Framework.CI.Common.Entities
 	{
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
+		AADGroup = 2,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
 		Access = 1,
 		
 		[System.Runtime.Serialization.EnumMemberAttribute()]
 		Owner = 0,
+	}
+	
+	[System.Runtime.Serialization.DataContractAttribute()]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.0.0.9369")]
+	public enum TextAnalyticsEntityMapping_EntityPickList
+	{
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		No = 1,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		Yes = 2,
 	}
 	
 	[System.Runtime.Serialization.DataContractAttribute()]

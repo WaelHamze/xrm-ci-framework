@@ -8,6 +8,10 @@ using System.Linq;
 using Xrm.Framework.CI.PowerShell.Cmdlets.PluginRegistration;
 using System.IO;
 using Xrm.Framework.CI.Common.Entities;
+using System.Xml.Linq;
+using System.Xml;
+using System.Xml.XPath;
+
 using Xrm.Framework.CI.Common;
 
 namespace Xrm.Framework.CI.PowerShell.Cmdlets
@@ -85,12 +89,23 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
             }
         }
 
-        public void DeleteObjectWithDependencies(Guid objectId, ComponentType? componentType)
+        public void DeleteObjectWithDependencies(Guid objectId, ComponentType? componentType, HashSet<string> deletingHashSet = null)
         {
-            logVerbose?.Invoke($"Checking dependecies for {componentType} / {objectId}");
+            if (deletingHashSet == null)
+            {
+                deletingHashSet = new HashSet<string>();
+            }
+            var objectkey = $"{componentType}{objectId}";
+            if (deletingHashSet.Contains(objectkey))
+            {
+                return;
+            }
+            deletingHashSet.Add(objectkey);
+
+            logVerbose?.Invoke($"Checking dependencies for {componentType} / {objectId}");
             foreach (var objectToDelete in GetDependeciesForDelete(objectId, componentType))
             {
-                DeleteObjectWithDependencies(objectToDelete.DependentComponentObjectId.Value, objectToDelete.DependentComponentTypeEnum);
+                DeleteObjectWithDependencies(objectToDelete.DependentComponentObjectId.Value, objectToDelete.DependentComponentTypeEnum, deletingHashSet);
             }
 
             switch (componentType)
@@ -107,15 +122,36 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
                             Status = new OptionSetValue((int)Workflow_StatusCode.Draft)
                         });
                     }
+                    if (workflow.CategoryEnum == Workflow_Category.BusinessProcessFlow)
+                    {
+                        var entityMetadata = organizationService.GetEntityMetadata(workflow.UniqueName);
+                        logVerbose?.Invoke($"Checking dependencies for BPF entity: {workflow.UniqueName}");
+                        DeleteObjectWithDependencies(entityMetadata.MetadataId.Value, ComponentType.Entity, deletingHashSet);
+                    }
+
+                    if (workflow.CategoryEnum == Workflow_Category.BusinessProcessFlow)
+                    {
+                        RemoveAllWorkflowsFromBpf(workflow);
+                        logVerbose?.Invoke($"Preserving BPF {workflow.Name}");
+                        return;
+                    }
+
                     logVerbose?.Invoke($"Trying to delete {componentType} {workflow.Name}");
                     organizationService.Delete(Workflow.EntityLogicalName, objectId);
                     break;
                 case ComponentType.SDKMessageProcessingStep:
-                    logVerbose?.Invoke($"Trying to delete {componentType} {objectId}");
+                    var step = pluginRepository.GetSdkMessageProcessingStepById(objectId);
+                    if (step.IsHidden.Value == true)
+                    {
+                        logVerbose?.Invoke($"Preserving hidden SdkMessageProcessingStep {step.Name}");
+                        return;
+                    }
+                    logVerbose?.Invoke($"Trying to delete {componentType} {step.Name} / {objectId}");
                     organizationService.Delete(SdkMessageProcessingStep.EntityLogicalName, objectId);
                     break;
                 case ComponentType.PluginType:
-                    logVerbose?.Invoke($"Trying to delete {componentType} {objectId}");
+                    var type = pluginRepository.GetPluginTypeById(objectId);
+                    logVerbose?.Invoke($"Trying to delete {componentType} {type.Name} / {objectId}");
                     organizationService.Delete(PluginType.EntityLogicalName, objectId);
                     break;
                 case ComponentType.PluginAssembly:
@@ -127,6 +163,26 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
                     organizationService.Delete(ServiceEndpoint.EntityLogicalName, objectId);
                     break;
             }
+        }
+
+        private const string ActionComposieClassWithAssemblyQualifiedName = "Microsoft.Crm.Workflow.Activities.ActionComposite, Microsoft.Crm.Workflow, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35";
+        private const string mxswaNamespace = "clr-namespace:Microsoft.Xrm.Sdk.Workflow.Activities;assembly=Microsoft.Xrm.Sdk.Workflow, Version=8.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35";
+
+        private void RemoveAllWorkflowsFromBpf(Workflow bpf)
+        {
+            var xaml = XDocument.Parse(bpf.Xaml);
+            var nsmgr = new XmlNamespaceManager(new NameTable());
+            nsmgr.AddNamespace("mxswa", mxswaNamespace);
+            var actionsElements = xaml.XPathSelectElements($"//mxswa:ActivityReference[@AssemblyQualifiedName='{ActionComposieClassWithAssemblyQualifiedName}']", nsmgr).ToList();
+            foreach (var element in actionsElements)
+            {
+                element.Remove();
+            }
+            organizationService.Update(new Workflow
+            {
+                Xaml = xaml.ToString(SaveOptions.DisableFormatting),
+                Id = bpf.Id
+            });
         }
 
         public Guid UpsertPluginAssembly(Assembly pluginAssembly, AssemblyInfo assemblyInfo, string solutionName, RegistrationTypeEnum registrationType)
