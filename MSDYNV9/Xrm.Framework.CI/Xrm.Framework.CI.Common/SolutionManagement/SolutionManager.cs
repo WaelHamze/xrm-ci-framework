@@ -794,7 +794,7 @@ namespace Xrm.Framework.CI.Common
             }
             else
             {
-                Logger.LogInformation("{0} currently installed with version: {1}", info.UniqueName, info.Version);
+                Logger.LogInformation("{0} currently installed with version: {1}", info.UniqueName, baseSolution.Version);
             }
 
             if (baseSolution == null ||
