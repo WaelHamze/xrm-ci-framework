@@ -69,6 +69,7 @@
     <Compile Include="UpdateWebResource.ps1" />
     <Compile Include="UpdateWebResourcesJsonMapping.ps1" />
     <Compile Include="WaitForCRMOperation.ps1" />
+    <Compile Include="Xrm.Framework.CI.PowerShell.psm1" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Target Name="Build" />
