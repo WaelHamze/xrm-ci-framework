@@ -56,7 +56,7 @@ namespace Xrm.Framework.CI.Common.IntegrationTests
 
             //TODO: Need to fix paths
 
-            string solutionPackager = $"{currentDirectory}\\..\\..\\..\\packages\\Microsoft.CrmSdk.CoreTools.9.0.2.6\\content\\bin\\coretools\\SolutionPackager.exe";
+            string solutionPackager = $"{currentDirectory}\\..\\..\\..\\packages\\Microsoft.CrmSdk.CoreTools.9.0.2.11\\content\\bin\\coretools\\SolutionPackager.exe";
 
             string folder = @"C:\Dev\Src\dyn365-ce-devops-sample\Sample\Xrm.CI.Framework.Sample\Customizations\Solutions\xRMCISample\Customizations";
 
@@ -98,7 +98,7 @@ namespace Xrm.Framework.CI.Common.IntegrationTests
                 MappingFile = mapping,
                 IncludeVersionInName = true,
                 PackageType = SolutionPackager_PackageType.Both,
-                TreamWarningsAsErrors = false,
+                TreatWarningsAsErrors = false,
                 IncrementReleaseVersion = true,
                 Version = string.Empty
                 }
