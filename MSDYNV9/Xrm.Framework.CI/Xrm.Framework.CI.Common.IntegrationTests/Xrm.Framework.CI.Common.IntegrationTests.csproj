@@ -95,6 +95,7 @@
   <ItemGroup>
     <Compile Include="ConnectionConfigManagerTest.cs" />
     <Compile Include="ExportSolution.cs" />
+    <Compile Include="SolutionComponents.cs" />
     <Compile Include="ManagePatches.cs" />
     <Compile Include="ImportSolution.cs" />
     <Compile Include="Logging\TestLogger.cs" />

@@ -24,7 +24,7 @@ namespace Xrm.Framework.CI.Common.IntegrationTests
 
         public IOrganizationService CreateConnection()
         {
-            string name = "CrmConn";
+            string name = "CrmConnection";
 
             string connectionString = GetConnectionString(name);
 

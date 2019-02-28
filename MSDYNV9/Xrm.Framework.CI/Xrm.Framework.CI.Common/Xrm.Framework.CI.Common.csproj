@@ -91,6 +91,7 @@
     <Compile Include="ImportJobManager.cs" />
     <Compile Include="Logging\ILogger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SolutionManagement\SolutionComponentsManager.cs" />
     <Compile Include="Workflows\WorkflowFixer.cs" />
     <Compile Include="Workflows\XamlValuesHelper.cs" />
     <Compile Include="Serializers.cs" />
