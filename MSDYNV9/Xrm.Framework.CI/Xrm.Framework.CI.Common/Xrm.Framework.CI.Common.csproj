@@ -86,6 +86,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AsyncOperationManager.cs" />
+    <Compile Include="Data\ConfigDataManager.cs" />
     <Compile Include="Entities\Entities.cs" />
     <Compile Include="Entities\OptionSets.cs" />
     <Compile Include="ImportJobManager.cs" />
