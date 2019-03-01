@@ -101,7 +101,7 @@ namespace Xrm.Framework.CI.Common
 
             RetrieveMissingDependenciesResponse response = OrganizationService.Execute(request) as RetrieveMissingDependenciesResponse;
 
-            Logger.LogInformation("{0} Missing Components retrieved for Solution", response.EntityCollection.TotalRecordCount);
+            Logger.LogInformation("{0} Missing dependencies retrieved for Solution", response.EntityCollection.Entities.Count);
 
             return response.EntityCollection;
         }

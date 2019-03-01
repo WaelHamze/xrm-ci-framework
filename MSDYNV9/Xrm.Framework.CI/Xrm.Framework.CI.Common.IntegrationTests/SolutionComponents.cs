@@ -88,7 +88,7 @@ namespace Xrm.Framework.CI.Common.IntegrationTests
         {
             EntityCollection components = Manager.GetMissingDependencies("MissingDependency");
 
-            //Assert.AreEqual(components.Length > 0, true);
+            Assert.AreEqual(components.Entities.Count > 0, true);
 
             string jsonFile = $"{LogsDirectory}\\MissingDependencies.json";
 
