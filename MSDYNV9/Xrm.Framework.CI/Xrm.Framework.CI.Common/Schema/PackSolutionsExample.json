@@ -5,7 +5,7 @@
       "MappingFile": "..\\xRMCISample\\mapping.xml",
       "PackageType": "Both",
       "IncludeVersionInName": true,
-      "TreamWarningsAsErrors": false,
+      "TreatWarningsAsErrors": false,
       "IncrementReleaseVersion": false,
       "Version": ""
     }

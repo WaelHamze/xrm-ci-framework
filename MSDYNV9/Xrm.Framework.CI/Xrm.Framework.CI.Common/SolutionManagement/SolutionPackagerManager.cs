@@ -154,7 +154,7 @@ namespace Xrm.Framework.CI.Common
                     option.PackageType,
                     option.IncludeVersionInName,
                     mapping,
-                    option.TreamWarningsAsErrors,
+                    option.TreatWarningsAsErrors,
                     option.IncrementReleaseVersion,
                     option.Version,
                     logsDirectory
@@ -182,7 +182,7 @@ namespace Xrm.Framework.CI.Common
         public string MappingFile { get; set; }
         public SolutionPackager_PackageType PackageType { get; set; }
         public bool IncludeVersionInName { get; set; }
-        public bool TreamWarningsAsErrors { get; set; }
+        public bool TreatWarningsAsErrors { get; set; }
         public bool IncrementReleaseVersion { get; set; }
         public string Version { get; set; }
 

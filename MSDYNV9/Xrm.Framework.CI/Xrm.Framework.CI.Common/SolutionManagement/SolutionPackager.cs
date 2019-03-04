@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Xrm.Framework.CI.Common.Logging;
 
@@ -42,6 +43,7 @@ namespace Xrm.Framework.CI.Common
         public string ZipFile { get; set; }
         public string Log { get; set; }
         protected bool warnings { get; set; }
+        protected bool errors { get; set; }
 
         #endregion
 
@@ -185,7 +187,7 @@ namespace Xrm.Framework.CI.Common
                 arguments.Append($" /localize");
             }
 
-            Logger.LogVerbose("Solution Packager Arguments: {0}", arguments.ToString());
+            Logger.LogInformation("Solution Packager Arguments: {0}", arguments.ToString());
 
             ProcessStartInfo packagerInfo = new ProcessStartInfo()
             {
@@ -214,9 +216,23 @@ namespace Xrm.Framework.CI.Common
 
                 packagerProcess.WaitForExit(1000*60*15); //15 minutes
 
+                //Add sleep to allow time for output streams to flush
+                Thread.Sleep(5 * 1000);
+
                 exitCode = packagerProcess.ExitCode;
 
-                Logger.LogVerbose("SolutionPackager exit code@ {0}", exitCode);
+                Logger.LogInformation("SolutionPackager exit code: {0}", exitCode);
+
+                packagerProcess.Close();
+            }
+
+            if (warnings)
+            {
+                Logger.LogWarning("Solution Packager encountered warnings. Check logs for more information.");
+            }
+            if (errors)
+            {
+                Logger.LogError("Solution Packager encountered errors. Check logs for more information.");
             }
 
             if (exitCode != 0)
@@ -245,9 +261,16 @@ namespace Xrm.Framework.CI.Common
 
         private void PackagerProcess_ErrorDataReceived(object sender, DataReceivedEventArgs e)
         {
-            if (e != null && !string.IsNullOrEmpty(e.Data))
+            if (e != null)
             {
-                Logger.LogError(e.Data);
+                if (!string.IsNullOrEmpty(e.Data))
+                {
+                    errors = true;
+                }
+                if (e.Data != null)
+                {
+                    Logger.LogInformation(e.Data);
+                }
             }
         }
 
@@ -257,10 +280,9 @@ namespace Xrm.Framework.CI.Common
             {
                 if (!string.IsNullOrEmpty(e.Data) && e.Data.Contains("warnings encountered"))
                 {
-                    Logger.LogWarning(e.Data);
                     warnings = true;
                 }
-                else
+                if (e.Data != null)
                 {
                     Logger.LogInformation(e.Data);
                 }

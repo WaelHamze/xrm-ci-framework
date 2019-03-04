@@ -72,7 +72,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
             }
             else
             {
-                filteringKey = "label";
+                filteringKey = "id";
                 filteringValue = Id.ToString();
                 predicateFunction = x => x.Id == Id;
             }

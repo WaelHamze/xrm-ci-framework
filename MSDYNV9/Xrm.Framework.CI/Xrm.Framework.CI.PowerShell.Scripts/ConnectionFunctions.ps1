@@ -6,7 +6,7 @@ $ErrorActionPreference = "Stop"
 
 Write-Verbose 'Entering ConnectionFunctions.ps1'
 
-function GetXrmConnectionFromConfig(
+function GetXrmConnectionFromUser(
 	[string]$key
 	)
 	{
@@ -18,9 +18,13 @@ function GetXrmConnectionFromConfig(
 		{
 			$connections = Get-XrmConnections
 
-			$count = $connection.length
+			$count = $connections.length
 
-			Write-Host "Stored Connections $count" -ForegroundColor Cyan
+			Write-Host "-----------------------------------------------------"
+			Write-Host "xRMCIFramework Connection Management" -ForegroundColor Cyan
+			Write-Host "Existing stored connections are in Yellow"
+			Write-Host "Additional options are in Magenta"
+			Write-Host "-----------------------------------------------------"
 
 			For($i = 0; $i -lt $connections.length; $i++)
 			{
@@ -29,21 +33,24 @@ function GetXrmConnectionFromConfig(
 			}
 
 			$addIndex = $connections.length
-
 			Write-Host "$addIndex - To add a new connection" -ForegroundColor Magenta
 
 			$removeIndex = $addIndex + 1
-
 			Write-Host "$removeIndex - To remove a connection" -ForegroundColor Magenta
+
+			$exitIndex = $removeIndex + 1
+			Write-Host "$exitIndex - To Exit" -ForegroundColor Magenta
+
+			Write-Host "-----------------------------------------------------"
 
 			$choice = Read-Host "Enter number to the corresponding option"
 
-			if (($choice -lt 0) -or ($choice -gt $removeIndex))
+			if (($choice -lt 0) -or ($choice -gt $exitIndex))
 			{
-				throw "Invalid choice"
+				Write-Host "Invalid choice, enter a number between 0 and $exitIndex" -ForegroundColor Red
+				$any = Read-Host "Press any key to continue"
 			}
-
-			if ($choice -eq $addIndex)
+			elseif ($choice -eq $addIndex)
 			{
 				$key = Read-Host "Enter connection name"
 				$connection = Read-Host "Enter connection string"
@@ -57,6 +64,8 @@ function GetXrmConnectionFromConfig(
 				Set-XrmConnection -Key $key -ConnectionString $connection
 
 				Write-Host "Connection Added" -ForegroundColor DarkGreen
+
+				$any = Read-Host "Press any key to continue"
 			}
 			elseif ($choice -eq $removeIndex)
 			{
@@ -76,14 +85,45 @@ function GetXrmConnectionFromConfig(
 				else
 				{
 					Write-Host "Remove Aborted"
+					$any = Read-Host "Press any key to continue"
+				}
+			}
+			elseif($choice -eq $exitIndex)
+			{
+				$confirm = Read-Host "Are you sure you want to exit? $key. Enter Y to confirm or N to abort"
+
+				if ($confirm -eq 'Y')
+				{
+					exit
+				}
+				else
+				{
+					Write-Host "Exit Aborted"
+					$any = Read-Host "Press any key to continue"
 				}
 			}
 			else
 			{
 				$key = $connections[$choice]
 				$connection = Get-XrmConnection -Key $key
+
+				Write-Host "Using Connection: $key"
 			}
 		}
 
 		return $connection
 	}
+
+	function GetXrmConnectionFromConfig(
+		[string]$key)
+	{
+		$connection = GetXrmConnectionFromUser($key)
+
+		while (-not $connection)
+		{
+			$connection = GetXrmConnectionFromUser($key)
+		}
+
+		return $connection
+	}
+

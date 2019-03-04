@@ -33,6 +33,7 @@
     <Compile Include="CloneSolution.ps1" />
     <Compile Include="CopySolutionComponents.ps1" />
     <Compile Include="CreateSolution.ps1" />
+    <Compile Include="GetSolutionMissingDependencies.ps1" />
     <Compile Include="PackSolutionsUsingConfig.ps1" />
     <Compile Include="ImportSolutionsUsingConfig.ps1" />
     <Compile Include="ExportSolutionsUsingConfig.ps1" />
@@ -57,6 +58,7 @@
     <Compile Include="BackupOnlineInstance.ps1" />
     <Compile Include="RestoreOnlineInstance.ps1" />
     <Compile Include="SetTlsVersion.ps1" />
+    <Compile Include="GetSolutionMissingComponents.ps1" />
     <Compile Include="SplitPluginAssembly.ps1" />
     <Compile Include="UpdateDevloperToolkitWebResources.ps1" />
     <Compile Include="UpdateFoldersWebResources.ps1" />
@@ -69,6 +71,7 @@
     <Compile Include="UpdateWebResource.ps1" />
     <Compile Include="UpdateWebResourcesJsonMapping.ps1" />
     <Compile Include="WaitForCRMOperation.ps1" />
+    <Compile Include="Xrm.Framework.CI.PowerShell.psm1" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Target Name="Build" />
