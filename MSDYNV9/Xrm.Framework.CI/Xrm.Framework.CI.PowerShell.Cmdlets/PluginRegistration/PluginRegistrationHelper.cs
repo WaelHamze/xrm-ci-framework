@@ -355,7 +355,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
                 FilteringAttributes = step.FilteringAttributes,
                 ImpersonatingUserId = new EntityReference(SystemUser.EntityLogicalName, pluginRepository.GetUserId(step.ImpersonatingUserFullname)),
                 ModeEnum = step.Mode,
-                SdkMessageFilterId = new EntityReference(SdkMessageFilter.EntityLogicalName, sdkMessageFilterId),
+                SdkMessageFilterId = sdkMessageFilterId.Equals(Guid.Empty) ? null : new EntityReference(SdkMessageFilter.EntityLogicalName, sdkMessageFilterId),
                 Rank = step.Rank,
                 StageEnum = step.Stage,
                 SupportedDeploymentEnum = step.SupportedDeployment,
