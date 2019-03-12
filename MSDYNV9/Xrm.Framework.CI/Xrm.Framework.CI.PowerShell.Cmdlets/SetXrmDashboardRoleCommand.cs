@@ -72,7 +72,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
             }
             else
             {
-                filteringKey = "label";
+                filteringKey = "id";
                 filteringValue = Id.ToString();
                 predicateFunction = x => x.Id == Id;
             }
@@ -80,11 +80,11 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
             using (var ctx = new CIContext(OrganizationService))
             {
                 List<SystemForm> dashboards;
-                dashboards = ctx.SystemFormSet.Where(x => x.Id == Id).ToList();
+                dashboards = ctx.SystemFormSet.Where(predicateFunction).ToList();
 
                 if (dashboards.Count == 0)
                 {
-                    WriteWarning($"Couldn't find dashboard with name {Name}");
+                    WriteWarning($"Couldn't find dashboard with {filteringKey} {filteringValue}");
                     return;
                 }
 

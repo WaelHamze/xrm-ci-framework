@@ -68,7 +68,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
                 {
                     Conditions =
                     {
-                        new ConditionExpression("category", ConditionOperator.In, new[] {(int) Workflow_Category.Workflow, (int) Workflow_Category.BusinessProcessFlow}),
+                        new ConditionExpression("category", ConditionOperator.In, new[] {(int) Workflow_Category.Workflow, (int) Workflow_Category.BusinessProcessFlow, (int) Workflow_Category.Action}),
                         new ConditionExpression("type", ConditionOperator.In, new[] {(int) Workflow_Type.Definition, (int) Workflow_Type.Template}),
                         new ConditionExpression("statecode", ConditionOperator.Equal, (int) sourceState),
                     }
