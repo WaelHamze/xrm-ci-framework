@@ -69,6 +69,8 @@ namespace Xrm.Framework.CI.Common
 
         private IOrganizationService ConnectToCRM(string connectionString, int timeout)
         {
+            CrmServiceClient.MaxConnectionTimeout = TimeSpan.FromMinutes(timeout == 0 ? DefaultTime : timeout);
+
             CrmServiceClient serviceClient = null;
             for (int i = 1; i <= ConnectRetryCount; i++)
             {
@@ -77,18 +79,15 @@ namespace Xrm.Framework.CI.Common
 
                 if (serviceClient != null && serviceClient.IsReady)
                 {
-                    if (timeout == 0)
+                    if (serviceClient.OrganizationServiceProxy != null)
                     {
-                        serviceClient.OrganizationServiceProxy.Timeout = new System.TimeSpan(0, 0, DefaultTime);
+                        serviceClient.OrganizationServiceProxy.EnableProxyTypes(Assembly.GetAssembly(typeof(Entities.Solution)));
+                        Logger.LogVerbose("Connection to CRM Established using OrganizationServiceProxy");
                     }
                     else
                     {
-                        serviceClient.OrganizationServiceProxy.Timeout = new System.TimeSpan(0, 0, timeout);
+                        Logger.LogVerbose("Connection to CRM Established using OrganizationWebProxyClient");
                     }
-
-                    serviceClient.OrganizationServiceProxy.EnableProxyTypes(Assembly.GetAssembly(typeof(Entities.Solution)));
-
-                    Logger.LogVerbose("Connection to CRM Established");
 
                     return serviceClient;
                 }
