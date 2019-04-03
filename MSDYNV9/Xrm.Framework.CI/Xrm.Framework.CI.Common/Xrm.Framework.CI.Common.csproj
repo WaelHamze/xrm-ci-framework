@@ -65,6 +65,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.DirectoryServices" />
     <Reference Include="System.DirectoryServices.AccountManagement" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.IdentityModel" />
     <Reference Include="System.IO.Compression" />
     <Reference Include="System.IO.Compression.FileSystem" />
@@ -74,6 +75,7 @@
     <Reference Include="System.ServiceModel.Web" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Workflow.Activities" />
     <Reference Include="System.Workflow.ComponentModel" />
     <Reference Include="System.Workflow.Runtime" />
@@ -86,11 +88,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AsyncOperationManager.cs" />
+    <Compile Include="ParsedConnectionString.cs" />
     <Compile Include="Data\ConfigDataManager.cs" />
     <Compile Include="Entities\Entities.cs" />
     <Compile Include="Entities\OptionSets.cs" />
     <Compile Include="ImportJobManager.cs" />
     <Compile Include="Logging\ILogger.cs" />
+    <Compile Include="OAuthClientCredentialsHook.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SolutionManagement\SolutionComponentsManager.cs" />
     <Compile Include="Workflows\WorkflowFixer.cs" />
