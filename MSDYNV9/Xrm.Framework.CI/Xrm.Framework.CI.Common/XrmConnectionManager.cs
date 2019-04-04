@@ -1,13 +1,9 @@
 ﻿using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Tooling.Connector;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
-using System.Reflection;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
+
 using Xrm.Framework.CI.Common.Logging;
 
 namespace Xrm.Framework.CI.Common
@@ -69,13 +65,26 @@ namespace Xrm.Framework.CI.Common
 
         private IOrganizationService ConnectToCRM(string connectionString, int timeout)
         {
-            CrmServiceClient.MaxConnectionTimeout = TimeSpan.FromMinutes(timeout == 0 ? DefaultTime : timeout);
+            var parsedConnectionString = new ParsedConnectionString(connectionString);
+            Logger.LogVerbose("ConnectionString info - AuthType = {0}, Server = {1}", parsedConnectionString.AuthType, parsedConnectionString.Server);
+            if (parsedConnectionString.AuthType == InternalAuthenticationType.S2S)
+            {
+                CrmServiceClient.AuthOverrideHook = new OAuthClientCredentialsHook(parsedConnectionString.ClientId, parsedConnectionString.ClientSecret);
+            }
 
+            CrmServiceClient.MaxConnectionTimeout = TimeSpan.FromMinutes(timeout == 0 ? DefaultTime : timeout);
             CrmServiceClient serviceClient = null;
             for (int i = 1; i <= ConnectRetryCount; i++)
             {
                 Logger.LogVerbose("Connecting to CRM [attempt {0}]", i);
-                serviceClient = new CrmServiceClient(connectionString);
+                if (parsedConnectionString.AuthType == InternalAuthenticationType.S2S)
+                {
+                    serviceClient = new CrmServiceClient(parsedConnectionString.Server, parsedConnectionString.RequireNewInstance);
+                }
+                else
+                {
+                    serviceClient = new CrmServiceClient(connectionString);
+                }
 
                 if (serviceClient != null && serviceClient.IsReady)
                 {
