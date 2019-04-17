@@ -33,6 +33,7 @@
     <Compile Include="CloneSolution.ps1" />
     <Compile Include="CopySolutionComponents.ps1" />
     <Compile Include="CreateSolution.ps1" />
+    <Compile Include="ExportSolutions.ps1" />
     <Compile Include="GetSolutionMissingDependencies.ps1" />
     <Compile Include="PackSolutionsUsingConfig.ps1" />
     <Compile Include="ImportSolutionsUsingConfig.ps1" />
@@ -43,6 +44,7 @@
     <Compile Include="RemoveSolutionComponents.ps1" />
     <Compile Include="GetPluginRegistration.ps1" />
     <Compile Include="PluginRegistration.ps1" />
+    <Compile Include="ResetOnlineInstance.ps1" />
     <Compile Include="ServiceEndpointRegistration.ps1" />
     <Compile Include="SetOnlineInstanceAdminMode.ps1" />
     <Compile Include="DeleteOnlineInstance.ps1" />
