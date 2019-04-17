@@ -53,6 +53,9 @@ Write-Verbose "Importing: $crmToolingDeployment"
 Import-Module $crmToolingDeployment
 Write-Verbose "Imported: $crmToolingDeployment"
 
+Write-Host "Microsoft.Xrm.Tooling.CrmConnector.Powershell.dll - Version: $([System.Diagnostics.FileVersionInfo]::GetVersionInfo($crmToolingConnector).FileVersion)"
+Write-Host "Microsoft.Xrm.Tooling.PackageDeployment.Powershell.dll - Version: $([System.Diagnostics.FileVersionInfo]::GetVersionInfo($crmToolingDeployment).FileVersion)"
+
 #Check Logs Directory
 if ($LogsDirectory -eq '')
 {
