@@ -165,9 +165,11 @@ if ($WaitForCompletion)
 	#Sometimes instance is created but the API still returns NOT FOUND (no other instances available).
 	#Added this delay to give chance for operation to progress.
 
-	Write-Verbose "Starting Initial Sleep for 30 seconds"
+	Write-Host "Starting Initial Sleep for 30 seconds"
 
 	Start-Sleep -Seconds 30
+
+	Write-Host "Attempting to poll for instance every $SleepDuration secs"
 	
 	$provisioning = $true
 	while ($provisioning)
@@ -180,13 +182,20 @@ if ($WaitForCompletion)
 
 		$instance = Get-XrmInstanceByName -ApiUrl $ApiUrl -Cred $Cred -InstanceName $DomainName
 
-		$State = $instance.State
-
-		Write-Verbose "Instance State: $State"
-
-		if (($instance -ne $null) -and ($State -eq "Ready"))
+		if ($instance)
 		{
-			$provisioning = $false
+			$State = $instance.State
+			
+			Write-Host "Instance State: $State"
+
+			if ($State -eq "Ready")
+			{
+				$provisioning = $false
+			}
+		}
+		else
+		{
+			Write-Host "$DomainName not found"
 		}
 	}
 }

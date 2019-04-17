@@ -45,7 +45,7 @@ function Wait-XrmOperation(
 	[String]$ApiUrl,
 	[Object]$Cred,
 	[String]$OperationId,
-	[Int]$SleepDuration = 3
+	[Int]$SleepDuration = 5
 )
 {
 	$completed = $false
@@ -59,7 +59,7 @@ function Wait-XrmOperation(
 
 		$OperationStatus = $OpStatus.Status
     
-		Write-Verbose "Status = $OperationStatus"
+		Write-Host "Status = $OperationStatus" -ForegroundColor DarkYellow
 
 		if ($OperationStatus -notin "None", "NotStarted", "Ready", "Pending", "Running", "Deleting", "Aborting", "Cancelling")
 		{
