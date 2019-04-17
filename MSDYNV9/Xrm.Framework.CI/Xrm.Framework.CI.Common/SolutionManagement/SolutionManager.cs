@@ -96,6 +96,8 @@ namespace Xrm.Framework.CI.Common
                 throw new FileNotFoundException("Solution File does not exist", solutionFilePath);
             }
 
+            Logger.LogInformation("Solution Zip Size: {0}", FileUtilities.GetFileSize(solutionFilePath));
+
             SolutionImportResult result = null;
 
             SolutionXml solutionXml = new SolutionXml(Logger);
@@ -717,6 +719,8 @@ namespace Xrm.Framework.CI.Common
 
             string solutionFilePath = Path.Combine(outputFolder, solutionFile.ToString());
             File.WriteAllBytes(solutionFilePath, exportSolutionResponse.ExportSolutionFile);
+
+            Logger.LogInformation("Solution Zip Size: {0}", FileUtilities.GetFileSize(solutionFilePath));
 
             return solutionFilePath;
         }

@@ -108,10 +108,17 @@ namespace Xrm.Framework.CI.Common
                 log
                 );
 
-            return packager.Pack(
+            bool result = packager.Pack(
                 packageType,
                 mappingFile,
                 treatWarningsAsErrors);
+
+            if (result)
+            {
+                Logger.LogInformation("Solution Zip Size: {0}", FileUtilities.GetFileSize(zipFilePath));
+            }
+
+            return result;
         }
 
         public List<bool> PackSolutions(

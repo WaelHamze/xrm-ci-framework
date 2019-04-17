@@ -187,6 +187,7 @@ namespace Xrm.Framework.CI.Common
                 arguments.Append($" /localize");
             }
 
+            Logger.LogInformation("Solution Packager Version: {0}", FileUtilities.GetFileVersion(Packager));
             Logger.LogInformation("Solution Packager Arguments: {0}", arguments.ToString());
 
             ProcessStartInfo packagerInfo = new ProcessStartInfo()

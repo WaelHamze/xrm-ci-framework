@@ -2,6 +2,7 @@
 using Microsoft.Xrm.Tooling.Connector;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Reflection;
@@ -47,6 +48,7 @@ namespace Xrm.Framework.CI.Common
             string connectionString,
             int timeout)
         {
+            PrintSdkVersion();
             SetSecurityProtocol();
             return ConnectToCRM(connectionString, timeout);
         }
@@ -65,6 +67,21 @@ namespace Xrm.Framework.CI.Common
             }
 
             Logger.LogVerbose("Modified Security Protocol: {0}", ServicePointManager.SecurityProtocol);
+        }
+
+        private void PrintSdkVersion()
+        {
+            string assembly = Assembly.GetExecutingAssembly().Location;
+
+            FileInfo info = new FileInfo(assembly);
+
+            string path = info.Directory.FullName;
+
+            string sdkVersion = FileUtilities.GetFileVersion($"{path}\\Microsoft.Xrm.Sdk.dll");
+            string toolingVersion = FileUtilities.GetFileVersion($"{path}\\Microsoft.Xrm.Tooling.Connector.dll");
+
+            Logger.LogVerbose("Microsoft.Xrm.Sdk.dll - Version : {0}", sdkVersion);
+            Logger.LogVerbose("Microsoft.Xrm.Tooling.Connector.dll - Version : {0}", toolingVersion);
         }
 
         private IOrganizationService ConnectToCRM(string connectionString, int timeout)
