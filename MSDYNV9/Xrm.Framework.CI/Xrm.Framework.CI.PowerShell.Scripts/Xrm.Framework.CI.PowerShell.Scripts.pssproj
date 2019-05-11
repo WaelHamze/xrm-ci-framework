@@ -34,6 +34,7 @@
     <Compile Include="CopySolutionComponents.ps1" />
     <Compile Include="CreateSolution.ps1" />
     <Compile Include="ExportSolutions.ps1" />
+    <Compile Include="CheckSolution.ps1" />
     <Compile Include="GetSolutionMissingDependencies.ps1" />
     <Compile Include="PackSolutionsUsingConfig.ps1" />
     <Compile Include="ImportSolutionsUsingConfig.ps1" />
