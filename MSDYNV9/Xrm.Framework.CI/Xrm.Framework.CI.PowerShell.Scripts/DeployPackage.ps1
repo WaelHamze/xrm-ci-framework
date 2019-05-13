@@ -9,6 +9,7 @@ param(
 [string]$LogsDirectory = '',
 [string]$PackageDeploymentPath,
 [string]$Timeout = '00:30:00', #optional timeout for Import-CrmPackage, default to 1 hour and 20 min. See https://technet.microsoft.com/en-us/library/dn756301.aspx
+[int]$CrmConnectionTimeout = 2, 
 [string]$RuntimePackageSettings,
 [string]$UnpackFilesDirectory
 )
@@ -24,6 +25,7 @@ Write-Verbose "PackageDirectory = $PackageDirectory"
 Write-Verbose "LogsDirectory = $LogsDirectory"
 Write-Verbose "PackageDeploymentPath = $PackageDeploymentPath"
 Write-Verbose "Timeout = $Timeout"
+Write-Verbose "CrmConnectionTimeout = $CrmConnectionTimeout"
 Write-Verbose "RuntimePackageSettings = $RuntimePackageSettings"
 Write-Verbose "UnpackFilesDirectory = $UnpackFilesDirectory"
 
@@ -64,15 +66,15 @@ if ($LogsDirectory -eq '')
 
 #Create Connection
 
-$CRMConn = Get-CrmConnection -ConnectionString $CrmConnectionString -Verbose
+$CRMConn = Get-CrmConnection -ConnectionString "$CrmConnectionString" -LogWriteDirectory "$LogsDirectory" -MaxCrmConnectionTimeOutMinutes $CrmConnectionTimeout -Verbose
 
 #Deploy Package
 
 $PackageParams = @{
 	CrmConnection = $CRMConn
-	PackageDirectory = $PackageDirectory
+	PackageDirectory = "$PackageDirectory"
 	PackageName = $PackageName
-	LogWriteDirectory = $LogsDirectory
+	LogWriteDirectory = "$LogsDirectory"
 	Timeout = $Timeout
 }
 
@@ -86,6 +88,6 @@ if ($RuntimePackageSettings)
 	$PackageParams.RuntimePackageSettings = $RuntimePackageSettings
 }
 
-Import-CrmPackage -Verbose @PackageParams
+Import-CrmPackage @PackageParams -Verbose
 
 Write-Verbose 'Leaving DeployPackage.ps1'
