@@ -70,6 +70,13 @@ if ($instance -eq $null)
 
 Write-Host "Backing up instance $InstanceName " + $instance.Id
 
+$backup = Get-XrmBackupByLabel -ApiUrl $ApiUrl -Cred $Cred -InstanceId $instance.Id -Label "$BackupLabel"
+
+if ($backup)
+{
+	throw "Backup with label $BackupLabel already exists for instance"
+}
+
 $backupInfo = New-CrmBackupInfo -InstanceId $instance.Id -Label "$BackupLabel" -Notes "$BackupNotes" -IsAzureBackup $IsAzureBackup -AzureContainerName $ContainerName -AzureStorageAccountKey $StorageAccountKey -AzureStorageAccountName $StorageAccountName
  
 $operation = Backup-CrmInstance -ApiUrl $ApiUrl -BackupInfo $backupInfo -Credential $Cred
@@ -96,6 +103,10 @@ if ($WaitForCompletion)
 	{
 		throw "Operation status: $status.Status"
 	}
+
+	Wait-XrmBackup -ApiUrl $ApiUrl -Cred $Cred -InstanceId $instance.Id -Label "$BackupLabel" -SleepDuration 15
+
+	Write-Host "Backup Completed"
 }
 
 Write-Verbose 'Leaving BackupCRMOnlineInstance.ps1'

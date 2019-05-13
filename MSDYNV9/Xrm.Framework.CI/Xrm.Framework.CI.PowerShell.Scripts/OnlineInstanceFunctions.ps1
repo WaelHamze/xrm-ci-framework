@@ -29,14 +29,55 @@ function Get-XrmBackupByLabel(
 	[String]$InstanceId,
 	[String]$Label)
 {
-	$instanceBackups = Get-CrmInstanceBackups -ApiUrl $ApiUrl -Credential $Cred -InstanceId $InstanceId
+	$backups = Get-CrmInstanceBackups -ApiUrl $ApiUrl -Credential $Cred -InstanceId $InstanceId
 
-	Foreach($instanceBackup in $instanceBackups)
+	$backup = $backups | Sort CreatedOn -Descending | Where-Object {$_.Label -eq $Label}
+
+	if ($backup.length -eq 1)
 	{
-		if ($instanceBackup.Label -ieq $Label)
+		return $backup
+	}
+	elseif($backup.length > 1)
+	{
+		throw "More than one backup found for Label $Label"
+	}
+	else
+	{
+		return $null
+	}
+}
+
+function Wait-XrmBackup(
+	[String]$ApiUrl,
+	[Object]$Cred,
+	[String]$InstanceId,
+	[String]$Label,
+	[Int]$SleepDuration = 5
+)
+{
+	$completed = $false
+	Write-Host "Waiting for backup with label $Label to complete..."
+
+	while ($completed -eq $false)
+	{
+		Start-Sleep -Seconds $SleepDuration
+		
+		$backup = Get-XrmBackupByLabel -ApiUrl $ApiUrl -Cred $Cred -InstanceId $InstanceId -Label $Label
+
+		if ($backup -eq $null)
 		{
-			Write-Output($instanceBackup)
-			return
+			throw "No backup found for Label $Label"
+		}
+		else
+		{
+			Write-Host "Backup Status: $($backup.Status)"
+
+			if ($backup.Status -eq 'Available')
+			{
+				Write-Output($backup)
+				$completed = $true
+				return
+			}
 		}
 	}
 }
@@ -49,7 +90,7 @@ function Wait-XrmOperation(
 )
 {
 	$completed = $false
-	Write-Verbose "Waiting for completion...$OperationId"
+	Write-Host "Waiting for completion...$OperationId"
 
 	while ($completed -eq $false)
 	{	
@@ -59,7 +100,7 @@ function Wait-XrmOperation(
 
 		$OperationStatus = $OpStatus.Status
     
-		Write-Host "Status = $OperationStatus" -ForegroundColor DarkYellow
+		Write-Host "Asyn Operation Status = $OperationStatus" -ForegroundColor DarkYellow
 
 		if ($OperationStatus -notin "None", "NotStarted", "Ready", "Pending", "Running", "Deleting", "Aborting", "Cancelling")
 		{
