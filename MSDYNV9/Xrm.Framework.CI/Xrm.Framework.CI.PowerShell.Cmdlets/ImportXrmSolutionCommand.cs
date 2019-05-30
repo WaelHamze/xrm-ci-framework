@@ -6,6 +6,7 @@ using Microsoft.Crm.Sdk.Messages;
 using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Messages;
 using Microsoft.Xrm.Sdk.Query;
+using Xrm.Framework.CI.Common;
 using Xrm.Framework.CI.PowerShell.Cmdlets.Common;
 
 namespace Xrm.Framework.CI.PowerShell.Cmdlets
@@ -61,16 +62,16 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
         public bool HoldingSolution { get; set; }
 
         /// <summary>
+        /// <para type="description">Set to true to import solution even if solution with same version is already installed.<para>
+        /// </summary>
+        [Parameter(Mandatory = false)]
+        public bool OverrideSameVersion { get; set; } = true;
+
+        /// <summary>
         /// <para type="description">Specify whether to import the solution asynchronously using ExecuteAsyncRequest</para>
         /// </summary>
         [Parameter(Mandatory = false)]
         public bool ImportAsync { get; set; }
-
-        /// <summary>
-        /// <para type="description">Specify whether to wait for async solution imports</para>
-        /// </summary>
-        [Parameter(Mandatory = false)]
-        public bool WaitForCompletion { get; set; }
 
         /// <summary>
         /// <para type="description">The sleep interval between checks on the import progress. Default = 15 seconds</para>
@@ -90,6 +91,24 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
         [Parameter(Mandatory = false)]
         public Guid ImportJobId { get; set; }
 
+        /// <summary>
+        /// <para type="description">Specify whether to download the formatted solution import log.</para>
+        /// </summary>
+        [Parameter(Mandatory = false)]
+        public bool DownloadFormattedLog { get; set; }
+
+        /// <summary>
+        /// <para type="description">The directory where the formatted log should be placed.</para>
+        /// </summary>
+        [Parameter(Mandatory = false)]
+        public string LogsDirectory { get; set; }
+
+        /// <summary>
+        /// <para type="description">The filename for the formatted log. This file doesn't need to exist.</para>
+        /// </summary>
+        [Parameter(Mandatory = false)]
+        public string LogFileName { get; set; }
+
         public ImportXrmSolutionCommand()
         {
         }
@@ -102,196 +121,42 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
         {
             base.ProcessRecord();
 
-            base.WriteVerbose(string.Format("Importing Solution: {0}", SolutionFilePath));
+            Logger.LogVerbose("Entering XrmImportSolution");
 
-            // TODO: I think this is not necessary because you will get back an Id if you overload Guid.Empty
-            if (ImportJobId == Guid.Empty)
+            XrmConnectionManager xrmConnection = new XrmConnectionManager(
+                Logger);
+
+            IOrganizationService pollingOrganizationService = xrmConnection.Connect(
+                ConnectionString,
+                120);
+
+            SolutionManager solutionManager = new SolutionManager(
+                Logger,
+                OrganizationService,
+                pollingOrganizationService);
+
+            SolutionImportResult result = solutionManager.ImportSolution(
+                SolutionFilePath,
+                PublishWorkflows,
+                ConvertToManaged,
+                OverwriteUnmanagedCustomizations,
+                SkipProductUpdateDependencies,
+                HoldingSolution,
+                OverrideSameVersion,
+                ImportAsync,
+                SleepInterval,
+                AsyncWaitTimeout,
+                ImportJobId,
+                DownloadFormattedLog,
+                LogsDirectory,
+                LogFileName);
+
+            if (!result.Success)
             {
-                ImportJobId = Guid.NewGuid();
+                throw new Exception(string.Format("Solution import Failed. Error: {0}", result.ErrorMessage));
             }
 
-            if (AsyncWaitTimeout == 0)
-            {
-                AsyncWaitTimeout = 15 * 60;
-                base.WriteVerbose(string.Format("Setting Default AsyncWaitTimeout: {0}", AsyncWaitTimeout));
-            }
-
-            if (SleepInterval == 0)
-            {
-                SleepInterval = 15;
-                base.WriteVerbose(string.Format("Setting Default SleepInterval: {0}", SleepInterval));
-            }
-
-            base.WriteVerbose(string.Format("ImportJobId {0}", ImportJobId));
-
-            byte[] solutionBytes = File.ReadAllBytes(SolutionFilePath);
-
-            var importSolutionRequest = new ImportSolutionRequest
-            {
-                CustomizationFile = solutionBytes,
-                PublishWorkflows = PublishWorkflows,
-                ConvertToManaged = ConvertToManaged,
-                OverwriteUnmanagedCustomizations = OverwriteUnmanagedCustomizations,
-                SkipProductUpdateDependencies = SkipProductUpdateDependencies,
-                ImportJobId = ImportJobId,
-                RequestId = ImportJobId,
-                HoldingSolution = HoldingSolution
-            };
-
-            if (ImportAsync)
-            {
-                base.WriteVerbose(string.Format("Importing solution in Async Mode"));
-
-                var asyncRequest = new ExecuteAsyncRequest
-                {
-                    Request = importSolutionRequest,
-                    RequestId = ImportJobId
-                };
-                var asyncResponse = OrganizationService.Execute(asyncRequest) as ExecuteAsyncResponse;
-
-                Guid asyncJobId = asyncResponse.AsyncJobId;
-
-                WriteObject(asyncJobId);
-
-                if (WaitForCompletion)
-                {
-                    base.WriteVerbose(string.Format("Awaiting for Async Operation Completion"));
-
-                    AwaitCompletion(asyncJobId);
-                }
-            }
-            else
-            {
-                base.WriteVerbose(string.Format("Importing solution in Sync Mode"));
-
-                try
-                {
-                    OrganizationService.Execute(importSolutionRequest);
-                }
-                catch(Exception ex)
-                {
-                    if (WaitForCompletion)
-                    {
-                        base.WriteWarning(ex.Message);
-
-                        base.WriteVerbose("Exception Handled. Attempting to Wait for ImportJob to Complete.");
-
-                        AwaitImportJob();
-                    }
-                    else
-                    {
-                        throw ex;
-                    }
-                }
-            }
-
-            base.WriteVerbose(string.Format("{0} Imported Completed {1}", SolutionFilePath, ImportJobId));
-        }
-
-        private void AwaitImportJob()
-        {
-            DateTime end = DateTime.Now.AddSeconds(AsyncWaitTimeout);
-
-            bool completed = false;
-            bool notFound = false;
-            while (!completed)
-            {
-                if (end < DateTime.Now)
-                {
-                    throw new Exception(string.Format("Import Timeout Exceeded: {0}", AsyncWaitTimeout));
-                }
-
-                base.WriteVerbose(string.Format("Sleeping for {0} seconds", SleepInterval));
-                Thread.Sleep(SleepInterval * 1000);
-
-                ImportJob importJob;
-
-                try
-                {
-                    QueryByAttribute query = new QueryByAttribute(ImportJob.EntityLogicalName);
-                    query.AddAttributeValue("importjobid", ImportJobId);
-                    query.ColumnSet = new ColumnSet("importjobid", "completedon", "progress");
-
-                    EntityCollection results = OrganizationService.RetrieveMultiple(query);
-
-                    if (results.TotalRecordCount == 0)
-                    {
-                        completed = true;
-                        notFound = true;
-                        break;
-                    }
-                    else
-                    {
-                        importJob = results.Entities[0].ToEntity<ImportJob>();
-                    }
-                }
-                catch (Exception ex)
-                {
-                    base.WriteWarning(ex.Message);
-                    continue;
-                }
-
-                base.WriteVerbose(string.Format("Progress: {0}", importJob.Progress));
-                base.WriteVerbose(string.Format("CompletedOn: {0}", importJob.CompletedOn));
-
-                if (importJob.CompletedOn.HasValue)
-                {
-                    completed = true;
-                    break;
-                }
-            }
-
-            if (notFound)
-            {
-                throw new Exception(String.Format("Unable to find Import Job with Id {0}", ImportJobId));
-            }
-        }
-
-        private void AwaitCompletion(Guid asyncJobId)
-        {
-            DateTime end = DateTime.Now.AddSeconds(AsyncWaitTimeout);
-
-            bool completed = false;
-            while (!completed)
-            {
-                if (end < DateTime.Now)
-                {
-                    throw new Exception(string.Format("Import Timeout Exceeded: {0}", AsyncWaitTimeout));
-                }
-
-                base.WriteVerbose(string.Format("Sleeping for {0} seconds", SleepInterval));
-                Thread.Sleep(SleepInterval * 1000);
-
-                AsyncOperation asyncOperation;
-
-                try
-                {
-                    asyncOperation = OrganizationService.Retrieve("asyncoperation", asyncJobId,
-                        new ColumnSet("asyncoperationid", "statuscode", "message")).ToEntity<AsyncOperation>();
-                }
-                catch (Exception ex)
-                {
-                    base.WriteWarning(ex.Message);
-                    continue;
-                }
-
-                base.WriteVerbose(string.Format("StatusCode: {0}", asyncOperation.StatusCode.Value));
-
-                switch (asyncOperation.StatusCode.Value)
-                {
-                    //Succeeded
-                    case 30:
-                        completed = true;
-                        break;
-                    //Pausing //Canceling //Failed //Canceled
-                    case 21:
-                    case 22:
-                    case 31:
-                    case 32:
-                        throw new Exception(string.Format("Solution Import Failed: {0} {1}",
-                            asyncOperation.StatusCode.Value, asyncOperation.Message));
-                }
-            }
+            Logger.LogVerbose("Leaving XrmImportSolution");
         }
 
         #endregion

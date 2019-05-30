@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Management.Automation;
+using Xrm.Framework.CI.Common;
+using Xrm.Framework.CI.Common.Entities;
 using Xrm.Framework.CI.PowerShell.Cmdlets.Common;
 using Xrm.Framework.CI.PowerShell.Cmdlets.PluginRegistration;
 

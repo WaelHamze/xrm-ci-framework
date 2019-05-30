@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.3
+VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F5034706-568F-408A-B7B3-4D38C6DB8A32}") = "Xrm.Framework.CI.PowerShell.Scripts", "Xrm.Framework.CI.PowerShell.Scripts\Xrm.Framework.CI.PowerShell.Scripts.pssproj", "{26E7A989-C329-4B54-A80D-200FC23306B9}"
 EndProject
@@ -17,7 +17,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "VSTS Release Definitions", 
 		Publish XrmCIFramework.json = Publish XrmCIFramework.json
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xrm.Framework.CI.PowerShell.Cmdlets.Test", "Xrm.Framework.CI.PowerShell.Cmdlets.Test\Xrm.Framework.CI.PowerShell.Cmdlets.Test.csproj", "{75BDC70E-AAF6-4CAE-A3A6-643B63F8566D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xrm.Framework.CI.PowerShell.Cmdlets.Test", "Xrm.Framework.CI.PowerShell.Cmdlets.Test\Xrm.Framework.CI.PowerShell.Cmdlets.Test.csproj", "{75BDC70E-AAF6-4CAE-A3A6-643B63F8566D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xrm.Framework.CI.Common", "Xrm.Framework.CI.Common\Xrm.Framework.CI.Common.csproj", "{15DE1597-6DAB-4B21-840C-4818B7BC22AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xrm.Framework.CI.Common.IntegrationTests", "Xrm.Framework.CI.Common.IntegrationTests\Xrm.Framework.CI.Common.IntegrationTests.csproj", "{8E51B512-A9E7-4BBF-81C6-F546609F6F3F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xrm.Framework.CI.Tools", "Xrm.Framework.CI.Tools\Xrm.Framework.CI.Tools.csproj", "{D4E9CB06-119E-4FB4-BD12-56DB49164EB0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,6 +43,18 @@ Global
 		{75BDC70E-AAF6-4CAE-A3A6-643B63F8566D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{75BDC70E-AAF6-4CAE-A3A6-643B63F8566D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{75BDC70E-AAF6-4CAE-A3A6-643B63F8566D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15DE1597-6DAB-4B21-840C-4818B7BC22AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15DE1597-6DAB-4B21-840C-4818B7BC22AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15DE1597-6DAB-4B21-840C-4818B7BC22AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15DE1597-6DAB-4B21-840C-4818B7BC22AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E51B512-A9E7-4BBF-81C6-F546609F6F3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E51B512-A9E7-4BBF-81C6-F546609F6F3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E51B512-A9E7-4BBF-81C6-F546609F6F3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E51B512-A9E7-4BBF-81C6-F546609F6F3F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D4E9CB06-119E-4FB4-BD12-56DB49164EB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4E9CB06-119E-4FB4-BD12-56DB49164EB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4E9CB06-119E-4FB4-BD12-56DB49164EB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4E9CB06-119E-4FB4-BD12-56DB49164EB0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

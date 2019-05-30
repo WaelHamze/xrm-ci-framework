@@ -29,11 +29,13 @@ $solution = Get-XrmSolution -UniqueSolutionName $SolutionName -ConnectionString 
 
 if ($solution -eq $null)
 {
-    Write-Error "Solution is not currently installed."
+    Write-Warning "Solution is not currently installed."
 }
-
-Write-Host "Removing solution, version: $solution.Version"
-Remove-XrmRecord -EntityName "solution" -Id $solution.Id -ConnectionString $CrmConnectionString -Timeout $Timeout -Verbose
-Write-Host "Solution removed"
+else
+{
+	Write-Host "Removing Solution $SolutionName, Version: " + $solution.Version
+	Remove-XrmRecord -EntityName "solution" -Id $solution.Id -ConnectionString $CrmConnectionString -Timeout $Timeout -Verbose
+	Write-Host "Solution removed"
+}
 
 Write-Verbose 'Leaving RemoveSolution.ps1'

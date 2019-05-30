@@ -19,7 +19,9 @@
   <files>
     <file src="readme.txt" target="" />
     <file src="..\Xrm.Framework.CI.PowerShell.Scripts\*.ps1" target="tools" />
+    <file src="..\Xrm.Framework.CI.PowerShell.Scripts\*.psm1" target="tools" />
     <file src="bin\release\Xrm.Framework.CI.PowerShell.Cmdlets.dll" target="tools" />
+    <file src="bin\release\Xrm.Framework.CI.Common.dll" target="tools" />
     <file src="bin\release\Microsoft.Xrm.Sdk.dll" target="tools" />
     <file src="bin\release\Microsoft.Crm.Sdk.Proxy.dll" target="tools" />
     <file src="bin\release\Microsoft.Xrm.Tooling.Connector.dll" target="tools" />

@@ -2,6 +2,8 @@
 using System;
 using System.IO;
 using System.Management.Automation;
+using Xrm.Framework.CI.Common;
+using Xrm.Framework.CI.Common.Entities;
 using Xrm.Framework.CI.PowerShell.Cmdlets.Common;
 using Xrm.Framework.CI.PowerShell.Cmdlets.PluginRegistration;
 
@@ -71,7 +73,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
 
                 if (File.Exists(MappingFile))
                 {
-                    pluginAssembly = ReadMappingFile();
+                    pluginAssembly = pluginRegistrationHelper.ReadMappingFile(MappingFile);
                     pluginAssemblyId = pluginAssembly.Id ?? Guid.Empty;
                 }
                 else
@@ -125,27 +127,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
             WriteVerbose("Plugin Registration completed");
         }
 
-        private Assembly ReadMappingFile()
-        {
-            var fileInfo = new FileInfo(MappingFile);
-            switch (fileInfo.Extension.ToLower())
-            {
-                case ".json":
-                    WriteVerbose("Reading mapping json file");
-                    var pluginAssembly = Serializers.ParseJson<Assembly>(MappingFile);
-                    WriteVerbose("Deserialized mapping json file");
-                    return pluginAssembly;
-                case ".xml":
-                    WriteVerbose("Reading mapping xml file");
-                    pluginAssembly = Serializers.ParseXml<Assembly>(MappingFile);
-                    WriteVerbose("Deserialized mapping xml file");
-                    return pluginAssembly;
-                default:
-                    throw new ArgumentException("Only .json and .xml mapping files are supported", nameof(MappingFile));
-            }
-        }
-
-        private void UploadSplitAssembly(AssemblyInfo assemblyInfo, PluginRegistrationHelper pluginRegistrationHelper, Type type)
+       private void UploadSplitAssembly(AssemblyInfo assemblyInfo, PluginRegistrationHelper pluginRegistrationHelper, Type type)
         {
             var temp = new FileInfo(ProjectFilePath);
             var splitAssembly = AssemblyInfo.GetAssemblyInfo(assemblyInfo.AssemblyDirectory.Replace(temp.DirectoryName, temp.DirectoryName + type.Name) + "\\" + type.Name + ".dll");

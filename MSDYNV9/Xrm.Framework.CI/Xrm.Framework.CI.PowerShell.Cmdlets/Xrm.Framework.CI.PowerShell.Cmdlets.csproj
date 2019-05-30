@@ -32,7 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Crm.Sdk.Proxy, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.CrmSdk.CoreAssemblies.9.0.2.5\lib\net452\Microsoft.Crm.Sdk.Proxy.dll</HintPath>
+      <HintPath>..\packages\Microsoft.CrmSdk.CoreAssemblies.9.0.2.12\lib\net462\Microsoft.Crm.Sdk.Proxy.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory, Version=2.22.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -42,26 +42,25 @@
       <HintPath>..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.22.302111727\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Rest.ClientRuntime, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.CrmSdk.XrmTooling.CoreAssembly.9.0.2.5\lib\net452\Microsoft.Rest.ClientRuntime.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.CrmSdk.XrmTooling.CoreAssembly.9.0.2.12\lib\net462\Microsoft.Rest.ClientRuntime.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Xrm.Sdk, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.CrmSdk.CoreAssemblies.9.0.2.5\lib\net452\Microsoft.Xrm.Sdk.dll</HintPath>
+      <HintPath>..\packages\Microsoft.CrmSdk.CoreAssemblies.9.0.2.12\lib\net462\Microsoft.Xrm.Sdk.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Xrm.Sdk.Deployment, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.CrmSdk.Deployment.9.0.2.5\lib\net452\Microsoft.Xrm.Sdk.Deployment.dll</HintPath>
+      <HintPath>..\packages\Microsoft.CrmSdk.Deployment.9.0.2.12\lib\net462\Microsoft.Xrm.Sdk.Deployment.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Xrm.Sdk.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.CrmSdk.Workflow.9.0.2.5\lib\net452\Microsoft.Xrm.Sdk.Workflow.dll</HintPath>
+      <HintPath>..\packages\Microsoft.CrmSdk.Workflow.9.0.2.12\lib\net462\Microsoft.Xrm.Sdk.Workflow.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Xrm.Tooling.Connector, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.CrmSdk.XrmTooling.CoreAssembly.9.0.2.5\lib\net452\Microsoft.Xrm.Tooling.Connector.dll</HintPath>
+      <HintPath>..\packages\Microsoft.CrmSdk.XrmTooling.CoreAssembly.9.0.2.12\lib\net462\Microsoft.Xrm.Tooling.Connector.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="PresentationFramework" />
@@ -99,51 +98,35 @@
     <Compile Include="AddXrmLanguagePack.cs" />
     <Compile Include="AddXrmSolution.cs" />
     <Compile Include="AddXrmSolutionPatch.cs" />
-    <Compile Include="Common\ComponentState.cs" />
-    <Compile Include="Common\EntityOptionSetEnum.cs" />
-    <Compile Include="Common\ComponentType.cs" />
-    <Compile Include="Common\Dependency.cs" />
-    <Compile Include="Common\DependencyType.cs" />
-    <Compile Include="Common\Entities.cs" />
-    <Compile Include="Common\PluginAssembly.cs" />
-    <Compile Include="Common\PluginAssembly_IsolationMode.cs" />
-    <Compile Include="Common\PluginAssembly_SourceType.cs" />
-    <Compile Include="Common\PluginType.cs" />
-    <Compile Include="Common\SdkMessageProcessingStep.cs" />
-    <Compile Include="Common\SdkMessageProcessingStepImage.cs" />
-    <Compile Include="Common\SdkMessageProcessingStepImage_ImageType.cs" />
-    <Compile Include="Common\SdkMessageProcessingStep_Mode.cs" />
-    <Compile Include="Common\SdkMessageProcessingStep_Stage.cs" />
-    <Compile Include="Common\SdkMessageProcessingStep_SupportedDeployment.cs" />
-    <Compile Include="Common\ServiceEndpoint.cs" />
-    <Compile Include="Common\ServiceEndpoint_AuthType.cs" />
-    <Compile Include="Common\ServiceEndpoint_ConnectionMode.cs" />
-    <Compile Include="Common\ServiceEndpoint_Contract.cs" />
-    <Compile Include="Common\ServiceEndpoint_MessageFormat.cs" />
-    <Compile Include="Common\ServiceEndpoint_NamespaceFormat.cs" />
-    <Compile Include="Common\ServiceEndpoint_UserClaim.cs" />
-    <Compile Include="Common\Workflow.cs" />
-    <Compile Include="Common\Workflow_BusinessProcessType.cs" />
-    <Compile Include="Common\Workflow_Category.cs" />
-    <Compile Include="Common\Workflow_Mode.cs" />
-    <Compile Include="Common\Workflow_RunAs.cs" />
-    <Compile Include="Common\Workflow_Scope.cs" />
-    <Compile Include="Common\Workflow_Stage.cs" />
-    <Compile Include="Common\Workflow_StatusCode.cs" />
-    <Compile Include="Common\Workflow_Type.cs" />
+    <Compile Include="Common\ReflectionLoader.cs" />
     <Compile Include="Common\XrmSolutionInfo.cs" />
+    <Compile Include="CompressXrmSolution.cs" />
+    <Compile Include="GetXrmConnectionsCommand.cs" />
+    <Compile Include="GetXrmSolutionMissingDependenciesCommand.cs" />
+    <Compile Include="GetXrmSolutionMissingComponentsCommand.cs" />
+    <Compile Include="PublishXrmThemeCommand.cs" />
+    <Compile Include="RemoveXrmConnectionCommand.cs" />
+    <Compile Include="GetXrmConnectionCommand.cs" />
+    <Compile Include="SetXrmConnectionCommand.cs" />
+    <Compile Include="CopyXrmSolutionComponentsCommand.cs" />
     <Compile Include="ExportXrmAccessTeamTemplatesCommand.cs" />
+    <Compile Include="ExportXrmSolutionsCommand.cs" />
     <Compile Include="ExportXrmSolutionCommand.cs" />
     <Compile Include="GetXrmEntitiesCommand.cs" />
     <Compile Include="GetXrmEntityCommand.cs" />
     <Compile Include="GetXrmLanguagePacks.cs" />
+    <Compile Include="GetXrmPluginRegistrationClassCommand.cs" />
+    <Compile Include="GetXrmPluginRegistrationFromAssemblyCommand.cs" />
     <Compile Include="GetXrmServiceEndpointRegistrationCommand.cs" />
     <Compile Include="GetXrmPluginRegistrationCommand.cs" />
+    <Compile Include="GetXrmSolutionPatchesCommand.cs" />
     <Compile Include="GetXrmSolutionCommand.cs" />
     <Compile Include="GetXrmSolutionImportLog.cs" />
     <Compile Include="GetXrmSolutionInfoFromFolderCommand.cs" />
     <Compile Include="GetXrmSolutionInfoFromZipCommand.cs" />
     <Compile Include="ImportXrmAccessTeamTemplatesCommand.cs" />
+    <Compile Include="ImportXrmSolutionsCommand.cs" />
+    <Compile Include="Logging\PSLogger.cs" />
     <Compile Include="MergeXrmSolutionCommand.cs" />
     <Compile Include="ImportXrmSolutionCommand.cs" />
     <Compile Include="MergeXrmSolutionPatches.cs" />
@@ -151,7 +134,7 @@
     <Compile Include="NewXrmEntityCommand.cs" />
     <Compile Include="PluginRegistration\Assembly.cs" />
     <Compile Include="PluginRegistration\AssemblyInfo.cs" />
-    <Compile Include="PluginRegistration\Serializers.cs" />
+    <Compile Include="PluginRegistration\PluginRegistrationObjectFactory.cs" />
     <Compile Include="PluginRegistration\Image.cs" />
     <Compile Include="PluginRegistration\PluginRegistrationHelper.cs" />
     <Compile Include="PluginRegistration\PluginRepository.cs" />
@@ -164,8 +147,14 @@
     <Compile Include="PublishXrmDuplicateRuleCommand.cs" />
     <Compile Include="RemoveXrmEntityAttribute.cs" />
     <Compile Include="RemoveXrmEntityCommand.cs" />
+    <Compile Include="RemoveXrmOptionCommand.cs" />
+    <Compile Include="RemoveXrmWorkflowCommand.cs" />
     <Compile Include="RemoveXrmRecordCommand.cs" />
-    <Compile Include="CopyXrmSolutionComponentsCommand.cs" />
+    <Compile Include="SetXrmDashboardRoleCommand.cs" />
+    <Compile Include="SetXrmEntityStateCommand.cs" />
+    <Compile Include="SetXrmWorkflowStateCommand.cs" />
+    <Compile Include="CompressXrmSolutionsUsingConfig.cs" />
+    <Compile Include="ShowXrmLogging.cs" />
     <Compile Include="RemoveXrmSolutionComponentsCommand.cs" />
     <Compile Include="SelectXrmWhoAmICommand.cs" />
     <Compile Include="RemoveXrmPluginAssembly.cs" />
@@ -177,23 +166,23 @@
     <Compile Include="SetXrmSolutionVersionCommand.cs" />
     <Compile Include="SetXrmSolutionVersionInFolderCommand.cs" />
     <Compile Include="SplitXrmPluginAssembly.cs" />
+    <Compile Include="CommandBase.cs" />
     <Compile Include="XrmCommandBase.cs" />
     <Compile Include="SetXrmPluginRegistration.cs" />
-    <Compile Include="Common\XrmSdkMessagesHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="bin\coretools\CrmSvcUtil.exe.config" />
-    <None Include="bin\coretools\LicenseTerms.docx" />
     <None Include="bin\Debug\ApplySolution.ps1" />
     <None Include="bin\Debug\UpdateConfigurationRecords.ps1" />
     <None Include="bin\Debug\Xrm.Framework.CI.PowerShell.Cmdlets.dll.config" />
     <None Include="bin\Debug\XrmCIFramework.9.0.0.nupkg" />
     <None Include="bin\Debug\XrmCIFramework.9.0.0.symbols.nupkg" />
     <None Include="bin\Release\Xrm.Framework.CI.PowerShell.Cmdlets.dll.config" />
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="PluginRegistration\WorkflowAssemblyExample.json" />
     <None Include="PluginRegistration\PluginAssemblyExample.json" />
     <None Include="PluginRegistration\PluginRegistrationSchema.json" />
@@ -203,20 +192,6 @@
     <None Include="Xrm.Framework.CI.PowerShell.Cmdlets.psd1" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="bin\coretools\CrmSvcUtil.exe" />
-    <Content Include="bin\coretools\CrmSvcUtil.xml" />
-    <Content Include="bin\coretools\Microsoft.Crm.Sdk.Proxy.dll" />
-    <Content Include="bin\coretools\Microsoft.IdentityModel.Clients.ActiveDirectory.dll" />
-    <Content Include="bin\coretools\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll" />
-    <Content Include="bin\coretools\Microsoft.Rest.ClientRuntime.dll" />
-    <Content Include="bin\coretools\Microsoft.Xrm.Sdk.Deployment.dll" />
-    <Content Include="bin\coretools\Microsoft.Xrm.Sdk.dll" />
-    <Content Include="bin\coretools\Microsoft.Xrm.Tooling.Connector.dll" />
-    <Content Include="bin\coretools\Microsoft.Xrm.Tooling.CrmConnectControl.dll" />
-    <Content Include="bin\coretools\Microsoft.Xrm.Tooling.Ui.Styles.dll" />
-    <Content Include="bin\coretools\Newtonsoft.Json.dll" />
-    <Content Include="bin\coretools\Other Redistributable.txt" />
-    <Content Include="bin\coretools\SolutionPackager.exe" />
     <Content Include="bin\Debug\Microsoft.Crm.Sdk.Proxy.dll" />
     <Content Include="bin\Debug\Microsoft.Crm.Sdk.Proxy.xml" />
     <Content Include="bin\Debug\Microsoft.IdentityModel.Clients.ActiveDirectory.dll" />
@@ -256,18 +231,22 @@
     <Content Include="icon_128x128.png" />
     <Content Include="readme.txt" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Xrm.Framework.CI.Common\Xrm.Framework.CI.Common.csproj">
+      <Project>{15de1597-6dab-4b21-840c-4818b7bc22ab}</Project>
+      <Name>Xrm.Framework.CI.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
+    <PostBuildEvent>Copy /Y $(TargetDir)\*.dll $(SolutionDir)\Xrm.Framework.CI.PowerShell.Scripts\</PostBuildEvent>
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties PluginRegistration_4PluginAssemblyExample_1json__JSONSchema="PluginRegistrationSchema.json" PluginRegistration_4WorkflowAssemblyExample_1json__JSONSchema="PluginRegistrationSchema.json" />
+      <UserProperties PluginRegistration_4WorkflowAssemblyExample_1json__JSONSchema="PluginRegistrationSchema.json" PluginRegistration_4PluginAssemblyExample_1json__JSONSchema="PluginRegistrationSchema.json" />
     </VisualStudio>
   </ProjectExtensions>
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>

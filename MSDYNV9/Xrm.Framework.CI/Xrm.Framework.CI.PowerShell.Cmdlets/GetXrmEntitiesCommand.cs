@@ -95,7 +95,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
                 {
                     query.Criteria.AddCondition(Attribute, ConditionOperator, Value);
                 }
-                result = base.ServiceClient.OrganizationServiceProxy.RetrieveMultiple(query).Entities;
+                result = base.OrganizationService.RetrieveMultiple(query).Entities;
             }
             // Its AllExpression
             else

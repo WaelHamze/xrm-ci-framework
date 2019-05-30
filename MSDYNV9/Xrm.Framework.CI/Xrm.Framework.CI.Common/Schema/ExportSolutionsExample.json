@@ -1,0 +1,38 @@
+﻿{
+  "Solutions": [
+    {
+      "SolutionName": "Solution1_Patch",
+      "Managed": true,
+      "TargetVersion": null,
+      "ExportAutoNumberingSettings": false,
+      "ExportCalendarSettings": false,
+      "ExportCustomizationSettings": false,
+      "ExportEmailTrackingSettings": false,
+      "ExportExternalApplications": false,
+      "ExportGeneralSettings": false,
+      "ExportIsvConfig": false,
+      "ExportMarketingSettings": false,
+      "ExportOutlookSynchronizationSettings": false,
+      "ExportRelationshipRoles": false,
+      "ExportSales": false,
+      "IncludeVersionInName": true
+    },
+    {
+      "SolutionName": "Solution1_Patch_ef8wd7lb",
+      "Managed": true,
+      "TargetVersion": null,
+      "ExportAutoNumberingSettings": false,
+      "ExportCalendarSettings": false,
+      "ExportCustomizationSettings": false,
+      "ExportEmailTrackingSettings": false,
+      "ExportExternalApplications": false,
+      "ExportGeneralSettings": false,
+      "ExportIsvConfig": false,
+      "ExportMarketingSettings": false,
+      "ExportOutlookSynchronizationSettings": false,
+      "ExportRelationshipRoles": false,
+      "ExportSales": false,
+      "IncludeVersionInName": true
+    }
+  ]
+}

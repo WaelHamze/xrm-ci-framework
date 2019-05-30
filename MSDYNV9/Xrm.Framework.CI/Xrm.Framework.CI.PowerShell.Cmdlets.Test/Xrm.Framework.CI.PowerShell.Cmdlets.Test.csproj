@@ -5,13 +5,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="FakeXrmEasy.9" Version="1.47.1" />
+    <PackageReference Include="FakeXrmEasy.9" Version="1.52.0" />
     <PackageReference Include="Microsoft.PowerShell.5.ReferenceAssemblies" Version="1.1.0" />
     <PackageReference Include="NUnit" Version="3.11.0" />
     <PackageReference Include="System.ValueTuple" Version="4.5.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Xrm.Framework.CI.Common\Xrm.Framework.CI.Common.csproj" />
     <ProjectReference Include="..\Xrm.Framework.CI.PowerShell.Cmdlets\Xrm.Framework.CI.PowerShell.Cmdlets.csproj" />
   </ItemGroup>
 

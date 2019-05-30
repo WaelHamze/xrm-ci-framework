@@ -3,6 +3,8 @@ using System.Diagnostics;
 using System.Linq;
 using System.Management.Automation;
 using System.Threading;
+
+using Xrm.Framework.CI.Common;
 using Xrm.Framework.CI.PowerShell.Cmdlets.Common;
 
 namespace Xrm.Framework.CI.PowerShell.Cmdlets
