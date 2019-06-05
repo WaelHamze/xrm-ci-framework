@@ -291,6 +291,14 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
                     logVerbose?.Invoke($"UpsertSdkMessageProcessingStep {step.Id} started");
                     var stepId = UpsertSdkMessageProcessingStep(serviceEndpointRef, step, solutionName, registrationType);
                     logVerbose?.Invoke($"UpsertSdkMessageProcessingStep {stepId} completed");
+
+                    foreach (var image in step.Images)
+                    {
+                        var stepRef = new EntityReference(SdkMessageProcessingStep.EntityLogicalName, stepId);
+                        logVerbose?.Invoke($"UpsertSdkMessageProcessingStepImage {image.Id} started");
+                        var imageId = UpsertSdkMessageProcessingStepImage(stepId, image, solutionName, registrationType);
+                        logVerbose?.Invoke($"UpsertSdkMessageProcessingStepImage {imageId} completed");
+                    }
                 }
 
             }
