@@ -9,12 +9,12 @@ param(
 [string]$TenantId , #The tenant Id where your instance resides
 [string]$ApplicationId , #The application Id used for the connection
 [string]$ApplicationSecret , #The application secret used for connection
-[string]$RulesetId , #The ruleset to be used when checking
+[string]$Ruleset , #The ruleset to be used when checking
 [string]$Geography, #The regional endpoint to hit
-#[string]$AzureADPath, #The full path to the Azure AD PowerShell Module
 [string]$PowerAppsCheckerPath, #The full path to the PowerApp Checker PowerShell Module
 [bool]$EnableThresholds, #Enables threshold checks
 [string]$ThresholdAction, # Warn, Error - The type of action to generate when number of issues exceeds threshold limit
+[int]$CriticalThreshold, #Number of critical severity issues
 [int]$HighThreshold, #Number of high severity issues
 [int]$MediumThreshold, #Number of medium severity issues
 [int]$LowThreshold #Number of low severity issues
@@ -31,28 +31,42 @@ Write-Verbose "SolutionFile = $SolutionFile"
 Write-Verbose "OutputPath = $OutputPath"
 Write-Verbose "TenantId = $TenantId"
 Write-Verbose "ApplicationId = $ApplicationId"
-Write-Verbose "ApplicationSecret = $ApplicationSecret"
-Write-Verbose "RulesetId = $RulesetId"
+Write-Verbose "Ruleset = $Ruleset"
 Write-Verbose "Geography = $Geography"
-#Write-Verbose "AzureADPath = $AzureADPath"
 Write-Verbose "PowerAppsCheckerPath = $PowerAppsCheckerPath"
 
-#Write-Verbose "Importing Azure AD: $AzureADPath"
-#Import-module "$AzureADPath\AzureAD.psd1"
-
 Write-Verbose "Importing PowerApps Checker: $PowerAppsCheckerPath"
-Import-module "$PowerAppsCheckerPath\PowerApps.Checker.psd1"
+Import-module "$PowerAppsCheckerPath\Microsoft.PowerApps.Checker.PowerShell.psd1"
 
 #Run PowerApps Checker
+
+$rulesets = Get-PowerAppsCheckerRulesets -Geography "$Geography"
+
+if ($rulesets.Length -gt 0)
+{
+	$rulesetToUse = $rulesets | where Name -EQ "$RuleSet"
+
+	if ($rulesetToUse)
+	{
+		Write-Verbose "Ruleset found"
+	}
+	else
+	{
+		throw "$RuleSet ruleset was not found"
+	}
+}
+else
+{
+	throw "No rule sets found"
+}
 
 $CheckParams = @{
 	FileUnderAnalysis = "$SolutionFile"
 	OutputDirectory = "$OutputPath"
 	TenantId = "$TenantId"
-	ApplicationId = "$ApplicationId"
-	ApplicationSecret = "$ApplicationSecret"
-	RulesetId = "$RulesetId"
-	Geography = "$Geography"
+	ClientApplicationId = "$ApplicationId"
+	ClientApplicationSecret = ConvertTo-SecureString "$ApplicationSecret" -AsPlainText -Force
+	Ruleset = $rulesetToUse
 }
 
 $response = Invoke-PowerAppsChecker @CheckParams
@@ -74,18 +88,25 @@ if( $response)
 
 		Write-Host "============================================" -ForegroundColor DarkGreen
 
-		$high = $response.highIssueCount
-		$medium = $response.mediumIssueCount
-		$low = $response.lowIssueCount
+		$issues = $response.IssueSummary
+		
+		$critical = $issues.CriticalIssueCount
+		$high = $issues.HighIssueCount
+		$medium = $issues.MediumIssueCount
+		$low = $issues.LowIssueCount
+		$info = $issues.InformationalIssueCount
 				
+		Write-Host "Critical:   $critical" -ForegroundColor Green
 		Write-Host "High:   $high" -ForegroundColor Green
 		Write-Host "Medium: $medium" -ForegroundColor Green
 		Write-Host "Low:    $low" -ForegroundColor Green
+		Write-Host "Informational:    $info" -ForegroundColor Green
 		Write-Host "============================================" -ForegroundColor DarkGreen
 
 		if ($EnableThresholds)
 		{
 			$breached = (
+						($critical -gt $CriticalThreshold) -or
 						($high -gt $HighThreshold) -or
 						($medium -gt $MediumThreshold) -or
 						($low -gt $LowThreshold)
