@@ -120,7 +120,26 @@ namespace Xrm.Framework.CI.Common
                     info.Version);
             }
 
-            bool skipImport = SkipImport(info, holdingSolution, overrideSameVersion);
+            ColumnSet columns = new ColumnSet("version");
+
+            var baseSolution = GetSolution(info.UniqueName, columns);
+
+            if (baseSolution == null)
+            {
+                Logger.LogInformation("{0} not currently installed.", info.UniqueName);
+            }
+            else
+            {
+                Logger.LogInformation("{0} currently installed with version: {1}", info.UniqueName, baseSolution.Version);
+            }
+
+            if (baseSolution == null && holdingSolution)
+            {
+                holdingSolution = false;
+                Logger.LogInformation("Setting holdingSolution to false");
+            }
+
+            bool skipImport = SkipImport(info, holdingSolution, overrideSameVersion, baseSolution);
 
             if (skipImport)
             {
@@ -784,22 +803,10 @@ namespace Xrm.Framework.CI.Common
         private bool SkipImport(
             XrmSolutionInfo info,
             bool holdingSolution,
-            bool overrideSameVersion)
+            bool overrideSameVersion,
+            Solution baseSolution)
         {
             bool skip = false;
-
-            ColumnSet columns = new ColumnSet("version");
-
-            var baseSolution = GetSolution(info.UniqueName, columns);
-
-            if (baseSolution == null)
-            {
-                Logger.LogInformation("{0} not currently installed.", info.UniqueName);
-            }
-            else
-            {
-                Logger.LogInformation("{0} currently installed with version: {1}", info.UniqueName, baseSolution.Version);
-            }
 
             if (baseSolution == null ||
                 overrideSameVersion ||
@@ -816,7 +823,7 @@ namespace Xrm.Framework.CI.Common
             {
                 string upgradeName = $"{info.UniqueName}_Upgrade";
 
-                var upgradeSolution = GetSolution(upgradeName, columns);
+                var upgradeSolution = GetSolution(upgradeName, new ColumnSet("version"));
 
                 if (upgradeSolution == null)
                 {
