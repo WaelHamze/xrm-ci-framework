@@ -289,7 +289,7 @@ namespace Xrm.Framework.CI.Common
                 logsFolder,
                 string.Empty);
 
-            if (importResult.Success && 
+            if (importResult.Success &&
                 options.ApplySolution)
             {
                 SolutionApplyResult applyResult = ApplySolution(
@@ -616,7 +616,7 @@ namespace Xrm.Framework.CI.Common
                     VersionNumber = versionNumber,
                 };
 
-                CloneAsSolutionResponse response = 
+                CloneAsSolutionResponse response =
                     OrganizationService.Execute(cloneAsPatch) as CloneAsSolutionResponse;
 
                 Logger.LogInformation("Clone solution created with Id {0}", response.SolutionId);
@@ -744,7 +744,7 @@ namespace Xrm.Framework.CI.Common
             string outputFolder,
             string configFilePath)
         {
-            SolutionExportConfig config = 
+            SolutionExportConfig config =
                 Serializers.ParseJson<SolutionExportConfig>(configFilePath);
 
             List<string> solutionFilePaths = ExportSolutions(outputFolder,
@@ -912,6 +912,11 @@ namespace Xrm.Framework.CI.Common
 
             result.ErrorMessage = solutionImportError;
 
+            if (!string.IsNullOrEmpty(solutionImportError))
+            {
+                VerifySolutionImport_PrettyPrintErrorMessage(doc, result);
+            }
+
             XmlNodeList unprocessedNodes = doc.SelectNodes("//*[@processed=\"false\"]");
 
             result.UnprocessedComponents = unprocessedNodes.Count;
@@ -932,6 +937,53 @@ namespace Xrm.Framework.CI.Common
             }
 
             return result;
+        }
+
+        public static void VerifySolutionImport_PrettyPrintErrorMessage(XmlDocument importJobDoc, SolutionImportResult result)
+        {
+            try
+            {
+                // Find solution import error details
+                var missingDependencies = importJobDoc.SelectSingleNode("//solutionManifest/result/parameters/parameter/text()[starts-with(., '<MissingDependencies><MissingDependency>')]");
+                if (missingDependencies != null)
+                {
+                    var errorDoc = new XmlDocument();
+                    errorDoc.LoadXml(missingDependencies.Value);
+
+                    //Add information to 'MissingDependencies'
+                    {
+                        var errorTypeAttributes = errorDoc.SelectNodes("//@type");
+                        foreach (XmlAttribute errorTypeAttribute in errorTypeAttributes)
+                        {
+                            if (Enum.TryParse<ComponentType>(errorTypeAttribute.Value, out var type))
+                            {
+                                var typeAttribute = errorDoc.CreateAttribute("typeName");
+                                typeAttribute.Value = type.ToString();
+                                errorTypeAttribute.OwnerElement.Attributes.Append(typeAttribute);
+                            }
+                        }
+                    }
+
+                    var sb = new StringBuilder();
+                    var settings = new XmlWriterSettings
+                    {
+                        Indent = true,
+                        IndentChars = "  ",
+                        NewLineChars = Environment.NewLine,
+                        NewLineHandling = NewLineHandling.Replace
+                    };
+                    using (XmlWriter writer = XmlWriter.Create(sb, settings))
+                    {
+                        errorDoc.Save(writer);
+                    }
+
+                    result.ErrorMessage += Environment.NewLine;
+                    result.ErrorMessage += sb.ToString();
+                }
+
+            }
+            catch (XmlException)
+            { }
         }
 
         private SolutionApplyResult VerifyUpgrade(
