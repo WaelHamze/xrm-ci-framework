@@ -96,17 +96,32 @@ function Wait-XrmOperation(
 	{	
 		Start-Sleep -Seconds $SleepDuration
     
-		$OpStatus = Get-CrmOperationStatus -ApiUrl $ApiUrl -Credential $Cred -Id $OperationId
-
-		$OperationStatus = $OpStatus.Status
-    
-		Write-Host "Asyn Operation Status = $OperationStatus" -ForegroundColor DarkYellow
-
-		if ($OperationStatus -notin "None", "NotStarted", "Ready", "Pending", "Running", "Deleting", "Aborting", "Cancelling")
+		try
 		{
-            Write-Output($OpStatus)
-			$completed = $true
-			return
+			$OpStatus = Get-CrmOperationStatus -ApiUrl $ApiUrl -Credential $Cred -Id $OperationId
+
+			if ($OpStatus)
+			{
+				$OperationStatus = $OpStatus.Status
+    
+				Write-Host "Asyn Operation Status = $OperationStatus" -ForegroundColor DarkYellow
+
+				if ($OperationStatus -notin "None", "NotStarted", "Ready", "Pending", "Running", "Deleting", "Aborting", "Cancelling")
+				{
+					Write-Output($OpStatus)
+					$completed = $true
+					return
+				}
+			}
+			else
+			{
+				throw "Operation status returned null"
+			}
+		}
+		catch
+		{
+			$errorMessage = $_.Exception.Message
+			Write-Warning "Unable retrieve Crm Operation Status $errorMessage"
 		}
 	}
 }
