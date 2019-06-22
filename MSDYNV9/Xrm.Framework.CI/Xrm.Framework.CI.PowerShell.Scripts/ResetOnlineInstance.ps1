@@ -22,7 +22,8 @@ param(
 [string]$SecurityGroupName,
 [bool]$WaitForCompletion = $false,
 [int]$SleepDuration = 3,
-[string]$PSModulePath
+[string]$PSModulePath,
+[string]$AzureADModulePath
 )
 
 $ErrorActionPreference = "Stop"
@@ -49,6 +50,7 @@ Write-Verbose "SecurityGroupName = $SecurityGroupName"
 Write-Verbose "WaitForCompletion = $WaitForCompletion"
 Write-Verbose "SleepDuration = $SleepDuration"
 Write-Verbose "PSModulePath = $PSModulePath"
+Write-Verbose "AzureADModulePath = $AzureADModulePath"
 
 #Script Location
 $scriptPath = split-path -parent $MyInvocation.MyCommand.Definition
@@ -116,25 +118,35 @@ if ($CurrencySymbol -ne '')
 	$InstanceInfoParams.CurrencySymbol = $CurrencySymbol
 }
 
-if ($SecurityGroupName -ne '')
+if ($SecurityGroupName)
 {
-	Write-Verbose "Importing Module AzureAD" 
-	Import-Module AzureAD
-	Write-Verbose "Imported Module AzureAD" 
-	
-	$group = Get-AzureADGroup -Filter "DisplayName eq '$SecurityGroupName'"
+	if ($AzureADModulePath)
+    {
+        Write-Verbose "Importing Module AzureAD" 
+	    Import-Module "$AzureADModulePath\AzureAD.psd1"
+	    Write-Verbose "Imported Module AzureAD"
 
-	if ($group -ne $null)
-	{
-		$SecurityGroupId = $group.ObjectId
-	}
-	if ($group -eq $null)
-	{
-		throw "$SecurityGroupName not found"
-	}
+        Connect-AzureAD -Credential $Cred
+	
+	    $group = Get-AzureADGroup -Filter "DisplayName eq '$SecurityGroupName'"
+
+	    if ($group)
+	    {
+		    Write-Host "Security Group Found with Id $($group.ObjectId)"
+            $SecurityGroupId = $group.ObjectId
+	    }
+	    else
+	    {
+		    throw "$SecurityGroupName not found"
+	    }
+    }
+    else
+    {
+        throw "AzureADModulePath is required"
+    }
 }
 
-if ($SecurityGroupId -ne '')
+if ($SecurityGroupId)
 {
 	$InstanceInfoParams.SecurityGroupId = $SecurityGroupId
 }
@@ -142,6 +154,15 @@ if ($SecurityGroupId -ne '')
 $instanceInfo = New-CrmInstanceResetRequestInfo @InstanceInfoParams
 
 $operation = Reset-CrmInstance  -ApiUrl $ApiUrl -Credential $Cred -TargetInstanceIdToReset $instance.Id -ResetInstanceRequestDetails $instanceInfo
+
+if ($operation)
+{
+	Write-Verbose "Reset opertion is not null"
+}
+else
+{
+	throw "Reset returned null operation"
+}
 
 $OperationId = $operation.OperationId
 $OperationStatus = $operation.Status

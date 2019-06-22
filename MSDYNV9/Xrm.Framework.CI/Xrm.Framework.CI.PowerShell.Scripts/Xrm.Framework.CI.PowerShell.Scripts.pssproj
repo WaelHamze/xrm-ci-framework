@@ -46,6 +46,7 @@
     <Compile Include="GetPluginRegistration.ps1" />
     <Compile Include="PluginRegistration.ps1" />
     <Compile Include="ResetOnlineInstance.ps1" />
+    <Compile Include="CopyOnlineInstance.ps1" />
     <Compile Include="ServiceEndpointRegistration.ps1" />
     <Compile Include="SetOnlineInstanceAdminMode.ps1" />
     <Compile Include="DeleteOnlineInstance.ps1" />
