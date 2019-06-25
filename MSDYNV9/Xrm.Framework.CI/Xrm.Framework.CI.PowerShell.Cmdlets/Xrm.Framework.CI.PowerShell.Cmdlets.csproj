@@ -239,7 +239,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>Copy /Y $(TargetDir)\*.dll $(SolutionDir)\Xrm.Framework.CI.PowerShell.Scripts\</PostBuildEvent>
+    <PostBuildEvent>Copy /Y "$(TargetDir)\*.dll" "$(SolutionDir)\Xrm.Framework.CI.PowerShell.Scripts\"</PostBuildEvent>
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>
