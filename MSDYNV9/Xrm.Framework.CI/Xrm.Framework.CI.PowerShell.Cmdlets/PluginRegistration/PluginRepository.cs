@@ -85,15 +85,17 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.PluginRegistration
 
             var pluginWorkflowTypes = (from plugins in context.PluginTypeSet
                                        where plugins.PluginAssemblyId.Id == pluginAssembly.Id && plugins.IsWorkflowActivity == true
-                                       select MapPluginObject(null, null, null, null, pluginAssemblyObject, plugins)).ToList();
+									   orderby plugins.TypeName
+									   select MapPluginObject(null, null, null, null, pluginAssemblyObject, plugins)).ToList();
 
             var pluginStepImages = (from plugins in context.PluginTypeSet
                                     join steps in context.SdkMessageProcessingStepSet on plugins.PluginTypeId equals steps.EventHandler.Id
                                     join images in context.SdkMessageProcessingStepImageSet on steps.SdkMessageProcessingStepId equals images.SdkMessageProcessingStepId.Id
                                     where plugins.PluginAssemblyId.Id == pluginAssembly.Id && plugins.IsWorkflowActivity == false
-                                    select images).ToList();
+                                    select images)
+									.ToList().OrderBy(i => i.EntityAlias).ToList();
 
-            var pluginTypes = (from plugins in context.PluginTypeSet
+			var pluginTypes = (from plugins in context.PluginTypeSet
                                join steps in context.SdkMessageProcessingStepSet on plugins.PluginTypeId equals steps.EventHandler.Id
                                join message in context.SdkMessageSet on steps.SdkMessageId.Id equals message.SdkMessageId
                                where plugins.PluginAssemblyId.Id == pluginAssembly.Id && plugins.IsWorkflowActivity == false
@@ -106,9 +108,12 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.PluginRegistration
                                  select plugins).ToList();
             var pluginTypesWithNoSteps = (from plugins in allPluginType
                                           where !typesHasSteps.Contains(plugins.Name)
-                                          select MapPluginObject(null, null, null, null, pluginAssemblyObject, plugins)).ToList();
+										  select MapPluginObject(null, null, null, null, pluginAssemblyObject, plugins)).ToList();
 
-            return pluginAssemblyObject;
+			pluginAssemblyObject.PluginTypes = pluginAssemblyObject.PluginTypes.OrderBy(t => t.TypeName).ToList();
+			pluginAssemblyObject.PluginTypes.ForEach(t => t.Steps = t.Steps.OrderBy(s => s.PrimaryEntityName).ThenBy(s => s.MessageName).ToList());
+
+			return pluginAssemblyObject;
         }
 
 		private SdkMessageFilter GetMessageFilter( IQueryable<SdkMessageFilter> sdkMessageFilterSet, EntityReference sdkMessageFilterId )
@@ -254,8 +259,8 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.PluginRegistration
             CustomConfiguration = pluginStep.Configuration,
             Name = pluginStep.Name,
             Description = pluginStep.Description,
-            FilteringAttributes = pluginStep.FilteringAttributes,
-            ImpersonatingUserFullname = pluginStep.ImpersonatingUserId?.Name ?? string.Empty,
+			FilteringAttributes = pluginStep.FilteringAttributes != null ? string.Join(",", pluginStep.FilteringAttributes.Split(',').OrderBy(a => a)) : null,
+			ImpersonatingUserFullname = pluginStep.ImpersonatingUserId?.Name ?? string.Empty,
             MessageName = sdkMessage?.Name,
             Mode = pluginStep.ModeEnum,
             PrimaryEntityName = filter?.PrimaryObjectTypeCode,
@@ -270,12 +275,12 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.PluginRegistration
         private static void MapImagesObject(List<SdkMessageProcessingStepImage> images, SdkMessageProcessingStep pluginStep, Step step)
         {
             var imagesTemp = images.FindAll(item => item.SdkMessageProcessingStepId.Id == pluginStep.SdkMessageProcessingStepId);
-            foreach (var image in imagesTemp)
+			foreach (var image in imagesTemp)
             {
-                var imageTemp = new Image()
+				var imageTemp = new Image()
                 {
                     Id = image.SdkMessageProcessingStepImageId,
-                    Attributes = image.Attributes1,
+                    Attributes = image.Attributes1 != null ? string.Join(",", image.Attributes1.Split(',').OrderBy(a => a)) : null,
                     EntityAlias = image.EntityAlias,
                     MessagePropertyName = image.MessagePropertyName,
                     ImageType = image.ImageTypeEnum
