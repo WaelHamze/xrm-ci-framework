@@ -1,10 +1,10 @@
-﻿using NUnit.Framework;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Xml;
 using Xrm.Framework.CI.Common;
 
-namespace Xrm.Framework.CI.PowerShell.Cmdlets.Test.Common
+namespace Xrm.Framework.CI.Common.UnitTests
 {
-    [TestFixture]
+    [TestClass]
     public class SolutionManagerTest
     {
         private const string ImportResultsXml = @"
@@ -53,7 +53,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Test.Common
 </importexportxml>
 ";
 
-        [Test]
+        [TestMethod]
         public void SolutionManager_VerifySolutionImport_PrettyPrintErrorMessage_Test()
         {
             var doc = new XmlDocument();
@@ -61,9 +61,11 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Test.Common
 
             var result = new SolutionImportResult();
 
-            SolutionManager.VerifySolutionImport_PrettyPrintErrorMessage(doc, result);
+            SolutionManager manager = new SolutionManager(new Logging.TestLogger(), null, null);
 
-            Assert.IsNotEmpty(result.ErrorMessage);
+            manager.VerifySolutionImport_PrettyPrintErrorMessage(doc, result);
+
+            Assert.IsNotNull(result.ErrorMessage);
         }
     }
 }

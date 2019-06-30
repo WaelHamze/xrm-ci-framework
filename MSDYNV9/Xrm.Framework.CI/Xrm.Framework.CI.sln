@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xrm.Framework.CI.Common.Int
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xrm.Framework.CI.Tools", "Xrm.Framework.CI.Tools\Xrm.Framework.CI.Tools.csproj", "{D4E9CB06-119E-4FB4-BD12-56DB49164EB0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xrm.Framework.CI.Common.UnitTests", "Xrm.Framework.CI.Common.UnitTests\Xrm.Framework.CI.Common.UnitTests.csproj", "{BD6BF9EC-D494-42D3-9B56-F2CECCFAC8F7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +57,10 @@ Global
 		{D4E9CB06-119E-4FB4-BD12-56DB49164EB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D4E9CB06-119E-4FB4-BD12-56DB49164EB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D4E9CB06-119E-4FB4-BD12-56DB49164EB0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD6BF9EC-D494-42D3-9B56-F2CECCFAC8F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD6BF9EC-D494-42D3-9B56-F2CECCFAC8F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD6BF9EC-D494-42D3-9B56-F2CECCFAC8F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD6BF9EC-D494-42D3-9B56-F2CECCFAC8F7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
