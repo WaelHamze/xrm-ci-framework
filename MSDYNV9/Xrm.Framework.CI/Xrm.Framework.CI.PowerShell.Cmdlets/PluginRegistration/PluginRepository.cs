@@ -126,13 +126,28 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.PluginRegistration
              select a.Id).FirstOrDefault();
         public List<ServiceEndpt> GetServiceEndpoints(Guid solutionId, string endpointName)
         {
-            var webHookList = new List<ServiceEndpt>();
-            var resuts = (from serviceEndpoint in context.ServiceEndpointSet
-                          join steps in context.SdkMessageProcessingStepSet on serviceEndpoint.ServiceEndpointId equals steps.EventHandler.Id
-                          join message in context.SdkMessageSet on steps.SdkMessageId.Id equals message.SdkMessageId
-                          join filters in context.SdkMessageFilterSet on steps.SdkMessageFilterId.Id equals filters.Id
-                          select MapWebHookObject(webHookList, serviceEndpoint, steps, message, filters)).ToList(); ;
-            
+            var webHookList = (from serviceEndpoint in context.ServiceEndpointSet
+                              select MapWebHook(serviceEndpoint)).ToList<ServiceEndpt>();
+
+            var steps = (from serviceEndpoint in context.ServiceEndpointSet
+                          join step in context.SdkMessageProcessingStepSet on serviceEndpoint.ServiceEndpointId equals step.EventHandler.Id
+                          join message in context.SdkMessageSet on step.SdkMessageId.Id equals message.SdkMessageId
+                          join filter in context.SdkMessageFilterSet on step.SdkMessageFilterId.Id equals filter.Id
+                          select new
+                          {
+                              EndPointId = serviceEndpoint.Id,
+                              Step = MapStep(step, message, filter)
+                          });
+
+            foreach(var s in steps)
+            {
+                var e = (from es in webHookList
+                         where s.EndPointId.Equals(es.Id)
+                         select es).First<ServiceEndpt>();
+
+                e.Steps.Add(s.Step);
+            }
+
             if (!string.IsNullOrEmpty(endpointName))
             {
                 webHookList = (from webHook in webHookList
