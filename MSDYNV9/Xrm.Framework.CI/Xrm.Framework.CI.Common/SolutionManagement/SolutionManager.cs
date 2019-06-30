@@ -946,14 +946,18 @@ namespace Xrm.Framework.CI.Common
             return result;
         }
 
-        public static void VerifySolutionImport_PrettyPrintErrorMessage(XmlDocument importJobDoc, SolutionImportResult result)
+        public void VerifySolutionImport_PrettyPrintErrorMessage(XmlDocument importJobDoc, SolutionImportResult result)
         {
             try
             {
+                Logger.LogVerbose("Check for missing dependencies");
+                
                 // Find solution import error details
                 var missingDependencies = importJobDoc.SelectSingleNode("//solutionManifest/result/parameters/parameter/text()[starts-with(., '<MissingDependencies><MissingDependency>')]");
                 if (missingDependencies != null)
                 {
+                    Logger.LogVerbose("Logging missing dependencies");
+
                     var errorDoc = new XmlDocument();
                     errorDoc.LoadXml(missingDependencies.Value);
 
@@ -987,10 +991,16 @@ namespace Xrm.Framework.CI.Common
                     result.ErrorMessage += Environment.NewLine;
                     result.ErrorMessage += sb.ToString();
                 }
+                else
+                {
+                    Logger.LogVerbose("No missing dependencies detected");
+                }
 
             }
-            catch (XmlException)
-            { }
+            catch (Exception ex)
+            {
+                Logger.LogWarning(ex.Message);
+            }
         }
 
         private SolutionApplyResult VerifyUpgrade(
