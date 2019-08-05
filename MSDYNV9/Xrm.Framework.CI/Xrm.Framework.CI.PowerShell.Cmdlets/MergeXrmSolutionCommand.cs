@@ -1,5 +1,4 @@
 ﻿using System;
-using System.IO;
 using System.Management.Automation;
 using System.Threading;
 using Microsoft.Crm.Sdk.Messages;
@@ -85,6 +84,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
                 UniqueName = UniqueSolutionName
             };
 
+            AsyncOperation asyncOperation = null;
             if (ImportAsync)
             {
                 var asyncRequest = new ExecuteAsyncRequest
@@ -105,7 +105,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
                 if (WaitForCompletion)
                 {
                     base.WriteVerbose("Waiting for completion");
-                    AwaitCompletion(asyncJobId);
+                    asyncOperation = AwaitCompletion(asyncJobId);
                 }
             }
             else
@@ -115,10 +115,19 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
 
             base.WriteVerbose(string.Format("{0} Upgrade Completed", UniqueSolutionName));
 
-            VerifyUpgrade();
+            if (SolutionExists())
+            {
+                throw new Exception(string.Format("Solution still exists after upgrade: {0}. ErrorMessage: {1}", UniqueSolutionName, asyncOperation?.Message));
+            }
+            else
+            {
+                base.WriteVerbose(string.Format("Upgrade Solution Merged: {0}", UniqueSolutionName));
+            }
+
+
         }
 
-        private void AwaitCompletion(Guid asyncJobId)
+        private AsyncOperation AwaitCompletion(Guid asyncJobId)
         {
             DateTime end = DateTime.Now.AddSeconds(AsyncWaitTimeout);
 
@@ -150,44 +159,35 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
 
                 switch (asyncOperation.StatusCode.Value)
                 {
-                    //Succeeded
+                    //Succeeded //Pausing //Canceling //Failed //Canceled
                     case 30:
-                        completed = true;
-                        break;
-                    //Pausing //Canceling //Failed //Canceled
                     case 21:
                     case 22:
                     case 31:
                     case 32:
-                        throw new Exception(string.Format("Solution Apply with asyncJobId {0} Failed: {1} {2}",
-                            asyncJobId, asyncOperation.StatusCode.Value, asyncOperation.Message));
+                        completed = true;
+                        return asyncOperation;
                 }
             }
+            return null;
         }
 
 
-        private void VerifyUpgrade()
+        private bool SolutionExists()
         {
             string upgradeName = UniqueSolutionName + "_Upgrade";
 
             base.WriteVerbose(string.Format("Retrieving Solution: {0}", upgradeName));
 
-            using (var context = new CIContext(OrganizationService))
+            using (CIContext context = new CIContext(OrganizationService))
             {
-                var query = from s in context.SolutionSet
-                            where s.UniqueName == upgradeName
-                            select s;
+                IQueryable<Solution> query = from s in context.SolutionSet
+                                             where s.UniqueName == upgradeName
+                                             select s;
 
                 Solution solution = query.FirstOrDefault();
 
-                if (solution != null)
-                {
-                    throw new Exception(string.Format("Solution still exists after upgrade: {0}", upgradeName));
-                }
-                else
-                {
-                    base.WriteVerbose(string.Format("Upgrade Solution Merged: {0}", upgradeName));
-                }
+                return solution != null;
             }
         }
 
