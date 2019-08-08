@@ -1017,14 +1017,14 @@ namespace Xrm.Framework.CI.Common
                 {
                     result.Success = false;
                     result.ErrorMessage = asyncOperation.Message;
-                    return result;
+                    //return result;
                 }
             }
             if (syncApplyException != null)
             {
                 result.Success = false;
                 result.ErrorMessage = syncApplyException.Message;
-                return result;
+                //return result;
             }
 
             string upgradeName = solutionName + "_Upgrade";
@@ -1036,15 +1036,19 @@ namespace Xrm.Framework.CI.Common
             if (solution != null)
             {
                 result.Success = false;
-                result.ErrorMessage = string.Format("Solution still exists after upgrade: {0}", upgradeName);
-                return result;
+                if (!string.IsNullOrEmpty(result.ErrorMessage))
+                {
+                    result.ErrorMessage = string.Format("Solution still exists after upgrade: {0}", upgradeName);
+                }
             }
             else
             {
                 result.Success = true;
+                result.ErrorMessage = string.Empty;
                 Logger.LogVerbose("Apply Upgrade completed: {0}", upgradeName);
-                return result;
             }
+
+            return result;
         }
 
         #endregion
