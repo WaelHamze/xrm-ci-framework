@@ -19,6 +19,64 @@ namespace Xrm.Framework.CI.Common
             Logger = logger;
         }
 
+        public bool ExtractSolution(
+            string solutionPackager,
+            string solutionFile,
+            string folder,
+            SolutionPackager_PackageType packageType,
+            string mappingFile,
+            string sourceLoc,
+            bool localize,
+            bool treatWarningsAsErrors,
+            string logsDirectory
+    )
+        {
+            Logger.LogVerbose("Unpacking Solution: {0}", solutionFile);
+
+            SolutionXml solutionXml = new SolutionXml(Logger);
+            XrmSolutionInfo info = solutionXml.GetSolutionInfoFromZip(solutionFile);
+
+            if (info == null)
+            {
+                throw new Exception("Invalid solution file");
+            }
+
+            Logger.LogInformation("Unpacking Solution Name: {0} - Version {1}", info.UniqueName, info.Version);
+
+            SolutionNameGenerator generator = new SolutionNameGenerator();
+
+            string zipFile = new FileInfo(solutionFile).Name;
+
+            string log = string.Empty;
+
+            if (!string.IsNullOrEmpty(logsDirectory))
+            {
+                log = $"{logsDirectory}\\PackagerLog_{zipFile.Replace(".zip", "")}_{DateTime.Now.ToString("yyyy_MM_dd__HH_mm")}.txt";
+            }
+
+            Logger.LogVerbose("log: {0}", log);
+
+            SolutionPackager packager = new SolutionPackager(
+                Logger,
+                solutionPackager,
+                solutionFile,
+                folder,
+                log
+                );
+
+            bool result = packager.Extract(
+                packageType,
+                mappingFile,
+                true,
+                true,
+                false,
+                sourceLoc,
+                localize,
+                treatWarningsAsErrors);
+
+            return result;
+        }
+
         public bool PackSolution(
             string solutionPackager,
             string outputFolder,
@@ -192,6 +250,8 @@ namespace Xrm.Framework.CI.Common
         public bool TreatWarningsAsErrors { get; set; }
         public bool IncrementReleaseVersion { get; set; }
         public string Version { get; set; }
+        public bool Localize { get; set; }
+
 
         #endregion
 

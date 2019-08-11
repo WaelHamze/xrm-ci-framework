@@ -144,6 +144,7 @@ namespace Xrm.Framework.CI.Common.IntegrationTests
                 true,
                 true,
                 string.Empty,
+                false,
                 false);
 
             Assert.AreEqual(success, true);

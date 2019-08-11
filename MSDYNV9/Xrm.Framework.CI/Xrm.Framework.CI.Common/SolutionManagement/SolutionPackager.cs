@@ -95,6 +95,7 @@ namespace Xrm.Framework.CI.Common
             bool? allowDelete,
             bool clobber,
             string sourceLoc,
+            bool localize,
             bool treatWarningsAsErrors)
         {
             return Execute(
@@ -107,8 +108,8 @@ namespace Xrm.Framework.CI.Common
                 mappingFile,
                 true,
                 Log,
-                string.Empty,
-                false,
+                sourceLoc,
+                localize,
                 treatWarningsAsErrors
                 );
         }

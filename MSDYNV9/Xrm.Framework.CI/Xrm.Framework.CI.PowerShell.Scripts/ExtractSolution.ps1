@@ -8,10 +8,13 @@ param([string]$UnpackedFilesFolder, #The folder to extract the CRM solution
 [string]$connectionString, #The connection string as per CRM Sdk
 [string]$solutionFile, #The path to the solution file to be extracted. If supplied export is skipped
 [string]$CoreToolsPath, #The full path to the Coretools folder containg solutionpackager.exe
+[string]$sourceLoc,
+[bool]$localize,
 [bool]$TreatUnpackWarningsAsErrors
 ) 
 
 $ErrorActionPreference = "Stop"
+$InformationPreference = "Continue"
 
 Write-Verbose 'Entering ExtractSolution.ps1'
 
@@ -22,7 +25,15 @@ Write-Verbose "SolutionName = $solutionName"
 Write-Verbose "ConnectionString = $connectionString"
 Write-Verbose "SolutionFile = $solutionFile"
 Write-Verbose "CoreToolsPath = $CoreToolsPath"
+Write-Verbose "SourceLoc = $sourceLoc"
+Write-Verbose "Localize = $localize"
 Write-Verbose "TreatUnpackWarningsAsErrors = $TreatUnpackWarningsAsErrors"
+
+# CI Toolkit
+$scriptPath = split-path -parent $MyInvocation.MyCommand.Definition
+$xrmCIToolkit = $scriptPath + "\Xrm.Framework.CI.PowerShell.Cmdlets.dll"
+Write-Verbose "Importing CIToolkit: $xrmCIToolkit" 
+Import-Module $xrmCIToolkit
 
 #Locate SolutionPackager.exe
 $SolutionPackagerFile = $scriptPath + "\SolutionPackager.exe"
@@ -37,13 +48,7 @@ if ($solutionFile)
 	Write-Verbose "Using provided solution file"
 }
 else
-{
-	# CI Toolkit
-	$scriptPath = split-path -parent $MyInvocation.MyCommand.Definition
-	$xrmCIToolkit = $scriptPath + "\Xrm.Framework.CI.PowerShell.Cmdlets.dll"
-	Write-Verbose "Importing CIToolkit: $xrmCIToolkit" 
-	Import-Module $xrmCIToolkit
-	
+{	
 	Write-Output "Exporting Solutions to: " $env:TEMP
 
 	if ($PackageType -ne "Unmanaged")
@@ -61,40 +66,37 @@ else
 	}
 }
 
-#Solution Packager
+$SolutionPackagerFile = $scriptPath + "\SolutionPackager.exe"
+if ($CoreToolsPath)
+{
+	$SolutionPackagerFile = $CoreToolsPath + "\SolutionPackager.exe"
+}
+
+$PackParams = @{
+	SolutionPackagerPath = $SolutionPackagerFile
+	PackageType = $PackageType
+	Folder = $UnpackedFilesFolder
+	SolutionFile = $solutionFile
+	TreatWarningsAsErrors = $TreatUnpackWarningsAsErrors
+}
+
 if ($MappingFile)
 {
-	$extractOuput = & "$SolutionPackagerFile" /action:Extract /zipfile:"$solutionFile" /folder:"$UnpackedFilesFolder" /packagetype:$PackageType /errorlevel:Info /allowWrite:Yes /allowDelete:Yes /map:$mappingFile
+	$PackParams.MappingFile = $MappingFile
 }
-else
+if ($LogsDirectory)
 {
-	$extractOuput = & "$SolutionPackagerFile" /action:Extract /zipfile:"$solutionFile" /folder:"$UnpackedFilesFolder" /packagetype:$PackageType /errorlevel:Info /allowWrite:Yes /allowDelete:Yes
+	$PackParams.LogsDirectory = $LogsDirectory
 }
-Write-Output $extractOuput
-
-if ($lastexitcode -ne 0)
+if ($sourceLoc)
 {
-    throw "Solution Extract operation failed with exit code: $lastexitcode"
+	$PackParams.SourceLoc = $sourceLoc
 }
-else
+if ($localize)
 {
-    if (($extractOuput -ne $null) -and ($extractOuput -like "*warnings encountered*"))
-    {
-        if ($TreatUnpackWarningsAsErrors)
-		{
-			throw "Solution Packager encountered warnings. Check the output."
-		}
-		else
-		{
-			Write-Warning "Solution Packager encountered warnings. Check the output."
-		}
-    }
-	else
-	{
-		Write-Host "Solution Extract Completed Successfully"
-	}
+	$PackParams.Localize = $localize
 }
 
-# End of script
+Expand-XrmSolution @PackParams
 
 Write-Verbose 'Leaving ExtractSolution.ps1'
