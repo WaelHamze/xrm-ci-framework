@@ -10,6 +10,8 @@ param(
 [bool]$IncludeVersionInSolutionFile,
 [bool]$IncrementReleaseVersion,
 [string]$OutputPath,
+[string]$sourceLoc,
+[bool]$localize,
 [bool]$TreatPackWarningsAsErrors,
 [string]$CoreToolsPath,
 [string]$LogsDirectory
@@ -29,6 +31,8 @@ Write-Verbose "RequiredVersion = $RequiredVersion"
 Write-Verbose "IncludeVersionInSolutionFile = $IncludeVersionInSolutionFile"
 Write-Verbose "IncrementReleaseVersion = $IncrementReleaseVersion"
 Write-Verbose "OutputPath = $OutputPath"
+Write-Verbose "SourceLoc = $sourceLoc"
+Write-Verbose "Localize = $localize"
 Write-Verbose "TreatPackWarningsAsErrors = $TreatPackWarningsAsErrors"
 Write-Verbose "CoreToolsPath = $CoreToolsPath"
 Write-Verbose "LogsDirectory = $LogsDirectory"
@@ -70,6 +74,14 @@ if ($LogsDirectory)
 if ($RequiredVersion)
 {
 	$PackParams.Version = $RequiredVersion
+}
+if ($sourceLoc)
+{
+	$PackParams.SourceLoc = $sourceLoc
+}
+if ($localize)
+{
+	$PackParams.Localize = $localize
 }
 
 Compress-XrmSolution @PackParams

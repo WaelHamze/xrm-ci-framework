@@ -7,7 +7,9 @@
       "IncludeVersionInName": true,
       "TreatWarningsAsErrors": false,
       "IncrementReleaseVersion": false,
-      "Version": ""
+      "Version": "",
+      "SourceLoc": "",
+      "Localize": false
     }
   ]
 }

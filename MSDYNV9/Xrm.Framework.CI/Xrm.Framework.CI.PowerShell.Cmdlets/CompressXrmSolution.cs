@@ -77,6 +77,18 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
         public string OutputFolder { get; set; }
 
         /// <summary>
+        /// <para type="description">This argument generates a template resource file</para>
+        /// </summary>
+        [Parameter(Mandatory = false)]
+        public string SourceLoc { get; set; }
+
+        /// <summary>
+        /// <para type="description">Extract or merge all string resources into .resx files</para>
+        /// </summary>
+        [Parameter(Mandatory = false)]
+        public bool Localize { get; set; }
+
+        /// <summary>
         /// <para type="description">The directory where the pack logs should be placed.</para>
         /// </summary>
         [Parameter(Mandatory = false)]
@@ -107,6 +119,8 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
                 packageType,
                 IncludeVersionInName,
                 MappingFile,
+                SourceLoc,
+                Localize,
                 TreatWarningsAsErrors,
                 IncrementReleaseVersion,
                 Version,

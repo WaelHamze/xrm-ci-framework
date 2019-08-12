@@ -69,7 +69,7 @@ namespace Xrm.Framework.CI.Common.IntegrationTests
                 folder,
                 LogsDirectory + "\\" + LogFileName);
 
-            bool success = packager.Pack(SolutionPackager_PackageType.Both, mapping, false);
+            bool success = packager.Pack(SolutionPackager_PackageType.Both, mapping, "", false,false);
 
             Assert.AreEqual(success, true);
         }

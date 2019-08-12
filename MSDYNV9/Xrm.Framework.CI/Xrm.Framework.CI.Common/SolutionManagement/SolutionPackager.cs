@@ -71,6 +71,8 @@ namespace Xrm.Framework.CI.Common
         public bool Pack(
             SolutionPackager_PackageType packageType,
             string mappingFile,
+            string sourceLoc,
+            bool localize,
             bool treatWarningsAsErrors)
         {
             return Execute(
@@ -83,8 +85,8 @@ namespace Xrm.Framework.CI.Common
                 mappingFile,
                 true,
                 Log,
-                string.Empty,
-                false,
+                sourceLoc,
+                localize,
                 treatWarningsAsErrors);
         }
 

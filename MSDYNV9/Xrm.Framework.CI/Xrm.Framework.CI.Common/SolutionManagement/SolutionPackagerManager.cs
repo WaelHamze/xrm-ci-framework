@@ -84,6 +84,8 @@ namespace Xrm.Framework.CI.Common
             SolutionPackager_PackageType packageType,
             bool includeVersionInName,
             string mappingFile,
+            string sourceLoc,
+            bool localize,
             bool treatWarningsAsErrors,
             bool incrementReleaseVersion,
             string version,
@@ -169,6 +171,8 @@ namespace Xrm.Framework.CI.Common
             bool result = packager.Pack(
                 packageType,
                 mappingFile,
+                sourceLoc,
+                localize,
                 treatWarningsAsErrors);
 
             if (result)
@@ -219,6 +223,8 @@ namespace Xrm.Framework.CI.Common
                     option.PackageType,
                     option.IncludeVersionInName,
                     mapping,
+                    option.SourceLoc,
+                    option.Localize,
                     option.TreatWarningsAsErrors,
                     option.IncrementReleaseVersion,
                     option.Version,
@@ -250,6 +256,7 @@ namespace Xrm.Framework.CI.Common
         public bool TreatWarningsAsErrors { get; set; }
         public bool IncrementReleaseVersion { get; set; }
         public string Version { get; set; }
+        public string SourceLoc { get; set; }
         public bool Localize { get; set; }
 
 
