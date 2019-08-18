@@ -86,6 +86,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AsyncOperationManager.cs" />
+    <Compile Include="Data\ConfigurationMigrationManager.cs" />
     <Compile Include="Data\ConfigDataManager.cs" />
     <Compile Include="Entities\Entities.cs" />
     <Compile Include="Entities\OptionSets.cs" />
@@ -102,6 +103,7 @@
     <Compile Include="SolutionManagement\SolutionPackager.cs" />
     <Compile Include="SolutionManagement\SolutionPackagerManager.cs" />
     <Compile Include="SolutionManagement\SolutionXml.cs" />
+    <Compile Include="CommonBase.cs" />
     <Compile Include="XrmBase.cs" />
     <Compile Include="XrmConnectionManager.cs" />
     <Compile Include="XrmSdkMessagesHelper.cs" />
@@ -119,6 +121,9 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="DataXmlTransform.xslt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Entities\EarlyBoundGenerator.Settings.xml">
       <SubType>Designer</SubType>
     </Content>

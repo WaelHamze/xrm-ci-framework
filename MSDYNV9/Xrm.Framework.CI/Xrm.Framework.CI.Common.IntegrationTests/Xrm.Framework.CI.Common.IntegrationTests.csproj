@@ -93,6 +93,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConfigurationMigrationTest.cs" />
     <Compile Include="ConnectionConfigManagerTest.cs" />
     <Compile Include="ExportSolution.cs" />
     <Compile Include="SolutionComponents.cs" />
