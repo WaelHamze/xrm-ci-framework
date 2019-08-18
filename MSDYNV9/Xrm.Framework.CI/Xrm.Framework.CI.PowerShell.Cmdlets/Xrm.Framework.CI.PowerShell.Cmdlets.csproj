@@ -100,6 +100,8 @@
     <Compile Include="AddXrmSolutionPatch.cs" />
     <Compile Include="Common\ReflectionLoader.cs" />
     <Compile Include="Common\XrmSolutionInfo.cs" />
+    <Compile Include="CompressXrmCMData.cs" />
+    <Compile Include="ExpandXrmCMData.cs" />
     <Compile Include="ExpandXrmSolution.cs" />
     <Compile Include="CompressXrmSolution.cs" />
     <Compile Include="GetXrmConnectionsCommand.cs" />
