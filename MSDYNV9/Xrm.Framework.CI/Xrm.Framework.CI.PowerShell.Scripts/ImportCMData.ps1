@@ -11,7 +11,8 @@ param(
 [string]$logsDirectory, #Optional - will place the import log in here
 [string]$configurationMigrationModulePath, #The full path to the Configuration Migration PowerShell Module
 [string]$toolingConnectorModulePath, #The full path to the Tooling Connector PowerShell Module
-[int]$concurrentThreads #Set the number of concurrent threads
+[int]$concurrentThreads, #Set the number of concurrent threads
+[string]$userMapFile #User mapping file xml for on-premise deployments
 ) 
 
 $ErrorActionPreference = "Stop"
@@ -27,6 +28,7 @@ Write-Verbose "logsDirectory = $logsDirectory"
 Write-Verbose "concurrentThreads = $concurrentThreads"
 Write-Verbose "configurationMigrationModulePath = $configurationMigrationModulePath"
 Write-Verbose "toolingConnectorModulePath = $toolingConnectorModulePath"
+Write-Verbose "userMapFile = $userMapFile"
 
 #Script Location
 $scriptPath = split-path -parent $MyInvocation.MyCommand.Definition
@@ -49,7 +51,7 @@ if ($crmConnectionTimeout -ne 0)
 
 if ($logsDirectory)
 {
-	$connectParams.LogWriteDirectory = $logsDirectory
+	$connectParams.LogWriteDirectory = "$logsDirectory"
 }
 
 $CRMConn = Get-CrmConnection @connectParams -Verbose
@@ -60,13 +62,17 @@ $importParams = @{
 }
 If ($logsDirectory)
 {
-	$importParams.LogWriteDirectory = $logsDirectory
+	$importParams.LogWriteDirectory = "$logsDirectory"
 }
 if ($concurrentThreads -ne 0)
 {
 	$importParams.ConcurrentThreads = $concurrentThreads
 }
+if ($userMapFile)
+{
+	$importParams.UserMapFile = "$userMapFile"
+}
 
-Import-CrmDataFile @importParams
+Import-CrmDataFile @importParams -Verbose
 
 Write-Verbose 'Leaving ImportCMData.ps1'
