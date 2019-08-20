@@ -1,4 +1,4 @@
-﻿namespace Xrm.Framework.CI.PowerShell.Cmdlets.PluginRegistration
+﻿namespace Xrm.Framework.CI.Common
 {
     public enum RegistrationTypeEnum
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using Xrm.Framework.CI.Common.Entities;
 
-namespace Xrm.Framework.CI.PowerShell.Cmdlets
+namespace Xrm.Framework.CI.Common
 {
     public class Image
     {

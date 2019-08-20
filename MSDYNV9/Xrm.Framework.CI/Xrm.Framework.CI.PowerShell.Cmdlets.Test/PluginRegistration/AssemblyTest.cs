@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using NUnit.Framework;
 using Xrm.Framework.CI.Common.Entities;
+using C = Xrm.Framework.CI.Common;
 
 namespace Xrm.Framework.CI.PowerShell.Cmdlets.Test.PluginRegistration
 {
@@ -10,15 +11,15 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Test.PluginRegistration
     public class AssemblyTest
     {
         #region SetUp
-        private Assembly _assemblyLeft;
-        private Assembly _assemblyRight;
-        private Type _typeLeft;
-        private Type _typeRight;
+        private C.Assembly _assemblyLeft;
+        private C.Assembly _assemblyRight;
+        private C.Type _typeLeft;
+        private C.Type _typeRight;
 
         [SetUp]
         public void SetUp()
         {
-            _assemblyLeft = new Assembly
+            _assemblyLeft = new C.Assembly
             {
                 Id = Guid.NewGuid(),
                 IsolationMode = PluginAssembly_IsolationMode.Sandbox,
@@ -26,7 +27,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Test.PluginRegistration
                 SourceType = PluginAssembly_SourceType.Database
             };
 
-            _assemblyRight = new Assembly
+            _assemblyRight = new C.Assembly
             {
                 Id = Guid.NewGuid(),
                 IsolationMode = PluginAssembly_IsolationMode.None,
@@ -34,14 +35,14 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Test.PluginRegistration
                 SourceType = PluginAssembly_SourceType.Disk
             };
 
-            _typeLeft = new Type {Description = "type left",Name = "Name", TypeName = "TypeName", Id =Guid.NewGuid()};
-            _assemblyLeft.PluginTypes = new List<Type>
+            _typeLeft = new C.Type {Description = "type left",Name = "Name", TypeName = "TypeName", Id =Guid.NewGuid()};
+            _assemblyLeft.PluginTypes = new List<C.Type>
             {
-                _typeLeft, new Type {Description = "type left 2", Id = Guid.NewGuid()}
+                _typeLeft, new C.Type {Description = "type left 2", Id = Guid.NewGuid()}
             };
 
-            _typeRight = new Type { Description = "type right", Name = "Name", TypeName = "TypeName",  Id = Guid.NewGuid() };
-            _assemblyRight.PluginTypes = new List<Type>() { _typeRight };
+            _typeRight = new C.Type { Description = "type right", Name = "Name", TypeName = "TypeName",  Id = Guid.NewGuid() };
+            _assemblyRight.PluginTypes = new List<C.Type>() { _typeRight };
         }
         #endregion
 

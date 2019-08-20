@@ -98,8 +98,6 @@
     <Compile Include="AddXrmLanguagePack.cs" />
     <Compile Include="AddXrmSolution.cs" />
     <Compile Include="AddXrmSolutionPatch.cs" />
-    <Compile Include="Common\ReflectionLoader.cs" />
-    <Compile Include="Common\XrmSolutionInfo.cs" />
     <Compile Include="CompressXrmCMData.cs" />
     <Compile Include="ExpandXrmCMData.cs" />
     <Compile Include="ExpandXrmSolution.cs" />
@@ -135,18 +133,8 @@
     <Compile Include="MergeXrmSolutionPatches.cs" />
     <Compile Include="NewXrmBulkDeleteJobCommand.cs" />
     <Compile Include="NewXrmEntityCommand.cs" />
-    <Compile Include="PluginRegistration\Assembly.cs" />
-    <Compile Include="PluginRegistration\AssemblyInfo.cs" />
-    <Compile Include="PluginRegistration\PluginRegistrationObjectFactory.cs" />
-    <Compile Include="PluginRegistration\Image.cs" />
-    <Compile Include="PluginRegistration\PluginRegistrationHelper.cs" />
-    <Compile Include="PluginRegistration\PluginRepository.cs" />
-    <Compile Include="PluginRegistration\ServiceEndpt.cs" />
-    <Compile Include="PluginRegistration\Step.cs" />
-    <Compile Include="PluginRegistration\Types.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PublishXrmCustomizationsCommand.cs" />
-    <Compile Include="PluginRegistration\RegistrationTypeEnum.cs" />
     <Compile Include="PublishXrmDuplicateRuleCommand.cs" />
     <Compile Include="RemoveXrmEntityAttribute.cs" />
     <Compile Include="RemoveXrmEntityCommand.cs" />
@@ -186,9 +174,6 @@
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="PluginRegistration\WorkflowAssemblyExample.json" />
-    <None Include="PluginRegistration\PluginAssemblyExample.json" />
-    <None Include="PluginRegistration\PluginRegistrationSchema.json" />
     <None Include="Xrm.Framework.CI.PowerShell.Cmdlets.nuspec">
       <SubType>Designer</SubType>
     </None>

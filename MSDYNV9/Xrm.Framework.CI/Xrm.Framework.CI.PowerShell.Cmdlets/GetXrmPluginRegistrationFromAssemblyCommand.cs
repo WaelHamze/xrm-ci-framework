@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Management.Automation;
+using Xrm.Framework.CI.Common;
 
 namespace Xrm.Framework.CI.PowerShell.Cmdlets
 {

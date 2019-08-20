@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using NUnit.Framework;
+using Xrm.Framework.CI.Common;
 using Xrm.Framework.CI.Common.Entities;
 
 namespace Xrm.Framework.CI.PowerShell.Cmdlets.Test.PluginRegistration

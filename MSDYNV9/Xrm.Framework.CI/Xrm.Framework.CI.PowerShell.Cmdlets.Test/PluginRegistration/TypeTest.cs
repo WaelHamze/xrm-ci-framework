@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using NUnit.Framework;
 using Xrm.Framework.CI.Common.Entities;
+using Xrm.Framework.CI.Common;
+using C = Xrm.Framework.CI.Common;
 
 namespace Xrm.Framework.CI.PowerShell.Cmdlets.Test.PluginRegistration
 {
@@ -10,21 +12,21 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Test.PluginRegistration
     public class TypeTest
     {
         #region SetUp
-        private Type _typeLeft;
-        private Type _typeRight;
+        private C.Type _typeLeft;
+        private C.Type _typeRight;
         private Step _leftStep;
         private Step _rightStep;
 
         [SetUp]
         public void SetUp()
         {
-            _typeLeft = new Type { Description = "type left",
+            _typeLeft = new C.Type { Description = "type left",
                 Name = "NameLeft",
                 TypeName = "TypeNameLeft",
                 WorkflowActivityGroupName = "wf left",
                 Id = Guid.NewGuid()
             };
-            _typeRight = new Type { Description = "type right",
+            _typeRight = new C.Type { Description = "type right",
                 Name = "NameRight",
                 TypeName = "TypeNameRight",
                 WorkflowActivityGroupName = "wf right",

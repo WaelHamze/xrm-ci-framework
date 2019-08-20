@@ -4,8 +4,6 @@ using System.IO;
 using System.Management.Automation;
 using Xrm.Framework.CI.Common;
 using Xrm.Framework.CI.Common.Entities;
-using Xrm.Framework.CI.PowerShell.Cmdlets.Common;
-using Xrm.Framework.CI.PowerShell.Cmdlets.PluginRegistration;
 
 namespace Xrm.Framework.CI.PowerShell.Cmdlets
 {
@@ -127,7 +125,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
             WriteVerbose("Plugin Registration completed");
         }
 
-       private void UploadSplitAssembly(AssemblyInfo assemblyInfo, PluginRegistrationHelper pluginRegistrationHelper, Type type)
+       private void UploadSplitAssembly(AssemblyInfo assemblyInfo, PluginRegistrationHelper pluginRegistrationHelper, Xrm.Framework.CI.Common.Type type)
         {
             var temp = new FileInfo(ProjectFilePath);
             var splitAssembly = AssemblyInfo.GetAssemblyInfo(assemblyInfo.AssemblyDirectory.Replace(temp.DirectoryName, temp.DirectoryName + type.Name) + "\\" + type.Name + ".dll");

@@ -119,7 +119,7 @@ namespace Xrm.Framework.CI.Common
 
             Logger.LogVerbose($"Loading transform file");
 
-            string currentDir = new FileInfo(Assembly.GetExecutingAssembly().Location).Directory.FullName;
+            string currentDir = new FileInfo(System.Reflection.Assembly.GetExecutingAssembly().Location).Directory.FullName;
 
             XslCompiledTransform xslt = new XslCompiledTransform();
             xslt.Load($"{currentDir}\\DataXmlTransform.xslt");

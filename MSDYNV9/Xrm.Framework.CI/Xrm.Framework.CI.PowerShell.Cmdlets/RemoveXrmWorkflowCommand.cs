@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-
+using Xrm.Framework.CI.Common;
 using Xrm.Framework.CI.Common.Entities;
 
 namespace Xrm.Framework.CI.PowerShell.Cmdlets

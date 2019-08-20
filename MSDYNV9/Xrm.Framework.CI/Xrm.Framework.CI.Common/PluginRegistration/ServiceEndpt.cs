@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using Xrm.Framework.CI.Common.Entities;
-using Xrm.Framework.CI.PowerShell.Cmdlets.Common;
 
-namespace Xrm.Framework.CI.PowerShell.Cmdlets
+namespace Xrm.Framework.CI.Common
 {
     public class ServiceEndpt
     {

@@ -1,11 +1,9 @@
 ﻿using Microsoft.Crm.Sdk.Messages;
 using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Query;
-using Xrm.Framework.CI.PowerShell.Cmdlets.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Xrm.Framework.CI.PowerShell.Cmdlets.PluginRegistration;
 using System.IO;
 using Xrm.Framework.CI.Common.Entities;
 using System.Xml.Linq;
@@ -14,7 +12,7 @@ using System.Xml.XPath;
 
 using Xrm.Framework.CI.Common;
 
-namespace Xrm.Framework.CI.PowerShell.Cmdlets
+namespace Xrm.Framework.CI.Common
 {
     public class PluginRegistrationHelper
     {

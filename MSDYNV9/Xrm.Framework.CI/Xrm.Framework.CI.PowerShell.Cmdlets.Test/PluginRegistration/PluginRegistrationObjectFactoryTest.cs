@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using FakeItEasy;
 using NUnit.Framework;
+using Xrm.Framework.CI.Common;
+using C = Xrm.Framework.CI.Common;
 using Xrm.Framework.CI.Common.Entities;
-using Xrm.Framework.CI.PowerShell.Cmdlets.Common;
-using Xrm.Framework.CI.PowerShell.Cmdlets.PluginRegistration;
 
 namespace Xrm.Framework.CI.PowerShell.Cmdlets.Test
 {
@@ -77,7 +77,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Test
             IPluginRegistrationObjectFactory pluginRegistrationObjectFactory = new PluginRegistrationObjectFactory();
             var assembly = pluginRegistrationObjectFactory.GetAssembly(_fakeReflectionLoader);
             var type = assembly.PluginTypes[0];
-            Assert.IsInstanceOf<Type>(type);
+            Assert.IsInstanceOf<C.Type>(type);
             Assert.IsInstanceOf<Guid>(type.Id);
             Assert.NotNull(type.Id);
             Assert.AreEqual("TestClass1", type.Name);

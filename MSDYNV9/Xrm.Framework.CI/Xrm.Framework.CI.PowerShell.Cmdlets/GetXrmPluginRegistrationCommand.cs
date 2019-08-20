@@ -2,9 +2,8 @@
 using System.IO;
 using System.Management.Automation;
 using System.Text;
+using Xrm.Framework.CI.Common;
 using Xrm.Framework.CI.Common.Entities;
-using Xrm.Framework.CI.PowerShell.Cmdlets.Common;
-using Xrm.Framework.CI.PowerShell.Cmdlets.PluginRegistration;
 
 namespace Xrm.Framework.CI.PowerShell.Cmdlets
 {

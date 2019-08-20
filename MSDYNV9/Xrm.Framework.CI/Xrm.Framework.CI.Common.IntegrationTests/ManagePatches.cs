@@ -71,7 +71,7 @@ namespace Xrm.Framework.CI.Common.IntegrationTests
             Logger = new TestLogger();
             OrganizationService = new TestConnectionManager().CreateConnection();
             PollingOrganizationService = new TestConnectionManager().CreateConnection();
-            ArtifactsDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\Artifacts";
+            ArtifactsDirectory = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + "\\Artifacts";
             LogsDirectory = TestContext.TestLogsDir;
             LogFileName = $"{TestContext.TestName}.xml";
             SolutionManager = new SolutionManager(Logger, OrganizationService, PollingOrganizationService);

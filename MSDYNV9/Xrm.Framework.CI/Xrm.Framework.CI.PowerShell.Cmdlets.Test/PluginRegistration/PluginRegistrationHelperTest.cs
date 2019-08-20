@@ -1,7 +1,6 @@
 ﻿using NUnit.Framework;
 using FakeItEasy;
-using Xrm.Framework.CI.PowerShell.Cmdlets.Common;
-using Xrm.Framework.CI.PowerShell.Cmdlets.PluginRegistration;
+using Xrm.Framework.CI.Common;
 
 namespace Xrm.Framework.CI.PowerShell.Cmdlets.Test
 {

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Xrm.Framework.CI.PowerShell.Cmdlets.PluginRegistration
+namespace Xrm.Framework.CI.Common
 {
     public class AssemblyInfo
     {

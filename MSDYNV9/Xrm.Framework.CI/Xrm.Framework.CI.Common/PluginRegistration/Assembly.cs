@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Xrm.Framework.CI.Common.Entities;
 
-namespace Xrm.Framework.CI.PowerShell.Cmdlets
+namespace Xrm.Framework.CI.Common
 {
     public class Assembly
     {

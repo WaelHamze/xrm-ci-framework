@@ -86,12 +86,24 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AsyncOperationManager.cs" />
+    <Compile Include="Common\ReflectionLoader.cs" />
+    <Compile Include="Common\XrmSolutionInfo.cs" />
     <Compile Include="Data\ConfigurationMigrationManager.cs" />
     <Compile Include="Data\ConfigDataManager.cs" />
     <Compile Include="Entities\Entities.cs" />
     <Compile Include="Entities\OptionSets.cs" />
     <Compile Include="ImportJobManager.cs" />
     <Compile Include="Logging\ILogger.cs" />
+    <Compile Include="PluginRegistration\Assembly.cs" />
+    <Compile Include="PluginRegistration\AssemblyInfo.cs" />
+    <Compile Include="PluginRegistration\Image.cs" />
+    <Compile Include="PluginRegistration\PluginRegistrationHelper.cs" />
+    <Compile Include="PluginRegistration\PluginRegistrationObjectFactory.cs" />
+    <Compile Include="PluginRegistration\PluginRepository.cs" />
+    <Compile Include="PluginRegistration\RegistrationTypeEnum.cs" />
+    <Compile Include="PluginRegistration\ServiceEndpt.cs" />
+    <Compile Include="PluginRegistration\Step.cs" />
+    <Compile Include="PluginRegistration\Types.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SolutionManagement\SolutionComponentsManager.cs" />
     <Compile Include="Utilities\FileUtilities.cs" />
@@ -115,6 +127,9 @@
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="PluginRegistration\PluginAssemblyExample.json" />
+    <None Include="PluginRegistration\PluginRegistrationSchema.json" />
+    <None Include="PluginRegistration\WorkflowAssemblyExample.json" />
     <None Include="Schema\ExportSolutionsExample.json" />
     <None Include="Schema\ImportSolutionsExample.json" />
     <None Include="Schema\PackSolutionsExample.json" />

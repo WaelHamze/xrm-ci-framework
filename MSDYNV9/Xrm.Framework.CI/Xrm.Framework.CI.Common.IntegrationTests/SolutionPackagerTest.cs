@@ -52,7 +52,7 @@ namespace Xrm.Framework.CI.Common.IntegrationTests
             LogsDirectory = TestContext.TestLogsDir;
             LogFileName = $"{TestContext.TestName}.txt";
 
-            string currentDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            string currentDirectory = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
 
             //TODO: Need to fix paths
 
@@ -81,7 +81,7 @@ namespace Xrm.Framework.CI.Common.IntegrationTests
             LogsDirectory = TestContext.TestLogsDir;
             LogFileName = $"{TestContext.TestName}.txt";
 
-            string currentDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            string currentDirectory = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
 
             //TODO: Need to fix paths
 
@@ -120,7 +120,7 @@ namespace Xrm.Framework.CI.Common.IntegrationTests
             LogsDirectory = TestContext.TestLogsDir;
             LogFileName = $"{TestContext.TestName}.txt";
 
-            string currentDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            string currentDirectory = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
 
             //TODO: Need to fix paths
 

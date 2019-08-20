@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Xrm.Framework.CI.PowerShell.Cmdlets
+namespace Xrm.Framework.CI.Common
 {
     public class Type
     {

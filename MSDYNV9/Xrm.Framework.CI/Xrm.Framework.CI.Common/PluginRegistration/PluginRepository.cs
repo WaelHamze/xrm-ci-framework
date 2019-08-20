@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Xrm.Sdk;
 using Xrm.Framework.CI.Common.Entities;
-using Xrm.Framework.CI.PowerShell.Cmdlets.Common;
 
-namespace Xrm.Framework.CI.PowerShell.Cmdlets.PluginRegistration
+namespace Xrm.Framework.CI.Common
 {
     public class PluginRepository
     {

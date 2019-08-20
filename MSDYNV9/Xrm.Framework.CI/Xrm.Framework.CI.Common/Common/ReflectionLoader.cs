@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
+namespace Xrm.Framework.CI.Common
 {
     public interface IReflectionLoader
     {

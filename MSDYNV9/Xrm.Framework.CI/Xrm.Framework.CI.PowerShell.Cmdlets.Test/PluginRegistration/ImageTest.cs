@@ -1,6 +1,7 @@
 ﻿using System;
 using NUnit.Framework;
 using Xrm.Framework.CI.Common.Entities;
+using Xrm.Framework.CI.Common;
 
 namespace Xrm.Framework.CI.PowerShell.Cmdlets.Test.PluginRegistration
 {

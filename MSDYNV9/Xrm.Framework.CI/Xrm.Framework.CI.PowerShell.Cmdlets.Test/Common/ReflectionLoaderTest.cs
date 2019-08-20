@@ -1,5 +1,6 @@
 ﻿using System;
 using NUnit.Framework;
+using Xrm.Framework.CI.Common;
 using Xrm.Framework.CI.PowerShell.Cmdlets.Common;
 
 namespace Xrm.Framework.CI.PowerShell.Cmdlets.Test

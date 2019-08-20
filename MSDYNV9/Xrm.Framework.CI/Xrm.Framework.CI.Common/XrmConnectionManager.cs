@@ -71,7 +71,7 @@ namespace Xrm.Framework.CI.Common
 
         private void PrintSdkVersion()
         {
-            string assembly = Assembly.GetExecutingAssembly().Location;
+            string assembly = System.Reflection.Assembly.GetExecutingAssembly().Location;
 
             FileInfo info = new FileInfo(assembly);
 
