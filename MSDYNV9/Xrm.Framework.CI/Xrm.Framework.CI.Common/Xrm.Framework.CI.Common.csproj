@@ -88,12 +88,14 @@
     <Compile Include="AsyncOperationManager.cs" />
     <Compile Include="Common\ReflectionLoader.cs" />
     <Compile Include="Common\XrmSolutionInfo.cs" />
+    <Compile Include="CrmConnectionString.cs" />
     <Compile Include="Data\ConfigurationMigrationManager.cs" />
     <Compile Include="Data\ConfigDataManager.cs" />
     <Compile Include="Entities\Entities.cs" />
     <Compile Include="Entities\OptionSets.cs" />
     <Compile Include="ImportJobManager.cs" />
     <Compile Include="Logging\ILogger.cs" />
+    <Compile Include="OAuthClientCredentialsHook.cs" />
     <Compile Include="PluginRegistration\Assembly.cs" />
     <Compile Include="PluginRegistration\AssemblyInfo.cs" />
     <Compile Include="PluginRegistration\Image.cs" />
