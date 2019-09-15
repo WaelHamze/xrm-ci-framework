@@ -10,6 +10,8 @@ param(
 [string]$ApplicationId , #The application Id used for the connection
 [string]$ApplicationSecret , #The application secret used for connection
 [string]$Ruleset , #The ruleset to be used when checking
+[string[]]$RuleCodes, #The Ids of the rules used when checking
+[string[]]$ExcludedFiles, #The Files/Patterns to be excluded from scanning
 [string]$Geography, #The regional endpoint to hit
 [string]$PowerAppsCheckerPath, #The full path to the PowerApp Checker PowerShell Module
 [bool]$EnableThresholds, #Enables threshold checks
@@ -32,6 +34,8 @@ Write-Verbose "OutputPath = $OutputPath"
 Write-Verbose "TenantId = $TenantId"
 Write-Verbose "ApplicationId = $ApplicationId"
 Write-Verbose "Ruleset = $Ruleset"
+Write-Verbose "RuleCodes = $RuleCodes"
+Write-Verbose "ExcludedFiles = $ExcludedFiles"
 Write-Verbose "Geography = $Geography"
 Write-Verbose "PowerAppsCheckerPath = $PowerAppsCheckerPath"
 
@@ -40,24 +44,42 @@ Import-module "$PowerAppsCheckerPath\Microsoft.PowerApps.Checker.PowerShell.psd1
 
 #Run PowerApps Checker
 
-$rulesets = Get-PowerAppsCheckerRulesets -Geography "$Geography"
-
-if ($rulesets.Length -gt 0)
+if ($Ruleset)
 {
-	$rulesetToUse = $rulesets | where Name -EQ "$RuleSet"
+    $rulesets = Get-PowerAppsCheckerRulesets -Geography "$Geography"
 
-	if ($rulesetToUse)
-	{
-		Write-Verbose "Ruleset found"
-	}
-	else
-	{
-		throw "$RuleSet ruleset was not found"
-	}
+    if ($rulesets.Length -gt 0)
+    {
+	    $rulesetToUse = $rulesets | where Name -EQ "$RuleSet"
+
+	    if ($rulesetToUse)
+	    {
+		    Write-Verbose "Ruleset found"
+	    }
+	    else
+	    {
+		    throw "$RuleSet ruleset was not found"
+	    }
+    }
+    else
+    {
+	    throw "No rule sets found"
+    }
+}
+elseif ($RuleCodes)
+{
+    $rules = @()
+    
+    foreach($ruleCode in $RuleCodes)
+    {
+        $rule = New-Object -TypeName "Microsoft.PowerApps.Checker.Client.Models.Rule"
+        $rule.Code = $ruleCode
+        $rules += $rule
+    }
 }
 else
 {
-	throw "No rule sets found"
+    throw "Either RuleSet or RuleCodes is required"
 }
 
 $CheckParams = @{
@@ -66,7 +88,19 @@ $CheckParams = @{
 	TenantId = "$TenantId"
 	ClientApplicationId = "$ApplicationId"
 	ClientApplicationSecret = ConvertTo-SecureString "$ApplicationSecret" -AsPlainText -Force
-	Ruleset = $rulesetToUse
+}
+if ($rulesetToUse)
+{
+    $CheckParams.Ruleset = $rulesetToUse
+}
+if ($rules)
+{
+    $CheckParams.Rule = $rules
+}
+
+if ($ExcludedFiles)
+{
+    $CheckParams.ExcludedFileNamePattern = $ExcludedFiles
 }
 
 $response = Invoke-PowerAppsChecker @CheckParams
