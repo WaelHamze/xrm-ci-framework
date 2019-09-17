@@ -27,8 +27,13 @@
     <file src="bin\release\Microsoft.Xrm.Tooling.Connector.dll" target="tools" />
     <file src="bin\release\Microsoft.Rest.ClientRuntime.dll" target="tools" />
     <file src="bin\release\Microsoft.IdentityModel.Clients.ActiveDirectory.dll" target="tools" />
-    <file src="bin\release\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll" target="tools" />
+    <file src="bin\release\Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll" target="tools" />
     <file src="bin\release\Microsoft.Xrm.Sdk.Deployment.dll" target="tools" />
+    <file src="bin\release\System.Net.Http.dll" target="tools" />
+    <file src="bin\release\System.Security.Cryptography.Algorithms.dll" target="tools" />
+    <file src="bin\release\System.Security.Cryptography.Encoding.dll" target="tools" />
+    <file src="bin\release\System.Security.Cryptography.Primitives.dll" target="tools" />
+    <file src="bin\release\System.Security.Cryptography.X509Certificates.dll" target="tools" />
     <file src="bin\release\Newtonsoft.Json.dll" target="tools" />
     <file src="bin\release\DataXmlTransform.xslt" target="tools" />
     <file src="*.psd1" target="tools" />

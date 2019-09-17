@@ -52,7 +52,6 @@
     <Content Include="bin\coretools\CrmSvcUtil.xml" />
     <Content Include="bin\coretools\Microsoft.Crm.Sdk.Proxy.dll" />
     <Content Include="bin\coretools\Microsoft.IdentityModel.Clients.ActiveDirectory.dll" />
-    <Content Include="bin\coretools\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll" />
     <Content Include="bin\coretools\Microsoft.Rest.ClientRuntime.dll" />
     <Content Include="bin\coretools\Microsoft.Xrm.Sdk.Deployment.dll" />
     <Content Include="bin\coretools\Microsoft.Xrm.Sdk.dll" />
@@ -62,13 +61,16 @@
     <Content Include="bin\coretools\Newtonsoft.Json.dll" />
     <Content Include="bin\coretools\Other Redistributable.txt" />
     <Content Include="bin\coretools\SolutionPackager.exe" />
+    <Content Include="bin\coretools\SolutionPackagerLib.dll" />
     <Content Include="bin\coretools\System.ValueTuple.dll" />
   </ItemGroup>
   <ItemGroup>
     <None Include="bin\coretools\CrmSvcUtil.exe.config" />
     <None Include="bin\coretools\LicenseTerms.docx" />
     <None Include="bin\coretools\SolutionPackager.exe.config" />
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -303,3 +303,9 @@ BuildTools/Lib/xRMCIFramework/9.0.0/
 /MSDYNV9/Xrm.Framework.CI/Xrm.Framework.CI.PowerShell.Scripts/Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll
 /MSDYNV9/Xrm.Framework.CI/Xrm.Framework.CI.PowerShell.Scripts/Microsoft.IdentityModel.Clients.ActiveDirectory.dll
 /MSDYNV9/Xrm.Framework.CI/Xrm.Framework.CI.PowerShell.Scripts/Microsoft.Crm.Sdk.Proxy.dll
+/MSDYNV9/Xrm.Framework.CI/Xrm.Framework.CI.PowerShell.Scripts/System.Security.Cryptography.X509Certificates.dll
+/MSDYNV9/Xrm.Framework.CI/Xrm.Framework.CI.PowerShell.Scripts/System.Security.Cryptography.Primitives.dll
+/MSDYNV9/Xrm.Framework.CI/Xrm.Framework.CI.PowerShell.Scripts/System.Security.Cryptography.Encoding.dll
+/MSDYNV9/Xrm.Framework.CI/Xrm.Framework.CI.PowerShell.Scripts/System.Security.Cryptography.Algorithms.dll
+/MSDYNV9/Xrm.Framework.CI/Xrm.Framework.CI.PowerShell.Scripts/System.Net.Http.dll
+/MSDYNV9/Xrm.Framework.CI/Xrm.Framework.CI.PowerShell.Scripts/Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll
