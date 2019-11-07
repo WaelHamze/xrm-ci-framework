@@ -44,7 +44,7 @@ namespace Xrm.Framework.CI.Common.IntegrationTests
         [TestMethod]
         public void TestSort()
         {
-            string folder = @"C:\Src\dyn365-ce-devops-sample\Sample\Xrm.CI.Framework.Sample\Data";
+            string folder = @"C:\Src\dyn365-ce-devops-sample\Sample\Xrm.CI.Framework.Sample\Data\Data";
 
             TestLogger logger = new TestLogger();
             ConfigurationMigrationManager manager = new ConfigurationMigrationManager(logger);

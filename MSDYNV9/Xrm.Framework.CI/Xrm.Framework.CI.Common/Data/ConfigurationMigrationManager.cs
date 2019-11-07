@@ -228,6 +228,8 @@ namespace Xrm.Framework.CI.Common
             XElement entitiesNode;
             List<string> entityNames = new List<string>();
 
+            XmlWriterSettings settings = new XmlWriterSettings { Indent = true };
+
             using (var reader = new StreamReader(dataXml))
             {
                 entitiesNode = XElement.Load(reader);
@@ -242,7 +244,7 @@ namespace Xrm.Framework.CI.Common
 
                     string outputFile = $"{dataXmlInfo.Directory.FullName}\\{entityName}_data.xml";
 
-                    using (XmlWriter writer = XmlWriter.Create(outputFile))
+                    using (XmlWriter writer = XmlWriter.Create(outputFile, settings))
                     {
                         entityNode.WriteTo(writer);
                     }
@@ -266,7 +268,7 @@ namespace Xrm.Framework.CI.Common
 
             entitiesNode.RemoveNodes();
     
-            using (XmlWriter writer = XmlWriter.Create(dataXml))
+            using (XmlWriter writer = XmlWriter.Create(dataXml, settings))
             {
                 entitiesNode.WriteTo(writer);
             }
