@@ -154,7 +154,7 @@ if ($operation.Errors.Count -gt 0)
     throw "Errors encountered : $errorMessage"
 }
 
-if ($WaitForCompletion -and ($OperationStatus -ne "Succeeded"))
+if ($WaitForCompletion -and ($operation.OperationId -ne [system.guid]::empty)  -and ($OperationStatus -ne "Succeeded"))
 {
 	Write-Verbose "Waiting for AsyncOperation to complete"
 
@@ -172,8 +172,9 @@ else
 	Write-Verbose "Skipped waiting for Async Operation"
 }
 
-if ($WaitForCompletion)
-{
+#Removed code below as sometimes instances get created with numbers appended to name like [instancename]0
+if ($WaitForCompletion -and $false)
+{	
 	#Sometimes instance is created but the API still returns NOT FOUND (no other instances available).
 	#Added this delay to give chance for operation to progress.
 

@@ -64,7 +64,7 @@ $OperationId = $operation.OperationId
 $OperationStatus = $operation.Status
 
 Write-Output "OperationId = $OperationId"
-Write-Verbose "Status = $OperationStatus"
+Write-Host "Status = $OperationStatus"
 
 if ($operation.Errors.Count -gt 0)
 {
@@ -72,7 +72,7 @@ if ($operation.Errors.Count -gt 0)
     throw "Errors encountered : $errorMessage"
 }
 
-if ($WaitForCompletion)
+if ($WaitForCompletion -and ($operation.OperationId -ne [system.guid]::empty) -and ($OperationStatus -ne "Succeeded"))
 {
 	$status = Wait-XrmOperation -ApiUrl $ApiUrl -Cred $Cred -operationId $operation.OperationId
 
@@ -83,6 +83,8 @@ if ($WaitForCompletion)
 		throw "Operation status: $status.Status"
 	}
 }
+
+Write-Host "Instance Deleted: $InstanceName " + $instance.Id
 
 Write-Verbose 'Leaving DeleteOnlineInstance.ps1'
 
