@@ -152,7 +152,7 @@ namespace Xrm.Framework.CI.Common
             string tempDataDirectory = $"{Path.GetTempPath()}\\{Guid.NewGuid()}";
             DirectoryInfo tempDataInfo = new DirectoryInfo(dataFolder);
 
-            Directory.CreateDirectory(tempDataDirectory);
+            var tempDataDirectoryInfo = Directory.CreateDirectory(tempDataDirectory);
 
             foreach (FileInfo info in dataInfo.GetFiles())
             {
@@ -192,7 +192,7 @@ namespace Xrm.Framework.CI.Common
                 entitiesNode.WriteTo(writer);
             }
 
-            foreach (FileInfo entityInfo in tempDataInfo.GetFiles("*_data.xml"))
+            foreach (FileInfo entityInfo in tempDataDirectoryInfo.GetFiles("*_data.xml"))
             {
                 entityInfo.Delete();
             }
