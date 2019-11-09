@@ -8,6 +8,7 @@ param(
 [string]$PackageDirectory,
 [string]$LogsDirectory = '',
 [string]$PackageDeploymentPath,
+[string]$ToolingConnectorModulePath,
 [string]$Timeout = '00:30:00', #optional timeout for Import-CrmPackage, default to 1 hour and 20 min. See https://technet.microsoft.com/en-us/library/dn756301.aspx
 [int]$CrmConnectionTimeout = 2, 
 [string]$RuntimePackageSettings,
@@ -23,6 +24,7 @@ Write-Verbose "CrmConnectionString = $CrmConnectionString"
 Write-Verbose "PackageName = $PackageName"
 Write-Verbose "PackageDirectory = $PackageDirectory"
 Write-Verbose "LogsDirectory = $LogsDirectory"
+Write-Verbose "ToolingConnectorModulePath = $ToolingConnectorModulePath"
 Write-Verbose "PackageDeploymentPath = $PackageDeploymentPath"
 Write-Verbose "Timeout = $Timeout"
 Write-Verbose "CrmConnectionTimeout = $CrmConnectionTimeout"
@@ -41,9 +43,13 @@ Write-Verbose "Script Path: $scriptPath"
 $crmToolingConnector = $scriptPath + "\Microsoft.Xrm.Tooling.CrmConnector.Powershell.dll"
 $crmToolingDeployment = $scriptPath + "\Microsoft.Xrm.Tooling.PackageDeployment.Powershell.dll"
 
+
+if($ToolingConnectorModulePath)
+{
+	$crmToolingConnector = $ToolingConnectorModulePath + "\Microsoft.Xrm.Tooling.CrmConnector.Powershell.dll"
+}
 if ($PackageDeploymentPath)
 {
-	$crmToolingConnector = $PackageDeploymentPath + "\Microsoft.Xrm.Tooling.CrmConnector.Powershell.dll"
 	$crmToolingDeployment = $PackageDeploymentPath + "\Microsoft.Xrm.Tooling.PackageDeployment.Powershell.dll"
 }
 
