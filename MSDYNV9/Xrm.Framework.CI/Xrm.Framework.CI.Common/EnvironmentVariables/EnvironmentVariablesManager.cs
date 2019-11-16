@@ -40,7 +40,7 @@ namespace Xrm.Framework.CI.Common
 
             if (env != null)
             {
-                Logger.LogVerbose("Returning EnvironmentVariableValue record found with Id = {0}", env.Id);
+                Logger.LogInformation("Returning EnvironmentVariableValue record found with Id = {0}", env.Id);
                 return env.Value;
             }
             else
@@ -67,11 +67,11 @@ namespace Xrm.Framework.CI.Common
                     update.Value = value;
                     OrganizationService.Update(update);
 
-                    Logger.LogInformation("Updated EnvironmentVariableValue Id ={0} for EnvironmentVariableDefinition with SchemeName {0}", current.Id, name);
+                    Logger.LogInformation("Updated EnvironmentVariableValue Id ={0} for EnvironmentVariableDefinition with SchemeName {1}", current.Id, name);
                 }
                 else
                 {
-                    Logger.LogInformation("Skipped Update EnvironmentVariableValue Id ={0} for EnvironmentVariableDefinition with SchemeName {0} as values are same", current.Id, name);
+                    Logger.LogInformation("Skipped Update EnvironmentVariableValue Id ={0} for EnvironmentVariableDefinition with SchemeName {1} as values are same", current.Id, name);
                 }
             }
             else
@@ -88,7 +88,7 @@ namespace Xrm.Framework.CI.Common
                 create.EnvironmentVariableDefinitionId = definition.ToEntityReference();
                 Guid Id = OrganizationService.Create(create);
 
-                Logger.LogInformation("Created EnvironmentVariableValue Id ={0} for EnvironmentVariableDefinition with SchemeName {0}", Id, name);
+                Logger.LogInformation("Created EnvironmentVariableValue Id ={0} for EnvironmentVariableDefinition with SchemeName {1}", Id, name);
             }
         }
 
