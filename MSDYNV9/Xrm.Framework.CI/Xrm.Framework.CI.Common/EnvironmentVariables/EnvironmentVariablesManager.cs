@@ -34,17 +34,26 @@ namespace Xrm.Framework.CI.Common
 
         public string GetValue(string name)
         {
+            Logger.LogVerbose("Getting EnvironmentVariableValue for EnvironmentVariableDefinition with SchemeName {0}", name);
+
             EnvironmentVariableValue env = GetValueRecord(name);
 
             if (env != null)
             {
+                Logger.LogVerbose("Returning EnvironmentVariableValue record found with Id = {0}", env.Id);
                 return env.Value;
             }
-            return null;
+            else
+            {
+                Logger.LogInformation("No EnvironmentVariableValue record found for EnvironmentVariableDefinition with SchemeName {0}", name);
+                return null;
+            }
         }
 
         public void SetValue(string name, string value)
         {
+            Logger.LogVerbose("Setting EnvironmentVariableValue for EnvironmentVariableDefinition with SchemeName {0}", name);
+
             EnvironmentVariableValue current = GetValueRecord(name);
 
             if (current != null)
@@ -55,6 +64,8 @@ namespace Xrm.Framework.CI.Common
                 update.Id = current.Id;
                 update.Value = value;
                 OrganizationService.Update(update);
+
+                Logger.LogInformation("Updated EnvironmentVariableValue Id ={0} for EnvironmentVariableDefinition with SchemeName {0}", current.Id, name);
             }
             else
             {
@@ -69,21 +80,33 @@ namespace Xrm.Framework.CI.Common
                 create.Value = value;
                 create.EnvironmentVariableDefinitionId = definition.ToEntityReference();
                 Guid Id = OrganizationService.Create(create);
+
+                Logger.LogInformation("Created EnvironmentVariableValue Id ={0} for EnvironmentVariableDefinition with SchemeName {0}", Id, name);
             }
         }
 
         public void DeleteValue(string name)
         {
+            Logger.LogVerbose("Deleting EnvironmentVariableValue for EnvironmentVariableDefinition with SchemeName {0}", name);
+
             EnvironmentVariableValue current = GetValueRecord(name);
 
             if (current != null)
             {
+                Logger.LogVerbose("Deleting EnvironmentVariableValue with Id = {0}", current.Id);
                 OrganizationService.Delete(current.LogicalName, current.Id);
+                Logger.LogInformation("Deleted EnvironmentVariableValue with Id = {0}", current.Id);
+            }
+            else
+            {
+                Logger.LogInformation("Skipping Delete as no EnvironmentVariableValue found  for EnvironmentVariableDefinition with SchemeName {0}", name);
             }
         }
 
         private EnvironmentVariableDefinition GetDefinitionRecord(string name)
         {
+            Logger.LogVerbose("Retrieving EnvironmentVariableDefinition with SchemeName {0}", name);
+
             using (var context = new CIContext(OrganizationService))
             {
                 var query = from def in context.EnvironmentVariableDefinitionSet
@@ -94,10 +117,12 @@ namespace Xrm.Framework.CI.Common
 
                 if (definitions.Count == 0)
                 {
+                    Logger.LogVerbose("No EnvironmentVariableDefinition records found");
                     return null;
                 }
                 else if (definitions.Count == 1)
                 {
+                    Logger.LogVerbose("EnvironmentVariableDefinition record found with Id = {0}", definitions[0].Id);
                     return definitions[0];
                 }
                 else
@@ -109,6 +134,8 @@ namespace Xrm.Framework.CI.Common
 
         private EnvironmentVariableValue GetValueRecord(string name)
         {
+            Logger.LogVerbose("Retrieving EnvironmentVariableValue for EnvironmentVariableDefinition with SchemeName {0}", name);
+
             using (var context = new CIContext(OrganizationService))
             {
                 var query = from env in context.EnvironmentVariableValueSet
@@ -121,10 +148,13 @@ namespace Xrm.Framework.CI.Common
 
                 if (values.Count == 0)
                 {
+                    Logger.LogVerbose("No EnvironmentVariableValue records found");
+
                     return null;
                 }
                 else if (values.Count == 1)
                 {
+                    Logger.LogVerbose("EnvironmentVariableValue record found with Id = {0}", values[0].Id);
                     return values[0];
                 }
                 else
