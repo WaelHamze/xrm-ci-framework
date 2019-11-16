@@ -108,6 +108,7 @@
     <Compile Include="Data\ConfigDataManager.cs" />
     <Compile Include="Entities\Entities.cs" />
     <Compile Include="Entities\OptionSets.cs" />
+    <Compile Include="EnvironmentVariables\EnvironmentVariablesManager.cs" />
     <Compile Include="ImportJobManager.cs" />
     <Compile Include="Logging\ILogger.cs" />
     <Compile Include="PluginRegistration\Assembly.cs" />

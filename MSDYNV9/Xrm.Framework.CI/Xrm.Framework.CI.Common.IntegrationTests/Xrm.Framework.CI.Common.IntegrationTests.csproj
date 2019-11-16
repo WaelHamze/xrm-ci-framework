@@ -115,6 +115,7 @@
   <ItemGroup>
     <Compile Include="ConfigurationMigrationTest.cs" />
     <Compile Include="ConnectionConfigManagerTest.cs" />
+    <Compile Include="EnvironmentVariables.cs" />
     <Compile Include="ExportSolution.cs" />
     <Compile Include="SolutionComponents.cs" />
     <Compile Include="ManagePatches.cs" />
