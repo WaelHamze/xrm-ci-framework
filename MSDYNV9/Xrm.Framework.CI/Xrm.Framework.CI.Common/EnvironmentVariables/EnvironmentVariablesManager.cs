@@ -58,14 +58,21 @@ namespace Xrm.Framework.CI.Common
 
             if (current != null)
             {
-                current.Value = value;
+                if (current.Value != value)
+                {
+                    current.Value = value;
 
-                EnvironmentVariableValue update = new EnvironmentVariableValue();
-                update.Id = current.Id;
-                update.Value = value;
-                OrganizationService.Update(update);
+                    EnvironmentVariableValue update = new EnvironmentVariableValue();
+                    update.Id = current.Id;
+                    update.Value = value;
+                    OrganizationService.Update(update);
 
-                Logger.LogInformation("Updated EnvironmentVariableValue Id ={0} for EnvironmentVariableDefinition with SchemeName {0}", current.Id, name);
+                    Logger.LogInformation("Updated EnvironmentVariableValue Id ={0} for EnvironmentVariableDefinition with SchemeName {0}", current.Id, name);
+                }
+                else
+                {
+                    Logger.LogInformation("Skipped Update EnvironmentVariableValue Id ={0} for EnvironmentVariableDefinition with SchemeName {0} as values are same", current.Id, name);
+                }
             }
             else
             {

@@ -68,6 +68,7 @@
     <Compile Include="SetTlsVersion.ps1" />
     <Compile Include="GetSolutionMissingComponents.ps1" />
     <Compile Include="SplitPluginAssembly.ps1" />
+    <Compile Include="UpdateEnvironmentVariables.ps1" />
     <Compile Include="UpdateDevloperToolkitWebResources.ps1" />
     <Compile Include="UpdateFoldersWebResources.ps1" />
     <Compile Include="UpdatePluginAssembly.ps1" />
