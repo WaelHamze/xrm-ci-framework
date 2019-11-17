@@ -150,6 +150,9 @@
     <None Include="Schema\ExportSolutionsExample.json" />
     <None Include="Schema\ImportSolutionsExample.json" />
     <None Include="Schema\PackSolutionsExample.json" />
+    <None Include="Xrm.Framework.CI.Common.nuspec">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -159,6 +162,7 @@
     <Content Include="Entities\EarlyBoundGenerator.Settings.xml">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="readme.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
