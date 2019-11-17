@@ -57,9 +57,11 @@ switch ($DescriptionUpdateMethod.ToUpperInvariant()) {
 #Update the description
 Write-Host "Updating solution description to:"
 Write-Host "$updatedDescriptionValue"
-$solution.EntityState = "Changed"
-$solution.Description = $updatedDescriptionValue
-Set-XrmEntity -ConnectionString $CrmConnectionString -EntityObject $solution
+
+$updateSolution = New-XrmEntity -EntityName "solution"
+$updateSolution.Id = $solution.Id
+$updateSolution["description"] = $updatedDescriptionValue
+Set-XrmEntity -ConnectionString $CrmConnectionString -EntityObject $updateSolution
 Write-Host "Solution description updated"
 
 Write-Verbose 'Leaving UpdateSolutionDescriptionInCRM.ps1'
