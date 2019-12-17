@@ -2,6 +2,7 @@ using Microsoft.Crm.Sdk.Messages;
 using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Messages;
 using Microsoft.Xrm.Sdk.Metadata;
+using Microsoft.Xrm.Sdk.Query;
 
 namespace Xrm.Framework.CI.Common
 {
@@ -47,5 +48,31 @@ namespace Xrm.Framework.CI.Common
                 OptionSetName = optionSetName,
                 Value = value
             });
+
+        public static int? GetEntityTypeCode(this IOrganizationService service, string entity) =>
+            ((RetrieveEntityResponse)service.Execute(new RetrieveEntityRequest
+            {
+                LogicalName = entity,
+                EntityFilters = EntityFilters.Entity
+            })).EntityMetadata.ObjectTypeCode;
+
+        public static void Upsert(this IOrganizationService service, Entity target)
+        {
+            var test = service.RetrieveMultiple(new QueryByAttribute
+            {
+                EntityName = target.LogicalName,
+                Attributes = { target.LogicalName + "id" },
+                Values = { target.Id }
+            });
+
+            if (test.Entities.Count == 0)
+            {
+                service.Create(target);
+            }
+            else
+            {
+                service.Update(target);
+            }
+        }
     }
 }

@@ -4,7 +4,7 @@
   <CrmSvcUtilRelativePath>DLaB.EarlyBoundGenerator\crmsvcutil.exe</CrmSvcUtilRelativePath>
   <IncludeCommandLine>false</IncludeCommandLine>
   <MaskPassword>true</MaskPassword>
-  <SettingsVersion>1.2018.10.15</SettingsVersion>
+  <SettingsVersion>1.2019.10.27</SettingsVersion>
   <Version>1.2019.10.27</Version>
   <ExtensionConfig>
     <ActionPrefixesWhitelist />
@@ -17,7 +17,7 @@
     <CreateOneFilePerOptionSet>false</CreateOneFilePerOptionSet>
     <DeleteFilesFromOutputFolders>false</DeleteFilesFromOutputFolders>
     <EntitiesToSkip />
-    <EntitiesWhitelist>bulkdeleteoperation|dependency|duplicaterule|environmentvariabledefinition|environmentvariablevalue|importjob|pluginassembly|plugintype|workflow|sdkmessage|sdkmessagefilter|sdkmessageprocessingstep|sdkmessageprocessingstepimage|serviceendpoint|solution|solutioncomponent|solutionhistorydata|systemform|asyncoperation|systemuser|webresource</EntitiesWhitelist>
+    <EntitiesWhitelist>bulkdeleteoperation|dependency|documenttemplate|duplicaterule|environmentvariabledefinition|environmentvariablevalue|importjob|pluginassembly|plugintype|workflow|sdkmessage|sdkmessagefilter|sdkmessageprocessingstep|sdkmessageprocessingstepimage|serviceendpoint|solution|solutioncomponent|solutionhistorydata|systemform|asyncoperation|systemuser|webresource</EntitiesWhitelist>
     <EntityAttributeSpecifiedNames />
     <EntityPrefixesToSkip />
     <EntityPrefixesWhitelist />
@@ -34,7 +34,7 @@
     <MakeResponseActionsEditable>false</MakeResponseActionsEditable>
     <LocalOptionSetFormat>{0}_{1}</LocalOptionSetFormat>
     <OptionSetPrefixesToSkip />
-    <OptionSetsToSkip />
+    <OptionSetsToSkip>duplicaterule_baseentitytypecode|duplicaterule_matchingentitytypecode</OptionSetsToSkip>
     <OptionSetLanguageCodeOverride
       xsi:nil="true" />
     <ProjectNameForEarlyBoundFiles />
