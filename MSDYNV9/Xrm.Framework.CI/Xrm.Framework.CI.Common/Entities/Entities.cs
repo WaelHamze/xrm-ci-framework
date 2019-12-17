@@ -1524,6 +1524,358 @@ namespace Xrm.Framework.CI.Common.Entities
 		}
 	}
 	
+	/// <summary>
+	/// Used to store Document Templates in database in binary format.
+	/// </summary>
+	[System.Runtime.Serialization.DataContractAttribute()]
+	[Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute("documenttemplate")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.0.0.9479")]
+	public partial class DocumentTemplate : Microsoft.Xrm.Sdk.Entity, System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
+	{
+		
+		/// <summary>
+		/// Default Constructor.
+		/// </summary>
+		public DocumentTemplate() : 
+				base(EntityLogicalName)
+		{
+		}
+		
+		public const string EntityLogicalName = "documenttemplate";
+		
+		public const string EntitySchemaName = "DocumentTemplate";
+		
+		public const string PrimaryIdAttribute = "documenttemplateid";
+		
+		public const string PrimaryNameAttribute = "name";
+		
+		public const int EntityTypeCode = 9940;
+		
+		public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+		
+		public event System.ComponentModel.PropertyChangingEventHandler PropertyChanging;
+		
+		private void OnPropertyChanged(string propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void OnPropertyChanging(string propertyName)
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, new System.ComponentModel.PropertyChangingEventArgs(propertyName));
+			}
+		}
+		
+		/// <summary>
+		/// Associated Entity Type Code.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("associatedentitytypecode")]
+		public string AssociatedEntityTypeCode
+		{
+			get
+			{
+				return this.GetAttributeValue<string>("associatedentitytypecode");
+			}
+			set
+			{
+				this.OnPropertyChanging("AssociatedEntityTypeCode");
+				this.SetAttributeValue("associatedentitytypecode", value);
+				this.OnPropertyChanged("AssociatedEntityTypeCode");
+			}
+		}
+		
+		/// <summary>
+		/// Client data regarding this document template.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("clientdata")]
+		public string ClientData
+		{
+			get
+			{
+				return this.GetAttributeValue<string>("clientdata");
+			}
+			set
+			{
+				this.OnPropertyChanging("ClientData");
+				this.SetAttributeValue("clientdata", value);
+				this.OnPropertyChanged("ClientData");
+			}
+		}
+		
+		/// <summary>
+		/// Bytes of the document template.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("content")]
+		public string Content
+		{
+			get
+			{
+				return this.GetAttributeValue<string>("content");
+			}
+			set
+			{
+				this.OnPropertyChanging("Content");
+				this.SetAttributeValue("content", value);
+				this.OnPropertyChanged("Content");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the user who created the document template.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
+		public Microsoft.Xrm.Sdk.EntityReference CreatedBy
+		{
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("createdby");
+			}
+		}
+		
+		/// <summary>
+		/// Date and time when the document template was created.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdon")]
+		public System.Nullable<System.DateTime> CreatedOn
+		{
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("createdon");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the delegate user who created the document template.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
+		public Microsoft.Xrm.Sdk.EntityReference CreatedOnBehalfBy
+		{
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("createdonbehalfby");
+			}
+			set
+			{
+				this.OnPropertyChanging("CreatedOnBehalfBy");
+				this.SetAttributeValue("createdonbehalfby", value);
+				this.OnPropertyChanged("CreatedOnBehalfBy");
+			}
+		}
+		
+		/// <summary>
+		/// Additional information to describe the Document Template
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("description")]
+		public string Description
+		{
+			get
+			{
+				return this.GetAttributeValue<string>("description");
+			}
+			set
+			{
+				this.OnPropertyChanging("Description");
+				this.SetAttributeValue("description", value);
+				this.OnPropertyChanged("Description");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the document template.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("documenttemplateid")]
+		public System.Nullable<System.Guid> DocumentTemplateId
+		{
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("documenttemplateid");
+			}
+			set
+			{
+				this.OnPropertyChanging("DocumentTemplateId");
+				this.SetAttributeValue("documenttemplateid", value);
+				if (value.HasValue)
+				{
+					base.Id = value.Value;
+				}
+				else
+				{
+					base.Id = System.Guid.Empty;
+				}
+				this.OnPropertyChanged("DocumentTemplateId");
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("documenttemplateid")]
+		public override System.Guid Id
+		{
+			get
+			{
+				return base.Id;
+			}
+			set
+			{
+				this.DocumentTemplateId = value;
+			}
+		}
+		
+		/// <summary>
+		/// Option set for selecting the type of the document template
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("documenttype")]
+		public Microsoft.Xrm.Sdk.OptionSetValue DocumentType
+		{
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("documenttype");
+			}
+			set
+			{
+				this.OnPropertyChanging("DocumentType");
+				this.SetAttributeValue("documenttype", value);
+				this.OnPropertyChanged("DocumentType");
+			}
+		}
+		
+		/// <summary>
+		/// Language of Document Template.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("languagecode")]
+		public System.Nullable<int> LanguageCode
+		{
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("languagecode");
+			}
+			set
+			{
+				this.OnPropertyChanging("LanguageCode");
+				this.SetAttributeValue("languagecode", value);
+				this.OnPropertyChanged("LanguageCode");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the user who last modified the document template.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
+		public Microsoft.Xrm.Sdk.EntityReference ModifiedBy
+		{
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("modifiedby");
+			}
+		}
+		
+		/// <summary>
+		/// Date and time when the document template was last modified.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedon")]
+		public System.Nullable<System.DateTime> ModifiedOn
+		{
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("modifiedon");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the delegate user who modified the document template.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
+		public Microsoft.Xrm.Sdk.EntityReference ModifiedOnBehalfBy
+		{
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("modifiedonbehalfby");
+			}
+			set
+			{
+				this.OnPropertyChanging("ModifiedOnBehalfBy");
+				this.SetAttributeValue("modifiedonbehalfby", value);
+				this.OnPropertyChanged("ModifiedOnBehalfBy");
+			}
+		}
+		
+		/// <summary>
+		/// Name of the document template.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("name")]
+		public string Name
+		{
+			get
+			{
+				return this.GetAttributeValue<string>("name");
+			}
+			set
+			{
+				this.OnPropertyChanging("Name");
+				this.SetAttributeValue("name", value);
+				this.OnPropertyChanged("Name");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the organization associated with the web resource.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("organizationid")]
+		public Microsoft.Xrm.Sdk.EntityReference OrganizationId
+		{
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("organizationid");
+			}
+		}
+		
+		/// <summary>
+		/// Information about whether the document template is active.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("status")]
+		public System.Nullable<bool> Status
+		{
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("status");
+			}
+			set
+			{
+				this.OnPropertyChanging("Status");
+				this.SetAttributeValue("status", value);
+				this.OnPropertyChanged("Status");
+			}
+		}
+		
+		/// <summary>
+		/// 
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("versionnumber")]
+		public System.Nullable<long> VersionNumber
+		{
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<long>>("versionnumber");
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("documenttype")]
+		public virtual DocumentTemplate_DocumentType? DocumentTypeEnum
+		{
+			get
+			{
+				return ((DocumentTemplate_DocumentType?)(EntityOptionSetEnum.GetEnum(this, "documenttype")));
+			}
+			set
+			{
+				DocumentType = value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null;
+			}
+		}
+	}
+	
 	[System.Runtime.Serialization.DataContractAttribute()]
 	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.0.0.9479")]
 	public enum DuplicateRuleState
@@ -13596,6 +13948,17 @@ namespace Xrm.Framework.CI.Common.Entities
 			get
 			{
 				return this.CreateQuery<Xrm.Framework.CI.Common.Entities.Dependency>();
+			}
+		}
+		
+		/// <summary>
+		/// Gets a binding to the set of all <see cref="Xrm.Framework.CI.Common.Entities.DocumentTemplate"/> entities.
+		/// </summary>
+		public System.Linq.IQueryable<Xrm.Framework.CI.Common.Entities.DocumentTemplate> DocumentTemplateSet
+		{
+			get
+			{
+				return this.CreateQuery<Xrm.Framework.CI.Common.Entities.DocumentTemplate>();
 			}
 		}
 		
