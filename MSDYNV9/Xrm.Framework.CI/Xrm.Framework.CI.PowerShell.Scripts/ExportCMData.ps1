@@ -64,6 +64,6 @@ If ($logsDirectory)
 	$exportParams.LogWriteDirectory = $logsDirectory
 }
 
-Export-CrmDataFile @exportParams -Verbose
+Export-CrmDataFile @exportParams -EmitLogToConsole -Verbose
 
 Write-Verbose 'Leaving ExporCMtData.ps1'

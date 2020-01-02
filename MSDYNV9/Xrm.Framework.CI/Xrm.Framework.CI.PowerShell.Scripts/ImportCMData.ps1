@@ -12,7 +12,9 @@ param(
 [string]$configurationMigrationModulePath, #The full path to the Configuration Migration PowerShell Module
 [string]$toolingConnectorModulePath, #The full path to the Tooling Connector PowerShell Module
 [int]$concurrentThreads, #Set the number of concurrent threads
-[string]$userMapFile #User mapping file xml for on-premise deployments
+[string]$userMapFile, #User mapping file xml for on-premise deployments
+[bool]$enabledBatchMode, #Instructs CMT to import into CDS using batches
+[int]$batchSize = 600 #Batch size
 ) 
 
 $ErrorActionPreference = "Stop"
@@ -29,6 +31,8 @@ Write-Verbose "concurrentThreads = $concurrentThreads"
 Write-Verbose "configurationMigrationModulePath = $configurationMigrationModulePath"
 Write-Verbose "toolingConnectorModulePath = $toolingConnectorModulePath"
 Write-Verbose "userMapFile = $userMapFile"
+Write-Verbose "enabledBatchMode = $enabledBatchMode"
+Write-Verbose "batchSize = $batchSize"
 
 #Script Location
 $scriptPath = split-path -parent $MyInvocation.MyCommand.Definition
@@ -72,7 +76,12 @@ if ($userMapFile)
 {
 	$importParams.UserMapFile = "$userMapFile"
 }
+if ($enabledBatchMode)
+{
+	$importParams.EnabledBatchMode = $enabledBatchMode
+	$importParams.BatchSize = $batchSize
+}
 
-Import-CrmDataFile @importParams -Verbose
+Import-CrmDataFile @importParams -EmitLogToConsole -Verbose
 
 Write-Verbose 'Leaving ImportCMData.ps1'
