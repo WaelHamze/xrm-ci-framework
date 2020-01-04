@@ -12,6 +12,7 @@ param(
 [string]$Ruleset , #The ruleset to be used when checking
 [string[]]$RuleCodes, #The Ids of the rules used when checking
 [string[]]$ExcludedFiles, #The Files/Patterns to be excluded from scanning
+[string]$RuleOverridesJson, #Json string containing rule overrides
 [string]$Geography, #The regional endpoint to hit
 [string]$PowerAppsCheckerPath, #The full path to the PowerApp Checker PowerShell Module
 [bool]$EnableThresholds, #Enables threshold checks
@@ -36,6 +37,7 @@ Write-Verbose "ApplicationId = $ApplicationId"
 Write-Verbose "Ruleset = $Ruleset"
 Write-Verbose "RuleCodes = $RuleCodes"
 Write-Verbose "ExcludedFiles = $ExcludedFiles"
+Write-Verbose "RuleOverridesJson = $RuleOverridesJson"
 Write-Verbose "Geography = $Geography"
 Write-Verbose "PowerAppsCheckerPath = $PowerAppsCheckerPath"
 
@@ -103,6 +105,36 @@ if ($ExcludedFiles)
     $CheckParams.ExcludedFileNamePattern = $ExcludedFiles
 }
 
+if ($RuleOverridesJson)
+{
+	$overrides = @()
+	
+	#load json string into array
+	$array = ConvertFrom-Json $RuleOverridesJson
+
+	Write-Verbose ("Adding ({0}) Rule Overrides" -f $array.Count)
+	
+	#iterate through the configuration items and set secure configuration
+	For ($i=0; $i -lt $array.Count; $i++)
+	{
+		$ruleId = $array[$i][0]
+		$level = $array[$i][1]
+		
+		Write-Host "Adding override : $ruleId $level"
+
+		$override = New-PowerAppsCheckerRuleLevelOverride -Id $ruleId -OverrideLevel $level
+
+		$overrides += $override
+	}
+
+	if ($overrides.Count -gt 0)
+	{
+		$CheckParams.RuleLevelOverrides = $overrides
+
+		Write-Host ("Added ({0}) Rule Overrides" -f $overrides.Count)
+	}
+}
+
 $response = Invoke-PowerAppsChecker @CheckParams
 
 if( $response)
@@ -136,6 +168,16 @@ if( $response)
 		Write-Host "Low:    $low" -ForegroundColor Green
 		Write-Host "Informational:    $info" -ForegroundColor Green
 		Write-Host "============================================" -ForegroundColor DarkGreen
+
+		$md = "| Severity | Count |  `r`n"
+		$md += "|:-----------|:-----------:|  `r`n"
+		$md += "| Critical | $critical |  `r`n"
+		$md += "| High | $high |  `r`n"
+		$md += "| Medium | $medium |  `r`n"
+		$md += "| Low | $low |  `r`n"
+		$md += "| Informational | $info |  `r`n"
+
+		Set-Content -Path "$OutputPath\CheckerResultsSummary.md" -Value "$md"
 
 		if ($EnableThresholds)
 		{

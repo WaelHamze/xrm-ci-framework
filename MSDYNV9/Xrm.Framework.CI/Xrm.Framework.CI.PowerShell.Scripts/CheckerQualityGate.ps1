@@ -4,12 +4,13 @@
 [CmdletBinding()]
 
 param(
-[string]$ResultsFile, #The absolute path to the solution file zip to be imported
+[string]$ResultsFile, #The absolute path to the results file zip to be analyzed
 [string]$ThresholdAction, # Warn, Error - The type of action to generate when number of issues exceeds threshold limit
 [int]$CriticalThreshold, #Number of critical severity issues
 [int]$HighThreshold, #Number of high severity issues
 [int]$MediumThreshold, #Number of medium severity issues
-[int]$LowThreshold #Number of low severity issues
+[int]$LowThreshold, #Number of low severity issues
+[string]$OutputPath #The full path to where you want results to be stored
 ) 
 
 $ErrorActionPreference = "Stop"
@@ -25,6 +26,22 @@ Write-Verbose "CriticalThreshold = $CriticalThreshold"
 Write-Verbose "HighThreshold = $HighThreshold"
 Write-Verbose "MediumThreshold = $MediumThreshold"
 Write-Verbose "LowThreshold = $LowThreshold"
+Write-Verbose "OutputPath = $OutputPath"
+
+function HighlightThreshold(
+	[int]$count,
+	[int]$threshold
+	)
+	{
+		if ($count -gt $threshold)
+		{
+			return "**$threshold**"
+		}
+		else
+		{
+			return "$threshold"
+		}
+	}
 
 if ($resultsFile)
 {
@@ -61,19 +78,35 @@ if ($resultsFile)
 				$medium = @($jsonContent.runs[0].results | Where-Object { $_.properties.severity -eq "Medium"})
 				$low = @($jsonContent.runs[0].results | Where-Object { $_.properties.severity -eq "Low"})
 				$info = @($jsonContent.runs[0].results | Where-Object { $_.properties.severity -eq "Informational"})
+
+				$criticalCount = $critical.Length
+				$highCount = $high.Length
+				$mediumCount = $medium.Length
+				$lowCount = $low.Length
+				$infoCount = $info.Length
 				
-				Write-Host "Critical: $($critical.length)  Threshold = $CriticalThreshold" -ForegroundColor Green
-				Write-Host "High:     $($high.length)  Threshold = $HighThreshold" -ForegroundColor Green
-				Write-Host "Medium:   $($medium.length)  Threshold = $MediumThreshold" -ForegroundColor Green
-				Write-Host "Low:      $($low.length)  Threshold = $LowThreshold" -ForegroundColor Green
-				Write-Host "Info:     $($info.length)" -ForegroundColor Green
+				Write-Host "Critical: $criticalCount  Threshold = $CriticalThreshold" -ForegroundColor Green
+				Write-Host "High:     $highCount  Threshold = $HighThreshold" -ForegroundColor Green
+				Write-Host "Medium:   $mediumCount  Threshold = $MediumThreshold" -ForegroundColor Green
+				Write-Host "Low:      $lowCount  Threshold = $LowThreshold" -ForegroundColor Green
+				Write-Host "Info:     $infoCount" -ForegroundColor Green
 				Write-Host "============================================" -ForegroundColor DarkGreen
 
+				$md = "| Severity | Count | Threshold |  `r`n"
+				$md += "|:-----------|:-----------:|:-----------:|  `r`n"
+				$md += "| Critical | $criticalCount | $(HighlightThreshold $criticalCount $CriticalThreshold) |  `r`n"
+				$md += "| High | $highCount | $(HighlightThreshold $highCount $HighThreshold) |  `r`n"
+				$md += "| Medium | $mediumCount | $(HighlightThreshold $mediumCount $MediumThreshold) |  `r`n"
+				$md += "| Low | $lowCount | $(HighlightThreshold $lowCount $LowThreshold) |  `r`n"
+				$md += "| Informational | $infoCount | N/A |  `r`n"
+
+				Set-Content -Path "$OutputPath\CheckerThresholdsSummary.md" -Value "$md"
+
 				$breached = (
-							($critical.Length -gt $CriticalThreshold) -or
-							($high.Length -gt $HighThreshold) -or
-							($medium.Length -gt $MediumThreshold) -or
-							($low.Length -gt $LowThreshold)
+							($criticalCount -gt $CriticalThreshold) -or
+							($highCount -gt $HighThreshold) -or
+							($mediumCount -gt $MediumThreshold) -or
+							($lowCount -gt $LowThreshold)
 							)
 					
 				if ($breached)
