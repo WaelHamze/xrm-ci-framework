@@ -71,14 +71,14 @@ namespace Xrm.Framework.CI.Common
 
         private void PrintSdkVersion()
         {
-            string assembly = System.Reflection.Assembly.GetExecutingAssembly().Location;
+            string sdkAssembly = typeof(Microsoft.Xrm.Sdk.Entity).Assembly.Location;
+            string connectorAssembley = typeof(Microsoft.Xrm.Tooling.Connector.CrmServiceClient).Assembly.Location;
 
-            FileInfo info = new FileInfo(assembly);
+            FileInfo sdkInfo = new FileInfo(sdkAssembly);
+            FileInfo connectorInfo = new FileInfo(connectorAssembley);
 
-            string path = info.Directory.FullName;
-
-            string sdkVersion = FileUtilities.GetFileVersion($"{path}\\Microsoft.Xrm.Sdk.dll");
-            string toolingVersion = FileUtilities.GetFileVersion($"{path}\\Microsoft.Xrm.Tooling.Connector.dll");
+            string sdkVersion = FileUtilities.GetFileVersion(sdkInfo.FullName);
+            string toolingVersion = FileUtilities.GetFileVersion(connectorInfo.FullName);
 
             Logger.LogVerbose("Microsoft.Xrm.Sdk.dll - Version : {0}", sdkVersion);
             Logger.LogVerbose("Microsoft.Xrm.Tooling.Connector.dll - Version : {0}", toolingVersion);
