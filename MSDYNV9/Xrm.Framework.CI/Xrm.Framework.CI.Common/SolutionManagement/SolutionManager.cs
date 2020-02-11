@@ -333,10 +333,17 @@ namespace Xrm.Framework.CI.Common
 
             foreach (SolutionImportOptions option in config.Solutions)
             {
-                results.Add(ImportSolution(
+                SolutionImportResult result = ImportSolution(
                     importFolder,
                     logsFolder,
-                    option));
+                    option);
+
+                results.Add(result);
+
+                if (!result.Success)
+                {
+                    break;
+                }
             }
 
             return results;
