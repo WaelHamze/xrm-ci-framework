@@ -147,6 +147,8 @@ namespace Xrm.Framework.CI.Common
                 throw new DirectoryNotFoundException($"{dataFolder} not found");
             }
 
+            Logger.LogVerbose($"Combining Data Files from Dir : {dataFolder}");
+
             DirectoryInfo dataInfo = new DirectoryInfo(dataFolder);
 
             string tempDataDirectory = $"{Path.GetTempPath()}\\{Guid.NewGuid()}";
@@ -154,10 +156,14 @@ namespace Xrm.Framework.CI.Common
 
             var tempDataDirectoryInfo = Directory.CreateDirectory(tempDataDirectory);
 
+            Logger.LogVerbose($"Created Temp Dir : {tempDataDirectoryInfo.FullName}");
+
             foreach (FileInfo info in dataInfo.GetFiles())
             {
                 info.CopyTo($"{tempDataDirectory}\\{info.Name}");
             }
+
+            Logger.LogVerbose($"Copied Data Temp Dir : {tempDataDirectoryInfo.FullName}");
 
             string dataXml = $"{dataFolder}\\data.xml";
 
@@ -180,9 +186,32 @@ namespace Xrm.Framework.CI.Common
                 {
                     using (var entityReader = new StreamReader(entityInfo.FullName))
                     {
+                        Logger.LogInformation($"Processing file: {entityInfo.FullName}");
+
                         XElement entityNode = XElement.Load(entityReader);
 
-                        entitiesNode.Add(entityNode);
+                        string entity = (string)entityNode.Attribute("name");
+
+                        var query = from el in entitiesNode.Elements("entity")
+                                    where (string)el.Attribute("name") == entity
+                                    select el;
+
+                        XElement existingNode = query.FirstOrDefault<XElement>();
+
+                        if (existingNode != null)
+                        {
+                            Logger.LogVerbose($"Replacing node: {entityNode}");
+
+                            existingNode.ReplaceWith(entityNode);
+                        }
+                        else
+                        {
+                            Logger.LogVerbose($"Adding node: {entityNode}");
+
+                            entitiesNode.Add(entityNode);
+                        }
+
+                        Logger.LogInformation($"Processed file: {entityInfo.FullName}");
                     }
                 }
             }
@@ -194,6 +223,8 @@ namespace Xrm.Framework.CI.Common
 
             foreach (FileInfo entityInfo in tempDataDirectoryInfo.GetFiles("*_data.xml"))
             {
+                Logger.LogVerbose($"Deleting file : {entityInfo.FullName}");
+
                 entityInfo.Delete();
             }
 
@@ -264,9 +295,14 @@ namespace Xrm.Framework.CI.Common
                 }
             }
 
-            Logger.LogInformation("Removing entity nodes from data.xml");
+            Logger.LogInformation("Removing entity records from data.xml");
 
-            entitiesNode.RemoveNodes();
+            foreach (XElement entityNode in entitiesNode.Elements())
+            {
+                entityNode.RemoveNodes();
+            }
+
+            //entitiesNode.RemoveNodes();
     
             using (XmlWriter writer = XmlWriter.Create(dataXml, settings))
             {

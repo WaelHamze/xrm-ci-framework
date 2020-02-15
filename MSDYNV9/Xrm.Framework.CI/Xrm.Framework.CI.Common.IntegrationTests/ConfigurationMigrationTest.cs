@@ -16,8 +16,8 @@ namespace Xrm.Framework.CI.Common.IntegrationTests
         [TestMethod]
         public void TestSplitData()
         {
-            string dataZip = @"C:\Src\dyn365-ce-devops-sample\Sample\Xrm.CI.Framework.Sample\Data\export.zip";
-            string folder = @"C:\Src\dyn365-ce-devops-sample\Sample\Xrm.CI.Framework.Sample\Data\Data";
+            string dataZip = @"C:\Temp\TestReferenceData\Extracted\data.zip";
+            string folder = @"C:\Temp\TestReferenceData\Unpacked";
 
             TestLogger logger = new TestLogger();
             ConfigurationMigrationManager manager = new ConfigurationMigrationManager(logger);
@@ -30,15 +30,15 @@ namespace Xrm.Framework.CI.Common.IntegrationTests
         [TestMethod]
         public void TestCombineData()
         {
-            string dataZip = @"C:\Src\dyn365-ce-devops-sample\Sample\Xrm.CI.Framework.Sample\Data\export_packed.zip";
-            string folder = @"C:\Src\dyn365-ce-devops-sample\Sample\Xrm.CI.Framework.Sample\Data\Data";
+            string dataZip = @"C:\Temp\TestReferenceData\export_packed.zip";
+            string folder = @"C:\Temp\TestReferenceData\Unpacked";
 
             TestLogger logger = new TestLogger();
             ConfigurationMigrationManager manager = new ConfigurationMigrationManager(logger);
 
-            manager.CombineData(folder);
+            string combined = manager.CombineData(folder);
 
-            manager.CompressData(folder, dataZip);
+            manager.CompressData(combined, dataZip);
         }
 
         [TestMethod]
