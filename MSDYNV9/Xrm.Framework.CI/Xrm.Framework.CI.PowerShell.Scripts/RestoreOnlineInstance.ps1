@@ -8,10 +8,16 @@ param(
 [string]$Password,
 [string]$SourceInstanceName,
 [string]$BackupLabel,
+[string]$RestoreTimeUtc,
 [string]$TargetInstanceName,
+[string]$FriendlyName,
+[string]$SecurityGroupId,
+[string]$SecurityGroupName,
+[int]$MaxCrmConnectionTimeOutMinutes,
 [bool]$WaitForCompletion = $false,
 [int]$SleepDuration = 3,
-[string]$PSModulePath
+[string]$PSModulePath,
+[string]$AzureADModulePath
 )
 
 $ErrorActionPreference = "Stop"
@@ -24,9 +30,14 @@ Write-Verbose "Username = $Username"
 Write-Verbose "SourceInstanceName = $SourceInstanceName"
 Write-Verbose "BackupLabel = $BackupLabel"
 Write-Verbose "TargetInstanceName = $TargetInstanceName"
+Write-Verbose "FriendlyName = $FriendlyName"
+Write-Verbose "SecurityGroupId = $SecurityGroupId"
+Write-Verbose "SecurityGroupName = $SecurityGroupName"
+Write-Verbose "MaxCrmConnectionTimeOutMinutes = $MaxCrmConnectionTimeOutMinutes"
 Write-Verbose "WaitForCompletion = $WaitForCompletion"
 Write-Verbose "SleepDuration = $SleepDuration"
 Write-Verbose "PSModulePath = $PSModulePath"
+Write-Verbose "AzureADModulePath = $AzureADModulePath"
 
 #Script Location
 $scriptPath = split-path -parent $MyInvocation.MyCommand.Definition
@@ -67,14 +78,80 @@ if ($targetInstance -eq $null)
     throw "$TargetInstanceName not found"
 }
 
-$instanceBackup = Get-XrmBackupByLabel -ApiUrl $ApiUrl -Cred $Cred -InstanceId $sourceInstance.Id -Label $BackupLabel
-
-if ($instanceBackup -eq $null)
+if ($BackupLabel)
 {
-    throw "Backup with label $BackupLabel not found"
+    $instanceBackup = Get-XrmBackupByLabel -ApiUrl $ApiUrl -Cred $Cred -InstanceId $sourceInstance.Id -Label $BackupLabel
+
+    if ($instanceBackup -eq $null)
+    {
+        throw "Backup with label $BackupLabel not found"
+    }
+
+    $RestoreTimeUtc = $instanceBackup.TimestampUtc
 }
 
-$operation = Restore-CrmInstance -ApiUrl $ApiUrl -Credential $Cred -BackupId $instanceBackup.Id -SourceInstanceId $sourceInstance.Id -TargetInstanceId $targetInstance.Id
+if ($SecurityGroupName)
+{
+	if ($AzureADModulePath)
+    {
+        Write-Verbose "Importing Module AzureAD" 
+	    Import-Module "$AzureADModulePath\AzureAD.psd1"
+	    Write-Verbose "Imported Module AzureAD"
+
+        Connect-AzureAD -Credential $Cred
+	
+	    $group = Get-AzureADGroup -Filter "DisplayName eq '$SecurityGroupName'"
+
+	    if ($group)
+	    {
+		    Write-Host "Security Group Found with Id $($group.ObjectId)"
+            $SecurityGroupId = $group.ObjectId
+	    }
+	    else
+	    {
+		    throw "$SecurityGroupName not found"
+	    }
+    }
+    else
+    {
+        throw "AzureADModulePath is required"
+    }
+}
+
+$RestoreOffSet = [System.DateTimeOffset]$RestoreTimeUtc
+
+$CallParams = @{
+	ApiUrl = $ApiUrl
+	Credential = $Cred
+	SourceInstanceId = $sourceInstance.Id
+	TargetInstanceId = $targetInstance.Id
+    RestoreTimeUtc = $RestoreOffSet
+}
+
+if ($FriendlyName)
+{
+	$CallParams.FriendlyName = $FriendlyName
+}
+
+if ($SecurityGroupId)
+{
+	$CallParams.SecurityGroupId = $SecurityGroupId
+}
+
+if ($MaxCrmConnectionTimeOutMinutes -and ($MaxCrmConnectionTimeOutMinutes -ne 0))
+{
+	$CallParams.MaxCrmConnectionTimeOutMinutes = $MaxCrmConnectionTimeOutMinutes
+}
+
+$operation = Restore-CrmInstance @CallParams
+
+#$operation = Restore-CrmInstance -ApiUrl $ApiUrl -Credential $Cred -BackupId $instanceBackup.Id -SourceInstanceId $sourceInstance.Id -TargetInstanceId $targetInstance.Id
+
+$OperationId = $operation.OperationId
+$OperationStatus = $operation.Status
+
+Write-Output "OperationId = $OperationId"
+Write-Output "Status = $OperationStatus"
 
 if ($operation.Errors.Count -gt 0)
 {

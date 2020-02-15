@@ -31,7 +31,7 @@ function Get-XrmBackupByLabel(
 {
 	$backups = Get-CrmInstanceBackups -ApiUrl $ApiUrl -Credential $Cred -InstanceId $InstanceId
 
-	$backup = $backups | Sort CreatedOn -Descending | Where-Object {$_.Label -eq $Label}
+	$backup = $backups.ManualBackups | Sort CreatedOn -Descending | Where-Object {$_.Label -eq $Label}
 
 	if ($backup.length -eq 1)
 	{

@@ -9,10 +9,7 @@ param(
 [string]$InstanceName,
 [string]$BackupLabel,
 [string]$BackupNotes,
-[bool]$IsAzureBackup = $false,
-[string]$ContainerName,
-[string]$StorageAccountKey,
-[string]$StorageAccountName,
+[int]$MaxCrmConnectionTimeOutMinutes,
 [bool]$WaitForCompletion = $false,
 [int]$SleepDuration = 3,
 [string]$PSModulePath
@@ -28,10 +25,7 @@ Write-Verbose "Username = $Username"
 Write-Verbose "InstanceName = $InstanceName"
 Write-Verbose "BackupLabel = $BackupLabel"
 Write-Verbose "BackupNotes = $BackupNotes"
-Write-Verbose "IsAzureBackup = $IsAzureBackup"
-Write-Verbose "ContainerName = $ContainerName"
-Write-Verbose "StorageAccountKey = $StorageAccountKey"
-Write-Verbose "StorageAccountName = $StorageAccountName"
+Write-Verbose "MaxCrmConnectionTimeOutMinutes = $MaxCrmConnectionTimeOutMinutes"
 Write-Verbose "WaitForCompletion = $WaitForCompletion"
 Write-Verbose "SleepDuration = $SleepDuration"
 Write-Verbose "PSModulePath = $PSModulePath"
@@ -70,22 +64,31 @@ if ($instance -eq $null)
 
 Write-Host "Backing up instance $InstanceName " + $instance.Id
 
-$backup = Get-XrmBackupByLabel -ApiUrl $ApiUrl -Cred $Cred -InstanceId $instance.Id -Label "$BackupLabel"
+#$backup = Get-XrmBackupByLabel -ApiUrl $ApiUrl -Cred $Cred -InstanceId $instance.Id -Label "$BackupLabel"
 
-if ($backup)
-{
-	throw "Backup with label $BackupLabel already exists for instance"
+#if ($backup)
+#{
+#	throw "Backup with label $BackupLabel already exists for instance"
+#}
+
+#$backupInfo = New-CrmBackupInfo -InstanceId $instance.Id -Label "$BackupLabel" -Notes "$BackupNotes" -IsAzureBackup $IsAzureBackup -AzureContainerName $ContainerName -AzureStorageAccountKey $StorageAccountKey -AzureStorageAccountName $StorageAccountName
+ 
+$CallParams = @{
+	ApiUrl = $ApiUrl
+	Credential = $Cred
+	InstanceId = $instance.Id
+	Label = "$BackupLabel"
+    Notes = "$BackupNotes"
 }
 
-$backupInfo = New-CrmBackupInfo -InstanceId $instance.Id -Label "$BackupLabel" -Notes "$BackupNotes" -IsAzureBackup $IsAzureBackup -AzureContainerName $ContainerName -AzureStorageAccountKey $StorageAccountKey -AzureStorageAccountName $StorageAccountName
- 
-$operation = Backup-CrmInstance -ApiUrl $ApiUrl -BackupInfo $backupInfo -Credential $Cred
+if ($MaxCrmConnectionTimeOutMinutes -and ($MaxCrmConnectionTimeOutMinutes -ne 0))
+{
+	$CallParams.MaxCrmConnectionTimeOutMinutes = $MaxCrmConnectionTimeOutMinutes
+}
 
-$OperationId = $operation.OperationId
-$OperationStatus = $operation.Status
+$operation = Backup-CrmInstance @CallParams
 
-Write-Output "OperationId = $OperationId"
-Write-Verbose "Status = $OperationStatus"
+$operation
 
 if ($operation.Errors.Count -gt 0)
 {
@@ -93,7 +96,7 @@ if ($operation.Errors.Count -gt 0)
     throw "Errors encountered : $errorMessage"
 }
 
-if ($WaitForCompletion)
+if ($WaitForCompletion -and ($operation.OperationId -ne [system.guid]::empty) -and ($OperationStatus -ne "Succeeded") -and ($OperationStatus -ne "Created"))
 {
 	$status = Wait-XrmOperation -ApiUrl $ApiUrl -Cred $Cred -operationId $operation.OperationId
 
