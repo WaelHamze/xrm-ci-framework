@@ -31,15 +31,16 @@ function Get-XrmBackupByLabel(
 {
 	$backups = Get-CrmInstanceBackups -ApiUrl $ApiUrl -Credential $Cred -InstanceId $InstanceId
 
-	$backup = $backups.ManualBackups | Sort CreatedOn -Descending | Where-Object {$_.Label -eq $Label}
+	$matches = $backups.ManualBackups | Sort TimestampUtc -Descending | Where-Object {$_.Label -eq "$Label"}
 
-	if ($backup.length -eq 1)
+	if ($matches.length -eq 1)
 	{
-		return $backup
+		return $matches
 	}
-	elseif($backup.length > 1)
+	elseif($matches.length -gt 1)
 	{
-		throw "More than one backup found for Label $Label"
+		Write-Warning "More than one backup found for Label: '$Label'. Using latest."
+        return $matches[0]
 	}
 	else
 	{

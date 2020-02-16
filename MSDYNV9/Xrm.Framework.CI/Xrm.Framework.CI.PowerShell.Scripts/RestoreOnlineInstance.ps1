@@ -88,6 +88,13 @@ if ($BackupLabel)
     }
 
     $RestoreTimeUtc = $instanceBackup.TimestampUtc
+
+    Write-Host "Restoring backup with label: $BackupLabel"
+    Write-Host "Backup Utc Timestamp: $RestoreTimeUtc"
+}
+else
+{
+    Write-Host "Restoring backup Timestamp: $RestoreTimeUtc"
 }
 
 if ($SecurityGroupName)

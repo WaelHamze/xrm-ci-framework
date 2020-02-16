@@ -12,7 +12,8 @@ param(
 [int]$MaxCrmConnectionTimeOutMinutes,
 [bool]$WaitForCompletion = $false,
 [int]$SleepDuration = 3,
-[string]$PSModulePath
+[string]$PSModulePath,
+[string]$BackupExistsAction = "Error" #Error,Skip,Continue
 )
 
 $ErrorActionPreference = "Stop"
@@ -29,6 +30,7 @@ Write-Verbose "MaxCrmConnectionTimeOutMinutes = $MaxCrmConnectionTimeOutMinutes"
 Write-Verbose "WaitForCompletion = $WaitForCompletion"
 Write-Verbose "SleepDuration = $SleepDuration"
 Write-Verbose "PSModulePath = $PSModulePath"
+Write-Verbose "BackupExistsAction = $BackupExistsAction"
 
 #Script Location
 $scriptPath = split-path -parent $MyInvocation.MyCommand.Definition
@@ -64,12 +66,30 @@ if ($instance -eq $null)
 
 Write-Host "Backing up instance $InstanceName " + $instance.Id
 
-#$backup = Get-XrmBackupByLabel -ApiUrl $ApiUrl -Cred $Cred -InstanceId $instance.Id -Label "$BackupLabel"
+$backup = Get-XrmBackupByLabel -ApiUrl $ApiUrl -Cred $Cred -InstanceId $instance.Id -Label "$BackupLabel"
 
-#if ($backup)
-#{
-#	throw "Backup with label $BackupLabel already exists for instance"
-#}
+if ($backup)
+{
+	Write-Host "Existing Backup with same label found. Timestamp: $($backup.TimestampUtc)"
+	
+	if ($BackupExistsAction -eq "Error")
+	{
+		throw "Backup with label $BackupLabel already exists for instance"
+	}
+	elseif ($BackupExistsAction -eq "Skip")
+	{
+		Write-Warning "Skipping backup as backup with same label already exists"
+		return
+	}
+	elseif ($BackupExistsAction -eq "Continue")
+	{
+		Write-Host "Will continue to attempt another backup using same label"
+	}
+}
+else
+{
+	Write-Host "No existing backups found with label: $BackupLabel"
+}
 
 #$backupInfo = New-CrmBackupInfo -InstanceId $instance.Id -Label "$BackupLabel" -Notes "$BackupNotes" -IsAzureBackup $IsAzureBackup -AzureContainerName $ContainerName -AzureStorageAccountKey $StorageAccountKey -AzureStorageAccountName $StorageAccountName
  
