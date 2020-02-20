@@ -51,7 +51,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
         {
             base.ProcessRecord();
 
-            Logger.LogInformation("Expanding data file {0} to path: {0}", DataZip, Folder);
+            Logger.LogInformation("Expanding data file {0} to path: {1}", DataZip, Folder);
 
             ConfigurationMigrationManager manager = new ConfigurationMigrationManager(Logger);
 
