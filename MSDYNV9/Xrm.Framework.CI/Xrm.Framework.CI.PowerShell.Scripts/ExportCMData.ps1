@@ -33,7 +33,7 @@ $scriptPath = split-path -parent $MyInvocation.MyCommand.Definition
 Write-Verbose "Script Path: $scriptPath"
 
 #Load PS Module
-Write-Verbose "Importing Configuration Migration: $PowerAppsCheckerPath"
+Write-Verbose "Importing Configuration Migration: $ConfigurationMigrationModulePath"
 Import-module "$ConfigurationMigrationModulePath\Microsoft.Xrm.Tooling.ConfigurationMigration.psd1"
 
 Write-Verbose "Import Tooling Connector: $ToolingConnectorModulePath"

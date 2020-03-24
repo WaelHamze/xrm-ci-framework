@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using System.Reflection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Xrm.Framework.CI.Common.IntegrationTests.Logging;
 
@@ -16,8 +18,13 @@ namespace Xrm.Framework.CI.Common.IntegrationTests
         [TestMethod]
         public void TestSplitData()
         {
-            string dataZip = @"C:\Temp\TestReferenceData\Extracted\data.zip";
-            string folder = @"C:\Temp\TestReferenceData\Unpacked";
+            var assemblyInfo = System.Reflection.Assembly.GetExecutingAssembly();
+            string artifactsDirectory = Path.Combine(Path.GetDirectoryName(assemblyInfo.Location), "Artifacts");
+            string dataZip = Path.Combine(artifactsDirectory, "ExtractedPortalData.zip");
+            
+            string folder = Path.Combine(Path.GetDirectoryName(assemblyInfo.Location), "temp", MethodBase.GetCurrentMethod().Name);
+            if (!Directory.Exists(folder))
+                Directory.CreateDirectory(folder);
 
             TestLogger logger = new TestLogger();
             ConfigurationMigrationManager manager = new ConfigurationMigrationManager(logger);
@@ -25,6 +32,25 @@ namespace Xrm.Framework.CI.Common.IntegrationTests
             manager.ExpandData(dataZip, folder);
 
             manager.SplitData(folder);
+        }
+
+        [TestMethod]
+        public void TestSplitDataFileLevel()
+        {
+            var assemblyInfo = System.Reflection.Assembly.GetExecutingAssembly();
+            string artifactsDirectory = Path.Combine(Path.GetDirectoryName(assemblyInfo.Location), "Artifacts");
+            string dataZip = Path.Combine(artifactsDirectory, "ExtractedPortalData.zip");
+
+            string folder = Path.Combine(Path.GetDirectoryName(assemblyInfo.Location), "temp", MethodBase.GetCurrentMethod().Name);
+            if (!Directory.Exists(folder))
+                Directory.CreateDirectory(folder);
+
+            TestLogger logger = new TestLogger();
+            ConfigurationMigrationManager manager = new ConfigurationMigrationManager(logger);
+
+            manager.ExpandData(dataZip, folder);
+
+            manager.SplitData(folder, CmExpandTypeEnum.FileLevel);
         }
 
         [TestMethod]

@@ -38,6 +38,14 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
         public bool SplitDataXmlFile { get; set; }
 
         /// <summary>
+        /// <para type="description">Determines the level to which the xml data is split in the folder structure</para>
+        /// </summary>
+        [Parameter(Mandatory = false)]
+        [ValidateSet("Default", "None", "EntityLevel", "FileLevel")]
+        [PSDefaultValue(Value="Default")]
+        public string SplitDataXmlFileLevel { get; set; }
+
+        /// <summary>
         /// <para type="description">Sorts the data xml file based on record ids</para>
         /// </summary>
         [Parameter(Mandatory = false)]
@@ -62,12 +70,14 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
                 manager.SortDataXml(Folder);
             }
 
-            if (SplitDataXmlFile)
+            var splitDataXmlFileLevelType = (CmExpandTypeEnum)Enum.Parse(typeof(CmExpandTypeEnum), SplitDataXmlFileLevel);
+            
+            if (SplitDataXmlFile || splitDataXmlFileLevelType != CmExpandTypeEnum.None)
             {
-                manager.SplitData(Folder);
+                manager.SplitData(Folder, splitDataXmlFileLevelType);
             }
 
-            Logger.LogInformation("Exracting Data Completed");
+            Logger.LogInformation("Extracting Data Completed");
         }
 
         #endregion
