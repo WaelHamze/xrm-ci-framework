@@ -9,20 +9,46 @@ namespace Xrm.Framework.CI.Common.IntegrationTests
     [TestClass]
     public class ConfigurationMigrationTest
     {
+        #region Properties
         public TestContext TestContext
         {
             get;
             set;
         }
 
+        public TestLogger Logger
+        {
+            get;
+            set;
+        }
+
+        public System.Reflection.Assembly AssemblyInfo
+        {
+            get;
+            set;
+        }
+
+        public string ArtifactsDirectory
+        {
+            get;
+            set;
+        }
+        #endregion
+
+        [TestInitialize()]
+        public void Setup()
+        {
+            Logger = new TestLogger();
+            ArtifactsDirectory = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + "\\Artifacts";
+            AssemblyInfo = System.Reflection.Assembly.GetExecutingAssembly();
+        }
+
         [TestMethod]
         public void TestSplitData()
         {
-            var assemblyInfo = System.Reflection.Assembly.GetExecutingAssembly();
-            string artifactsDirectory = Path.Combine(Path.GetDirectoryName(assemblyInfo.Location), "Artifacts");
-            string dataZip = Path.Combine(artifactsDirectory, "ExtractedPortalData.zip");
+            string dataZip = Path.Combine(ArtifactsDirectory, "ExtractedPortalData.zip");
             
-            string folder = Path.Combine(Path.GetDirectoryName(assemblyInfo.Location), "temp", MethodBase.GetCurrentMethod().Name);
+            string folder = Path.Combine(Path.GetDirectoryName(AssemblyInfo.Location), "temp", MethodBase.GetCurrentMethod().Name);
             if (!Directory.Exists(folder))
                 Directory.CreateDirectory(folder);
 
@@ -37,11 +63,9 @@ namespace Xrm.Framework.CI.Common.IntegrationTests
         [TestMethod]
         public void TestSplitDataFileLevel()
         {
-            var assemblyInfo = System.Reflection.Assembly.GetExecutingAssembly();
-            string artifactsDirectory = Path.Combine(Path.GetDirectoryName(assemblyInfo.Location), "Artifacts");
-            string dataZip = Path.Combine(artifactsDirectory, "ExtractedPortalData.zip");
+            string dataZip = Path.Combine(ArtifactsDirectory, "ExtractedPortalData.zip");
 
-            string folder = Path.Combine(Path.GetDirectoryName(assemblyInfo.Location), "temp", MethodBase.GetCurrentMethod().Name);
+            string folder = Path.Combine(Path.GetDirectoryName(AssemblyInfo.Location), "temp", MethodBase.GetCurrentMethod().Name);
             if (!Directory.Exists(folder))
                 Directory.CreateDirectory(folder);
 
@@ -56,15 +80,45 @@ namespace Xrm.Framework.CI.Common.IntegrationTests
         [TestMethod]
         public void TestCombineData()
         {
-            string dataZip = @"C:\Temp\TestReferenceData\export_packed.zip";
-            string folder = @"C:\Temp\TestReferenceData\Unpacked";
+            string existingDataZip = Path.Combine(ArtifactsDirectory, "ExtractedPortalData.zip");
+
+            string tempFolder = Path.Combine(Path.GetDirectoryName(AssemblyInfo.Location), "temp", MethodBase.GetCurrentMethod().Name);
+            if (!Directory.Exists(tempFolder))
+                Directory.CreateDirectory(tempFolder);
+
+            string recombinedDataZip = Path.Combine(tempFolder, "recombined-data.zip");
 
             TestLogger logger = new TestLogger();
             ConfigurationMigrationManager manager = new ConfigurationMigrationManager(logger);
 
-            string combined = manager.CombineData(folder);
+            manager.ExpandData(existingDataZip, tempFolder);
 
-            manager.CompressData(combined, dataZip);
+            manager.SplitData(tempFolder);
+            string combined = manager.CombineData(tempFolder);
+
+            manager.CompressData(combined, recombinedDataZip);
+        }
+
+        [TestMethod]
+        public void TestCombineDataFileLevel()
+        {
+            string existingDataZip = Path.Combine(ArtifactsDirectory, "ExtractedPortalData.zip");
+
+            string tempFolder = Path.Combine(Path.GetDirectoryName(AssemblyInfo.Location), "temp", MethodBase.GetCurrentMethod().Name);
+            if (!Directory.Exists(tempFolder))
+                Directory.CreateDirectory(tempFolder);
+
+            string recombinedDataZip = Path.Combine(tempFolder, "recombined-data.zip");
+
+            TestLogger logger = new TestLogger();
+            ConfigurationMigrationManager manager = new ConfigurationMigrationManager(logger);
+
+            manager.ExpandData(existingDataZip, tempFolder);
+
+            manager.SplitData(tempFolder, CmExpandTypeEnum.FileLevel);
+            string combined = manager.CombineData(tempFolder, CmExpandTypeEnum.FileLevel);
+
+            manager.CompressData(combined, recombinedDataZip);
         }
 
         [TestMethod]

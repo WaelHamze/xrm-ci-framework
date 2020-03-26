@@ -37,6 +37,14 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
         [Parameter(Mandatory = false)]
         public bool CombineDataXmlFile { get; set; }
 
+        /// <summary>
+        /// <para type="description">Specifies which combination routine to use</para>
+        /// </summary>
+        [Parameter(Mandatory = false)]
+        [ValidateSet("Default", "None", "EntityLevel", "FileLevel")]
+        [PSDefaultValue(Value = "Default")]
+        public string CombineDataXmlFileLevel { get; set; }
+
         #endregion
 
         #region Process Record
@@ -49,9 +57,11 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
 
             ConfigurationMigrationManager manager = new ConfigurationMigrationManager(Logger);
 
-            if (CombineDataXmlFile)
+            var combineDataXmlFileLevelType = (CmExpandTypeEnum)Enum.Parse(typeof(CmExpandTypeEnum), CombineDataXmlFileLevel);
+
+            if (CombineDataXmlFile || combineDataXmlFileLevelType != CmExpandTypeEnum.None)
             {
-                string tempDirectory = manager.CombineData(Folder);
+                string tempDirectory = manager.CombineData(Folder, combineDataXmlFileLevelType);
                 manager.CompressData(tempDirectory, DataZip);
             }
             else

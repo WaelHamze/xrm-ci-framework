@@ -20,11 +20,12 @@ namespace Xrm.Framework.CI.Common
     public class ConfigurationMigrationManager : CommonBase
     {
         #region Variables
-        private const string FileLevelRegex = @"^([0-9A-Fa-f]{8}[-][0-9A-Fa-f]{4}[-][0-9A-Fa-f]{4}[-][0-9A-Fa-f]{4}[-][0-9A-Fa-f]{12}\.(?:xml|XML))$";
+        private readonly Regex FileLevelRegex = new Regex(@"^([0-9A-Fa-f]{8}[-][0-9A-Fa-f]{4}[-][0-9A-Fa-f]{4}[-][0-9A-Fa-f]{4}[-][0-9A-Fa-f]{12}\.(?:xml|XML))$");
 
         #endregion
 
         #region Properties
+
 
 
         #endregion
@@ -141,7 +142,8 @@ namespace Xrm.Framework.CI.Common
         }
 
         public string CombineData(
-            string dataFolder)
+            string dataFolder,
+            CmExpandTypeEnum combineType = CmExpandTypeEnum.Default)
         {
             if (!Directory.Exists(dataFolder))
             {
@@ -152,21 +154,9 @@ namespace Xrm.Framework.CI.Common
 
             DirectoryInfo dataInfo = new DirectoryInfo(dataFolder);
 
-            string tempDataDirectory = $"{Path.GetTempPath()}\\{Guid.NewGuid()}";
-            DirectoryInfo tempDataInfo = new DirectoryInfo(dataFolder);
+            string tempDataDirectory = Path.Combine(Path.GetTempPath(),Guid.NewGuid().ToString());
 
-            var tempDataDirectoryInfo = Directory.CreateDirectory(tempDataDirectory);
-
-            Logger.LogVerbose($"Created Temp Dir : {tempDataDirectoryInfo.FullName}");
-
-            foreach (FileInfo info in dataInfo.GetFiles())
-            {
-                info.CopyTo($"{tempDataDirectory}\\{info.Name}");
-            }
-
-            Logger.LogVerbose($"Copied Data Temp Dir : {tempDataDirectoryInfo.FullName}");
-
-            string dataXml = $"{dataFolder}\\data.xml";
+            string dataXml = Path.Combine(dataFolder,"data.xml");
 
             if (!File.Exists(dataXml))
             {
@@ -176,57 +166,106 @@ namespace Xrm.Framework.CI.Common
             FileInfo dataXmlInfo = new FileInfo(dataXml);
 
             string tempDataXml = $"{tempDataDirectory}\\data.xml";
-
+            DirectoryInfo tempDataDirectoryInfo = null;
             XElement entitiesNode;
 
             using (var reader = new StreamReader(dataXml))
             {
                 entitiesNode = XElement.Load(reader);
 
-                foreach (FileInfo entityInfo in dataInfo.GetFiles("*_data.xml"))
+                switch (combineType)
                 {
-                    using (var entityReader = new StreamReader(entityInfo.FullName))
-                    {
-                        Logger.LogInformation($"Processing file: {entityInfo.FullName}");
-
-                        XElement entityNode = XElement.Load(entityReader);
-
-                        string entity = (string)entityNode.Attribute("name");
-
-                        var query = from el in entitiesNode.Elements("entity")
-                                    where (string)el.Attribute("name") == entity
-                                    select el;
-
-                        XElement existingNode = query.FirstOrDefault<XElement>();
-
-                        if (existingNode != null)
+                    case CmExpandTypeEnum.EntityLevel:
+                    case CmExpandTypeEnum.Default:
+                    default:
+                        tempDataDirectoryInfo = FileUtilities.DirectoryCopy(dataFolder, tempDataDirectory, Logger);
+                        foreach (FileInfo entityInfo in dataInfo.GetFiles("*_data.xml"))
                         {
-                            Logger.LogVerbose($"Replacing node: {entityNode}");
+                            using (var entityReader = new StreamReader(entityInfo.FullName))
+                            {
+                                Logger.LogInformation($"Processing file: {entityInfo.FullName}");
 
-                            existingNode.ReplaceWith(entityNode);
+                                XElement entityNode = XElement.Load(entityReader);
+
+                                string entity = (string)entityNode.Attribute("name");
+
+                                var query = from el in entitiesNode.Elements("entity")
+                                            where (string)el.Attribute("name") == entity
+                                            select el;
+
+                                XElement existingNode = query.FirstOrDefault<XElement>();
+
+                                if (existingNode != null)
+                                {
+                                    Logger.LogVerbose($"Replacing node: {entityNode}");
+
+                                    existingNode.ReplaceWith(entityNode);
+                                }
+                                else
+                                {
+                                    Logger.LogVerbose($"Adding node: {entityNode}");
+
+                                    entitiesNode.Add(entityNode);
+                                }
+
+                                Logger.LogInformation($"Processed file: {entityInfo.FullName}");
+                            }
                         }
-                        else
+                        foreach (FileInfo entityInfo in tempDataDirectoryInfo.GetFiles("*_data.xml"))
                         {
-                            Logger.LogVerbose($"Adding node: {entityNode}");
+                            Logger.LogVerbose($"Deleting file : {entityInfo.FullName}");
 
-                            entitiesNode.Add(entityNode);
+                            entityInfo.Delete();
                         }
-
-                        Logger.LogInformation($"Processed file: {entityInfo.FullName}");
-                    }
+                        break;
+                    case CmExpandTypeEnum.FileLevel:
+                        var entityList = new HashSet<string>(entitiesNode.Elements("entity").Select(e => e.Attribute("name").Value));
+                        tempDataDirectoryInfo = FileUtilities.DirectoryCopy(dataFolder, tempDataDirectory, Logger, true, entityList);
+                        foreach(XElement entityNode in entitiesNode.Elements("entity"))
+                        {
+                            var entityName = entityNode.Attribute("name").Value;
+                            var targetSubDir = tempDataDirectoryInfo.GetDirectories().FirstOrDefault(di => di.Name == entityName);
+                            if (targetSubDir != null && targetSubDir.GetFiles().Count() > 0)
+                            {
+                                XElement recordsNode = entityNode.Elements("records").FirstOrDefault();
+                                if (recordsNode == null)
+                                {
+                                    recordsNode = new XElement("records");
+                                    entityNode.Add(recordsNode);
+                                }
+                                foreach (FileInfo entityRecordFileInfo in targetSubDir.GetFiles("*.xml").Where(fi => FileLevelRegex.IsMatch(fi.Name)))
+                                {
+                                    using (var recordReader = new StreamReader(entityRecordFileInfo.FullName))
+                                    {
+                                        XElement recordNode = XElement.Load(recordReader);
+                                        XElement existingNode = recordsNode.Elements("record").FirstOrDefault(rn => rn.Attribute("id").Value == recordNode.Attribute("id").Value);
+                                        if (existingNode != null)
+                                        {
+                                            Logger.LogVerbose($"Replacing node: {existingNode}");
+                                            existingNode.ReplaceWith(recordNode);
+                                        }
+                                        else
+                                        {
+                                            Logger.LogVerbose($"Adding node: {recordNode}");
+                                            recordsNode.Add(recordNode);
+                                        }
+                                    }
+                                }
+                            }
+                            Logger.LogInformation($"Processed entity: {entityName}");
+                        }
+                        // cleanup copied subdirectories from temp folder
+                        foreach (DirectoryInfo directoryToDelete in tempDataDirectoryInfo.GetDirectories().Where(d => entityList.Contains(d.Name)))
+                        {
+                            directoryToDelete.Delete(recursive:true);
+                        }
+                        break;
                 }
             }
             
             using (XmlWriter writer = XmlWriter.Create(tempDataXml))
             {
                 entitiesNode.WriteTo(writer);
-            }
-
-            foreach (FileInfo entityInfo in tempDataDirectoryInfo.GetFiles("*_data.xml"))
-            {
-                Logger.LogVerbose($"Deleting file : {entityInfo.FullName}");
-
-                entityInfo.Delete();
             }
 
             return tempDataDirectory;
@@ -322,7 +361,7 @@ namespace Xrm.Framework.CI.Common
                             DirectoryInfo outputEntityDirInfo = new DirectoryInfo(outputEntityDir);
                             // Iterate through records under entity node, create file for each
                             // Could just try entityNode.FirstNode for performance but playing it safe
-                            XElement recordsNode = entityNode.Elements().First(e => e.Name == "records");
+                            XElement recordsNode = entityNode.Elements("records").First();
                             HashSet<string> validRecordSet = new HashSet<string>();
                             foreach (XElement recordNode in recordsNode.Elements())
                             {
@@ -340,9 +379,8 @@ namespace Xrm.Framework.CI.Common
                             }
                             // Not safe to delete other directories in the output root, shouldn't be this function's responsibilty
                             // Delete any records not in file list
-                            Regex fileLevelRegex = new Regex(FileLevelRegex);
                             FileInfo[] deleteCandidates = outputEntityDirInfo.GetFiles("*.xml");
-                            List<FileInfo> filesToDelete = deleteCandidates.Where(fi => fileLevelRegex.IsMatch(fi.Name) && !validRecordSet.Contains(fi.Name.Substring(0, fi.Name.Length-4))).ToList();
+                            List<FileInfo> filesToDelete = deleteCandidates.Where(fi => FileLevelRegex.IsMatch(fi.Name) && !validRecordSet.Contains(fi.Name.Substring(0, fi.Name.Length-4))).ToList();
                             foreach (FileInfo fileToDelete in filesToDelete)
                             {
                                 fileToDelete.Delete();
