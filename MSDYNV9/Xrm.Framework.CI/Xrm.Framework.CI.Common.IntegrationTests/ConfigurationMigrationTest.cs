@@ -74,7 +74,7 @@ namespace Xrm.Framework.CI.Common.IntegrationTests
 
             manager.ExpandData(dataZip, folder);
 
-            manager.SplitData(folder, CmExpandTypeEnum.FileLevel);
+            manager.SplitData(folder, CmExpandTypeEnum.RecordLevel);
         }
 
         [TestMethod]
@@ -115,8 +115,8 @@ namespace Xrm.Framework.CI.Common.IntegrationTests
 
             manager.ExpandData(existingDataZip, tempFolder);
 
-            manager.SplitData(tempFolder, CmExpandTypeEnum.FileLevel);
-            string combined = manager.CombineData(tempFolder, CmExpandTypeEnum.FileLevel);
+            manager.SplitData(tempFolder, CmExpandTypeEnum.RecordLevel);
+            string combined = manager.CombineData(tempFolder, CmExpandTypeEnum.RecordLevel);
 
             manager.CompressData(combined, recombinedDataZip);
         }

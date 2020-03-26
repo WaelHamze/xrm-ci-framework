@@ -218,7 +218,7 @@ namespace Xrm.Framework.CI.Common
                             entityInfo.Delete();
                         }
                         break;
-                    case CmExpandTypeEnum.FileLevel:
+                    case CmExpandTypeEnum.RecordLevel:
                         var entityList = new HashSet<string>(entitiesNode.Elements("entity").Select(e => e.Attribute("name").Value));
                         tempDataDirectoryInfo = FileUtilities.DirectoryCopy(dataFolder, tempDataDirectory, Logger, true, entityList);
                         foreach(XElement entityNode in entitiesNode.Elements("entity"))
@@ -347,7 +347,7 @@ namespace Xrm.Framework.CI.Common
                                 }
                             }
                             break;
-                        case CmExpandTypeEnum.FileLevel:
+                        case CmExpandTypeEnum.RecordLevel:
                             if (!entityNode.HasElements)
                             { // May as well check before creating a directory
                                 break;

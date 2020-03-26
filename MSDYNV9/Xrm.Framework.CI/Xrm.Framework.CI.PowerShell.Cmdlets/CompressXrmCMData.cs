@@ -41,7 +41,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
         /// <para type="description">Specifies which combination routine to use</para>
         /// </summary>
         [Parameter(Mandatory = false)]
-        [ValidateSet("Default", "None", "EntityLevel", "FileLevel")]
+        [ValidateSet("Default", "None", "EntityLevel", "RecordLevel")]
         [PSDefaultValue(Value = "Default")]
         public string CombineDataXmlFileLevel { get; set; }
 

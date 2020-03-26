@@ -41,7 +41,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
         /// <para type="description">Determines the level to which the xml data is split in the folder structure</para>
         /// </summary>
         [Parameter(Mandatory = false)]
-        [ValidateSet("Default", "None", "EntityLevel", "FileLevel")]
+        [ValidateSet("Default", "None", "EntityLevel", "RecordLevel")]
         [PSDefaultValue(Value="Default")]
         public string SplitDataXmlFileLevel { get; set; }
 

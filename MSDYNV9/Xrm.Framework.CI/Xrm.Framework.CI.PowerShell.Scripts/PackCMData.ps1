@@ -7,7 +7,8 @@
 param(
 [string]$dataFile, #The absolute path of data.xml to create/update
 [string]$extractFolder, #The absoluate path to folder for extracting the data zip file
-[bool]$combineDataXmlFile #Set to true to split the data.xml into multiple files per entity
+[bool]$combineDataXmlFile, #Set to true to split the data.xml into multiple files per entity
+[string]$combineDataXmlFileLevel
 ) 
 
 $ErrorActionPreference = "Stop"
@@ -31,6 +32,6 @@ Write-Verbose "Importing CIToolkit: $xrmCIToolkit"
 Import-Module $xrmCIToolkit
 Write-Verbose "Imported CIToolkit"
 
-Compress-XrmCMData -DataZip "$dataFile" -Folder "$extractFolder" -CombineDataXmlFile $combineDataXmlFile
+Compress-XrmCMData -DataZip "$dataFile" -Folder "$extractFolder" -CombineDataXmlFile $combineDataXmlFile -CombineDataXmlFileLevel $combineDataXmlFileLevel
 
 Write-Verbose 'Leaving PackCMData.ps1'

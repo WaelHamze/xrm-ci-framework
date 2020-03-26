@@ -5,6 +5,6 @@
         Default = 0,
         None = 1,
         EntityLevel = 2,
-        FileLevel = 3
+        RecordLevel = 3
     }
 }
