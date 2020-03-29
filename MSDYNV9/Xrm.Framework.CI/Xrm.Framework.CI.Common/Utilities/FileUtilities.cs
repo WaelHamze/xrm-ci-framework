@@ -12,7 +12,7 @@ namespace Xrm.Framework.CI.Common
     public class FileUtilities
     {
         // Just for safety
-        public static readonly int DirectoryRecursionLimit = 3;
+        public static readonly int DirectoryRecursionLimit = 8;
 
         public static string GetFileVersion(string fileName)
         {

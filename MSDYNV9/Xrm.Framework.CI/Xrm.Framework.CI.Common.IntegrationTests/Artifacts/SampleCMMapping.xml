@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>  
+<Mapping>  
+  <!-- Match specific named files to a note attachment (ie Portal WebFiles) -->
+  <!-- Map path is relative to mapping file location -->
+  <!-- !!FILE/FOLDER WILDCARDS NOT YET SUPPORTED!! Is a todo...-->
+  <!-- Test Folder Structure (Mix of nospace/space directories-->
+  <!--  -root -->
+  <!--    -Folder 1 -->
+  <!--      -SampleCMMapping.xml -->
+  <!--      -Folder 3 -->
+  <!--        -app.js -->
+  <!--    -Folder 2 -->
+  <!--      -Folder4 -->
+  <!--        -topimage.JPG -->
+  <!--        -Folder5 -->
+  <FileToAnnotation map=".\Folder 3\app.js" mimetype="application/javascript"/>
+  <FileToAnnotation map="..\Folder 2\Folder4\topimage.jpg" mimetype="image/jpeg"/>
+  <!-- Duplicate / alternate map to be disregarded -->
+  <FileToAnnotation map="app.js" mimetype="application/javascript"/>
+  
+  <!-- Substitute environment values (ie Portal SiteSettings) -->
+  <SubstituteRecordValue logicalname="adx_sitesetting" keyattr="adx_name" key="Authentication/Registration/Enabled" valueattr="adx_value" value="#{SomeDevOpsVariable}"/>
+  <SubstituteRecordValue logicalname="adx_sitesetting" keyattr="adx_name" key="Search/Enabled" valueattr="adx_value" value="#{SomeOtherDevOpsVariable}"/>
+  <!-- You can update multiple attributes on the same record -->
+  <!-- Limited to just updating the value attribute at the moment (ie can't update lookupentity attribute too for objectid field) -->
+  <SubstituteRecordValue logicalname="annotation" keyattr="filename" key="app.js" valueattr="subject" value="SomeNewNoteSubjectText"/>
+  <SubstituteRecordValue logicalname="annotation" keyattr="filename" key="app.js" valueattr="objectid" value="00000000-0000-0000-0000-000000000000"/>
+</Mapping>  

@@ -34,6 +34,7 @@
     <Compile Include="CloneSolution.ps1" />
     <Compile Include="CopySolutionComponents.ps1" />
     <Compile Include="CreateSolution.ps1" />
+    <Compile Include="MergeCMData.ps1" />
     <Compile Include="PackCMData.ps1" />
     <Compile Include="ExtractCMData.ps1" />
     <Compile Include="ImportCMData.ps1" />

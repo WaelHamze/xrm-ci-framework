@@ -84,6 +84,8 @@
     <Reference Include="System.DirectoryServices.AccountManagement" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.IdentityModel" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.Net" />
     <Reference Include="System.Net.Http, Version=4.1.1.3, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Net.Http.4.3.4\lib\net46\System.Net.Http.dll</HintPath>
@@ -129,9 +131,15 @@
     <Compile Include="TestConnectionManager.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Artifacts\SampleCMMapping.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="app.config" />
     <Content Include="Artifacts\ExtractedPortalData.zip">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Artifacts\MapDataTestStructureRoot.zip">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="Artifacts\MissingDependency_1_0_0_0.zip">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

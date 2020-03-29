@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.IO.Compression;
 using System.Reflection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Xrm.Framework.CI.Common.IntegrationTests.Logging;
@@ -44,7 +45,7 @@ namespace Xrm.Framework.CI.Common.IntegrationTests
         }
 
         [TestMethod]
-        public void TestSplitData()
+        public void TestSplitDataEntityLevel()
         {
             string dataZip = Path.Combine(ArtifactsDirectory, "ExtractedPortalData.zip");
             
@@ -61,7 +62,7 @@ namespace Xrm.Framework.CI.Common.IntegrationTests
         }
 
         [TestMethod]
-        public void TestSplitDataFileLevel()
+        public void TestSplitDataRecordLevel()
         {
             string dataZip = Path.Combine(ArtifactsDirectory, "ExtractedPortalData.zip");
 
@@ -78,7 +79,7 @@ namespace Xrm.Framework.CI.Common.IntegrationTests
         }
 
         [TestMethod]
-        public void TestCombineData()
+        public void TestCombineDataEntityLevel()
         {
             string existingDataZip = Path.Combine(ArtifactsDirectory, "ExtractedPortalData.zip");
 
@@ -100,7 +101,7 @@ namespace Xrm.Framework.CI.Common.IntegrationTests
         }
 
         [TestMethod]
-        public void TestCombineDataFileLevel()
+        public void TestCombineDataRecordLevel()
         {
             string existingDataZip = Path.Combine(ArtifactsDirectory, "ExtractedPortalData.zip");
 
@@ -121,6 +122,90 @@ namespace Xrm.Framework.CI.Common.IntegrationTests
             manager.CompressData(combined, recombinedDataZip);
         }
 
+        [TestMethod]
+        public void TestMapDataEntityLevel()
+        {
+            string existingDataZip = Path.Combine(ArtifactsDirectory, "ExtractedPortalData.zip");
+            string testDirZip = Path.Combine(ArtifactsDirectory, "MapDataTestStructureRoot.zip");
+            string mappingFilePath = Path.Combine(ArtifactsDirectory, "SampleCMMapping.xml");
+            string tempFolder = Path.Combine(Path.GetDirectoryName(AssemblyInfo.Location), "temp", MethodBase.GetCurrentMethod().Name);
+            string mappingFileTargetPath = Path.Combine(tempFolder, "MapDataTestStructureRoot", "Folder 1", Path.GetFileName(mappingFilePath));
+
+            if (!Directory.Exists(tempFolder))
+                Directory.CreateDirectory(tempFolder);
+
+            // Copy test dir structure to temp
+            if (!File.Exists(mappingFileTargetPath))
+            {
+                ZipFile.ExtractToDirectory(testDirZip, tempFolder);
+                File.Copy(mappingFilePath, mappingFileTargetPath);
+            }
+
+            TestLogger logger = new TestLogger();
+            ConfigurationMigrationManager manager = new ConfigurationMigrationManager(logger);
+
+            manager.ExpandData(existingDataZip, tempFolder);
+
+            manager.SplitData(tempFolder, CmExpandTypeEnum.EntityLevel);
+            manager.MapData(tempFolder, mappingFileTargetPath, CmExpandTypeEnum.EntityLevel);
+        }
+
+        [TestMethod]
+        public void TestMapDataRecordLevel()
+        {
+            string existingDataZip = Path.Combine(ArtifactsDirectory, "ExtractedPortalData.zip");
+            string testDirZip = Path.Combine(ArtifactsDirectory, "MapDataTestStructureRoot.zip");
+            string mappingFilePath = Path.Combine(ArtifactsDirectory, "SampleCMMapping.xml");
+            string tempFolder = Path.Combine(Path.GetDirectoryName(AssemblyInfo.Location), "temp", MethodBase.GetCurrentMethod().Name);
+            string mappingFileTargetPath = Path.Combine(tempFolder, "MapDataTestStructureRoot", "Folder 1", Path.GetFileName(mappingFilePath));
+
+            if (!Directory.Exists(tempFolder))
+                Directory.CreateDirectory(tempFolder);
+
+            // Copy test dir structure to temp
+            if (!File.Exists(mappingFileTargetPath))
+            {
+                ZipFile.ExtractToDirectory(testDirZip, tempFolder);
+                File.Copy(mappingFilePath, mappingFileTargetPath);
+            }
+
+            TestLogger logger = new TestLogger();
+            ConfigurationMigrationManager manager = new ConfigurationMigrationManager(logger);
+
+            manager.ExpandData(existingDataZip, tempFolder);
+
+            manager.SplitData(tempFolder, CmExpandTypeEnum.RecordLevel);
+            manager.MapData(tempFolder, mappingFileTargetPath, CmExpandTypeEnum.RecordLevel);
+        }
+
+        [TestMethod]
+        public void TestMapDataDataXmlFileLevel()
+        {
+            string existingDataZip = Path.Combine(ArtifactsDirectory, "ExtractedPortalData.zip");
+            string testDirZip = Path.Combine(ArtifactsDirectory, "MapDataTestStructureRoot.zip");
+            string mappingFilePath = Path.Combine(ArtifactsDirectory, "SampleCMMapping.xml");
+            string tempFolder = Path.Combine(Path.GetDirectoryName(AssemblyInfo.Location), "temp", MethodBase.GetCurrentMethod().Name);
+            string mappingFileTargetPath = Path.Combine(tempFolder, "MapDataTestStructureRoot", "Folder 1", Path.GetFileName(mappingFilePath));
+
+            if (!Directory.Exists(tempFolder))
+                Directory.CreateDirectory(tempFolder);
+
+            // Copy test dir structure to temp
+            if (!File.Exists(mappingFileTargetPath))
+            {
+                ZipFile.ExtractToDirectory(testDirZip, tempFolder);
+                File.Copy(mappingFilePath, mappingFileTargetPath);
+            }
+
+            TestLogger logger = new TestLogger();
+            ConfigurationMigrationManager manager = new ConfigurationMigrationManager(logger);
+
+            manager.ExpandData(existingDataZip, tempFolder);
+
+            manager.MapData(tempFolder, mappingFileTargetPath, CmExpandTypeEnum.None);
+        }
+
+        // TODO: Lift test artefact into folder so this can be run relative to source code location
         [TestMethod]
         public void TestSort()
         {

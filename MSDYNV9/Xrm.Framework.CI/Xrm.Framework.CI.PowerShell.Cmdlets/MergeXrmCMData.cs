@@ -15,27 +15,20 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
     ///   <code>C:\PS>Expand-XrmSolution -ConnectionString "" -EntityName "account"</code>
     ///   <para>Exports the "" managed solution to "" location</para>
     /// </example>
-    [Cmdlet(VerbsData.Expand, "XrmCMData")]
-    public class ExpandXrmCMData : CommandBase
+    [Cmdlet(VerbsData.Merge, "XrmCMData")]
+    public class MergeXrmCMData : CommandBase
     {
         #region Parameters
 
-        /// <summary>
-        /// <para type="description">The absolute path to the data zip file</para>
-        /// </summary>
-        [Parameter(Mandatory = true)]
-        public string DataZip { get; set; }
-
-        /// <para type="description">The target folder for the extracted files</para>
+        /// <para type="description">Path to the folder for the files to be merged</para>
         /// </summary>
         [Parameter(Mandatory = true)]
         public string Folder { get; set; }
 
-        /// <summary>
-        /// <para type="description">Splits the xml data into mutiple files per entity</para>
+        /// <para type="description">Path to the mapping file which describes the merges to be performed</para>
         /// </summary>
-        [Parameter(Mandatory = false)]
-        public bool SplitDataXmlFile { get; set; }
+        [Parameter(Mandatory = true)]
+        public string MappingFile { get; set; }
 
         /// <summary>
         /// <para type="description">Determines the level to which the xml data is split in the folder structure</para>
@@ -43,14 +36,14 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
         [Parameter(Mandatory = false)]
         [ValidateSet("Default", "None", "EntityLevel", "RecordLevel")]
         [PSDefaultValue(Value="Default")]
-        public string SplitDataXmlFileLevel { get; set; }
+        public string MergeDataXmlFileLevel { get; set; }
 
         /// <summary>
-        /// <para type="description">Sorts the data xml file based on record ids</para>
+        /// <para type="description">Determines whether to care about case when comparing target filenames to the mappingfile, Important for *Nix/Windows differing file structures</para>
         /// </summary>
         [Parameter(Mandatory = false)]
-        public bool SortDataXmlFile { get; set; }
-
+        [PSDefaultValue(Value = false)]
+        public bool FileMapCaseSensitive { get; set; }
         #endregion
 
         #region Process Record
@@ -59,25 +52,15 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
         {
             base.ProcessRecord();
 
-            Logger.LogInformation("Expanding data file {0} to path: {1}", DataZip, Folder);
+            Logger.LogInformation("Merging data in folder {0} using mapping: {1}", Folder, MappingFile);
 
             ConfigurationMigrationManager manager = new ConfigurationMigrationManager(Logger);
 
-            manager.ExpandData(DataZip, Folder);
+            CmExpandTypeEnum mergeDataXmlFileLevelType = (CmExpandTypeEnum)Enum.Parse(typeof(CmExpandTypeEnum), MergeDataXmlFileLevel);
 
-            if (SortDataXmlFile)
-            {
-                manager.SortDataXml(Folder);
-            }
+            manager.MapData(Folder, MappingFile, mergeDataXmlFileLevelType, FileMapCaseSensitive);
 
-            CmExpandTypeEnum splitDataXmlFileLevelType = (CmExpandTypeEnum)Enum.Parse(typeof(CmExpandTypeEnum), SplitDataXmlFileLevel);
-            
-            if (SplitDataXmlFile || splitDataXmlFileLevelType != CmExpandTypeEnum.None)
-            {
-                manager.SplitData(Folder, splitDataXmlFileLevelType);
-            }
-
-            Logger.LogInformation("Extracting Data Completed");
+            Logger.LogInformation("Data Merge Completed");
         }
 
         #endregion
