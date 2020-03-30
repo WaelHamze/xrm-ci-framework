@@ -10,14 +10,13 @@ param(
 [string]$dataFile, #The absolute path of data.xml to create/update
 [string]$schemaFile, #The absolute path to the schema file
 [string]$logsDirectory, #Optional - will place the import log in here
-[string]$configurationMigrationModulePath, #The full path to the Configuration Migration PowerShell Module
-[string]$toolingConnectorModulePath #The full path to the Tooling Connector PowerShell Module
+[string]$configurationMigrationModulePath #The full path to the Configuration Migration PowerShell Module
 ) 
 
 $ErrorActionPreference = "Stop"
 $InformationPreference = "Continue"
 
-Write-Verbose 'Entering ExporCMtData.ps1'
+Write-Verbose 'Entering ExportCMData.ps1'
 
 #Print Parameters
 
@@ -26,21 +25,19 @@ Write-Verbose "schemaFile = $schemaFile"
 Write-Verbose "logsDirectory = $logsDirectory"
 Write-Verbose "crmConnectionTimeout = $crmConnectionTimeout"
 Write-Verbose "configurationMigrationModulePath = $configurationMigrationModulePath"
-Write-Verbose "toolingConnectorModulePath = $toolingConnectorModulePath"
 
 #Script Location
 $scriptPath = split-path -parent $MyInvocation.MyCommand.Definition
 Write-Verbose "Script Path: $scriptPath"
 
 #Load PS Module
-Write-Verbose "Importing Configuration Migration: $ConfigurationMigrationModulePath"
-Import-module "$ConfigurationMigrationModulePath\Microsoft.Xrm.Tooling.ConfigurationMigration.psd1"
+# Config Migration Module has its own connector references: Don't need to load XrmTooling Connector module
 
-Write-Verbose "Import Tooling Connector: $ToolingConnectorModulePath"
-Import-module "$ToolingConnectorModulePath\Microsoft.Xrm.Tooling.CrmConnector.PowerShell.dll"
+Write-Verbose "Importing Configuration Migration: $configurationMigrationModulePath"
+Import-module "$configurationMigrationModulePath\Microsoft.Xrm.Tooling.ConfigurationMigration.psd1"
 
 $connectParams = @{
-	ConnectionString = "$CrmConnectionString"
+	ConnectionString = "$crmConnectionString"
 }
 if ($crmConnectionTimeout -ne 0)
 {
@@ -52,10 +49,11 @@ if ($logsDirectory)
 	$connectParams.LogWriteDirectory = $logsDirectory
 }
 
-$CRMConn = Get-CrmConnection @connectParams -Verbose
+#Obsolete -> CrmConnection can now take ConnStr direct
+#$crmConn = Get-CrmConnection @connectParams -Verbose
 
 $exportParams = @{
-	CrmConnection = $CRMConn
+	CrmConnection = $crmConnectionString
 	DataFile = "$dataFile"
 	SchemaFile = "$schemaFile"
 }
@@ -66,4 +64,4 @@ If ($logsDirectory)
 
 Export-CrmDataFile @exportParams -EmitLogToConsole -Verbose
 
-Write-Verbose 'Leaving ExporCMtData.ps1'
+Write-Verbose 'Leaving ExportCMData.ps1'
