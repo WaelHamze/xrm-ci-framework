@@ -2,7 +2,7 @@
 # PackageFramework.ps1
 #
 
-$version = "9.1.0-WPCustom"
+$version = "9.1.0"
 
 Write-Host "Packaging xRM CI Framework $version"
 
