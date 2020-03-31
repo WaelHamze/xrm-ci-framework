@@ -33,6 +33,6 @@ Write-Verbose "Importing CIToolkit: $xrmCIToolkit"
 Import-Module $xrmCIToolkit
 Write-Verbose "Imported CIToolkit"
 
-Merge-XrmCMData -Folder "$extractFolder" -MappingFile $mappingFile -MergeDataXmlFileLevel $mergeDataLevel -FileMapCaseSensitive $fileMapCaseSensitive
+Merge-XrmCMData -Folder "$mergeFolder" -MappingFile $mappingFile -MergeDataXmlFileLevel $mergeDataLevel -FileMapCaseSensitive $fileMapCaseSensitive
 
 Write-Verbose 'Leaving MergeCMData.ps1'
