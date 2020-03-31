@@ -482,7 +482,7 @@ namespace Xrm.Framework.CI.Common
                 
                 if (invalidAnnotationMaps.Count > 0)
                 {
-                    Logger.LogWarning($"Found {invalidAnnotationMaps.Count} FileToAnnotation entries, removing...");
+                    Logger.LogWarning($"Found {invalidAnnotationMaps.Count} invalid FileToAnnotation entries, removing...");
                     foreach (XElement invalidAnnotationMap in invalidAnnotationMaps)
                     {
                         annotationMaps.Remove(invalidAnnotationMap);
@@ -500,7 +500,7 @@ namespace Xrm.Framework.CI.Common
                     .ToList(); 
                 if (duplicateAnnotationMaps.Count > 0)
                 {
-                    Logger.LogWarning($"Found {duplicateAnnotationMaps.Count} duplication FileToAnnotation entries, excluding...");
+                    Logger.LogWarning($"Found {duplicateAnnotationMaps.Count} duplicate FileToAnnotation entries, excluding...");
                     foreach (XElement duplicateAnnotationMap in duplicateAnnotationMaps)
                     {
                         annotationMaps.Remove(duplicateAnnotationMap);
@@ -524,7 +524,7 @@ namespace Xrm.Framework.CI.Common
 
                 if (invalidSubstitutionMaps.Count > 0)
                 {
-                    Logger.LogWarning($"Found {invalidSubstitutionMaps.Count} SubstituteRecordValue entries, removing...");
+                    Logger.LogWarning($"Found {invalidSubstitutionMaps.Count} invalid SubstituteRecordValue entries, removing...");
                     foreach (XElement invalidSubstitutionMap in invalidSubstitutionMaps)
                     {
                         substitutionMaps.Remove(invalidSubstitutionMap);
@@ -540,7 +540,7 @@ namespace Xrm.Framework.CI.Common
 
                 if (duplicateSubstitutionMaps.Count > 0)
                 {
-                    Logger.LogWarning($"Found {duplicateSubstitutionMaps.Count} duplication SubstituteRecordValue entries, excluding...");
+                    Logger.LogWarning($"Found {duplicateSubstitutionMaps.Count} duplicate SubstituteRecordValue entries, excluding...");
                     foreach (XElement duplicateAnnotationMap in duplicateSubstitutionMaps)
                     {
                         annotationMaps.Remove(duplicateAnnotationMap);
@@ -572,7 +572,7 @@ namespace Xrm.Framework.CI.Common
                         foreach (XElement annotationMap in annotationMaps)
                         {
                             // Validate source file existence
-                            string sourceFilePath = Path.Combine(mappingFileInfo.Directory.FullName,annotationMap.Attribute("map").Value);
+                            string sourceFilePath = Path.Combine(dataInfo.FullName,annotationMap.Attribute("map").Value);
                             if (!File.Exists(sourceFilePath))
                             {
                                 Logger.LogWarning($"Target annotation map source: {sourceFilePath} not found, skipping...");
@@ -715,11 +715,11 @@ namespace Xrm.Framework.CI.Common
 
                         // Check if we can't find any replacement files / check their size to save us some time later
                         List<XElement> annotationMapsNotFound = annotationMaps
-                                                                    .Where(m => !File.Exists(Path.Combine(mappingFileInfo.DirectoryName, m.Attribute("map").Value)))
+                                                                    .Where(m => !File.Exists(Path.Combine(dataInfo.FullName, m.Attribute("map").Value)))
                                                                     .ToList();
                         List<XElement> annotationMapsTooLarge = annotationMaps
                                                                     .Except(annotationMapsNotFound)
-                                                                    .Where(m => new FileInfo(Path.Combine(mappingFileInfo.DirectoryName, m.Attribute("map").Value)).Length > AnnotationContentSizeLimitBytes)
+                                                                    .Where(m => new FileInfo(Path.Combine(dataInfo.FullName, m.Attribute("map").Value)).Length > AnnotationContentSizeLimitBytes)
                                                                     .ToList();
                         if (annotationMapsNotFound.Count > 0)
                         {
@@ -749,7 +749,7 @@ namespace Xrm.Framework.CI.Common
                                                                                             : Path.GetFileName(m.Attribute("map").Value.ToLower()), 
                                                                                         m => new Tuple<string, string>(
                                                                                             m.Attribute("mimetype").Value, 
-                                                                                            Path.Combine(mappingFileInfo.DirectoryName, m.Attribute("map").Value)
+                                                                                            Path.Combine(dataInfo.FullName, m.Attribute("map").Value)
                                                                                         )
                                                                                     );
                             
@@ -938,7 +938,7 @@ namespace Xrm.Framework.CI.Common
                         foreach (XElement annotationMap in annotationMaps)
                         {
                             // Validate source file existence
-                            string sourceFilePath = Path.Combine(mappingFileInfo.Directory.FullName, annotationMap.Attribute("map").Value);
+                            string sourceFilePath = Path.Combine(dataInfo.FullName, annotationMap.Attribute("map").Value);
                             if (!File.Exists(sourceFilePath))
                             {
                                 Logger.LogWarning($"Target annotation map source: {sourceFilePath} not found, skipping...");

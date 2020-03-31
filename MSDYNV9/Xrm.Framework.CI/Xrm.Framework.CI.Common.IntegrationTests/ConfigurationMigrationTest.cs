@@ -129,16 +129,14 @@ namespace Xrm.Framework.CI.Common.IntegrationTests
             string testDirZip = Path.Combine(ArtifactsDirectory, "MapDataTestStructureRoot.zip");
             string mappingFilePath = Path.Combine(ArtifactsDirectory, "SampleCMMapping.xml");
             string tempFolder = Path.Combine(Path.GetDirectoryName(AssemblyInfo.Location), "temp", MethodBase.GetCurrentMethod().Name);
-            string mappingFileTargetPath = Path.Combine(tempFolder, "MapDataTestStructureRoot", "Folder 1", Path.GetFileName(mappingFilePath));
 
             if (!Directory.Exists(tempFolder))
                 Directory.CreateDirectory(tempFolder);
 
             // Copy test dir structure to temp
-            if (!File.Exists(mappingFileTargetPath))
+            if (!Directory.Exists(Path.Combine(tempFolder, "MapDataTestStructureRoot")))
             {
                 ZipFile.ExtractToDirectory(testDirZip, tempFolder);
-                File.Copy(mappingFilePath, mappingFileTargetPath);
             }
 
             TestLogger logger = new TestLogger();
@@ -147,7 +145,7 @@ namespace Xrm.Framework.CI.Common.IntegrationTests
             manager.ExpandData(existingDataZip, tempFolder);
 
             manager.SplitData(tempFolder, CmExpandTypeEnum.EntityLevel);
-            manager.MapData(tempFolder, mappingFileTargetPath, CmExpandTypeEnum.EntityLevel);
+            manager.MapData(tempFolder, mappingFilePath, CmExpandTypeEnum.EntityLevel);
         }
 
         [TestMethod]
@@ -157,16 +155,14 @@ namespace Xrm.Framework.CI.Common.IntegrationTests
             string testDirZip = Path.Combine(ArtifactsDirectory, "MapDataTestStructureRoot.zip");
             string mappingFilePath = Path.Combine(ArtifactsDirectory, "SampleCMMapping.xml");
             string tempFolder = Path.Combine(Path.GetDirectoryName(AssemblyInfo.Location), "temp", MethodBase.GetCurrentMethod().Name);
-            string mappingFileTargetPath = Path.Combine(tempFolder, "MapDataTestStructureRoot", "Folder 1", Path.GetFileName(mappingFilePath));
 
             if (!Directory.Exists(tempFolder))
                 Directory.CreateDirectory(tempFolder);
 
             // Copy test dir structure to temp
-            if (!File.Exists(mappingFileTargetPath))
+            if (!Directory.Exists(Path.Combine(tempFolder, "MapDataTestStructureRoot")))
             {
                 ZipFile.ExtractToDirectory(testDirZip, tempFolder);
-                File.Copy(mappingFilePath, mappingFileTargetPath);
             }
 
             TestLogger logger = new TestLogger();
@@ -175,7 +171,7 @@ namespace Xrm.Framework.CI.Common.IntegrationTests
             manager.ExpandData(existingDataZip, tempFolder);
 
             manager.SplitData(tempFolder, CmExpandTypeEnum.RecordLevel);
-            manager.MapData(tempFolder, mappingFileTargetPath, CmExpandTypeEnum.RecordLevel);
+            manager.MapData(tempFolder, mappingFilePath, CmExpandTypeEnum.RecordLevel);
         }
 
         [TestMethod]
@@ -185,16 +181,14 @@ namespace Xrm.Framework.CI.Common.IntegrationTests
             string testDirZip = Path.Combine(ArtifactsDirectory, "MapDataTestStructureRoot.zip");
             string mappingFilePath = Path.Combine(ArtifactsDirectory, "SampleCMMapping.xml");
             string tempFolder = Path.Combine(Path.GetDirectoryName(AssemblyInfo.Location), "temp", MethodBase.GetCurrentMethod().Name);
-            string mappingFileTargetPath = Path.Combine(tempFolder, "MapDataTestStructureRoot", "Folder 1", Path.GetFileName(mappingFilePath));
 
             if (!Directory.Exists(tempFolder))
                 Directory.CreateDirectory(tempFolder);
 
             // Copy test dir structure to temp
-            if (!File.Exists(mappingFileTargetPath))
+            if (!Directory.Exists(Path.Combine(tempFolder, "MapDataTestStructureRoot")))
             {
                 ZipFile.ExtractToDirectory(testDirZip, tempFolder);
-                File.Copy(mappingFilePath, mappingFileTargetPath);
             }
 
             TestLogger logger = new TestLogger();
@@ -202,7 +196,7 @@ namespace Xrm.Framework.CI.Common.IntegrationTests
 
             manager.ExpandData(existingDataZip, tempFolder);
 
-            manager.MapData(tempFolder, mappingFileTargetPath, CmExpandTypeEnum.None);
+            manager.MapData(tempFolder, mappingFilePath, CmExpandTypeEnum.None);
         }
 
         // TODO: Lift test artefact into folder so this can be run relative to source code location
