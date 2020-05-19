@@ -678,7 +678,7 @@ namespace Xrm.Framework.CI.Common
                                 if (targetNode != null)
                                 {
                                     string value = substitutionMap.Attribute("value").Value;
-                                    targetNode.XPathSelectElements($"//field[@name='{valueAttr}']")
+                                    targetNode.XPathSelectElements($"./field[@name='{valueAttr}']")
                                                 .First()
                                                 .SetAttributeValue("value", value);
                                     updateTargetFile = true;
@@ -1011,7 +1011,7 @@ namespace Xrm.Framework.CI.Common
                             if (targetNode != null)
                             {
                                 string value = substitutionMap.Attribute("value").Value;
-                                targetNode.XPathSelectElements($"//field[@name='{valueAttr}']")
+                                targetNode.XPathSelectElements($"./field[@name='{valueAttr}']")
                                             .First()
                                             .SetAttributeValue("value", value);
                                 updateDataXmlFile = true;
