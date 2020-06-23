@@ -191,10 +191,11 @@ namespace Xrm.Framework.CI.Common
                 RequestId = importJobId,
             };
 
+            
+            //keep seperate to allow compatibility with crm2015
             if (holdingSolution)
-            {
                 importSolutionRequest.HoldingSolution = holdingSolution;
-            }
+         
 
             if (importAsync)
             {
@@ -745,6 +746,7 @@ namespace Xrm.Framework.CI.Common
               
             };
 
+            //keep seperate to allow compatibility with crm2015
             if (options.ExportExternalApplications)
                 exportSolutionRequest.ExportExternalApplications = options.ExportExternalApplications;
 

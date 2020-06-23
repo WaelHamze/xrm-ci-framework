@@ -185,10 +185,11 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
                 
             };
 
+            
+            //keep seperate to allow compatibility with crm2015
             if (ExportExternalApplications)
-            {
                 exportSolutionRequest.ExportExternalApplications = ExportExternalApplications;
-            }
+            
 
             var exportSolutionResponse = OrganizationService.Execute(exportSolutionRequest) as ExportSolutionResponse;
 
