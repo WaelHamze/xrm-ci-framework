@@ -189,8 +189,12 @@ namespace Xrm.Framework.CI.Common
                 SkipProductUpdateDependencies = skipProductUpdateDependencies,
                 ImportJobId = importJobId.Value,
                 RequestId = importJobId,
-                HoldingSolution = holdingSolution
             };
+
+            if (holdingSolution)
+            {
+                importSolutionRequest.HoldingSolution = holdingSolution;
+            }
 
             if (importAsync)
             {
@@ -738,8 +742,11 @@ namespace Xrm.Framework.CI.Common
                 ExportRelationshipRoles = options.ExportRelationshipRoles,
                 ExportSales = options.ExportSales,
                 TargetVersion = options.TargetVersion,
-                ExportExternalApplications = options.ExportExternalApplications
+              
             };
+
+            if (options.ExportExternalApplications)
+                exportSolutionRequest.ExportExternalApplications = options.ExportExternalApplications;
 
             var exportSolutionResponse = OrganizationService.Execute(exportSolutionRequest) as ExportSolutionResponse;
 
