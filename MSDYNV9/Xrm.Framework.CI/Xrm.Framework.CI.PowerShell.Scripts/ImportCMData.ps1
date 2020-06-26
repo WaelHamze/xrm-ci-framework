@@ -1,5 +1,5 @@
 #
-# ImportCMData.ps1
+# ImportCmData.ps1
 #
 
 [CmdletBinding()]
@@ -20,7 +20,7 @@ param(
 $ErrorActionPreference = "Stop"
 $InformationPreference = "Continue"
 
-Write-Verbose 'Entering ImportCMData.ps1'
+Write-Verbose 'Entering ImportCmData.ps1'
 
 #Print Parameters
 
@@ -84,4 +84,4 @@ if ($enabledBatchMode)
 
 Import-CrmDataFile @importParams -EmitLogToConsole -Verbose
 
-Write-Verbose 'Leaving ImportCMData.ps1'
+Write-Verbose 'Leaving ImportCmData.ps1'

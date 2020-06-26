@@ -1,5 +1,5 @@
 #
-# MergeCMData.ps1
+# MergeCmData.ps1
 #
 
 [CmdletBinding()]
@@ -14,7 +14,7 @@ param(
 $ErrorActionPreference = "Stop"
 $InformationPreference = "Continue"
 
-Write-Verbose 'Entering MergeCMData.ps1'
+Write-Verbose 'Entering MergeCmData.ps1'
 
 #Print Parameters
 
@@ -33,6 +33,6 @@ Write-Verbose "Importing CIToolkit: $xrmCIToolkit"
 Import-Module $xrmCIToolkit
 Write-Verbose "Imported CIToolkit"
 
-Merge-XrmCMData -Folder "$mergeFolder" -MappingFile $mappingFile -MergeDataXmlFileLevel $mergeDataLevel -FileMapCaseSensitive $fileMapCaseSensitive
+Merge-XrmCmData -Folder "$mergeFolder" -MappingFile $mappingFile -MergeDataXmlFileLevel $mergeDataLevel -FileMapCaseSensitive $fileMapCaseSensitive
 
-Write-Verbose 'Leaving MergeCMData.ps1'
+Write-Verbose 'Leaving MergeCmData.ps1'

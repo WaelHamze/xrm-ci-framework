@@ -1,5 +1,5 @@
 #
-# ExportCMData.ps1
+# ExportCmData.ps1
 #
 
 [CmdletBinding()]
@@ -16,7 +16,7 @@ param(
 $ErrorActionPreference = "Stop"
 $InformationPreference = "Continue"
 
-Write-Verbose 'Entering ExportCMData.ps1'
+Write-Verbose 'Entering ExportCmData.ps1'
 
 #Print Parameters
 
@@ -64,4 +64,4 @@ If ($logsDirectory)
 
 Export-CrmDataFile @exportParams -EmitLogToConsole -Verbose
 
-Write-Verbose 'Leaving ExportCMData.ps1'
+Write-Verbose 'Leaving ExportCmData.ps1'
