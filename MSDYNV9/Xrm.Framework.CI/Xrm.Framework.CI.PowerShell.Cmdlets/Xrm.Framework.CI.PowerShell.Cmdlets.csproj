@@ -113,9 +113,9 @@
     <Compile Include="AddXrmLanguagePack.cs" />
     <Compile Include="AddXrmSolution.cs" />
     <Compile Include="AddXrmSolutionPatch.cs" />
-    <Compile Include="CompressXrmCMData.cs" />
-    <Compile Include="MergeXrmCMData.cs" />
-    <Compile Include="ExpandXrmCMData.cs" />
+    <Compile Include="CompressXrmCmData.cs" />
+    <Compile Include="MergeXrmCmData.cs" />
+    <Compile Include="ExpandXrmCmData.cs" />
     <Compile Include="ExpandXrmSolution.cs" />
     <Compile Include="CompressXrmSolution.cs" />
     <Compile Include="GetXrmConnectionsCommand.cs" />
@@ -183,12 +183,6 @@
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="bin\Debug\ApplySolution.ps1" />
-    <None Include="bin\Debug\UpdateConfigurationRecords.ps1" />
-    <None Include="bin\Debug\Xrm.Framework.CI.PowerShell.Cmdlets.dll.config" />
-    <None Include="bin\Debug\XrmCIFramework.9.0.0.nupkg" />
-    <None Include="bin\Debug\XrmCIFramework.9.0.0.symbols.nupkg" />
-    <None Include="bin\Release\Xrm.Framework.CI.PowerShell.Cmdlets.dll.config" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
@@ -198,42 +192,6 @@
     <None Include="Xrm.Framework.CI.PowerShell.Cmdlets.psd1" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="bin\Debug\Microsoft.Crm.Sdk.Proxy.dll" />
-    <Content Include="bin\Debug\Microsoft.Crm.Sdk.Proxy.xml" />
-    <Content Include="bin\Debug\Microsoft.IdentityModel.Clients.ActiveDirectory.dll" />
-    <Content Include="bin\Debug\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll" />
-    <Content Include="bin\Debug\Microsoft.IdentityModel.Clients.ActiveDirectory.xml" />
-    <Content Include="bin\Debug\Microsoft.Management.Infrastructure.dll" />
-    <Content Include="bin\Debug\Microsoft.Xrm.Sdk.Deployment.dll" />
-    <Content Include="bin\Debug\Microsoft.Xrm.Sdk.Deployment.xml" />
-    <Content Include="bin\Debug\Microsoft.Xrm.Sdk.dll" />
-    <Content Include="bin\Debug\Microsoft.Xrm.Sdk.xml" />
-    <Content Include="bin\Debug\Microsoft.Xrm.Tooling.Connector.dll" />
-    <Content Include="bin\Debug\Microsoft.Xrm.Tooling.Connector.xml" />
-    <Content Include="bin\Debug\Newtonsoft.Json.dll" />
-    <Content Include="bin\Debug\Newtonsoft.Json.xml" />
-    <Content Include="bin\Debug\System.Management.Automation.dll" />
-    <Content Include="bin\Debug\System.Management.Automation.xml" />
-    <Content Include="bin\Debug\Xrm.Framework.CI.PowerShell.Cmdlets.dll" />
-    <Content Include="bin\Debug\Xrm.Framework.CI.PowerShell.Cmdlets.pdb" />
-    <Content Include="bin\Release\Microsoft.Crm.Sdk.Proxy.dll" />
-    <Content Include="bin\Release\Microsoft.Crm.Sdk.Proxy.xml" />
-    <Content Include="bin\Release\Microsoft.IdentityModel.Clients.ActiveDirectory.dll" />
-    <Content Include="bin\Release\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll" />
-    <Content Include="bin\Release\Microsoft.IdentityModel.Clients.ActiveDirectory.xml" />
-    <Content Include="bin\Release\Microsoft.Management.Infrastructure.dll" />
-    <Content Include="bin\Release\Microsoft.Xrm.Sdk.Deployment.dll" />
-    <Content Include="bin\Release\Microsoft.Xrm.Sdk.Deployment.xml" />
-    <Content Include="bin\Release\Microsoft.Xrm.Sdk.dll" />
-    <Content Include="bin\Release\Microsoft.Xrm.Sdk.xml" />
-    <Content Include="bin\Release\Microsoft.Xrm.Tooling.Connector.dll" />
-    <Content Include="bin\Release\Microsoft.Xrm.Tooling.Connector.xml" />
-    <Content Include="bin\Release\Newtonsoft.Json.dll" />
-    <Content Include="bin\Release\Newtonsoft.Json.xml" />
-    <Content Include="bin\Release\System.Management.Automation.dll" />
-    <Content Include="bin\Release\System.Management.Automation.xml" />
-    <Content Include="bin\Release\Xrm.Framework.CI.PowerShell.Cmdlets.dll" />
-    <Content Include="bin\Release\Xrm.Framework.CI.PowerShell.Cmdlets.pdb" />
     <Content Include="icon_128x128.png" />
     <Content Include="readme.txt" />
   </ItemGroup>
@@ -249,7 +207,7 @@
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties PluginRegistration_4WorkflowAssemblyExample_1json__JSONSchema="PluginRegistrationSchema.json" PluginRegistration_4PluginAssemblyExample_1json__JSONSchema="PluginRegistrationSchema.json" />
+      <UserProperties PluginRegistration_4PluginAssemblyExample_1json__JSONSchema="PluginRegistrationSchema.json" PluginRegistration_4WorkflowAssemblyExample_1json__JSONSchema="PluginRegistrationSchema.json" />
     </VisualStudio>
   </ProjectExtensions>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
