@@ -34,11 +34,11 @@
     <Compile Include="CloneSolution.ps1" />
     <Compile Include="CopySolutionComponents.ps1" />
     <Compile Include="CreateSolution.ps1" />
-    <Compile Include="MergeCMData.ps1" />
-    <Compile Include="PackCMData.ps1" />
-    <Compile Include="ExtractCMData.ps1" />
-    <Compile Include="ImportCMData.ps1" />
-    <Compile Include="ExportCMData.ps1" />
+    <Compile Include="MergeCmData.ps1" />
+    <Compile Include="PackCmData.ps1" />
+    <Compile Include="ExtractCmData.ps1" />
+    <Compile Include="ImportCmData.ps1" />
+    <Compile Include="ExportCmData.ps1" />
     <Compile Include="ExportSolutions.ps1" />
     <Compile Include="CheckSolution.ps1" />
     <Compile Include="GetSolutionMissingDependencies.ps1" />

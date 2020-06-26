@@ -203,12 +203,18 @@ namespace Xrm.Framework.CI.Common.IntegrationTests
         [TestMethod]
         public void TestSort()
         {
-            string folder = @"C:\Src\dyn365-ce-devops-sample\Sample\Xrm.CI.Framework.Sample\Data\Data";
+            string existingDataZip = Path.Combine(ArtifactsDirectory, "ExtractedPortalData.zip");
+            string tempFolder = Path.Combine(Path.GetDirectoryName(AssemblyInfo.Location), "temp", MethodBase.GetCurrentMethod().Name, "ExtractedPortalData");
+            if (!Directory.Exists(tempFolder))
+            {
+                Directory.CreateDirectory(tempFolder);
+                ZipFile.ExtractToDirectory(existingDataZip, tempFolder);
+            }
 
             TestLogger logger = new TestLogger();
             ConfigurationMigrationManager manager = new ConfigurationMigrationManager(logger);
 
-            manager.SortDataXml(folder);
+            manager.SortDataXml(tempFolder);
         }
     }
 }
