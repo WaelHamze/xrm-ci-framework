@@ -3,7 +3,7 @@
 #
 
 param(
-[string]$solutionPackagerPath, #Path to solutionpackager.exe
+[string]$CoreToolsPath,
 [string]$OutputFolder,
 [string]$ConfigFilePath,
 [string]$LogsDirectory
@@ -15,7 +15,7 @@ $InformationPreference = "Continue"
 Write-Verbose 'Entering PackSolutionsUsingConfig.ps1'
 
 #Parameters
-Write-Verbose "solutionPackagerPath = $solutionPackagerPath"
+Write-Verbose "CoreToolsPath = $CoreToolsPath"
 Write-Verbose "OutputFolder = $OutputFolder"
 Write-Verbose "ConfigFilePath = $ConfigFilePath"
 Write-Verbose "LogsDirectory = $LogsDirectory"
@@ -30,11 +30,13 @@ Write-Verbose "Importing CIToolkit: $xrmCIToolkit"
 Import-Module $xrmCIToolkit
 Write-Verbose "Imported CIToolkit"
 
-#Solution Export
+$SolutionPackagerPath = $CoreToolsPath + "\SolutionPackager.exe"
+
+#Solution Pack
 
 Write-Host "Packing Solutions"
         
-$results = Compress-XrmSolutions -solutionPackagerPath "$solutionPackagerPath" -ConfigFilePath "$ConfigFilePath" -OutputFolder "$OutputFolder" -LogsDirectory $LogsDirectory
+$results = Compress-XrmSolutions -solutionPackagerPath "$SolutionPackagerPath" -ConfigFilePath "$ConfigFilePath" -OutputFolder "$OutputFolder" -LogsDirectory $LogsDirectory
     
 Write-Host "Packed Solutions to $OutputFolder"
 
