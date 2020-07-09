@@ -14,6 +14,10 @@ param(
 [string[]]$ExcludedFiles, #The Files/Patterns to be excluded from scanning
 [string]$RuleOverridesJson, #Json string containing rule overrides
 [string]$Geography, #The regional endpoint to hit
+[string]$LocaleName, #Specifies the language code that determines how the results are listed, such as es, for Spanish. The languages that are supported are included in the validation set of the parameter. 
+[int]$MaxStatusChecks, #Maximum number of times in which status calls are made to the service. The default number is 20, which in most cases is sufficient. If the threshold is exceeded, then a timeout exception is thrown.
+[int]$SecondsBetweenChecks, #The number of seconds between status checks. The default is 15 seconds.
+[int]$MaxConnectionTimeOutMinutes, #Maximum number in minutes to wait before quitting a web based operation.
 [string]$PowerAppsCheckerPath, #The full path to the PowerApp Checker PowerShell Module
 [bool]$EnableThresholds, #Enables threshold checks
 [string]$ThresholdAction, # Warn, Error - The type of action to generate when number of issues exceeds threshold limit
@@ -87,9 +91,13 @@ else
 $CheckParams = @{
 	FileUnderAnalysis = "$SolutionFile"
 	OutputDirectory = "$OutputPath"
+	Geography = "$Geography"
 	TenantId = "$TenantId"
 	ClientApplicationId = "$ApplicationId"
 	ClientApplicationSecret = ConvertTo-SecureString "$ApplicationSecret" -AsPlainText -Force
+	LocaleName = "$LocaleName"
+	MaxStatusChecks = $MaxStatusChecks
+	SecondsBetweenChecks = $SecondsBetweenChecks
 }
 if ($rulesetToUse)
 {
@@ -133,6 +141,11 @@ if ($RuleOverridesJson)
 
 		Write-Host ("Added ({0}) Rule Overrides" -f $overrides.Count)
 	}
+}
+
+if ($MaxConnectionTimeOutMinutes -ne 0)
+{
+	$CheckParams.MaxConnectionTimeOutMinutes = $MaxConnectionTimeOutMinutes
 }
 
 $response = Invoke-PowerAppsChecker @CheckParams
