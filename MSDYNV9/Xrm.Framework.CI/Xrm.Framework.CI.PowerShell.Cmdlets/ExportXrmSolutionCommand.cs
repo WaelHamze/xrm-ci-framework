@@ -181,9 +181,15 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
                 ExportOutlookSynchronizationSettings = ExportOutlookSynchronizationSettings,
                 ExportRelationshipRoles = ExportRelationshipRoles,
                 ExportSales = ExportSales,
-                TargetVersion = TargetVersion,
-                ExportExternalApplications = ExportExternalApplications
+                TargetVersion = TargetVersion
+                
             };
+
+            
+            //keep seperate to allow compatibility with crm2015
+            if (ExportExternalApplications)
+                exportSolutionRequest.ExportExternalApplications = ExportExternalApplications;
+            
 
             var exportSolutionResponse = OrganizationService.Execute(exportSolutionRequest) as ExportSolutionResponse;
 
