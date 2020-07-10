@@ -4,6 +4,7 @@ using System.Linq;
 using System.Management.Automation;
 using System.Text;
 using Microsoft.Crm.Sdk.Messages;
+using Xrm.Framework.CI.Common;
 using Xrm.Framework.CI.Common.Entities;
 using Xrm.Framework.CI.PowerShell.Cmdlets.Common;
 
@@ -134,40 +135,17 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
         {
             base.ProcessRecord();
 
-            base.WriteVerbose(string.Format("Exporting Solution: {0}", UniqueSolutionName));
+            Logger.LogVerbose("Entering XrmExportSolution");
 
-            var solutionFile = new StringBuilder();
-            Solution solution;
+            XrmConnectionManager xrmConnection = new XrmConnectionManager(
+                Logger);
 
-            using (var context = new CIContext(OrganizationService))
-            {
-                var query = from s in context.SolutionSet
-                            where s.UniqueName == UniqueSolutionName
-                            select s;
+            SolutionManager solutionManager = new SolutionManager(
+                Logger,
+                OrganizationService,
+                null);
 
-                solution = query.FirstOrDefault();
-            }
-
-            if (solution == null)
-            {
-                throw new Exception(string.Format("Solution {0} could not be found", UniqueSolutionName));
-            }
-            solutionFile.Append(UniqueSolutionName);
-
-            if (IncludeVersionInName)
-            {
-                solutionFile.Append("_");
-                solutionFile.Append(solution.Version.Replace(".", "_"));
-            }
-
-            if (Managed)
-            {
-                solutionFile.Append("_managed");
-            }
-
-            solutionFile.Append(".zip");
-
-            var exportSolutionRequest = new ExportSolutionRequest
+            SolutionExportOptions options = new SolutionExportOptions
             {
                 Managed = Managed,
                 SolutionName = UniqueSolutionName,
@@ -181,22 +159,18 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
                 ExportOutlookSynchronizationSettings = ExportOutlookSynchronizationSettings,
                 ExportRelationshipRoles = ExportRelationshipRoles,
                 ExportSales = ExportSales,
-                TargetVersion = TargetVersion
-                
+                TargetVersion = TargetVersion,
+                ExportExternalApplications = ExportExternalApplications,
+                IncludeVersionInName = IncludeVersionInName
             };
 
-            
-            //keep seperate to allow compatibility with crm2015
-            if (ExportExternalApplications)
-                exportSolutionRequest.ExportExternalApplications = ExportExternalApplications;
-            
+            string solutionFile = solutionManager.ExportSolution(
+                OutputFolder,
+                options);
 
-            var exportSolutionResponse = OrganizationService.Execute(exportSolutionRequest) as ExportSolutionResponse;
+            base.WriteObject(solutionFile);
 
-            string solutionFilePath = Path.Combine(OutputFolder, solutionFile.ToString());
-            File.WriteAllBytes(solutionFilePath, exportSolutionResponse.ExportSolutionFile);
-
-            base.WriteObject(solutionFile.ToString());
+            Logger.LogVerbose("Leaving XrmExportSolution");
         }
 
         #endregion
