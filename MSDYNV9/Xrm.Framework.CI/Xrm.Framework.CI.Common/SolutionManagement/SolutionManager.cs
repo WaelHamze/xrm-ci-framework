@@ -540,10 +540,11 @@ namespace Xrm.Framework.CI.Common
             {
                 var query = from s in context.SolutionSet
                             where s.ParentSolutionId.Id == parent.Id
-                            orderby s.Version descending
                             select s;
 
                 List<Solution> solutions = query.ToList<Solution>();
+
+                solutions = solutions.OrderBy(s => new Version(s.Version)).Reverse<Solution>().ToList<Solution>();
 
                 return solutions;
             }
@@ -553,60 +554,60 @@ namespace Xrm.Framework.CI.Common
                                     string versionNumber,
                                     string displayName)
         {
-            using (var context = new CIContext(OrganizationService))
+
+            var solution = GetSolution(uniqueName, new ColumnSet("version", "friendlyname"));
+
+            if (solution == null)
             {
-                if (string.IsNullOrEmpty(versionNumber))
+                throw new Exception(string.Format("Solution with unique name {0} not found.", uniqueName));
+            }
+
+            if (string.IsNullOrEmpty(versionNumber))
+            {
+                Logger.LogVerbose("VersionNumber not supplied. Generating default VersionNumber");
+
+                var patches = GetSolutionPatches(uniqueName);
+
+                Version version;
+                if (patches.Count == 0)
                 {
-                    Logger.LogVerbose("VersionNumber not supplied. Generating default VersionNumber");
-
-                    var solution = (from sol in context.SolutionSet
-                                    where sol.UniqueName == uniqueName || sol.UniqueName.StartsWith(uniqueName + "_Patch")
-                                    orderby sol.Version descending
-                                    select new Solution { Version = sol.Version, FriendlyName = sol.FriendlyName }).FirstOrDefault();
-                    if (solution == null || string.IsNullOrEmpty(solution.Version))
-                    {
-                        throw new Exception(string.Format("Parent solution with unique name {0} not found.", uniqueName));
-                    }
-
-                    string[] versions = solution.Version.Split('.');
-                    char dot = '.';
-                    versionNumber = string.Concat(versions[0], dot, versions[1], dot, Convert.ToInt32(versions[2]) + 1, dot, 0);
-                    Logger.LogVerbose("New VersionNumber: {0}", versionNumber);
+                    version = new Version(solution.Version);
+                }
+                else
+                {
+                    version = new Version(patches[0].Version);
                 }
 
-                if (string.IsNullOrEmpty(displayName))
-                {
-                    Logger.LogVerbose("displayName not supplied. Generating default DisplayName");
+                char dot = '.';
+                versionNumber = string.Concat(version.Major, dot, version.Minor, dot, version.Build + 1, dot, 0);
+                Logger.LogVerbose("New VersionNumber: {0}", versionNumber);
+            }
 
-                    var solution = (from sol in context.SolutionSet
-                                    where sol.UniqueName == uniqueName
-                                    select new Solution { FriendlyName = sol.FriendlyName }).FirstOrDefault();
+            if (string.IsNullOrEmpty(displayName))
+            {
+                Logger.LogVerbose("displayName not supplied. Generating default DisplayName");
 
-                    if (solution == null || string.IsNullOrEmpty(solution.FriendlyName))
-                    {
-                        throw new Exception(string.Format("Parent solution with unique name {0} not found.", uniqueName));
-                    }
+                displayName = solution.FriendlyName;
 
-                    displayName = solution.FriendlyName;
-                }
+                Logger.LogVerbose("New DisplayName: {0}", displayName);
+            }
 
-                var cloneAsPatch = new CloneAsPatchRequest
-                {
-                    DisplayName = displayName,
-                    ParentSolutionUniqueName = uniqueName,
-                    VersionNumber = versionNumber,
-                };
+            var cloneAsPatch = new CloneAsPatchRequest
+            {
+                DisplayName = displayName,
+                ParentSolutionUniqueName = uniqueName,
+                VersionNumber = versionNumber,
+            };
 
-                CloneAsPatchResponse response = OrganizationService.Execute(cloneAsPatch) as CloneAsPatchResponse;
+            CloneAsPatchResponse response = OrganizationService.Execute(cloneAsPatch) as CloneAsPatchResponse;
 
-                Logger.LogInformation("Patch solution created with Id {0}", response.SolutionId);
+            Logger.LogInformation("Patch solution created with Id {0}", response.SolutionId);
 
-                Solution patch = GetSolution(response.SolutionId, new ColumnSet(true));
+            Solution patch = GetSolution(response.SolutionId, new ColumnSet(true));
 
-                Logger.LogInformation("Patch solution name: {0}", patch.UniqueName);
+            Logger.LogInformation("Patch solution name: {0}", patch.UniqueName);
 
                 return patch;
-            }
         }
 
         public Solution CloneSolution(string uniqueName,

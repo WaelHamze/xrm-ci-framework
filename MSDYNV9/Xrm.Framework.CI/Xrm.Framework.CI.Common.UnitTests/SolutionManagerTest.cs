@@ -1,6 +1,11 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using FakeXrmEasy;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Microsoft.Xrm.Sdk;
+using System;
+using System.Collections.Generic;
 using System.Xml;
 using Xrm.Framework.CI.Common;
+using Xrm.Framework.CI.Common.Entities;
 
 namespace Xrm.Framework.CI.Common.UnitTests
 {
@@ -66,6 +71,57 @@ namespace Xrm.Framework.CI.Common.UnitTests
             manager.VerifySolutionImport_PrettyPrintErrorMessage(doc, result);
 
             Assert.IsNotNull(result.ErrorMessage);
+        }
+
+        [TestMethod]
+        public void SolutionManager_VerifyGetLatestPatch_Test()
+        {
+            var ctx = new XrmFakedContext();
+
+            Solution parent = new Solution();
+            parent.UniqueName = "parent";
+            parent.Id = Guid.NewGuid();
+
+            Solution solution = new Solution
+            {
+                UniqueName = "solution",
+                Version = "1.0.0",
+                Id = Guid.NewGuid()
+            };
+
+            Solution patch1 = new Solution
+            {
+                UniqueName = "patch1",
+                Version = "1.1.9",
+                Id = Guid.NewGuid()
+            };
+            patch1.Attributes["parentsolutionid"] = parent.ToEntityReference();
+
+            Solution patch2 = new Solution
+            {
+                UniqueName = "patch2",
+                Version = "1.10.0",
+                Id = Guid.NewGuid()
+            };
+            patch2.Attributes["parentsolutionid"] = parent.ToEntityReference();
+
+            Solution patch3 = new Solution
+            {
+                UniqueName = "patch3",
+                Version = "1.2.0",
+                Id = Guid.NewGuid()
+            };
+            patch3.Attributes["parentsolutionid"] = parent.ToEntityReference();
+
+            ctx.Initialize(new List<Entity> { parent, solution, patch1, patch2, patch3 });
+
+            SolutionManager manager = new SolutionManager(new Logging.TestLogger(), ctx.GetOrganizationService(), null);
+
+            List<Solution> patches = manager.GetSolutionPatches(parent.UniqueName);
+
+            Assert.AreEqual(patches.Count, 3);
+            Assert.AreEqual(patches[0].Version, patch2.Version);
+            Assert.AreEqual(patches[0].UniqueName, patch2.UniqueName);
         }
     }
 }
