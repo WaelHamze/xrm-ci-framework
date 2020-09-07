@@ -86,7 +86,7 @@ namespace Xrm.Framework.CI.Common
 
         private IOrganizationService ConnectToCRM(string connectionString, int timeout)
         {
-            CrmServiceClient.MaxConnectionTimeout = TimeSpan.FromMinutes(timeout == 0 ? DefaultTime : timeout);
+            CrmServiceClient.MaxConnectionTimeout = TimeSpan.FromSeconds(timeout == 0 ? DefaultTime : timeout);
 
             CrmServiceClient serviceClient = null;
             for (int i = 1; i <= ConnectRetryCount; i++)
@@ -94,8 +94,20 @@ namespace Xrm.Framework.CI.Common
                 Logger.LogVerbose("Connecting to CRM [attempt {0}]", i);
                 serviceClient = new CrmServiceClient(connectionString);
 
+                serviceClient.SessionTrackingId = Guid.NewGuid();
+
                 if (serviceClient != null && serviceClient.IsReady)
                 {
+                    Logger.LogVerbose($"Connected to Org Url: {serviceClient.CrmConnectOrgUriActual}");
+                    Logger.LogVerbose($"Connected to Org Id: {serviceClient.ConnectedOrgId}");
+                    Logger.LogVerbose($"Connected to Environment Id: {serviceClient.EnvironmentId}");
+                    Logger.LogVerbose($"Connected to Org Friendly Name: {serviceClient.ConnectedOrgFriendlyName}");
+                    Logger.LogVerbose($"Connected to Org Unique Name: {serviceClient.ConnectedOrgUniqueName}");
+                    Logger.LogVerbose($"Connected to Tenant Id: {serviceClient.TenantId}");
+                    Logger.LogVerbose($"Connected to Org Version: {serviceClient.ConnectedOrgVersion}");
+                    Logger.LogVerbose($"SdkVersionProperty: {serviceClient.SdkVersionProperty}");
+                    Logger.LogVerbose($"Session Tracking Id: {serviceClient.SessionTrackingId}");
+
                     if (serviceClient.OrganizationServiceProxy != null)
                     {
                         Logger.LogVerbose("Connection to CRM Established using OrganizationServiceProxy");
