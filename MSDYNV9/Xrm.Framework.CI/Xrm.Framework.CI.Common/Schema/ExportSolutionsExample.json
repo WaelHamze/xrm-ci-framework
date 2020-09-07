@@ -15,7 +15,11 @@
       "ExportOutlookSynchronizationSettings": false,
       "ExportRelationshipRoles": false,
       "ExportSales": false,
-      "IncludeVersionInName": true
+      "IncludeVersionInName": true,
+      "ExportAsync": false,
+      "ApplyAsync": true,
+      "SleepInterval": 15,
+      "AsyncWaitTimeout": 900
     },
     {
       "SolutionName": "Solution1_Patch_ef8wd7lb",
@@ -32,7 +36,11 @@
       "ExportOutlookSynchronizationSettings": false,
       "ExportRelationshipRoles": false,
       "ExportSales": false,
-      "IncludeVersionInName": true
+      "IncludeVersionInName": true,
+      "ExportAsync": true,
+      "ApplyAsync": true,
+      "SleepInterval": 15,
+      "AsyncWaitTimeout": 900
     }
   ]
 }

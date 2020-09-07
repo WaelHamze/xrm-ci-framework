@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.Xrm.Sdk;
+using Microsoft.Xrm.Sdk.Query;
+using Xrm.Framework.CI.Common.Entities;
 using Xrm.Framework.CI.Common.Logging;
 
 namespace Xrm.Framework.CI.Common.IntegrationTests
@@ -66,10 +68,10 @@ namespace Xrm.Framework.CI.Common.IntegrationTests
             config.Solutions.Add(
                 new SolutionExportOptions()
                 {
-                    //SolutionName = "TestSolution_Patch_1065d4b7",
-                    SolutionName = "TestSolution_Patch_ef8bd7db",
+                    SolutionName = "xRMCISample",
                     IncludeVersionInName = true,
-                    Managed = true
+                    Managed = true,
+                    ExportAsync = true
                 }
                 );
 
@@ -78,6 +80,8 @@ namespace Xrm.Framework.CI.Common.IntegrationTests
             Serializers.SaveJson<SolutionExportConfig>(
                 configFile,
                 config);
+
+            //var x = OrganizationService.Retrieve("exportsolutionupload", Guid.NewGuid(), new ColumnSet(true));
 
             List<string> exportedFiles =
                 SolutionManager.ExportSolutions(LogsDirectory, config);

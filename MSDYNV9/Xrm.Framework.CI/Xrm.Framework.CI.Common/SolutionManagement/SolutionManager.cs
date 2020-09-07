@@ -191,7 +191,8 @@ namespace Xrm.Framework.CI.Common
                 RequestId = importJobId,
             };
 
-            
+            Logger.LogVerbose($"RequestId: {importSolutionRequest.RequestId}");
+
             //keep seperate to allow compatibility with crm2015
             if (holdingSolution)
                 importSolutionRequest.HoldingSolution = holdingSolution;
@@ -203,7 +204,8 @@ namespace Xrm.Framework.CI.Common
 
                 var asyncRequest = new ExecuteAsyncRequest
                 {
-                    Request = importSolutionRequest
+                    Request = importSolutionRequest,
+                    RequestId = importSolutionRequest.RequestId
                 };
                 var asyncResponse = OrganizationService.Execute(asyncRequest) as ExecuteAsyncResponse;
 
@@ -410,14 +412,18 @@ namespace Xrm.Framework.CI.Common
 
             var upgradeSolutionRequest = new DeleteAndPromoteRequest
             {
-                UniqueName = solutionName
+                UniqueName = solutionName,
+                RequestId = Guid.NewGuid()
             };
+
+            Logger.LogVerbose($"RequestId: {upgradeSolutionRequest.RequestId}");
 
             if (importAsync)
             {
                 var asyncRequest = new ExecuteAsyncRequest
                 {
-                    Request = upgradeSolutionRequest
+                    Request = upgradeSolutionRequest,
+                    RequestId = upgradeSolutionRequest.RequestId
                 };
 
                 Logger.LogVerbose("Applying using Async Mode");
@@ -485,10 +491,14 @@ namespace Xrm.Framework.CI.Common
 
             if (results.Entities.Count == 0)
             {
+                Logger.LogVerbose($"{uniqueName} solution was not found");
+
                 return null;
             }
             else
             {
+                Logger.LogVerbose($"Solution retrieved with Id: {results.Entities[0].Id}");
+
                 return results.Entities[0].ToEntity<Solution>();
             }
         }
@@ -714,6 +724,15 @@ namespace Xrm.Framework.CI.Common
             Solution solution = GetSolution(options.SolutionName,
                 new ColumnSet("version"));
 
+            if (solution is null)
+            {
+                throw new Exception($"Unable to find solution with unique name: {options.SolutionName}");
+            }
+            else
+            {
+                Logger.LogInformation($"Exporting Solution: {options.SolutionName}, version: {solution.Version}");
+            }
+
             solutionFile.Append(options.SolutionName);
 
             if (options.IncludeVersionInName)
@@ -744,18 +763,69 @@ namespace Xrm.Framework.CI.Common
                 ExportRelationshipRoles = options.ExportRelationshipRoles,
                 ExportSales = options.ExportSales,
                 TargetVersion = options.TargetVersion,
+                RequestId = Guid.NewGuid()
               
             };
+
+            Logger.LogVerbose($"RequestId: {exportSolutionRequest.RequestId}");
 
             //keep seperate to allow compatibility with crm2015
             if (options.ExportExternalApplications)
                 exportSolutionRequest.ExportExternalApplications = options.ExportExternalApplications;
 
-            var exportSolutionResponse = OrganizationService.Execute(exportSolutionRequest) as ExportSolutionResponse;
+            byte[] solutionBytes;
+
+            if (options.ExportAsync)
+            {
+                Logger.LogInformation("Exporting Solution using Async Mode");
+
+                exportSolutionRequest.RequestName = "ExportSolutionAsync";
+
+                var asyncExportResponse = OrganizationService.Execute(exportSolutionRequest);
+
+                //Guid asyncJobId = asyncResponse.AsyncJobId;
+                Guid asyncJobId = (Guid)asyncExportResponse.Results["AsyncOperationId"];
+                Guid exportJobId = (Guid)asyncExportResponse.Results["ExportJobId"];
+
+                Logger.LogInformation($"AsyncOperationId: {asyncJobId}");
+                Logger.LogInformation($"ExportJobId: {exportJobId}");
+
+                AsyncOperationManager asyncOperationManager = new AsyncOperationManager(Logger, OrganizationService);
+                AsyncOperation operation = asyncOperationManager.AwaitCompletion(asyncJobId, options.AsyncWaitTimeout, options.SleepInterval, null);
+
+                Logger.LogInformation("Async Operation completed with status: {0}",
+                    ((AsyncOperation_StatusCode)operation.StatusCode.Value).ToString());
+        
+                Logger.LogInformation("Async Operation completed with message: {0}",
+                    operation.Message);
+
+                if (operation.StatusCode.Value == (int)AsyncOperation_StatusCode.Succeeded)
+                {
+                    OrganizationRequest downloadReq = new OrganizationRequest("DownloadSolutionExportData");
+                    downloadReq.Parameters.Add("ExportJobId", exportJobId);
+
+                    OrganizationResponse downloadRes = OrganizationService.Execute(downloadReq);
+
+                    solutionBytes = (byte[])downloadRes.Results["ExportSolutionFile"];
+                }
+                else
+                {
+                    throw new Exception($"Export of solution '{options.SolutionName}' failed: {operation.Message}");
+                }
+            }
+            else
+            {
+                Logger.LogInformation("Exporting Solution using Sync Mode");
+
+                var exportSolutionResponse = OrganizationService.Execute(exportSolutionRequest) as ExportSolutionResponse;
+
+                solutionBytes = exportSolutionResponse.ExportSolutionFile;
+            }
 
             string solutionFilePath = Path.Combine(outputFolder, solutionFile.ToString());
-            File.WriteAllBytes(solutionFilePath, exportSolutionResponse.ExportSolutionFile);
+            File.WriteAllBytes(solutionFilePath, solutionBytes);
 
+            Logger.LogInformation($"Solution Exported to: {solutionFilePath}");
             Logger.LogInformation("Solution Zip Size: {0}", FileUtilities.GetFileSize(solutionFilePath));
 
             return solutionFilePath;
@@ -1310,6 +1380,9 @@ namespace Xrm.Framework.CI.Common
         public bool ExportRelationshipRoles { get; set; }
         public bool ExportSales { get; set; }
         public bool IncludeVersionInName { get; set; }
+        public bool ExportAsync { get; set; }
+        public int SleepInterval { get; set; }
+        public int AsyncWaitTimeout { get; set; }
 
         #endregion
 
@@ -1317,6 +1390,9 @@ namespace Xrm.Framework.CI.Common
 
         public SolutionExportOptions()
         {
+            SleepInterval = 15;
+            AsyncWaitTimeout = 15 * 60;
+            ExportAsync = false;
         }
 
         #endregion

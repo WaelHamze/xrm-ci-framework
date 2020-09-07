@@ -122,9 +122,29 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
         [Parameter(Mandatory = false)]
         public bool ExportSales { get; set; }
 
+        /// <summary>
+        /// <para type="description">Specify whether to import the solution asynchronously using ExecuteAsyncRequest</para>
+        /// </summary>
+        [Parameter(Mandatory = false)]
+        public bool ExportAsync { get; set; }
+
+        /// <summary>
+        /// <para type="description">The sleep interval between checks on the import progress. Default = 15 seconds</para>
+        /// </summary>
+        [Parameter(Mandatory = false)]
+        public int SleepInterval { get; set; }
+
+        /// <summary>
+        /// <para type="description">Specify the timeout duration for waiting on async imports to complete. Default = 15 minutes</para>
+        /// </summary>
+        [Parameter(Mandatory = false)]
+        public int AsyncWaitTimeout { get; set; }
+
         public ExportXrmSolutionCommand()
         {
             IncludeVersionInName = false;
+            SleepInterval = 15;
+            AsyncWaitTimeout = 15 * 60;
         }
 
         #endregion
@@ -161,7 +181,10 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
                 ExportSales = ExportSales,
                 TargetVersion = TargetVersion,
                 ExportExternalApplications = ExportExternalApplications,
-                IncludeVersionInName = IncludeVersionInName
+                IncludeVersionInName = IncludeVersionInName,
+                ExportAsync = ExportAsync,
+                AsyncWaitTimeout = AsyncWaitTimeout,
+                SleepInterval = SleepInterval
             };
 
             string solutionFile = solutionManager.ExportSolution(
