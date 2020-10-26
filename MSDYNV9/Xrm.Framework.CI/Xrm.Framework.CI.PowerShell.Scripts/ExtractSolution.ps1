@@ -55,14 +55,14 @@ else
 	{
 		$managedSolution = Export-XrmSolution -ConnectionString $connectionString -Managed $True -OutputFolder $env:TEMP -UniqueSolutionName $solutionName
 		Write-Output "Exported Solution: $managedSolution"
-		$solutionFile = "$env:TEMP\$managedSolution"
+		$solutionFile = $managedSolution
 	}
 
 	if ($PackageType -ne "Managed")
 	{
 		$unmanagedSolution = Export-XrmSolution -ConnectionString $connectionString -Managed $False -OutputFolder $env:TEMP -UniqueSolutionName $solutionName
 		Write-Output "Exported Solution: $unmanagedSolution"
-		$solutionFile = "$env:TEMP\$unmanagedSolution"
+		$solutionFile = $unmanagedSolution
 	}
 }
 
