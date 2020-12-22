@@ -149,7 +149,16 @@ namespace Xrm.Framework.CI.Common
 
             foreach (FileInfo info in dataInfo.GetFiles("*", SearchOption.AllDirectories))
             {
-                info.CopyTo($"{tempDataDirectory}\\{info.Name}");
+                var oldPath = Path.GetDirectoryName(info.FullName);
+                var relativePath = oldPath.Remove(0, dataFolder.Length);
+
+                var absolutePath = string.IsNullOrEmpty(relativePath) ? tempDataDirectory : $"{tempDataDirectory}\\{relativePath}";
+                if (!Directory.Exists(absolutePath))
+                {
+                    Directory.CreateDirectory(absolutePath);
+                }
+
+                info.CopyTo($"{absolutePath}\\{info.Name}");
             }
 
             Logger.LogVerbose($"Copied Data Temp Dir : {tempDataDirectoryInfo.FullName}");
@@ -200,23 +209,11 @@ namespace Xrm.Framework.CI.Common
                             entitiesNode.Add(entityNode);
                         }
 
-                        if (Directory.Exists($"{dataInfo.FullName}\\{entity}\\records"))
+                        var entityFolderPath = $"{dataInfo.FullName}\\{entity}";
+                        if (Directory.Exists(entityFolderPath))
                         {
-                            DirectoryInfo recordsInfo = new DirectoryInfo($"{dataInfo.FullName}\\{entity}\\records");
-                            var recordsQuery = from el in entityNode.Elements("records")
-                                               select el;
-
-                            XElement recordsNode = recordsQuery.FirstOrDefault<XElement>();
-
-                            foreach (FileInfo recordInfo in recordsInfo.GetFiles("*_data.xml", SearchOption.AllDirectories))
-                            {
-                                using (var recordReader = new StreamReader(recordInfo.FullName))
-                                {
-                                    XElement recordNode = XElement.Load(recordReader);
-
-                                    recordsNode.Add(recordNode);
-                                }
-                            }
+                            CombineNode(entityNode, entityFolderPath, "records");
+                            CombineNode(entityNode, entityFolderPath, "m2mrelationships");
                         }
 
                         Logger.LogInformation($"Processed file: {entityInfo.FullName}");
@@ -236,7 +233,33 @@ namespace Xrm.Framework.CI.Common
                 entityInfo.Delete();
             }
 
+            foreach (DirectoryInfo dirInfo in tempDataDirectoryInfo.GetDirectories())
+            {
+                Logger.LogVerbose($"Deleting directory : {dirInfo.FullName}");
+
+                dirInfo.Delete(true);
+            }
+
             return tempDataDirectory;
+        }
+
+        private void CombineNode(XElement entityNode, string path, string nodeName)
+        {
+            DirectoryInfo directoryInfo = new DirectoryInfo($"{path}\\{nodeName}");
+            var query = from el in entityNode.Elements(nodeName)
+                        select el;
+
+            XElement node = query.FirstOrDefault();
+
+            foreach (FileInfo fileInfo in directoryInfo.GetFiles("*_data.xml"))
+            {
+                using (var streamReader = new StreamReader(fileInfo.FullName))
+                {
+                    XElement childNode = XElement.Load(streamReader);
+
+                    node.Add(childNode);
+                }
+            }
         }
 
         public void SplitData(
@@ -283,34 +306,17 @@ namespace Xrm.Framework.CI.Common
 
                     if (splitRecords)
                     {
+                        // create entity folder
                         string entityFolderName = $"{dataXmlInfo.Directory.FullName}\\{entityName}";
                         if (Directory.Exists(entityFolderName))
                         {
-                            // delete the contents to have a clean export
-                            Directory.Delete(entityFolderName);
+                            // delete entity folder when it exists to have a clean extract
+                            Directory.Delete(entityFolderName, true);
                         }
                         Directory.CreateDirectory(entityFolderName);
 
-                        // only support records element
-                        foreach (var recordsNode in entityNode.Descendants("records"))
-                        {
-                            string recordsFolderName = $"{dataXmlInfo.Directory.FullName}\\{entityName}\\records";
-                            Directory.CreateDirectory(recordsFolderName);
-
-                            foreach (var record in recordsNode.Elements())
-                            {
-                                string id = record.Attribute("id").Value;
-
-                                string recordOutputFile = $"{dataXmlInfo.Directory.FullName}\\{entityName}\\records\\{id}_data.xml";
-
-                                using (XmlWriter writer = XmlWriter.Create(recordOutputFile, settings))
-                                {
-                                    record.WriteTo(writer);
-                                }
-                            }
-
-                            recordsNode.RemoveNodes();
-                        }
+                        SplitNode(settings, entityNode, entityFolderName, "records", "id");
+                        SplitNode(settings, entityNode, entityFolderName, "m2mrelationships", "sourceid");
                     }
 
                     string outputFile = $"{dataXmlInfo.Directory.FullName}\\{entityName}_data.xml";
@@ -350,6 +356,29 @@ namespace Xrm.Framework.CI.Common
                 entitiesNode.WriteTo(writer);
             }
             Logger.LogInformation("Removed entity nodes from data.xml");
+        }
+
+        private void SplitNode(XmlWriterSettings settings, XElement entityNode, string path, string nodeName, string idAttribute)
+        {
+            foreach (var childNodes in entityNode.Descendants(nodeName))
+            {
+                string folderName = $"{path}\\{nodeName}";
+                Directory.CreateDirectory(folderName);
+
+                foreach (var element in childNodes.Elements())
+                {
+                    string id = element.Attribute(idAttribute).Value;
+
+                    string recordOutputFile = $"{path}\\{nodeName}\\{id}_data.xml";
+
+                    using (XmlWriter writer = XmlWriter.Create(recordOutputFile, settings))
+                    {
+                        element.WriteTo(writer);
+                    }
+                }
+
+                childNodes.RemoveNodes();
+            }
         }
 
         #endregion Methods
