@@ -15,7 +15,7 @@ namespace Xrm.Framework.CI.Common.Entities
 	
 	
 	[System.Runtime.Serialization.DataContractAttribute()]
-	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.0.0.9479")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.45")]
 	public enum AsyncOperationState
 	{
 		
@@ -37,7 +37,7 @@ namespace Xrm.Framework.CI.Common.Entities
 	/// </summary>
 	[System.Runtime.Serialization.DataContractAttribute()]
 	[Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute("asyncoperation")]
-	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.0.0.9479")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.45")]
 	public partial class AsyncOperation : Microsoft.Xrm.Sdk.Entity, System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
 	{
 		
@@ -56,8 +56,6 @@ namespace Xrm.Framework.CI.Common.Entities
 		public const string PrimaryIdAttribute = "asyncoperationid";
 		
 		public const string PrimaryNameAttribute = "name";
-		
-		public const int EntityTypeCode = 4700;
 		
 		public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
 		
@@ -115,6 +113,42 @@ namespace Xrm.Framework.CI.Common.Entities
 			set
 			{
 				this.AsyncOperationId = value;
+			}
+		}
+		
+		/// <summary>
+		/// The breadcrumb record ID.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("breadcrumbid")]
+		public System.Nullable<System.Guid> BreadcrumbId
+		{
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("breadcrumbid");
+			}
+			set
+			{
+				this.OnPropertyChanging("BreadcrumbId");
+				this.SetAttributeValue("breadcrumbid", value);
+				this.OnPropertyChanged("BreadcrumbId");
+			}
+		}
+		
+		/// <summary>
+		/// The origin of the caller.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("callerorigin")]
+		public string CallerOrigin
+		{
+			get
+			{
+				return this.GetAttributeValue<string>("callerorigin");
+			}
+			set
+			{
+				this.OnPropertyChanging("CallerOrigin");
+				this.SetAttributeValue("callerorigin", value);
+				this.OnPropertyChanged("CallerOrigin");
 			}
 		}
 		
@@ -461,6 +495,24 @@ namespace Xrm.Framework.CI.Common.Entities
 		}
 		
 		/// <summary>
+		/// Type of the system job.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("operationtype")]
+		public virtual AsyncOperation_OperationType? OperationTypeEnum
+		{
+			get
+			{
+				return ((AsyncOperation_OperationType?)(EntityOptionSetEnum.GetEnum(this, "operationtype")));
+			}
+			set
+			{
+				this.OnPropertyChanging("OperationType");
+				this.SetAttributeValue("operationtype", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+				this.OnPropertyChanged("OperationType");
+			}
+		}
+		
+		/// <summary>
 		/// Unique identifier of the user or team who owns the system job.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("ownerid")]
@@ -659,6 +711,24 @@ namespace Xrm.Framework.CI.Common.Entities
 		}
 		
 		/// <summary>
+		/// Retain job history.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("retainjobhistory")]
+		public System.Nullable<bool> RetainJobHistory
+		{
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("retainjobhistory");
+			}
+			set
+			{
+				this.OnPropertyChanging("RetainJobHistory");
+				this.SetAttributeValue("retainjobhistory", value);
+				this.OnPropertyChanged("RetainJobHistory");
+			}
+		}
+		
+		/// <summary>
 		/// Number of times to retry the system job.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("retrycount")]
@@ -764,6 +834,24 @@ namespace Xrm.Framework.CI.Common.Entities
 		}
 		
 		/// <summary>
+		/// Reason for the status of the system job.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statuscode")]
+		public virtual AsyncOperation_StatusCode? StatusCodeEnum
+		{
+			get
+			{
+				return ((AsyncOperation_StatusCode?)(EntityOptionSetEnum.GetEnum(this, "statuscode")));
+			}
+			set
+			{
+				this.OnPropertyChanging("StatusCode");
+				this.SetAttributeValue("statuscode", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+				this.OnPropertyChanged("StatusCode");
+			}
+		}
+		
+		/// <summary>
 		/// The Subtype of the Async Job
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("subtype")]
@@ -858,36 +946,10 @@ namespace Xrm.Framework.CI.Common.Entities
 				this.OnPropertyChanged("Workload");
 			}
 		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("operationtype")]
-		public virtual AsyncOperation_OperationType? OperationTypeEnum
-		{
-			get
-			{
-				return ((AsyncOperation_OperationType?)(EntityOptionSetEnum.GetEnum(this, "operationtype")));
-			}
-			set
-			{
-				OperationType = value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null;
-			}
-		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statuscode")]
-		public virtual AsyncOperation_StatusCode? StatusCodeEnum
-		{
-			get
-			{
-				return ((AsyncOperation_StatusCode?)(EntityOptionSetEnum.GetEnum(this, "statuscode")));
-			}
-			set
-			{
-				StatusCode = value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null;
-			}
-		}
 	}
 	
 	[System.Runtime.Serialization.DataContractAttribute()]
-	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.0.0.9479")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.45")]
 	public enum BulkDeleteOperationState
 	{
 		
@@ -909,7 +971,7 @@ namespace Xrm.Framework.CI.Common.Entities
 	/// </summary>
 	[System.Runtime.Serialization.DataContractAttribute()]
 	[Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute("bulkdeleteoperation")]
-	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.0.0.9479")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.45")]
 	public partial class BulkDeleteOperation : Microsoft.Xrm.Sdk.Entity, System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
 	{
 		
@@ -928,8 +990,6 @@ namespace Xrm.Framework.CI.Common.Entities
 		public const string PrimaryIdAttribute = "bulkdeleteoperationid";
 		
 		public const string PrimaryNameAttribute = "name";
-		
-		public const int EntityTypeCode = 4424;
 		
 		public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
 		
@@ -1213,6 +1273,18 @@ namespace Xrm.Framework.CI.Common.Entities
 		}
 		
 		/// <summary>
+		/// Reason for the status of the bulk deletion job.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statuscode")]
+		public virtual BulkDeleteOperation_StatusCode? StatusCodeEnum
+		{
+			get
+			{
+				return ((BulkDeleteOperation_StatusCode?)(EntityOptionSetEnum.GetEnum(this, "statuscode")));
+			}
+		}
+		
+		/// <summary>
 		/// Number of records deleted by the bulk deletion job.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("successcount")]
@@ -1259,13 +1331,590 @@ namespace Xrm.Framework.CI.Common.Entities
 				this.OnPropertyChanged("UTCConversionTimeZoneCode");
 			}
 		}
+	}
+	
+	[System.Runtime.Serialization.DataContractAttribute()]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.45")]
+	public enum connectionreferenceState
+	{
 		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statuscode")]
-		public virtual BulkDeleteOperation_StatusCode? StatusCodeEnum
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		Active = 0,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		Inactive = 1,
+	}
+	
+	/// <summary>
+	/// 
+	/// </summary>
+	[System.Runtime.Serialization.DataContractAttribute()]
+	[Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute("connectionreference")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.45")]
+	public partial class connectionreference : Microsoft.Xrm.Sdk.Entity, System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
+	{
+		
+		/// <summary>
+		/// Default Constructor.
+		/// </summary>
+		public connectionreference() : 
+				base(EntityLogicalName)
+		{
+		}
+		
+		public const string EntityLogicalName = "connectionreference";
+		
+		public const string EntitySchemaName = "connectionreference";
+		
+		public const string PrimaryIdAttribute = "connectionreferenceid";
+		
+		public const string PrimaryNameAttribute = "connectionreferencedisplayname";
+		
+		public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+		
+		public event System.ComponentModel.PropertyChangingEventHandler PropertyChanging;
+		
+		private void OnPropertyChanged(string propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void OnPropertyChanging(string propertyName)
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, new System.ComponentModel.PropertyChangingEventArgs(propertyName));
+			}
+		}
+		
+		/// <summary>
+		/// For internal use only.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("componentidunique")]
+		public System.Nullable<System.Guid> ComponentIdUnique
 		{
 			get
 			{
-				return ((BulkDeleteOperation_StatusCode?)(EntityOptionSetEnum.GetEnum(this, "statuscode")));
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("componentidunique");
+			}
+		}
+		
+		/// <summary>
+		/// For internal use only.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("componentstate")]
+		public Microsoft.Xrm.Sdk.OptionSetValue ComponentState
+		{
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("componentstate");
+			}
+		}
+		
+		/// <summary>
+		/// For internal use only.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("componentstate")]
+		public virtual ComponentState? ComponentStateEnum
+		{
+			get
+			{
+				return ((ComponentState?)(EntityOptionSetEnum.GetEnum(this, "componentstate")));
+			}
+		}
+		
+		/// <summary>
+		/// Id of the connection in API hub
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("connectionid")]
+		public string ConnectionId
+		{
+			get
+			{
+				return this.GetAttributeValue<string>("connectionid");
+			}
+			set
+			{
+				this.OnPropertyChanging("ConnectionId");
+				this.SetAttributeValue("connectionid", value);
+				this.OnPropertyChanged("ConnectionId");
+			}
+		}
+		
+		/// <summary>
+		/// Display name of the connection reference
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("connectionreferencedisplayname")]
+		public string connectionreferencedisplayname
+		{
+			get
+			{
+				return this.GetAttributeValue<string>("connectionreferencedisplayname");
+			}
+			set
+			{
+				this.OnPropertyChanging("connectionreferencedisplayname");
+				this.SetAttributeValue("connectionreferencedisplayname", value);
+				this.OnPropertyChanged("connectionreferencedisplayname");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier for entity instances
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("connectionreferenceid")]
+		public System.Nullable<System.Guid> connectionreferenceId
+		{
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("connectionreferenceid");
+			}
+			set
+			{
+				this.OnPropertyChanging("connectionreferenceId");
+				this.SetAttributeValue("connectionreferenceid", value);
+				if (value.HasValue)
+				{
+					base.Id = value.Value;
+				}
+				else
+				{
+					base.Id = System.Guid.Empty;
+				}
+				this.OnPropertyChanged("connectionreferenceId");
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("connectionreferenceid")]
+		public override System.Guid Id
+		{
+			get
+			{
+				return base.Id;
+			}
+			set
+			{
+				this.connectionreferenceId = value;
+			}
+		}
+		
+		/// <summary>
+		/// Connection Reference unique name
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("connectionreferencelogicalname")]
+		public string ConnectionReferenceLogicalName
+		{
+			get
+			{
+				return this.GetAttributeValue<string>("connectionreferencelogicalname");
+			}
+			set
+			{
+				this.OnPropertyChanging("ConnectionReferenceLogicalName");
+				this.SetAttributeValue("connectionreferencelogicalname", value);
+				this.OnPropertyChanged("ConnectionReferenceLogicalName");
+			}
+		}
+		
+		/// <summary>
+		/// Id of the Public/Shared Connector
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("connectorid")]
+		public string ConnectorId
+		{
+			get
+			{
+				return this.GetAttributeValue<string>("connectorid");
+			}
+			set
+			{
+				this.OnPropertyChanging("ConnectorId");
+				this.SetAttributeValue("connectorid", value);
+				this.OnPropertyChanged("ConnectorId");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the user who created the record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
+		public Microsoft.Xrm.Sdk.EntityReference CreatedBy
+		{
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("createdby");
+			}
+		}
+		
+		/// <summary>
+		/// Date and time when the record was created.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdon")]
+		public System.Nullable<System.DateTime> CreatedOn
+		{
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("createdon");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the delegate user who created the record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
+		public Microsoft.Xrm.Sdk.EntityReference CreatedOnBehalfBy
+		{
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("createdonbehalfby");
+			}
+			set
+			{
+				this.OnPropertyChanging("CreatedOnBehalfBy");
+				this.SetAttributeValue("createdonbehalfby", value);
+				this.OnPropertyChanged("CreatedOnBehalfBy");
+			}
+		}
+		
+		/// <summary>
+		/// Look up to the Connector entity
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("customconnectorid")]
+		public Microsoft.Xrm.Sdk.EntityReference CustomConnectorId
+		{
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("customconnectorid");
+			}
+			set
+			{
+				this.OnPropertyChanging("CustomConnectorId");
+				this.SetAttributeValue("customconnectorid", value);
+				this.OnPropertyChanged("CustomConnectorId");
+			}
+		}
+		
+		/// <summary>
+		/// Description of Connection Reference
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("description")]
+		public string Description
+		{
+			get
+			{
+				return this.GetAttributeValue<string>("description");
+			}
+			set
+			{
+				this.OnPropertyChanging("Description");
+				this.SetAttributeValue("description", value);
+				this.OnPropertyChanged("Description");
+			}
+		}
+		
+		/// <summary>
+		/// Sequence number of the import that created this record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("importsequencenumber")]
+		public System.Nullable<int> ImportSequenceNumber
+		{
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("importsequencenumber");
+			}
+			set
+			{
+				this.OnPropertyChanging("ImportSequenceNumber");
+				this.SetAttributeValue("importsequencenumber", value);
+				this.OnPropertyChanged("ImportSequenceNumber");
+			}
+		}
+		
+		/// <summary>
+		/// For internal use only.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("iscustomizable")]
+		public Microsoft.Xrm.Sdk.BooleanManagedProperty IsCustomizable
+		{
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.BooleanManagedProperty>("iscustomizable");
+			}
+			set
+			{
+				this.OnPropertyChanging("IsCustomizable");
+				this.SetAttributeValue("iscustomizable", value);
+				this.OnPropertyChanged("IsCustomizable");
+			}
+		}
+		
+		/// <summary>
+		/// Indicates whether the solution component is part of a managed solution.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("ismanaged")]
+		public System.Nullable<bool> IsManaged
+		{
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("ismanaged");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the user who modified the record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
+		public Microsoft.Xrm.Sdk.EntityReference ModifiedBy
+		{
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("modifiedby");
+			}
+		}
+		
+		/// <summary>
+		/// Date and time when the record was modified.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedon")]
+		public System.Nullable<System.DateTime> ModifiedOn
+		{
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("modifiedon");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the delegate user who modified the record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
+		public Microsoft.Xrm.Sdk.EntityReference ModifiedOnBehalfBy
+		{
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("modifiedonbehalfby");
+			}
+			set
+			{
+				this.OnPropertyChanging("ModifiedOnBehalfBy");
+				this.SetAttributeValue("modifiedonbehalfby", value);
+				this.OnPropertyChanged("ModifiedOnBehalfBy");
+			}
+		}
+		
+		/// <summary>
+		/// Date and time that the record was migrated.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("overriddencreatedon")]
+		public System.Nullable<System.DateTime> OverriddenCreatedOn
+		{
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("overriddencreatedon");
+			}
+			set
+			{
+				this.OnPropertyChanging("OverriddenCreatedOn");
+				this.SetAttributeValue("overriddencreatedon", value);
+				this.OnPropertyChanged("OverriddenCreatedOn");
+			}
+		}
+		
+		/// <summary>
+		/// For internal use only.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("overwritetime")]
+		public System.Nullable<System.DateTime> OverwriteTime
+		{
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("overwritetime");
+			}
+		}
+		
+		/// <summary>
+		/// Owner Id
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("ownerid")]
+		public Microsoft.Xrm.Sdk.EntityReference OwnerId
+		{
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("ownerid");
+			}
+			set
+			{
+				this.OnPropertyChanging("OwnerId");
+				this.SetAttributeValue("ownerid", value);
+				this.OnPropertyChanged("OwnerId");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier for the business unit that owns the record
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningbusinessunit")]
+		public Microsoft.Xrm.Sdk.EntityReference OwningBusinessUnit
+		{
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("owningbusinessunit");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier for the team that owns the record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningteam")]
+		public Microsoft.Xrm.Sdk.EntityReference OwningTeam
+		{
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("owningteam");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier for the user that owns the record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owninguser")]
+		public Microsoft.Xrm.Sdk.EntityReference OwningUser
+		{
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("owninguser");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the associated solution.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("solutionid")]
+		public System.Nullable<System.Guid> SolutionId
+		{
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("solutionid");
+			}
+		}
+		
+		/// <summary>
+		/// Status of the Connection Reference
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
+		public System.Nullable<Xrm.Framework.CI.Common.Entities.connectionreferenceState> StateCode
+		{
+			get
+			{
+				Microsoft.Xrm.Sdk.OptionSetValue optionSet = this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statecode");
+				if ((optionSet != null))
+				{
+					return ((Xrm.Framework.CI.Common.Entities.connectionreferenceState)(System.Enum.ToObject(typeof(Xrm.Framework.CI.Common.Entities.connectionreferenceState), optionSet.Value)));
+				}
+				else
+				{
+					return null;
+				}
+			}
+			set
+			{
+				this.OnPropertyChanging("StateCode");
+				if ((value == null))
+				{
+					this.SetAttributeValue("statecode", null);
+				}
+				else
+				{
+					this.SetAttributeValue("statecode", new Microsoft.Xrm.Sdk.OptionSetValue(((int)(value))));
+				}
+				this.OnPropertyChanged("StateCode");
+			}
+		}
+		
+		/// <summary>
+		/// Reason for the status of the Connection Reference
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statuscode")]
+		public Microsoft.Xrm.Sdk.OptionSetValue StatusCode
+		{
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statuscode");
+			}
+			set
+			{
+				this.OnPropertyChanging("StatusCode");
+				this.SetAttributeValue("statuscode", value);
+				this.OnPropertyChanged("StatusCode");
+			}
+		}
+		
+		/// <summary>
+		/// Reason for the status of the Connection Reference
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statuscode")]
+		public virtual connectionreference_StatusCode? StatusCodeEnum
+		{
+			get
+			{
+				return ((connectionreference_StatusCode?)(EntityOptionSetEnum.GetEnum(this, "statuscode")));
+			}
+			set
+			{
+				this.OnPropertyChanging("StatusCode");
+				this.SetAttributeValue("statuscode", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+				this.OnPropertyChanged("StatusCode");
+			}
+		}
+		
+		/// <summary>
+		/// For internal use only.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("timezoneruleversionnumber")]
+		public System.Nullable<int> TimeZoneRuleVersionNumber
+		{
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("timezoneruleversionnumber");
+			}
+			set
+			{
+				this.OnPropertyChanging("TimeZoneRuleVersionNumber");
+				this.SetAttributeValue("timezoneruleversionnumber", value);
+				this.OnPropertyChanged("TimeZoneRuleVersionNumber");
+			}
+		}
+		
+		/// <summary>
+		/// Time zone code that was in use when the record was created.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("utcconversiontimezonecode")]
+		public System.Nullable<int> UTCConversionTimeZoneCode
+		{
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("utcconversiontimezonecode");
+			}
+			set
+			{
+				this.OnPropertyChanging("UTCConversionTimeZoneCode");
+				this.SetAttributeValue("utcconversiontimezonecode", value);
+				this.OnPropertyChanged("UTCConversionTimeZoneCode");
+			}
+		}
+		
+		/// <summary>
+		/// Version Number
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("versionnumber")]
+		public System.Nullable<long> VersionNumber
+		{
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<long>>("versionnumber");
 			}
 		}
 	}
@@ -1275,7 +1924,7 @@ namespace Xrm.Framework.CI.Common.Entities
 	/// </summary>
 	[System.Runtime.Serialization.DataContractAttribute()]
 	[Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute("dependency")]
-	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.0.0.9479")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.45")]
 	public partial class Dependency : Microsoft.Xrm.Sdk.Entity, System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
 	{
 		
@@ -1292,8 +1941,6 @@ namespace Xrm.Framework.CI.Common.Entities
 		public const string EntitySchemaName = "Dependency";
 		
 		public const string PrimaryIdAttribute = "dependencyid";
-		
-		public const int EntityTypeCode = 7105;
 		
 		public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
 		
@@ -1349,6 +1996,18 @@ namespace Xrm.Framework.CI.Common.Entities
 			get
 			{
 				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("dependencytype");
+			}
+		}
+		
+		/// <summary>
+		/// The dependency type of the dependency.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("dependencytype")]
+		public virtual DependencyType? DependencyTypeEnum
+		{
+			get
+			{
+				return ((DependencyType?)(EntityOptionSetEnum.GetEnum(this, "dependencytype")));
 			}
 		}
 		
@@ -1409,6 +2068,18 @@ namespace Xrm.Framework.CI.Common.Entities
 			get
 			{
 				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("dependentcomponenttype");
+			}
+		}
+		
+		/// <summary>
+		/// 
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("dependentcomponenttype")]
+		public virtual ComponentType? DependentComponentTypeEnum
+		{
+			get
+			{
+				return ((ComponentType?)(EntityOptionSetEnum.GetEnum(this, "dependentcomponenttype")));
 			}
 		}
 		
@@ -1487,33 +2158,6 @@ namespace Xrm.Framework.CI.Common.Entities
 		/// <summary>
 		/// 
 		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("versionnumber")]
-		public System.Nullable<long> VersionNumber
-		{
-			get
-			{
-				return this.GetAttributeValue<System.Nullable<long>>("versionnumber");
-			}
-		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("dependencytype")]
-		public virtual DependencyType? DependencyTypeEnum
-		{
-			get
-			{
-				return ((DependencyType?)(EntityOptionSetEnum.GetEnum(this, "dependencytype")));
-			}
-		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("dependentcomponenttype")]
-		public virtual ComponentType? DependentComponentTypeEnum
-		{
-			get
-			{
-				return ((ComponentType?)(EntityOptionSetEnum.GetEnum(this, "dependentcomponenttype")));
-			}
-		}
-		
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("requiredcomponenttype")]
 		public virtual ComponentType? RequiredComponentTypeEnum
 		{
@@ -1522,10 +2166,22 @@ namespace Xrm.Framework.CI.Common.Entities
 				return ((ComponentType?)(EntityOptionSetEnum.GetEnum(this, "requiredcomponenttype")));
 			}
 		}
+		
+		/// <summary>
+		/// 
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("versionnumber")]
+		public System.Nullable<long> VersionNumber
+		{
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<long>>("versionnumber");
+			}
+		}
 	}
 	
 	[System.Runtime.Serialization.DataContractAttribute()]
-	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.0.0.9479")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.45")]
 	public enum DuplicateRuleState
 	{
 		
@@ -1541,7 +2197,7 @@ namespace Xrm.Framework.CI.Common.Entities
 	/// </summary>
 	[System.Runtime.Serialization.DataContractAttribute()]
 	[Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute("duplicaterule")]
-	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.0.0.9479")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.45")]
 	public partial class DuplicateRule : Microsoft.Xrm.Sdk.Entity, System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
 	{
 		
@@ -1560,8 +2216,6 @@ namespace Xrm.Framework.CI.Common.Entities
 		public const string PrimaryIdAttribute = "duplicateruleid";
 		
 		public const string PrimaryNameAttribute = "name";
-		
-		public const int EntityTypeCode = 4414;
 		
 		public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
 		
@@ -1955,6 +2609,24 @@ namespace Xrm.Framework.CI.Common.Entities
 		}
 		
 		/// <summary>
+		/// Reason for the status of the duplicate detection rule.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statuscode")]
+		public virtual DuplicateRule_StatusCode? StatusCodeEnum
+		{
+			get
+			{
+				return ((DuplicateRule_StatusCode?)(EntityOptionSetEnum.GetEnum(this, "statuscode")));
+			}
+			set
+			{
+				this.OnPropertyChanging("StatusCode");
+				this.SetAttributeValue("statuscode", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+				this.OnPropertyChanged("StatusCode");
+			}
+		}
+		
+		/// <summary>
 		/// For internal use only.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("timezoneruleversionnumber")]
@@ -1989,23 +2661,10 @@ namespace Xrm.Framework.CI.Common.Entities
 				this.OnPropertyChanged("UTCConversionTimeZoneCode");
 			}
 		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statuscode")]
-		public virtual DuplicateRule_StatusCode? StatusCodeEnum
-		{
-			get
-			{
-				return ((DuplicateRule_StatusCode?)(EntityOptionSetEnum.GetEnum(this, "statuscode")));
-			}
-			set
-			{
-				StatusCode = value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null;
-			}
-		}
 	}
 	
 	[System.Runtime.Serialization.DataContractAttribute()]
-	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.0.0.9479")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.45")]
 	public enum EnvironmentVariableDefinitionState
 	{
 		
@@ -2017,11 +2676,11 @@ namespace Xrm.Framework.CI.Common.Entities
 	}
 	
 	/// <summary>
-	/// 
+	/// Contains information about the settable variable: its type, default value, and etc.
 	/// </summary>
 	[System.Runtime.Serialization.DataContractAttribute()]
 	[Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute("environmentvariabledefinition")]
-	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.0.0.9479")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.45")]
 	public partial class EnvironmentVariableDefinition : Microsoft.Xrm.Sdk.Entity, System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
 	{
 		
@@ -2040,8 +2699,6 @@ namespace Xrm.Framework.CI.Common.Entities
 		public const string PrimaryIdAttribute = "environmentvariabledefinitionid";
 		
 		public const string PrimaryNameAttribute = "schemaname";
-		
-		public const int EntityTypeCode = 380;
 		
 		public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
 		
@@ -2064,6 +2721,24 @@ namespace Xrm.Framework.CI.Common.Entities
 		}
 		
 		/// <summary>
+		/// 
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("apiid")]
+		public string ApiId
+		{
+			get
+			{
+				return this.GetAttributeValue<string>("apiid");
+			}
+			set
+			{
+				this.OnPropertyChanging("ApiId");
+				this.SetAttributeValue("apiid", value);
+				this.OnPropertyChanged("ApiId");
+			}
+		}
+		
+		/// <summary>
 		/// For internal use only.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("componentstate")]
@@ -2072,6 +2747,36 @@ namespace Xrm.Framework.CI.Common.Entities
 			get
 			{
 				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("componentstate");
+			}
+		}
+		
+		/// <summary>
+		/// For internal use only.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("componentstate")]
+		public virtual ComponentState? ComponentStateEnum
+		{
+			get
+			{
+				return ((ComponentState?)(EntityOptionSetEnum.GetEnum(this, "componentstate")));
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier for Connection Reference associated with Environment Variable Definition.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("connectionreferenceid")]
+		public Microsoft.Xrm.Sdk.EntityReference ConnectionReferenceId
+		{
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("connectionreferenceid");
+			}
+			set
+			{
+				this.OnPropertyChanging("ConnectionReferenceId");
+				this.SetAttributeValue("connectionreferenceid", value);
+				this.OnPropertyChanged("ConnectionReferenceId");
 			}
 		}
 		
@@ -2118,7 +2823,7 @@ namespace Xrm.Framework.CI.Common.Entities
 		}
 		
 		/// <summary>
-		/// 
+		/// Default variable value to be used if no associated EnvironmentVariableValue entities exist.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("defaultvalue")]
 		public string DefaultValue
@@ -2136,7 +2841,7 @@ namespace Xrm.Framework.CI.Common.Entities
 		}
 		
 		/// <summary>
-		/// 
+		/// Description of the variable definition.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("description")]
 		public string Description
@@ -2154,7 +2859,7 @@ namespace Xrm.Framework.CI.Common.Entities
 		}
 		
 		/// <summary>
-		/// 
+		/// Display Name of the variable definition.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("displayname")]
 		public string DisplayName
@@ -2223,7 +2928,7 @@ namespace Xrm.Framework.CI.Common.Entities
 		}
 		
 		/// <summary>
-		/// 
+		/// For internal use only.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("hint")]
 		public string Hint
@@ -2307,7 +3012,7 @@ namespace Xrm.Framework.CI.Common.Entities
 		}
 		
 		/// <summary>
-		/// 
+		/// For internal use only.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isrequired")]
 		public System.Nullable<bool> IsRequired
@@ -2453,6 +3158,42 @@ namespace Xrm.Framework.CI.Common.Entities
 		/// <summary>
 		/// 
 		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("parameterkey")]
+		public string ParameterKey
+		{
+			get
+			{
+				return this.GetAttributeValue<string>("parameterkey");
+			}
+			set
+			{
+				this.OnPropertyChanging("ParameterKey");
+				this.SetAttributeValue("parameterkey", value);
+				this.OnPropertyChanged("ParameterKey");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier for Environment Variable Definition associated with Environment Variable Definition.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("parentdefinitionid")]
+		public Microsoft.Xrm.Sdk.EntityReference ParentDefinitionId
+		{
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("parentdefinitionid");
+			}
+			set
+			{
+				this.OnPropertyChanging("ParentDefinitionId");
+				this.SetAttributeValue("parentdefinitionid", value);
+				this.OnPropertyChanged("ParentDefinitionId");
+			}
+		}
+		
+		/// <summary>
+		/// Unique entity name.
+		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("schemaname")]
 		public string SchemaName
 		{
@@ -2532,6 +3273,24 @@ namespace Xrm.Framework.CI.Common.Entities
 		}
 		
 		/// <summary>
+		/// Reason for the status of the Environment Variable Definition
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statuscode")]
+		public virtual EnvironmentVariableDefinition_StatusCode? StatusCodeEnum
+		{
+			get
+			{
+				return ((EnvironmentVariableDefinition_StatusCode?)(EntityOptionSetEnum.GetEnum(this, "statuscode")));
+			}
+			set
+			{
+				this.OnPropertyChanging("StatusCode");
+				this.SetAttributeValue("statuscode", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+				this.OnPropertyChanged("StatusCode");
+			}
+		}
+		
+		/// <summary>
 		/// For internal use only.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("timezoneruleversionnumber")]
@@ -2550,7 +3309,7 @@ namespace Xrm.Framework.CI.Common.Entities
 		}
 		
 		/// <summary>
-		/// 
+		/// Environment variable value type.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("type")]
 		public Microsoft.Xrm.Sdk.OptionSetValue Type
@@ -2563,6 +3322,24 @@ namespace Xrm.Framework.CI.Common.Entities
 			{
 				this.OnPropertyChanging("Type");
 				this.SetAttributeValue("type", value);
+				this.OnPropertyChanged("Type");
+			}
+		}
+		
+		/// <summary>
+		/// Environment variable value type.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("type")]
+		public virtual EnvironmentVariableDefinition_Type? TypeEnum
+		{
+			get
+			{
+				return ((EnvironmentVariableDefinition_Type?)(EntityOptionSetEnum.GetEnum(this, "type")));
+			}
+			set
+			{
+				this.OnPropertyChanging("Type");
+				this.SetAttributeValue("type", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
 				this.OnPropertyChanged("Type");
 			}
 		}
@@ -2586,7 +3363,7 @@ namespace Xrm.Framework.CI.Common.Entities
 		}
 		
 		/// <summary>
-		/// 
+		/// For internal use only.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("valueschema")]
 		public string ValueSchema
@@ -2614,45 +3391,10 @@ namespace Xrm.Framework.CI.Common.Entities
 				return this.GetAttributeValue<System.Nullable<long>>("versionnumber");
 			}
 		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("componentstate")]
-		public virtual ComponentState? ComponentStateEnum
-		{
-			get
-			{
-				return ((ComponentState?)(EntityOptionSetEnum.GetEnum(this, "componentstate")));
-			}
-		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statuscode")]
-		public virtual EnvironmentVariableDefinition_StatusCode? StatusCodeEnum
-		{
-			get
-			{
-				return ((EnvironmentVariableDefinition_StatusCode?)(EntityOptionSetEnum.GetEnum(this, "statuscode")));
-			}
-			set
-			{
-				StatusCode = value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null;
-			}
-		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("type")]
-		public virtual EnvironmentVariableDefinition_Type? TypeEnum
-		{
-			get
-			{
-				return ((EnvironmentVariableDefinition_Type?)(EntityOptionSetEnum.GetEnum(this, "type")));
-			}
-			set
-			{
-				Type = value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null;
-			}
-		}
 	}
 	
 	[System.Runtime.Serialization.DataContractAttribute()]
-	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.0.0.9479")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.45")]
 	public enum EnvironmentVariableValueState
 	{
 		
@@ -2664,11 +3406,11 @@ namespace Xrm.Framework.CI.Common.Entities
 	}
 	
 	/// <summary>
-	/// 
+	/// Holds the value for the associated EnvironmentVariableDefinition entity.
 	/// </summary>
 	[System.Runtime.Serialization.DataContractAttribute()]
 	[Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute("environmentvariablevalue")]
-	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.0.0.9479")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.45")]
 	public partial class EnvironmentVariableValue : Microsoft.Xrm.Sdk.Entity, System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
 	{
 		
@@ -2687,8 +3429,6 @@ namespace Xrm.Framework.CI.Common.Entities
 		public const string PrimaryIdAttribute = "environmentvariablevalueid";
 		
 		public const string PrimaryNameAttribute = "schemaname";
-		
-		public const int EntityTypeCode = 381;
 		
 		public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
 		
@@ -2719,6 +3459,18 @@ namespace Xrm.Framework.CI.Common.Entities
 			get
 			{
 				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("componentstate");
+			}
+		}
+		
+		/// <summary>
+		/// For internal use only.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("componentstate")]
+		public virtual ComponentState? ComponentStateEnum
+		{
+			get
+			{
+				return ((ComponentState?)(EntityOptionSetEnum.GetEnum(this, "componentstate")));
 			}
 		}
 		
@@ -3026,7 +3778,7 @@ namespace Xrm.Framework.CI.Common.Entities
 		}
 		
 		/// <summary>
-		/// 
+		/// Unique entity name.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("schemaname")]
 		public string SchemaName
@@ -3107,6 +3859,24 @@ namespace Xrm.Framework.CI.Common.Entities
 		}
 		
 		/// <summary>
+		/// Reason for the status of the Environment Variable Value
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statuscode")]
+		public virtual EnvironmentVariableValue_StatusCode? StatusCodeEnum
+		{
+			get
+			{
+				return ((EnvironmentVariableValue_StatusCode?)(EntityOptionSetEnum.GetEnum(this, "statuscode")));
+			}
+			set
+			{
+				this.OnPropertyChanging("StatusCode");
+				this.SetAttributeValue("statuscode", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+				this.OnPropertyChanged("StatusCode");
+			}
+		}
+		
+		/// <summary>
 		/// For internal use only.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("timezoneruleversionnumber")]
@@ -3143,7 +3913,7 @@ namespace Xrm.Framework.CI.Common.Entities
 		}
 		
 		/// <summary>
-		/// 
+		/// Contains the actual variable data.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("value")]
 		public string Value
@@ -3171,28 +3941,6 @@ namespace Xrm.Framework.CI.Common.Entities
 				return this.GetAttributeValue<System.Nullable<long>>("versionnumber");
 			}
 		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("componentstate")]
-		public virtual ComponentState? ComponentStateEnum
-		{
-			get
-			{
-				return ((ComponentState?)(EntityOptionSetEnum.GetEnum(this, "componentstate")));
-			}
-		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statuscode")]
-		public virtual EnvironmentVariableValue_StatusCode? StatusCodeEnum
-		{
-			get
-			{
-				return ((EnvironmentVariableValue_StatusCode?)(EntityOptionSetEnum.GetEnum(this, "statuscode")));
-			}
-			set
-			{
-				StatusCode = value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null;
-			}
-		}
 	}
 	
 	/// <summary>
@@ -3200,7 +3948,7 @@ namespace Xrm.Framework.CI.Common.Entities
 	/// </summary>
 	[System.Runtime.Serialization.DataContractAttribute()]
 	[Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute("importjob")]
-	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.0.0.9479")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.45")]
 	public partial class ImportJob : Microsoft.Xrm.Sdk.Entity, System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
 	{
 		
@@ -3217,8 +3965,6 @@ namespace Xrm.Framework.CI.Common.Entities
 		public const string EntitySchemaName = "ImportJob";
 		
 		public const string PrimaryIdAttribute = "importjobid";
-		
-		public const int EntityTypeCode = 9107;
 		
 		public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
 		
@@ -3561,7 +4307,7 @@ namespace Xrm.Framework.CI.Common.Entities
 	/// </summary>
 	[System.Runtime.Serialization.DataContractAttribute()]
 	[Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute("pluginassembly")]
-	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.0.0.9479")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.45")]
 	public partial class PluginAssembly : Microsoft.Xrm.Sdk.Entity, System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
 	{
 		
@@ -3580,8 +4326,6 @@ namespace Xrm.Framework.CI.Common.Entities
 		public const string PrimaryIdAttribute = "pluginassemblyid";
 		
 		public const string PrimaryNameAttribute = "name";
-		
-		public const int EntityTypeCode = 4605;
 		
 		public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
 		
@@ -3622,6 +4366,24 @@ namespace Xrm.Framework.CI.Common.Entities
 		}
 		
 		/// <summary>
+		/// Specifies mode of authentication with web sources like WebApp
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("authtype")]
+		public virtual PluginAssembly_AuthType? AuthTypeEnum
+		{
+			get
+			{
+				return ((PluginAssembly_AuthType?)(EntityOptionSetEnum.GetEnum(this, "authtype")));
+			}
+			set
+			{
+				this.OnPropertyChanging("AuthType");
+				this.SetAttributeValue("authtype", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+				this.OnPropertyChanged("AuthType");
+			}
+		}
+		
+		/// <summary>
 		/// For internal use only.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("componentstate")]
@@ -3630,6 +4392,18 @@ namespace Xrm.Framework.CI.Common.Entities
 			get
 			{
 				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("componentstate");
+			}
+		}
+		
+		/// <summary>
+		/// For internal use only.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("componentstate")]
+		public virtual ComponentState? ComponentStateEnum
+		{
+			get
+			{
+				return ((ComponentState?)(EntityOptionSetEnum.GetEnum(this, "componentstate")));
 			}
 		}
 		
@@ -3821,6 +4595,24 @@ namespace Xrm.Framework.CI.Common.Entities
 			{
 				this.OnPropertyChanging("IsolationMode");
 				this.SetAttributeValue("isolationmode", value);
+				this.OnPropertyChanged("IsolationMode");
+			}
+		}
+		
+		/// <summary>
+		/// Information about how the plugin assembly is to be isolated at execution time; None / Sandboxed.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isolationmode")]
+		public virtual PluginAssembly_IsolationMode? IsolationModeEnum
+		{
+			get
+			{
+				return ((PluginAssembly_IsolationMode?)(EntityOptionSetEnum.GetEnum(this, "isolationmode")));
+			}
+			set
+			{
+				this.OnPropertyChanging("IsolationMode");
+				this.SetAttributeValue("isolationmode", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
 				this.OnPropertyChanged("IsolationMode");
 			}
 		}
@@ -4099,6 +4891,24 @@ namespace Xrm.Framework.CI.Common.Entities
 		}
 		
 		/// <summary>
+		/// Location of the assembly, for example 0=database, 1=on-disk.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("sourcetype")]
+		public virtual PluginAssembly_SourceType? SourceTypeEnum
+		{
+			get
+			{
+				return ((PluginAssembly_SourceType?)(EntityOptionSetEnum.GetEnum(this, "sourcetype")));
+			}
+			set
+			{
+				this.OnPropertyChanging("SourceType");
+				this.SetAttributeValue("sourcetype", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+				this.OnPropertyChanged("SourceType");
+			}
+		}
+		
+		/// <summary>
 		/// Web Url
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("url")]
@@ -4163,54 +4973,6 @@ namespace Xrm.Framework.CI.Common.Entities
 				return this.GetAttributeValue<System.Nullable<long>>("versionnumber");
 			}
 		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("authtype")]
-		public virtual PluginAssembly_AuthType? AuthTypeEnum
-		{
-			get
-			{
-				return ((PluginAssembly_AuthType?)(EntityOptionSetEnum.GetEnum(this, "authtype")));
-			}
-			set
-			{
-				AuthType = value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null;
-			}
-		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("componentstate")]
-		public virtual ComponentState? ComponentStateEnum
-		{
-			get
-			{
-				return ((ComponentState?)(EntityOptionSetEnum.GetEnum(this, "componentstate")));
-			}
-		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isolationmode")]
-		public virtual PluginAssembly_IsolationMode? IsolationModeEnum
-		{
-			get
-			{
-				return ((PluginAssembly_IsolationMode?)(EntityOptionSetEnum.GetEnum(this, "isolationmode")));
-			}
-			set
-			{
-				IsolationMode = value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null;
-			}
-		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("sourcetype")]
-		public virtual PluginAssembly_SourceType? SourceTypeEnum
-		{
-			get
-			{
-				return ((PluginAssembly_SourceType?)(EntityOptionSetEnum.GetEnum(this, "sourcetype")));
-			}
-			set
-			{
-				SourceType = value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null;
-			}
-		}
 	}
 	
 	/// <summary>
@@ -4218,7 +4980,7 @@ namespace Xrm.Framework.CI.Common.Entities
 	/// </summary>
 	[System.Runtime.Serialization.DataContractAttribute()]
 	[Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute("plugintype")]
-	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.0.0.9479")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.45")]
 	public partial class PluginType : Microsoft.Xrm.Sdk.Entity, System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
 	{
 		
@@ -4237,8 +4999,6 @@ namespace Xrm.Framework.CI.Common.Entities
 		public const string PrimaryIdAttribute = "plugintypeid";
 		
 		public const string PrimaryNameAttribute = "name";
-		
-		public const int EntityTypeCode = 4602;
 		
 		public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
 		
@@ -4281,6 +5041,18 @@ namespace Xrm.Framework.CI.Common.Entities
 			get
 			{
 				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("componentstate");
+			}
+		}
+		
+		/// <summary>
+		/// For internal use only.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("componentstate")]
+		public virtual ComponentState? ComponentStateEnum
+		{
+			get
+			{
+				return ((ComponentState?)(EntityOptionSetEnum.GetEnum(this, "componentstate")));
 			}
 		}
 		
@@ -4682,15 +5454,6 @@ namespace Xrm.Framework.CI.Common.Entities
 				this.OnPropertyChanged("WorkflowActivityGroupName");
 			}
 		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("componentstate")]
-		public virtual ComponentState? ComponentStateEnum
-		{
-			get
-			{
-				return ((ComponentState?)(EntityOptionSetEnum.GetEnum(this, "componentstate")));
-			}
-		}
 	}
 	
 	/// <summary>
@@ -4698,7 +5461,7 @@ namespace Xrm.Framework.CI.Common.Entities
 	/// </summary>
 	[System.Runtime.Serialization.DataContractAttribute()]
 	[Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute("sdkmessage")]
-	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.0.0.9479")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.45")]
 	public partial class SdkMessage : Microsoft.Xrm.Sdk.Entity, System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
 	{
 		
@@ -4717,8 +5480,6 @@ namespace Xrm.Framework.CI.Common.Entities
 		public const string PrimaryIdAttribute = "sdkmessageid";
 		
 		public const string PrimaryNameAttribute = "name";
-		
-		public const int EntityTypeCode = 4606;
 		
 		public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
 		
@@ -4807,6 +5568,18 @@ namespace Xrm.Framework.CI.Common.Entities
 		}
 		
 		/// <summary>
+		/// For internal use only.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("componentstate")]
+		public virtual ComponentState? ComponentStateEnum
+		{
+			get
+			{
+				return ((ComponentState?)(EntityOptionSetEnum.GetEnum(this, "componentstate")));
+			}
+		}
+		
+		/// <summary>
 		/// Unique identifier of the user who created the SDK message.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
@@ -4857,6 +5630,24 @@ namespace Xrm.Framework.CI.Common.Entities
 			get
 			{
 				return this.GetAttributeValue<System.Nullable<int>>("customizationlevel");
+			}
+		}
+		
+		/// <summary>
+		/// Name of the privilege that allows execution of the SDK message
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("executeprivilegename")]
+		public string ExecutePrivilegeName
+		{
+			get
+			{
+				return this.GetAttributeValue<string>("executeprivilegename");
+			}
+			set
+			{
+				this.OnPropertyChanging("ExecutePrivilegeName");
+				this.SetAttributeValue("executeprivilegename", value);
+				this.OnPropertyChanged("ExecutePrivilegeName");
 			}
 		}
 		
@@ -5174,15 +5965,6 @@ namespace Xrm.Framework.CI.Common.Entities
 				return this.GetAttributeValue<System.Nullable<bool>>("workflowsdkstepenabled");
 			}
 		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("componentstate")]
-		public virtual ComponentState? ComponentStateEnum
-		{
-			get
-			{
-				return ((ComponentState?)(EntityOptionSetEnum.GetEnum(this, "componentstate")));
-			}
-		}
 	}
 	
 	/// <summary>
@@ -5190,7 +5972,7 @@ namespace Xrm.Framework.CI.Common.Entities
 	/// </summary>
 	[System.Runtime.Serialization.DataContractAttribute()]
 	[Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute("sdkmessagefilter")]
-	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.0.0.9479")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.45")]
 	public partial class SdkMessageFilter : Microsoft.Xrm.Sdk.Entity, System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
 	{
 		
@@ -5208,7 +5990,7 @@ namespace Xrm.Framework.CI.Common.Entities
 		
 		public const string PrimaryIdAttribute = "sdkmessagefilterid";
 		
-		public const int EntityTypeCode = 4607;
+		public const string PrimaryNameAttribute = "name";
 		
 		public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
 		
@@ -5257,6 +6039,18 @@ namespace Xrm.Framework.CI.Common.Entities
 			get
 			{
 				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("componentstate");
+			}
+		}
+		
+		/// <summary>
+		/// For internal use only.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("componentstate")]
+		public virtual ComponentState? ComponentStateEnum
+		{
+			get
+			{
+				return ((ComponentState?)(EntityOptionSetEnum.GetEnum(this, "componentstate")));
 			}
 		}
 		
@@ -5413,6 +6207,24 @@ namespace Xrm.Framework.CI.Common.Entities
 				this.OnPropertyChanging("ModifiedOnBehalfBy");
 				this.SetAttributeValue("modifiedonbehalfby", value);
 				this.OnPropertyChanged("ModifiedOnBehalfBy");
+			}
+		}
+		
+		/// <summary>
+		/// Name of the SDK message filter.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("name")]
+		public string Name
+		{
+			get
+			{
+				return this.GetAttributeValue<string>("name");
+			}
+			set
+			{
+				this.OnPropertyChanging("Name");
+				this.SetAttributeValue("name", value);
+				this.OnPropertyChanged("Name");
 			}
 		}
 		
@@ -5586,19 +6398,10 @@ namespace Xrm.Framework.CI.Common.Entities
 				return this.GetAttributeValue<System.Nullable<bool>>("workflowsdkstepenabled");
 			}
 		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("componentstate")]
-		public virtual ComponentState? ComponentStateEnum
-		{
-			get
-			{
-				return ((ComponentState?)(EntityOptionSetEnum.GetEnum(this, "componentstate")));
-			}
-		}
 	}
 	
 	[System.Runtime.Serialization.DataContractAttribute()]
-	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.0.0.9479")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.45")]
 	public enum SdkMessageProcessingStepState
 	{
 		
@@ -5614,7 +6417,7 @@ namespace Xrm.Framework.CI.Common.Entities
 	/// </summary>
 	[System.Runtime.Serialization.DataContractAttribute()]
 	[Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute("sdkmessageprocessingstep")]
-	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.0.0.9479")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.45")]
 	public partial class SdkMessageProcessingStep : Microsoft.Xrm.Sdk.Entity, System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
 	{
 		
@@ -5633,8 +6436,6 @@ namespace Xrm.Framework.CI.Common.Entities
 		public const string PrimaryIdAttribute = "sdkmessageprocessingstepid";
 		
 		public const string PrimaryNameAttribute = "name";
-		
-		public const int EntityTypeCode = 4608;
 		
 		public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
 		
@@ -5701,6 +6502,18 @@ namespace Xrm.Framework.CI.Common.Entities
 			get
 			{
 				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("componentstate");
+			}
+		}
+		
+		/// <summary>
+		/// For internal use only.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("componentstate")]
+		public virtual ComponentState? ComponentStateEnum
+		{
+			get
+			{
+				return ((ComponentState?)(EntityOptionSetEnum.GetEnum(this, "componentstate")));
 			}
 		}
 		
@@ -5970,6 +6783,24 @@ namespace Xrm.Framework.CI.Common.Entities
 		}
 		
 		/// <summary>
+		/// Run-time mode of execution, for example, synchronous or asynchronous.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("mode")]
+		public virtual SdkMessageProcessingStep_Mode? ModeEnum
+		{
+			get
+			{
+				return ((SdkMessageProcessingStep_Mode?)(EntityOptionSetEnum.GetEnum(this, "mode")));
+			}
+			set
+			{
+				this.OnPropertyChanging("Mode");
+				this.SetAttributeValue("mode", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+				this.OnPropertyChanged("Mode");
+			}
+		}
+		
+		/// <summary>
 		/// Unique identifier of the user who last modified the SDK message processing step.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
@@ -6226,6 +7057,24 @@ namespace Xrm.Framework.CI.Common.Entities
 		}
 		
 		/// <summary>
+		/// Stage in the execution pipeline that the SDK message processing step is in.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("stage")]
+		public virtual SdkMessageProcessingStep_Stage? StageEnum
+		{
+			get
+			{
+				return ((SdkMessageProcessingStep_Stage?)(EntityOptionSetEnum.GetEnum(this, "stage")));
+			}
+			set
+			{
+				this.OnPropertyChanging("Stage");
+				this.SetAttributeValue("stage", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+				this.OnPropertyChanged("Stage");
+			}
+		}
+		
+		/// <summary>
 		/// Status of the SDK message processing step.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
@@ -6277,6 +7126,24 @@ namespace Xrm.Framework.CI.Common.Entities
 		}
 		
 		/// <summary>
+		/// Reason for the status of the SDK message processing step.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statuscode")]
+		public virtual SdkMessageProcessingStep_StatusCode? StatusCodeEnum
+		{
+			get
+			{
+				return ((SdkMessageProcessingStep_StatusCode?)(EntityOptionSetEnum.GetEnum(this, "statuscode")));
+			}
+			set
+			{
+				this.OnPropertyChanging("StatusCode");
+				this.SetAttributeValue("statuscode", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+				this.OnPropertyChanged("StatusCode");
+			}
+		}
+		
+		/// <summary>
 		/// Deployment that the SDK message processing step should be executed on; server, client, or both.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("supporteddeployment")]
@@ -6295,6 +7162,24 @@ namespace Xrm.Framework.CI.Common.Entities
 		}
 		
 		/// <summary>
+		/// Deployment that the SDK message processing step should be executed on; server, client, or both.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("supporteddeployment")]
+		public virtual SdkMessageProcessingStep_SupportedDeployment? SupportedDeploymentEnum
+		{
+			get
+			{
+				return ((SdkMessageProcessingStep_SupportedDeployment?)(EntityOptionSetEnum.GetEnum(this, "supporteddeployment")));
+			}
+			set
+			{
+				this.OnPropertyChanging("SupportedDeployment");
+				this.SetAttributeValue("supporteddeployment", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+				this.OnPropertyChanged("SupportedDeployment");
+			}
+		}
+		
+		/// <summary>
 		/// Number that identifies a specific revision of the SDK message processing step. 
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("versionnumber")]
@@ -6305,67 +7190,6 @@ namespace Xrm.Framework.CI.Common.Entities
 				return this.GetAttributeValue<System.Nullable<long>>("versionnumber");
 			}
 		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("componentstate")]
-		public virtual ComponentState? ComponentStateEnum
-		{
-			get
-			{
-				return ((ComponentState?)(EntityOptionSetEnum.GetEnum(this, "componentstate")));
-			}
-		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("mode")]
-		public virtual SdkMessageProcessingStep_Mode? ModeEnum
-		{
-			get
-			{
-				return ((SdkMessageProcessingStep_Mode?)(EntityOptionSetEnum.GetEnum(this, "mode")));
-			}
-			set
-			{
-				Mode = value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null;
-			}
-		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("stage")]
-		public virtual SdkMessageProcessingStep_Stage? StageEnum
-		{
-			get
-			{
-				return ((SdkMessageProcessingStep_Stage?)(EntityOptionSetEnum.GetEnum(this, "stage")));
-			}
-			set
-			{
-				Stage = value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null;
-			}
-		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statuscode")]
-		public virtual SdkMessageProcessingStep_StatusCode? StatusCodeEnum
-		{
-			get
-			{
-				return ((SdkMessageProcessingStep_StatusCode?)(EntityOptionSetEnum.GetEnum(this, "statuscode")));
-			}
-			set
-			{
-				StatusCode = value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null;
-			}
-		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("supporteddeployment")]
-		public virtual SdkMessageProcessingStep_SupportedDeployment? SupportedDeploymentEnum
-		{
-			get
-			{
-				return ((SdkMessageProcessingStep_SupportedDeployment?)(EntityOptionSetEnum.GetEnum(this, "supporteddeployment")));
-			}
-			set
-			{
-				SupportedDeployment = value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null;
-			}
-		}
 	}
 	
 	/// <summary>
@@ -6373,7 +7197,7 @@ namespace Xrm.Framework.CI.Common.Entities
 	/// </summary>
 	[System.Runtime.Serialization.DataContractAttribute()]
 	[Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute("sdkmessageprocessingstepimage")]
-	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.0.0.9479")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.45")]
 	public partial class SdkMessageProcessingStepImage : Microsoft.Xrm.Sdk.Entity, System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
 	{
 		
@@ -6392,8 +7216,6 @@ namespace Xrm.Framework.CI.Common.Entities
 		public const string PrimaryIdAttribute = "sdkmessageprocessingstepimageid";
 		
 		public const string PrimaryNameAttribute = "name";
-		
-		public const int EntityTypeCode = 4615;
 		
 		public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
 		
@@ -6442,6 +7264,18 @@ namespace Xrm.Framework.CI.Common.Entities
 			get
 			{
 				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("componentstate");
+			}
+		}
+		
+		/// <summary>
+		/// For internal use only.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("componentstate")]
+		public virtual ComponentState? ComponentStateEnum
+		{
+			get
+			{
+				return ((ComponentState?)(EntityOptionSetEnum.GetEnum(this, "componentstate")));
 			}
 		}
 		
@@ -6549,6 +7383,24 @@ namespace Xrm.Framework.CI.Common.Entities
 			{
 				this.OnPropertyChanging("ImageType");
 				this.SetAttributeValue("imagetype", value);
+				this.OnPropertyChanged("ImageType");
+			}
+		}
+		
+		/// <summary>
+		/// Type of image requested.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("imagetype")]
+		public virtual SdkMessageProcessingStepImage_ImageType? ImageTypeEnum
+		{
+			get
+			{
+				return ((SdkMessageProcessingStepImage_ImageType?)(EntityOptionSetEnum.GetEnum(this, "imagetype")));
+			}
+			set
+			{
+				this.OnPropertyChanging("ImageType");
+				this.SetAttributeValue("imagetype", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
 				this.OnPropertyChanged("ImageType");
 			}
 		}
@@ -6813,28 +7665,6 @@ namespace Xrm.Framework.CI.Common.Entities
 				return this.GetAttributeValue<System.Nullable<long>>("versionnumber");
 			}
 		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("componentstate")]
-		public virtual ComponentState? ComponentStateEnum
-		{
-			get
-			{
-				return ((ComponentState?)(EntityOptionSetEnum.GetEnum(this, "componentstate")));
-			}
-		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("imagetype")]
-		public virtual SdkMessageProcessingStepImage_ImageType? ImageTypeEnum
-		{
-			get
-			{
-				return ((SdkMessageProcessingStepImage_ImageType?)(EntityOptionSetEnum.GetEnum(this, "imagetype")));
-			}
-			set
-			{
-				ImageType = value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null;
-			}
-		}
 	}
 	
 	/// <summary>
@@ -6842,7 +7672,7 @@ namespace Xrm.Framework.CI.Common.Entities
 	/// </summary>
 	[System.Runtime.Serialization.DataContractAttribute()]
 	[Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute("serviceendpoint")]
-	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.0.0.9479")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.45")]
 	public partial class ServiceEndpoint : Microsoft.Xrm.Sdk.Entity, System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
 	{
 		
@@ -6861,8 +7691,6 @@ namespace Xrm.Framework.CI.Common.Entities
 		public const string PrimaryIdAttribute = "serviceendpointid";
 		
 		public const string PrimaryNameAttribute = "name";
-		
-		public const int EntityTypeCode = 4618;
 		
 		public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
 		
@@ -6903,6 +7731,24 @@ namespace Xrm.Framework.CI.Common.Entities
 		}
 		
 		/// <summary>
+		/// Specifies mode of authentication with SB
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("authtype")]
+		public virtual ServiceEndpoint_AuthType? AuthTypeEnum
+		{
+			get
+			{
+				return ((ServiceEndpoint_AuthType?)(EntityOptionSetEnum.GetEnum(this, "authtype")));
+			}
+			set
+			{
+				this.OnPropertyChanging("AuthType");
+				this.SetAttributeValue("authtype", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+				this.OnPropertyChanged("AuthType");
+			}
+		}
+		
+		/// <summary>
 		/// Authentication Value
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("authvalue")]
@@ -6933,6 +7779,18 @@ namespace Xrm.Framework.CI.Common.Entities
 		}
 		
 		/// <summary>
+		/// For internal use only.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("componentstate")]
+		public virtual ComponentState? ComponentStateEnum
+		{
+			get
+			{
+				return ((ComponentState?)(EntityOptionSetEnum.GetEnum(this, "componentstate")));
+			}
+		}
+		
+		/// <summary>
 		/// Connection mode to contact the service endpoint.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("connectionmode")]
@@ -6951,6 +7809,24 @@ namespace Xrm.Framework.CI.Common.Entities
 		}
 		
 		/// <summary>
+		/// Connection mode to contact the service endpoint.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("connectionmode")]
+		public virtual ServiceEndpoint_ConnectionMode? ConnectionModeEnum
+		{
+			get
+			{
+				return ((ServiceEndpoint_ConnectionMode?)(EntityOptionSetEnum.GetEnum(this, "connectionmode")));
+			}
+			set
+			{
+				this.OnPropertyChanging("ConnectionMode");
+				this.SetAttributeValue("connectionmode", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+				this.OnPropertyChanged("ConnectionMode");
+			}
+		}
+		
+		/// <summary>
 		/// Type of the endpoint contract.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("contract")]
@@ -6964,6 +7840,24 @@ namespace Xrm.Framework.CI.Common.Entities
 			{
 				this.OnPropertyChanging("Contract");
 				this.SetAttributeValue("contract", value);
+				this.OnPropertyChanged("Contract");
+			}
+		}
+		
+		/// <summary>
+		/// Type of the endpoint contract.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("contract")]
+		public virtual ServiceEndpoint_Contract? ContractEnum
+		{
+			get
+			{
+				return ((ServiceEndpoint_Contract?)(EntityOptionSetEnum.GetEnum(this, "contract")));
+			}
+			set
+			{
+				this.OnPropertyChanging("Contract");
+				this.SetAttributeValue("contract", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
 				this.OnPropertyChanged("Contract");
 			}
 		}
@@ -7131,6 +8025,24 @@ namespace Xrm.Framework.CI.Common.Entities
 		}
 		
 		/// <summary>
+		/// Content type of the message
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("messageformat")]
+		public virtual ServiceEndpoint_MessageFormat? MessageFormatEnum
+		{
+			get
+			{
+				return ((ServiceEndpoint_MessageFormat?)(EntityOptionSetEnum.GetEnum(this, "messageformat")));
+			}
+			set
+			{
+				this.OnPropertyChanging("MessageFormat");
+				this.SetAttributeValue("messageformat", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+				this.OnPropertyChanged("MessageFormat");
+			}
+		}
+		
+		/// <summary>
 		/// Unique identifier of the user who last modified the service endpoint.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
@@ -7222,6 +8134,24 @@ namespace Xrm.Framework.CI.Common.Entities
 			{
 				this.OnPropertyChanging("NamespaceFormat");
 				this.SetAttributeValue("namespaceformat", value);
+				this.OnPropertyChanged("NamespaceFormat");
+			}
+		}
+		
+		/// <summary>
+		/// Format of Service Bus Namespace
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("namespaceformat")]
+		public virtual ServiceEndpoint_NamespaceFormat? NamespaceFormatEnum
+		{
+			get
+			{
+				return ((ServiceEndpoint_NamespaceFormat?)(EntityOptionSetEnum.GetEnum(this, "namespaceformat")));
+			}
+			set
+			{
+				this.OnPropertyChanging("NamespaceFormat");
+				this.SetAttributeValue("namespaceformat", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
 				this.OnPropertyChanged("NamespaceFormat");
 			}
 		}
@@ -7439,80 +8369,9 @@ namespace Xrm.Framework.CI.Common.Entities
 			}
 		}
 		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("authtype")]
-		public virtual ServiceEndpoint_AuthType? AuthTypeEnum
-		{
-			get
-			{
-				return ((ServiceEndpoint_AuthType?)(EntityOptionSetEnum.GetEnum(this, "authtype")));
-			}
-			set
-			{
-				AuthType = value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null;
-			}
-		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("componentstate")]
-		public virtual ComponentState? ComponentStateEnum
-		{
-			get
-			{
-				return ((ComponentState?)(EntityOptionSetEnum.GetEnum(this, "componentstate")));
-			}
-		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("connectionmode")]
-		public virtual ServiceEndpoint_ConnectionMode? ConnectionModeEnum
-		{
-			get
-			{
-				return ((ServiceEndpoint_ConnectionMode?)(EntityOptionSetEnum.GetEnum(this, "connectionmode")));
-			}
-			set
-			{
-				ConnectionMode = value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null;
-			}
-		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("contract")]
-		public virtual ServiceEndpoint_Contract? ContractEnum
-		{
-			get
-			{
-				return ((ServiceEndpoint_Contract?)(EntityOptionSetEnum.GetEnum(this, "contract")));
-			}
-			set
-			{
-				Contract = value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null;
-			}
-		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("messageformat")]
-		public virtual ServiceEndpoint_MessageFormat? MessageFormatEnum
-		{
-			get
-			{
-				return ((ServiceEndpoint_MessageFormat?)(EntityOptionSetEnum.GetEnum(this, "messageformat")));
-			}
-			set
-			{
-				MessageFormat = value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null;
-			}
-		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("namespaceformat")]
-		public virtual ServiceEndpoint_NamespaceFormat? NamespaceFormatEnum
-		{
-			get
-			{
-				return ((ServiceEndpoint_NamespaceFormat?)(EntityOptionSetEnum.GetEnum(this, "namespaceformat")));
-			}
-			set
-			{
-				NamespaceFormat = value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null;
-			}
-		}
-		
+		/// <summary>
+		/// Additional user claim value type.
+		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("userclaim")]
 		public virtual ServiceEndpoint_UserClaim? UserClaimEnum
 		{
@@ -7522,7 +8381,9 @@ namespace Xrm.Framework.CI.Common.Entities
 			}
 			set
 			{
-				UserClaim = value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null;
+				this.OnPropertyChanging("UserClaim");
+				this.SetAttributeValue("userclaim", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+				this.OnPropertyChanged("UserClaim");
 			}
 		}
 	}
@@ -7532,7 +8393,7 @@ namespace Xrm.Framework.CI.Common.Entities
 	/// </summary>
 	[System.Runtime.Serialization.DataContractAttribute()]
 	[Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute("solution")]
-	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.0.0.9479")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.45")]
 	public partial class Solution : Microsoft.Xrm.Sdk.Entity, System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
 	{
 		
@@ -7551,8 +8412,6 @@ namespace Xrm.Framework.CI.Common.Entities
 		public const string PrimaryIdAttribute = "solutionid";
 		
 		public const string PrimaryNameAttribute = "friendlyname";
-		
-		public const int EntityTypeCode = 7100;
 		
 		public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
 		
@@ -7679,6 +8538,18 @@ namespace Xrm.Framework.CI.Common.Entities
 			get
 			{
 				return this.GetAttributeValue<System.Nullable<System.DateTime>>("installedon");
+			}
+		}
+		
+		/// <summary>
+		/// Information about whether the solution is api managed.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("isapimanaged")]
+		public System.Nullable<bool> IsApiManaged
+		{
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("isapimanaged");
 			}
 		}
 		
@@ -7914,6 +8785,24 @@ namespace Xrm.Framework.CI.Common.Entities
 		}
 		
 		/// <summary>
+		/// Solution Type
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("solutiontype")]
+		public virtual Solution_SolutionType? SolutionTypeEnum
+		{
+			get
+			{
+				return ((Solution_SolutionType?)(EntityOptionSetEnum.GetEnum(this, "solutiontype")));
+			}
+			set
+			{
+				this.OnPropertyChanging("SolutionType");
+				this.SetAttributeValue("solutiontype", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+				this.OnPropertyChanged("SolutionType");
+			}
+		}
+		
+		/// <summary>
 		/// The unique name of this solution
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("uniquename")]
@@ -7972,19 +8861,6 @@ namespace Xrm.Framework.CI.Common.Entities
 				return this.GetAttributeValue<System.Nullable<long>>("versionnumber");
 			}
 		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("solutiontype")]
-		public virtual Solution_SolutionType? SolutionTypeEnum
-		{
-			get
-			{
-				return ((Solution_SolutionType?)(EntityOptionSetEnum.GetEnum(this, "solutiontype")));
-			}
-			set
-			{
-				SolutionType = value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null;
-			}
-		}
 	}
 	
 	/// <summary>
@@ -7992,7 +8868,7 @@ namespace Xrm.Framework.CI.Common.Entities
 	/// </summary>
 	[System.Runtime.Serialization.DataContractAttribute()]
 	[Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute("solutioncomponent")]
-	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.0.0.9479")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.45")]
 	public partial class SolutionComponent : Microsoft.Xrm.Sdk.Entity, System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
 	{
 		
@@ -8009,8 +8885,6 @@ namespace Xrm.Framework.CI.Common.Entities
 		public const string EntitySchemaName = "SolutionComponent";
 		
 		public const string PrimaryIdAttribute = "solutioncomponentid";
-		
-		public const int EntityTypeCode = 7103;
 		
 		public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
 		
@@ -8041,6 +8915,18 @@ namespace Xrm.Framework.CI.Common.Entities
 			get
 			{
 				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("componenttype");
+			}
+		}
+		
+		/// <summary>
+		/// The object type code of the component.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("componenttype")]
+		public virtual ComponentType? ComponentTypeEnum
+		{
+			get
+			{
+				return ((ComponentType?)(EntityOptionSetEnum.GetEnum(this, "componenttype")));
 			}
 		}
 		
@@ -8165,6 +9051,18 @@ namespace Xrm.Framework.CI.Common.Entities
 		}
 		
 		/// <summary>
+		/// Indicates the include behavior of the root component.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("rootcomponentbehavior")]
+		public virtual SolutionComponent_RootComponentBehavior? RootComponentBehaviorEnum
+		{
+			get
+			{
+				return ((SolutionComponent_RootComponentBehavior?)(EntityOptionSetEnum.GetEnum(this, "rootcomponentbehavior")));
+			}
+		}
+		
+		/// <summary>
 		/// The parent ID of the subcomponent, which will be a root
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("rootsolutioncomponentid")]
@@ -8224,24 +9122,6 @@ namespace Xrm.Framework.CI.Common.Entities
 				return this.GetAttributeValue<System.Nullable<long>>("versionnumber");
 			}
 		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("componenttype")]
-		public virtual ComponentType? ComponentTypeEnum
-		{
-			get
-			{
-				return ((ComponentType?)(EntityOptionSetEnum.GetEnum(this, "componenttype")));
-			}
-		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("rootcomponentbehavior")]
-		public virtual SolutionComponent_RootComponentBehavior? RootComponentBehaviorEnum
-		{
-			get
-			{
-				return ((SolutionComponent_RootComponentBehavior?)(EntityOptionSetEnum.GetEnum(this, "rootcomponentbehavior")));
-			}
-		}
 	}
 	
 	/// <summary>
@@ -8249,7 +9129,7 @@ namespace Xrm.Framework.CI.Common.Entities
 	/// </summary>
 	[System.Runtime.Serialization.DataContractAttribute()]
 	[Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute("solutionhistorydata")]
-	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.0.0.9479")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.45")]
 	public partial class SolutionHistoryData : Microsoft.Xrm.Sdk.Entity, System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
 	{
 		
@@ -8266,8 +9146,6 @@ namespace Xrm.Framework.CI.Common.Entities
 		public const string EntitySchemaName = "SolutionHistoryData";
 		
 		public const string PrimaryIdAttribute = "solutionhistorydataid";
-		
-		public const int EntityTypeCode = 9890;
 		
 		public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
 		
@@ -8488,6 +9366,24 @@ namespace Xrm.Framework.CI.Common.Entities
 		}
 		
 		/// <summary>
+		/// The operation performed on the solution.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("operation")]
+		public virtual SolutionHistoryData_Operation? OperationEnum
+		{
+			get
+			{
+				return ((SolutionHistoryData_Operation?)(EntityOptionSetEnum.GetEnum(this, "operation")));
+			}
+			set
+			{
+				this.OnPropertyChanging("Operation");
+				this.SetAttributeValue("operation", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+				this.OnPropertyChanged("Operation");
+			}
+		}
+		
+		/// <summary>
 		/// Name of the package.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("packagename")]
@@ -8689,6 +9585,24 @@ namespace Xrm.Framework.CI.Common.Entities
 		}
 		
 		/// <summary>
+		/// The status of the operation performed on the solution.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("status")]
+		public virtual SolutionHistoryData_Status? StatusEnum
+		{
+			get
+			{
+				return ((SolutionHistoryData_Status?)(EntityOptionSetEnum.GetEnum(this, "status")));
+			}
+			set
+			{
+				this.OnPropertyChanging("Status");
+				this.SetAttributeValue("status", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+				this.OnPropertyChanged("Status");
+			}
+		}
+		
+		/// <summary>
 		/// The suboperation performed on the solution.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("suboperation")]
@@ -8706,32 +9620,9 @@ namespace Xrm.Framework.CI.Common.Entities
 			}
 		}
 		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("operation")]
-		public virtual SolutionHistoryData_Operation? OperationEnum
-		{
-			get
-			{
-				return ((SolutionHistoryData_Operation?)(EntityOptionSetEnum.GetEnum(this, "operation")));
-			}
-			set
-			{
-				Operation = value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null;
-			}
-		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("status")]
-		public virtual SolutionHistoryData_Status? StatusEnum
-		{
-			get
-			{
-				return ((SolutionHistoryData_Status?)(EntityOptionSetEnum.GetEnum(this, "status")));
-			}
-			set
-			{
-				Status = value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null;
-			}
-		}
-		
+		/// <summary>
+		/// The suboperation performed on the solution.
+		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("suboperation")]
 		public virtual SolutionHistoryData_SubOperation? SubOperationEnum
 		{
@@ -8741,7 +9632,9 @@ namespace Xrm.Framework.CI.Common.Entities
 			}
 			set
 			{
-				SubOperation = value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null;
+				this.OnPropertyChanging("SubOperation");
+				this.SetAttributeValue("suboperation", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+				this.OnPropertyChanged("SubOperation");
 			}
 		}
 	}
@@ -8751,7 +9644,7 @@ namespace Xrm.Framework.CI.Common.Entities
 	/// </summary>
 	[System.Runtime.Serialization.DataContractAttribute()]
 	[Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute("systemform")]
-	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.0.0.9479")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.45")]
 	public partial class SystemForm : Microsoft.Xrm.Sdk.Entity, System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
 	{
 		
@@ -8770,8 +9663,6 @@ namespace Xrm.Framework.CI.Common.Entities
 		public const string PrimaryIdAttribute = "formid";
 		
 		public const string PrimaryNameAttribute = "name";
-		
-		public const int EntityTypeCode = 1030;
 		
 		public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
 		
@@ -8842,6 +9733,18 @@ namespace Xrm.Framework.CI.Common.Entities
 		}
 		
 		/// <summary>
+		/// For internal use only.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("componentstate")]
+		public virtual ComponentState? ComponentStateEnum
+		{
+			get
+			{
+				return ((ComponentState?)(EntityOptionSetEnum.GetEnum(this, "componentstate")));
+			}
+		}
+		
+		/// <summary>
 		/// Description of the form or dashboard.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("description")]
@@ -8873,6 +9776,24 @@ namespace Xrm.Framework.CI.Common.Entities
 			{
 				this.OnPropertyChanging("FormActivationState");
 				this.SetAttributeValue("formactivationstate", value);
+				this.OnPropertyChanged("FormActivationState");
+			}
+		}
+		
+		/// <summary>
+		/// Specifies the state of the form.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("formactivationstate")]
+		public virtual SystemForm_FormActivationState? FormActivationStateEnum
+		{
+			get
+			{
+				return ((SystemForm_FormActivationState?)(EntityOptionSetEnum.GetEnum(this, "formactivationstate")));
+			}
+			set
+			{
+				this.OnPropertyChanging("FormActivationState");
+				this.SetAttributeValue("formactivationstate", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
 				this.OnPropertyChanged("FormActivationState");
 			}
 		}
@@ -8960,6 +9881,24 @@ namespace Xrm.Framework.CI.Common.Entities
 			{
 				this.OnPropertyChanging("FormPresentation");
 				this.SetAttributeValue("formpresentation", value);
+				this.OnPropertyChanged("FormPresentation");
+			}
+		}
+		
+		/// <summary>
+		/// Specifies whether this form is in the updated UI layout in Microsoft Dynamics CRM 2015 or Microsoft Dynamics CRM Online 2015 Update.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("formpresentation")]
+		public virtual SystemForm_FormPresentation? FormPresentationEnum
+		{
+			get
+			{
+				return ((SystemForm_FormPresentation?)(EntityOptionSetEnum.GetEnum(this, "formpresentation")));
+			}
+			set
+			{
+				this.OnPropertyChanging("FormPresentation");
+				this.SetAttributeValue("formpresentation", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
 				this.OnPropertyChanged("FormPresentation");
 			}
 		}
@@ -9205,6 +10144,24 @@ namespace Xrm.Framework.CI.Common.Entities
 		}
 		
 		/// <summary>
+		/// Type of the form, for example, Dashboard or Preview.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("type")]
+		public virtual SystemForm_Type? TypeEnum
+		{
+			get
+			{
+				return ((SystemForm_Type?)(EntityOptionSetEnum.GetEnum(this, "type")));
+			}
+			set
+			{
+				this.OnPropertyChanging("Type");
+				this.SetAttributeValue("type", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+				this.OnPropertyChanged("Type");
+			}
+		}
+		
+		/// <summary>
 		/// Unique Name
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("uniquename")]
@@ -9251,54 +10208,6 @@ namespace Xrm.Framework.CI.Common.Entities
 				return this.GetAttributeValue<System.Nullable<long>>("versionnumber");
 			}
 		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("componentstate")]
-		public virtual ComponentState? ComponentStateEnum
-		{
-			get
-			{
-				return ((ComponentState?)(EntityOptionSetEnum.GetEnum(this, "componentstate")));
-			}
-		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("formactivationstate")]
-		public virtual SystemForm_FormActivationState? FormActivationStateEnum
-		{
-			get
-			{
-				return ((SystemForm_FormActivationState?)(EntityOptionSetEnum.GetEnum(this, "formactivationstate")));
-			}
-			set
-			{
-				FormActivationState = value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null;
-			}
-		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("formpresentation")]
-		public virtual SystemForm_FormPresentation? FormPresentationEnum
-		{
-			get
-			{
-				return ((SystemForm_FormPresentation?)(EntityOptionSetEnum.GetEnum(this, "formpresentation")));
-			}
-			set
-			{
-				FormPresentation = value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null;
-			}
-		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("type")]
-		public virtual SystemForm_Type? TypeEnum
-		{
-			get
-			{
-				return ((SystemForm_Type?)(EntityOptionSetEnum.GetEnum(this, "type")));
-			}
-			set
-			{
-				Type = value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null;
-			}
-		}
 	}
 	
 	/// <summary>
@@ -9306,7 +10215,7 @@ namespace Xrm.Framework.CI.Common.Entities
 	/// </summary>
 	[System.Runtime.Serialization.DataContractAttribute()]
 	[Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute("systemuser")]
-	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.0.0.9479")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.45")]
 	public partial class SystemUser : Microsoft.Xrm.Sdk.Entity, System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
 	{
 		
@@ -9325,8 +10234,6 @@ namespace Xrm.Framework.CI.Common.Entities
 		public const string PrimaryIdAttribute = "systemuserid";
 		
 		public const string PrimaryNameAttribute = "fullname";
-		
-		public const int EntityTypeCode = 8;
 		
 		public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
 		
@@ -9367,6 +10274,24 @@ namespace Xrm.Framework.CI.Common.Entities
 		}
 		
 		/// <summary>
+		/// Type of user.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("accessmode")]
+		public virtual SystemUser_AccessMode? AccessModeEnum
+		{
+			get
+			{
+				return ((SystemUser_AccessMode?)(EntityOptionSetEnum.GetEnum(this, "accessmode")));
+			}
+			set
+			{
+				this.OnPropertyChanging("AccessMode");
+				this.SetAttributeValue("accessmode", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+				this.OnPropertyChanged("AccessMode");
+			}
+		}
+		
+		/// <summary>
 		/// Unique identifier for address 1.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("address1_addressid")]
@@ -9398,6 +10323,24 @@ namespace Xrm.Framework.CI.Common.Entities
 			{
 				this.OnPropertyChanging("Address1_AddressTypeCode");
 				this.SetAttributeValue("address1_addresstypecode", value);
+				this.OnPropertyChanged("Address1_AddressTypeCode");
+			}
+		}
+		
+		/// <summary>
+		/// Type of address for address 1, such as billing, shipping, or primary address.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("address1_addresstypecode")]
+		public virtual SystemUser_Address1_AddressTypeCode? Address1_AddressTypeCodeEnum
+		{
+			get
+			{
+				return ((SystemUser_Address1_AddressTypeCode?)(EntityOptionSetEnum.GetEnum(this, "address1_addresstypecode")));
+			}
+			set
+			{
+				this.OnPropertyChanging("Address1_AddressTypeCode");
+				this.SetAttributeValue("address1_addresstypecode", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
 				this.OnPropertyChanged("Address1_AddressTypeCode");
 			}
 		}
@@ -9649,6 +10592,24 @@ namespace Xrm.Framework.CI.Common.Entities
 		}
 		
 		/// <summary>
+		/// Method of shipment for address 1.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("address1_shippingmethodcode")]
+		public virtual SystemUser_Address1_ShippingMethodCode? Address1_ShippingMethodCodeEnum
+		{
+			get
+			{
+				return ((SystemUser_Address1_ShippingMethodCode?)(EntityOptionSetEnum.GetEnum(this, "address1_shippingmethodcode")));
+			}
+			set
+			{
+				this.OnPropertyChanging("Address1_ShippingMethodCode");
+				this.SetAttributeValue("address1_shippingmethodcode", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+				this.OnPropertyChanged("Address1_ShippingMethodCode");
+			}
+		}
+		
+		/// <summary>
 		/// State or province for address 1.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("address1_stateorprovince")]
@@ -9788,6 +10749,24 @@ namespace Xrm.Framework.CI.Common.Entities
 			{
 				this.OnPropertyChanging("Address2_AddressTypeCode");
 				this.SetAttributeValue("address2_addresstypecode", value);
+				this.OnPropertyChanged("Address2_AddressTypeCode");
+			}
+		}
+		
+		/// <summary>
+		/// Type of address for address 2, such as billing, shipping, or primary address.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("address2_addresstypecode")]
+		public virtual SystemUser_Address2_AddressTypeCode? Address2_AddressTypeCodeEnum
+		{
+			get
+			{
+				return ((SystemUser_Address2_AddressTypeCode?)(EntityOptionSetEnum.GetEnum(this, "address2_addresstypecode")));
+			}
+			set
+			{
+				this.OnPropertyChanging("Address2_AddressTypeCode");
+				this.SetAttributeValue("address2_addresstypecode", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
 				this.OnPropertyChanged("Address2_AddressTypeCode");
 			}
 		}
@@ -10039,6 +11018,24 @@ namespace Xrm.Framework.CI.Common.Entities
 		}
 		
 		/// <summary>
+		/// Method of shipment for address 2.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("address2_shippingmethodcode")]
+		public virtual SystemUser_Address2_ShippingMethodCode? Address2_ShippingMethodCodeEnum
+		{
+			get
+			{
+				return ((SystemUser_Address2_ShippingMethodCode?)(EntityOptionSetEnum.GetEnum(this, "address2_shippingmethodcode")));
+			}
+			set
+			{
+				this.OnPropertyChanging("Address2_ShippingMethodCode");
+				this.SetAttributeValue("address2_shippingmethodcode", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+				this.OnPropertyChanged("Address2_ShippingMethodCode");
+			}
+		}
+		
+		/// <summary>
 		/// State or province for address 2.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("address2_stateorprovince")]
@@ -10243,6 +11240,24 @@ namespace Xrm.Framework.CI.Common.Entities
 		}
 		
 		/// <summary>
+		/// License type of user.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("caltype")]
+		public virtual SystemUser_CALType? CALTypeEnum
+		{
+			get
+			{
+				return ((SystemUser_CALType?)(EntityOptionSetEnum.GetEnum(this, "caltype")));
+			}
+			set
+			{
+				this.OnPropertyChanging("CALType");
+				this.SetAttributeValue("caltype", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+				this.OnPropertyChanged("CALType");
+			}
+		}
+		
+		/// <summary>
 		/// Unique identifier of the user who created the user.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
@@ -10382,6 +11397,24 @@ namespace Xrm.Framework.CI.Common.Entities
 			{
 				this.OnPropertyChanging("EmailRouterAccessApproval");
 				this.SetAttributeValue("emailrouteraccessapproval", value);
+				this.OnPropertyChanged("EmailRouterAccessApproval");
+			}
+		}
+		
+		/// <summary>
+		/// Shows the status of the primary email address.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("emailrouteraccessapproval")]
+		public virtual SystemUser_EmailRouterAccessApproval? EmailRouterAccessApprovalEnum
+		{
+			get
+			{
+				return ((SystemUser_EmailRouterAccessApproval?)(EntityOptionSetEnum.GetEnum(this, "emailrouteraccessapproval")));
+			}
+			set
+			{
+				this.OnPropertyChanging("EmailRouterAccessApproval");
+				this.SetAttributeValue("emailrouteraccessapproval", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
 				this.OnPropertyChanged("EmailRouterAccessApproval");
 			}
 		}
@@ -10585,6 +11618,24 @@ namespace Xrm.Framework.CI.Common.Entities
 		}
 		
 		/// <summary>
+		/// Incoming email delivery method for the user.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("incomingemaildeliverymethod")]
+		public virtual SystemUser_IncomingEmailDeliveryMethod? IncomingEmailDeliveryMethodEnum
+		{
+			get
+			{
+				return ((SystemUser_IncomingEmailDeliveryMethod?)(EntityOptionSetEnum.GetEnum(this, "incomingemaildeliverymethod")));
+			}
+			set
+			{
+				this.OnPropertyChanging("IncomingEmailDeliveryMethod");
+				this.SetAttributeValue("incomingemaildeliverymethod", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+				this.OnPropertyChanged("IncomingEmailDeliveryMethod");
+			}
+		}
+		
+		/// <summary>
 		/// Internal email address for the user.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("internalemailaddress")]
@@ -10616,6 +11667,24 @@ namespace Xrm.Framework.CI.Common.Entities
 			{
 				this.OnPropertyChanging("InviteStatusCode");
 				this.SetAttributeValue("invitestatuscode", value);
+				this.OnPropertyChanged("InviteStatusCode");
+			}
+		}
+		
+		/// <summary>
+		/// User invitation status.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("invitestatuscode")]
+		public virtual SystemUser_InviteStatusCode? InviteStatusCodeEnum
+		{
+			get
+			{
+				return ((SystemUser_InviteStatusCode?)(EntityOptionSetEnum.GetEnum(this, "invitestatuscode")));
+			}
+			set
+			{
+				this.OnPropertyChanging("InviteStatusCode");
+				this.SetAttributeValue("invitestatuscode", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
 				this.OnPropertyChanged("InviteStatusCode");
 			}
 		}
@@ -10855,24 +11924,6 @@ namespace Xrm.Framework.CI.Common.Entities
 		}
 		
 		/// <summary>
-		/// Describes whether user is opted out or not
-		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("msdyn_gdproptout")]
-		public System.Nullable<bool> msdyn_gdproptout
-		{
-			get
-			{
-				return this.GetAttributeValue<System.Nullable<bool>>("msdyn_gdproptout");
-			}
-			set
-			{
-				this.OnPropertyChanging("msdyn_gdproptout");
-				this.SetAttributeValue("msdyn_gdproptout", value);
-				this.OnPropertyChanged("msdyn_gdproptout");
-			}
-		}
-		
-		/// <summary>
 		/// Nickname of the user.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("nickname")]
@@ -10916,6 +11967,24 @@ namespace Xrm.Framework.CI.Common.Entities
 			{
 				this.OnPropertyChanging("OutgoingEmailDeliveryMethod");
 				this.SetAttributeValue("outgoingemaildeliverymethod", value);
+				this.OnPropertyChanged("OutgoingEmailDeliveryMethod");
+			}
+		}
+		
+		/// <summary>
+		/// Outgoing email delivery method for the user.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("outgoingemaildeliverymethod")]
+		public virtual SystemUser_OutgoingEmailDeliveryMethod? OutgoingEmailDeliveryMethodEnum
+		{
+			get
+			{
+				return ((SystemUser_OutgoingEmailDeliveryMethod?)(EntityOptionSetEnum.GetEnum(this, "outgoingemaildeliverymethod")));
+			}
+			set
+			{
+				this.OnPropertyChanging("OutgoingEmailDeliveryMethod");
+				this.SetAttributeValue("outgoingemaildeliverymethod", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
 				this.OnPropertyChanged("OutgoingEmailDeliveryMethod");
 			}
 		}
@@ -11065,6 +12134,24 @@ namespace Xrm.Framework.CI.Common.Entities
 		}
 		
 		/// <summary>
+		/// Preferred address for the user.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("preferredaddresscode")]
+		public virtual SystemUser_PreferredAddressCode? PreferredAddressCodeEnum
+		{
+			get
+			{
+				return ((SystemUser_PreferredAddressCode?)(EntityOptionSetEnum.GetEnum(this, "preferredaddresscode")));
+			}
+			set
+			{
+				this.OnPropertyChanging("PreferredAddressCode");
+				this.SetAttributeValue("preferredaddresscode", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+				this.OnPropertyChanged("PreferredAddressCode");
+			}
+		}
+		
+		/// <summary>
 		/// Preferred email address for the user.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("preferredemailcode")]
@@ -11083,6 +12170,24 @@ namespace Xrm.Framework.CI.Common.Entities
 		}
 		
 		/// <summary>
+		/// Preferred email address for the user.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("preferredemailcode")]
+		public virtual SystemUser_PreferredEmailCode? PreferredEmailCodeEnum
+		{
+			get
+			{
+				return ((SystemUser_PreferredEmailCode?)(EntityOptionSetEnum.GetEnum(this, "preferredemailcode")));
+			}
+			set
+			{
+				this.OnPropertyChanging("PreferredEmailCode");
+				this.SetAttributeValue("preferredemailcode", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+				this.OnPropertyChanged("PreferredEmailCode");
+			}
+		}
+		
+		/// <summary>
 		/// Preferred phone number for the user.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("preferredphonecode")]
@@ -11096,6 +12201,24 @@ namespace Xrm.Framework.CI.Common.Entities
 			{
 				this.OnPropertyChanging("PreferredPhoneCode");
 				this.SetAttributeValue("preferredphonecode", value);
+				this.OnPropertyChanged("PreferredPhoneCode");
+			}
+		}
+		
+		/// <summary>
+		/// Preferred phone number for the user.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("preferredphonecode")]
+		public virtual SystemUser_PreferredPhoneCode? PreferredPhoneCodeEnum
+		{
+			get
+			{
+				return ((SystemUser_PreferredPhoneCode?)(EntityOptionSetEnum.GetEnum(this, "preferredphonecode")));
+			}
+			set
+			{
+				this.OnPropertyChanging("PreferredPhoneCode");
+				this.SetAttributeValue("preferredphonecode", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
 				this.OnPropertyChanged("PreferredPhoneCode");
 			}
 		}
@@ -11187,24 +12310,6 @@ namespace Xrm.Framework.CI.Common.Entities
 				this.OnPropertyChanging("SharePointEmailAddress");
 				this.SetAttributeValue("sharepointemailaddress", value);
 				this.OnPropertyChanged("SharePointEmailAddress");
-			}
-		}
-		
-		/// <summary>
-		/// Site at which the user is located.
-		/// </summary>
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("siteid")]
-		public Microsoft.Xrm.Sdk.EntityReference SiteId
-		{
-			get
-			{
-				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("siteid");
-			}
-			set
-			{
-				this.OnPropertyChanging("SiteId");
-				this.SetAttributeValue("siteid", value);
-				this.OnPropertyChanged("SiteId");
 			}
 		}
 		
@@ -11552,175 +12657,6 @@ namespace Xrm.Framework.CI.Common.Entities
 				this.OnPropertyChanged("YomiMiddleName");
 			}
 		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("accessmode")]
-		public virtual SystemUser_AccessMode? AccessModeEnum
-		{
-			get
-			{
-				return ((SystemUser_AccessMode?)(EntityOptionSetEnum.GetEnum(this, "accessmode")));
-			}
-			set
-			{
-				AccessMode = value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null;
-			}
-		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("address1_addresstypecode")]
-		public virtual SystemUser_Address1_AddressTypeCode? Address1_AddressTypeCodeEnum
-		{
-			get
-			{
-				return ((SystemUser_Address1_AddressTypeCode?)(EntityOptionSetEnum.GetEnum(this, "address1_addresstypecode")));
-			}
-			set
-			{
-				Address1_AddressTypeCode = value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null;
-			}
-		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("address1_shippingmethodcode")]
-		public virtual SystemUser_Address1_ShippingMethodCode? Address1_ShippingMethodCodeEnum
-		{
-			get
-			{
-				return ((SystemUser_Address1_ShippingMethodCode?)(EntityOptionSetEnum.GetEnum(this, "address1_shippingmethodcode")));
-			}
-			set
-			{
-				Address1_ShippingMethodCode = value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null;
-			}
-		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("address2_addresstypecode")]
-		public virtual SystemUser_Address2_AddressTypeCode? Address2_AddressTypeCodeEnum
-		{
-			get
-			{
-				return ((SystemUser_Address2_AddressTypeCode?)(EntityOptionSetEnum.GetEnum(this, "address2_addresstypecode")));
-			}
-			set
-			{
-				Address2_AddressTypeCode = value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null;
-			}
-		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("address2_shippingmethodcode")]
-		public virtual SystemUser_Address2_ShippingMethodCode? Address2_ShippingMethodCodeEnum
-		{
-			get
-			{
-				return ((SystemUser_Address2_ShippingMethodCode?)(EntityOptionSetEnum.GetEnum(this, "address2_shippingmethodcode")));
-			}
-			set
-			{
-				Address2_ShippingMethodCode = value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null;
-			}
-		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("caltype")]
-		public virtual SystemUser_CALType? CALTypeEnum
-		{
-			get
-			{
-				return ((SystemUser_CALType?)(EntityOptionSetEnum.GetEnum(this, "caltype")));
-			}
-			set
-			{
-				CALType = value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null;
-			}
-		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("emailrouteraccessapproval")]
-		public virtual SystemUser_EmailRouterAccessApproval? EmailRouterAccessApprovalEnum
-		{
-			get
-			{
-				return ((SystemUser_EmailRouterAccessApproval?)(EntityOptionSetEnum.GetEnum(this, "emailrouteraccessapproval")));
-			}
-			set
-			{
-				EmailRouterAccessApproval = value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null;
-			}
-		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("incomingemaildeliverymethod")]
-		public virtual SystemUser_IncomingEmailDeliveryMethod? IncomingEmailDeliveryMethodEnum
-		{
-			get
-			{
-				return ((SystemUser_IncomingEmailDeliveryMethod?)(EntityOptionSetEnum.GetEnum(this, "incomingemaildeliverymethod")));
-			}
-			set
-			{
-				IncomingEmailDeliveryMethod = value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null;
-			}
-		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("invitestatuscode")]
-		public virtual SystemUser_InviteStatusCode? InviteStatusCodeEnum
-		{
-			get
-			{
-				return ((SystemUser_InviteStatusCode?)(EntityOptionSetEnum.GetEnum(this, "invitestatuscode")));
-			}
-			set
-			{
-				InviteStatusCode = value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null;
-			}
-		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("outgoingemaildeliverymethod")]
-		public virtual SystemUser_OutgoingEmailDeliveryMethod? OutgoingEmailDeliveryMethodEnum
-		{
-			get
-			{
-				return ((SystemUser_OutgoingEmailDeliveryMethod?)(EntityOptionSetEnum.GetEnum(this, "outgoingemaildeliverymethod")));
-			}
-			set
-			{
-				OutgoingEmailDeliveryMethod = value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null;
-			}
-		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("preferredaddresscode")]
-		public virtual SystemUser_PreferredAddressCode? PreferredAddressCodeEnum
-		{
-			get
-			{
-				return ((SystemUser_PreferredAddressCode?)(EntityOptionSetEnum.GetEnum(this, "preferredaddresscode")));
-			}
-			set
-			{
-				PreferredAddressCode = value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null;
-			}
-		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("preferredemailcode")]
-		public virtual SystemUser_PreferredEmailCode? PreferredEmailCodeEnum
-		{
-			get
-			{
-				return ((SystemUser_PreferredEmailCode?)(EntityOptionSetEnum.GetEnum(this, "preferredemailcode")));
-			}
-			set
-			{
-				PreferredEmailCode = value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null;
-			}
-		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("preferredphonecode")]
-		public virtual SystemUser_PreferredPhoneCode? PreferredPhoneCodeEnum
-		{
-			get
-			{
-				return ((SystemUser_PreferredPhoneCode?)(EntityOptionSetEnum.GetEnum(this, "preferredphonecode")));
-			}
-			set
-			{
-				PreferredPhoneCode = value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null;
-			}
-		}
 	}
 	
 	/// <summary>
@@ -11728,7 +12664,7 @@ namespace Xrm.Framework.CI.Common.Entities
 	/// </summary>
 	[System.Runtime.Serialization.DataContractAttribute()]
 	[Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute("webresource")]
-	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.0.0.9479")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.45")]
 	public partial class WebResource : Microsoft.Xrm.Sdk.Entity, System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
 	{
 		
@@ -11747,8 +12683,6 @@ namespace Xrm.Framework.CI.Common.Entities
 		public const string PrimaryIdAttribute = "webresourceid";
 		
 		public const string PrimaryNameAttribute = "name";
-		
-		public const int EntityTypeCode = 9333;
 		
 		public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
 		
@@ -11797,6 +12731,18 @@ namespace Xrm.Framework.CI.Common.Entities
 			get
 			{
 				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("componentstate");
+			}
+		}
+		
+		/// <summary>
+		/// For internal use only.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("componentstate")]
+		public virtual ComponentState? ComponentStateEnum
+		{
+			get
+			{
+				return ((ComponentState?)(EntityOptionSetEnum.GetEnum(this, "componentstate")));
 			}
 		}
 		
@@ -12247,15 +13193,9 @@ namespace Xrm.Framework.CI.Common.Entities
 			}
 		}
 		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("componentstate")]
-		public virtual ComponentState? ComponentStateEnum
-		{
-			get
-			{
-				return ((ComponentState?)(EntityOptionSetEnum.GetEnum(this, "componentstate")));
-			}
-		}
-		
+		/// <summary>
+		/// Drop-down list for selecting the type of the web resource.
+		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("webresourcetype")]
 		public virtual WebResource_WebResourceType? WebResourceTypeEnum
 		{
@@ -12265,13 +13205,15 @@ namespace Xrm.Framework.CI.Common.Entities
 			}
 			set
 			{
-				WebResourceType = value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null;
+				this.OnPropertyChanging("WebResourceType");
+				this.SetAttributeValue("webresourcetype", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+				this.OnPropertyChanged("WebResourceType");
 			}
 		}
 	}
 	
 	[System.Runtime.Serialization.DataContractAttribute()]
-	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.0.0.9479")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.45")]
 	public enum WorkflowState
 	{
 		
@@ -12287,7 +13229,7 @@ namespace Xrm.Framework.CI.Common.Entities
 	/// </summary>
 	[System.Runtime.Serialization.DataContractAttribute()]
 	[Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute("workflow")]
-	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.0.0.9479")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.45")]
 	public partial class Workflow : Microsoft.Xrm.Sdk.Entity, System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
 	{
 		
@@ -12306,8 +13248,6 @@ namespace Xrm.Framework.CI.Common.Entities
 		public const string PrimaryIdAttribute = "workflowid";
 		
 		public const string PrimaryNameAttribute = "name";
-		
-		public const int EntityTypeCode = 4703;
 		
 		public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
 		
@@ -12378,6 +13318,24 @@ namespace Xrm.Framework.CI.Common.Entities
 		}
 		
 		/// <summary>
+		/// Business Process Type.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("businessprocesstype")]
+		public virtual Workflow_BusinessProcessType? BusinessProcessTypeEnum
+		{
+			get
+			{
+				return ((Workflow_BusinessProcessType?)(EntityOptionSetEnum.GetEnum(this, "businessprocesstype")));
+			}
+			set
+			{
+				this.OnPropertyChanging("BusinessProcessType");
+				this.SetAttributeValue("businessprocesstype", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+				this.OnPropertyChanged("BusinessProcessType");
+			}
+		}
+		
+		/// <summary>
 		/// Category of the process.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("category")]
@@ -12391,6 +13349,24 @@ namespace Xrm.Framework.CI.Common.Entities
 			{
 				this.OnPropertyChanging("Category");
 				this.SetAttributeValue("category", value);
+				this.OnPropertyChanged("Category");
+			}
+		}
+		
+		/// <summary>
+		/// Category of the process.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("category")]
+		public virtual Workflow_Category? CategoryEnum
+		{
+			get
+			{
+				return ((Workflow_Category?)(EntityOptionSetEnum.GetEnum(this, "category")));
+			}
+			set
+			{
+				this.OnPropertyChanging("Category");
+				this.SetAttributeValue("category", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
 				this.OnPropertyChanged("Category");
 			}
 		}
@@ -12422,6 +13398,18 @@ namespace Xrm.Framework.CI.Common.Entities
 			get
 			{
 				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("componentstate");
+			}
+		}
+		
+		/// <summary>
+		/// For internal use only.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("componentstate")]
+		public virtual ComponentState? ComponentStateEnum
+		{
+			get
+			{
+				return ((ComponentState?)(EntityOptionSetEnum.GetEnum(this, "componentstate")));
 			}
 		}
 		
@@ -12486,6 +13474,24 @@ namespace Xrm.Framework.CI.Common.Entities
 		}
 		
 		/// <summary>
+		/// Stage of the process when triggered on Create.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createstage")]
+		public virtual Workflow_Stage? CreateStageEnum
+		{
+			get
+			{
+				return ((Workflow_Stage?)(EntityOptionSetEnum.GetEnum(this, "createstage")));
+			}
+			set
+			{
+				this.OnPropertyChanging("CreateStage");
+				this.SetAttributeValue("createstage", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+				this.OnPropertyChanged("CreateStage");
+			}
+		}
+		
+		/// <summary>
 		/// Stage of the process when triggered on Delete.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("deletestage")]
@@ -12499,6 +13505,24 @@ namespace Xrm.Framework.CI.Common.Entities
 			{
 				this.OnPropertyChanging("DeleteStage");
 				this.SetAttributeValue("deletestage", value);
+				this.OnPropertyChanged("DeleteStage");
+			}
+		}
+		
+		/// <summary>
+		/// Stage of the process when triggered on Delete.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("deletestage")]
+		public virtual Workflow_Stage? DeleteStageEnum
+		{
+			get
+			{
+				return ((Workflow_Stage?)(EntityOptionSetEnum.GetEnum(this, "deletestage")));
+			}
+			set
+			{
+				this.OnPropertyChanging("DeleteStage");
+				this.SetAttributeValue("deletestage", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
 				this.OnPropertyChanged("DeleteStage");
 			}
 		}
@@ -12660,6 +13684,24 @@ namespace Xrm.Framework.CI.Common.Entities
 		}
 		
 		/// <summary>
+		/// Defines whether other publishers can attach custom processing steps to this action
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("iscustomprocessingstepallowedforotherpublishers")]
+		public Microsoft.Xrm.Sdk.BooleanManagedProperty IsCustomProcessingStepAllowedForOtherPublishers
+		{
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.BooleanManagedProperty>("iscustomprocessingstepallowedforotherpublishers");
+			}
+			set
+			{
+				this.OnPropertyChanging("IsCustomProcessingStepAllowedForOtherPublishers");
+				this.SetAttributeValue("iscustomprocessingstepallowedforotherpublishers", value);
+				this.OnPropertyChanged("IsCustomProcessingStepAllowedForOtherPublishers");
+			}
+		}
+		
+		/// <summary>
 		/// Indicates whether the solution component is part of a managed solution.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("ismanaged")]
@@ -12721,6 +13763,24 @@ namespace Xrm.Framework.CI.Common.Entities
 			{
 				this.OnPropertyChanging("Mode");
 				this.SetAttributeValue("mode", value);
+				this.OnPropertyChanged("Mode");
+			}
+		}
+		
+		/// <summary>
+		/// Shows the mode of the process.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("mode")]
+		public virtual Workflow_Mode? ModeEnum
+		{
+			get
+			{
+				return ((Workflow_Mode?)(EntityOptionSetEnum.GetEnum(this, "mode")));
+			}
+			set
+			{
+				this.OnPropertyChanging("Mode");
+				this.SetAttributeValue("mode", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
 				this.OnPropertyChanged("Mode");
 			}
 		}
@@ -12984,6 +14044,24 @@ namespace Xrm.Framework.CI.Common.Entities
 		}
 		
 		/// <summary>
+		/// Scope of the process trigger.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("processtriggerscope")]
+		public virtual Workflow_ProcessTriggerScope? ProcessTriggerScopeEnum
+		{
+			get
+			{
+				return ((Workflow_ProcessTriggerScope?)(EntityOptionSetEnum.GetEnum(this, "processtriggerscope")));
+			}
+			set
+			{
+				this.OnPropertyChanging("ProcessTriggerScope");
+				this.SetAttributeValue("processtriggerscope", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+				this.OnPropertyChanged("ProcessTriggerScope");
+			}
+		}
+		
+		/// <summary>
 		/// Indicates the rank for order of execution for the synchronous workflow.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("rank")]
@@ -13038,6 +14116,24 @@ namespace Xrm.Framework.CI.Common.Entities
 		}
 		
 		/// <summary>
+		/// Specifies the system user account under which a workflow executes.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("runas")]
+		public virtual Workflow_RunAs? RunAsEnum
+		{
+			get
+			{
+				return ((Workflow_RunAs?)(EntityOptionSetEnum.GetEnum(this, "runas")));
+			}
+			set
+			{
+				this.OnPropertyChanging("RunAs");
+				this.SetAttributeValue("runas", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+				this.OnPropertyChanged("RunAs");
+			}
+		}
+		
+		/// <summary>
 		/// Scope of the process.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("scope")]
@@ -13051,6 +14147,24 @@ namespace Xrm.Framework.CI.Common.Entities
 			{
 				this.OnPropertyChanging("Scope");
 				this.SetAttributeValue("scope", value);
+				this.OnPropertyChanged("Scope");
+			}
+		}
+		
+		/// <summary>
+		/// Scope of the process.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("scope")]
+		public virtual Workflow_Scope? ScopeEnum
+		{
+			get
+			{
+				return ((Workflow_Scope?)(EntityOptionSetEnum.GetEnum(this, "scope")));
+			}
+			set
+			{
+				this.OnPropertyChanging("Scope");
+				this.SetAttributeValue("scope", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
 				this.OnPropertyChanged("Scope");
 			}
 		}
@@ -13126,6 +14240,24 @@ namespace Xrm.Framework.CI.Common.Entities
 			{
 				this.OnPropertyChanging("StatusCode");
 				this.SetAttributeValue("statuscode", value);
+				this.OnPropertyChanged("StatusCode");
+			}
+		}
+		
+		/// <summary>
+		/// Additional information about status of the process.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statuscode")]
+		public virtual Workflow_StatusCode? StatusCodeEnum
+		{
+			get
+			{
+				return ((Workflow_StatusCode?)(EntityOptionSetEnum.GetEnum(this, "statuscode")));
+			}
+			set
+			{
+				this.OnPropertyChanging("StatusCode");
+				this.SetAttributeValue("statuscode", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
 				this.OnPropertyChanged("StatusCode");
 			}
 		}
@@ -13239,6 +14371,24 @@ namespace Xrm.Framework.CI.Common.Entities
 		}
 		
 		/// <summary>
+		/// Type of the process.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("type")]
+		public virtual Workflow_Type? TypeEnum
+		{
+			get
+			{
+				return ((Workflow_Type?)(EntityOptionSetEnum.GetEnum(this, "type")));
+			}
+			set
+			{
+				this.OnPropertyChanging("Type");
+				this.SetAttributeValue("type", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+				this.OnPropertyChanged("Type");
+			}
+		}
+		
+		/// <summary>
 		/// For internal use only.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("uidata")]
@@ -13264,6 +14414,24 @@ namespace Xrm.Framework.CI.Common.Entities
 			{
 				this.OnPropertyChanging("UIFlowType");
 				this.SetAttributeValue("uiflowtype", value);
+				this.OnPropertyChanged("UIFlowType");
+			}
+		}
+		
+		/// <summary>
+		/// Type of the UI Flow process.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("uiflowtype")]
+		public virtual Workflow_UIFlowType? UIFlowTypeEnum
+		{
+			get
+			{
+				return ((Workflow_UIFlowType?)(EntityOptionSetEnum.GetEnum(this, "uiflowtype")));
+			}
+			set
+			{
+				this.OnPropertyChanging("UIFlowType");
+				this.SetAttributeValue("uiflowtype", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
 				this.OnPropertyChanged("UIFlowType");
 			}
 		}
@@ -13300,6 +14468,24 @@ namespace Xrm.Framework.CI.Common.Entities
 			{
 				this.OnPropertyChanging("UpdateStage");
 				this.SetAttributeValue("updatestage", value);
+				this.OnPropertyChanged("UpdateStage");
+			}
+		}
+		
+		/// <summary>
+		/// Select the stage a process will be triggered on update.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("updatestage")]
+		public virtual Workflow_Stage? UpdateStageEnum
+		{
+			get
+			{
+				return ((Workflow_Stage?)(EntityOptionSetEnum.GetEnum(this, "updatestage")));
+			}
+			set
+			{
+				this.OnPropertyChanging("UpdateStage");
+				this.SetAttributeValue("updatestage", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
 				this.OnPropertyChanged("UpdateStage");
 			}
 		}
@@ -13384,177 +14570,12 @@ namespace Xrm.Framework.CI.Common.Entities
 				this.OnPropertyChanged("Xaml");
 			}
 		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("businessprocesstype")]
-		public virtual Workflow_BusinessProcessType? BusinessProcessTypeEnum
-		{
-			get
-			{
-				return ((Workflow_BusinessProcessType?)(EntityOptionSetEnum.GetEnum(this, "businessprocesstype")));
-			}
-			set
-			{
-				BusinessProcessType = value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null;
-			}
-		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("category")]
-		public virtual Workflow_Category? CategoryEnum
-		{
-			get
-			{
-				return ((Workflow_Category?)(EntityOptionSetEnum.GetEnum(this, "category")));
-			}
-			set
-			{
-				Category = value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null;
-			}
-		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("componentstate")]
-		public virtual ComponentState? ComponentStateEnum
-		{
-			get
-			{
-				return ((ComponentState?)(EntityOptionSetEnum.GetEnum(this, "componentstate")));
-			}
-		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createstage")]
-		public virtual Workflow_Stage? CreateStageEnum
-		{
-			get
-			{
-				return ((Workflow_Stage?)(EntityOptionSetEnum.GetEnum(this, "createstage")));
-			}
-			set
-			{
-				CreateStage = value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null;
-			}
-		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("deletestage")]
-		public virtual Workflow_Stage? DeleteStageEnum
-		{
-			get
-			{
-				return ((Workflow_Stage?)(EntityOptionSetEnum.GetEnum(this, "deletestage")));
-			}
-			set
-			{
-				DeleteStage = value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null;
-			}
-		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("mode")]
-		public virtual Workflow_Mode? ModeEnum
-		{
-			get
-			{
-				return ((Workflow_Mode?)(EntityOptionSetEnum.GetEnum(this, "mode")));
-			}
-			set
-			{
-				Mode = value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null;
-			}
-		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("processtriggerscope")]
-		public virtual Workflow_ProcessTriggerScope? ProcessTriggerScopeEnum
-		{
-			get
-			{
-				return ((Workflow_ProcessTriggerScope?)(EntityOptionSetEnum.GetEnum(this, "processtriggerscope")));
-			}
-			set
-			{
-				ProcessTriggerScope = value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null;
-			}
-		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("runas")]
-		public virtual Workflow_RunAs? RunAsEnum
-		{
-			get
-			{
-				return ((Workflow_RunAs?)(EntityOptionSetEnum.GetEnum(this, "runas")));
-			}
-			set
-			{
-				RunAs = value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null;
-			}
-		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("scope")]
-		public virtual Workflow_Scope? ScopeEnum
-		{
-			get
-			{
-				return ((Workflow_Scope?)(EntityOptionSetEnum.GetEnum(this, "scope")));
-			}
-			set
-			{
-				Scope = value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null;
-			}
-		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statuscode")]
-		public virtual Workflow_StatusCode? StatusCodeEnum
-		{
-			get
-			{
-				return ((Workflow_StatusCode?)(EntityOptionSetEnum.GetEnum(this, "statuscode")));
-			}
-			set
-			{
-				StatusCode = value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null;
-			}
-		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("type")]
-		public virtual Workflow_Type? TypeEnum
-		{
-			get
-			{
-				return ((Workflow_Type?)(EntityOptionSetEnum.GetEnum(this, "type")));
-			}
-			set
-			{
-				Type = value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null;
-			}
-		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("uiflowtype")]
-		public virtual Workflow_UIFlowType? UIFlowTypeEnum
-		{
-			get
-			{
-				return ((Workflow_UIFlowType?)(EntityOptionSetEnum.GetEnum(this, "uiflowtype")));
-			}
-			set
-			{
-				UIFlowType = value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null;
-			}
-		}
-		
-		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("updatestage")]
-		public virtual Workflow_Stage? UpdateStageEnum
-		{
-			get
-			{
-				return ((Workflow_Stage?)(EntityOptionSetEnum.GetEnum(this, "updatestage")));
-			}
-			set
-			{
-				UpdateStage = value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null;
-			}
-		}
 	}
 	
 	/// <summary>
 	/// Represents a source of entities bound to a CRM service. It tracks and manages changes made to the retrieved entities.
 	/// </summary>
-	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.0.0.9479")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.45")]
 	public partial class CIContext : Microsoft.Xrm.Sdk.Client.OrganizationServiceContext
 	{
 		
@@ -13585,6 +14606,17 @@ namespace Xrm.Framework.CI.Common.Entities
 			get
 			{
 				return this.CreateQuery<Xrm.Framework.CI.Common.Entities.BulkDeleteOperation>();
+			}
+		}
+		
+		/// <summary>
+		/// Gets a binding to the set of all <see cref="Xrm.Framework.CI.Common.Entities.connectionreference"/> entities.
+		/// </summary>
+		public System.Linq.IQueryable<Xrm.Framework.CI.Common.Entities.connectionreference> connectionreferenceSet
+		{
+			get
+			{
+				return this.CreateQuery<Xrm.Framework.CI.Common.Entities.connectionreference>();
 			}
 		}
 		
@@ -13812,6 +14844,89 @@ namespace Xrm.Framework.CI.Common.Entities
 				}
 			}
 			return null;
+		}
+	}
+	
+	/// <summary>
+	/// Attribute to handle storing the OptionSet's Metadata.
+	/// </summary>
+	[System.AttributeUsageAttribute(System.AttributeTargets.Field)]
+	public sealed class OptionSetMetadataAttribute : System.Attribute
+	{
+		
+		/// <summary>
+		/// Color of the OptionSetValue.
+		/// </summary>
+		public string Color { get; set; }
+		
+		/// <summary>
+		/// Description of the OptionSetValue.
+		/// </summary>
+		public string Description { get; set; }
+		
+		/// <summary>
+		/// Display order index of the OptionSetValue.
+		/// </summary>
+		public int DisplayIndex { get; set; }
+		
+		/// <summary>
+		/// External value of the OptionSetValue.
+		/// </summary>
+		public string ExternalValue { get; set; }
+		
+		/// <summary>
+		/// Name of the OptionSetValue.
+		/// </summary>
+		public string Name { get; set; }
+		
+		/// <summary>
+		/// Initializes a new instance of the <see cref="OptionSetMetadataAttribute"/> class.
+		/// </summary>
+		/// <param name="name">Name of the value.</param>
+		/// <param name="displayIndex">Display order index of the value.</param>
+		/// <param name="color">Color of the value.</param>
+		/// <param name="description">Description of the value.</param>
+		/// <param name="externalValue">External value of the value.</param>
+		public OptionSetMetadataAttribute(string name, int displayIndex, string color = null, string description = null, string externalValue = null)
+		{
+			this.Color = color;
+			this.Description = description;
+			this.ExternalValue = externalValue;
+			this.DisplayIndex = displayIndex;
+			this.Name = name;
+		}
+	}
+	
+	/// <summary>
+	/// Extension class to handle retrieving of OptionSetMetadataAttribute.
+	/// </summary>
+	public static class OptionSetExtension
+	{
+		
+		/// <summary>
+		/// Returns the OptionSetMetadataAttribute for the given enum value
+		/// </summary>
+		/// <typeparam name="T">OptionSet Enum Type</typeparam>
+		/// <param name="value">Enum Value with OptionSetMetadataAttribute</param>
+		public static OptionSetMetadataAttribute GetMetadata<T>(this T value)
+			where T :  struct, System.IConvertible
+		{
+			System.Type enumType = typeof(T);
+			if (!enumType.IsEnum)
+			{
+				throw new System.ArgumentException("T must be an enum!");
+			}
+			System.Reflection.MemberInfo[] members = enumType.GetMember(value.ToString());
+			for (int i = 0; (i < members.Length); i++
+			)
+			{
+				System.Attribute attribute = System.Reflection.CustomAttributeExtensions.GetCustomAttribute(members[i], typeof(OptionSetMetadataAttribute));
+				if (attribute != null)
+				{
+					return ((OptionSetMetadataAttribute)(attribute));
+				}
+			}
+			throw new System.ArgumentException("T must be an enum adorned with an OptionSetMetadataAttribute!");
 		}
 	}
 }

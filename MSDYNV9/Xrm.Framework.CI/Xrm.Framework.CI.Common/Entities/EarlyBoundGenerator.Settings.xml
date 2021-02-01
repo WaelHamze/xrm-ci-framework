@@ -1,23 +1,48 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Config xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <AudibleCompletionNotification>true</AudibleCompletionNotification>
   <CrmSvcUtilRelativePath>DLaB.EarlyBoundGenerator\crmsvcutil.exe</CrmSvcUtilRelativePath>
   <IncludeCommandLine>false</IncludeCommandLine>
   <MaskPassword>true</MaskPassword>
-  <SettingsVersion>1.2018.10.15</SettingsVersion>
-  <Version>1.2019.10.27</Version>
+  <SettingsVersion>1.2019.10.27</SettingsVersion>
+  <Version>1.2020.10.2</Version>
   <ExtensionConfig>
     <ActionPrefixesWhitelist />
     <ActionsWhitelist />
-    <ActionsToSkip />
+    <ActionsToSkip>msdyn_getsifeatureconfiguration|
+retrieveappsetting|
+retrieveappsettinglist|
+saveappsetting</ActionsToSkip>
     <AddDebuggerNonUserCode>false</AddDebuggerNonUserCode>
     <AddNewFilesToProject>false</AddNewFilesToProject>
+    <AddOptionSetMetadataAttribute>true</AddOptionSetMetadataAttribute>
     <CreateOneFilePerAction>false</CreateOneFilePerAction>
     <CreateOneFilePerEntity>false</CreateOneFilePerEntity>
     <CreateOneFilePerOptionSet>false</CreateOneFilePerOptionSet>
     <DeleteFilesFromOutputFolders>false</DeleteFilesFromOutputFolders>
     <EntitiesToSkip />
-    <EntitiesWhitelist>bulkdeleteoperation|dependency|duplicaterule|environmentvariabledefinition|environmentvariablevalue|importjob|pluginassembly|plugintype|workflow|sdkmessage|sdkmessagefilter|sdkmessageprocessingstep|sdkmessageprocessingstepimage|serviceendpoint|solution|solutioncomponent|solutionhistorydata|systemform|asyncoperation|systemuser|webresource</EntitiesWhitelist>
+    <EntitiesWhitelist>asyncoperation|
+bulkdeleteoperation|
+connectionreference|
+dependency|
+duplicaterule|
+environmentvariabledefinition|
+environmentvariablevalue|
+importjob|
+pluginassembly|
+plugintype|
+sdkmessage|
+sdkmessagefilter|
+sdkmessageprocessingstep|
+sdkmessageprocessingstepimage|
+serviceendpoint|
+solution|
+solutioncomponent|
+solutionhistorydata|
+systemform|
+systemuser|
+webresource|
+workflow</EntitiesWhitelist>
     <EntityAttributeSpecifiedNames />
     <EntityPrefixesToSkip />
     <EntityPrefixesWhitelist />
@@ -26,24 +51,35 @@
     <GenerateAnonymousTypeConstructor>false</GenerateAnonymousTypeConstructor>
     <GenerateConstructorsSansLogicalName>false</GenerateConstructorsSansLogicalName>
     <GenerateEntityRelationships>false</GenerateEntityRelationships>
+    <GenerateEntityTypeCode>false</GenerateEntityTypeCode>
     <GenerateEnumProperties>true</GenerateEnumProperties>
     <GenerateOnlyReferencedOptionSets>true</GenerateOnlyReferencedOptionSets>
+    <GenerateOptionSetMetadataAttribute>true</GenerateOptionSetMetadataAttribute>
     <InvalidCSharpNamePrefix>_</InvalidCSharpNamePrefix>
     <MakeAllFieldsEditable>false</MakeAllFieldsEditable>
     <MakeReadonlyFieldsEditable>false</MakeReadonlyFieldsEditable>
     <MakeResponseActionsEditable>false</MakeResponseActionsEditable>
     <LocalOptionSetFormat>{0}_{1}</LocalOptionSetFormat>
-    <OptionSetPrefixesToSkip />
-    <OptionSetsToSkip />
     <OptionSetLanguageCodeOverride
       xsi:nil="true" />
+    <OptionSetPrefixesToSkip />
+    <OptionSetsToSkip />
     <ProjectNameForEarlyBoundFiles />
-    <RemoveRuntimeVersionComment>false</RemoveRuntimeVersionComment>
     <PropertyEnumMappings />
-    <UnmappedProperties>duplicaterule:BaseEntityTypeCode,MatchingEntityTypeCode|invoicedetail:InvoiceStateCode|leadaddress:AddressTypeCode,ShippingMethodCode|organization:CurrencyFormatCode,DateFormatCode,TimeFormatCode,WeekStartDayCode|quote:StatusCode|quotedetail:QuoteStateCode|salesorderdetail:SalesOrderStateCode</UnmappedProperties>
+    <ReadSerializedMetadata>false</ReadSerializedMetadata>
+    <RemoveRuntimeVersionComment>false</RemoveRuntimeVersionComment>
+    <ReplaceOptionSetPropertiesWithEnum>false</ReplaceOptionSetPropertiesWithEnum>
+    <SerializeMetadata>false</SerializeMetadata>
+    <UnmappedProperties>duplicaterule:BaseEntityTypeCode,MatchingEntityTypeCode|
+invoicedetail:InvoiceStateCode|
+leadaddress:AddressTypeCode,ShippingMethodCode|
+organization:CurrencyFormatCode,DateFormatCode,TimeFormatCode,WeekStartDayCode|
+quote:StatusCode|
+quotedetail:QuoteStateCode|
+salesorderdetail:SalesOrderStateCode</UnmappedProperties>
     <UseDeprecatedOptionSetNaming>false</UseDeprecatedOptionSetNaming>
     <UseTfsToCheckoutFiles>false</UseTfsToCheckoutFiles>
-    <UseXrmClient>false</UseXrmClient>
+    <WaitForAttachedDebugger>false</WaitForAttachedDebugger>
   </ExtensionConfig>
   <ExtensionArguments>
     <Argument>
@@ -148,4 +184,8 @@
       <Value>OptionSets.cs</Value>
     </Argument>
   </UserArguments>
+  <WorkflowlessActions>msdyn_GetSIFeatureConfiguration|
+RetrieveAppSetting|
+RetrieveAppSettingList|
+SaveAppSetting</WorkflowlessActions>
 </Config>
