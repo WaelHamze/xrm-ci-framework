@@ -24,7 +24,21 @@ namespace Xrm.Framework.CI.Common.IntegrationTests
 
             manager.ExpandData(dataZip, folder);
 
-            manager.SplitData(folder);
+            manager.SplitData(folder, splitRecords: false);
+        }
+
+        [TestMethod]
+        public void TestSplitData2()
+        {
+            string dataZip = @"C:\Temp\TestReferenceData\Extracted\data.zip";
+            string folder = @"C:\Temp\TestReferenceData\Unpacked";
+
+            TestLogger logger = new TestLogger();
+            ConfigurationMigrationManager manager = new ConfigurationMigrationManager(logger);
+
+            manager.ExpandData(dataZip, folder);
+
+            manager.SplitData(folder, splitRecords: true);
         }
 
         [TestMethod]

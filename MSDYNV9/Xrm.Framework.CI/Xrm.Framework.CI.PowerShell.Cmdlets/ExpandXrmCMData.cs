@@ -43,7 +43,13 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
         [Parameter(Mandatory = false)]
         public bool SortDataXmlFile { get; set; }
 
-        #endregion
+        /// <summary>
+        /// <para type="description">Splits the xml data into multiple files per record per entity</para>
+        /// </summary>
+        [Parameter(Mandatory = false)]
+        public bool SplitDataXmlFilePerEntityRecord { get; set; }
+
+        #endregion Parameters
 
         #region Process Record
 
@@ -64,12 +70,12 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
 
             if (SplitDataXmlFile)
             {
-                manager.SplitData(Folder);
+                manager.SplitData(Folder, SplitDataXmlFilePerEntityRecord);
             }
 
             Logger.LogInformation("Exracting Data Completed");
         }
 
-        #endregion
+        #endregion Process Record
     }
 }
