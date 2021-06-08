@@ -74,7 +74,9 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
                         SolutionUniqueName = ToSolutionName
                     };
 
-                    if ((solutionComponent.IsMetadata ?? false) && fromSolutionComponents.Exists(depen => depen.RootSolutionComponentId == solutionComponent.Id))
+                    if (((solutionComponent.IsMetadata ?? false)
+                        || solutionComponent.ComponentType.Value == (int)ComponentType.SystemForm) //IsMetadata is always false when component type is 60 (form)
+                        && fromSolutionComponents.Exists(depen => depen.RootSolutionComponentId == solutionComponent.Id))
                     {
                         addReq.DoNotIncludeSubcomponents = true;
                         base.WriteVerbose("DoNotIncludeSubcomponents set to true");
