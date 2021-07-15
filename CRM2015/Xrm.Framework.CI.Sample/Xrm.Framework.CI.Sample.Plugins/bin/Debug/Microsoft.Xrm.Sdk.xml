@@ -814,7 +814,7 @@ The ID of the record. </returns>
 			<summary>Base interface that defines the contextual information passed to a plug-in or custom workflow activity at run-time.</summary>
 		</member>
 		<member name="P:Microsoft.Xrm.Sdk.IExecutionContext.BusinessUnitId">
-			<summary>Gets the GUIDGUID of the business unit that the user making the request, also known as the calling user, belongs to.</summary>
+			<summary>Gets the GUID of the business unit that the user making the request, also known as the calling user, belongs to.</summary>
 			<returns>Type: Returns_GuidThe GUID of the business unit. This property corresponds to the BusinessUnitId property, which is the primary key for the BusinessUnit entity.</returns>
 		</member>
 		<member name="P:Microsoft.Xrm.Sdk.IExecutionContext.CorrelationId">
