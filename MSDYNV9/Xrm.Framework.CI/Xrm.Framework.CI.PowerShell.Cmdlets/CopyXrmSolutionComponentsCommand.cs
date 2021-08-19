@@ -75,17 +75,17 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
                         AddRequiredComponents = false,
                         SolutionUniqueName = ToSolutionName
                     };
-                
+
                     if (solutionComponent.ComponentType.Value == (int)ComponentType.Entity && solutionComponent.RootComponentBehavior.Value == (int)SolutionComponent_RootComponentBehavior.IncludeSubcomponents)
                     {
                         addReq.DoNotIncludeSubcomponents = false;
                         base.WriteVerbose("DoNotIncludeSubcomponents set to false");
                     }
-                    else if ((solutionComponent.IsMetadata ?? false) || solutionComponent.ComponentType.Value == (int)ComponentType.SystemForm) //IsMetadata is always false when component type is 60 (form)
+                    else if (solutionComponent.ComponentType.Value == (int)ComponentType.Entity || solutionComponent.RootSolutionComponentId != null) //when RootSolutionComponentId != null is an entity subcomponent
                     {
                         addReq.DoNotIncludeSubcomponents = true;
                         base.WriteVerbose("DoNotIncludeSubcomponents set to true");
-                    }
+                    }                   
 
                     OrganizationService.Execute(addReq);
                     base.WriteVerbose(string.Format("Moved component from solution with Id : {0} and Type : {1}", solutionComponent.ObjectId, solutionComponent.ComponentType.Value));
