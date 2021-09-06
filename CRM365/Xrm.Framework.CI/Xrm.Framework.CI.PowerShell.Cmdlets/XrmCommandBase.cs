@@ -4,6 +4,7 @@ using Microsoft.Xrm.Tooling.Connector;
 using System.Configuration;
 using System.Threading;
 using System;
+using System.Net;
 
 namespace Xrm.Framework.CI.PowerShell.Cmdlets
 {
@@ -35,6 +36,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
             {
                 WriteVerbose(string.Format("Connecting to CRM [attempt {0}]", i));
                 ServiceClient = new CrmServiceClient(ConnectionString);
+                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
                 if (ServiceClient != null && ServiceClient.IsReady)
                 {
