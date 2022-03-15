@@ -99,19 +99,19 @@ foreach ($app in $AppsToShare.AppSharing)
 	#	throw "$AppName could not be found"
 	#}
     
-    $records = Get-XrmEntities -ConnectionString $CrmConnectionString -EntityName "canvasapp" -Attribute "displayname" -Value "$AppName" -ConditionOperator 0
+    $records = Get-XrmEntities -ConnectionString $CrmConnectionString -EntityName "canvasapp" -Attribute "name" -Value "$AppName" -ConditionOperator 0
 
     if ($records.Count -eq 1)
     {
         $AppId = $records[0].Id
     }
-    elseif ($records.Count -eq 0)
+    elseif ($records.Count -gt 1)
     {
-        throw "Found mutiple Canvas Apps with displayname: $AppName"
+        throw "Found mutiple Canvas Apps with name: $AppName"
     }
 	else
 	{
-		throw "Canvas App with displayname: $AppName could not be found"
+		throw "Canvas App with name: $AppName could not be found"
 	}
 
 	foreach($shareWith in $app.ShareWith)
@@ -130,7 +130,7 @@ foreach ($app in $AppsToShare.AppSharing)
 		}
 		else
 		{
-			throw "PrincipalType is not supported:$principalType"
+			$principalId = $TenantId
 		}
 
         Write-Host "Sharing App '$AppName' [$AppId] with $principalType $principal [$principalId] access $roleName in Environment: $EnvironmentUrl [$EnvironmentId]"

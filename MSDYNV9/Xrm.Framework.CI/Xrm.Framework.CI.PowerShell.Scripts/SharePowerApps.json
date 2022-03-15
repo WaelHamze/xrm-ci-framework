@@ -27,6 +27,11 @@
           "PrincipalType": "Group",
           "Principal": "Group2",
           "RoleName": "CanViewWithShare"
+        },
+        {
+          "PrincipalType": "Tenant",
+          "Principal": "[TenantId]",
+          "RoleName": "CanView"
         }
       ]
     }
