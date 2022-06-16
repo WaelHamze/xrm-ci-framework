@@ -68,6 +68,7 @@
     <Compile Include="RestoreOnlineInstance.ps1" />
     <Compile Include="SetTlsVersion.ps1" />
     <Compile Include="GetSolutionMissingComponents.ps1" />
+    <Compile Include="SharePowerApps.ps1" />
     <Compile Include="SplitPluginAssembly.ps1" />
     <Compile Include="UpdateConnectionReferences.ps1" />
     <Compile Include="UpdateEnvironmentVariables.ps1" />
@@ -83,6 +84,9 @@
     <Compile Include="UpdateWebResourcesJsonMapping.ps1" />
     <Compile Include="WaitForCRMOperation.ps1" />
     <Compile Include="Xrm.Framework.CI.PowerShell.psm1" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SharePowerApps.json" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Target Name="Build" />
