@@ -5,6 +5,7 @@ using System.Threading;
 using Microsoft.Crm.Sdk.Messages;
 using Microsoft.Xrm.Sdk.Messages;
 using Microsoft.Xrm.Sdk.Query;
+using Xrm.Framework.CI.Common.Entities;
 using Xrm.Framework.CI.PowerShellCore.Cmdlets.Common;
 
 namespace Xrm.Framework.CI.PowerShellCore.Cmdlets
