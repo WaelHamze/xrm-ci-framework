@@ -10,9 +10,9 @@ using Microsoft.Xrm.Sdk.Query;
 using System.ServiceModel;
 using System.Xml;
 using System.Xml.Serialization;
-using Xrm.Framework.CI.PowerShell.Cmdlets.Common;
+using Xrm.Framework.CI.PowerShellCore.Cmdlets.Common;
 
-namespace Xrm.Framework.CI.PowerShell.Cmdlets
+namespace Xrm.Framework.CI.PowerShellCore.Cmdlets
 {
     /// <summary>
     /// <para type="synopsis">Imports all access team templates from an export file into a CRM organization.</para>

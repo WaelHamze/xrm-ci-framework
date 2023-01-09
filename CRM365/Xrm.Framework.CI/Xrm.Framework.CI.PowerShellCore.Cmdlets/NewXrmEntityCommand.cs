@@ -1,7 +1,7 @@
 ﻿using System.Management.Automation;
 using Microsoft.Xrm.Sdk;
 
-namespace Xrm.Framework.CI.PowerShell.Cmdlets
+namespace Xrm.Framework.CI.PowerShellCore.Cmdlets
 {
     /// <summary>
     /// <para type="synopsis">Creates a new entity object from a specified type.</para>

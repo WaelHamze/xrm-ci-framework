@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Management.Automation;
 
-namespace Xrm.Framework.CI.PowerShell.Cmdlets
+namespace Xrm.Framework.CI.PowerShellCore.Cmdlets
 {
     /// <summary>
     /// <para type="synopsis">Deletes an existing entity record.</para>

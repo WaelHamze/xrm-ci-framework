@@ -9,9 +9,9 @@ using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Query;
 using System.Xml;
 using System.Xml.Serialization;
-using Xrm.Framework.CI.PowerShell.Cmdlets.Common;
+using Xrm.Framework.CI.PowerShellCore.Cmdlets.Common;
 
-namespace Xrm.Framework.CI.PowerShell.Cmdlets
+namespace Xrm.Framework.CI.PowerShellCore.Cmdlets
 {
     /// <summary>
     /// <para type="synopsis">Exports all access team templates from a CRM organization to an XML file.</para>

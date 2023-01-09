@@ -2,12 +2,12 @@
 using System.Management.Automation;
 using Microsoft.Crm.Sdk.Messages;
 using Microsoft.Xrm.Sdk;
-using Xrm.Framework.CI.PowerShell.Cmdlets.Common;
+using Xrm.Framework.CI.PowerShellCore.Cmdlets.Common;
 using System.Linq;
 using Microsoft.Xrm.Sdk.Messages;
 using Microsoft.Xrm.Sdk.Query;
 
-namespace Xrm.Framework.CI.PowerShell.Cmdlets
+namespace Xrm.Framework.CI.PowerShellCore.Cmdlets
 {
     /// <summary>
     /// <para type="synopsis">Publishes a Dynamics Theme</para>

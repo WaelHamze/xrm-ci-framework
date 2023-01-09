@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
+namespace Xrm.Framework.CI.PowerShellCore.Cmdlets.Common
 {
     public class XrmSolutionInfo
     {

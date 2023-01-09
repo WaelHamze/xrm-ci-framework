@@ -1,7 +1,7 @@
 ﻿using System.Management.Automation;
 using Microsoft.Crm.Sdk.Messages;
 
-namespace Xrm.Framework.CI.PowerShell.Cmdlets
+namespace Xrm.Framework.CI.PowerShellCore.Cmdlets
 {
     /// <summary>
     /// <para type="synopsis">Publishes all customizations</para>

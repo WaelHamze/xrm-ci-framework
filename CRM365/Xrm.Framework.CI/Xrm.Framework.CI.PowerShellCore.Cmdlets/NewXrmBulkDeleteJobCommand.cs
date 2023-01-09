@@ -6,9 +6,9 @@ using System.Threading;
 using Microsoft.Crm.Sdk.Messages;
 using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Query;
-using Xrm.Framework.CI.PowerShell.Cmdlets.Common;
+using Xrm.Framework.CI.PowerShellCore.Cmdlets.Common;
 
-namespace Xrm.Framework.CI.PowerShell.Cmdlets
+namespace Xrm.Framework.CI.PowerShellCore.Cmdlets
 {
     [Cmdlet(VerbsCommon.New, "XrmBulkDeleteJob")]
     [OutputType(typeof(Guid))]

@@ -5,12 +5,12 @@
 //     Changes to this file may cause incorrect behavior and will be lost if
 //     the code is regenerated.
 // </auto-generated>
-// Created via this command line: "C:\Users\Wael\AppData\Roaming\MscrmTools\XrmToolBox\Plugins\CrmSvcUtil Ref\crmsvcutil.exe" /url:"https://crmdevops3.api.crm4.dynamics.com/XRMServices/2011/Organization.svc" /namespace:"Xrm.Framework.CI.PowerShell.Cmdlets.Common" /out:"C:\Dev\Src\github-xrm-ci-framework-trunk\xrm-ci-framework\CRM365\Xrm.Framework.CI\Xrm.Framework.CI.PowerShell.Cmdlets\Common\Entities.cs" /servicecontextname:"CIContext" /codecustomization:"DLaB.CrmSvcUtilExtensions.Entity.CustomizeCodeDomService,DLaB.CrmSvcUtilExtensions" /codegenerationservice:"DLaB.CrmSvcUtilExtensions.Entity.CustomCodeGenerationService,DLaB.CrmSvcUtilExtensions" /codewriterfilter:"DLaB.CrmSvcUtilExtensions.Entity.CodeWriterFilterService,DLaB.CrmSvcUtilExtensions" /namingservice:"DLaB.CrmSvcUtilExtensions.NamingService,DLaB.CrmSvcUtilExtensions" /metadataproviderservice:"DLaB.CrmSvcUtilExtensions.Entity.MetadataProviderService,DLaB.CrmSvcUtilExtensions" /username:"wael@crmdevops3.onmicrosoft.com" /password:"********" 
+// Created via this command line: "C:\Users\Wael\AppData\Roaming\MscrmTools\XrmToolBox\Plugins\CrmSvcUtil Ref\crmsvcutil.exe" /url:"https://crmdevops3.api.crm4.dynamics.com/XRMServices/2011/Organization.svc" /namespace:"Xrm.Framework.CI.PowerShellCore.Cmdlets.Common" /out:"C:\Dev\Src\github-xrm-ci-framework-trunk\xrm-ci-framework\CRM365\Xrm.Framework.CI\Xrm.Framework.CI.PowerShellCore.Cmdlets\Common\Entities.cs" /servicecontextname:"CIContext" /codecustomization:"DLaB.CrmSvcUtilExtensions.Entity.CustomizeCodeDomService,DLaB.CrmSvcUtilExtensions" /codegenerationservice:"DLaB.CrmSvcUtilExtensions.Entity.CustomCodeGenerationService,DLaB.CrmSvcUtilExtensions" /codewriterfilter:"DLaB.CrmSvcUtilExtensions.Entity.CodeWriterFilterService,DLaB.CrmSvcUtilExtensions" /namingservice:"DLaB.CrmSvcUtilExtensions.NamingService,DLaB.CrmSvcUtilExtensions" /metadataproviderservice:"DLaB.CrmSvcUtilExtensions.Entity.MetadataProviderService,DLaB.CrmSvcUtilExtensions" /username:"wael@crmdevops3.onmicrosoft.com" /password:"********" 
 //------------------------------------------------------------------------------
 
 [assembly: Microsoft.Xrm.Sdk.Client.ProxyTypesAssemblyAttribute()]
 
-namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
+namespace Xrm.Framework.CI.PowerShellCore.Cmdlets.Common
 {
 	
 	
@@ -796,7 +796,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		/// Status of the system job.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
-		public System.Nullable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.AsyncOperationState> StateCode
+		public System.Nullable<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.AsyncOperationState> StateCode
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
@@ -804,7 +804,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 				Microsoft.Xrm.Sdk.OptionSetValue optionSet = this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statecode");
 				if ((optionSet != null))
 				{
-					return ((Xrm.Framework.CI.PowerShell.Cmdlets.Common.AsyncOperationState)(System.Enum.ToObject(typeof(Xrm.Framework.CI.PowerShell.Cmdlets.Common.AsyncOperationState), optionSet.Value)));
+					return ((Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.AsyncOperationState)(System.Enum.ToObject(typeof(Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.AsyncOperationState), optionSet.Value)));
 				}
 				else
 				{
@@ -937,18 +937,18 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		/// 1:N AsyncOperation_BulkDeleteOperation
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("AsyncOperation_BulkDeleteOperation")]
-		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.BulkDeleteOperation> AsyncOperation_BulkDeleteOperation
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.BulkDeleteOperation> AsyncOperation_BulkDeleteOperation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.BulkDeleteOperation>("AsyncOperation_BulkDeleteOperation", null);
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.BulkDeleteOperation>("AsyncOperation_BulkDeleteOperation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("AsyncOperation_BulkDeleteOperation");
-				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.BulkDeleteOperation>("AsyncOperation_BulkDeleteOperation", null, value);
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.BulkDeleteOperation>("AsyncOperation_BulkDeleteOperation", null, value);
 				this.OnPropertyChanged("AsyncOperation_BulkDeleteOperation");
 			}
 		}
@@ -958,18 +958,18 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("BulkOperationLog_AsyncOperations")]
-		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.BulkOperationLog BulkOperationLog_AsyncOperations
+		public Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.BulkOperationLog BulkOperationLog_AsyncOperations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.BulkOperationLog>("BulkOperationLog_AsyncOperations", null);
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.BulkOperationLog>("BulkOperationLog_AsyncOperations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("BulkOperationLog_AsyncOperations");
-				this.SetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.BulkOperationLog>("BulkOperationLog_AsyncOperations", null, value);
+				this.SetRelatedEntity<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.BulkOperationLog>("BulkOperationLog_AsyncOperations", null, value);
 				this.OnPropertyChanged("BulkOperationLog_AsyncOperations");
 			}
 		}
@@ -979,18 +979,18 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("ImportLog_AsyncOperations")]
-		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.ImportLog ImportLog_AsyncOperations
+		public Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.ImportLog ImportLog_AsyncOperations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.ImportLog>("ImportLog_AsyncOperations", null);
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.ImportLog>("ImportLog_AsyncOperations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("ImportLog_AsyncOperations");
-				this.SetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.ImportLog>("ImportLog_AsyncOperations", null, value);
+				this.SetRelatedEntity<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.ImportLog>("ImportLog_AsyncOperations", null, value);
 				this.OnPropertyChanged("ImportLog_AsyncOperations");
 			}
 		}
@@ -1000,12 +1000,12 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_asyncoperation_createdby")]
-		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser lk_asyncoperation_createdby
+		public Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.SystemUser lk_asyncoperation_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_asyncoperation_createdby", null);
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.SystemUser>("lk_asyncoperation_createdby", null);
 			}
 		}
 		
@@ -1014,18 +1014,18 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_asyncoperation_createdonbehalfby")]
-		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser lk_asyncoperation_createdonbehalfby
+		public Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.SystemUser lk_asyncoperation_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_asyncoperation_createdonbehalfby", null);
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.SystemUser>("lk_asyncoperation_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_asyncoperation_createdonbehalfby");
-				this.SetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_asyncoperation_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.SystemUser>("lk_asyncoperation_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_asyncoperation_createdonbehalfby");
 			}
 		}
@@ -1035,12 +1035,12 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_asyncoperation_modifiedby")]
-		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser lk_asyncoperation_modifiedby
+		public Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.SystemUser lk_asyncoperation_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_asyncoperation_modifiedby", null);
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.SystemUser>("lk_asyncoperation_modifiedby", null);
 			}
 		}
 		
@@ -1049,18 +1049,18 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_asyncoperation_modifiedonbehalfby")]
-		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser lk_asyncoperation_modifiedonbehalfby
+		public Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.SystemUser lk_asyncoperation_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_asyncoperation_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.SystemUser>("lk_asyncoperation_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_asyncoperation_modifiedonbehalfby");
-				this.SetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_asyncoperation_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.SystemUser>("lk_asyncoperation_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_asyncoperation_modifiedonbehalfby");
 			}
 		}
@@ -1070,12 +1070,12 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owninguser")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("system_user_asyncoperation")]
-		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser system_user_asyncoperation
+		public Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.SystemUser system_user_asyncoperation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("system_user_asyncoperation", null);
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.SystemUser>("system_user_asyncoperation", null);
 			}
 		}
 		
@@ -1084,18 +1084,18 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("SystemUser_AsyncOperations")]
-		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser SystemUser_AsyncOperations
+		public Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.SystemUser SystemUser_AsyncOperations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("SystemUser_AsyncOperations", null);
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.SystemUser>("SystemUser_AsyncOperations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("SystemUser_AsyncOperations");
-				this.SetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("SystemUser_AsyncOperations", null, value);
+				this.SetRelatedEntity<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.SystemUser>("SystemUser_AsyncOperations", null, value);
 				this.OnPropertyChanged("SystemUser_AsyncOperations");
 			}
 		}
@@ -1358,12 +1358,12 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("bulkdeleteoperationid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("BulkDeleteOperation_BulkDeleteFailure")]
-		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.BulkDeleteOperation BulkDeleteOperation_BulkDeleteFailure
+		public Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.BulkDeleteOperation BulkDeleteOperation_BulkDeleteFailure
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.BulkDeleteOperation>("BulkDeleteOperation_BulkDeleteFailure", null);
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.BulkDeleteOperation>("BulkDeleteOperation_BulkDeleteFailure", null);
 			}
 		}
 		
@@ -1372,12 +1372,12 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("BulkOperationLog_BulkDeleteFailures")]
-		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.BulkOperationLog BulkOperationLog_BulkDeleteFailures
+		public Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.BulkOperationLog BulkOperationLog_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.BulkOperationLog>("BulkOperationLog_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.BulkOperationLog>("BulkOperationLog_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -1386,12 +1386,12 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("ImportLog_BulkDeleteFailures")]
-		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.ImportLog ImportLog_BulkDeleteFailures
+		public Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.ImportLog ImportLog_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.ImportLog>("ImportLog_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.ImportLog>("ImportLog_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -1400,12 +1400,12 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("regardingobjectid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("SystemUser_BulkDeleteFailures")]
-		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser SystemUser_BulkDeleteFailures
+		public Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.SystemUser SystemUser_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("SystemUser_BulkDeleteFailures", null);
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.SystemUser>("SystemUser_BulkDeleteFailures", null);
 			}
 		}
 		
@@ -1801,7 +1801,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		/// Status of the bulk deletion job.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
-		public System.Nullable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.BulkDeleteOperationState> StateCode
+		public System.Nullable<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.BulkDeleteOperationState> StateCode
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
@@ -1809,7 +1809,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 				Microsoft.Xrm.Sdk.OptionSetValue optionSet = this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statecode");
 				if ((optionSet != null))
 				{
-					return ((Xrm.Framework.CI.PowerShell.Cmdlets.Common.BulkDeleteOperationState)(System.Enum.ToObject(typeof(Xrm.Framework.CI.PowerShell.Cmdlets.Common.BulkDeleteOperationState), optionSet.Value)));
+					return ((Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.BulkDeleteOperationState)(System.Enum.ToObject(typeof(Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.BulkDeleteOperationState), optionSet.Value)));
 				}
 				else
 				{
@@ -1888,18 +1888,18 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		/// 1:N BulkDeleteOperation_BulkDeleteFailure
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("BulkDeleteOperation_BulkDeleteFailure")]
-		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.BulkDeleteFailure> BulkDeleteOperation_BulkDeleteFailure
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.BulkDeleteFailure> BulkDeleteOperation_BulkDeleteFailure
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.BulkDeleteFailure>("BulkDeleteOperation_BulkDeleteFailure", null);
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.BulkDeleteFailure>("BulkDeleteOperation_BulkDeleteFailure", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("BulkDeleteOperation_BulkDeleteFailure");
-				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.BulkDeleteFailure>("BulkDeleteOperation_BulkDeleteFailure", null, value);
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.BulkDeleteFailure>("BulkDeleteOperation_BulkDeleteFailure", null, value);
 				this.OnPropertyChanged("BulkDeleteOperation_BulkDeleteFailure");
 			}
 		}
@@ -1909,12 +1909,12 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("asyncoperationid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("AsyncOperation_BulkDeleteOperation")]
-		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.AsyncOperation AsyncOperation_BulkDeleteOperation
+		public Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.AsyncOperation AsyncOperation_BulkDeleteOperation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.AsyncOperation>("AsyncOperation_BulkDeleteOperation", null);
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.AsyncOperation>("AsyncOperation_BulkDeleteOperation", null);
 			}
 		}
 		
@@ -1923,18 +1923,18 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_bulkdeleteoperation_createdonbehalfby")]
-		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser lk_bulkdeleteoperation_createdonbehalfby
+		public Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.SystemUser lk_bulkdeleteoperation_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_bulkdeleteoperation_createdonbehalfby", null);
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.SystemUser>("lk_bulkdeleteoperation_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_bulkdeleteoperation_createdonbehalfby");
-				this.SetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_bulkdeleteoperation_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.SystemUser>("lk_bulkdeleteoperation_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_bulkdeleteoperation_createdonbehalfby");
 			}
 		}
@@ -1944,18 +1944,18 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_bulkdeleteoperation_modifiedonbehalfby")]
-		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser lk_bulkdeleteoperation_modifiedonbehalfby
+		public Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.SystemUser lk_bulkdeleteoperation_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_bulkdeleteoperation_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.SystemUser>("lk_bulkdeleteoperation_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_bulkdeleteoperation_modifiedonbehalfby");
-				this.SetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_bulkdeleteoperation_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.SystemUser>("lk_bulkdeleteoperation_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_bulkdeleteoperation_modifiedonbehalfby");
 			}
 		}
@@ -1965,12 +1965,12 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_bulkdeleteoperationbase_createdby")]
-		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser lk_bulkdeleteoperationbase_createdby
+		public Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.SystemUser lk_bulkdeleteoperationbase_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_bulkdeleteoperationbase_createdby", null);
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.SystemUser>("lk_bulkdeleteoperationbase_createdby", null);
 			}
 		}
 		
@@ -1979,12 +1979,12 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_bulkdeleteoperationbase_modifiedby")]
-		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser lk_bulkdeleteoperationbase_modifiedby
+		public Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.SystemUser lk_bulkdeleteoperationbase_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_bulkdeleteoperationbase_modifiedby", null);
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.SystemUser>("lk_bulkdeleteoperationbase_modifiedby", null);
 			}
 		}
 		
@@ -2269,18 +2269,18 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		/// 1:N BulkOperationLog_AsyncOperations
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("BulkOperationLog_AsyncOperations")]
-		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.AsyncOperation> BulkOperationLog_AsyncOperations
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.AsyncOperation> BulkOperationLog_AsyncOperations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.AsyncOperation>("BulkOperationLog_AsyncOperations", null);
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.AsyncOperation>("BulkOperationLog_AsyncOperations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("BulkOperationLog_AsyncOperations");
-				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.AsyncOperation>("BulkOperationLog_AsyncOperations", null, value);
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.AsyncOperation>("BulkOperationLog_AsyncOperations", null, value);
 				this.OnPropertyChanged("BulkOperationLog_AsyncOperations");
 			}
 		}
@@ -2289,18 +2289,18 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		/// 1:N BulkOperationLog_BulkDeleteFailures
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("BulkOperationLog_BulkDeleteFailures")]
-		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.BulkDeleteFailure> BulkOperationLog_BulkDeleteFailures
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.BulkDeleteFailure> BulkOperationLog_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.BulkDeleteFailure>("BulkOperationLog_BulkDeleteFailures", null);
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.BulkDeleteFailure>("BulkOperationLog_BulkDeleteFailures", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("BulkOperationLog_BulkDeleteFailures");
-				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.BulkDeleteFailure>("BulkOperationLog_BulkDeleteFailures", null, value);
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.BulkDeleteFailure>("BulkOperationLog_BulkDeleteFailures", null, value);
 				this.OnPropertyChanged("BulkOperationLog_BulkDeleteFailures");
 			}
 		}
@@ -2717,12 +2717,12 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_importjobbase_createdby")]
-		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser lk_importjobbase_createdby
+		public Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.SystemUser lk_importjobbase_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_importjobbase_createdby", null);
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.SystemUser>("lk_importjobbase_createdby", null);
 			}
 		}
 		
@@ -2731,18 +2731,18 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_importjobbase_createdonbehalfby")]
-		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser lk_importjobbase_createdonbehalfby
+		public Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.SystemUser lk_importjobbase_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_importjobbase_createdonbehalfby", null);
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.SystemUser>("lk_importjobbase_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_importjobbase_createdonbehalfby");
-				this.SetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_importjobbase_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.SystemUser>("lk_importjobbase_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_importjobbase_createdonbehalfby");
 			}
 		}
@@ -2752,12 +2752,12 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_importjobbase_modifiedby")]
-		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser lk_importjobbase_modifiedby
+		public Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.SystemUser lk_importjobbase_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_importjobbase_modifiedby", null);
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.SystemUser>("lk_importjobbase_modifiedby", null);
 			}
 		}
 		
@@ -2766,18 +2766,18 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_importjobbase_modifiedonbehalfby")]
-		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser lk_importjobbase_modifiedonbehalfby
+		public Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.SystemUser lk_importjobbase_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_importjobbase_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.SystemUser>("lk_importjobbase_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_importjobbase_modifiedonbehalfby");
-				this.SetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_importjobbase_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.SystemUser>("lk_importjobbase_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_importjobbase_modifiedonbehalfby");
 			}
 		}
@@ -3303,7 +3303,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		/// Status of the import log.
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
-		public System.Nullable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.ImportLogState> StateCode
+		public System.Nullable<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.ImportLogState> StateCode
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
@@ -3311,7 +3311,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 				Microsoft.Xrm.Sdk.OptionSetValue optionSet = this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statecode");
 				if ((optionSet != null))
 				{
-					return ((Xrm.Framework.CI.PowerShell.Cmdlets.Common.ImportLogState)(System.Enum.ToObject(typeof(Xrm.Framework.CI.PowerShell.Cmdlets.Common.ImportLogState), optionSet.Value)));
+					return ((Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.ImportLogState)(System.Enum.ToObject(typeof(Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.ImportLogState), optionSet.Value)));
 				}
 				else
 				{
@@ -3344,18 +3344,18 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		/// 1:N ImportLog_AsyncOperations
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("ImportLog_AsyncOperations")]
-		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.AsyncOperation> ImportLog_AsyncOperations
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.AsyncOperation> ImportLog_AsyncOperations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.AsyncOperation>("ImportLog_AsyncOperations", null);
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.AsyncOperation>("ImportLog_AsyncOperations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("ImportLog_AsyncOperations");
-				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.AsyncOperation>("ImportLog_AsyncOperations", null, value);
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.AsyncOperation>("ImportLog_AsyncOperations", null, value);
 				this.OnPropertyChanged("ImportLog_AsyncOperations");
 			}
 		}
@@ -3364,18 +3364,18 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		/// 1:N ImportLog_BulkDeleteFailures
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("ImportLog_BulkDeleteFailures")]
-		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.BulkDeleteFailure> ImportLog_BulkDeleteFailures
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.BulkDeleteFailure> ImportLog_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.BulkDeleteFailure>("ImportLog_BulkDeleteFailures", null);
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.BulkDeleteFailure>("ImportLog_BulkDeleteFailures", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("ImportLog_BulkDeleteFailures");
-				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.BulkDeleteFailure>("ImportLog_BulkDeleteFailures", null, value);
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.BulkDeleteFailure>("ImportLog_BulkDeleteFailures", null, value);
 				this.OnPropertyChanged("ImportLog_BulkDeleteFailures");
 			}
 		}
@@ -3385,18 +3385,18 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_importlog_createdonbehalfby")]
-		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser lk_importlog_createdonbehalfby
+		public Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.SystemUser lk_importlog_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_importlog_createdonbehalfby", null);
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.SystemUser>("lk_importlog_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_importlog_createdonbehalfby");
-				this.SetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_importlog_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.SystemUser>("lk_importlog_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_importlog_createdonbehalfby");
 			}
 		}
@@ -3406,18 +3406,18 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_importlog_modifiedonbehalfby")]
-		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser lk_importlog_modifiedonbehalfby
+		public Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.SystemUser lk_importlog_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_importlog_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.SystemUser>("lk_importlog_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_importlog_modifiedonbehalfby");
-				this.SetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_importlog_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.SystemUser>("lk_importlog_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_importlog_modifiedonbehalfby");
 			}
 		}
@@ -3427,12 +3427,12 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_importlogbase_createdby")]
-		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser lk_importlogbase_createdby
+		public Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.SystemUser lk_importlogbase_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_importlogbase_createdby", null);
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.SystemUser>("lk_importlogbase_createdby", null);
 			}
 		}
 		
@@ -3441,12 +3441,12 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_importlogbase_modifiedby")]
-		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser lk_importlogbase_modifiedby
+		public Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.SystemUser lk_importlogbase_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_importlogbase_modifiedby", null);
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.SystemUser>("lk_importlogbase_modifiedby", null);
 			}
 		}
 		
@@ -3455,12 +3455,12 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owninguser")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("SystemUser_ImportLogs")]
-		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser SystemUser_ImportLogs
+		public Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.SystemUser SystemUser_ImportLogs
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("SystemUser_ImportLogs", null);
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.SystemUser>("SystemUser_ImportLogs", null);
 			}
 		}
 		
@@ -4016,18 +4016,18 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		/// 1:N solution_parent_solution
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("solution_parent_solution", Microsoft.Xrm.Sdk.EntityRole.Referenced)]
-		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.Solution> Referencedsolution_parent_solution
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.Solution> Referencedsolution_parent_solution
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.Solution>("solution_parent_solution", Microsoft.Xrm.Sdk.EntityRole.Referenced);
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.Solution>("solution_parent_solution", Microsoft.Xrm.Sdk.EntityRole.Referenced);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Referencedsolution_parent_solution");
-				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.Solution>("solution_parent_solution", Microsoft.Xrm.Sdk.EntityRole.Referenced, value);
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.Solution>("solution_parent_solution", Microsoft.Xrm.Sdk.EntityRole.Referenced, value);
 				this.OnPropertyChanged("Referencedsolution_parent_solution");
 			}
 		}
@@ -4037,12 +4037,12 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_solution_createdby")]
-		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser lk_solution_createdby
+		public Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.SystemUser lk_solution_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_solution_createdby", null);
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.SystemUser>("lk_solution_createdby", null);
 			}
 		}
 		
@@ -4051,12 +4051,12 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_solution_modifiedby")]
-		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser lk_solution_modifiedby
+		public Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.SystemUser lk_solution_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_solution_modifiedby", null);
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.SystemUser>("lk_solution_modifiedby", null);
 			}
 		}
 		
@@ -4065,18 +4065,18 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_solutionbase_createdonbehalfby")]
-		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser lk_solutionbase_createdonbehalfby
+		public Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.SystemUser lk_solutionbase_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_solutionbase_createdonbehalfby", null);
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.SystemUser>("lk_solutionbase_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_solutionbase_createdonbehalfby");
-				this.SetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_solutionbase_createdonbehalfby", null, value);
+				this.SetRelatedEntity<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.SystemUser>("lk_solutionbase_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_solutionbase_createdonbehalfby");
 			}
 		}
@@ -4086,18 +4086,18 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_solutionbase_modifiedonbehalfby")]
-		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser lk_solutionbase_modifiedonbehalfby
+		public Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.SystemUser lk_solutionbase_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_solutionbase_modifiedonbehalfby", null);
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.SystemUser>("lk_solutionbase_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_solutionbase_modifiedonbehalfby");
-				this.SetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_solutionbase_modifiedonbehalfby", null, value);
+				this.SetRelatedEntity<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.SystemUser>("lk_solutionbase_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_solutionbase_modifiedonbehalfby");
 			}
 		}
@@ -4107,12 +4107,12 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("parentsolutionid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("solution_parent_solution", Microsoft.Xrm.Sdk.EntityRole.Referencing)]
-		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.Solution Referencingsolution_parent_solution
+		public Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.Solution Referencingsolution_parent_solution
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.Solution>("solution_parent_solution", Microsoft.Xrm.Sdk.EntityRole.Referencing);
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.Solution>("solution_parent_solution", Microsoft.Xrm.Sdk.EntityRole.Referencing);
 			}
 		}
 		
@@ -6733,18 +6733,18 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		/// 1:N lk_asyncoperation_createdby
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_asyncoperation_createdby")]
-		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.AsyncOperation> lk_asyncoperation_createdby
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.AsyncOperation> lk_asyncoperation_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.AsyncOperation>("lk_asyncoperation_createdby", null);
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.AsyncOperation>("lk_asyncoperation_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_asyncoperation_createdby");
-				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.AsyncOperation>("lk_asyncoperation_createdby", null, value);
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.AsyncOperation>("lk_asyncoperation_createdby", null, value);
 				this.OnPropertyChanged("lk_asyncoperation_createdby");
 			}
 		}
@@ -6753,18 +6753,18 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		/// 1:N lk_asyncoperation_createdonbehalfby
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_asyncoperation_createdonbehalfby")]
-		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.AsyncOperation> lk_asyncoperation_createdonbehalfby
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.AsyncOperation> lk_asyncoperation_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.AsyncOperation>("lk_asyncoperation_createdonbehalfby", null);
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.AsyncOperation>("lk_asyncoperation_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_asyncoperation_createdonbehalfby");
-				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.AsyncOperation>("lk_asyncoperation_createdonbehalfby", null, value);
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.AsyncOperation>("lk_asyncoperation_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_asyncoperation_createdonbehalfby");
 			}
 		}
@@ -6773,18 +6773,18 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		/// 1:N lk_asyncoperation_modifiedby
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_asyncoperation_modifiedby")]
-		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.AsyncOperation> lk_asyncoperation_modifiedby
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.AsyncOperation> lk_asyncoperation_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.AsyncOperation>("lk_asyncoperation_modifiedby", null);
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.AsyncOperation>("lk_asyncoperation_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_asyncoperation_modifiedby");
-				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.AsyncOperation>("lk_asyncoperation_modifiedby", null, value);
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.AsyncOperation>("lk_asyncoperation_modifiedby", null, value);
 				this.OnPropertyChanged("lk_asyncoperation_modifiedby");
 			}
 		}
@@ -6793,18 +6793,18 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		/// 1:N lk_asyncoperation_modifiedonbehalfby
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_asyncoperation_modifiedonbehalfby")]
-		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.AsyncOperation> lk_asyncoperation_modifiedonbehalfby
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.AsyncOperation> lk_asyncoperation_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.AsyncOperation>("lk_asyncoperation_modifiedonbehalfby", null);
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.AsyncOperation>("lk_asyncoperation_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_asyncoperation_modifiedonbehalfby");
-				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.AsyncOperation>("lk_asyncoperation_modifiedonbehalfby", null, value);
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.AsyncOperation>("lk_asyncoperation_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_asyncoperation_modifiedonbehalfby");
 			}
 		}
@@ -6813,18 +6813,18 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		/// 1:N lk_bulkdeleteoperation_createdonbehalfby
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_bulkdeleteoperation_createdonbehalfby")]
-		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.BulkDeleteOperation> lk_bulkdeleteoperation_createdonbehalfby
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.BulkDeleteOperation> lk_bulkdeleteoperation_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.BulkDeleteOperation>("lk_bulkdeleteoperation_createdonbehalfby", null);
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.BulkDeleteOperation>("lk_bulkdeleteoperation_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_bulkdeleteoperation_createdonbehalfby");
-				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.BulkDeleteOperation>("lk_bulkdeleteoperation_createdonbehalfby", null, value);
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.BulkDeleteOperation>("lk_bulkdeleteoperation_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_bulkdeleteoperation_createdonbehalfby");
 			}
 		}
@@ -6833,18 +6833,18 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		/// 1:N lk_bulkdeleteoperation_modifiedonbehalfby
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_bulkdeleteoperation_modifiedonbehalfby")]
-		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.BulkDeleteOperation> lk_bulkdeleteoperation_modifiedonbehalfby
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.BulkDeleteOperation> lk_bulkdeleteoperation_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.BulkDeleteOperation>("lk_bulkdeleteoperation_modifiedonbehalfby", null);
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.BulkDeleteOperation>("lk_bulkdeleteoperation_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_bulkdeleteoperation_modifiedonbehalfby");
-				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.BulkDeleteOperation>("lk_bulkdeleteoperation_modifiedonbehalfby", null, value);
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.BulkDeleteOperation>("lk_bulkdeleteoperation_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_bulkdeleteoperation_modifiedonbehalfby");
 			}
 		}
@@ -6853,18 +6853,18 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		/// 1:N lk_bulkdeleteoperationbase_createdby
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_bulkdeleteoperationbase_createdby")]
-		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.BulkDeleteOperation> lk_bulkdeleteoperationbase_createdby
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.BulkDeleteOperation> lk_bulkdeleteoperationbase_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.BulkDeleteOperation>("lk_bulkdeleteoperationbase_createdby", null);
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.BulkDeleteOperation>("lk_bulkdeleteoperationbase_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_bulkdeleteoperationbase_createdby");
-				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.BulkDeleteOperation>("lk_bulkdeleteoperationbase_createdby", null, value);
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.BulkDeleteOperation>("lk_bulkdeleteoperationbase_createdby", null, value);
 				this.OnPropertyChanged("lk_bulkdeleteoperationbase_createdby");
 			}
 		}
@@ -6873,18 +6873,18 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		/// 1:N lk_bulkdeleteoperationbase_modifiedby
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_bulkdeleteoperationbase_modifiedby")]
-		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.BulkDeleteOperation> lk_bulkdeleteoperationbase_modifiedby
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.BulkDeleteOperation> lk_bulkdeleteoperationbase_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.BulkDeleteOperation>("lk_bulkdeleteoperationbase_modifiedby", null);
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.BulkDeleteOperation>("lk_bulkdeleteoperationbase_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_bulkdeleteoperationbase_modifiedby");
-				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.BulkDeleteOperation>("lk_bulkdeleteoperationbase_modifiedby", null, value);
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.BulkDeleteOperation>("lk_bulkdeleteoperationbase_modifiedby", null, value);
 				this.OnPropertyChanged("lk_bulkdeleteoperationbase_modifiedby");
 			}
 		}
@@ -6893,18 +6893,18 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		/// 1:N lk_importjobbase_createdby
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_importjobbase_createdby")]
-		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.ImportJob> lk_importjobbase_createdby
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.ImportJob> lk_importjobbase_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.ImportJob>("lk_importjobbase_createdby", null);
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.ImportJob>("lk_importjobbase_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_importjobbase_createdby");
-				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.ImportJob>("lk_importjobbase_createdby", null, value);
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.ImportJob>("lk_importjobbase_createdby", null, value);
 				this.OnPropertyChanged("lk_importjobbase_createdby");
 			}
 		}
@@ -6913,18 +6913,18 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		/// 1:N lk_importjobbase_createdonbehalfby
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_importjobbase_createdonbehalfby")]
-		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.ImportJob> lk_importjobbase_createdonbehalfby
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.ImportJob> lk_importjobbase_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.ImportJob>("lk_importjobbase_createdonbehalfby", null);
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.ImportJob>("lk_importjobbase_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_importjobbase_createdonbehalfby");
-				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.ImportJob>("lk_importjobbase_createdonbehalfby", null, value);
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.ImportJob>("lk_importjobbase_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_importjobbase_createdonbehalfby");
 			}
 		}
@@ -6933,18 +6933,18 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		/// 1:N lk_importjobbase_modifiedby
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_importjobbase_modifiedby")]
-		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.ImportJob> lk_importjobbase_modifiedby
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.ImportJob> lk_importjobbase_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.ImportJob>("lk_importjobbase_modifiedby", null);
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.ImportJob>("lk_importjobbase_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_importjobbase_modifiedby");
-				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.ImportJob>("lk_importjobbase_modifiedby", null, value);
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.ImportJob>("lk_importjobbase_modifiedby", null, value);
 				this.OnPropertyChanged("lk_importjobbase_modifiedby");
 			}
 		}
@@ -6953,18 +6953,18 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		/// 1:N lk_importjobbase_modifiedonbehalfby
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_importjobbase_modifiedonbehalfby")]
-		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.ImportJob> lk_importjobbase_modifiedonbehalfby
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.ImportJob> lk_importjobbase_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.ImportJob>("lk_importjobbase_modifiedonbehalfby", null);
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.ImportJob>("lk_importjobbase_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_importjobbase_modifiedonbehalfby");
-				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.ImportJob>("lk_importjobbase_modifiedonbehalfby", null, value);
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.ImportJob>("lk_importjobbase_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_importjobbase_modifiedonbehalfby");
 			}
 		}
@@ -6973,18 +6973,18 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		/// 1:N lk_importlog_createdonbehalfby
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_importlog_createdonbehalfby")]
-		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.ImportLog> lk_importlog_createdonbehalfby
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.ImportLog> lk_importlog_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.ImportLog>("lk_importlog_createdonbehalfby", null);
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.ImportLog>("lk_importlog_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_importlog_createdonbehalfby");
-				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.ImportLog>("lk_importlog_createdonbehalfby", null, value);
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.ImportLog>("lk_importlog_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_importlog_createdonbehalfby");
 			}
 		}
@@ -6993,18 +6993,18 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		/// 1:N lk_importlog_modifiedonbehalfby
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_importlog_modifiedonbehalfby")]
-		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.ImportLog> lk_importlog_modifiedonbehalfby
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.ImportLog> lk_importlog_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.ImportLog>("lk_importlog_modifiedonbehalfby", null);
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.ImportLog>("lk_importlog_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_importlog_modifiedonbehalfby");
-				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.ImportLog>("lk_importlog_modifiedonbehalfby", null, value);
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.ImportLog>("lk_importlog_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_importlog_modifiedonbehalfby");
 			}
 		}
@@ -7013,18 +7013,18 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		/// 1:N lk_importlogbase_createdby
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_importlogbase_createdby")]
-		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.ImportLog> lk_importlogbase_createdby
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.ImportLog> lk_importlogbase_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.ImportLog>("lk_importlogbase_createdby", null);
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.ImportLog>("lk_importlogbase_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_importlogbase_createdby");
-				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.ImportLog>("lk_importlogbase_createdby", null, value);
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.ImportLog>("lk_importlogbase_createdby", null, value);
 				this.OnPropertyChanged("lk_importlogbase_createdby");
 			}
 		}
@@ -7033,18 +7033,18 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		/// 1:N lk_importlogbase_modifiedby
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_importlogbase_modifiedby")]
-		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.ImportLog> lk_importlogbase_modifiedby
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.ImportLog> lk_importlogbase_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.ImportLog>("lk_importlogbase_modifiedby", null);
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.ImportLog>("lk_importlogbase_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_importlogbase_modifiedby");
-				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.ImportLog>("lk_importlogbase_modifiedby", null, value);
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.ImportLog>("lk_importlogbase_modifiedby", null, value);
 				this.OnPropertyChanged("lk_importlogbase_modifiedby");
 			}
 		}
@@ -7053,18 +7053,18 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		/// 1:N lk_solution_createdby
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_solution_createdby")]
-		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.Solution> lk_solution_createdby
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.Solution> lk_solution_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.Solution>("lk_solution_createdby", null);
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.Solution>("lk_solution_createdby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_solution_createdby");
-				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.Solution>("lk_solution_createdby", null, value);
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.Solution>("lk_solution_createdby", null, value);
 				this.OnPropertyChanged("lk_solution_createdby");
 			}
 		}
@@ -7073,18 +7073,18 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		/// 1:N lk_solution_modifiedby
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_solution_modifiedby")]
-		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.Solution> lk_solution_modifiedby
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.Solution> lk_solution_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.Solution>("lk_solution_modifiedby", null);
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.Solution>("lk_solution_modifiedby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_solution_modifiedby");
-				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.Solution>("lk_solution_modifiedby", null, value);
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.Solution>("lk_solution_modifiedby", null, value);
 				this.OnPropertyChanged("lk_solution_modifiedby");
 			}
 		}
@@ -7093,18 +7093,18 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		/// 1:N lk_solutionbase_createdonbehalfby
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_solutionbase_createdonbehalfby")]
-		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.Solution> lk_solutionbase_createdonbehalfby
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.Solution> lk_solutionbase_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.Solution>("lk_solutionbase_createdonbehalfby", null);
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.Solution>("lk_solutionbase_createdonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_solutionbase_createdonbehalfby");
-				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.Solution>("lk_solutionbase_createdonbehalfby", null, value);
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.Solution>("lk_solutionbase_createdonbehalfby", null, value);
 				this.OnPropertyChanged("lk_solutionbase_createdonbehalfby");
 			}
 		}
@@ -7113,18 +7113,18 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		/// 1:N lk_solutionbase_modifiedonbehalfby
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_solutionbase_modifiedonbehalfby")]
-		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.Solution> lk_solutionbase_modifiedonbehalfby
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.Solution> lk_solutionbase_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.Solution>("lk_solutionbase_modifiedonbehalfby", null);
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.Solution>("lk_solutionbase_modifiedonbehalfby", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("lk_solutionbase_modifiedonbehalfby");
-				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.Solution>("lk_solutionbase_modifiedonbehalfby", null, value);
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.Solution>("lk_solutionbase_modifiedonbehalfby", null, value);
 				this.OnPropertyChanged("lk_solutionbase_modifiedonbehalfby");
 			}
 		}
@@ -7133,18 +7133,18 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		/// 1:N lk_systemuser_createdonbehalfby
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_systemuser_createdonbehalfby", Microsoft.Xrm.Sdk.EntityRole.Referenced)]
-		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser> Referencedlk_systemuser_createdonbehalfby
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.SystemUser> Referencedlk_systemuser_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_systemuser_createdonbehalfby", Microsoft.Xrm.Sdk.EntityRole.Referenced);
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.SystemUser>("lk_systemuser_createdonbehalfby", Microsoft.Xrm.Sdk.EntityRole.Referenced);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Referencedlk_systemuser_createdonbehalfby");
-				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_systemuser_createdonbehalfby", Microsoft.Xrm.Sdk.EntityRole.Referenced, value);
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.SystemUser>("lk_systemuser_createdonbehalfby", Microsoft.Xrm.Sdk.EntityRole.Referenced, value);
 				this.OnPropertyChanged("Referencedlk_systemuser_createdonbehalfby");
 			}
 		}
@@ -7153,18 +7153,18 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		/// 1:N lk_systemuser_modifiedonbehalfby
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_systemuser_modifiedonbehalfby", Microsoft.Xrm.Sdk.EntityRole.Referenced)]
-		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser> Referencedlk_systemuser_modifiedonbehalfby
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.SystemUser> Referencedlk_systemuser_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_systemuser_modifiedonbehalfby", Microsoft.Xrm.Sdk.EntityRole.Referenced);
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.SystemUser>("lk_systemuser_modifiedonbehalfby", Microsoft.Xrm.Sdk.EntityRole.Referenced);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Referencedlk_systemuser_modifiedonbehalfby");
-				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_systemuser_modifiedonbehalfby", Microsoft.Xrm.Sdk.EntityRole.Referenced, value);
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.SystemUser>("lk_systemuser_modifiedonbehalfby", Microsoft.Xrm.Sdk.EntityRole.Referenced, value);
 				this.OnPropertyChanged("Referencedlk_systemuser_modifiedonbehalfby");
 			}
 		}
@@ -7173,18 +7173,18 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		/// 1:N lk_systemuserbase_createdby
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_systemuserbase_createdby", Microsoft.Xrm.Sdk.EntityRole.Referenced)]
-		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser> Referencedlk_systemuserbase_createdby
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.SystemUser> Referencedlk_systemuserbase_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_systemuserbase_createdby", Microsoft.Xrm.Sdk.EntityRole.Referenced);
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.SystemUser>("lk_systemuserbase_createdby", Microsoft.Xrm.Sdk.EntityRole.Referenced);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Referencedlk_systemuserbase_createdby");
-				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_systemuserbase_createdby", Microsoft.Xrm.Sdk.EntityRole.Referenced, value);
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.SystemUser>("lk_systemuserbase_createdby", Microsoft.Xrm.Sdk.EntityRole.Referenced, value);
 				this.OnPropertyChanged("Referencedlk_systemuserbase_createdby");
 			}
 		}
@@ -7193,18 +7193,18 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		/// 1:N lk_systemuserbase_modifiedby
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_systemuserbase_modifiedby", Microsoft.Xrm.Sdk.EntityRole.Referenced)]
-		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser> Referencedlk_systemuserbase_modifiedby
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.SystemUser> Referencedlk_systemuserbase_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_systemuserbase_modifiedby", Microsoft.Xrm.Sdk.EntityRole.Referenced);
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.SystemUser>("lk_systemuserbase_modifiedby", Microsoft.Xrm.Sdk.EntityRole.Referenced);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Referencedlk_systemuserbase_modifiedby");
-				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_systemuserbase_modifiedby", Microsoft.Xrm.Sdk.EntityRole.Referenced, value);
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.SystemUser>("lk_systemuserbase_modifiedby", Microsoft.Xrm.Sdk.EntityRole.Referenced, value);
 				this.OnPropertyChanged("Referencedlk_systemuserbase_modifiedby");
 			}
 		}
@@ -7213,18 +7213,18 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		/// 1:N system_user_asyncoperation
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("system_user_asyncoperation")]
-		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.AsyncOperation> system_user_asyncoperation
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.AsyncOperation> system_user_asyncoperation
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.AsyncOperation>("system_user_asyncoperation", null);
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.AsyncOperation>("system_user_asyncoperation", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("system_user_asyncoperation");
-				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.AsyncOperation>("system_user_asyncoperation", null, value);
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.AsyncOperation>("system_user_asyncoperation", null, value);
 				this.OnPropertyChanged("system_user_asyncoperation");
 			}
 		}
@@ -7233,18 +7233,18 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		/// 1:N SystemUser_AsyncOperations
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("SystemUser_AsyncOperations")]
-		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.AsyncOperation> SystemUser_AsyncOperations
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.AsyncOperation> SystemUser_AsyncOperations
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.AsyncOperation>("SystemUser_AsyncOperations", null);
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.AsyncOperation>("SystemUser_AsyncOperations", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("SystemUser_AsyncOperations");
-				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.AsyncOperation>("SystemUser_AsyncOperations", null, value);
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.AsyncOperation>("SystemUser_AsyncOperations", null, value);
 				this.OnPropertyChanged("SystemUser_AsyncOperations");
 			}
 		}
@@ -7253,18 +7253,18 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		/// 1:N SystemUser_BulkDeleteFailures
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("SystemUser_BulkDeleteFailures")]
-		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.BulkDeleteFailure> SystemUser_BulkDeleteFailures
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.BulkDeleteFailure> SystemUser_BulkDeleteFailures
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.BulkDeleteFailure>("SystemUser_BulkDeleteFailures", null);
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.BulkDeleteFailure>("SystemUser_BulkDeleteFailures", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("SystemUser_BulkDeleteFailures");
-				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.BulkDeleteFailure>("SystemUser_BulkDeleteFailures", null, value);
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.BulkDeleteFailure>("SystemUser_BulkDeleteFailures", null, value);
 				this.OnPropertyChanged("SystemUser_BulkDeleteFailures");
 			}
 		}
@@ -7273,18 +7273,18 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		/// 1:N SystemUser_ImportLogs
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("SystemUser_ImportLogs")]
-		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.ImportLog> SystemUser_ImportLogs
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.ImportLog> SystemUser_ImportLogs
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.ImportLog>("SystemUser_ImportLogs", null);
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.ImportLog>("SystemUser_ImportLogs", null);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("SystemUser_ImportLogs");
-				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.ImportLog>("SystemUser_ImportLogs", null, value);
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.ImportLog>("SystemUser_ImportLogs", null, value);
 				this.OnPropertyChanged("SystemUser_ImportLogs");
 			}
 		}
@@ -7293,18 +7293,18 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		/// 1:N user_parent_user
 		/// </summary>
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("user_parent_user", Microsoft.Xrm.Sdk.EntityRole.Referenced)]
-		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser> Referenceduser_parent_user
+		public System.Collections.Generic.IEnumerable<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.SystemUser> Referenceduser_parent_user
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("user_parent_user", Microsoft.Xrm.Sdk.EntityRole.Referenced);
+				return this.GetRelatedEntities<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.SystemUser>("user_parent_user", Microsoft.Xrm.Sdk.EntityRole.Referenced);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Referenceduser_parent_user");
-				this.SetRelatedEntities<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("user_parent_user", Microsoft.Xrm.Sdk.EntityRole.Referenced, value);
+				this.SetRelatedEntities<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.SystemUser>("user_parent_user", Microsoft.Xrm.Sdk.EntityRole.Referenced, value);
 				this.OnPropertyChanged("Referenceduser_parent_user");
 			}
 		}
@@ -7314,18 +7314,18 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_systemuser_createdonbehalfby", Microsoft.Xrm.Sdk.EntityRole.Referencing)]
-		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser Referencinglk_systemuser_createdonbehalfby
+		public Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.SystemUser Referencinglk_systemuser_createdonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_systemuser_createdonbehalfby", Microsoft.Xrm.Sdk.EntityRole.Referencing);
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.SystemUser>("lk_systemuser_createdonbehalfby", Microsoft.Xrm.Sdk.EntityRole.Referencing);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Referencinglk_systemuser_createdonbehalfby");
-				this.SetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_systemuser_createdonbehalfby", Microsoft.Xrm.Sdk.EntityRole.Referencing, value);
+				this.SetRelatedEntity<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.SystemUser>("lk_systemuser_createdonbehalfby", Microsoft.Xrm.Sdk.EntityRole.Referencing, value);
 				this.OnPropertyChanged("Referencinglk_systemuser_createdonbehalfby");
 			}
 		}
@@ -7335,18 +7335,18 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_systemuser_modifiedonbehalfby", Microsoft.Xrm.Sdk.EntityRole.Referencing)]
-		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser Referencinglk_systemuser_modifiedonbehalfby
+		public Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.SystemUser Referencinglk_systemuser_modifiedonbehalfby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_systemuser_modifiedonbehalfby", Microsoft.Xrm.Sdk.EntityRole.Referencing);
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.SystemUser>("lk_systemuser_modifiedonbehalfby", Microsoft.Xrm.Sdk.EntityRole.Referencing);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Referencinglk_systemuser_modifiedonbehalfby");
-				this.SetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_systemuser_modifiedonbehalfby", Microsoft.Xrm.Sdk.EntityRole.Referencing, value);
+				this.SetRelatedEntity<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.SystemUser>("lk_systemuser_modifiedonbehalfby", Microsoft.Xrm.Sdk.EntityRole.Referencing, value);
 				this.OnPropertyChanged("Referencinglk_systemuser_modifiedonbehalfby");
 			}
 		}
@@ -7356,12 +7356,12 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_systemuserbase_createdby", Microsoft.Xrm.Sdk.EntityRole.Referencing)]
-		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser Referencinglk_systemuserbase_createdby
+		public Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.SystemUser Referencinglk_systemuserbase_createdby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_systemuserbase_createdby", Microsoft.Xrm.Sdk.EntityRole.Referencing);
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.SystemUser>("lk_systemuserbase_createdby", Microsoft.Xrm.Sdk.EntityRole.Referencing);
 			}
 		}
 		
@@ -7370,12 +7370,12 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("lk_systemuserbase_modifiedby", Microsoft.Xrm.Sdk.EntityRole.Referencing)]
-		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser Referencinglk_systemuserbase_modifiedby
+		public Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.SystemUser Referencinglk_systemuserbase_modifiedby
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("lk_systemuserbase_modifiedby", Microsoft.Xrm.Sdk.EntityRole.Referencing);
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.SystemUser>("lk_systemuserbase_modifiedby", Microsoft.Xrm.Sdk.EntityRole.Referencing);
 			}
 		}
 		
@@ -7384,18 +7384,18 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		/// </summary>
 		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("parentsystemuserid")]
 		[Microsoft.Xrm.Sdk.RelationshipSchemaNameAttribute("user_parent_user", Microsoft.Xrm.Sdk.EntityRole.Referencing)]
-		public Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser Referencinguser_parent_user
+		public Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.SystemUser Referencinguser_parent_user
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("user_parent_user", Microsoft.Xrm.Sdk.EntityRole.Referencing);
+				return this.GetRelatedEntity<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.SystemUser>("user_parent_user", Microsoft.Xrm.Sdk.EntityRole.Referencing);
 			}
 			[System.Diagnostics.DebuggerNonUserCode()]
 			set
 			{
 				this.OnPropertyChanging("Referencinguser_parent_user");
-				this.SetRelatedEntity<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>("user_parent_user", Microsoft.Xrm.Sdk.EntityRole.Referencing, value);
+				this.SetRelatedEntity<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.SystemUser>("user_parent_user", Microsoft.Xrm.Sdk.EntityRole.Referencing, value);
 				this.OnPropertyChanged("Referencinguser_parent_user");
 			}
 		}
@@ -7460,98 +7460,98 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Common
 		}
 		
 		/// <summary>
-		/// Gets a binding to the set of all <see cref="Xrm.Framework.CI.PowerShell.Cmdlets.Common.AsyncOperation"/> entities.
+		/// Gets a binding to the set of all <see cref="Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.AsyncOperation"/> entities.
 		/// </summary>
-		public System.Linq.IQueryable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.AsyncOperation> AsyncOperationSet
+		public System.Linq.IQueryable<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.AsyncOperation> AsyncOperationSet
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.CreateQuery<Xrm.Framework.CI.PowerShell.Cmdlets.Common.AsyncOperation>();
+				return this.CreateQuery<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.AsyncOperation>();
 			}
 		}
 		
 		/// <summary>
-		/// Gets a binding to the set of all <see cref="Xrm.Framework.CI.PowerShell.Cmdlets.Common.BulkDeleteFailure"/> entities.
+		/// Gets a binding to the set of all <see cref="Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.BulkDeleteFailure"/> entities.
 		/// </summary>
-		public System.Linq.IQueryable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.BulkDeleteFailure> BulkDeleteFailureSet
+		public System.Linq.IQueryable<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.BulkDeleteFailure> BulkDeleteFailureSet
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.CreateQuery<Xrm.Framework.CI.PowerShell.Cmdlets.Common.BulkDeleteFailure>();
+				return this.CreateQuery<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.BulkDeleteFailure>();
 			}
 		}
 		
 		/// <summary>
-		/// Gets a binding to the set of all <see cref="Xrm.Framework.CI.PowerShell.Cmdlets.Common.BulkDeleteOperation"/> entities.
+		/// Gets a binding to the set of all <see cref="Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.BulkDeleteOperation"/> entities.
 		/// </summary>
-		public System.Linq.IQueryable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.BulkDeleteOperation> BulkDeleteOperationSet
+		public System.Linq.IQueryable<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.BulkDeleteOperation> BulkDeleteOperationSet
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.CreateQuery<Xrm.Framework.CI.PowerShell.Cmdlets.Common.BulkDeleteOperation>();
+				return this.CreateQuery<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.BulkDeleteOperation>();
 			}
 		}
 		
 		/// <summary>
-		/// Gets a binding to the set of all <see cref="Xrm.Framework.CI.PowerShell.Cmdlets.Common.BulkOperationLog"/> entities.
+		/// Gets a binding to the set of all <see cref="Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.BulkOperationLog"/> entities.
 		/// </summary>
-		public System.Linq.IQueryable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.BulkOperationLog> BulkOperationLogSet
+		public System.Linq.IQueryable<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.BulkOperationLog> BulkOperationLogSet
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.CreateQuery<Xrm.Framework.CI.PowerShell.Cmdlets.Common.BulkOperationLog>();
+				return this.CreateQuery<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.BulkOperationLog>();
 			}
 		}
 		
 		/// <summary>
-		/// Gets a binding to the set of all <see cref="Xrm.Framework.CI.PowerShell.Cmdlets.Common.ImportJob"/> entities.
+		/// Gets a binding to the set of all <see cref="Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.ImportJob"/> entities.
 		/// </summary>
-		public System.Linq.IQueryable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.ImportJob> ImportJobSet
+		public System.Linq.IQueryable<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.ImportJob> ImportJobSet
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.CreateQuery<Xrm.Framework.CI.PowerShell.Cmdlets.Common.ImportJob>();
+				return this.CreateQuery<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.ImportJob>();
 			}
 		}
 		
 		/// <summary>
-		/// Gets a binding to the set of all <see cref="Xrm.Framework.CI.PowerShell.Cmdlets.Common.ImportLog"/> entities.
+		/// Gets a binding to the set of all <see cref="Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.ImportLog"/> entities.
 		/// </summary>
-		public System.Linq.IQueryable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.ImportLog> ImportLogSet
+		public System.Linq.IQueryable<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.ImportLog> ImportLogSet
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.CreateQuery<Xrm.Framework.CI.PowerShell.Cmdlets.Common.ImportLog>();
+				return this.CreateQuery<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.ImportLog>();
 			}
 		}
 		
 		/// <summary>
-		/// Gets a binding to the set of all <see cref="Xrm.Framework.CI.PowerShell.Cmdlets.Common.Solution"/> entities.
+		/// Gets a binding to the set of all <see cref="Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.Solution"/> entities.
 		/// </summary>
-		public System.Linq.IQueryable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.Solution> SolutionSet
+		public System.Linq.IQueryable<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.Solution> SolutionSet
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.CreateQuery<Xrm.Framework.CI.PowerShell.Cmdlets.Common.Solution>();
+				return this.CreateQuery<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.Solution>();
 			}
 		}
 		
 		/// <summary>
-		/// Gets a binding to the set of all <see cref="Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser"/> entities.
+		/// Gets a binding to the set of all <see cref="Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.SystemUser"/> entities.
 		/// </summary>
-		public System.Linq.IQueryable<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser> SystemUserSet
+		public System.Linq.IQueryable<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.SystemUser> SystemUserSet
 		{
 			[System.Diagnostics.DebuggerNonUserCode()]
 			get
 			{
-				return this.CreateQuery<Xrm.Framework.CI.PowerShell.Cmdlets.Common.SystemUser>();
+				return this.CreateQuery<Xrm.Framework.CI.PowerShellCore.Cmdlets.Common.SystemUser>();
 			}
 		}
 	}

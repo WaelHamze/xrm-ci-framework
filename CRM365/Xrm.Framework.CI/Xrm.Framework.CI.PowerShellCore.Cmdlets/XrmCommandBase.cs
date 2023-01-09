@@ -5,7 +5,7 @@ using System.Threading;
 using System;
 using Microsoft.PowerPlatform.Dataverse.Client;
 
-namespace Xrm.Framework.CI.PowerShell.Cmdlets
+namespace Xrm.Framework.CI.PowerShellCore.Cmdlets
 {
     public abstract class XrmCommandBase : Cmdlet
     {

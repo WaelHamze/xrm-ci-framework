@@ -2,9 +2,9 @@
 using System.Linq;
 using System.Management.Automation;
 using System.Xml.Linq;
-using Xrm.Framework.CI.PowerShell.Cmdlets.Common;
+using Xrm.Framework.CI.PowerShellCore.Cmdlets.Common;
 
-namespace Xrm.Framework.CI.PowerShell.Cmdlets
+namespace Xrm.Framework.CI.PowerShellCore.Cmdlets
 {
     /// <summary>
     /// <para type="synopsis">Returns solution info from an extracted solution zip file</para>

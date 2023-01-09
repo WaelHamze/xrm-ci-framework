@@ -4,9 +4,9 @@ using System.Linq;
 using System.Management.Automation;
 using System.Text;
 using Microsoft.Crm.Sdk.Messages;
-using Xrm.Framework.CI.PowerShell.Cmdlets.Common;
+using Xrm.Framework.CI.PowerShellCore.Cmdlets.Common;
 
-namespace Xrm.Framework.CI.PowerShell.Cmdlets
+namespace Xrm.Framework.CI.PowerShellCore.Cmdlets
 {
     /// <summary>
     /// <para type="synopsis">Exports a CRM Solution.</para>
