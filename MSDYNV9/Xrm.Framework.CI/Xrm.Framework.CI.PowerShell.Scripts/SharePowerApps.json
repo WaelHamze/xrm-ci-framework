@@ -1,0 +1,39 @@
+{
+  "AppSharing": [
+    {
+      "AppName": "App1",
+      "ShareWith": [
+        {
+          "PrincipalType": "User",
+          "Principal": "user@domain.com",
+          "RoleName": "CanView"
+        },
+        {
+          "PrincipalType": "Group",
+          "Principal": "Group1",
+          "RoleName": "CanEdit"
+        }
+      ]
+    },
+    {
+      "AppName": "App2",
+      "ShareWith": [
+        {
+          "PrincipalType": "User",
+          "Principal": "user@domain.com",
+          "RoleName": "CanEdit"
+        },
+        {
+          "PrincipalType": "Group",
+          "Principal": "Group2",
+          "RoleName": "CanViewWithShare"
+        },
+        {
+          "PrincipalType": "Tenant",
+          "Principal": "[TenantId]",
+          "RoleName": "CanView"
+        }
+      ]
+    }
+  ]
+}
