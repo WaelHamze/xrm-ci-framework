@@ -1,0 +1,34 @@
+{
+  "FlowSharing": [
+    {
+      "FlowName": "Flow1",
+      "ShareWith": [
+        {
+          "PrincipalType": "User",
+          "Principal": "user@domain.com",
+          "RoleName": "CanView"
+        },
+        {
+          "PrincipalType": "Group",
+          "Principal": "Group1",
+          "RoleName": "CanEdit"
+        }
+      ]
+    },
+    {
+      "FlowName": "Flow2",
+      "ShareWith": [
+        {
+          "PrincipalType": "User",
+          "Principal": "user@domain.com",
+          "RoleName": "CanEdit"
+        },
+        {
+          "PrincipalType": "Group",
+          "Principal": "Group2",
+          "RoleName": "CanView"
+        }
+      ]
+    }
+  ]
+}
