@@ -3,16 +3,17 @@
 #
 
 param(
-[string]$ApiUrl,
-[string]$Username,
-[string]$Password,
-[string]$InstanceName,
+[string]$TenantId , #The tenant Id where your instance resides
+[string]$ApplicationId , #The application Id used for the connection
+[string]$ApplicationSecret, #The application secret used for connection
+[string]$EnvironmentUrl,
 [bool]$Enable = $true,
+[string]$PowerAppsAdminModulePath,
+[string]$CrmConnectorModulePath,
 [bool]$AllowBackgroundOperations = $true,
 [string]$NotificationText,
 [bool]$WaitForCompletion = $false,
-[int]$SleepDuration = 3,
-[string]$PSModulePath
+[int]$TimeoutInMinutes = 3
 )
 
 $ErrorActionPreference = "Stop"
@@ -20,86 +21,62 @@ $ErrorActionPreference = "Stop"
 Write-Verbose 'Entering OnlineInstanceAdminMode.ps1'
 
 #Parameters
-Write-Verbose "ApiUrl = $ApiUrl"
-Write-Verbose "Username = $Username"
-Write-Verbose "InstanceName = $InstanceName"
+Write-Verbose "TenantId = $TenantId"
+Write-Verbose "ApplicationId = $ApplicationId"
+Write-Verbose "ApplicationSecret = $ApplicationSecret"
+Write-Verbose "EnvironmentUrl = $EnvironmentUrl"
 Write-Verbose "Enable = $Enable"
 Write-Verbose "AllowBackgroundOperations = $AllowBackgroundOperations"
 Write-Verbose "NotificationText = $NotificationText"
 Write-Verbose "WaitForCompletion = $WaitForCompletion"
-Write-Verbose "SleepDuration = $SleepDuration"
-Write-Verbose "PSModulePath = $PSModulePath"
+Write-Verbose "PowerAppsAdminModulePath = $PowerAppsAdminModulePath"
 
 #Script Location
 $scriptPath = split-path -parent $MyInvocation.MyCommand.Definition
 Write-Verbose "Script Path: $scriptPath"
 
-#Set Security Protocol
-& "$scriptPath\SetTlsVersion.ps1"
+#Import Modules
 
-#Load Online Management Module
-$xrmOnlineModule = $scriptPath + "\Microsoft.Xrm.OnlineManagementAPI.dll"
+$xrmCIToolkit = $scriptPath + "\Xrm.Framework.CI.PowerShell.Cmdlets.dll"
+Write-Verbose "Importing: $xrmCIToolkit"
+Import-Module $xrmCIToolkit
 
-if ($PSModulePath)
-{
-	$xrmOnlineModule = $PSModulePath + "\Microsoft.Xrm.OnlineManagementAPI.dll"
-}
+Write-Verbose "Import Crm Connector: $CrmConnectorModulePath"
+Import-module "$CrmConnectorModulePath\Microsoft.Xrm.Tooling.CrmConnector.PowerShell.psd1"
 
-Write-Verbose "Importing Online Management Module: $xrmOnlineModule" 
-Import-Module $xrmOnlineModule
-Write-Verbose "Imported Online Management Module"
+Write-Verbose "Importing PowerApps Admin Module: $PowerAppsAdminModulePath"
+Import-module "$PowerAppsAdminModulePath\Microsoft.PowerApps.Administration.PowerShell.psd1"
 
-#Create Credentials
-$SecPassword = ConvertTo-SecureString $Password -AsPlainText -Force
-$Cred = New-Object System.Management.Automation.PSCredential ($Username, $SecPassword)
+#Connect
 
-."$scriptPath\OnlineInstanceFunctions.ps1"
+Write-Verbose "Connecting to PowerApps Endpoint"
+Add-PowerAppsAccount -TenantID $TenantId -ApplicationId $ApplicationId -ClientSecret $ApplicationSecret -Endpoint prod
 
-$instance = Get-XrmInstanceByName -ApiUrl $ApiUrl -Cred $Cred -InstanceName $InstanceName
+$CrmConnectionString = "AuthType=ClientSecret;url=$EnvironmentUrl;ClientId=$ApplicationId;ClientSecret=$ApplicationSecret"
 
-if ($instance -eq $null)
-{
-    throw "$InstanceName not found"
-}
+$CRMConn = Get-CrmConnection -ConnectionString $CrmConnectionString
+$EnvironmentId = $CRMConn.EnvironmentId
 
 if ($Enable)
 {
-    Write-Host "Enabling Admin Mode on instance $InstanceName " + $instance.Id
-
-    $AdminModeSetting = New-CrmAdminModeSetting -AllowBackgroundOperations $AllowBackgroundOperations -NotificationText $NotificationText
-
-    $operation = Enable-CrmAdminMode -InstanceId $instance.Id -AdminModeSettings $AdminModeSetting -ApiUrl $ApiUrl -Credential $Cred
+	$RuntimeState = "AdminMode"
+}
+else
+{
+	$RuntimeState = "Enabled"
 }
 
-if ( -not $Enable)
-{
-    Write-Host "Disabling Admin Mode on instance $InstanceName " + $instance.Id
+Write-Output "Setting Environment $EnvironmentUrl Id:$EnvironmentId to State: $RuntimeState"
 
-    $operation = Disable-CrmAdminMode -InstanceId $instance.Id -ApiUrl $ApiUrl -Credential $Cred
+$response = Set-AdminPowerAppEnvironmentRuntimeState -EnvironmentName $EnvironmentId -RuntimeState $RuntimeState -WaitUntilFinished $WaitForCompletion -TimeoutInMinutes $TimeoutInMinutes
+
+if ($response.Code -eq 200)
+{
+	Write-Output "Environment $EnvironmentUrl Id:$EnvironmentId set to State: $RuntimeState"
 }
-
-$OperationId = $operation.OperationId
-$OperationStatus = $operation.Status
-
-Write-Output "OperationId = $OperationId"
-Write-Verbose "Status = $OperationStatus"
-
-if ($operation.Errors.Count -gt 0)
+else
 {
-    $errorMessage = $operation.Errors[0].Description
-    throw "Errors encountered : $errorMessage"
-}
-
-if ($WaitForCompletion -and ($OperationStatus -ne "Succeeded"))
-{
-	$status = Wait-XrmOperation -ApiUrl $ApiUrl -Cred $Cred -operationId $operation.OperationId
-
-	$status
-
-	if ($status.Status -ne "Succeeded")
-	{
-		throw "Operation status: $status.Status"
-	}
+	throw "Error setting RuntimeState Code:$($response.Code) Error:$($response.Error)"
 }
 
 Write-Verbose 'Leaving OnlineInstanceAdminMode.ps1'
