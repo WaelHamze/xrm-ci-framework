@@ -84,7 +84,7 @@ $EnvironmentId = $CRMConn.EnvironmentId
 
 $FlowsToShare = ConvertFrom-Json $FlowsToShareJson
 
-foreach ($flow in $FlowsToShare.FlowSharing)
+foreach ($flow in $FlowsToShare.Flows)
 {
 	$FlowName = $($flow.FlowName)
     Write-Verbose "Locating Flow: $FlowName"

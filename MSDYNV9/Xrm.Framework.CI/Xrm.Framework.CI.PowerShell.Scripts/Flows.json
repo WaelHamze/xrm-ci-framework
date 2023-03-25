@@ -1,5 +1,5 @@
 {
-  "FlowSharing": [
+  "Flows": [
     {
       "FlowName": "Flow1",
       "ShareWith": [
@@ -13,7 +13,8 @@
           "Principal": "Group1",
           "RoleName": "CanEdit"
         }
-      ]
+      ],
+      "State":  "On"
     },
     {
       "FlowName": "Flow2",
@@ -28,7 +29,8 @@
           "Principal": "Group2",
           "RoleName": "CanView"
         }
-      ]
+      ],
+      "State": "Off"
     }
   ]
 }

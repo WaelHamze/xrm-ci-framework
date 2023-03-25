@@ -68,6 +68,7 @@
     <Compile Include="RestoreOnlineInstance.ps1" />
     <Compile Include="SetTlsVersion.ps1" />
     <Compile Include="GetSolutionMissingComponents.ps1" />
+    <Compile Include="ActivateFlows.ps1" />
     <Compile Include="ShareFlows.ps1" />
     <Compile Include="SharePowerApps.ps1" />
     <Compile Include="SplitPluginAssembly.ps1" />
@@ -87,7 +88,7 @@
     <Compile Include="Xrm.Framework.CI.PowerShell.psm1" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ShareFlows.json" />
+    <Content Include="Flows.json" />
     <Content Include="SharePowerApps.json" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
