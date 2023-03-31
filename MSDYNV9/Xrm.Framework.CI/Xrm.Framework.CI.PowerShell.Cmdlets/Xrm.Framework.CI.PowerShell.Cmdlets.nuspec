@@ -20,7 +20,7 @@
     <file src="readme.txt" target="" />
     <file src="..\Xrm.Framework.CI.PowerShell.Scripts\*.ps1" target="tools" />
     <file src="..\Xrm.Framework.CI.PowerShell.Scripts\*.psm1" target="tools" />
-    <file src="Microsoft.Bcl.AsyncInterfaces.dll" target="tools" />
+    <file src="bin\release\Microsoft.Bcl.AsyncInterfaces.dll" target="tools" />
     <file src="bin\release\Xrm.Framework.CI.PowerShell.Cmdlets.dll" target="tools" />
     <file src="bin\release\Xrm.Framework.CI.Common.dll" target="tools" />
     <file src="bin\release\Microsoft.Xrm.Sdk.dll" target="tools" />
@@ -29,7 +29,8 @@
     <file src="bin\release\Microsoft.Xrm.Tooling.Connector.dll" target="tools" />
     <file src="bin\release\Microsoft.Rest.ClientRuntime.dll" target="tools" />
     <file src="bin\release\Microsoft.IdentityModel.Clients.ActiveDirectory.dll" target="tools" />
-    <file src="Microsoft.Management.Infrastructure.dll" target="tools" />
+    <file src="bin\release\Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll" target="tools" />
+    <file src="bin\release\Microsoft.Management.Infrastructure.dll" target="tools" />
     <file src="bin\release\Microsoft.Xrm.Sdk.Deployment.dll" target="tools" />
     <file src="bin\release\System.Net.Http.dll" target="tools" />
     <file src="bin\release\System.Security.Cryptography.Algorithms.dll" target="tools" />
