@@ -6,7 +6,7 @@
         {
           "PrincipalType": "User",
           "Principal": "user@domain.com",
-          "RoleName": "CanView"
+          "RoleName": "Owner"
         },
         {
           "PrincipalType": "Group",
