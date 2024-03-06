@@ -34,6 +34,8 @@
     <Compile Include="CloneSolution.ps1" />
     <Compile Include="CopySolutionComponents.ps1" />
     <Compile Include="CreateSolution.ps1" />
+    <Compile Include="UpdateTenantSettings.ps1" />
+    <Compile Include="SaveTenantSettings.ps1" />
     <Compile Include="PackCMData.ps1" />
     <Compile Include="ExtractCMData.ps1" />
     <Compile Include="ImportCMData.ps1" />
@@ -90,6 +92,7 @@
   <ItemGroup>
     <Content Include="Flows.json" />
     <Content Include="SharePowerApps.json" />
+    <Content Include="TenantSettings.json" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Target Name="Build" />
