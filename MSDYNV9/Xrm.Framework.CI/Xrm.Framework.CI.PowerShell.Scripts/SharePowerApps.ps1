@@ -34,23 +34,23 @@ Import-Module $xrmCIToolkit
 Write-Verbose "Import Crm Connector: $CrmConnectorModulePath"
 Import-module "$CrmConnectorModulePath\Microsoft.Xrm.Tooling.CrmConnector.PowerShell.psd1"
 
-Write-Verbose "Importing MSAL Module" 
-Import-Module "$MSALModulePath\MSAL.PS.psd1"
+#Write-Verbose "Importing MSAL Module" 
+#Import-Module "$MSALModulePath\MSAL.PS.psd1"
 
-Write-Verbose "Importing Microsoft Graph Users Module" 
-Import-Module "$MGUsersModulePath\Microsoft.Graph.Users.psd1"
+#Write-Verbose "Importing Microsoft Graph Users Module" 
+#Import-Module "$MGUsersModulePath\Microsoft.Graph.Users.psd1"
 
-Write-Verbose "Importing Microsoft Graph Groups Module" 
-Import-Module "$MGGroupsModulePath\Microsoft.Graph.Groups.psd1"
+#Write-Verbose "Importing Microsoft Graph Groups Module" 
+#Import-Module "$MGGroupsModulePath\Microsoft.Graph.Groups.psd1"
 
 Write-Verbose "Importing PowerApps Admin Module: $PowerAppsAdminModulePath"
 Import-module "$PowerAppsAdminModulePath\Microsoft.PowerApps.Administration.PowerShell.psd1"
 
 #Connect
 
-Write-Verbose "Connecting to Microsoft Graph"
-$MsalToken = Get-MsalToken -TenantId $TenantId -ClientId $ApplicationId -ClientSecret ($ApplicationSecret | ConvertTo-SecureString -AsPlainText -Force)
-Connect-Graph -AccessToken $MsalToken.AccessToken
+#Write-Verbose "Connecting to Microsoft Graph"
+#$MsalToken = Get-MsalToken -TenantId $TenantId -ClientId $ApplicationId -ClientSecret ($ApplicationSecret | ConvertTo-SecureString -AsPlainText -Force)
+#Connect-Graph -AccessToken $MsalToken.AccessToken
 
 Write-Verbose "Connecting to PowerApps Endpoint"
 Add-PowerAppsAccount -TenantID $TenantId -ApplicationId $ApplicationId -ClientSecret $ApplicationSecret -Endpoint prod
@@ -122,11 +122,24 @@ foreach ($app in $AppsToShare.AppSharing)
 
         if ($principalType -eq "User")
 		{
-			$principalId = (Get-MgUser -UserId $principal | select Id).Id
+			#$principalId = (Get-MgUser -UserId $principal | select Id).Id
+			$principalId = (Get-UsersOrGroupsFromGraph -SearchString "$principal").ObjectId
 		}
 		elseif ($shareWith.PrincipalType -eq "Group")
 		{
-			$principalId = (Get-MgGroup -Filter "DisplayName eq '$principal'" | select Id).Id
+			#$principalId = (Get-MgGroup -Filter "DisplayName eq '$principal'" | select Id).Id
+			$group = Get-UsersOrGroupsFromGraph -SearchString $principal
+			Write-Verbose "Group retrieved: $($group)"
+			if ($group)
+			{
+				Write-Verbose "Group Found"
+				Write-Verbose $group
+				$principalId = $group.Objectd
+			}
+			else
+			{
+				throw "$($principal) could not be found"
+			}
 		}
 		else
 		{
