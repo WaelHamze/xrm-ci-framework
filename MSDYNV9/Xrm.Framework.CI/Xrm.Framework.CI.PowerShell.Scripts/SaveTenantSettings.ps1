@@ -47,7 +47,7 @@ $tenantSettings = Get-TenantSettings
 
 Write-Host "Retrieved Tenant Settings: $tenantSettings"
 
-$tenantSettingsJson = ConvertTo-Json -InputObject $tenantSettings
+$tenantSettingsJson = ConvertTo-Json -InputObject $tenantSettings -Depth 10
 
 Set-Content -Path $tenantSettingsFile -Value $tenantSettingsJson
 
