@@ -1,0 +1,50 @@
+{
+  "Id": "{0D4644A0-FA6E-485F-B191-780912A48BA7}",
+  "Name": "CrmVSSolution.plugin.dll",
+  "IsolationMode": "Sandbox",
+  "SourceType": "Database",
+  "PluginTypes": [
+    {
+      "Id": "{019A6F34-E4C5-40A2-86E7-631F0C1FDFA1}",
+      "Description": null,
+      "Name": "CrmVSSolution.plugin.PostOperationaccountUpdate",
+      "FriendlyName": "264cd3d4-a313-459f-977f-c263a5c44ff3",
+      "TypeName": "CrmVSSolution.plugin.PostOperationaccountUpdate",
+      "WorkflowActivityGroupName": "",
+      "Steps": [
+        {
+          "Id": "{019A6F34-E4C5-40A2-86E7-631F0C1FDFA4}",
+          "Name": "Update of account",
+          "MessageName": "Update",
+          "Description": "Update of account",
+          "CustomConfiguration": null,
+          "FilteringAttributes": "name,accountnumber",
+          "ImpersonatingUserFullname": "Firstname Lastname",
+          "Mode": "Synchronous",
+          "PrimaryEntityName": "account",
+          "Rank": 1,
+          "AsyncAutoDelete": false,
+          "Stage": "Postoperation",
+          "StateCode": "Enabled",
+          "SupportedDeployment": "ServerOnly",
+          "Images": [
+            {
+              "Id": "{019A6F34-E4C5-40A2-86E7-631F0C1FDFA3}",
+              "Attributes": "accountnumber,accountratingcode",
+              "EntityAlias": "PostImage",
+              "MessagePropertyName": "Target",
+              "ImageType": "PostImage"
+            },
+            {
+              "Id": "{019A6F34-E4C5-40A2-86E7-631F0C1FDFA2}",
+              "Attributes": "name,accountnumber",
+              "EntityAlias": "PreImage",
+              "MessagePropertyName": "Target",
+              "ImageType": "PreImage"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
