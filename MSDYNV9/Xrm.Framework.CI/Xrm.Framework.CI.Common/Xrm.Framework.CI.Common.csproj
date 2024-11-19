@@ -148,6 +148,8 @@
     <Compile Include="PluginRegistration\Assembly.cs" />
     <Compile Include="PluginRegistration\AssemblyInfo.cs" />
     <Compile Include="PluginRegistration\Image.cs" />
+    <Compile Include="PluginRegistration\Package.cs" />
+    <Compile Include="PluginRegistration\PackageInfo.cs" />
     <Compile Include="PluginRegistration\PluginRegistrationHelper.cs" />
     <Compile Include="PluginRegistration\PluginRegistrationObjectFactory.cs" />
     <Compile Include="PluginRegistration\PluginRepository.cs" />
