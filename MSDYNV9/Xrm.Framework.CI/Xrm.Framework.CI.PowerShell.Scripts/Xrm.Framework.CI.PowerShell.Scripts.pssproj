@@ -27,6 +27,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="AddEnvironmentToGroup.ps1" />
     <Compile Include="ApplySolution.ps1" />
     <Compile Include="CheckerQualityGate.ps1" />
     <Compile Include="ConnectionFunctions.ps1" />

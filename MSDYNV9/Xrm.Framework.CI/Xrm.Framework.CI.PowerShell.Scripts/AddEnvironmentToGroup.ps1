@@ -65,6 +65,10 @@ elseif ($Username)
 {
     & "$PAC" auth create --name $conName --username $Username --password $Password
 }
+else
+{
+    throw "Either Username/Password or ApplicationId/ClientSecret must be provided"
+}
 
 try
 {
@@ -171,4 +175,4 @@ else
 #$psCred = New-Object System.Management.Automation.PSCredential($ApplicationId , $securePassword)
 #Connect-AzureAD -Credential $psCred -TenantId $TenantId
 
-Write-Verbose 'Entering AddEnvironmentToGroup.ps1'
+Write-Verbose 'Leaving AddEnvironmentToGroup.ps1'
