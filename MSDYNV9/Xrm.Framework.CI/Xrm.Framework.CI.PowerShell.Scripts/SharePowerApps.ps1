@@ -27,10 +27,6 @@ Write-Verbose "Script Path: $scriptPath"
 
 #Import Modules
 
-$xrmCIToolkit = $scriptPath + "\Xrm.Framework.CI.PowerShell.Cmdlets.dll"
-Write-Verbose "Importing: $xrmCIToolkit"
-Import-Module $xrmCIToolkit
-
 Write-Verbose "Import Crm Connector: $CrmConnectorModulePath"
 Import-module "$CrmConnectorModulePath\Microsoft.Xrm.Tooling.CrmConnector.PowerShell.psd1"
 
@@ -54,6 +50,7 @@ Import-module "$PowerAppsAdminModulePath\Microsoft.PowerApps.Administration.Powe
 
 Write-Verbose "Connecting to PowerApps Endpoint"
 Add-PowerAppsAccount -TenantID $TenantId -ApplicationId $ApplicationId -ClientSecret $ApplicationSecret -Endpoint prod
+Write-Verbose "Connected to PowerApps EndPoint"
 
 #Environment
 
@@ -73,6 +70,10 @@ $CrmConnectionString = "AuthType=ClientSecret;url=$EnvironmentUrl;ClientId=$Appl
 
 $CRMConn = Get-CrmConnection -ConnectionString $CrmConnectionString
 $EnvironmentId = $CRMConn.EnvironmentId
+
+$xrmCIToolkit = $scriptPath + "\Xrm.Framework.CI.PowerShell.Cmdlets.dll"
+Write-Verbose "Importing: $xrmCIToolkit"
+Import-Module $xrmCIToolkit
 
 #Azure AD
 
@@ -123,7 +124,18 @@ foreach ($app in $AppsToShare.AppSharing)
         if ($principalType -eq "User")
 		{
 			#$principalId = (Get-MgUser -UserId $principal | select Id).Id
-			$principalId = (Get-UsersOrGroupsFromGraph -SearchString "$principal").ObjectId
+			$user = Get-UsersOrGroupsFromGraph -SearchString "$principal"
+			
+			if ($user)
+			{
+				Write-Verbose "User Found"
+				Write-Verbose $user
+				$principalId = $user.Objectd
+			}
+			else
+			{
+				throw "$($principal) could not be found"
+			}
 		}
 		elseif ($shareWith.PrincipalType -eq "Group")
 		{
