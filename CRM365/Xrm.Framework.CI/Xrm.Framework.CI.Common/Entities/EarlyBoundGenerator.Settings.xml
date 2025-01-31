@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Config xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <AudibleCompletionNotification>true</AudibleCompletionNotification>
+  <CrmSvcUtilRelativePath>DLaB.EarlyBoundGenerator\crmsvcutil.exe</CrmSvcUtilRelativePath>
+  <IncludeCommandLine>false</IncludeCommandLine>
+  <MaskPassword>true</MaskPassword>
+  <SettingsVersion>1.2019.10.27</SettingsVersion>
+  <Version>1.2020.10.2</Version>
+  <ExtensionConfig>
+    <ActionPrefixesWhitelist />
+    <ActionsWhitelist />
+    <ActionsToSkip>msdyn_getsifeatureconfiguration|
+retrieveappsetting|
+retrieveappsettinglist|
+saveappsetting</ActionsToSkip>
+    <AddDebuggerNonUserCode>false</AddDebuggerNonUserCode>
+    <AddNewFilesToProject>false</AddNewFilesToProject>
+    <AddOptionSetMetadataAttribute>true</AddOptionSetMetadataAttribute>
+    <CreateOneFilePerAction>false</CreateOneFilePerAction>
+    <CreateOneFilePerEntity>false</CreateOneFilePerEntity>
+    <CreateOneFilePerOptionSet>false</CreateOneFilePerOptionSet>
+    <DeleteFilesFromOutputFolders>false</DeleteFilesFromOutputFolders>
+    <EntitiesToSkip />
+    <EntitiesWhitelist>asyncoperation|
+bulkdeleteoperation|
+connectionreference|
+dependency|
+duplicaterule|
+environmentvariabledefinition|
+environmentvariablevalue|
+importjob|
+pluginassembly|
+plugintype|
+sdkmessage|
+sdkmessagefilter|
+sdkmessageprocessingstep|
+sdkmessageprocessingstepimage|
+serviceendpoint|
+solution|
+solutioncomponent|
+solutionhistorydata|
+systemform|
+systemuser|
+webresource|
+workflow</EntitiesWhitelist>
+    <EntityAttributeSpecifiedNames />
+    <EntityPrefixesToSkip />
+    <EntityPrefixesWhitelist />
+    <GenerateActionAttributeNameConsts>false</GenerateActionAttributeNameConsts>
+    <GenerateAttributeNameConsts>false</GenerateAttributeNameConsts>
+    <GenerateAnonymousTypeConstructor>false</GenerateAnonymousTypeConstructor>
+    <GenerateConstructorsSansLogicalName>false</GenerateConstructorsSansLogicalName>
+    <GenerateEntityRelationships>false</GenerateEntityRelationships>
+    <GenerateEntityTypeCode>false</GenerateEntityTypeCode>
+    <GenerateEnumProperties>true</GenerateEnumProperties>
+    <GenerateOnlyReferencedOptionSets>true</GenerateOnlyReferencedOptionSets>
+    <GenerateOptionSetMetadataAttribute>true</GenerateOptionSetMetadataAttribute>
+    <InvalidCSharpNamePrefix>_</InvalidCSharpNamePrefix>
+    <MakeAllFieldsEditable>false</MakeAllFieldsEditable>
+    <MakeReadonlyFieldsEditable>false</MakeReadonlyFieldsEditable>
+    <MakeResponseActionsEditable>false</MakeResponseActionsEditable>
+    <LocalOptionSetFormat>{0}_{1}</LocalOptionSetFormat>
+    <OptionSetLanguageCodeOverride
+      xsi:nil="true" />
+    <OptionSetPrefixesToSkip />
+    <OptionSetsToSkip />
+    <ProjectNameForEarlyBoundFiles />
+    <PropertyEnumMappings />
+    <ReadSerializedMetadata>false</ReadSerializedMetadata>
+    <RemoveRuntimeVersionComment>false</RemoveRuntimeVersionComment>
+    <ReplaceOptionSetPropertiesWithEnum>false</ReplaceOptionSetPropertiesWithEnum>
+    <SerializeMetadata>false</SerializeMetadata>
+    <UnmappedProperties>duplicaterule:BaseEntityTypeCode,MatchingEntityTypeCode|
+invoicedetail:InvoiceStateCode|
+leadaddress:AddressTypeCode,ShippingMethodCode|
+organization:CurrencyFormatCode,DateFormatCode,TimeFormatCode,WeekStartDayCode|
+quote:StatusCode|
+quotedetail:QuoteStateCode|
+salesorderdetail:SalesOrderStateCode</UnmappedProperties>
+    <UseDeprecatedOptionSetNaming>false</UseDeprecatedOptionSetNaming>
+    <UseTfsToCheckoutFiles>false</UseTfsToCheckoutFiles>
+    <WaitForAttachedDebugger>false</WaitForAttachedDebugger>
+  </ExtensionConfig>
+  <ExtensionArguments>
+    <Argument>
+      <SettingType>Actions</SettingType>
+      <Name>codecustomization</Name>
+      <Value>DLaB.CrmSvcUtilExtensions.Action.CustomizeCodeDomService,DLaB.CrmSvcUtilExtensions</Value>
+    </Argument>
+    <Argument>
+      <SettingType>Actions</SettingType>
+      <Name>codegenerationservice</Name>
+      <Value>DLaB.CrmSvcUtilExtensions.Action.CustomCodeGenerationService,DLaB.CrmSvcUtilExtensions</Value>
+    </Argument>
+    <Argument>
+      <SettingType>Actions</SettingType>
+      <Name>codewriterfilter</Name>
+      <Value>DLaB.CrmSvcUtilExtensions.Action.CodeWriterFilterService,DLaB.CrmSvcUtilExtensions</Value>
+    </Argument>
+    <Argument>
+      <SettingType>Actions</SettingType>
+      <Name>metadataproviderservice</Name>
+      <Value>DLaB.CrmSvcUtilExtensions.BaseMetadataProviderService,DLaB.CrmSvcUtilExtensions</Value>
+    </Argument>
+    <Argument>
+      <SettingType>Entities</SettingType>
+      <Name>codecustomization</Name>
+      <Value>DLaB.CrmSvcUtilExtensions.Entity.CustomizeCodeDomService,DLaB.CrmSvcUtilExtensions</Value>
+    </Argument>
+    <Argument>
+      <SettingType>Entities</SettingType>
+      <Name>codegenerationservice</Name>
+      <Value>DLaB.CrmSvcUtilExtensions.Entity.CustomCodeGenerationService,DLaB.CrmSvcUtilExtensions</Value>
+    </Argument>
+    <Argument>
+      <SettingType>Entities</SettingType>
+      <Name>codewriterfilter</Name>
+      <Value>DLaB.CrmSvcUtilExtensions.Entity.CodeWriterFilterService,DLaB.CrmSvcUtilExtensions</Value>
+    </Argument>
+    <Argument>
+      <SettingType>Entities</SettingType>
+      <Name>namingservice</Name>
+      <Value>DLaB.CrmSvcUtilExtensions.NamingService,DLaB.CrmSvcUtilExtensions</Value>
+    </Argument>
+    <Argument>
+      <SettingType>Entities</SettingType>
+      <Name>metadataproviderservice</Name>
+      <Value>DLaB.CrmSvcUtilExtensions.Entity.MetadataProviderService,DLaB.CrmSvcUtilExtensions</Value>
+    </Argument>
+    <Argument>
+      <SettingType>OptionSets</SettingType>
+      <Name>codegenerationservice</Name>
+      <Value>DLaB.CrmSvcUtilExtensions.OptionSet.CustomCodeGenerationService,DLaB.CrmSvcUtilExtensions</Value>
+    </Argument>
+    <Argument>
+      <SettingType>OptionSets</SettingType>
+      <Name>codewriterfilter</Name>
+      <Value>DLaB.CrmSvcUtilExtensions.OptionSet.CodeWriterFilterService,DLaB.CrmSvcUtilExtensions</Value>
+    </Argument>
+    <Argument>
+      <SettingType>OptionSets</SettingType>
+      <Name>namingservice</Name>
+      <Value>DLaB.CrmSvcUtilExtensions.NamingService,DLaB.CrmSvcUtilExtensions</Value>
+    </Argument>
+    <Argument>
+      <SettingType>OptionSets</SettingType>
+      <Name>metadataproviderservice</Name>
+      <Value>DLaB.CrmSvcUtilExtensions.BaseMetadataProviderService,DLaB.CrmSvcUtilExtensions</Value>
+    </Argument>
+    <Argument>
+      <SettingType>OptionSets</SettingType>
+      <Name>codecustomization</Name>
+      <Value>DLaB.CrmSvcUtilExtensions.OptionSet.CustomizeCodeDomService,DLaB.CrmSvcUtilExtensions</Value>
+    </Argument>
+  </ExtensionArguments>
+  <UserArguments>
+    <Argument>
+      <SettingType>Actions</SettingType>
+      <Name>generateActions</Name>
+    </Argument>
+    <Argument>
+      <SettingType>Actions</SettingType>
+      <Name>out</Name>
+      <Value>CrmSvcUtil Ref\Actions.cs</Value>
+    </Argument>
+    <Argument>
+      <SettingType>All</SettingType>
+      <Name>namespace</Name>
+      <Value>Xrm.Framework.CI.Common.Entities</Value>
+    </Argument>
+    <Argument>
+      <SettingType>Entities</SettingType>
+      <Name>out</Name>
+      <Value>Entities.cs</Value>
+    </Argument>
+    <Argument>
+      <SettingType>Entities</SettingType>
+      <Name>servicecontextname</Name>
+      <Value>CIContext</Value>
+    </Argument>
+    <Argument>
+      <SettingType>OptionSets</SettingType>
+      <Name>out</Name>
+      <Value>OptionSets.cs</Value>
+    </Argument>
+  </UserArguments>
+  <WorkflowlessActions>msdyn_GetSIFeatureConfiguration|
+RetrieveAppSetting|
+RetrieveAppSettingList|
+SaveAppSetting</WorkflowlessActions>
+</Config>
