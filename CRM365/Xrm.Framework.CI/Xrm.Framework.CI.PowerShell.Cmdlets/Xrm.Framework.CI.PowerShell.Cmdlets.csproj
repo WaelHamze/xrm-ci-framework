@@ -106,6 +106,9 @@
     <Compile Include="AddXrmEntityCommand.cs" />
     <Compile Include="Common\Entities.cs" />
     <Compile Include="Common\XrmSolutionInfo.cs" />
+    <Compile Include="Common\XrmThemeInfo.cs" />
+    <Compile Include="RemoveXrmSolutionCommand.cs" />
+    <Compile Include="ImportXrmThemeCommand.cs" />
     <Compile Include="ImportXrmAccessTeamTemplatesCommand.cs" />
     <Compile Include="ExportXrmAccessTeamTemplatesCommand.cs" />
     <Compile Include="ExportXrmSolutionCommand.cs" />
@@ -120,6 +123,7 @@
     <Compile Include="NewXrmEntityCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PublishXrmCustomizationsCommand.cs" />
+    <Compile Include="GetXrmThemeCommand.cs" />
     <Compile Include="RemoveXrmEntityAttribute.cs" />
     <Compile Include="RemoveXrmEntityCommand.cs" />
     <Compile Include="RemoveXrmRecordCommand.cs" />
