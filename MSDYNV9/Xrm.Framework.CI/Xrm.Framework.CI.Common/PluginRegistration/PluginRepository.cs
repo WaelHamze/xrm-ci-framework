@@ -20,6 +20,8 @@ namespace Xrm.Framework.CI.Common
              where users.FullName == name
              select users.Id).FirstOrDefault();
 
+        public Guid GetPluginPackageId(string name) => context.PluginPackageSet.FirstOrDefault(x => x.Name == name)?.Id ?? Guid.Empty;
+
         public Guid GetPluginAssemblyId(string name) =>
             (from a in context.PluginAssemblySet
              where a.Name == name
@@ -84,22 +86,22 @@ namespace Xrm.Framework.CI.Common
 
             var pluginWorkflowTypes = (from plugins in context.PluginTypeSet
                                        where plugins.PluginAssemblyId.Id == pluginAssembly.Id && plugins.IsWorkflowActivity == true
-									   orderby plugins.TypeName
-									   select MapPluginObject(null, null, null, null, pluginAssemblyObject, plugins)).ToList();
+                                       orderby plugins.TypeName
+                                       select MapPluginObject(null, null, null, null, pluginAssemblyObject, plugins)).ToList();
 
             var pluginStepImages = (from plugins in context.PluginTypeSet
                                     join steps in context.SdkMessageProcessingStepSet on plugins.PluginTypeId equals steps.EventHandler.Id
                                     join images in context.SdkMessageProcessingStepImageSet on steps.SdkMessageProcessingStepId equals images.SdkMessageProcessingStepId.Id
                                     where plugins.PluginAssemblyId.Id == pluginAssembly.Id && plugins.IsWorkflowActivity == false
                                     select images)
-									.ToList().OrderBy(i => i.EntityAlias).ToList();
+                                    .ToList().OrderBy(i => i.EntityAlias).ToList();
 
-			var pluginTypes = (from plugins in context.PluginTypeSet
+            var pluginTypes = (from plugins in context.PluginTypeSet
                                join steps in context.SdkMessageProcessingStepSet on plugins.PluginTypeId equals steps.EventHandler.Id
                                join message in context.SdkMessageSet on steps.SdkMessageId.Id equals message.SdkMessageId
                                where plugins.PluginAssemblyId.Id == pluginAssembly.Id && plugins.IsWorkflowActivity == false
-                               select MapPluginObject( 
-                                   steps, message, GetMessageFilter( context.SdkMessageFilterSet, steps.SdkMessageFilterId ), pluginStepImages, pluginAssemblyObject, plugins )
+                               select MapPluginObject(
+                                   steps, message, GetMessageFilter(context.SdkMessageFilterSet, steps.SdkMessageFilterId), pluginStepImages, pluginAssemblyObject, plugins)
                               ).ToList();
             var typesHasSteps = new HashSet<string>(pluginAssemblyObject.PluginTypes.Select(t => t.Name));
             var allPluginType = (from plugins in context.PluginTypeSet
@@ -107,43 +109,44 @@ namespace Xrm.Framework.CI.Common
                                  select plugins).ToList();
             var pluginTypesWithNoSteps = (from plugins in allPluginType
                                           where !typesHasSteps.Contains(plugins.Name)
-										  select MapPluginObject(null, null, null, null, pluginAssemblyObject, plugins)).ToList();
+                                          select MapPluginObject(null, null, null, null, pluginAssemblyObject, plugins)).ToList();
 
-			pluginAssemblyObject.PluginTypes = pluginAssemblyObject.PluginTypes.OrderBy(t => t.TypeName).ToList();
-			pluginAssemblyObject.PluginTypes.ForEach(t => t.Steps = t.Steps.OrderBy(s => s.PrimaryEntityName).ThenBy(s => s.MessageName).ToList());
+            pluginAssemblyObject.PluginTypes = pluginAssemblyObject.PluginTypes.OrderBy(t => t.TypeName).ToList();
+            pluginAssemblyObject.PluginTypes.ForEach(t => t.Steps = t.Steps.OrderBy(s => s.PrimaryEntityName).ThenBy(s => s.MessageName).ToList());
 
-			return pluginAssemblyObject;
+            return pluginAssemblyObject;
         }
 
-		private SdkMessageFilter GetMessageFilter( IQueryable<SdkMessageFilter> sdkMessageFilterSet, EntityReference sdkMessageFilterId )
-		{
-			if( sdkMessageFilterId == null )
-			{
-				return null;
-			}
-			return sdkMessageFilterSet.FirstOrDefault( f => f.Id == sdkMessageFilterId.Id );
-		}
+        private SdkMessageFilter GetMessageFilter(IQueryable<SdkMessageFilter> sdkMessageFilterSet, EntityReference sdkMessageFilterId)
+        {
+            if (sdkMessageFilterId == null)
+            {
+                return null;
+            }
+            return sdkMessageFilterSet.FirstOrDefault(f => f.Id == sdkMessageFilterId.Id);
+        }
 
-		public Guid GetServiceEndpointId(string name) =>
+        public Guid GetServiceEndpointId(string name) =>
             (from a in context.ServiceEndpointSet
              where a.Name == name
              select a.Id).FirstOrDefault();
+
         public List<ServiceEndpt> GetServiceEndpoints(Guid solutionId, string endpointName)
         {
             var webHookList = (from serviceEndpoint in context.ServiceEndpointSet
-                              select MapWebHook(serviceEndpoint)).ToList<ServiceEndpt>();
+                               select MapWebHook(serviceEndpoint)).ToList<ServiceEndpt>();
 
             var steps = (from serviceEndpoint in context.ServiceEndpointSet
-                          join step in context.SdkMessageProcessingStepSet on serviceEndpoint.ServiceEndpointId equals step.EventHandler.Id
-                          join message in context.SdkMessageSet on step.SdkMessageId.Id equals message.SdkMessageId
-                          join filter in context.SdkMessageFilterSet on step.SdkMessageFilterId.Id equals filter.Id
-                          select new
-                          {
-                              EndPointId = serviceEndpoint.Id,
-                              Step = MapStep(step, message, filter)
-                          });
+                         join step in context.SdkMessageProcessingStepSet on serviceEndpoint.ServiceEndpointId equals step.EventHandler.Id
+                         join message in context.SdkMessageSet on step.SdkMessageId.Id equals message.SdkMessageId
+                         join filter in context.SdkMessageFilterSet on step.SdkMessageFilterId.Id equals filter.Id
+                         select new
+                         {
+                             EndPointId = serviceEndpoint.Id,
+                             Step = MapStep(step, message, filter)
+                         });
 
-            foreach(var s in steps)
+            foreach (var s in steps)
             {
                 var e = (from es in webHookList
                          where s.EndPointId.Equals(es.Id)
@@ -258,8 +261,8 @@ namespace Xrm.Framework.CI.Common
             CustomConfiguration = pluginStep.Configuration,
             Name = pluginStep.Name,
             Description = pluginStep.Description,
-			FilteringAttributes = pluginStep.FilteringAttributes != null ? string.Join(",", pluginStep.FilteringAttributes.Split(',').OrderBy(a => a)) : null,
-			ImpersonatingUserFullname = pluginStep.ImpersonatingUserId?.Name ?? string.Empty,
+            FilteringAttributes = pluginStep.FilteringAttributes != null ? string.Join(",", pluginStep.FilteringAttributes.Split(',').OrderBy(a => a)) : null,
+            ImpersonatingUserFullname = pluginStep.ImpersonatingUserId?.Name ?? string.Empty,
             MessageName = sdkMessage?.Name,
             Mode = pluginStep.ModeEnum,
             PrimaryEntityName = filter?.PrimaryObjectTypeCode,
@@ -274,9 +277,9 @@ namespace Xrm.Framework.CI.Common
         private static void MapImagesObject(List<SdkMessageProcessingStepImage> images, SdkMessageProcessingStep pluginStep, Step step)
         {
             var imagesTemp = images.FindAll(item => item.SdkMessageProcessingStepId.Id == pluginStep.SdkMessageProcessingStepId);
-			foreach (var image in imagesTemp)
+            foreach (var image in imagesTemp)
             {
-				var imageTemp = new Image()
+                var imageTemp = new Image()
                 {
                     Id = image.SdkMessageProcessingStepImageId,
                     Attributes = image.Attributes1 != null ? string.Join(",", image.Attributes1.Split(',').OrderBy(a => a)) : null,
@@ -288,5 +291,7 @@ namespace Xrm.Framework.CI.Common
                 step.Images.Add(imageTemp);
             }
         }
+
+        public List<PluginAssembly> GetPluginPackageAssemblies(Guid packageId) => context.PluginAssemblySet.Where(x => x.PackageId.Id == packageId).ToList();
     }
 }
