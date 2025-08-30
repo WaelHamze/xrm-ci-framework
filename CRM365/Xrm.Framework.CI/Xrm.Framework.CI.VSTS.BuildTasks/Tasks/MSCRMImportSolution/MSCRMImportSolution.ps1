@@ -17,7 +17,6 @@ $holdingSolution = Get-VstsInput -Name holdingSolution -AsBool
 $override = Get-VstsInput -Name override -AsBool
 $asyncWaitTimeout = Get-VstsInput -Name asyncWaitTimeout -Require -AsInt
 $crmConnectionTimeout = Get-VstsInput -Name crmConnectionTimeout -Require -AsInt
-$solutionName = Get-VstsInput -Name solutionName
 
 #TFS Release Parameters
 $artifactsFolder = $env:AGENT_RELEASEDIRECTORY 
@@ -41,12 +40,9 @@ Write-Verbose "Script Path: $scriptPath"
 
 $solutionFilename = $solutionFile.Substring($solutionFile.LastIndexOf("\") + 1)
 
-if ([string]::IsNullOrEmpty($solutionName)) {
-    $solutionName = [System.IO.Path]::GetFileNameWithoutExtension($solutionFile)
-}
 $logFilename = $solutionFilename.replace(".zip", "_importlog_" + [System.DateTime]::Now.ToString("yyyy_MM_dd__HH_mm") + ".xml")
 
-& "$scriptPath\ps_modules\xRMCIFramework\ImportSolution.ps1" -solutionFile "$solutionFile" -crmConnectionString "$CrmConnectionString" -override $override -publishWorkflows $publishWorkflows -overwriteUnmanagedCustomizations $overwriteUnmanagedCustomizations -skipProductUpdateDependencies $skipProductUpdateDependencies -ConvertToManaged $convertToManaged -HoldingSolution $holdingSolution -logsDirectory "$artifactsFolder" -logFileName "$logFilename" -AsyncWaitTimeout $AsyncWaitTimeout -Timeout $crmConnectionTimeout -SolutionName $solutionName
+& "$scriptPath\ps_modules\xRMCIFramework\ImportSolution.ps1" -solutionFile "$solutionFile" -crmConnectionString "$CrmConnectionString" -override $override -publishWorkflows $publishWorkflows -overwriteUnmanagedCustomizations $overwriteUnmanagedCustomizations -skipProductUpdateDependencies $skipProductUpdateDependencies -ConvertToManaged $convertToManaged -HoldingSolution $holdingSolution -logsDirectory "$artifactsFolder" -logFileName "$logFilename" -AsyncWaitTimeout $AsyncWaitTimeout -Timeout $crmConnectionTimeout
 
 if (Test-Path "$artifactsFolder\$logFilename")
 {
