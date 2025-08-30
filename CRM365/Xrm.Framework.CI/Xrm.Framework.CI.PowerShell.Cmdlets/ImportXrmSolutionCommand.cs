@@ -82,7 +82,13 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
         /// </summary>
         [Parameter(Mandatory = false)]
         public int AsyncWaitTimeout { get; set; }
-
+        
+        /// <summary>
+        /// <para type="description">Provide solution name for identifying which async import job is handing this action</para>
+        /// </summary>
+        [Parameter(Mandatory = false)]
+        public string SolutionName { get; set; }
+        
         /// <summary>
         /// <para type="description">Specify the Guid to be used for the async import job. This was be used to query the start of the job after.</para>
         /// </summary>
@@ -136,9 +142,10 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
                 RequestId = ImportJobId,
                 HoldingSolution = HoldingSolution
             };
-
+            
             if (ImportAsync)
             {
+                importSolutionRequest.Parameters.Add("tag", SolutionName);
                 var asyncRequest = new ExecuteAsyncRequest
                 {
                     Request = importSolutionRequest,
@@ -147,7 +154,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
                 var asyncResponse = OrganizationService.Execute(asyncRequest) as ExecuteAsyncResponse;
 
                 Guid asyncJobId = asyncResponse.AsyncJobId;
-
+                UpdateAsyncOperationName(OrganizationService, asyncJobId, SolutionName);
                 WriteObject(asyncJobId);
 
                 if (WaitForCompletion)
@@ -207,6 +214,21 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
                         throw new Exception(string.Format("Solution Import Failed: {0} {1}",
                             asyncOperation.StatusCode.Value, asyncOperation.Message));
                 }
+            }
+        }
+
+        provide void UpdateAsyncOperationName(IOrganizationService service, Guid asyncOperationId, string friendlyName)
+        {
+            try
+            {
+                Entity asyncOperation = new Entity("asyncoperation", asyncOperationId);
+                asyncOperation["friendlymessage"] = friendlyName;
+                service.Update(asyncOperation);
+                Console.WriteLine($"update AsyncOperation friendly name: {friendlyName}");
+            }
+            catch (Exception ex)
+            {
+                base.WriteVerbose($"update AsyncOperation friendly name failed: {ex.Message}");
             }
         }
 
