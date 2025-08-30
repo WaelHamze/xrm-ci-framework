@@ -145,7 +145,6 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
             
             if (ImportAsync)
             {
-                importSolutionRequest.Parameters.Add("tag", SolutionName);
                 var asyncRequest = new ExecuteAsyncRequest
                 {
                     Request = importSolutionRequest,
