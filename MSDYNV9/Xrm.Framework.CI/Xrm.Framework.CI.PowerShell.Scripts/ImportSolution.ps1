@@ -13,6 +13,7 @@ param(
 [bool]$convertToManaged, #Direct the system to convert any matching unmanaged customizations into your managed solution. Optional.
 [bool]$holdingSolution, #Imports by creating a holding/upgrade solution
 [bool]$ImportAsync = $true, #Import solution in Async Mode, recommended
+[bool]$UploadSolutionName = $false, #Upload solution to column friendlyMessage of asyncOperation for showing solution name in asynoperation job
 [int]$AsyncWaitTimeout, #Optional - Async wait timeout in seconds
 [int]$Timeout, #Optional - CRM connection timeout
 [string]$logsDirectory, #Optional - will place the import log in here
@@ -44,6 +45,7 @@ Write-Verbose "convertToManaged = $convertToManaged"
 Write-Verbose "holdingSolution = $holdingSolution"
 Write-Verbose "AsyncWaitTimeout = $AsyncWaitTimeout"
 Write-Verbose "ImportAsync = $ImportAsync"
+Write-Verbose "UploadSolutionName = $UploadSolutionName"
 Write-Verbose "AsyncWaitTimeout = $AsyncWaitTimeout"
 Write-Verbose "Timeout = $Timeout"
 Write-Verbose "logsDirectory = $logsDirectory"
@@ -51,6 +53,6 @@ Write-Verbose "logFilename = $logFilename"
 
 $importJobId = [guid]::NewGuid()
 
-Import-XrmSolution -ConnectionString "$CrmConnectionString" -SolutionFilePath "$solutionFile" -publishWorkflows $publishWorkflows -overwriteUnmanagedCustomizations $overwriteUnmanagedCustomizations -SkipProductUpdateDependencies $skipProductUpdateDependencies -ConvertToManaged $convertToManaged -HoldingSolution $holdingSolution -OverrideSameVersion $override -ImportAsync $ImportAsync -ImportJobId $importJobId -AsyncWaitTimeout $AsyncWaitTimeout -DownloadFormattedLog $true -LogsDirectory "$logsDirectory" -LogFileName "$logFilename" -Timeout $Timeout
+Import-XrmSolution -ConnectionString "$CrmConnectionString" -SolutionFilePath "$solutionFile" -publishWorkflows $publishWorkflows -overwriteUnmanagedCustomizations $overwriteUnmanagedCustomizations -SkipProductUpdateDependencies $skipProductUpdateDependencies -ConvertToManaged $convertToManaged -HoldingSolution $holdingSolution -OverrideSameVersion $override -ImportAsync $ImportAsync -UploadSolutionName $UploadSolutionName -ImportJobId $importJobId -AsyncWaitTimeout $AsyncWaitTimeout -DownloadFormattedLog $true -LogsDirectory "$logsDirectory" -LogFileName "$logFilename" -Timeout $Timeout
  
 Write-Verbose 'Leaving ImportSolution.ps1'

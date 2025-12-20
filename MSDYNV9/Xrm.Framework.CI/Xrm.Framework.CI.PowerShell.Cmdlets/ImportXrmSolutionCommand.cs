@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Management.Automation;
 using System.Threading;
@@ -74,6 +74,12 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
         public bool ImportAsync { get; set; }
 
         /// <summary>
+        /// <para type="description">Specify whether to upload solution name to column friendlymessage of table asyncOperation</para>
+        /// </summary>
+        [Parameter(Mandatory = false)]
+        public bool UploadSolutionName { get; set; }
+
+        /// <summary>
         /// <para type="description">The sleep interval between checks on the import progress. Default = 15 seconds</para>
         /// </summary>
         [Parameter(Mandatory = false)]
@@ -144,6 +150,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
                 HoldingSolution,
                 OverrideSameVersion,
                 ImportAsync,
+                UploadSolutionName,
                 SleepInterval,
                 AsyncWaitTimeout,
                 ImportJobId,
