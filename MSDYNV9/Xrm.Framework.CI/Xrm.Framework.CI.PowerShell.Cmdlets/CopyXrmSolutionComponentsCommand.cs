@@ -36,6 +36,12 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
         [Parameter(Mandatory = true)]
         public string ToSolutionName { get; set; }
 
+        /// <summary>
+        /// <para type="description">Defines if include solution components from patches solutions.</para>
+        /// </summary>
+        [Parameter(Mandatory = false)]
+        public bool IncludePatches { get; set; }
+
         #endregion
 
         #region Process Record
@@ -52,15 +58,27 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
                 var toSolutionId = GetSolutionId(context, ToSolutionName);
 
                 var fromSolutionComponents = (from s in context.SolutionComponentSet
-                            where s.SolutionId == new EntityReference(Solution.EntityLogicalName, fromSolutionId)
-                            orderby s.RootSolutionComponentId descending
-                            select new { s.Id, s.ComponentType, s.ObjectId, s.RootSolutionComponentId, s.IsMetadata }).ToList();
+                                              where s.SolutionId == new EntityReference(Solution.EntityLogicalName, fromSolutionId)
+                                              orderby s.RootSolutionComponentId descending
+                                              select new { s.Id, s.ComponentType, s.ObjectId, s.RootSolutionComponentId, s.IsMetadata }).ToList();
+                if (IncludePatches)
+                {
+                    fromSolutionComponents.AddRange(
+                        (from c in context.SolutionComponentSet
+                         join patchSol in context.SolutionSet on c.SolutionId equals new EntityReference(Solution.EntityLogicalName, patchSol.SolutionId.Value)
+                         join parentSol in context.CreateQuery<Solution>() on patchSol.ParentSolutionId equals new EntityReference(Solution.EntityLogicalName, parentSol.SolutionId.Value)
+                         where parentSol.UniqueName == FromSolutionName
+                         orderby c.RootSolutionComponentId descending
+                         select new { c.Id, c.ComponentType, c.ObjectId, c.RootSolutionComponentId, c.IsMetadata }).ToList());
+                    fromSolutionComponents = fromSolutionComponents.Distinct().ToList();
+                }
+
                 var toSolutionComponents = (from s in context.SolutionComponentSet
-                            where s.SolutionId == new EntityReference(Solution.EntityLogicalName, toSolutionId)
-                            select new { s.Id, s.ComponentType, s.ObjectId, s.RootSolutionComponentId }).ToList();
+                                            where s.SolutionId == new EntityReference(Solution.EntityLogicalName, toSolutionId)
+                                            select new { s.Id, s.ComponentType, s.ObjectId, s.RootSolutionComponentId }).ToList();
 
                 foreach (var solutionComponent in fromSolutionComponents)
-                {                   
+                {
                     if (toSolutionComponents.Exists(depen => depen.ObjectId == solutionComponent.ObjectId && depen.ComponentType.Value == solutionComponent.ComponentType.Value))
                     {
                         continue;
@@ -70,7 +88,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
                     {
                         ComponentId = (Guid)solutionComponent.ObjectId,
                         ComponentType = (int)solutionComponent.ComponentType.Value,
-                        AddRequiredComponents = false,                        
+                        AddRequiredComponents = false,
                         SolutionUniqueName = ToSolutionName
                     };
 
@@ -103,5 +121,5 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
         }
 
         #endregion
-    } 
+    }
 }
