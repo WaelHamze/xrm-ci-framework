@@ -57,10 +57,12 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
 
                 if (string.IsNullOrEmpty(VersionNumber))
                 {
-                    var solution = (from sol in context.SolutionSet
-                                    where sol.UniqueName==ParentSolutionUniqueName || sol.UniqueName.StartsWith(ParentSolutionUniqueName + "_Patch")
+                    var solution = (from sol in (
+                                        from sAnon in context.SolutionSet
+                                        where sAnon.UniqueName == ParentSolutionUniqueName || sAnon.UniqueName.StartsWith(ParentSolutionUniqueName + "_Patch")
+                                        select new { FriendlyName = sAnon.FriendlyName, Version = new Version(sAnon.Version) }).AsEnumerable()
                                     orderby sol.Version descending
-                                    select new Solution { Version = sol.Version, FriendlyName = sol.FriendlyName }).FirstOrDefault();
+                                    select new Solution { Version = sol.Version.ToString(), FriendlyName = sol.FriendlyName }).FirstOrDefault();
                     if (solution == null || string.IsNullOrEmpty(solution.Version))
                     {
                         throw new Exception(string.Format("Parent solution with unique name {0} not found.", ParentSolutionUniqueName));
