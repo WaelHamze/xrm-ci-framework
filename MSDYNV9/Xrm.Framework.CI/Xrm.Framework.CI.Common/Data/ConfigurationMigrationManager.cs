@@ -283,19 +283,19 @@ namespace Xrm.Framework.CI.Common
                 }
             }
 
-            foreach(FileInfo entityInfo in dataInfo.GetFiles("*_data.xml"))
-            {
-                string entity = entityInfo.Name.Substring(0, entityInfo.Name.IndexOf("_data.xml"));
+//             foreach(FileInfo entityInfo in dataInfo.GetFiles("*_data.xml"))
+//             {
+//                 string entity = entityInfo.Name.Substring(0, entityInfo.Name.IndexOf("_data.xml"));
 
-                if (!entityNames.Contains(entity))
-                {
-                    Logger.LogInformation($"Deleting {entityInfo.Name} as it is not part of data.xml");
-                    entityInfo.Delete();
-                    Logger.LogInformation($"Deleted {entityInfo.Name}");
-                }
-            }
+//                 if (!entityNames.Contains(entity))
+//                 {
+//                     Logger.LogInformation($"Deleting {entityInfo.Name} as it is not part of data.xml");
+//                     entityInfo.Delete();
+//                     Logger.LogInformation($"Deleted {entityInfo.Name}");
+//                 }
+//             }
 
-            Logger.LogInformation("Removing entity records from data.xml");
+//             Logger.LogInformation("Removing entity records from data.xml");
 
             foreach (XElement entityNode in entitiesNode.Elements())
             {
