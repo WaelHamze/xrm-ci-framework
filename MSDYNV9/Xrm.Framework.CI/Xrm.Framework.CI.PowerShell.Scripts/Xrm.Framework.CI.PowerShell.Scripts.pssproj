@@ -36,6 +36,7 @@
     <Compile Include="CopySolutionComponents.ps1" />
     <Compile Include="CreateSolution.ps1" />
     <Compile Include="CheckTenantSettings.ps1" />
+    <Compile Include="PluginPackageRegistration.ps1" />
     <Compile Include="UpdateTenantSettings.ps1" />
     <Compile Include="SaveTenantSettings.ps1" />
     <Compile Include="PackCMData.ps1" />

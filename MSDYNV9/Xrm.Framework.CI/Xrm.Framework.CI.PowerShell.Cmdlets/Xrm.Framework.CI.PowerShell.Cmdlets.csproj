@@ -211,6 +211,7 @@
     <Compile Include="RemoveXrmRecordCommand.cs" />
     <Compile Include="SetXrmDashboardRoleCommand.cs" />
     <Compile Include="SetXrmEntityStateCommand.cs" />
+    <Compile Include="SetXrmPluginPackageRegistration.cs" />
     <Compile Include="SetXrmWorkflowStateCommand.cs" />
     <Compile Include="CompressXrmSolutionsUsingConfig.cs" />
     <Compile Include="ShowXrmLogging.cs" />

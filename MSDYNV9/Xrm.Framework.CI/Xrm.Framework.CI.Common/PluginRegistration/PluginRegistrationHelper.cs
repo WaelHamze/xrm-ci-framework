@@ -11,6 +11,7 @@ using System.Xml;
 using System.Xml.XPath;
 
 using Xrm.Framework.CI.Common;
+using Xrm.Framework.CI.Common.PluginRegistration;
 
 namespace Xrm.Framework.CI.Common
 {
@@ -87,7 +88,7 @@ namespace Xrm.Framework.CI.Common
             }
         }
 
-        public void DeleteObjectWithDependencies(Guid objectId, ComponentType? componentType, HashSet<string> deletingHashSet = null)
+        public void DeleteObjectWithDependencies(Guid objectId, ComponentType? componentType, HashSet<string> deletingHashSet = null, int? componentTypeInt = null)
         {
             if (deletingHashSet == null)
             {
@@ -137,6 +138,7 @@ namespace Xrm.Framework.CI.Common
                     logVerbose?.Invoke($"Trying to delete {componentType} {workflow.Name}");
                     organizationService.Delete(Workflow.EntityLogicalName, objectId);
                     break;
+
                 case ComponentType.SDKMessageProcessingStep:
                     var step = pluginRepository.GetSdkMessageProcessingStepById(objectId);
                     if (step.IsHidden.Value == true)
@@ -147,18 +149,31 @@ namespace Xrm.Framework.CI.Common
                     logVerbose?.Invoke($"Trying to delete {componentType} {step.Name} / {objectId}");
                     organizationService.Delete(SdkMessageProcessingStep.EntityLogicalName, objectId);
                     break;
+
                 case ComponentType.PluginType:
                     var type = pluginRepository.GetPluginTypeById(objectId);
                     logVerbose?.Invoke($"Trying to delete {componentType} {type.Name} / {objectId}");
                     organizationService.Delete(PluginType.EntityLogicalName, objectId);
                     break;
+
                 case ComponentType.PluginAssembly:
                     logVerbose?.Invoke($"Trying to delete {componentType} {objectId}");
                     organizationService.Delete(PluginAssembly.EntityLogicalName, objectId);
                     break;
+
                 case ComponentType.ServiceEndpoint:
                     logVerbose?.Invoke($"Trying to delete {componentType} {objectId}");
                     organizationService.Delete(ServiceEndpoint.EntityLogicalName, objectId);
+                    break;
+
+                case null:
+                    switch (componentTypeInt)
+                    {
+                        case 10031:
+                            logVerbose?.Invoke($"Trying to delete {componentTypeInt} {objectId}");
+                            organizationService.Delete(PluginPackage.EntityLogicalName, objectId);
+                            break;
+                    }
                     break;
             }
         }
@@ -181,6 +196,30 @@ namespace Xrm.Framework.CI.Common
                 Xaml = xaml.ToString(SaveOptions.DisableFormatting),
                 Id = bpf.Id
             });
+        }
+
+        public Guid UpsertPluginPackage(PackageInfo packageInfo, string solutionName, string publisherPrefix, RegistrationTypeEnum registrationType)
+        {
+            var id = pluginRepository.GetPluginPackageId($"{publisherPrefix}_{packageInfo.PackageName}");
+            logWarning?.Invoke($"Extracted id using plugin package name {publisherPrefix}_{packageInfo.PackageName}");
+
+            var package = new PluginPackage()
+            {
+                Name = packageInfo.PackageName,
+                Content = packageInfo.Content,
+            };
+
+            if (!id.Equals(Guid.Empty) && registrationType == RegistrationTypeEnum.Reset)
+            {
+                DeleteObjectWithDependencies(id, null, null, 10031);
+            }
+
+            logVerbose?.Invoke($"Trying to upsert {packageInfo.PackageName} / {id}");
+            id = ExecuteRequest(registrationType, id, package);
+
+            AddComponentToSolution(id, null, solutionName, 10031);
+
+            return id;
         }
 
         public Guid UpsertPluginAssembly(Assembly pluginAssembly, AssemblyInfo assemblyInfo, string solutionName, RegistrationTypeEnum registrationType)
@@ -220,7 +259,7 @@ namespace Xrm.Framework.CI.Common
             return Id;
         }
 
-        public void UpsertPluginTypeAndSteps(Guid parentId, Type pluginType, string solutionName, RegistrationTypeEnum registrationType)
+        public void UpsertPluginTypeAndSteps(Guid parentId, Type pluginType, string solutionName, RegistrationTypeEnum registrationType, bool isPluginPackage = false)
         {
             Guid Id = pluginType.Id ?? Guid.Empty;
             if (Id == Guid.Empty)
@@ -229,19 +268,22 @@ namespace Xrm.Framework.CI.Common
                 logWarning?.Invoke($"Extracted id using plugin type name {pluginType.Name}");
             }
 
-            var type = new PluginType()
+            if (!isPluginPackage)
             {
-                Name = pluginType.Name,
-                Description = pluginType.Description,
-                FriendlyName = pluginType.FriendlyName,
-                TypeName = pluginType.TypeName,
-                WorkflowActivityGroupName = pluginType.WorkflowActivityGroupName,
-                PluginAssemblyId = new EntityReference(PluginAssembly.EntityLogicalName, parentId)
-            };
+                var type = new PluginType()
+                {
+                    Name = pluginType.Name,
+                    Description = pluginType.Description,
+                    FriendlyName = pluginType.FriendlyName,
+                    TypeName = pluginType.TypeName,
+                    WorkflowActivityGroupName = pluginType.WorkflowActivityGroupName,
+                    PluginAssemblyId = new EntityReference(PluginAssembly.EntityLogicalName, parentId)
+                };
 
-            Id = ExecuteRequest(registrationType, Id, type);
-            // AddComponentToSolution(Id, ComponentType.PluginType, solutionName);
-            logVerbose?.Invoke($"UpsertPluginType {Id} completed");
+                Id = ExecuteRequest(registrationType, Id, type);
+                // AddComponentToSolution(Id, ComponentType.PluginType, solutionName);
+                logVerbose?.Invoke($"UpsertPluginType {Id} completed");
+            }
 
             var typeRef = new EntityReference(PluginType.EntityLogicalName, Id);
 
@@ -267,9 +309,11 @@ namespace Xrm.Framework.CI.Common
                 case ".json":
                     Serializers.SaveJson(mappingFile, obj);
                     break;
+
                 case ".xml":
                     Serializers.SaveXml(mappingFile, obj);
                     break;
+
                 default:
                     throw new ArgumentException("Only .json and .xml mapping files are supported", nameof(mappingFile));
             }
@@ -298,7 +342,6 @@ namespace Xrm.Framework.CI.Common
                         logVerbose?.Invoke($"UpsertSdkMessageProcessingStepImage {imageId} completed");
                     }
                 }
-
             }
         }
 
@@ -437,9 +480,14 @@ namespace Xrm.Framework.CI.Common
             return Id;
         }
 
-        private void AddComponentToSolution(Guid componentId, ComponentType componentType, string solutionName)
+        private void AddComponentToSolution(Guid componentId, ComponentType? componentType, string solutionName, int? componentTypeInt = null)
         {
             if (string.IsNullOrEmpty(solutionName))
+            {
+                return;
+            }
+
+            if (!componentType.HasValue && !componentTypeInt.HasValue)
             {
                 return;
             }
@@ -449,7 +497,7 @@ namespace Xrm.Framework.CI.Common
             {
                 AddRequiredComponents = false,
                 ComponentId = componentId,
-                ComponentType = (int)componentType,
+                ComponentType = componentType.HasValue ? (int)componentType : componentTypeInt.Value,
                 SolutionUniqueName = solutionName
             });
         }
@@ -476,13 +524,26 @@ namespace Xrm.Framework.CI.Common
                     var pluginAssembly = Serializers.ParseJson<Assembly>(mappingFile);
                     logVerbose("Deserialized mapping json file");
                     return pluginAssembly;
+
                 case ".xml":
                     logVerbose("Reading mapping xml file");
                     pluginAssembly = Serializers.ParseXml<Assembly>(mappingFile);
                     logVerbose("Deserialized mapping xml file");
                     return pluginAssembly;
+
                 default:
                     throw new ArgumentException("Only .json and .xml mapping files are supported", nameof(ReadMappingFile));
+            }
+        }
+
+        public void LoadPluginPackageAssemblies(Package pluginPackage)
+        {
+            var pluginAssemblies = pluginRepository.GetPluginPackageAssemblies(pluginPackage.Id.Value);
+
+            foreach (var pluginAssembly in pluginAssemblies)
+            {
+                var assembly = pluginRepository.GetAssemblyRegistration(pluginAssembly.Name, pluginAssembly.Version);
+                pluginPackage.Assemblies.Add(assembly);
             }
         }
     }
