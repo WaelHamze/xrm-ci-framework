@@ -10,9 +10,10 @@ param(
 [string]$PackageDeploymentPath,
 [string]$ToolingConnectorModulePath,
 [string]$Timeout = '00:30:00', #optional timeout for Import-CrmPackage, default to 1 hour and 20 min. See https://technet.microsoft.com/en-us/library/dn756301.aspx
-[int]$CrmConnectionTimeout = 2, 
+[int]$CrmConnectionTimeout = 2,
 [string]$RuntimePackageSettings,
-[string]$UnpackFilesDirectory
+[string]$UnpackFilesDirectory,
+[bool]$ImportAsync = $false #Import solution in Async Mode, recommended
 )
 
 $ErrorActionPreference = "Stop"
@@ -30,6 +31,7 @@ Write-Verbose "Timeout = $Timeout"
 Write-Verbose "CrmConnectionTimeout = $CrmConnectionTimeout"
 Write-Verbose "RuntimePackageSettings = $RuntimePackageSettings"
 Write-Verbose "UnpackFilesDirectory = $UnpackFilesDirectory"
+Write-Verbose "ImportAsync = $ImportAsync"
 
 #Script Location
 $scriptPath = split-path -parent $MyInvocation.MyCommand.Definition
@@ -53,11 +55,11 @@ if ($PackageDeploymentPath)
 	$crmToolingDeployment = $PackageDeploymentPath + "\Microsoft.Xrm.Tooling.PackageDeployment.Powershell.dll"
 }
 
-Write-Verbose "Importing: $crmToolingConnector" 
+Write-Verbose "Importing: $crmToolingConnector"
 Import-Module $crmToolingConnector
 Write-Verbose "Imported: $crmToolingConnector"
 
-Write-Verbose "Importing: $crmToolingDeployment" 
+Write-Verbose "Importing: $crmToolingDeployment"
 Import-Module $crmToolingDeployment
 Write-Verbose "Imported: $crmToolingDeployment"
 
@@ -92,6 +94,11 @@ if ($UnpackFilesDirectory)
 if ($RuntimePackageSettings)
 {
 	$PackageParams.RuntimePackageSettings = $RuntimePackageSettings
+}
+
+if ($ImportAsync)
+{
+	$PackageParams.EnabledAsyncForSolutionImport = $true
 }
 
 Import-CrmPackage @PackageParams -Verbose
