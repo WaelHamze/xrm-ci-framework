@@ -52,16 +52,18 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
                 var toSolutionId = GetSolutionId(context, ToSolutionName);
 
                 var fromSolutionComponents = (from s in context.SolutionComponentSet
-                            where s.SolutionId == new EntityReference(Solution.EntityLogicalName, fromSolutionId)
-                            orderby s.RootSolutionComponentId descending
-                            select new { s.Id, s.ComponentType, s.ObjectId, s.RootSolutionComponentId, s.IsMetadata }).ToList();
+                                              where s.SolutionId == new EntityReference(Solution.EntityLogicalName, fromSolutionId)
+                                              orderby s.RootSolutionComponentId descending
+                                              select new { s.Id, s.ComponentType, s.ObjectId, s.RootSolutionComponentId, s.IsMetadata, s.RootComponentBehavior }).ToList();
                 var toSolutionComponents = (from s in context.SolutionComponentSet
-                            where s.SolutionId == new EntityReference(Solution.EntityLogicalName, toSolutionId)
-                            select new { s.Id, s.ComponentType, s.ObjectId, s.RootSolutionComponentId }).ToList();
+                                            where s.SolutionId == new EntityReference(Solution.EntityLogicalName, toSolutionId)
+                                            select new { s.Id, s.ComponentType, s.ObjectId, s.RootSolutionComponentId, s.RootComponentBehavior }).ToList();
 
                 foreach (var solutionComponent in fromSolutionComponents)
-                {                   
-                    if (toSolutionComponents.Exists(depen => depen.ObjectId == solutionComponent.ObjectId && depen.ComponentType.Value == solutionComponent.ComponentType.Value))
+                {
+                    if (toSolutionComponents.Exists(depen => depen.ObjectId == solutionComponent.ObjectId
+                                                    && depen.ComponentType.Value == solutionComponent.ComponentType.Value
+                                                    && depen.RootComponentBehavior == solutionComponent.RootComponentBehavior))
                     {
                         continue;
                     }
@@ -69,16 +71,21 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
                     var addReq = new AddSolutionComponentRequest()
                     {
                         ComponentId = (Guid)solutionComponent.ObjectId,
-                        ComponentType = (int)solutionComponent.ComponentType.Value,
-                        AddRequiredComponents = false,                        
+                        ComponentType = solutionComponent.ComponentType.Value,
+                        AddRequiredComponents = false,
                         SolutionUniqueName = ToSolutionName
                     };
 
-                    if ((solutionComponent.IsMetadata ?? false) && fromSolutionComponents.Exists(depen => depen.RootSolutionComponentId == solutionComponent.Id))
+                    if (solutionComponent.ComponentType.Value == (int)ComponentType.Entity && solutionComponent.RootComponentBehavior.Value == (int)SolutionComponent_RootComponentBehavior.IncludeSubcomponents)
+                    {
+                        addReq.DoNotIncludeSubcomponents = false;
+                        base.WriteVerbose("DoNotIncludeSubcomponents set to false");
+                    }
+                    else if (solutionComponent.ComponentType.Value == (int)ComponentType.Entity || solutionComponent.RootSolutionComponentId != null) //when RootSolutionComponentId != null is an entity subcomponent
                     {
                         addReq.DoNotIncludeSubcomponents = true;
                         base.WriteVerbose("DoNotIncludeSubcomponents set to true");
-                    }
+                    }                   
 
                     OrganizationService.Execute(addReq);
                     base.WriteVerbose(string.Format("Moved component from solution with Id : {0} and Type : {1}", solutionComponent.ObjectId, solutionComponent.ComponentType.Value));
@@ -103,5 +110,5 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
         }
 
         #endregion
-    } 
+    }
 }
