@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>XrmCIFramework</id>
+    <version>$version$</version>
+    <title>Xrm CI Framework</title>
+    <authors>Wael Hamze</authors>
+    <owners>WaelHamze</owners>
+    <licenseUrl>https://github.com/WaelHamze/xrm-ci-framework/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/WaelHamze/xrm-ci-framework</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/WaelHamze/xrm-ci-framework/master/CRM365/Xrm.Framework.CI/Xrm.Framework.CI.VSTS.BuildTasks/Extension/icon_128x128.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Dynamics 365 PowerShell Cmdlets to support automation of common build and deployment tasks</description>
+    <releaseNotes>https://github.com/WaelHamze/xrm-ci-framework/commits/master</releaseNotes>
+    <copyright>Copyright 2017 WaelHamze</copyright>
+    <tags>msdyn365 dynamics crm xrm 365 powershell ci cd devops build deployment automation continuous integration delivery deployment release cmdlet</tags>
+  </metadata>
+  <files>
+    <file src="readme.txt" target="" />
+  </files>
+</package>

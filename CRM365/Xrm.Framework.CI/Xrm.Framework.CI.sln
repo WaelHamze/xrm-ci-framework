@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F5034706-568F-408A-B7B3-4D38C6DB8A32}") = "Xrm.Framework.CI.PowerShell.Scripts", "Xrm.Framework.CI.PowerShell.Scripts\Xrm.Framework.CI.PowerShell.Scripts.pssproj", "{26E7A989-C329-4B54-A80D-200FC23306B9}"
 EndProject
@@ -122,6 +122,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MSCRMSetOnlineInstanceAdmin
 		Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMSetOnlineInstanceAdminMode\task.json = Xrm.Framework.CI.VSTS.BuildTasks\Tasks\MSCRMSetOnlineInstanceAdminMode\task.json
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xrm.Framework.CI.PowerShellCore.Cmdlets", "Xrm.Framework.CI.PowerShellCore.Cmdlets\Xrm.Framework.CI.PowerShellCore.Cmdlets.csproj", "{A97D1F33-6437-48E1-ACD1-5D3E7B9A126C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -141,6 +143,12 @@ Global
 		{0AF2D810-8E16-4AA1-B3F8-75EB17CF8A24}.Release_PS2|Any CPU.Build.0 = Release_PS2|Any CPU
 		{0AF2D810-8E16-4AA1-B3F8-75EB17CF8A24}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0AF2D810-8E16-4AA1-B3F8-75EB17CF8A24}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A97D1F33-6437-48E1-ACD1-5D3E7B9A126C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A97D1F33-6437-48E1-ACD1-5D3E7B9A126C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A97D1F33-6437-48E1-ACD1-5D3E7B9A126C}.Release_PS2|Any CPU.ActiveCfg = Release|Any CPU
+		{A97D1F33-6437-48E1-ACD1-5D3E7B9A126C}.Release_PS2|Any CPU.Build.0 = Release|Any CPU
+		{A97D1F33-6437-48E1-ACD1-5D3E7B9A126C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A97D1F33-6437-48E1-ACD1-5D3E7B9A126C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -165,5 +173,8 @@ Global
 		{48E83348-0B04-4DF6-A45A-8080572C1DD0} = {BBFA729B-4215-487C-BD89-FD77A7B54C72}
 		{D53745C7-9D26-417B-A305-1C5A6824A643} = {BBFA729B-4215-487C-BD89-FD77A7B54C72}
 		{9DD9CB39-AD1A-425C-8BC7-A51273AB11D8} = {BBFA729B-4215-487C-BD89-FD77A7B54C72}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AED6F5D9-EED1-4E64-BFAF-4D7BBD6A46DF}
 	EndGlobalSection
 EndGlobal
