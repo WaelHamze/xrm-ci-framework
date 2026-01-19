@@ -1,4 +1,5 @@
 ﻿using Microsoft.Crm.Sdk.Messages;
+using Microsoft.Xrm.Sdk.Messages;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -126,7 +127,17 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets
                     if (webResource.Content?.GetHashCode() != fileContent.GetHashCode())
                     {
                         webResource.Content = fileContent;
-                        context.UpdateObject(webResource);
+                        //context.UpdateObject(webResource);
+                        
+                        // update web resource then add to a solution.
+                        UpdateRequest update = new UpdateRequest
+                        {
+                            Target = webResource
+                        };
+                        update.Parameters.Add("SolutionUniqueName", SolutionName);
+
+                        context.Execute(update);
+
                         // add id to publish xml
                         if (Publish)
                             importexportxml.Append($"<webresource>{webResource.Id}</webresource>");
