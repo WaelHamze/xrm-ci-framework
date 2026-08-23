@@ -28,7 +28,7 @@ namespace Xrm.Framework.CI.Common
                 new ResolveEventHandler(CurrentDomain_ReflectionOnlyAssemblyResolve);
             Constructors = null;
             ClassNames = null;
-            
+
         }
         #endregion
 
@@ -46,7 +46,7 @@ namespace Xrm.Framework.CI.Common
         {
             var contenders = GetConstructorInfos(attributeClassName, customAttributes.Count);
             var calledConstructor = GetCustomAttributeData(className, attributeClassName);
-            var constructorArgs = calledConstructor.ConstructorArguments.Select(ca => ca.ArgumentType).ToList();
+            var constructorArgs = calledConstructor.First().ConstructorArguments.Select(ca => ca.ArgumentType).ToList();
 
             foreach (var contender in contenders)
             {
@@ -63,10 +63,10 @@ namespace Xrm.Framework.CI.Common
             return _assembly.ManifestModule.Name;
         }
 
-        private CustomAttributeData GetCustomAttributeData(string className, string attributeClassName)
+        private List<CustomAttributeData> GetCustomAttributeData(string className, string attributeClassName)
         {
-            return CustomAttributeData.GetCustomAttributes(GetType(className)).First(
-                c => c.AttributeType == GetType(attributeClassName));
+            return CustomAttributeData.GetCustomAttributes(GetType(className)).Where(
+                c => c.AttributeType == GetType(attributeClassName)).ToList();
         }
 
         private System.Type GetType(string name)
@@ -83,8 +83,8 @@ namespace Xrm.Framework.CI.Common
         private List<ConstructorInfo> GetConstructorInfos(string className, int parameterCount)
         {
             return (from x in GetConstructorInfos(className)
-                where x.GetParameters().ToList().Count == parameterCount
-                select x).ToList();
+                    where x.GetParameters().ToList().Count == parameterCount
+                    select x).ToList();
         }
 
         private void InitialiseConstructors()
@@ -92,25 +92,31 @@ namespace Xrm.Framework.CI.Common
             Constructors = new List<Dictionary<string, object>>();
             foreach (var pluginClass in ClassNames)
             {
-                var constructorArgs = GetCustomAttributeData(pluginClass, CustomAttributeClassName).ConstructorArguments;
-                var constructorParameters = MatchAttributesToConstructor(
-                    constructorArgs, pluginClass, CustomAttributeClassName).GetParameters();
-
-                var argDictionary = new Dictionary<string, object>();
-                for (var i = 0; i < constructorArgs.Count; i++)
+                var dataItems = GetCustomAttributeData(pluginClass, CustomAttributeClassName);
+                foreach (var dataItem in dataItems)
                 {
-                    argDictionary.Add(constructorParameters[i].Name, constructorArgs[i].Value);
+                    var constructorArgs = dataItem.ConstructorArguments;
+
+                    var constructorParameters = MatchAttributesToConstructor(
+                        constructorArgs, pluginClass, CustomAttributeClassName).GetParameters();
+
+                    var argDictionary = new Dictionary<string, object>();
+                    for (var i = 0; i < constructorArgs.Count; i++)
+                    {
+                        argDictionary.Add(constructorParameters[i].Name, constructorArgs[i].Value);
+                    }
+                    Constructors.Add(argDictionary);
                 }
-                Constructors.Add(argDictionary);
             }
         }
 
         private List<string> GetClassesUsingCustomAttribute(string customAttributeClassName)
         {
             var allTypes = _assembly.GetTypes();
-            return (from t in allTypes let ca = t.GetCustomAttributes().ToList()
-                where ca.FirstOrDefault(x => x.GetType().FullName == customAttributeClassName) != null  
-                      && t.FullName != customAttributeClassName
+            return (from t in allTypes
+                    let ca = t.GetCustomAttributes().ToList()
+                    where ca.FirstOrDefault(x => x.GetType().FullName == customAttributeClassName) != null
+                          && t.FullName != customAttributeClassName
                     select t.FullName).ToList();
         }
 
