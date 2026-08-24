@@ -27,8 +27,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xrm.Framework.CI.Tools", "X
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xrm.Framework.CI.Common.UnitTests", "Xrm.Framework.CI.Common.UnitTests\Xrm.Framework.CI.Common.UnitTests.csproj", "{BD6BF9EC-D494-42D3-9B56-F2CECCFAC8F7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProject1", "TestProject1\TestProject1.csproj", "{6F84B464-D2A2-BADB-55FE-4525AFA1BDD6}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,10 +61,6 @@ Global
 		{BD6BF9EC-D494-42D3-9B56-F2CECCFAC8F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BD6BF9EC-D494-42D3-9B56-F2CECCFAC8F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BD6BF9EC-D494-42D3-9B56-F2CECCFAC8F7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6F84B464-D2A2-BADB-55FE-4525AFA1BDD6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6F84B464-D2A2-BADB-55FE-4525AFA1BDD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6F84B464-D2A2-BADB-55FE-4525AFA1BDD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6F84B464-D2A2-BADB-55FE-4525AFA1BDD6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
