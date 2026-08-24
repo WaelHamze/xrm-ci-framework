@@ -19,7 +19,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Test
             Assert.AreEqual("Xrm.Framework.CI.PowerShell.Cmdlets.Test.dll", reflectionLoader.AssemblyName);
             Assert.AreEqual(1, reflectionLoader.Constructors.Count);
             Assert.AreEqual("Xrm.Framework.CI.PowerShell.Cmdlets.Test.TestClass1", reflectionLoader.Constructors[0].ClassName);
-            Assert.AreEqual(4, reflectionLoader.Constructors[0].ArgsList.Count);
+            Assert.AreEqual(4, reflectionLoader.Constructors[0].ArgsList[0].Count);
             Assert.AreEqual(1, (int)reflectionLoader.Constructors[0].ArgsList[0]["i1"]);
             Assert.AreEqual("a", (string)reflectionLoader.Constructors[0].ArgsList[0]["s1"]);
             Assert.AreEqual(2, (int)reflectionLoader.Constructors[0].ArgsList[0]["i2"]);
