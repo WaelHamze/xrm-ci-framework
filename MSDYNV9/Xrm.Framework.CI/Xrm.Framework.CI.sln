@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27130.2036
+# Visual Studio Version 18
+VisualStudioVersion = 18.9.12112.369 stable
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F5034706-568F-408A-B7B3-4D38C6DB8A32}") = "Xrm.Framework.CI.PowerShell.Scripts", "Xrm.Framework.CI.PowerShell.Scripts\Xrm.Framework.CI.PowerShell.Scripts.pssproj", "{26E7A989-C329-4B54-A80D-200FC23306B9}"
 EndProject
@@ -26,6 +26,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xrm.Framework.CI.Tools", "Xrm.Framework.CI.Tools\Xrm.Framework.CI.Tools.csproj", "{D4E9CB06-119E-4FB4-BD12-56DB49164EB0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xrm.Framework.CI.Common.UnitTests", "Xrm.Framework.CI.Common.UnitTests\Xrm.Framework.CI.Common.UnitTests.csproj", "{BD6BF9EC-D494-42D3-9B56-F2CECCFAC8F7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProject1", "TestProject1\TestProject1.csproj", "{6F84B464-D2A2-BADB-55FE-4525AFA1BDD6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -61,6 +63,10 @@ Global
 		{BD6BF9EC-D494-42D3-9B56-F2CECCFAC8F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BD6BF9EC-D494-42D3-9B56-F2CECCFAC8F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BD6BF9EC-D494-42D3-9B56-F2CECCFAC8F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F84B464-D2A2-BADB-55FE-4525AFA1BDD6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F84B464-D2A2-BADB-55FE-4525AFA1BDD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F84B464-D2A2-BADB-55FE-4525AFA1BDD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F84B464-D2A2-BADB-55FE-4525AFA1BDD6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -5,19 +5,33 @@ using System.Reflection;
 
 namespace Xrm.Framework.CI.Common
 {
+    public class Constructor
+    {
+        public string ClassName { get; set; }
+        public List<Dictionary<string, object>> ArgsList { get; set; } = new List<Dictionary<string, object>>();
+
+        public static List<Constructor> InitFrom(List<string> classNames)
+        {
+            var retval = new List<Constructor>();
+            foreach (var className in classNames)
+            {
+                retval.Add(new Constructor { ClassName = className });
+            }
+            return retval;
+        }
+    }
+
     public interface IReflectionLoader
     {
         void Initialise(string assemblyPath, string attributeClassName);
-        List<Dictionary<string, object>> Constructors { get; set; }
-        List<string> ClassNames { get; }
+        List<Constructor> Constructors { get; set; }
         string AssemblyName { get; }
     }
 
     public class ReflectionLoader : IReflectionLoader
     {
         #region Members and Constructors
-        public List<Dictionary<string, object>> Constructors { get; set; }
-        public List<string> ClassNames { get; private set; }
+        public List<Constructor> Constructors { get; set; }
         public string AssemblyName { get; private set; }
         private System.Reflection.Assembly _assembly;
         private string CustomAttributeClassName { get; set; }
@@ -27,8 +41,6 @@ namespace Xrm.Framework.CI.Common
             AppDomain.CurrentDomain.ReflectionOnlyAssemblyResolve +=
                 new ResolveEventHandler(CurrentDomain_ReflectionOnlyAssemblyResolve);
             Constructors = null;
-            ClassNames = null;
-
         }
         #endregion
 
@@ -36,7 +48,7 @@ namespace Xrm.Framework.CI.Common
         {
             CustomAttributeClassName = attributeClassName;
             AssemblyName = LoadAssemblyForReflection(assemblyPath);
-            ClassNames = GetClassesUsingCustomAttribute(attributeClassName);
+            Constructors = Constructor.InitFrom(GetClassesUsingCustomAttribute(attributeClassName));
             InitialiseConstructors();
         }
 
@@ -89,23 +101,22 @@ namespace Xrm.Framework.CI.Common
 
         private void InitialiseConstructors()
         {
-            Constructors = new List<Dictionary<string, object>>();
-            foreach (var pluginClass in ClassNames)
+            foreach (var constructor in Constructors)
             {
-                var dataItems = GetCustomAttributeData(pluginClass, CustomAttributeClassName);
+                var dataItems = GetCustomAttributeData(constructor.ClassName, CustomAttributeClassName);
                 foreach (var dataItem in dataItems)
                 {
                     var constructorArgs = dataItem.ConstructorArguments;
 
                     var constructorParameters = MatchAttributesToConstructor(
-                        constructorArgs, pluginClass, CustomAttributeClassName).GetParameters();
+                        constructorArgs, constructor.ClassName, CustomAttributeClassName).GetParameters();
 
                     var argDictionary = new Dictionary<string, object>();
                     for (var i = 0; i < constructorArgs.Count; i++)
                     {
                         argDictionary.Add(constructorParameters[i].Name, constructorArgs[i].Value);
                     }
-                    Constructors.Add(argDictionary);
+                    constructor.ArgsList.Add(argDictionary);
                 }
             }
         }

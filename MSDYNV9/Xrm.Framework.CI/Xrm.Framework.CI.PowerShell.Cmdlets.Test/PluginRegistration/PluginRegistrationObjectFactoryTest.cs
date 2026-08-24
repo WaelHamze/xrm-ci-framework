@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using FakeItEasy;
+﻿using FakeItEasy;
 using NUnit.Framework;
+using System;
+using System.Collections.Generic;
 using Xrm.Framework.CI.Common;
-using C = Xrm.Framework.CI.Common;
 using Xrm.Framework.CI.Common.Entities;
+using C = Xrm.Framework.CI.Common;
 
 namespace Xrm.Framework.CI.PowerShell.Cmdlets.Test
 {
@@ -26,8 +26,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Test
         {
             _fakeReflectionLoader = A.Fake<IReflectionLoader>();
             A.CallTo(() => _fakeReflectionLoader.AssemblyName).Returns("MyNameSpace.MyAssembly.dll");
-            A.CallTo(() => _fakeReflectionLoader.ClassNames).Returns(new List<string>() {"TestClass1"});
-            A.CallTo(() => _fakeReflectionLoader.Constructors).Returns(new List<Dictionary<string, object>>(){_args});
+            A.CallTo(() => _fakeReflectionLoader.Constructors).Returns(new List<Constructor> { new Constructor { ClassName = "TestClass1", ArgsList = new List<Dictionary<string, object>> { _args } } });
         }
 
         private void PopulateArgs()
