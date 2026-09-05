@@ -1,5 +1,5 @@
-﻿using System;
-using NUnit.Framework;
+﻿using NUnit.Framework;
+using System;
 using Xrm.Framework.CI.Common;
 using Xrm.Framework.CI.PowerShell.Cmdlets.Common;
 
@@ -17,14 +17,13 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Test
             reflectionLoader.Initialise(assembly.Location, "Xrm.Framework.CI.PowerShell.Cmdlets.Test.TestCustomAttribute");
 
             Assert.AreEqual("Xrm.Framework.CI.PowerShell.Cmdlets.Test.dll", reflectionLoader.AssemblyName);
-            Assert.AreEqual(1,reflectionLoader.ClassNames.Count);
-            Assert.AreEqual("Xrm.Framework.CI.PowerShell.Cmdlets.Test.TestClass1",reflectionLoader.ClassNames[0]);
-            Assert.AreEqual(1,reflectionLoader.Constructors.Count);
-            Assert.AreEqual(4, reflectionLoader.Constructors[0].Count);
-            Assert.AreEqual(1, (int)reflectionLoader.Constructors[0]["i1"]);
-            Assert.AreEqual("a", (string)reflectionLoader.Constructors[0]["s1"]);
-            Assert.AreEqual(2, (int)reflectionLoader.Constructors[0]["i2"]);
-            Assert.AreEqual("b", (string)reflectionLoader.Constructors[0]["s2"]);
+            Assert.AreEqual(1, reflectionLoader.Constructors.Count);
+            Assert.AreEqual("Xrm.Framework.CI.PowerShell.Cmdlets.Test.TestClass1", reflectionLoader.Constructors[0].ClassName);
+            Assert.AreEqual(4, reflectionLoader.Constructors[0].ArgsList[0].Count);
+            Assert.AreEqual(1, (int)reflectionLoader.Constructors[0].ArgsList[0]["i1"]);
+            Assert.AreEqual("a", (string)reflectionLoader.Constructors[0].ArgsList[0]["s1"]);
+            Assert.AreEqual(2, (int)reflectionLoader.Constructors[0].ArgsList[0]["i2"]);
+            Assert.AreEqual("b", (string)reflectionLoader.Constructors[0].ArgsList[0]["s2"]);
 
         }
     }
@@ -54,7 +53,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Test
         }
     }
 
-    [TestCustomAttribute(1,"a",2,"b")]
+    [TestCustomAttribute(1, "a", 2, "b")]
     public class TestClass1
     {
 

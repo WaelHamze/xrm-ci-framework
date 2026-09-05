@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using FakeItEasy;
+﻿using FakeItEasy;
 using NUnit.Framework;
+using System;
+using System.Collections.Generic;
 using Xrm.Framework.CI.Common;
-using C = Xrm.Framework.CI.Common;
 using Xrm.Framework.CI.Common.Entities;
+using C = Xrm.Framework.CI.Common;
 
 namespace Xrm.Framework.CI.PowerShell.Cmdlets.Test
 {
@@ -12,7 +12,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Test
     public class PluginRegistrationObjectFactoryTest
     {
         #region Setup
-        private Dictionary<string, object> _args;
+        private List<Dictionary<string, object>> _argsList;
         private IReflectionLoader _fakeReflectionLoader;
 
         [SetUp]
@@ -26,13 +26,17 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Test
         {
             _fakeReflectionLoader = A.Fake<IReflectionLoader>();
             A.CallTo(() => _fakeReflectionLoader.AssemblyName).Returns("MyNameSpace.MyAssembly.dll");
-            A.CallTo(() => _fakeReflectionLoader.ClassNames).Returns(new List<string>() {"TestClass1"});
-            A.CallTo(() => _fakeReflectionLoader.Constructors).Returns(new List<Dictionary<string, object>>(){_args});
+            A.CallTo(() => _fakeReflectionLoader.Constructors).Returns(new List<Constructor> { new Constructor { ClassName = "TestClass1", ArgsList = _argsList } });
         }
 
-        private void PopulateArgs()
+        private void PopulateArgs(string message = "Update")
         {
-            _args = new Dictionary<string, object>
+            if (_argsList == null)
+            {
+                _argsList = new List<Dictionary<string, object>>();
+            }
+
+            _argsList.Add(new Dictionary<string, object>
             {
                 {"isolationMode", PluginAssembly_IsolationMode.Sandbox},
                 {"sourceType", PluginAssembly_SourceType.Database},
@@ -41,7 +45,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Test
                 {"customConfiguration", "custom config"},
                 {"filters", "firstname,lastname"},
                 {"impersonatingUser", "Mo G"},
-                {"message", "Update"},
+                {"message", message},
                 {"entityLogicalName", "contact"},
                 {"executionMode", SdkMessageProcessingStep_Mode.Synchronous},
                 {"order", 1},
@@ -53,7 +57,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Test
                 {"image2Type", SdkMessageProcessingStepImage_ImageType.PostImage},
                 {"deleteAsyncOperation", false},
                 {"state", SdkMessageProcessingStepState.Enabled}
-            };
+            });
         }
         #endregion
 
@@ -106,6 +110,52 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Test
             Assert.AreEqual(SdkMessageProcessingStep_SupportedDeployment.ServerOnly, step.SupportedDeployment);
         }
 
+
+        [Test]
+        public void GetAssembly_Populates_Step2_Fields()
+        {
+            // add a second step
+            PopulateArgs("Create");
+
+            // just like GetAssembly_Populates_Step_Fields but now for a second step
+            IPluginRegistrationObjectFactory pluginRegistrationObjectFactory = new PluginRegistrationObjectFactory();
+            var assembly = pluginRegistrationObjectFactory.GetAssembly(_fakeReflectionLoader);
+
+            bool updateFound = false;
+            bool createFound = false;
+            foreach (var step in assembly.PluginTypes[0].Steps)
+            {
+                Assert.IsInstanceOf<Step>(step);
+                Assert.IsInstanceOf<Guid>(step.Id);
+                Assert.NotNull(step.Id);
+                Assert.AreEqual("TestClass1", step.Name);
+                Assert.AreEqual("Mo G", step.ImpersonatingUserFullname);
+                Assert.AreEqual("contact", step.PrimaryEntityName);
+                Assert.AreEqual("firstname,lastname", step.FilteringAttributes);
+                Assert.AreEqual(SdkMessageProcessingStep_Mode.Synchronous, step.Mode);
+                Assert.AreEqual(1, step.Rank);
+                Assert.AreEqual(SdkMessageProcessingStep_SupportedDeployment.ServerOnly, step.SupportedDeployment);
+
+                if (step.MessageName == "Update")
+                {
+                    updateFound = true;
+                    Assert.AreEqual("Postoperation Update of contact", step.Description);
+                }
+                else if (step.MessageName == "Create")
+                {
+                    createFound = true;
+                    Assert.AreEqual("Postoperation Create of contact", step.Description);
+                }
+            }
+
+            // make sure both are registered
+            Assert.True(updateFound);
+            Assert.True(createFound);
+
+            // make sure the id's are not the same
+            Assert.AreNotEqual(assembly.PluginTypes[0].Steps[0].Id, assembly.PluginTypes[0].Steps[1].Id);
+        }
+
         [Test]
         public void GetAssembly_Populates_Image1_Fields()
         {
@@ -139,7 +189,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Test
         [Test]
         public void MessagePropertyName_Set_To_EntityMoniker_For_SetState()
         {
-            _args["message"] = "SetState";
+            _argsList[0]["message"] = "SetState";
             IPluginRegistrationObjectFactory pluginRegistrationObjectFactory = new PluginRegistrationObjectFactory();
             var assembly = pluginRegistrationObjectFactory.GetAssembly(_fakeReflectionLoader);
             var image = assembly.PluginTypes[0].Steps[0].Images[1];
@@ -149,7 +199,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Test
         [Test]
         public void MessagePropertyName_Set_To_EntityMoniker_For_SetStateDynamicEntity()
         {
-            _args["message"] = "SetStateDynamicEntity";
+            _argsList[0]["message"] = "SetStateDynamicEntity";
             IPluginRegistrationObjectFactory pluginRegistrationObjectFactory = new PluginRegistrationObjectFactory();
             var assembly = pluginRegistrationObjectFactory.GetAssembly(_fakeReflectionLoader);
             var image = assembly.PluginTypes[0].Steps[0].Images[1];
@@ -159,7 +209,7 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Test
         [Test]
         public void MessagePropertyName_Set_To_Id_For_PostCreate()
         {
-            _args["message"] = "Create";
+            _argsList[0]["message"] = "Create";
             IPluginRegistrationObjectFactory pluginRegistrationObjectFactory = new PluginRegistrationObjectFactory();
             var assembly = pluginRegistrationObjectFactory.GetAssembly(_fakeReflectionLoader);
             var image = assembly.PluginTypes[0].Steps[0].Images[1];
@@ -169,10 +219,10 @@ namespace Xrm.Framework.CI.PowerShell.Cmdlets.Test
         [Test]
         public void MessagePropertyName_Set_To_Target_For_PreCreate()
         {
-            _args["message"] = "Create";
-            _args["stage"] = SdkMessageProcessingStep_Stage.Preoperation;
-            _args.Remove("image2Attributes");
-            _args.Remove("image2Type");
+            _argsList[0]["message"] = "Create";
+            _argsList[0]["stage"] = SdkMessageProcessingStep_Stage.Preoperation;
+            _argsList[0].Remove("image2Attributes");
+            _argsList[0].Remove("image2Type");
             IPluginRegistrationObjectFactory pluginRegistrationObjectFactory = new PluginRegistrationObjectFactory();
             var assembly = pluginRegistrationObjectFactory.GetAssembly(_fakeReflectionLoader);
             var image = assembly.PluginTypes[0].Steps[0].Images[0];

@@ -294,6 +294,9 @@
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup Condition=" '$(SolutionDir)' == '' Or '$(SolutionDir)' == '*Undefined*' ">
+    <SolutionDir>$(MSBuildThisFileDirectory)..\</SolutionDir>
+  </PropertyGroup>
   <PropertyGroup>
     <PostBuildEvent>Copy /Y "$(TargetDir)\*.dll" "$(SolutionDir)\Xrm.Framework.CI.PowerShell.Scripts\"</PostBuildEvent>
   </PropertyGroup>

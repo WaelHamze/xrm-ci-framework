@@ -101,6 +101,7 @@ namespace Xrm.Framework.CI.Common
                    && (compare != null
                        && original.Name == compare.Name
                        && original.PrimaryEntityName == compare.PrimaryEntityName
+                       && original.MessageName == compare.MessageName
                        && original.Stage == compare.Stage);
         }
     }
